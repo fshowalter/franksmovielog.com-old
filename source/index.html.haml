@@ -1,0 +1,21 @@
+
+%main
+  .timeline
+    %dl
+      - index = 0
+      - posts.each do |date, posts|
+        - posts.each do |post|
+          - odd = index % 2 != 0
+          - index+= 1
+          %dd.clearfix{ class: odd ? 'pos-left' : 'pos-right' }
+            .circ{ class: odd ? 'circ-odd' : 'circ-' }
+            .time
+              %span{ 'data-time-ago': post.date.strftime('%FT%TZ') }
+                post.date.strftime('%F')
+            .events
+              .events-body
+                %h3.events-heading
+                  %a{ href: post.link }
+                    = post.title
+                  %p
+                    on #{post.location}

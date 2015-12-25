@@ -1,12 +1,8 @@
----
-# Only the main Sass file needs front matter (the dashes are enough)
----
 @charset "utf-8";
 
-
-
 // Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
+$sans-font-family: 'futura-pt', Helvetica, Arial, sans-serif;
+$serif-font-family: 'freight-text-pro', Georgia, Cambria, 'Times New Roman', Times, serif;
 $base-font-size:   16px;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
@@ -42,11 +38,7 @@ $on-laptop:        800px;
 
 
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "base",
-        "layout",
-        "syntax-highlighting"
-;
+@import "base", "layout", "syntax-highlighting";
 
 html {
   box-sizing: border-box;
@@ -122,6 +114,7 @@ html {
   height: 22px;
   margin-left: -11px;
   background-color: #4fc1e9;
+  background-color: #7f3663;
   border: 4px solid #f5f7fa;
   border-radius: 0px;
 }
@@ -132,16 +125,20 @@ html {
   display: inline-block;
   width: 200px;
   padding: 10px 20px;
-  font-weight: bold;
+  // font-weight: bold;
   color: #4fc1e9;
+  color: #7f3663;
+  font-size: 16px;
+  line-height: 1;
   }
 .timeline dl dd .events {
   position: relative;
-  width: 47%;
+  width: 49%;
   padding: 10px 10px 0;
   margin-top: 31px;
   background-color: #fff;
   border-radius: 0px;
+  text-align: right;
 }
 .timeline dl dd .events:before {
   position: absolute;
@@ -169,6 +166,7 @@ html {
   }
 .timeline dl dd.pos-right .events {
   float: right;
+  text-align: left;
   }
 .timeline dl dd.pos-right .events:before {
   left: -12px;
@@ -211,9 +209,11 @@ html {
     text-align: left;
     }
   .timeline dl dd.pos-left .events {
-    float: right;
-    width: 84%;
+    float: left;
+    width: 94%;
     margin-top: 75px;
+    text-align: left;
+    margin-left: 50px;
     }
   .timeline dl dd.pos-left .events:before {
     left: -12px;
@@ -225,23 +225,28 @@ html {
     text-align: left;
     }
   .timeline dl dd.pos-right .events {
-    float: right;
-    width: 84%;
+    float: left;
+    width: 94%;
     margin-top: 75px;
+    margin-left: 50px;
     }
   }
 
  .circ-odd {
-    background-color: #4B77BE !important;
+    background-color: #51555f !important;
 }
 
 .events-heading > a {
   color: rgb(105, 105, 105);
-  font-weight: bold;
+  // font-weight: bold;
+  font-size: 24px;
+  line-height: 1;
+  font-family: $serif-font-family;
 }
 
 .events-heading > a:hover {
   color: rgb(79, 193, 233);
+  color: #7f3663;
 }
 
 a:hover{
@@ -254,7 +259,8 @@ a:hover{
 }
 
 .timeline dl dd .events .events-body .events-heading {
-    font-size: 17px!important;
+    font-size: 16px!important;
+    color: rgba(0, 0, 0, .6);
 }
 
 .container-withcover {
@@ -357,5 +363,17 @@ h4.events-heading {
 }
 
 .social-media-list li {
-  margin: 0 1rem;
+  margin: 0 .5rem;
+}
+
+.icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+
+.icon:hover {
+  path {
+    fill: #7f3663;
+  }
 }

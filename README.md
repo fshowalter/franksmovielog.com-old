@@ -1,2 +1,1 @@
-# frankshowalter.com
-www.frankshowalter.com
+Middleman site for www.frankshowalter.com
