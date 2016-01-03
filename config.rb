@@ -34,17 +34,15 @@
 
 helpers do
   def posts
-    @posts ||= Dir["#{File.expand_path('../posts/', __FILE__)}/*.md"].each_with_object({}) do |file, dates|
+    @posts ||= Dir["#{File.expand_path('../posts/', __FILE__)}/*.md"].each_with_object([]) do |file, posts|
       content = IO.read(file)
       return unless content =~ /\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)/m
 
       data = YAML.load(Regexp.last_match[1])
       data[:content] = $POSTMATCH
       data = OpenStruct.new(data)
-      key = data.date.strftime('%F')
-      dates[key] ||= []
-      dates[key] << data
-    end.sort.reverse.to_h
+      posts << data
+    end.sort_by(&:date).reverse
   end
 
    def slugize(text, replacement: '-')

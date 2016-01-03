@@ -6,32 +6,24 @@
     %meta{ 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' }
     %title Frank Showalter
     %meta{ name: 'description', content: 'Writer of many things' }
+    %link{ href: 'https://fonts.googleapis.com/css?family=Fjalla+One|Bree+Serif|PT+Sans', rel: 'stylesheet', type: 'text/css' }
     = stylesheet_link_tag 'app', relative: false
   %body
     %header.site-header
-      = image_tag('frank.jpg', class: 'avatar');
-      %h1 Frank Showalter
-      %ul.social-media-list
-        %li
-          %a{ href: 'https://twitter.com/FrankShowalter' }
-            %span.icon.icon--twitter
-              = inline_svg('icon-twitter.svg')
-        %li
-          %a{ href: 'https://letterboxd.com/frankshowalter' }
-            %span.icon.icon--letterboxd
-              = inline_svg('icon-letterboxd.svg')
-        %li
-          %a{ href: 'https://github.com/fshowalter' }
-            %span.icon.icon--github
-              = inline_svg('icon-github.svg')
-        %li
-          %a{ href: 'https://goodreads.com/fshowalter' }
-            %span.icon.icon--goodreads
-              = inline_svg('icon-goodreads.svg')
-        %li
-          %a{ href: 'https://linkedin.com/fshowalter' }
-            %span.icon.icon--linkedin
-              = inline_svg('icon-linkedin.svg')
+      .vertical
+        .avatar-wrap
+          = image_tag('frank.jpg', class: 'avatar');
+        %ul.social-media-list
+          %li
+            %a{ href: 'https://twitter.com/FrankShowalter' }
+              %span.icon.icon--twitter
+                = inline_svg('icon_twitter.svg')
+          %li
+            %a{ href: 'https://github.com/fshowalter' }
+              %span.icon.icon--github
+                = inline_svg('icon_github.svg')
+        %h1 Frank Showalter
+        %p.site_header-slug Writer of many things.
 
 
     .page-content
@@ -44,3 +36,4 @@
         (function(d) {var config={kitId:'ngs8sfs',scriptTimeout: 3000, active: window.set_rhythm },
           h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
         })(document);
+

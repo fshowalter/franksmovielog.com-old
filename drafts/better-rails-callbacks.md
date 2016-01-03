@@ -1,4 +1,4 @@
-ActiveRecord ships with lots of hooks into its lifecycle. They allow you to inject code into the persistance process. 
+ActiveRecord ships with lots of hooks into its lifecycle. They allow you to inject code into the persistence process. 
 
 Consider the hooks available when creating a new record:
 
@@ -12,66 +12,88 @@ Consider the hooks available when creating a new record:
 * `after_save`
 * `after_commit/after_rollback`
 
-That’s a lot of hooks. But it seems strightforward, right?
+That’s a lot of hooks. But it seems straightforward, right?
 
 The reality is more of a mess. Callbacks can be scattered throughout a model and across included modules. Consider the following model.
 
+```
 class Post < ActiveRecord::Base
-	include NotifyViaEmail
+  include Auditable
 
-	belongs_to :user
-	has_many :tags, through: :posts_tags
+  belongs_to :user
+  has_may :subscribers
+  has_many :tags, through: :posts_tags
 
+  validates :title, presence: true
+  validates :body, presence: true
+
+  after_save :notify_subscribers
+
+  def notify_subscribers
+    notification = Notification.new(text: “Post ${post.title} updated”)
+    subscribers.each do |subscriber|
+      notification.send(subscriber)
+    end
+  end
+	
+  before_validation do |post|
+    post.title.try(:’strip!’)
+    post.body.try(:’strip!’)
+  end
 end
+```
 
-The problem comes when you go back to the model, or when you onboard a new developer and you’re left trying to figure out: What happens when I save this record. If your team is diciplined enough, you could follow a convention and place all your callback declarations in a single point, but this still requires you to memorize the Rails callback order.
+What happens when you save a Post? You’ve got to read through the entire file to find all the callback hooks. If your team is disciplined enough, you could follow a convention and place all your callback declarations in a single point, but this still doesn’t cover included modules. Plus, you still must remember the Rails callback order.
 
-I’ve found that a simpler solution almost always works.
+There’s a better way.
 
-class SaveUser
-
+```
+class SavePost
   class << self do
-
-    def call(user)
-
-     ActiveRecord::Base.transaction do
-
-      stuff_to_do_before_validation(user)
-
-      stuff_to_do_before_save(user)
-
-      user.save!
-
-      stuff_to_do_after_save(user)
-
+    def call(post)
+      ActiveRecord::Base.transaction do
+        trim_fields(post)
+        user.save!
+        create_audit_record(post)
+        notify_subscribers(post)
       end
-
     end
 
-   private
+    private
 
-   def stuff_to_do_before_validation(user)
+    def trim_fields(post)
+      post.title.try(:’strip!’)
+      post.body.try(:’strip!’)
+    end
 
-     …
+    def create_audit_record(post)
+      text = “Post #{post.title} #{post.new_record? ? ‘created’ : ‘updated’}.”
+      AuditRecord.create(text: text)
+    end
 
-   end 
-
- 
-
-  def stuff_to_do_before_save(user)
-
-    …
-
-   end
-
- 
-
-  def stuff_to_do_after_save(user)
-
+    def notify_subscribers(post)
+      notification = Notification.new(text: “Post #{post.title} updated.”)
+      post.subscribers.each do |subscriber|
+        notification.send(subscriber)
+      end
+    end
   end
-
 end
+```
 
- 
+Call them service objects, POROs or whatever, the point is everything is explicitly spelled out in ordinary Ruby. By extracting the logic involved in saving a post, we’ve made it easier to reason about. A side-effect is that our model is now focused on hydrating and persisting instances to the database, resulting in cleaner model code::
 
-Call them service objects, POROs or whatever, the point is everything is explicitely spelled out in ordinary Ruby. Your model code is cleaner, and everything is easier to debug.
+```
+class Post < ActiveRecord::Base
+  belongs_to :user
+  has_may :subscribers
+  has_many :tags, through: :posts_tags
+
+  validates :title, presence: true
+  validates :body, presence: true
+end
+```
+
+To utilize your new class, simply replace `post.save` with `SavePost.call(post)`. It may seem taboo to stray from _The Rails Way_ but trust me, your future self will be grateful.
+
+
