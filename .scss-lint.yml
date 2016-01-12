@@ -1,0 +1,3 @@
+linters:
+  SelectorFormat:
+    convention: ^(?:(js)-)?([^[A-B]-]*)(?:-{1,2})?([^[A-B]-]*)$
