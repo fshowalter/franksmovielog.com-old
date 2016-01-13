@@ -14,6 +14,6 @@ gem 'haml'
 gem 'sass'
 
 
-gem 'scss_lint'
+gem 'scss_lint', require: false
 gem 'haml-lint'
 gem 'csscss'

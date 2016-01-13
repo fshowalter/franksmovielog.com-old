@@ -8,21 +8,16 @@
     %meta{ name: 'description', content: 'Writer of many things' }
     = stylesheet_link_tag 'app', relative: false
   %body
-    %header.site-header
-      .vertical
-        .avatar-wrap
-          = image_tag('frank.jpg', class: 'avatar');
-        %ul.social-media-list
-          %li
-            %a{ href: 'https://twitter.com/FrankShowalter' }
-              %span.icon.icon--twitter
-                = inline_svg('icon_twitter.svg')
-          %li
-            %a{ href: 'https://github.com/fshowalter' }
-              %span.icon.icon--github
-                = inline_svg('icon_github.svg')
-        %h1 Frank Showalter
-        %p.site_header-slug Writer of many things.
+    %header.fs_mast
+      .fs_mast-avatar
+        = image_tag('frank.jpg', class: 'fs_mast-avatar_image');
+      .fs_mast-social
+        %a.fs_mast-social_link{ href: 'https://twitter.com/FrankShowalter' }
+          = inline_svg('icon_twitter.svg')
+        %a.fs_mast-social_link{ href: 'https://github.com/fshowalter' }
+          = inline_svg('icon_github.svg')
+      %h1.fs_mast-header Frank Showalter
+      %p.fs_mast-slug Writer of many things.
 
 
     .page-content

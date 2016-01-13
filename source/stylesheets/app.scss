@@ -1,14 +1,26 @@
 @charset "utf-8";
 
+// typography
+$typeography-display-1: 30px;
+$typeography-headline: 18px;
+$typeography-title: 24px;
+$typeography-subheading: 16px;
+
+$color-primary: #7f3663;
+$color-divider: rgba(0, 0, 0, .12);
+$color-secondary-text: rgba(0, 0, 0, .54);
+$color-white: #fff;
+
 $dot-background-color: #fff;
 $dot-border-color: #e7eef2;
+
 
 $border-color: #e8e8e8;
 
 $icon-fill: #7f3663;
 
-$secondary-text-size: 18px;
-$secondary-text-color: rgba(0, 0, 0, 0.54);
+
+
 
 // Our variables
 $sans-font-family: 'futura-pt', Helvetica, Arial, sans-serif;
@@ -23,8 +35,8 @@ $background-color: #fdfdfd;
 $brand-color:      #2a7ae2;
 
 $grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
+// $grey-color-light: lighten($grey-color, 40%);
+// $grey-color-dark:  darken($grey-color, 25%);
 
 $on-palm:          600px;
 $on-laptop:        800px;
@@ -155,11 +167,6 @@ a {
 
 
 
-.contact-list,
-.social-media-list {
-    list-style: none;
-    margin-left: 0;
-}
 
 
 
@@ -213,8 +220,7 @@ html {
   width: 1px;
   margin-left: -1px;
   content: '';
-  background-color: #ccd1d9;
-  background-color: $grey-color-light;
+  background-color: $border-color;
 
 }
 
@@ -294,101 +300,4 @@ a:hover{
   text-decoration: none;
 }
 
-.avatar-wrap {
-  display: inline-block;
-  width: 120px;
-  height: 120px;
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  border-radius: 100%;
-  overflow: hidden;
-  border: 3px solid #fff;
-  z-index: 500;
-  background-color: #fff;
-  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.3);
-  -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.3);
-  box-shadow: 0 1px 1px rgba(0,0,0,0.3);
-}
-
-.avatar {
-  border-radius: 50%;
-  width: 120px;
-  margin-bottom: 20px;
-}
-
-.social-media-list {
-  display: flex;
-  justify-content: center;
-  padding: 0 0 8px 0;
-  margin: 0;
-}
-
-.social-media-list li {
-  margin: 0 .5rem;
-}
-
-
-
-h1 {
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 0;
-}
-
-.site-header {
-  border-bottom: 1px solid $border-color;
-  display: table;
-  height: 60%;
-  max-height: 500px;
-  min-height: 300px;
-  position: relative;
-  text-align: center;
-  width: 100%;
-
-  &::after {
-    background: $dot-background-color;
-    border: $dot-border-color 1px solid;
-    border-radius: 100%;
-    bottom: -5px;
-    box-shadow: $dot-background-color 0 0 0 5px;
-    content: '';
-    display: block;
-    height: 7px;
-    left: 50%;
-    margin-left: -5px;
-    position: absolute;
-    width: 7px;
-  }
-}
-
-.site_header-slug {
-  color: $secondary-text-color;
-  font-size: $secondary-text-size;
-}
-
-.vertical {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.icon {
-  display: inline-block;
-  height: 30px;
-  width: 30px;
-
-  svg {
-    display: inline-block;
-    height: 25px;
-    vertical-align: middle;
-    width: 24px;
-  }
-
-  path {
-    transition: fill ease .3s;
-  }
-
-  &:hover path {
-    fill: $icon-fill;
-  }
-}
-
+@import 'mast';

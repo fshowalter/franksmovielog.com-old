@@ -1,0 +1,73 @@
+$mast-avatar-box-shadow: rgba(0, 0, 0, .3);
+
+.fs_mast {
+  align-items: center;
+  border-bottom: 1px solid $color-divider;
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  justify-content: center;
+  max-height: 500px;
+  min-height: 300px;
+  position: relative;
+  width: 100%;
+
+  &::after {
+    background: $color-white;
+    border: $color-divider 1px solid;
+    border-radius: 100%;
+    bottom: -5px;
+    box-shadow: $color-white 0 0 0 5px;
+    content: '';
+    display: block;
+    height: 7px;
+    left: 50%;
+    margin-left: -5px;
+    position: absolute;
+    width: 7px;
+  }
+}
+
+.fs_mast-avatar {
+  border: 3px solid $color-white;
+  border-radius: 100%;
+  box-shadow: 0 1px 1px $mast-avatar-box-shadow;
+  display: inline-block;
+  height: 120px;
+  overflow: hidden;
+  width: 120px;
+  z-index: 500;
+}
+
+.fs_mast-avatar_image {
+  border-radius: 50%;
+  margin-bottom: 20px;
+  width: 120px;
+}
+
+.fs_mast-social {
+  margin: 12px 0 0;
+}
+
+.fs_mast-social_link {
+  margin: 0 .5rem;
+
+  path {
+    transition: fill ease .3s;
+  }
+
+  &:hover path {
+    fill: $color-primary;
+  }
+}
+
+.fs_mast-header {
+  font-size: $typeography-display-1;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.fs_mast-slug {
+  color: $color-secondary-text;
+  font-size: $typeography-headline;
+}
