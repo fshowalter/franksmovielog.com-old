@@ -1,10 +1,8 @@
-
-%main
-  %ul#list.timeline
-    - posts.each do |post|
-      %li.event{ 'data-date': post.date.iso8601 }
-        %h3.events-heading
-          %a{ href: post.link }
-            = post.title
-          %p.event-slug
-            #{post.date.strftime("%B #{post.date.day.ordinalize}")}<span class="js-hide"> #{post.date.year}</span> on #{post.location}
+%ul#list.fs_timeline
+  - posts.each do |post|
+    %li.fs_timeline-event{ 'data-date': post.date.iso8601 }
+      %h3.fs_timeline-event_heading
+        %a.fs_timeline-event_link{ href: post.link }
+          = post.title
+      %p.fs_timeline-event_slug
+        #{post.date.strftime("%B #{post.date.day.ordinalize}")}<span class="js-hide"> #{post.date.year}</span> on #{post.location}

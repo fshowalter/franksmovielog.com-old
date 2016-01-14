@@ -67,7 +67,7 @@
 
     function buildTimelineEntryList(items) {
       var list = document.createElement('ul');
-      list.className = 'events';
+      list.className = 'fs_timeline-events';
 
       items.forEach(function appendItem(item) {
         list.appendChild(item);
@@ -80,8 +80,8 @@
       var listItem = document.createElement('li');
       var span = document.createElement('span');
 
-      listItem.className = 'timeline-time';
-      span.className = 'time';
+      listItem.className = 'fs_timeline-group';
+      span.className = 'fs_timeline-subheader';
       span.appendChild(document.createTextNode(key));
       listItem.appendChild(span);
 

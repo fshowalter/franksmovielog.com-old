@@ -6,11 +6,11 @@
     %meta{ 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' }
     %title Frank Showalter
     %meta{ name: 'description', content: 'Writer of many things' }
-    = stylesheet_link_tag 'app', relative: false
+    = inline_stylesheet('app')
   %body
     %header.fs_mast
       .fs_mast-avatar
-        = image_tag('frank.jpg', class: 'fs_mast-avatar_image');
+        = image_tag('frank.jpg', class: 'fs_mast-avatar_image', srcset: 'frank2x.jpg 2x, frank3x.jpg 3x');
       .fs_mast-social
         %a.fs_mast-social_link{ href: 'https://twitter.com/FrankShowalter' }
           = inline_svg('icon_twitter.svg')
@@ -20,11 +20,10 @@
       %p.fs_mast-slug Writer of many things.
 
 
-    .page-content
-      .wrapper
-        = yield
+    %main
+      = yield
 
-    = javascript_include_tag('app')
+    = inline_javascript('app')
     %script
       :plain
         (function(d) {var config={kitId:'auj6pwo',scriptTimeout: 3000, active: window.set_rhythm },

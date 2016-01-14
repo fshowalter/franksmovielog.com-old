@@ -1,0 +1,107 @@
+$timeline-color-node-border: #f5f7fa;
+
+.fs_timeline {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 20px 0;
+  position: relative;
+
+  &::before {
+    background-color: $color-divider;
+    bottom: 0;
+    content: '';
+    left: 30px;
+    margin-left: -1px;
+    position: absolute;
+    top: 0;
+    width: 1px;
+    z-index: 100;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    width: 80%;
+  }
+}
+
+.fs_timeline-group {
+  list-style-type: none;
+  margin-top: 39px;
+  padding-left: 40px;
+  position: relative;
+}
+
+.fs_timeline-group::before {
+  background-color: $color-primary;
+  border: 4px solid $timeline-color-node-border;
+  border-radius: 0;
+  content: '';
+  height: 22px;
+  left: 30px;
+  margin-left: -11px;
+  position: absolute;
+  top: 6px;
+  width: 22px;
+  z-index: 200;
+}
+
+.fs_timeline-subheader {
+  color: $color-primary;
+  display: inline-block;
+  font-size: $typeography-subheading;
+  line-height: 1;
+  padding: 10px 20px;
+}
+
+.fs_timeline-events {
+  margin: 0;
+  padding: 10px;
+}
+
+.fs_timeline-event {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+}
+
+.fs_timeline-event_heading {
+  margin: 0;
+  line-height: 1.1;
+  padding-bottom: 4px;
+}
+
+.fs_timeline-event_link {
+  background-position: 0 24px;
+  color: $color-text;
+  font-size: $typeography-title;
+  font-weight: 300;
+  margin: 0;
+  transition: background-position ease 1s;
+  text-decoration: none;
+
+  &:hover {
+    background-image: linear-gradient(to bottom, $color-background 50%, $color-primary);
+    background-position: 0 23px;
+    background-repeat: repeat-x;
+    background-size: 2px 2px;
+    color: $color-primary;
+  }
+
+  @media(min-width: $breakpoint-tablet) {
+    font-size: $typeography-title + 2;
+    background-position: 0 26px;
+
+    &:hover {
+      background-position: 0 25px;
+    }
+  }
+}
+
+.fs_timeline-event_slug {
+  color: $color-secondary-text;
+  font-size: $typeography-caption;
+  margin: 0 0 15px;
+
+  @media(min-width: $breakpoint-tablet) {
+    font-size: $typeography-caption + 1;
+  }
+}

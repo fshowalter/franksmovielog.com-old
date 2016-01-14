@@ -1,39 +1,5 @@
 require "active_support/core_ext/integer/inflections"
 
-###
-# Compass
-###
-
-# Change Compass configuration
-# compass_config do |config|
-#   config.output_style = :compact
-# end
-
-###
-# Page options, layouts, aliases and proxies
-###
-
-# Per-page layout changes:
-#
-# With no layout
-# page "/path/to/file.html", :layout => false
-#
-# With alternative layout
-# page "/path/to/file.html", :layout => :otherlayout
-#
-# A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
-
-# Proxy pages (https://middlemanapp.com/advanced/dynamic_pages/)
-# proxy "/this-page-has-no-template.html", "/template-file.html", :locals => {
-#  :which_fake_page => "Rendering a fake page with a local variable" }
-
-###
-# Helpers
-###
-
 helpers do
   def posts
     @posts ||= Dir["#{File.expand_path('../posts/', __FILE__)}/*.md"].each_with_object([]) do |file, posts|
@@ -64,27 +30,30 @@ helpers do
     svg['class'] = options[:class] if options[:class].present?
     doc.to_html
   end
+
+  def inline_stylesheet(name)
+    content_tag :style do
+      sprockets[ "#{name}.css" ].to_s
+    end
+  end
+
+  def inline_javascript(name)
+    content_tag :script do
+      sprockets[ "#{name}.js" ].to_s
+    end
+  end
 end
 
 # Automatic image dimensions on image_tag helper
-# activate :automatic_image_sizes
+activate :automatic_image_sizes
 
 # Reload the browser automatically whenever files change
 configure :development do
   activate :livereload
 end
 
-# Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
-
 set :css_dir, 'stylesheets'
-
 set :js_dir, 'javascripts'
-
 set :images_dir, 'images'
 
 activate :deploy do |deploy|
@@ -92,20 +61,18 @@ activate :deploy do |deploy|
   deploy.build_before = true
 end
 
+activate :autoprefixer do |config|
+  config.inline = true
+  config.browsers = ['last 2 versions', 'Firefox ESR']
+end
+
 # Build-specific configuration
 configure :build do
-  # For example, change the Compass output style for deployment
-  # activate :minify_css
+  activate :minify_css, inline: true
 
-  # Minify Javascript on build
-  # activate :minify_javascript
+  activate :minify_javascript, inline: true
 
-  # Enable cache buster
-  # activate :asset_hash
+  activate :minify_html, remove_input_attributes: false, remove_http_protocol: false
 
-  # Use relative URLs
-  # activate :relative_assets
-
-  # Or use a different image path
-  # set :http_prefix, "/Content/images/"
+  activate :gzip
 end
