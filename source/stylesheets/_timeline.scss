@@ -2,7 +2,7 @@ $timeline-color-node-border: #f5f7fa;
 
 .fs_timeline {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 700px;
   padding: 20px 0;
   position: relative;
 
@@ -19,30 +19,63 @@ $timeline-color-node-border: #f5f7fa;
   }
 
   @media (min-width: $breakpoint-tablet) {
-    width: 80%;
+    &::before {
+      left: 50%;
+      margin-left: -2px;
+    }
   }
 }
 
-.fs_timeline-group {
+.fs_timeline-group,
+.fs_timeline-group--even {
   list-style-type: none;
   margin-top: 39px;
   padding-left: 40px;
   position: relative;
+
+  &::before {
+    background-color: $color-primary;
+    border: 4px solid $timeline-color-node-border;
+    border-radius: 0;
+    content: '';
+    height: 22px;
+    left: 30px;
+    margin-left: -11px;
+    position: absolute;
+    top: 6px;
+    width: 22px;
+    z-index: 200;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    max-width: 350px;
+    padding-left: 0;
+    padding-right: 20px;
+    right: 0;
+    text-align: right;
+
+    &::before {
+      left: auto;
+      right: -9px;
+    }
+  }
 }
 
-.fs_timeline-group::before {
-  background-color: $color-primary;
-  border: 4px solid $timeline-color-node-border;
-  border-radius: 0;
-  content: '';
-  height: 22px;
-  left: 30px;
-  margin-left: -11px;
-  position: absolute;
-  top: 6px;
-  width: 22px;
-  z-index: 200;
+
+.fs_timeline-group--even {
+  @media (min-width: $breakpoint-tablet) {
+    left: 50%;
+    padding-left: 20px;
+    padding-right: 0;
+    text-align: left;
+
+    &::before {
+      left: -2px;
+      right: auto;
+    }
+  }
 }
+
 
 .fs_timeline-subheader {
   color: $color-primary;
@@ -50,22 +83,34 @@ $timeline-color-node-border: #f5f7fa;
   font-size: $typeography-subheading;
   line-height: 1;
   padding: 10px 20px;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: 10px 0;
+  }
 }
 
 .fs_timeline-events {
   margin: 0;
   padding: 10px;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: 10px 0;
+  }
 }
 
 .fs_timeline-event {
   list-style-type: none;
   margin: 0;
   padding: 10px;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: 10px 0;
+  }
 }
 
 .fs_timeline-event_heading {
-  margin: 0;
   line-height: 1.1;
+  margin: 0;
   padding-bottom: 4px;
 }
 
@@ -75,8 +120,8 @@ $timeline-color-node-border: #f5f7fa;
   font-size: $typeography-title;
   font-weight: 300;
   margin: 0;
-  transition: background-position ease 1s;
   text-decoration: none;
+  transition: background-position ease 1s;
 
   &:hover {
     background-image: linear-gradient(to bottom, $color-background 50%, $color-primary);
@@ -85,23 +130,10 @@ $timeline-color-node-border: #f5f7fa;
     background-size: 2px 2px;
     color: $color-primary;
   }
-
-  @media(min-width: $breakpoint-tablet) {
-    font-size: $typeography-title + 2;
-    background-position: 0 26px;
-
-    &:hover {
-      background-position: 0 25px;
-    }
-  }
 }
 
 .fs_timeline-event_slug {
   color: $color-secondary-text;
   font-size: $typeography-caption;
   margin: 0 0 15px;
-
-  @media(min-width: $breakpoint-tablet) {
-    font-size: $typeography-caption + 1;
-  }
 }

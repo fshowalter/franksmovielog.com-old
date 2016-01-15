@@ -27,16 +27,16 @@ body {
   text-size-adjust: 100%;
 }
 
-html {
-  box-sizing: border-box;
-  height: 100%;
-  max-height: 100%;
-}
-
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  max-height: 100%;
 }
 
 .wf-active .js-hide {

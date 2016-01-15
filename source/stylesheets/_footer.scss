@@ -1,9 +1,11 @@
+$color-footer-background: #f7fafb;
+$color-footer-border: #ebf2f6;
+
 .fs_footer {
-  position: relative;
+  background: $color-footer-background;
+  border-top: $color-divider 1px solid;
   padding: 4rem 0;
-  border-top: #EBF2F6 1px solid;
-  color: #BBC7CC;
-  background: #F7FAFB;
+  position: relative;
 
   a {
     color: $color-primary;
@@ -11,15 +13,14 @@
 }
 
 .fs_footer_content {
-  font-size: $typeography-caption;
   color: $color-secondary-text;
-  padding: 0 30px;
+  font-size: $typeography-caption;
   line-height: 1.45;
-  max-width: 600px;
   margin: 0 auto;
+  max-width: 600px;
+  padding: 0 30px;
 
   @media (min-width: $breakpoint-tablet) {
     width: 80%;
-    font-size: $typeography-caption + 1;
   }
 }

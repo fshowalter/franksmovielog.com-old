@@ -92,9 +92,17 @@
 
     function replaceListWithTimeline(list, timeline) {
       var newList = list.cloneNode(false);
+      var even = false;
+      var timelineNode;
 
       Object.keys(timeline).forEach(function buildTimelineNode(key) {
-        newList.appendChild(buildTimelineNodeForKey(key, timeline));
+        timelineNode = buildTimelineNodeForKey(key, timeline);
+        if (even) {
+          timelineNode.className = timelineNode.className + '--even';
+        }
+
+        newList.appendChild(timelineNode);
+        even = !even;
       });
 
 
