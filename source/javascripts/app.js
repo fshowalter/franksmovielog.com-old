@@ -1,7 +1,8 @@
 (
   function frankShowalter(document) {
     function timeAgo(isoTime) {
-      var time = +new Date(isoTime);
+      var date = new Date(isoTime);
+      var time = date.getTime();
 
       var timeFormats = [
           [60, 'seconds', 1], // 60
@@ -17,8 +18,6 @@
           [29030400, 'months', 2419200], // 60*60*24*7*4*12, 60*60*24*7*4
           [58060800, 'Last year', 'Next year'], // 60*60*24*7*4*12*2
           [2903040000, 'years', 29030400], // 60*60*24*7*4*12*100, 60*60*24*7*4*12
-          [5806080000, 'Last century', 'Next century'], // 60*60*24*7*4*12*100*2
-          [58060800000, 'centuries', 2903040000], // 60*60*24*7*4*12*100*20, 60*60*24*7*4*12*100
       ];
 
       var index = 0;
@@ -26,9 +25,22 @@
 
       var seconds = (+new Date() - time) / 1000;
       var token = 'ago';
+      var currentDate = new Date();
+      var monthDiff;
 
       if (seconds === 0) {
         return 'Just now';
+      }
+
+      if (seconds > 2419200 && seconds < 58060800) {
+        monthDiff = currentDate.getMonth() - date.getMonth() +
+          (currentDate.getYear() - date.getYear()) * 12;
+
+        if (monthDiff === 1) {
+          return 'Last month';
+        }
+
+        return monthDiff + ' months ago';
       }
 
       while (format) {
