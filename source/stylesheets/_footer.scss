@@ -10,6 +10,21 @@ $color-footer-border: #ebf2f6;
   a {
     color: $color-primary;
   }
+
+  &::before {
+    background: $color-background;
+    border: $color-divider 1px solid;
+    border-radius: 100%;
+    content: '';
+    display: block;
+    height: 7px;
+    left: 50%;
+    margin-left: -5px;
+    position: absolute;
+    top: -4px;
+    width: 7px;
+    z-index: 500;
+  }
 }
 
 .fs_footer_content {

@@ -74,6 +74,15 @@ $timeline-color-node-border: #f5f7fa;
       right: auto;
     }
   }
+
+  .fs_timeline-event {
+    @media (min-width: $breakpoint-tablet) {
+      &::after {
+        left: -20px;
+        right: auto;
+      }
+    }
+  }
 }
 
 
@@ -82,7 +91,7 @@ $timeline-color-node-border: #f5f7fa;
   display: inline-block;
   font-size: $typeography-subheading;
   line-height: 1;
-  padding: 10px 20px;
+  padding: 10px;
 
   @media (min-width: $breakpoint-tablet) {
     padding: 10px 0;
@@ -101,10 +110,31 @@ $timeline-color-node-border: #f5f7fa;
 .fs_timeline-event {
   list-style-type: none;
   margin: 0;
-  padding: 10px;
+  padding: 10px 0;
+  position: relative;
+
+  &::after {
+    background: $color-background;
+    border: $color-divider 1px solid;
+    border-radius: 100%;
+    content: '';
+    display: block;
+    height: 7px;
+    left: -19px;
+    margin-left: -5px;
+    position: absolute;
+    top: 21px;
+    width: 7px;
+    z-index: 500;
+  }
 
   @media (min-width: $breakpoint-tablet) {
     padding: 10px 0;
+
+    &::after {
+      left: auto;
+      right: -22px;
+    }
   }
 }
 
