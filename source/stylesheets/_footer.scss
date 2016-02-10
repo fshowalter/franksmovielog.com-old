@@ -7,10 +7,6 @@ $color-footer-border: #ebf2f6;
   padding: 4rem 0;
   position: relative;
 
-  a {
-    color: $color-primary;
-  }
-
   &::before {
     background: $color-background;
     border: $color-divider 1px solid;
