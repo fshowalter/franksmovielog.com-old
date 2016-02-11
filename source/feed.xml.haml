@@ -1,0 +1,24 @@
+---
+layout: false
+---
+!!! XML
+%feed{ xmlns: 'http://www.w3.org/2005/Atom' }
+  %title= 'Frank Showalter'
+  %link{ href: 'https://www.frankshowalter.com/feed.xml', rel: 'self' }/
+  %link{ href: 'https://www.frankshowalter.com/' }/
+  %icon= 'http://www.frankshowalter.com/favicon.ico'
+  %logo= 'http://www.frankshowalter.com/images/frank.jpg'
+  %updated= Time.now.xmlschema
+  %id= 'https://www.frankshowalter.com/'
+  %author
+    %name Frank Showalter
+
+  - posts.each_with_index do |post, index|
+    - break if index > 9
+    %entry
+      %title= post.title
+      %link{ href: post.link }
+      %id= post.date.iso8601
+      %updated= post.date.xmlschema
+      %content{ type: 'html' }
+        = CGI.escapeHTML("I published <a href=\"#{post.link}\">#{post.title}</a> on #{post.location}.")

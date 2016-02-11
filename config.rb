@@ -56,6 +56,8 @@ set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
 
+page 'feed.xml', mime_type: 'text/xml'
+
 activate :deploy do |deploy|
   deploy.method = :git
   deploy.build_before = true
