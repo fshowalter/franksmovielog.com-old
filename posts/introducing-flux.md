@@ -1,6 +1,7 @@
 ---
 title: "Introducing Flux"
 date: 2015-12-20T01:32:00Z
+kind: article
 link: http://blogs.sequoiainc.com/introducing-flux/
 location: Sequoia Blogs
 ---

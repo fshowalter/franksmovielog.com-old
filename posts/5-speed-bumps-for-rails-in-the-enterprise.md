@@ -1,6 +1,7 @@
 ---
 title: "5 Speed Bumps for Rails in the Enterprise"
 date: 2015-12-16T01:37:02Z
+kind: article
 link: http://blogs.sequoiainc.com/5-speed-bumps-for-rails-in-the-enterprise/
 location: Sequoia Blogs
 ---

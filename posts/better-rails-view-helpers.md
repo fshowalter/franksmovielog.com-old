@@ -1,6 +1,7 @@
 ---
 title: "Better Rails View Helpers"
 date: 2015-12-18T02:11:00Z
+kind: article
 link: http://blogs.sequoiainc.com/better-rails-view-helpers/
 location: Sequoia Blogs
 ---

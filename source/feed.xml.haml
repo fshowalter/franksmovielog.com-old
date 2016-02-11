@@ -21,4 +21,4 @@ layout: false
       %id= post.date.iso8601
       %updated= post.date.xmlschema
       %content{ type: 'html' }
-        = CGI.escapeHTML("I published <a href=\"#{post.link}\">#{post.title}</a> on #{post.location}.")
+        = CGI.escapeHTML("I #{kind_to_verb(post.kind)} <a href=\"#{post.link}\">#{post.title}</a> on #{post.location}.")

@@ -1,6 +1,7 @@
 ---
 title: "Better Rails Callbacks"
 date: 2015-12-31T01:07:02Z
+kind: article
 link: http://blogs.sequoiainc.com/better-rails-callbacks/
 location: Sequoia Blogs
 ---

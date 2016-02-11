@@ -23,6 +23,15 @@ helpers do
      URI.escape(slugged.downcase, /[^\w+-]/i)
    end
 
+   def kind_to_verb(kind)
+    kind_to_verb_map = {
+      'article' => 'published',
+      'review' => 'reviewed'
+    }
+
+    kind_to_verb_map[kind] || 'published'
+   end
+
    def inline_svg(filename, options = {})
     file = sprockets.find_asset(filename).to_s.force_encoding('UTF-8')
     doc = Nokogiri::HTML::DocumentFragment.parse file

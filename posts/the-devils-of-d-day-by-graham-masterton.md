@@ -1,5 +1,6 @@
 ---
 date: 2016-02-10T11:31:00Z
+kind: review
 title: The Devils of D-Day by Graham Masterton
 slug: the-devils-of-d-day-by-graham-masterton
 authors:

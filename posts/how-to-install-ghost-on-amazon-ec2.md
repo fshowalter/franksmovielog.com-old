@@ -1,6 +1,7 @@
 ---
 title: "How to Install Ghost on Amazon EC2"
 date: 2015-11-29T18:46:02Z
+kind: article
 link: http://blogs.sequoiainc.com/installing-ghost-on-amazon-ec2/
 location: Sequoia Blogs
 ---

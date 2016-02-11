@@ -1,6 +1,7 @@
 ---
 title: "Down the Responsive Image Rabbit Hole"
 date: 2015-12-17T02:22:02Z
+kind: article
 link: http://blogs.sequoiainc.com/down-the-responsive-image-rabbit-hole/
 location: Sequoia Blogs
 ---

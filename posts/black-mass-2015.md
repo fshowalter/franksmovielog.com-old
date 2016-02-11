@@ -1,6 +1,7 @@
 ---
 title: "Black Mass (2015)"
 date: 2016-02-06T19:31:02Z
+kind: review
 link: https://www.franksmovielog.com/reviews/black-mass-2015/
 location: Frank's Movie Log
 ---
