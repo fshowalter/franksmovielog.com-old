@@ -31,7 +31,7 @@ Fast forward three years.
 
 If I’d read its back cover blurb, Masterton’s book might still be gathering dust on that shelf. The plot synopsis suggests a haunted tank story and I’d just finished Stephen King’s Christine, a disappointing novel about a haunted car. The last thing I wanted was another haunted vehicle story. Fortunately, the blurb is misleading.
 
-The story opens with our narrator, an American cartographer, discovering a mysterious tank in a remote French village. Abandoned by the Allies during World War II, it’s now overgrown with vines, but radiates an ominous aura. Closer inspection reveals the Allies sealed every possible opening, including a welding a giant cross over the turret hatch.
+The story opens with our narrator, an American cartographer, discovering a mysterious tank in a remote French village. Abandoned by the Allies during World War II, it’s now overgrown with vines, but radiates an ominous aura. Closer inspection reveals the Allies sealed every possible opening, including welding a giant cross over the turret hatch.
 
 Masterton doesn’t dawdle. Forty pages in, our narrator approaches the tank in the dead of night and discovers something trapped inside. Something persuasive. Masterton strikes a perfect balance of menace and otherworldliness.
 
