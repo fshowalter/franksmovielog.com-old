@@ -4,8 +4,8 @@ layout: false
 !!! XML
 %feed{ xmlns: 'http://www.w3.org/2005/Atom' }
   %title= 'Frank Showalter'
-  %link{ href: 'https://www.frankshowalter.com/feed.xml', rel: 'self' }/
-  %link{ href: 'https://www.frankshowalter.com/' }/
+  %link{ href: 'http://www.frankshowalter.com/feed.xml', rel: 'self' }/
+  %link{ href: 'http://www.frankshowalter.com/' }/
   %icon= 'http://www.frankshowalter.com/favicon.ico'
   %logo= 'http://www.frankshowalter.com/images/frank.jpg'
   %updated= Time.now.xmlschema
@@ -18,7 +18,7 @@ layout: false
     %entry
       %title= post.title
       %link{ href: post.link }
-      %id= post.date.iso8601
+      %id= post.link
       %updated= post.date.xmlschema
       %content{ type: 'html' }
         = CGI.escapeHTML("I #{kind_to_verb(post.kind)} <a href=\"#{post.link}\">#{post.title}</a> on #{post.location}.")
