@@ -2,7 +2,7 @@
 title: "Introducing React"
 date: 2015-09-17T01:16:02Z
 kind: article
-link: http://blogs.sequoiainc.com/installing-ghost-on-amazon-ec2/
+link: http://blogs.sequoiainc.com/introducing-react/
 location: Sequoia Blogs
 ---
 
