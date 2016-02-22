@@ -1,13 +1,9 @@
 ---
-:sequence: 55
-:title: Chain Lightning (1950)
-:slug: chain-lightning-1950
-:display_title: Chain Lightning (1950)
-:date: 2016-02-17
-:imdb_id: tt0042324
-:grade: D+
-:backdrop: "https://lh3.googleusercontent.com/fXE6R_a57mB0-5L6fujb4hR1tEKUQ9FdNVRfjfmNjtwHrQHXAm5QJ8MOKSyLkERibOmdMlUcLRcv=w1000-rj"
-:pull_quote: "For die-hard Bogart fans, _Chain Lightning_ is worth watching. Once."
+title: "Chain Lightning (1950)"
+date: 2016-02-17T11:58:00Z
+kind: review
+link: https://www.franksmovielog.com/reviews/chain-lightning-1950/
+location: Frank's Movie Log
 ---
 
 Humphrey Bogart has a line in _Chain Lightning_ that could serve as a review: “Hey, get me out of this Buck Rogers monkey suit, will ya?”
