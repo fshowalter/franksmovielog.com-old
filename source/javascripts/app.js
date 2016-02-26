@@ -59,20 +59,25 @@
       return time;
     }
 
+    function eachWithIndex(array, iterator) {
+      var index;
+
+      for (index = 0; index < array.length; index++) {
+        iterator(array[index], index);
+      }
+    }
+
     function cloneNodesIntoTimeline(nodes) {
       var byTimeAgo = {};
-      var nodesIndex;
       var clone;
       var timeAgoForNode;
 
-      for (nodesIndex = 0; nodesIndex < nodes.length; nodesIndex++) {
-        clone = nodes[nodesIndex].cloneNode(true);
-        timeAgoForNode = timeAgo(nodes[nodesIndex].getAttribute('data-date'));
-
+      eachWithIndex(nodes, function cloneNodeIntoTimeline(node) {
+        clone = node.cloneNode(true);
+        timeAgoForNode = timeAgo(node.getAttribute('data-date'));
         byTimeAgo[timeAgoForNode] = byTimeAgo[timeAgoForNode] || [];
-
         byTimeAgo[timeAgoForNode].push(clone);
-      }
+      });
 
       return byTimeAgo;
     }

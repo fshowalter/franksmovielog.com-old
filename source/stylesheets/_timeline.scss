@@ -145,13 +145,11 @@ $timeline-color-node-border: #f5f7fa;
 }
 
 .fs_timeline-event_link {
-  background-position: 0 24px;
   color: $color-text;
   font-size: $typeography-title;
   font-weight: 300;
   margin: 0;
   text-decoration: none;
-  transition: background-position ease 1s;
 
   &:hover {
     background-image: linear-gradient(to bottom, $color-background 50%, $color-primary);

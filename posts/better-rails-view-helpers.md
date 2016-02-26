@@ -21,7 +21,7 @@ No, you don’t.
 
 ### The Problem
 
-Your `UsersHelper` and `PostsHelper` objects aren’t classes at all. They’re modules. When Rails renders a template, it instantiates an anonymous class. It then includes all the modules in `app/views/helpers` into that anonymous class. The result is a grab-bag class that can lead to subtle bugs.
+Your `UsersHelper` and `PostsHelper` objects aren’t classes at all. They’re modules. When Rails renders a template, it instantiates an anonymous class. It then includes all the modules in `app/helpers` into that anonymous class. The result is a grab-bag class that can lead to subtle bugs.
 
 Consider this:
 

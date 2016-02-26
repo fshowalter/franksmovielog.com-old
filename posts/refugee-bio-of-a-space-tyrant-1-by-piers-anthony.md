@@ -15,7 +15,13 @@ link: https://www.goodreads.com/review/show/359293257
 location: Goodreads
 ---
 
-I abandoned _Refugee (Bio of a Space Tyrant #1)_, by Piers Anthony, after 53 pages. I couldn’t get past the writing.
+[My last read](https://www.goodreads.com/review/show/359175824) left me excited to discover what other surprises awaited me amongst my Dad’s books. 
+
+I should have tempered my expectations.
+
+I picked _Refugee (Bio of a Space Tyrant #1)_, by Piers Anthony because it was first on the bookshelf. 
+
+I abandoned it after 53 pages. I couldn’t get past the writing.
 
 It opens with an “editorial preface” presenting the series as the private papers of Hope Hubris, the Tyrant of Jupiter. Anthony sets lofty expectations for Hubris’s story.
 
