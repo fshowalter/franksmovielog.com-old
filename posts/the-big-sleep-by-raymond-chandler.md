@@ -43,13 +43,13 @@ But, reading the book again, I struggled with Marlowe’s overt homophobia. Cons
 
 > I still held his automatic more or less pointed at him, but he swung on me just the same. It caught me flush on the chin. I backstepped fast enough to keep from falling, but I took plenty of the punch. It was meant to be a hard one, but a pansy has no iron in his bones, whatever he looks like.
 
-Were it just the dialog, I’d dismiss it as Marlowe baiting the kid into taking a shot. But it extends to Marlowe’s inner monologue. That’s harder to stomach.
+Were it just the dialog, I’d dismiss it as Marlowe baiting the kid into taking a swing. But it extends to Marlowe’s inner monologue. That’s harder to stomach.
 
 I’d like to think Chandler added these bits to distance us from Marlowe. To give Marlowe some edge by incorporating some character flaws. To hint that, for all his nobility, Marlowe has a dark side.
 
 But I wouldn’t bet on it. More likely, Chandler added them as a cheap way to label some characters as deviants and paint Marlowe as a macho tough guy.
 
-Chandler knows better. Consider this exchange when a would-be tough guy calls on Marlowe with information to sell:
+Chandler knew better. Consider this exchange when a would-be tough guy calls on Marlowe with information to sell:
 
 > His eyes bulged and his lower lip almost fell in his lap. “Christ, how’d you know that?” he said.
 
