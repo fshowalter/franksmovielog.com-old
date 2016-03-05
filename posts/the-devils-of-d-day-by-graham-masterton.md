@@ -8,7 +8,7 @@ authors:
 page_count: 243
 year_published: 1978
 date_started: 2016-01-15
-date_finished: 2011-01-26
+date_finished: 2016-01-26
 grade: B
 isbn: 0523404492
 link: https://www.goodreads.com/review/show/359175824

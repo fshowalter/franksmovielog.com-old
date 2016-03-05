@@ -15,11 +15,11 @@ link: https://www.goodreads.com/review/show/359293257
 location: Goodreads
 ---
 
-[My last read](https://www.goodreads.com/review/show/359175824) left me excited to discover what other surprises awaited me amongst my Dad’s books. 
+[My last read](https://www.goodreads.com/review/show/359175824) left me excited to discover what other surprises awaited me amongst my Dad’s books.
 
 I should have tempered my expectations.
 
-I picked _Refugee (Bio of a Space Tyrant #1)_, by Piers Anthony because it was first on the bookshelf. 
+I picked _Refugee (Bio of a Space Tyrant #1)_, by Piers Anthony because it was first on the bookshelf.
 
 I abandoned it after 53 pages. I couldn’t get past the writing.
 
@@ -39,7 +39,7 @@ Which brings me back to the writing.
 
 Written in the first-person, it reads like the unedited, unrevised draft it purports to be. Consider lines like:
 
-> I sat up, my ear seeing red starts. For a moment I was disorganized, not doing more than hurting and watching.
+> I sat up, my ear seeing red stars. For a moment I was disorganized, not doing more than hurting and watching.
 
 And later, after detailing how the nations of Earth colonized the stars:
 
