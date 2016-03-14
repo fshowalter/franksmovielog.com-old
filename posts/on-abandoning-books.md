@@ -8,7 +8,9 @@ location: Medium
 
 I just abandoned my first book. Fifty-three pages into the three hundred and twenty page novel, I closed it and moved on.
 
-It wasn’t easy. I used to finish every book I started. Finishing brought a sense of accomplishment. A comfort that comes with completing a task, checking a box, achieving a goal. Letting go of that illusionary security is hard.
+It wasn’t easy.
+
+I used to finish every book I started. Finishing brought a sense of accomplishment. A comfort that comes with completing a task, checking a box, achieving a goal. Letting go of that illusionary security is hard.
 
 But I’m learning.
 

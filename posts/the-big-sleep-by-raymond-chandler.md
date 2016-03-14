@@ -25,7 +25,7 @@ Two years later, I went on a two-week trip to the United Kingdom.
 
 I spent much of that trip exploring bookstores. Hard-boiled detective fiction was everywhere. Endcaps, table displays, dedicated shelves. The kind of promotion paranormal romance enjoys today.
 
-Seeing Chandler’s work promoted in shop after shop convinced me. I bought a copy. I confess, the idea of reading classic crime fiction in a London pub felt cool.
+Seeing Chandler’s work promoted in shop after shop sold me. I confess, the idea of reading classic crime fiction in a London pub felt cool.
 
 The plot sees private investigator Philip Marlowe take an aging tycoon’s blackmail case that spirals into a labyrinthine series of murders.
 
@@ -59,4 +59,6 @@ Shake your business up and pour it. _That’s_ how you write a tough guy.
 
 So what to make of the book? I’d long considered it one of the best I’d ever read, but this latest read made me reconsider.
 
-It’s a good book, with moments of indisputable greatness, but ignoring the homophobia, or excusing it as a product of its time, would be disingenuous. Chandler could have done better.
+It’s a good book, with moments of indisputable greatness, but ignoring the homophobia, or excusing it as a product of its time, would be disingenuous.
+
+Chandler knew better.
