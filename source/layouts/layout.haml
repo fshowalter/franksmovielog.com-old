@@ -25,9 +25,4 @@
       %p.fs_footer_content Hi there. I'm Frank. I write stuff. This site aggregates and archives my work. I’m not a great writer. Maybe not even a good one. But with practice I can be better.
 
     = inline_javascript('app')
-    %script
-      :plain
-        (function(d) {var config={kitId:'auj6pwo',scriptTimeout: 3000, active: window.set_rhythm },
-          h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-        })(document);
 
