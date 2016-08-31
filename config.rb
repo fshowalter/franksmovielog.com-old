@@ -1,10 +1,11 @@
-require "active_support/core_ext/integer/inflections"
+# frozen_string_literal: true
+require 'active_support/core_ext/integer/inflections'
 
 helpers do
   def posts
     @posts ||= Dir["#{File.expand_path('../posts/', __FILE__)}/*.md"].each_with_object([]) do |file, posts|
       content = IO.read(file)
-      return unless content =~ /\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)/m
+      next unless content =~ /\A(---\s*\n.*?\n?)^((---|\.\.\.)\s*$\n?)/m
 
       data = YAML.load(Regexp.last_match[1])
       data[:content] = $POSTMATCH
@@ -13,26 +14,26 @@ helpers do
     end.sort_by(&:date).reverse
   end
 
-   def slugize(text, replacement: '-')
-     slugged = text.encode('UTF-8', invalid: :replace, undef: :replace, replace: '?')
-     slugged.gsub!('&', 'and')
-     slugged.gsub!(':', '')
-     slugged.gsub!(/[^\w_\-#{Regexp.escape(replacement)}]+/i, replacement)
-     slugged.gsub!(/#{replacement}{2,}/i, replacement)
-     slugged.gsub!(/^#{replacement}|#{replacement}$/i, '')
-     URI.escape(slugged.downcase, /[^\w+-]/i)
-   end
+  def slugize(text, replacement: '-')
+    slugged = text.encode('UTF-8', invalid: :replace, undef: :replace, replace: '?')
+    slugged.gsub!('&', 'and')
+    slugged.delete!(':')
+    slugged.gsub!(/[^\w_\-#{Regexp.escape(replacement)}]+/i, replacement)
+    slugged.gsub!(/#{replacement}{2,}/i, replacement)
+    slugged.gsub!(/^#{replacement}|#{replacement}$/i, '')
+    URI.escape(slugged.downcase, /[^\w+-]/i)
+  end
 
-   def kind_to_verb(kind)
+  def kind_to_verb(kind)
     kind_to_verb_map = {
       'article' => 'published',
       'review' => 'reviewed'
     }
 
     kind_to_verb_map[kind] || 'published'
-   end
+  end
 
-   def inline_svg(filename, options = {})
+  def inline_svg(filename, options = {})
     file = sprockets.find_asset(filename).to_s.force_encoding('UTF-8')
     doc = Nokogiri::HTML::DocumentFragment.parse file
     svg = doc.at_css 'svg'
@@ -42,13 +43,13 @@ helpers do
 
   def inline_stylesheet(name)
     content_tag :style do
-      sprockets[ "#{name}.css" ].to_s
+      sprockets["#{name}.css"].to_s
     end
   end
 
   def inline_javascript(name)
     content_tag :script do
-      sprockets[ "#{name}.js" ].to_s
+      sprockets["#{name}.js"].to_s
     end
   end
 end

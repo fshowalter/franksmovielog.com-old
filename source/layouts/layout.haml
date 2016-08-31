@@ -11,18 +11,16 @@
   %body
     %header.fs_mast
       .fs_mast-avatar
-        = image_tag('frank.jpg', class: 'fs_mast-avatar_image', srcset: 'frank2x.jpg 2x, frank3x.jpg 3x');
+        = image_tag('frank.jpg', class: 'fs_mast-avatar_image', srcset: 'frank2x.jpg 2x, frank3x.jpg 3x')
       .fs_mast-social
         %a.fs_mast-social_link{ href: 'https://twitter.com/FrankShowalter' }
           = inline_svg('icon_twitter.svg')
         %a.fs_mast-social_link{ href: 'https://github.com/fshowalter' }
           = inline_svg('icon_github.svg')
       %h1.fs_mast-header Frank Showalter
-      %p.fs_mast-slug Writer of many things.
+      %p.fs_mast-slug
+        I’m not a great writer. Maybe not even a good one. <span class="nowrap">But with practice I can be better.</span>
     %main
       = yield
-    %footer.fs_footer
-      %p.fs_footer_content Hi there. I'm Frank. I write stuff. This site aggregates and archives my work. I’m not a great writer. Maybe not even a good one. But with practice I can be better.
-
     = inline_javascript('app')
 
