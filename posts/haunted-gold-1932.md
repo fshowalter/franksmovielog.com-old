@@ -1,6 +1,6 @@
 ---
 title: "Haunted Gold (1932)"
-date: 2016-09-05
+date: 2016-09-05T18:58:00Z
 kind: review
 link: https://www.franksmovielog.com/reviews/haunted-gold-1932/
 location: Frank's Movie Log
