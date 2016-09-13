@@ -6,9 +6,9 @@ link: https://www.franksmovielog.com/reviews/haunted-gold-1932/
 location: Frank's Movie Log
 ---
 
-Even the most ardent John Wayne fans will struggle with _Haunted Gold_.
+I like John Wayne, but I struggled with _Haunted Gold_.
 
-Wayne plays a cowboy investigating an abandoned mine. It's a talky story involving half-shares in mines, frame-ups, betrayals, and a mysterious Phantom.
+Wayne plays a cowboy investigating an abandoned mine. It's a dull, talky story involving half-shares in mines, frame-ups, betrayals, and a mysterious Phantom.
 
 Turns out, it's a remake of _The Phantom City (1928)_ and even recycles some of that picture's footage. In true B-movie fashion, those shots use a different film stock.
 
