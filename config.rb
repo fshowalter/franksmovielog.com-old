@@ -68,6 +68,8 @@ set :images_dir, 'images'
 
 page 'feed.xml', mime_type: 'text/xml'
 
+page '/googlee90f4c89e6c3d418.html', directory_index: false
+
 activate :deploy do |deploy|
   deploy.method = :git
   deploy.build_before = true
