@@ -1,6 +1,6 @@
 ---
 title: "Torso (1973)"
-date: 2016-10-11T00:28:00Z
+date: 2016-11-01T01:24:00Z
 kind: review
 link: https://www.franksmovielog.com/reviews/torso-1973/
 location: Frank's Movie Log
