@@ -25,7 +25,16 @@
 
       var seconds = (+new Date() - time) / 1000;
       var token = 'ago';
-      var currentDate = new Date();
+      var now = new Date();
+      var currentDate = new Date(
+        now.getUTCFullYear(),
+        now.getUTCMonth(),
+        now.getUTCDate(),
+        now.getUTCHours(),
+        now.getUTCMinutes(),
+        now.getUTCSeconds()
+      );
+
       var monthDiff;
 
       if (seconds === 0) {
