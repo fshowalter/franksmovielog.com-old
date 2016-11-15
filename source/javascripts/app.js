@@ -25,15 +25,8 @@
 
       var seconds = (+new Date() - time) / 1000;
       var token = 'ago';
-      var now = new Date();
-      var currentDate = new Date(
-        now.getUTCFullYear(),
-        now.getUTCMonth(),
-        now.getUTCDate(),
-        now.getUTCHours(),
-        now.getUTCMinutes(),
-        now.getUTCSeconds()
-      );
+
+      var currentDate = new Date();
 
       var monthDiff;
 
@@ -145,6 +138,34 @@
       list = null;
     }
 
+    function getOrdinal(n) {
+      var s = ['th', 'st', 'nd', 'rd'];
+      var v = n % 100;
+
+      return n + (s[(v - 20) % 10] || s[v] || s[0]);
+    }
+
+    function formatUTCStringToLocalTime(utcString) {
+      var utcTime = new Date(utcString);
+      var month = utcTime.toLocaleDateString(undefined, { month: 'short' });
+      var day = utcTime.toLocaleDateString(undefined, { day: 'numeric' });
+      var year = utcTime.toLocaleDateString(undefined, { year: 'numeric' });
+
+      return month + ' ' + getOrdinal(day) + ' ' + year;
+    }
+
+    function formatTimesToLocal() {
+      var times = document.querySelectorAll('time');
+      var utcString;
+
+      eachWithIndex(times, function formatTimeToLocal(time) {
+        utcString = time.getAttribute('datetime');
+
+        time.textContent = formatUTCStringToLocalTime(utcString);
+      });
+    }
+
+    formatTimesToLocal();
     buildTimeline();
   }
 )(document);

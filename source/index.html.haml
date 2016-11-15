@@ -5,4 +5,4 @@
         %a.fs_timeline-event_link{ href: post.link }
           = post.title
       %p.fs_timeline-event_slug
-        #{post.date.strftime("%b #{post.date.day.ordinalize}")} #{post.date.year} on #{post.location}
+        <time datetime="#{post.date.iso8601}">#{post.date.strftime("%b #{post.date.day.ordinalize}")} #{post.date.year}</time> on #{post.location}
