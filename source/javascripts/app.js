@@ -34,6 +34,11 @@
         return 'Just now';
       }
 
+      if (seconds > 172800) {
+        date.setHours(0, 0, 0);
+        seconds = (+new Date() - date.getTime()) / 1000;
+      }
+
       if (seconds > 2419200 && seconds < 58060800) {
         monthDiff = currentDate.getMonth() - date.getMonth() +
           (currentDate.getYear() - date.getYear()) * 12;
