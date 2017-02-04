@@ -1,6 +1,6 @@
 ---
 title: "Men Are Such Fools (1938)"
-date: 2017-02-01T01:57:00Z
+date: 2017-01-31T01:57:00Z
 kind: review
 link: https://www.franksmovielog.com/reviews/men-are-such-fools-1938/
 location: Frank's Movie Log
