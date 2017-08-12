@@ -88,5 +88,5 @@ configure :build do
 
   activate :minify_html, remove_input_attributes: false, remove_http_protocol: false
 
-  activate :gzip
+  activate :gzip, exts: %w(.js .css .html .htm .xml)
 end

@@ -13,8 +13,7 @@ layout: false
   %author
     %name Frank Showalter
 
-  - posts.each_with_index do |post, index|
-    - break if index > 9
+  - posts.each_with_index do |post|
     %entry
       %title= post.title
       %link{ href: post.link }
