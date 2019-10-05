@@ -24,4 +24,8 @@
 
 package.json
 
-*.sublime-*
+/movie_db_data
+/.venv
+/.vscode
+
+__pycache__
