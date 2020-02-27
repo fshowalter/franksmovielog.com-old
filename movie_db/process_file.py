@@ -1,95 +1,81 @@
-"""Repsonbile for parsing imdb files.
-"""
 import gzip
-import marshal
+import pickle
 import os
-import re
-import types
-from halo import Halo
+from typing import List, Dict, Optional, Any, Callable, TypeVar, NamedTuple
+import utils.formatter as formatter
+from utils.spinner import start_spinner, stop_spinner
+import datetime
 
-FILENAME_REGEX = re.compile(r'^.*/([^.]*)\.(.*).tsv.gz')
+T = TypeVar('T')
 
 
-def process_file(accumulator, file, validator):
-    """Responsible for processing IMDb files.
+class ProcessableFile(NamedTuple):
+    file: str
+    line_callback: Callable[List[str]]
+    cache_found_callback: Callable[Any]
+    summary_callback: Callable[Any]
 
-    Arguments:
-        accumulator {dict} -- The object responsible for accumulating the file's values.
-        file {string} -- The path to the file to process.
-        validator {func} -- Validation function to determine if a given line is valid.
+
+def process_file(file: str, callback: Callable[[List[str]], Dict[str, T]]) -> Dict[str, T]:
+    """Responsible for processing the given imdb file.
+
+    Args:
+        file (str): File name to process.
+        callback (function): Called with each set of items in the file. Must return the
+            accumulated output.
 
     Returns:
-        dict -- The accumlator with the processed data, or the cached value if present.
+        dict: The output of the last callback.
     """
-    cache = _read_cache_for_file(file)
-    if cache is not None:
-        return cache
+    print(formatter.h1(f"Processing {formatter.identifier(file)}"))
+    start_time = datetime.datetime.now()
 
-    spinner = _init_progress(file)
+    # cache = _read_cache_for_file(file)
+    # if cache:
+    #     return cache
 
-    with gzip.GzipFile(file, 'rb') as gz_file:
-        for _ in gz_file:
-            spinner.update()
-            line = _decode_line(gz_file)
-            if validator(line):
-                spinner.passed += 1
-            spinner.line_count += 1
+    output: Dict[str, Any] = {}
 
-    spinner.finish()
-    _write_cache_for_file(accumulator, file)
+    spinner = start_spinner(formatter.h2(f"Parsing {file}"))
 
-    return accumulator
+    with gzip.open(filename=file, mode='rt', encoding='utf-8') as gz_file:
+        headers_length = len(gz_file.readline().strip().split('\t'))
+        total_lines = 0
+        for line in gz_file:
+            fields = _split_fields(line)
+            if len(fields) != headers_length:
+                continue
+            output = callback(fields)
+            total_lines += 1
 
+    process_time = datetime.datetime.now() - start_time
+    _write_cache_for_file(output, file)
+    stop_spinner(spinner, formatter.h2(f"Processed {file} in {process_time}"))
 
-def _init_progress(file):
-    kind = _format_filename(file)
-    spinner = Halo(text='Processing {}...'.format(kind), spinner='dots')
-    spinner.start()
-
-    def update():
-        spinner.text = 'Parsing {} line {} / {} passed...'.format(
-            file,
-            '{:,}'.format(progress.line_count),
-            '{:,}'.format(progress.passed))
-
-    def finish():
-        spinner.succeed('Found {} {}!'.format('{:,}'.format(progress.passed), kind))
-
-    progress = types.SimpleNamespace()
-
-    progress.update = update
-    progress.finish = finish
-    progress.line_count = 1
-    progress.passed = 0
-
-    return progress
+    return output
 
 
-def _format_filename(file):
-    match = FILENAME_REGEX.split(file)
-    if match[2] == 'basics':
-        return '{}s'.format(match[1])
-    return match[2]
+def _split_fields(line: str) -> List[str]:
+    return line.strip().split('\t')
 
 
-def _decode_line(gz_file):
-    byte_line = gz_file.readline()
-    return byte_line.decode('utf-8').strip().split('\t')
+def _cache_filename(file: str) -> str:
+    return f'{file}.cache'
 
 
-def _cache_filename(file):
-    return '{}.cache'.format(file)
-
-
-def _read_cache_for_file(file):
+def _read_cache_for_file(file: str) -> Optional[Dict[str, Any]]:
     cache_file = _cache_filename(file)
+    cache = None
     if os.path.exists(cache_file):
+        print(formatter.h2(f"Cache found at {cache_file}"))
+        spinner = start_spinner(f"   Reading {file} from cache...")
         with(open(cache_file, 'rb')) as cached_file:
-            return marshal.load(cached_file)
-    return None
+            cache = pickle.load(cached_file)
+        stop_spinner(spinner, f"    Loaded {file} from cache.")
+    return cache
 
 
-def _write_cache_for_file(data, file):
-    cache_file = _cache_filename(file)
+def _write_cache_for_file(data: Dict[str, Any], filename: str):
+    cache_file = _cache_filename(filename)
     with(open(cache_file, 'wb')) as file:
-        marshal.dump(data, file)
+        pickle.dump(data, file)

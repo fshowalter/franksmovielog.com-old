@@ -2,11 +2,13 @@
 """
 import os
 from process_file import process_file
+from typing import List, Dict
+from movie import Movie
 
 TITLES_FILENAME = 'title.basics.tsv.gz'
 
 
-def extract_titles(data_path):
+def extract_titles(data_path) -> Dict[str, Movie]:
     """Responsible for extracting titles from an IMDb file.
 
     Arguments:
@@ -15,38 +17,36 @@ def extract_titles(data_path):
     Returns:
         dict -- The extracted titles keyed by IMDb ID.
     """
-    titles = {}
+    titles: Dict[str, Movie] = {}
     titles_file = os.path.join(data_path, TITLES_FILENAME)
 
-    def _add_title_if_valid(line):
+    def add_title_if_valid(line: List[str]) -> Dict[str, Movie]:
         if _title_is_valid(line):
             _add_title(line, titles)
-            return True
-        return False
+        return titles
 
-    return process_file(titles, titles_file, _add_title_if_valid)
-
-
-def _add_title(line, titles):
-    titles[line[0]] = _format_title(line)
+    return process_file(file=titles_file, callback=add_title_if_valid)
 
 
-def _title_is_valid(title_line):
-    if len(title_line) != 9:
-        return False
+def _add_title(line: List[str], titles: Dict[str, Movie]):
+    titles[line[0]] = _title_to_movie(title_line=line)
+
+
+def _title_is_valid(title_line: List[str]) -> bool:
     if title_line[1] != 'movie':
         return False
     if title_line[4] == '1':
+        return False
+    if title_line[5] == '\\N':
         return False
     if 'Documentary' in title_line[8]:
         return False
     return True
 
 
-def _format_title(title_line):
-    return {
-        'title': title_line[2],
-        'original_title': title_line[3],
-        'year': title_line[5],
-        'runtime_minutes': title_line[7]
-    }
+def _title_to_movie(title_line: List[str]) -> Movie:
+    return Movie(
+        title=title_line[2],
+        original_title=title_line[3],
+        year=title_line[5],
+        runtime_minutes=title_line[7])

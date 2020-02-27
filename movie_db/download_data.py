@@ -1,9 +1,8 @@
-""" Responsible for downloading the raw files from the IMDb."""
 from datetime import datetime
-from contextlib import contextmanager
+import utils.formatter as formatter
 import os
-import requests
-from tqdm import tqdm
+import shlex
+import subprocess
 
 BASE_URL = 'https://datasets.imdbws.com/'
 
@@ -17,7 +16,7 @@ FILES_TO_DOWNLOAD = (
 )
 
 
-def download_data():
+def download_data() -> str:
     """Downloads the available files from the IMDb.
 
     Returns:
@@ -26,19 +25,16 @@ def download_data():
     download_directory = _ensure_directory(root='movie_db_data')
 
     for file_to_download in FILES_TO_DOWNLOAD:
+        print(formatter.h1(f"Downloading {formatter.identifier(file_to_download)}"))
         url = BASE_URL + file_to_download
         file_to_write = os.path.join(download_directory, file_to_download)
+        print(formatter.h2(f"Downloading to {file_to_write}"))
 
         if os.path.exists(file_to_write):
+            print(f'{file_to_write} already exists, skipping.')
             continue
 
-        with(_progress_bar(url)) as progress_bar:
-            request = requests.get(url, stream=True)
-
-            with(open(file_to_write, 'ab')) as file:
-                for chunk in request.iter_content(chunk_size=1024):
-                    _write_chunk(chunk, file)
-                    progress_bar.update(1024)
+        _curl(url, file_to_write)
 
     return download_directory
 
@@ -47,29 +43,15 @@ if __name__ == "__main__":
     download_data()
 
 
-@contextmanager
-def _progress_bar(url):
-    file_size = int(requests.head(url).headers["Content-Length"])
-
-    progress_bar = tqdm(
-        total=file_size,
-        initial=0,
-        unit='B',
-        unit_scale=True,
-        desc=url.split('/')[-1])
-
-    try:
-        yield progress_bar
-    finally:
-        progress_bar.close()
+def _curl(url: str, dest: str):
+    print(formatter.h2(f"Downloading from {url}"))
+    cmd = f"curl --fail --progress-bar -o {dest} {url}"
+    args = shlex.split(cmd)
+    process = subprocess.Popen(args, shell=False)
+    _stdout, stderr = process.communicate()
 
 
-def _write_chunk(chunk, file):
-    if chunk:
-        file.write(chunk)
-
-
-def _ensure_directory(root):
+def _ensure_directory(root: str) -> str:
     directory = os.path.join(
         root, datetime.today().strftime('%Y-%m-%d'))
 
