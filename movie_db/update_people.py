@@ -1,0 +1,95 @@
+import re
+from pathlib import Path
+from typing import Dict, List
+
+from person import Person
+from utils.db import DB_DIR, db, transaction
+from utils.download_imdb_file import download_imdb_file
+from utils.extract_imdb_file import extract_imdb_file
+from utils.humanize import intcomma
+from utils.logger import logger
+
+FILE_NAME = 'name.basics.tsv.gz'
+TABLE_NAME = 'people'
+NAME_REGEX = re.compile(r'^([^\s]*)\s(.*)$')
+
+
+def update_people():
+    logger.log('==== Begin updating {}...', TABLE_NAME)
+
+    downloaded_file_path = download_imdb_file(FILE_NAME, DB_DIR)
+    success_file = Path('{0}._success'.format(downloaded_file_path))
+
+    if (success_file.exists()):
+        logger.log('Found {} file. Skipping load.', success_file)
+        return
+
+    people = _extract_people(downloaded_file_path)
+    inserted = 0
+
+    with db() as connection:
+        _recreate_people_table(connection)
+        _insert_people(connection, people)
+        inserted = connection.execute(
+            'select count(*) from {0}'.format(TABLE_NAME),  # noqa: S608
+            ).fetchone()[0]
+
+    _validate_inserted(inserted, people)
+    success_file.touch()
+
+
+def _validate_inserted(inserted, collection):
+    expected = len(collection)
+    assert expected == inserted  # noqa: S101
+    logger.log('Inserted {} {}.', intcomma(inserted), TABLE_NAME)
+
+
+def _insert_people(connection, people):
+    logger.log('Inserting {}...', TABLE_NAME)
+
+    with transaction(connection):
+        connection.executemany("""
+            INSERT INTO people(id, full_name, last_name, first_name)
+            VALUES(?, ?, ?, ?)""",
+                               [
+                                   (
+                                       imdb_id,
+                                       person.full_name,
+                                       person.last_name,
+                                       person.first_name,
+                                   ) for (imdb_id, person) in people.items()
+                               ])
+
+
+def _recreate_people_table(connection):
+    logger.log('Recreating {} table...', TABLE_NAME)
+    connection.executescript("""
+      DROP TABLE IF EXISTS "people";
+      CREATE TABLE "people" (
+        "id" TEXT PRIMARY KEY NOT NULL,
+        "full_name" varchar(255) NOT NULL,
+        "last_name" varchar(255),
+        "first_name" varchar(255));
+      """)
+
+
+def _extract_people(downloaded_file_path):
+    people: Dict[str, Person] = {}
+
+    for fields in extract_imdb_file(downloaded_file_path):
+        people[fields[0]] = _fields_to_person(fields)
+
+    logger.log('Extracted {} {}.', intcomma(len(people)), TABLE_NAME)
+    return people
+
+
+def _fields_to_person(fields: List[str]) -> Person:
+    match = NAME_REGEX.split(fields[1])
+    if len(match) == 1:
+        match = ['', match[0], '', '']
+
+    return Person(
+        full_name=fields[1],
+        last_name=match[2],
+        first_name=match[1],
+    )
