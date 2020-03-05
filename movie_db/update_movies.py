@@ -1,8 +1,7 @@
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, NamedTuple
 
-from movie import Movie
-from utils.db import DB_DIR, db, transaction
+from utils.db import DB_DIR, Connection, db, transaction
 from utils.download_imdb_file import download_imdb_file
 from utils.extract_imdb_file import extract_imdb_file
 from utils.humanize import intcomma
@@ -12,7 +11,14 @@ FILE_NAME = 'title.basics.tsv.gz'
 TABLE_NAME = 'movies'
 
 
-def update_movies():
+class Movie(NamedTuple):
+    title: str
+    original_title: str
+    year: str
+    runtime_minutes: str
+
+
+def update_movies() -> None:
     logger.log('==== Begin updating {}...', TABLE_NAME)
 
     downloaded_file_path = download_imdb_file(FILE_NAME, DB_DIR)
@@ -36,13 +42,13 @@ def update_movies():
     success_file.touch()
 
 
-def _validate_inserted(inserted, collection):
+def _validate_inserted(inserted: int, collection: Dict[str, Movie]) -> None:
     expected = len(collection)
     assert expected == inserted  # noqa: S101
     logger.log('Inserted {} {}.', intcomma(inserted), TABLE_NAME)
 
 
-def _insert_movies(connection, movies):
+def _insert_movies(connection: Connection, movies: Dict[str, Movie]) -> None:
     logger.log('Inserting {}...', TABLE_NAME)
 
     with transaction(connection):
@@ -59,7 +65,7 @@ def _insert_movies(connection, movies):
                                ])
 
 
-def _recreate_movies_table(connection):
+def _recreate_movies_table(connection: Connection) -> None:
     logger.log('Recreating {} table...', TABLE_NAME)
     connection.executescript("""
         DROP TABLE IF EXISTS "movies";
@@ -71,7 +77,7 @@ def _recreate_movies_table(connection):
         """)
 
 
-def _extract_movies(downloaded_file_path):
+def _extract_movies(downloaded_file_path: str) -> Dict[str, Movie]:
     movies: Dict[str, Movie] = {}
 
     for fields in extract_imdb_file(downloaded_file_path):

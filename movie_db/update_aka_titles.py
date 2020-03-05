@@ -1,9 +1,8 @@
 from pathlib import Path
-from typing import List
+from typing import List, NamedTuple, Union
 
-from aka_title import AkaTitle
 from queries.get_title_ids import get_title_ids
-from utils.db import DB_DIR, db, transaction
+from utils.db import DB_DIR, Connection, db, transaction
 from utils.download_imdb_file import download_imdb_file
 from utils.extract_imdb_file import extract_imdb_file
 from utils.humanize import intcomma
@@ -13,7 +12,18 @@ FILE_NAME = 'title.akas.tsv.gz'
 TABLE_NAME = 'aka_titles'
 
 
-def update_aka_titles():
+class AkaTitle(NamedTuple):
+    movie_id: str
+    sequence: int
+    title: str
+    region: Union[str, None]
+    language: Union[str, None]
+    types: Union[str, None]
+    attributes: Union[str, None]
+    is_original_title: Union[str, None]
+
+
+def update_aka_titles() -> None:
     logger.log('==== Begin updating {} ...', TABLE_NAME)
 
     downloaded_file_path = download_imdb_file(FILE_NAME, DB_DIR)
@@ -33,7 +43,7 @@ def update_aka_titles():
     success_file.touch()
 
 
-def _validate_aka_titles(connection, collection):
+def _validate_aka_titles(connection: Connection, collection: List[AkaTitle]) -> None:
     inserted = connection.execute(
         'select count(*) from {0}'.format(TABLE_NAME),  # noqa: S608
         ).fetchone()[0]
@@ -43,7 +53,7 @@ def _validate_aka_titles(connection, collection):
     logger.log('Inserted {} {}.', intcomma(inserted), TABLE_NAME)
 
 
-def _insert_aka_titles(connection, aka_titles):
+def _insert_aka_titles(connection: Connection, aka_titles: List[AkaTitle]) -> None:
     logger.log('Inserting {}...', TABLE_NAME)
 
     with transaction(connection):
@@ -63,13 +73,13 @@ def _insert_aka_titles(connection, aka_titles):
         )
 
 
-def _recreate_aka_titles_table(connection):
+def _recreate_aka_titles_table(connection: Connection) -> None:
     logger.log('Recreating {} table...', TABLE_NAME)
     connection.executescript("""
       DROP TABLE IF EXISTS "{0}";
       CREATE TABLE "{0}" (
         "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        "movie_id" TEXT NOT NULL,
+        "movie_id" TEXT NOT NULL REFERENCES movies(id) DEFERRABLE INITIALLY DEFERRED,
         "sequence" INT NOT NULL,
         "title" TEXT NOT NULL,
         "region" TEXT,
@@ -81,19 +91,15 @@ def _recreate_aka_titles_table(connection):
     )
 
 
-def _extract_aka_titles(downloaded_file_path) -> List[AkaTitle]:
+def _extract_aka_titles(downloaded_file_path: str) -> List[AkaTitle]:
     title_ids = get_title_ids()
     aka_titles: List[AkaTitle] = []
 
     for fields in extract_imdb_file(downloaded_file_path):
         if fields[0] in title_ids:
-            for index, field_value in enumerate(fields):
-                if field_value == r'\N':
-                    fields[index] = None
-
             aka_titles.append(AkaTitle(
                 movie_id=fields[0],
-                sequence=fields[1],
+                sequence=int(fields[1]),
                 title=fields[2],
                 region=fields[3],
                 language=fields[4],

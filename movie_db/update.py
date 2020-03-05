@@ -7,7 +7,7 @@ from utils.logger import logger
 
 
 @logger.catch
-def update():
+def update() -> None:
     update_movies()
     update_people()
     update_directing_and_writing_credits()

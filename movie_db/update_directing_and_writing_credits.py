@@ -1,21 +1,25 @@
 from pathlib import Path
-from typing import List, Tuple
+from typing import Iterable, List, NamedTuple, Tuple
 
-from directing_credit import DirectingCredit
 from queries.get_title_ids import get_title_ids
-from utils.db import DB_DIR, db, transaction
+from utils.db import DB_DIR, Connection, db, transaction
 from utils.download_imdb_file import download_imdb_file
 from utils.extract_imdb_file import extract_imdb_file
 from utils.humanize import intcomma
 from utils.logger import logger
-from writing_credit import WritingCredit
 
 FILE_NAME = 'title.crew.tsv.gz'
 DIRECTING_CREDITS_TABLE_NAME = 'directing_credits'
 WRITING_CREDITS_TABLE_NAME = 'writing_credits'
 
 
-def update_directing_and_writing_credits():
+class Credit(NamedTuple):
+    movie_id: str
+    person_id: str
+    sequence: int
+
+
+def update_directing_and_writing_credits() -> None:
     logger.log(
         '==== Begin updating {} and {}...',
         DIRECTING_CREDITS_TABLE_NAME,
@@ -42,7 +46,7 @@ def update_directing_and_writing_credits():
     success_file.touch()
 
 
-def _validate_credits(connection, collection, table_name):
+def _validate_credits(connection: Connection, collection: List[Credit], table_name: str) -> None:
     inserted = connection.execute(
         'select count(*) from {0}'.format(table_name),  # noqa: S608
         ).fetchone()[0]
@@ -52,7 +56,11 @@ def _validate_credits(connection, collection, table_name):
     logger.log('Inserted {} {}.', intcomma(inserted), table_name)
 
 
-def _insert_to_credits_table(connection, credits, table_name):
+def _insert_to_credits_table(
+    connection: Connection,
+    credits: Iterable[Credit],
+    table_name: str,
+) -> None:
     logger.log('Inserting {}...', table_name)
 
     with transaction(connection):
@@ -62,29 +70,31 @@ def _insert_to_credits_table(connection, credits, table_name):
         )
 
 
-def _recreate_credits_table(connection, table_name):
+def _recreate_credits_table(connection: Connection, table_name: str) -> None:
     logger.log('Recreating {} table...', table_name)
     connection.executescript("""
       DROP TABLE IF EXISTS "{0}";
       CREATE TABLE "{0}" (
-        "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        "movie_id" varchar(255) NOT NULL,
-        "person_id" varchar(255) NOT NULL,
-        "sequence" INT NOT NULL);
+        "movie_id" varchar(255) NOT NULL REFERENCES movies(id) DEFERRABLE INITIALLY DEFERRED,
+        "person_id" varchar(255) NOT NULL REFERENCES people(id) DEFERRABLE INITIALLY DEFERRED,
+        "sequence" INT NOT NULL,
+        PRIMARY KEY (movie_id, person_id)) WITHOUT ROWID;
       """.format(table_name),
     )
 
 
-def _extract_credits(downloaded_file_path) -> Tuple[List[DirectingCredit], List[WritingCredit]]:
+def _extract_credits(
+    downloaded_file_path: str,
+) -> Tuple[List[Credit], List[Credit]]:
     title_ids = get_title_ids()
-    directing_credits: List[DirectingCredit] = []
-    writing_credits: List[WritingCredit] = []
+    directing_credits: List[Credit] = []
+    writing_credits: List[Credit] = []
 
     for fields in extract_imdb_file(downloaded_file_path):
         title_id = fields[0]
         if title_id in title_ids:
-            directing_credits.extend(_fields_to_directing_credits(fields))
-            writing_credits.extend(_fields_to_writing_credits(fields))
+            directing_credits.extend(_fields_to_credits(fields, 1))
+            writing_credits.extend(_fields_to_credits(fields, 2))
 
     logger.log('Extracted {} {}.', intcomma(len(directing_credits)), DIRECTING_CREDITS_TABLE_NAME)
     logger.log('Extracted {} {}.', intcomma(len(writing_credits)), WRITING_CREDITS_TABLE_NAME)
@@ -92,22 +102,10 @@ def _extract_credits(downloaded_file_path) -> Tuple[List[DirectingCredit], List[
     return (directing_credits, writing_credits)
 
 
-def _fields_to_directing_credits(fields: List[str]) -> List[DirectingCredit]:
+def _fields_to_credits(fields: List[str], credit_index: int) -> List[Credit]:
     credits = []
-    for sequence, person_id in enumerate(fields[1].split(',')):
-        credits.append(DirectingCredit(
-            movie_id=fields[0],
-            person_id=person_id,
-            sequence=sequence,
-        ))
-
-    return credits
-
-
-def _fields_to_writing_credits(fields: List[str]) -> List[WritingCredit]:
-    credits = []
-    for sequence, person_id in enumerate(fields[2].split(',')):
-        credits.append(WritingCredit(
+    for sequence, person_id in enumerate(fields[credit_index].split(',')):
+        credits.append(Credit(
             movie_id=fields[0],
             person_id=person_id,
             sequence=sequence,

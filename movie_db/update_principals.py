@@ -1,9 +1,8 @@
 from pathlib import Path
-from typing import List
+from typing import List, NamedTuple, Union
 
-from principal import Principal
 from queries.get_title_ids import get_title_ids
-from utils.db import DB_DIR, db, transaction
+from utils.db import DB_DIR, Connection, db, transaction
 from utils.download_imdb_file import download_imdb_file
 from utils.extract_imdb_file import extract_imdb_file
 from utils.humanize import intcomma
@@ -13,7 +12,16 @@ FILE_NAME = 'title.principals.tsv.gz'
 TABLE_NAME = 'principals'
 
 
-def update_principals():
+class Principal(NamedTuple):
+    movie_id: str
+    person_id: str
+    sequence: int
+    category: Union[str, None]
+    job: Union[str, None]
+    characters: Union[str, None]
+
+
+def update_principals() -> None:
     logger.log('==== Begin updating {} ...', TABLE_NAME)
 
     downloaded_file_path = download_imdb_file(FILE_NAME, DB_DIR)
@@ -33,7 +41,7 @@ def update_principals():
     success_file.touch()
 
 
-def _validate_principals(connection, collection):
+def _validate_principals(connection: Connection, collection: List[Principal]) -> None:
     inserted = connection.execute(
         'select count(*) from {0}'.format(TABLE_NAME),  # noqa: S608
         ).fetchone()[0]
@@ -43,7 +51,7 @@ def _validate_principals(connection, collection):
     logger.log('Inserted {} {}.', intcomma(inserted), TABLE_NAME)
 
 
-def _insert_principals(connection, aka_titles):
+def _insert_principals(connection: Connection, principals: List[Principal]) -> None:
     logger.log('Inserting {}...', TABLE_NAME)
 
     with transaction(connection):
@@ -57,18 +65,18 @@ def _insert_principals(connection, aka_titles):
               job,
               characters)
             VALUES(?, ?, ?, ?, ?, ?)""".format(TABLE_NAME),
-            aka_titles,
+            principals,
         )
 
 
-def _recreate_principals_table(connection):
+def _recreate_principals_table(connection: Connection) -> None:
     logger.log('Recreating {} table...', TABLE_NAME)
     connection.executescript("""
       DROP TABLE IF EXISTS "{0}";
       CREATE TABLE "{0}" (
         "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        "movie_id" TEXT NOT NULL,
-        "person_id" TEXT NOT NULL,
+        "movie_id" TEXT NOT NULL REFERENCES movies(id) DEFERRABLE INITIALLY DEFERRED,
+        "person_id" TEXT NOT NULL REFERENCES people(id) DEFERRABLE INITIALLY DEFERRED,
         "sequence" INT NOT NULL,
         "category" TEXT,
         "job" TEXT,
@@ -77,25 +85,28 @@ def _recreate_principals_table(connection):
     )
 
 
-def _extract_principals(downloaded_file_path) -> List[Principal]:
+def _extract_principals(downloaded_file_path: str) -> List[Principal]:
     title_ids = get_title_ids()
     principals: List[Principal] = []
 
     for fields in extract_imdb_file(downloaded_file_path):
         if fields[0] in title_ids:
-            for index, field_value in enumerate(fields):
-                if field_value == r'\N':
-                    fields[index] = None
 
             principals.append(Principal(
                 movie_id=fields[0],
-                sequence=fields[1],
+                sequence=int(fields[1]),
                 person_id=fields[2],
-                category=fields[3],
-                job=fields[4],
-                characters=fields[5],
+                category=_field_or_none(fields[3]),
+                job=_field_or_none(fields[4]),
+                characters=_field_or_none(fields[5]),
             ))
 
     logger.log('Extracted {} {}.', intcomma(len(principals)), TABLE_NAME)
 
     return principals
+
+
+def _field_or_none(field: str) -> Union[str, None]:
+    if field == r'\N':
+        return None
+    return field
