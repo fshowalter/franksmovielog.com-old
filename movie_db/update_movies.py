@@ -64,6 +64,8 @@ def _insert_movies(connection: Connection, movies: Dict[str, Movie]) -> None:
                                    ) for (imdb_id, movie) in movies.items()
                                ])
 
+    connection.execute('CREATE INDEX "index_{0}_on_title" ON "{0}" ("title");'.format(TABLE_NAME))
+
 
 def _recreate_movies_table(connection: Connection) -> None:
     logger.log('Recreating {} table...', TABLE_NAME)
@@ -98,6 +100,6 @@ def _title_is_valid(title_line: List[str]) -> bool:
         return False
     if title_line[4] == '1':
         return False
-    if title_line[5] == r'\N':
+    if title_line[5] is None:
         return False
     return True

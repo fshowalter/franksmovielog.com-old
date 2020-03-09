@@ -1,0 +1,1 @@
+WATCHLIST_PATH = 'watchlist'

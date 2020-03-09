@@ -69,6 +69,12 @@ def _insert_to_credits_table(
             credits,
         )
 
+    connection.execute(
+        """
+        CREATE INDEX "index_{0}_on_person_id" ON "{0}" ("person_id");
+        """.format(table_name),
+    )
+
 
 def _recreate_credits_table(connection: Connection, table_name: str) -> None:
     logger.log('Recreating {} table...', table_name)
@@ -78,7 +84,7 @@ def _recreate_credits_table(connection: Connection, table_name: str) -> None:
         "movie_id" varchar(255) NOT NULL REFERENCES movies(id) DEFERRABLE INITIALLY DEFERRED,
         "person_id" varchar(255) NOT NULL REFERENCES people(id) DEFERRABLE INITIALLY DEFERRED,
         "sequence" INT NOT NULL,
-        PRIMARY KEY (movie_id, person_id)) WITHOUT ROWID;
+        PRIMARY KEY (movie_id, person_id));
       """.format(table_name),
     )
 
@@ -103,7 +109,11 @@ def _extract_credits(
 
 
 def _fields_to_credits(fields: List[str], credit_index: int) -> List[Credit]:
-    credits = []
+    credits: List[Credit] = []
+
+    if fields[credit_index] is None:
+        return credits
+
     for sequence, person_id in enumerate(fields[credit_index].split(',')):
         credits.append(Credit(
             movie_id=fields[0],

@@ -39,12 +39,17 @@ def update_people() -> None:
     with db() as connection:
         _recreate_people_table(connection)
         _insert_people(connection, people)
+        _add_indexes(connection)
         inserted = connection.execute(
             'select count(*) from {0}'.format(TABLE_NAME),  # noqa: S608
             ).fetchone()[0]
 
     _validate_inserted(inserted, people)
     success_file.touch()
+
+
+def _add_indexes(connection: Connection) -> None:
+    connection.execute('CREATE INDEX "index_people_on_full_name" ON "people" ("full_name");')
 
 
 def _validate_inserted(inserted: int, collection: Dict[str, Person]) -> None:
