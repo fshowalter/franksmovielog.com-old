@@ -1,1 +1,0 @@
-WATCHLIST_PATH = 'watchlist'
