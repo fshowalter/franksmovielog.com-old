@@ -30,18 +30,17 @@ class MovieValidator(object):
         self.imdb_scraper = imdb.IMDb(reraiseExceptions=True)
         self.silent_ids: Set[str] = set()
 
-    def movie_in_db(self, movie: imdb.Movie) -> bool:
-        title_id = f'tt{movie.movieID}'
-        return title_id in self.valid_title_ids
+    def movie_in_db(self, movie: Movie) -> bool:
+        return movie.imdb_id in self.valid_title_ids
 
-    def movie_is_silent(self, movie: imdb.Movie) -> bool:
-        if movie.movieID in self.silent_ids:
+    def movie_is_silent(self, movie: Movie) -> bool:
+        if movie.imdb_id in self.silent_ids:
             return True
 
-        self.imdb_scraper.update(movie, info=['technical'])
-        sound_mixes = movie['technical']['sound mix']
+        self.imdb_scraper.update(movie.movie_object, info=['technical'])
+        sound_mixes = movie.movie_object['technical']['sound mix']
         if len(sound_mixes) == 1:
             if sound_mixes[0] == 'Silent':
-                self.silent_ids.add(movie.movieID)
+                self.silent_ids.add(movie.imdb_id)
                 return True
         return False
