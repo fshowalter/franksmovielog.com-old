@@ -1,9 +1,11 @@
 import sys as _sys
 import types
-from typing import Any, Callable, TypeVar
+from typing import TYPE_CHECKING, Any, Callable, TypeVar
 
-import loguru
 from loguru import logger as _base_logger
+
+if TYPE_CHECKING:
+    from loguru import Logger  # noqa: WPS433
 
 T = TypeVar('T')  # noqa: WPS111
 Function = Callable[..., T]
@@ -23,7 +25,7 @@ _base_logger.configure(**LOGGER_CONFIG)
 
 
 class ExtendedLogger(object):
-    def __init__(self, _logger: loguru.Logger):
+    def __init__(self, _logger: 'Logger'):
         self.logger = _logger
 
     def log(self, message: str, *args: Any, **kwargs: Any) -> None:

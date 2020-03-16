@@ -14,12 +14,6 @@ from movie_db.watchlist.watchlist_path import WATCHLIST_PATH
 
 # WATCHLIST_PATH = 'watchlist'
 
-# Directors: List[str] = []
-
-# for yaml_file_path in glob(path.join(WATCHLIST_PATH, 'directors', '*.yml')):
-#     with open(yaml_file_path, 'r') as yaml_file:
-#         Directors.append(yaml_load(yaml_file, Loader=Loader)['id'])
-
 
 def write_watchlist_items(items_to_write) -> str:
     slug = slugify('Hammer Films')

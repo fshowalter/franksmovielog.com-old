@@ -1,60 +1,55 @@
-from pathlib import Path
-from typing import List, NamedTuple, Union
+from dataclasses import asdict, dataclass
+from typing import List, Optional
 
-from queries.get_title_ids import get_title_ids
-from utils.db import DB_DIR, Connection, db, transaction
-from utils.download_imdb_file import download_imdb_file
-from utils.extract_imdb_file import extract_imdb_file
-from utils.humanize import intcomma
-from utils.logger import logger
+from movie_db import _db, _downloader, _extractor, _validator, humanize, queries
+from movie_db.logger import logger
 
 FILE_NAME = 'title.principals.tsv.gz'
 TABLE_NAME = 'principals'
 
 
-class Principal(NamedTuple):
-    movie_id: str
-    person_id: str
-    sequence: int
-    category: Union[str, None]
-    job: Union[str, None]
-    characters: Union[str, None]
+class IMDbFileRowException(Exception):
+    def __init__(self, row: List[Optional[str]], message: str):
+        super().__init__(message)
+        self.row = row
+
+
+@dataclass
+class Principal(object):
+    def __init__(self, fields: List[Optional[str]]) -> None:
+        if not fields[0]:
+            raise IMDbFileRowException(fields, 'movie_id should not be null.')
+        self.movie_id = fields[0]
+        if not fields[1]:
+            raise IMDbFileRowException(fields, 'sequence should not be null.')
+        self.sequence = int(str(fields[1]))
+        if not fields[2]:
+            raise IMDbFileRowException(fields, 'person_id should not be null.')
+        self.person_id = fields[2]
+
+        self.category = fields[3]
+        self.job = fields[4]
+        self.characters = fields[5]
 
 
 def update() -> None:
     logger.log('==== Begin updating {} ...', TABLE_NAME)
 
-    downloaded_file_path = download_imdb_file(FILE_NAME, DB_DIR)
-    success_file = Path('{0}._success'.format(downloaded_file_path))
+    downloaded_file_path = _downloader.download(FILE_NAME, _db.DB_DIR)
 
-    if (success_file.exists()):
-        logger.log('Found {} file. Skipping load.', success_file)
-        return
+    for _ in _extractor.checkpoint(downloaded_file_path):
+        principals = _extract_principals(downloaded_file_path)
 
-    principals = _extract_principals(downloaded_file_path)
-
-    with db() as connection:
-        _recreate_principals_table(connection)
-        _insert_principals(connection, principals)
-        _validate_principals(connection, principals)
-
-    success_file.touch()
+        with _db.connect() as connection:
+            _recreate_principals_table(connection)
+            _insert_principals(connection, principals)
+            _validator.validate_collection_to_table(connection, principals, TABLE_NAME)
 
 
-def _validate_principals(connection: Connection, collection: List[Principal]) -> None:
-    inserted = connection.execute(
-        'select count(*) from {0}'.format(TABLE_NAME),  # noqa: S608
-        ).fetchone()[0]
-
-    expected = len(collection)
-    assert expected == inserted  # noqa: S101
-    logger.log('Inserted {} {}.', intcomma(inserted), TABLE_NAME)
-
-
-def _insert_principals(connection: Connection, principals: List[Principal]) -> None:
+def _insert_principals(connection: _db.Connection, principals: List[Principal]) -> None:
     logger.log('Inserting {}...', TABLE_NAME)
 
-    with transaction(connection):
+    with _db.transaction(connection):
         connection.executemany(
             """
             INSERT INTO {0}(
@@ -65,11 +60,11 @@ def _insert_principals(connection: Connection, principals: List[Principal]) -> N
               job,
               characters)
             VALUES(?, ?, ?, ?, ?, ?)""".format(TABLE_NAME),
-            principals,
+            asdict(principals),
         )
 
 
-def _recreate_principals_table(connection: Connection) -> None:
+def _recreate_principals_table(connection: _db.Connection) -> None:
     logger.log('Recreating {} table...', TABLE_NAME)
     connection.executescript("""
       DROP TABLE IF EXISTS "{0}";
@@ -86,27 +81,13 @@ def _recreate_principals_table(connection: Connection) -> None:
 
 
 def _extract_principals(downloaded_file_path: str) -> List[Principal]:
-    title_ids = get_title_ids()
+    title_ids = queries.get_title_ids()
     principals: List[Principal] = []
 
-    for fields in extract_imdb_file(downloaded_file_path):
+    for fields in _extractor.extract(downloaded_file_path):
         if fields[0] in title_ids:
+            principals.append(Principal(fields))
 
-            principals.append(Principal(
-                movie_id=fields[0],
-                sequence=int(fields[1]),
-                person_id=fields[2],
-                category=_field_or_none(fields[3]),
-                job=_field_or_none(fields[4]),
-                characters=_field_or_none(fields[5]),
-            ))
-
-    logger.log('Extracted {} {}.', intcomma(len(principals)), TABLE_NAME)
+    logger.log('Extracted {} {}.', humanize.intcomma(len(principals)), TABLE_NAME)
 
     return principals
-
-
-def _field_or_none(field: str) -> Union[str, None]:
-    if field == r'\N':
-        return None
-    return field

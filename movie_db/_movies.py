@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from typing import Dict, List, Optional
 
 from movie_db import _db, _downloader, _extractor, _validator, humanize
@@ -7,6 +8,7 @@ FILE_NAME = 'title.basics.tsv.gz'
 TABLE_NAME = 'movies'
 
 
+@dataclass
 class Title(object):
     def __init__(self, fields: List[Optional[str]]) -> None:
         self.imdb_id = fields[0]
@@ -80,6 +82,3 @@ def _title_is_valid(title_line: List[Optional[str]]) -> bool:
     if title_line[5] is None:
         return False
     return True
-
-
-update()
