@@ -1,0 +1,24 @@
+from typing import Any
+
+from prompt_toolkit.formatted_text import HTML
+
+from movie_db.cli import _radio_list, manage_watchlist, update_imdb_data
+from movie_db.logger import logger
+
+
+@logger.catch
+def prompt() -> Any:
+    options = _radio_list.CallableOptions([
+        (manage_watchlist.prompt, HTML('<cyan>Manage Watchlist</cyan>')),
+        (update_imdb_data.prompt, HTML('<cyan>Update IMDb data</cyan>')),
+        (None, 'Exit'),
+    ])
+
+    option_function = _radio_list.prompt(
+        title='Movie DB options:',
+        options=options,
+    )
+
+    if option_function:
+        option_function()
+        prompt()

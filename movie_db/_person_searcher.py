@@ -5,7 +5,7 @@ from movie_db import _db
 
 class Result(object):
     def __init__(self, row: Dict[str, str]) -> None:
-        self.id = row['id']
+        self.imdb_id = row['imdb_id']
         self.name = row['full_name']
 
         known_for_title_ids: List[str] = []
