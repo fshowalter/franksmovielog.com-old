@@ -1,4 +1,91 @@
-id: nm0000537
+frozen: true
+imdb_id: nm0000537
 name: Steve McQueen
-notes: null
-title_ids_to_exclude: []
+titles:
+  - imdb_id: tt0054930
+    title: Girl on the Run
+    year: 1953
+  - imdb_id: tt0049778
+    title: Somebody Up There Likes Me
+    year: 1956
+  - imdb_id: tt0051987
+    title: Never Love a Stranger
+    year: 1958
+  - imdb_id: tt0051418
+    title: The Blob
+    year: 1958
+  - imdb_id: tt0052862
+    title: The St. Louis Bank Robbery
+    year: 1959
+  - imdb_id: tt0053108
+    title: Never So Few
+    year: 1959
+  - imdb_id: tt0054047
+    title: The Magnificent Seven
+    year: 1960
+  - imdb_id: tt0054989
+    title: The Honeymoon Machine
+    year: 1961
+  - imdb_id: tt0056062
+    title: Hell Is for Heroes
+    year: 1962
+  - imdb_id: tt0056676
+    title: The War Lover
+    year: 1962
+  - imdb_id: tt0057115
+    title: The Great Escape
+    year: 1963
+  - imdb_id: tt0057517
+    title: Soldier in the Rain
+    year: 1963
+  - imdb_id: tt0057263
+    title: Love with the Proper Stranger
+    year: 1963
+  - imdb_id: tt0058930
+    title: Baby the Rain Must Fall
+    year: 1965
+  - imdb_id: tt0059037
+    title: The Cincinnati Kid
+    year: 1965
+  - imdb_id: tt0060748
+    title: Nevada Smith
+    year: 1966
+  - imdb_id: tt0060934
+    title: The Sand Pebbles
+    year: 1966
+  - imdb_id: tt0063688
+    title: The Thomas Crown Affair
+    year: 1968
+  - imdb_id: tt0062765
+    title: Bullitt
+    year: 1968
+  - imdb_id: tt0064886
+    title: The Reivers
+    year: 1969
+  - imdb_id: tt0067334
+    title: Le Mans
+    year: 1971
+  - imdb_id: tt0068786
+    title: Junior Bonner
+    year: 1972
+  - imdb_id: tt0068638
+    title: The Getaway
+    year: 1972
+  - imdb_id: tt0070511
+    title: Papillon
+    year: 1973
+  - imdb_id: tt0072308
+    title: The Towering Inferno
+    year: 1974
+  - imdb_id: tt0074415
+    title: Dixie Dynamite
+    year: 1976
+  - imdb_id: tt0075993
+    title: An Enemy of the People
+    year: 1978
+  - imdb_id: tt0080031
+    title: Tom Horn
+    year: 1980
+  - imdb_id: tt0080907
+    title: The Hunter
+    year: 1980

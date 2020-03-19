@@ -1,2 +1,46 @@
-id: nm0000233
+frozen: false
+imdb_id: nm0000233
 name: Quentin Tarantino
+titles:
+- imdb_id: tt0359715
+  title: My Best Friend's Birthday
+  year: 1987
+- imdb_id: tt0105236
+  title: Reservoir Dogs
+  year: 1992
+- imdb_id: tt0110912
+  title: Pulp Fiction
+  year: 1994
+- imdb_id: tt0113101
+  title: Four Rooms
+  year: 1995
+- imdb_id: tt0119396
+  title: Jackie Brown
+  year: 1997
+- imdb_id: tt0266697
+  title: 'Kill Bill: Vol. 1'
+  year: 2003
+- imdb_id: tt0378194
+  title: 'Kill Bill: Vol. 2'
+  year: 2004
+- imdb_id: tt0401792
+  title: Sin City
+  year: 2005
+- imdb_id: tt0462322
+  title: Grindhouse
+  year: 2007
+- imdb_id: tt1028528
+  title: Death Proof
+  year: 2007
+- imdb_id: tt0361748
+  title: Inglourious Basterds
+  year: 2009
+- imdb_id: tt1853728
+  title: Django Unchained
+  year: 2012
+- imdb_id: tt3460252
+  title: The Hateful Eight
+  year: 2015
+- imdb_id: tt7131622
+  title: Once Upon a Time... in Hollywood
+  year: 2019

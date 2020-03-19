@@ -1,2 +1,67 @@
-id: nm0000127
+frozen: true
+imdb_id: nm0000127
 name: Wes Craven
+titles:
+  - imdb_id: tt0068833
+    title: The Last House on the Left
+    year: 1972
+  - imdb_id: tt0077681
+    title: The Hills Have Eyes
+    year: 1977
+  - imdb_id: tt0082245
+    title: Deadly Blessing
+    year: 1981
+  - imdb_id: tt0084745
+    title: Swamp Thing
+    year: 1982
+  - imdb_id: tt0089274
+    title: The Hills Have Eyes Part II
+    year: 1984
+  - imdb_id: tt0087800
+    title: A Nightmare on Elm Street
+    year: 1984
+  - imdb_id: tt0090917
+    title: Deadly Friend
+    year: 1986
+  - imdb_id: tt0096071
+    title: The Serpent and the Rainbow
+    year: 1988
+  - imdb_id: tt0098320
+    title: Shocker
+    year: 1989
+  - imdb_id: tt0105121
+    title: The People Under the Stairs
+    year: 1991
+  - imdb_id: tt0111686
+    title: New Nightmare
+    year: 1994
+  - imdb_id: tt0114825
+    title: Vampire in Brooklyn
+    year: 1995
+  - imdb_id: tt0117571
+    title: Scream
+    year: 1996
+  - imdb_id: tt0120082
+    title: Scream 2
+    year: 1997
+  - imdb_id: tt0166943
+    title: Music of the Heart
+    year: 1999
+  - imdb_id: tt0134084
+    title: Scream 3
+    year: 2000
+  - imdb_id: tt0257516
+    title: Cursed
+    year: 2005
+  - imdb_id: tt0421239
+    title: Red Eye
+    year: 2005
+  - imdb_id: tt0401711
+    title: Paris, je t'aime
+    year: 2006
+  - imdb_id: tt0872230
+    title: My Soul to Take
+    year: 2010
+  - imdb_id: tt1262416
+    title: Scream 4
+    year: 2011

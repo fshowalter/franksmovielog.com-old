@@ -1,4 +1,205 @@
-id: nm0000125
+frozen: false
+imdb_id: nm0000125
 name: Sean Connery
-notes: null
-title_ids_to_exclude: []
+titles:
+- imdb_id: tt0048294
+  title: Let's Make Up
+  year: 1954
+- imdb_id: tt0050772
+  title: No Road Back
+  year: 1957
+- imdb_id: tt0051713
+  title: Hell Drivers
+  year: 1957
+- imdb_id: tt0050099
+  title: Action of the Tiger
+  year: 1957
+- imdb_id: tt0051084
+  title: Time Lock
+  year: 1957
+- imdb_id: tt0051364
+  title: Another Time, Another Place
+  year: 1958
+- imdb_id: tt0052722
+  title: Darby O'Gill and the Little People
+  year: 1959
+- imdb_id: tt0053334
+  title: Tarzan's Greatest Adventure
+  year: 1959
+- imdb_id: tt0054898
+  title: The Frightened City
+  year: 1961
+- imdb_id: tt0055262
+  title: Operation Snafu
+  year: 1961
+- imdb_id: tt0056197
+  title: The Longest Day
+  year: 1962
+- imdb_id: tt0055928
+  title: Dr. No
+  year: 1962
+- imdb_id: tt0057076
+  title: From Russia with Love
+  year: 1963
+- imdb_id: tt0058754
+  title: Woman of Straw
+  year: 1964
+- imdb_id: tt0058329
+  title: Marnie
+  year: 1964
+- imdb_id: tt0058150
+  title: Goldfinger
+  year: 1964
+- imdb_id: tt0059274
+  title: The Hill
+  year: 1965
+- imdb_id: tt0059800
+  title: Thunderball
+  year: 1965
+- imdb_id: tt0061139
+  title: Un monde nouveau
+  year: 1966
+- imdb_id: tt0060414
+  title: A Fine Madness
+  year: 1966
+- imdb_id: tt0062512
+  title: You Only Live Twice
+  year: 1967
+- imdb_id: tt0063592
+  title: Shalako
+  year: 1968
+- imdb_id: tt0067315
+  title: The Red Tent
+  year: 1969
+- imdb_id: tt0066090
+  title: The Molly Maguires
+  year: 1970
+- imdb_id: tt0066767
+  title: The Anderson Tapes
+  year: 1971
+- imdb_id: tt0066995
+  title: Diamonds Are Forever
+  year: 1971
+- imdb_id: tt0070468
+  title: The Offence
+  year: 1973
+- imdb_id: tt0070948
+  title: Zardoz
+  year: 1974
+- imdb_id: tt0071877
+  title: Murder on the Orient Express
+  year: 1974
+- imdb_id: tt0073796
+  title: The Terrorists
+  year: 1975
+- imdb_id: tt0073906
+  title: The Wind and the Lion
+  year: 1975
+- imdb_id: tt0073341
+  title: The Man Who Would Be King
+  year: 1975
+- imdb_id: tt0075147
+  title: Robin and Marian
+  year: 1976
+- imdb_id: tt0074962
+  title: The Next Man
+  year: 1976
+- imdb_id: tt0075784
+  title: A Bridge Too Far
+  year: 1977
+- imdb_id: tt0079240
+  title: The Great Train Robbery
+  year: 1978
+- imdb_id: tt0079550
+  title: Meteor
+  year: 1979
+- imdb_id: tt0079013
+  title: Cuba
+  year: 1979
+- imdb_id: tt0082869
+  title: Outland
+  year: 1981
+- imdb_id: tt0081633
+  title: Time Bandits
+  year: 1981
+- imdb_id: tt0084920
+  title: Wrong Is Right
+  year: 1982
+- imdb_id: tt0083947
+  title: Five Days One Summer
+  year: 1982
+- imdb_id: tt0086006
+  title: Never Say Never Again
+  year: 1983
+- imdb_id: tt0084750
+  title: 'Sword of the Valiant: The Legend of Sir Gawain and the Green Knight'
+  year: 1984
+- imdb_id: tt0091203
+  title: Highlander
+  year: 1986
+- imdb_id: tt0091605
+  title: The Name of the Rose
+  year: 1986
+- imdb_id: tt0094226
+  title: The Untouchables
+  year: 1987
+- imdb_id: tt0095897
+  title: The Presidio
+  year: 1988
+- imdb_id: tt0095613
+  title: Memories of Me
+  year: 1988
+- imdb_id: tt0097576
+  title: Indiana Jones and the Last Crusade
+  year: 1989
+- imdb_id: tt0097328
+  title: Family Business
+  year: 1989
+- imdb_id: tt0099810
+  title: The Hunt for Red October
+  year: 1990
+- imdb_id: tt0100530
+  title: The Russia House
+  year: 1990
+- imdb_id: tt0102034
+  title: 'Highlander II: The Quickening'
+  year: 1991
+- imdb_id: tt0102798
+  title: 'Robin Hood: Prince of Thieves'
+  year: 1991
+- imdb_id: tt0104839
+  title: Medicine Man
+  year: 1992
+- imdb_id: tt0107969
+  title: Rising Sun
+  year: 1993
+- imdb_id: tt0109920
+  title: A Good Man in Africa
+  year: 1994
+- imdb_id: tt0113501
+  title: Just Cause
+  year: 1995
+- imdb_id: tt0113071
+  title: First Knight
+  year: 1995
+- imdb_id: tt0116136
+  title: DragonHeart
+  year: 1996
+- imdb_id: tt0117500
+  title: The Rock
+  year: 1996
+- imdb_id: tt0118661
+  title: The Avengers
+  year: 1998
+- imdb_id: tt0145734
+  title: Playing by Heart
+  year: 1998
+- imdb_id: tt0137494
+  title: Entrapment
+  year: 1999
+- imdb_id: tt0181536
+  title: Finding Forrester
+  year: 2000
+- imdb_id: tt0311429
+  title: The League of Extraordinary Gentlemen
+  year: 2003

@@ -1,2 +1,127 @@
-id: nm0001379
+frozen: true
+imdb_id: nm0001379
 name: John Huston
+titles:
+  - imdb_id: tt0033870
+    title: The Maltese Falcon
+    year: 1941
+  - imdb_id: tt0034890
+    title: In This Our Life
+    year: 1942
+  - imdb_id: tt0034428
+    title: Across the Pacific
+    year: 1942
+  - imdb_id: tt0040897
+    title: The Treasure of the Sierra Madre
+    year: 1948
+  - imdb_id: tt0040664
+    title: On Our Merry Way
+    year: 1948
+  - imdb_id: tt0040506
+    title: Key Largo
+    year: 1948
+  - imdb_id: tt0042035
+    title: We Were Strangers
+    year: 1949
+  - imdb_id: tt0042208
+    title: The Asphalt Jungle
+    year: 1950
+  - imdb_id: tt0043961
+    title: The Red Badge of Courage
+    year: 1951
+  - imdb_id: tt0043265
+    title: The African Queen
+    year: 1951
+  - imdb_id: tt0044926
+    title: Moulin Rouge
+    year: 1952
+  - imdb_id: tt0046414
+    title: Beat the Devil
+    year: 1953
+  - imdb_id: tt0049513
+    title: Moby Dick
+    year: 1956
+  - imdb_id: tt0050490
+    title: Heaven Knows, Mr. Allison
+    year: 1957
+  - imdb_id: tt0050379
+    title: A Farewell to Arms
+    year: 1957
+  - imdb_id: tt0051398
+    title: The Barbarian and the Geisha
+    year: 1958
+  - imdb_id: tt0052148
+    title: The Roots of Heaven
+    year: 1958
+  - imdb_id: tt0054428
+    title: The Unforgiven
+    year: 1960
+  - imdb_id: tt0055184
+    title: The Misfits
+    year: 1961
+  - imdb_id: tt0055998
+    title: Freud
+    year: 1962
+  - imdb_id: tt0057254
+    title: The List of Adrian Messenger
+    year: 1963
+  - imdb_id: tt0058404
+    title: The Night of the Iguana
+    year: 1964
+  - imdb_id: tt0060164
+    title: "The Bible: In the Beginning..."
+    year: 1966
+  - imdb_id: tt0061452
+    title: Casino Royale
+    year: 1967
+  - imdb_id: tt0062185
+    title: Reflections in a Golden Eye
+    year: 1967
+  - imdb_id: tt0064988
+    title: Sinful Davey
+    year: 1969
+  - imdb_id: tt0065195
+    title: A Walk with Love and Death
+    year: 1969
+  - imdb_id: tt0065950
+    title: The Kremlin Letter
+    year: 1970
+  - imdb_id: tt0067329
+    title: The Last Run
+    year: 1971
+  - imdb_id: tt0068575
+    title: Fat City
+    year: 1972
+  - imdb_id: tt0068853
+    title: The Life and Times of Judge Roy Bean
+    year: 1972
+  - imdb_id: tt0070351
+    title: The MacKintosh Man
+    year: 1973
+  - imdb_id: tt0073341
+    title: The Man Who Would Be King
+    year: 1975
+  - imdb_id: tt0079488
+    title: Love and Bullets
+    year: 1979
+  - imdb_id: tt0080140
+    title: Wise Blood
+    year: 1979
+  - imdb_id: tt0081334
+    title: Phobia
+    year: 1980
+  - imdb_id: tt0083284
+    title: Victory
+    year: 1981
+  - imdb_id: tt0083564
+    title: Annie
+    year: 1982
+  - imdb_id: tt0088322
+    title: Under the Volcano
+    year: 1984
+  - imdb_id: tt0089841
+    title: Prizzi's Honor
+    year: 1985
+  - imdb_id: tt0092843
+    title: The Dead
+    year: 1987

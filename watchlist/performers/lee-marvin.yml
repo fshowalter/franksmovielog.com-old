@@ -1,4 +1,172 @@
-id: nm0001511
+frozen: true
+imdb_id: nm0001511
 name: Lee Marvin
-notes: null
-title_ids_to_exclude: []
+titles:
+  - imdb_id: tt0044224
+    title: You're in the Navy Now
+    year: 1951
+  - imdb_id: tt0044112
+    title: Teresa
+    year: 1951
+  - imdb_id: tt0045702
+    title: Down Among the Sheltering Palms
+    year: 1952
+  - imdb_id: tt0044552
+    title: Diplomatic Courier
+    year: 1952
+  - imdb_id: tt0045317
+    title: We're Not Married!
+    year: 1952
+  - imdb_id: tt0044573
+    title: The Duel at Silver Creek
+    year: 1952
+  - imdb_id: tt0044683
+    title: Hangman's Knot
+    year: 1952
+  - imdb_id: tt0044579
+    title: Eight Iron Men
+    year: 1952
+  - imdb_id: tt0046294
+    title: Seminole
+    year: 1953
+  - imdb_id: tt0045827
+    title: The Glory Brigade
+    year: 1953
+  - imdb_id: tt0046375
+    title: The Stranger Wore a Gun
+    year: 1953
+  - imdb_id: tt0045846
+    title: Gun Fury
+    year: 1953
+  - imdb_id: tt0045555
+    title: The Big Heat
+    year: 1953
+  - imdb_id: tt0047677
+    title: The Wild One
+    year: 1953
+  - imdb_id: tt0047041
+    title: Gorilla at Large
+    year: 1954
+  - imdb_id: tt0046816
+    title: The Caine Mutiny
+    year: 1954
+  - imdb_id: tt0047388
+    title: The Raid
+    year: 1954
+  - imdb_id: tt0047849
+    title: Bad Day at Black Rock
+    year: 1955
+  - imdb_id: tt0048790
+    title: Violent Saturday
+    year: 1955
+  - imdb_id: tt0048432
+    title: Not as a Stranger
+    year: 1955
+  - imdb_id: tt0048301
+    title: A Life in the Balance
+    year: 1955
+  - imdb_id: tt0048484
+    title: Pete Kelly's Blues
+    year: 1955
+  - imdb_id: tt0048190
+    title: I Died a Thousand Times
+    year: 1955
+  - imdb_id: tt0048607
+    title: Shack Out on 101
+    year: 1955
+  - imdb_id: tt0049743
+    title: 7 Men from Now
+    year: 1956
+  - imdb_id: tt0048966
+    title: Attack
+    year: 1956
+  - imdb_id: tt0049619
+    title: Pillars of the Sky
+    year: 1956
+  - imdb_id: tt0049652
+    title: The Rack
+    year: 1956
+  - imdb_id: tt0050882
+    title: Raintree County
+    year: 1957
+  - imdb_id: tt0051936
+    title: The Missouri Traveler
+    year: 1958
+  - imdb_id: tt0054757
+    title: The Comancheros
+    year: 1961
+  - imdb_id: tt0056217
+    title: The Man Who Shot Liberty Valance
+    year: 1962
+  - imdb_id: tt0057007
+    title: Donovan's Reef
+    year: 1963
+  - imdb_id: tt0058262
+    title: The Killers
+    year: 1964
+  - imdb_id: tt0059017
+    title: Cat Ballou
+    year: 1965
+  - imdb_id: tt0059712
+    title: Ship of Fools
+    year: 1965
+  - imdb_id: tt0060862
+    title: The Professionals
+    year: 1966
+  - imdb_id: tt0061578
+    title: The Dirty Dozen
+    year: 1967
+  - imdb_id: tt0062138
+    title: Point Blank
+    year: 1967
+  - imdb_id: tt0063056
+    title: Hell in the Pacific
+    year: 1968
+  - imdb_id: tt0064782
+    title: Paint Your Wagon
+    year: 1969
+  - imdb_id: tt0066093
+    title: Monte Walsh
+    year: 1970
+  - imdb_id: tt0069103
+    title: Pocket Money
+    year: 1972
+  - imdb_id: tt0069121
+    title: Prime Cut
+    year: 1972
+  - imdb_id: tt0070030
+    title: Emperor of the North
+    year: 1973
+  - imdb_id: tt0070212
+    title: The Iceman Cometh
+    year: 1973
+  - imdb_id: tt0072198
+    title: The Spikes Gang
+    year: 1974
+  - imdb_id: tt0071721
+    title: The Klansman
+    year: 1974
+  - imdb_id: tt0075214
+    title: Shout at the Devil
+    year: 1976
+  - imdb_id: tt0074588
+    title: The Great Scout & Cathouse Thursday
+    year: 1976
+  - imdb_id: tt0078812
+    title: Avalanche Express
+    year: 1979
+  - imdb_id: tt0080437
+    title: The Big Red One
+    year: 1980
+  - imdb_id: tt0082247
+    title: Death Hunt
+    year: 1981
+  - imdb_id: tt0085615
+    title: Gorky Park
+    year: 1983
+  - imdb_id: tt0085289
+    title: Dog Day
+    year: 1984
+  - imdb_id: tt0090927
+    title: The Delta Force
+    year: 1986

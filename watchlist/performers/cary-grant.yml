@@ -1,2 +1,223 @@
-id: nm0000026
+frozen: true
+imdb_id: nm0000026
 name: Cary Grant
+titles:
+  - imdb_id: tt0023584
+    title: This Is the Night
+    year: 1932
+  - imdb_id: tt0023479
+    title: Sinners in the Sun
+    year: 1932
+  - imdb_id: tt0023213
+    title: Merrily We Go to Hell
+    year: 1932
+  - imdb_id: tt0022814
+    title: Devil and the Deep
+    year: 1932
+  - imdb_id: tt0022698
+    title: Blonde Venus
+    year: 1932
+  - imdb_id: tt0023028
+    title: Hot Saturday
+    year: 1932
+  - imdb_id: tt0023169
+    title: Madame Butterfly
+    year: 1932
+  - imdb_id: tt0024548
+    title: She Done Him Wrong
+    year: 1933
+  - imdb_id: tt0024781
+    title: The Woman Accused
+    year: 1933
+  - imdb_id: tt0023973
+    title: The Eagle and the Hawk
+    year: 1933
+  - imdb_id: tt0024048
+    title: Gambling Ship
+    year: 1933
+  - imdb_id: tt0024166
+    title: I'm No Angel
+    year: 1933
+  - imdb_id: tt0023753
+    title: Alice in Wonderland
+    year: 1933
+  - imdb_id: tt0025880
+    title: Thirty Day Princess
+    year: 1934
+  - imdb_id: tt0024906
+    title: Born to Be Bad
+    year: 1934
+  - imdb_id: tt0025351
+    title: Kiss and Make-Up
+    year: 1934
+  - imdb_id: tt0025363
+    title: Ladies Should Listen
+    year: 1934
+  - imdb_id: tt0026315
+    title: Enter Madame!
+    year: 1935
+  - imdb_id: tt0027221
+    title: Wings in the Dark
+    year: 1935
+  - imdb_id: tt0026607
+    title: The Last Outpost
+    year: 1935
+  - imdb_id: tt0027067
+    title: Sylvia Scarlett
+    year: 1935
+  - imdb_id: tt0027357
+    title: Big Brown Eyes
+    year: 1936
+  - imdb_id: tt0028330
+    title: Suzy
+    year: 1936
+  - imdb_id: tt0027286
+    title: The Amazing Adventure
+    year: 1936
+  - imdb_id: tt0028486
+    title: Wedding Present
+    year: 1936
+  - imdb_id: tt0029761
+    title: When You're in Love
+    year: 1937
+  - imdb_id: tt0029682
+    title: Topper
+    year: 1937
+  - imdb_id: tt0029675
+    title: The Toast of New York
+    year: 1937
+  - imdb_id: tt0028597
+    title: The Awful Truth
+    year: 1937
+  - imdb_id: tt0029947
+    title: Bringing Up Baby
+    year: 1938
+  - imdb_id: tt0030241
+    title: Holiday
+    year: 1938
+  - imdb_id: tt0031398
+    title: Gunga Din
+    year: 1939
+  - imdb_id: tt0031762
+    title: Only Angels Have Wings
+    year: 1939
+  - imdb_id: tt0031477
+    title: In Name Only
+    year: 1939
+  - imdb_id: tt0032599
+    title: His Girl Friday
+    year: 1940
+  - imdb_id: tt0029284
+    title: My Favorite Wife
+    year: 1940
+  - imdb_id: tt0032612
+    title: The Howards of Virginia
+    year: 1940
+  - imdb_id: tt0032904
+    title: The Philadelphia Story
+    year: 1940
+  - imdb_id: tt0034012
+    title: Penny Serenade
+    year: 1941
+  - imdb_id: tt0034248
+    title: Suspicion
+    year: 1941
+  - imdb_id: tt0035417
+    title: The Talk of the Town
+    year: 1942
+  - imdb_id: tt0035151
+    title: Once Upon a Honeymoon
+    year: 1942
+  - imdb_id: tt0036174
+    title: Mr. Lucky
+    year: 1943
+  - imdb_id: tt0035799
+    title: Destination Tokyo
+    year: 1943
+  - imdb_id: tt0037150
+    title: Once Upon a Time
+    year: 1944
+  - imdb_id: tt0036613
+    title: Arsenic and Old Lace
+    year: 1944
+  - imdb_id: tt0037135
+    title: None But the Lonely Heart
+    year: 1944
+  - imdb_id: tt0039110
+    title: Without Reservations
+    year: 1946
+  - imdb_id: tt0038776
+    title: Night and Day
+    year: 1946
+  - imdb_id: tt0038787
+    title: Notorious
+    year: 1946
+  - imdb_id: tt0039169
+    title: The Bachelor and the Bobby-Soxer
+    year: 1947
+  - imdb_id: tt0039190
+    title: The Bishop's Wife
+    year: 1947
+  - imdb_id: tt0040613
+    title: Mr. Blandings Builds His Dream House
+    year: 1948
+  - imdb_id: tt0040331
+    title: Every Girl Should Be Married
+    year: 1948
+  - imdb_id: tt0041498
+    title: I Was a Male War Bride
+    year: 1949
+  - imdb_id: tt0042352
+    title: Crisis
+    year: 1950
+  - imdb_id: tt0043915
+    title: People Will Talk
+    year: 1951
+  - imdb_id: tt0045102
+    title: Room for One More
+    year: 1952
+  - imdb_id: tt0044916
+    title: Monkey Business
+    year: 1952
+  - imdb_id: tt0045706
+    title: Dream Wife
+    year: 1953
+  - imdb_id: tt0048728
+    title: To Catch a Thief
+    year: 1955
+  - imdb_id: tt0050858
+    title: The Pride and the Passion
+    year: 1957
+  - imdb_id: tt0050105
+    title: An Affair to Remember
+    year: 1957
+  - imdb_id: tt0050599
+    title: Kiss Them for Me
+    year: 1957
+  - imdb_id: tt0051773
+    title: Indiscreet
+    year: 1958
+  - imdb_id: tt0051745
+    title: Houseboat
+    year: 1958
+  - imdb_id: tt0053125
+    title: North by Northwest
+    year: 1959
+  - imdb_id: tt0053143
+    title: Operation Petticoat
+    year: 1959
+  - imdb_id: tt0053877
+    title: The Grass Is Greener
+    year: 1960
+  - imdb_id: tt0056575
+    title: That Touch of Mink
+    year: 1962
+  - imdb_id: tt0056923
+    title: Charade
+    year: 1963
+  - imdb_id: tt0058092
+    title: Father Goose
+    year: 1964
+  - imdb_id: tt0061170
+    title: Walk Don't Run
+    year: 1966

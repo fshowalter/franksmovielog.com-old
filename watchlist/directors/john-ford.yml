@@ -1,2 +1,202 @@
-id: nm0000406
+frozen: true
+imdb_id: nm0000406
 name: John Ford
+titles:
+  - imdb_id: tt0019182
+    title: Mother Machree
+    year: 1927
+  - imdb_id: tt0018909
+    title: Four Sons
+    year: 1928
+  - imdb_id: tt0020459
+    title: Strong Boy
+    year: 1929
+  - imdb_id: tt0019699
+    title: The Black Watch
+    year: 1929
+  - imdb_id: tt0020359
+    title: Salute
+    year: 1929
+  - imdb_id: tt0021140
+    title: Men Without Women
+    year: 1930
+  - imdb_id: tt0020702
+    title: Born Reckless
+    year: 1930
+  - imdb_id: tt0021508
+    title: Up the River
+    year: 1930
+  - imdb_id: tt0022353
+    title: Seas Beneath
+    year: 1931
+  - imdb_id: tt0021695
+    title: The Brat
+    year: 1931
+  - imdb_id: tt0021622
+    title: Arrowsmith
+    year: 1931
+  - imdb_id: tt0022615
+    title: Air Mail
+    year: 1932
+  - imdb_id: tt0022897
+    title: Flesh
+    year: 1932
+  - imdb_id: tt0024453
+    title: Pilgrimage
+    year: 1933
+  - imdb_id: tt0023955
+    title: Doctor Bull
+    year: 1933
+  - imdb_id: tt0025423
+    title: The Lost Patrol
+    year: 1934
+  - imdb_id: tt0026008
+    title: The World Moves On
+    year: 1934
+  - imdb_id: tt0025335
+    title: Judge Priest
+    year: 1934
+  - imdb_id: tt0027214
+    title: The Whole Town's Talking
+    year: 1935
+  - imdb_id: tt0026529
+    title: The Informer
+    year: 1935
+  - imdb_id: tt0027042
+    title: Steamboat Round the Bend
+    year: 1935
+  - imdb_id: tt0028141
+    title: The Prisoner of Shark Island
+    year: 1936
+  - imdb_id: tt0027948
+    title: Mary of Scotland
+    year: 1936
+  - imdb_id: tt0028112
+    title: The Plough and the Stars
+    year: 1936
+  - imdb_id: tt0029751
+    title: Wee Willie Winkie
+    year: 1937
+  - imdb_id: tt0029030
+    title: The Hurricane
+    year: 1937
+  - imdb_id: tt0030150
+    title: Four Men and a Prayer
+    year: 1938
+  - imdb_id: tt0030808
+    title: Submarine Patrol
+    year: 1938
+  - imdb_id: tt0031971
+    title: Stagecoach
+    year: 1939
+  - imdb_id: tt0032155
+    title: Young Mr. Lincoln
+    year: 1939
+  - imdb_id: tt0031252
+    title: Drums Along the Mohawk
+    year: 1939
+  - imdb_id: tt0032551
+    title: The Grapes of Wrath
+    year: 1940
+  - imdb_id: tt0032728
+    title: The Long Voyage Home
+    year: 1940
+  - imdb_id: tt0034297
+    title: Tobacco Road
+    year: 1941
+  - imdb_id: tt0033729
+    title: How Green Was My Valley
+    year: 1941
+  - imdb_id: tt0274560
+    title: How to Operate Behind Enemy Lines
+    year: 1943
+  - imdb_id: tt0038160
+    title: They Were Expendable
+    year: 1945
+  - imdb_id: tt0038762
+    title: My Darling Clementine
+    year: 1946
+  - imdb_id: tt0039402
+    title: The Fugitive
+    year: 1947
+  - imdb_id: tt0040369
+    title: Fort Apache
+    year: 1948
+  - imdb_id: tt0040064
+    title: 3 Godfathers
+    year: 1948
+  - imdb_id: tt0041866
+    title: She Wore a Yellow Ribbon
+    year: 1949
+  - imdb_id: tt0041746
+    title: Pinky
+    year: 1949
+  - imdb_id: tt0043129
+    title: When Willie Comes Marching Home
+    year: 1950
+  - imdb_id: tt0043117
+    title: Wagon Master
+    year: 1950
+  - imdb_id: tt0042895
+    title: Rio Grande
+    year: 1950
+  - imdb_id: tt0045061
+    title: The Quiet Man
+    year: 1952
+  - imdb_id: tt0045323
+    title: What Price Glory
+    year: 1952
+  - imdb_id: tt0046384
+    title: The Sun Shines Bright
+    year: 1953
+  - imdb_id: tt0046085
+    title: Mogambo
+    year: 1953
+  - imdb_id: tt0048312
+    title: The Long Gray Line
+    year: 1955
+  - imdb_id: tt0048380
+    title: Mister Roberts
+    year: 1955
+  - imdb_id: tt0049730
+    title: The Searchers
+    year: 1956
+  - imdb_id: tt0051198
+    title: The Wings of Eagles
+    year: 1957
+  - imdb_id: tt0050902
+    title: The Rising of the Moon
+    year: 1957
+  - imdb_id: tt0051655
+    title: Gideon of Scotland Yard
+    year: 1958
+  - imdb_id: tt0051845
+    title: The Last Hurrah
+    year: 1958
+  - imdb_id: tt0052902
+    title: The Horse Soldiers
+    year: 1959
+  - imdb_id: tt0054292
+    title: Sergeant Rutledge
+    year: 1960
+  - imdb_id: tt0055558
+    title: Two Rode Together
+    year: 1961
+  - imdb_id: tt0056217
+    title: The Man Who Shot Liberty Valance
+    year: 1962
+  - imdb_id: tt0056085
+    title: How the West Was Won
+    year: 1962
+  - imdb_id: tt0057007
+    title: Donovan's Reef
+    year: 1963
+  - imdb_id: tt0057940
+    title: Cheyenne Autumn
+    year: 1964
+  - imdb_id: tt0059930
+    title: Young Cassidy
+    year: 1965
+  - imdb_id: tt0060050
+    title: 7 Women
+    year: 1966

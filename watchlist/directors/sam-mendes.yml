@@ -1,2 +1,28 @@
-id: nm0005222
+frozen: false
+imdb_id: nm0005222
 name: Sam Mendes
+titles:
+- imdb_id: tt0169547
+  title: American Beauty
+  year: 1999
+- imdb_id: tt0257044
+  title: Road to Perdition
+  year: 2002
+- imdb_id: tt0418763
+  title: Jarhead
+  year: 2005
+- imdb_id: tt0959337
+  title: Revolutionary Road
+  year: 2008
+- imdb_id: tt1176740
+  title: Away We Go
+  year: 2009
+- imdb_id: tt1074638
+  title: Skyfall
+  year: 2012
+- imdb_id: tt2379713
+  title: Spectre
+  year: 2015
+- imdb_id: tt8579674
+  title: '1917'
+  year: 2019

@@ -1,2 +1,61 @@
-id: nm0001243
+frozen: false
+imdb_id: nm0001243
 name: William Friedkin
+titles:
+- imdb_id: tt0061720
+  title: Good Times
+  year: 1967
+- imdb_id: tt0062732
+  title: The Birthday Party
+  year: 1968
+- imdb_id: tt0063348
+  title: The Night They Raided Minsky's
+  year: 1968
+- imdb_id: tt0065488
+  title: The Boys in the Band
+  year: 1970
+- imdb_id: tt0067116
+  title: The French Connection
+  year: 1971
+- imdb_id: tt0070047
+  title: The Exorcist
+  year: 1973
+- imdb_id: tt0076740
+  title: Sorcerer
+  year: 1977
+- imdb_id: tt0077275
+  title: The Brink's Job
+  year: 1978
+- imdb_id: tt0080569
+  title: Cruising
+  year: 1980
+- imdb_id: tt0085412
+  title: Deal of the Century
+  year: 1983
+- imdb_id: tt0090180
+  title: To Live and Die in L.A.
+  year: 1985
+- imdb_id: tt0095958
+  title: Rampage
+  year: 1987
+- imdb_id: tt0099710
+  title: The Guardian
+  year: 1990
+- imdb_id: tt0109305
+  title: Blue Chips
+  year: 1994
+- imdb_id: tt0113451
+  title: Jade
+  year: 1995
+- imdb_id: tt0160797
+  title: Rules of Engagement
+  year: 2000
+- imdb_id: tt0269347
+  title: The Hunted
+  year: 2003
+- imdb_id: tt0470705
+  title: Bug
+  year: 2006
+- imdb_id: tt1726669
+  title: Killer Joe
+  year: 2011

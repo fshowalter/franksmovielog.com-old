@@ -1,4 +1,31 @@
-id: nm0001438
+frozen: false
+imdb_id: nm0001438
 name: Neil LaBute
-notes: null
-title_ids_to_exclude: []
+titles:
+- imdb_id: tt0119361
+  title: In the Company of Men
+  year: 1997
+- imdb_id: tt0119517
+  title: Your Friends & Neighbors
+  year: 1998
+- imdb_id: tt0256276
+  title: Possession
+  year: 2002
+- imdb_id: tt0308878
+  title: The Shape of Things
+  year: 2003
+- imdb_id: tt0450345
+  title: The Wicker Man
+  year: 2006
+- imdb_id: tt2201221
+  title: Some Girl
+  year: 2013
+- imdb_id: tt2231138
+  title: Some Velvet Morning
+  year: 2013
+- imdb_id: tt3831696
+  title: My America
+  year: 2014
+- imdb_id: tt3194590
+  title: Dirty Weekend
+  year: 2015

@@ -1,4 +1,313 @@
-id: nm0001637
+frozen: true
+imdb_id: nm0001637
 name: Vincent Price
-notes: null
-title_ids_to_exclude: []
+titles:
+  - imdb_id: tt0030732
+    title: Service de Luxe
+    year: 1938
+  - imdb_id: tt0031826
+    title: The Private Lives of Elizabeth and Essex
+    year: 1939
+  - imdb_id: tt0032049
+    title: Tower of London
+    year: 1939
+  - imdb_id: tt0032635
+    title: The Invisible Man Returns
+    year: 1940
+  - imdb_id: tt0032558
+    title: Green Hell
+    year: 1940
+  - imdb_id: tt0032610
+    title: The House of the Seven Gables
+    year: 1940
+  - imdb_id: tt0032281
+    title: Brigham Young
+    year: 1940
+  - imdb_id: tt0032613
+    title: Hudson's Bay
+    year: 1941
+  - imdb_id: tt0036377
+    title: The Song of Bernadette
+    year: 1943
+  - imdb_id: tt0036803
+    title: The Eve of St. Mark
+    year: 1944
+  - imdb_id: tt0037465
+    title: Wilson
+    year: 1944
+  - imdb_id: tt0037008
+    title: Laura
+    year: 1944
+  - imdb_id: tt0036983
+    title: The Keys of the Kingdom
+    year: 1944
+  - imdb_id: tt0038040
+    title: A Royal Scandal
+    year: 1945
+  - imdb_id: tt0037865
+    title: Leave Her to Heaven
+    year: 1945
+  - imdb_id: tt0038937
+    title: Shock
+    year: 1946
+  - imdb_id: tt0038492
+    title: Dragonwyck
+    year: 1946
+  - imdb_id: tt0039973
+    title: The Web
+    year: 1947
+  - imdb_id: tt0039581
+    title: The Long Night
+    year: 1947
+  - imdb_id: tt0037089
+    title: Moss Rose
+    year: 1947
+  - imdb_id: tt0039391
+    title: Forever Amber
+    year: 1947
+  - imdb_id: tt0040925
+    title: Up in Central Park
+    year: 1948
+  - imdb_id: tt0040068
+    title: Abbott and Costello Meet Frankenstein
+    year: 1948
+  - imdb_id: tt0040744
+    title: Rogues' Regiment
+    year: 1948
+  - imdb_id: tt0040876
+    title: The Three Musketeers
+    year: 1948
+  - imdb_id: tt0041207
+    title: The Bribe
+    year: 1949
+  - imdb_id: tt0041149
+    title: Bagdad
+    year: 1949
+  - imdb_id: tt0042229
+    title: The Baron of Arizona
+    year: 1950
+  - imdb_id: tt0042325
+    title: Champagne for Caesar
+    year: 1950
+  - imdb_id: tt0041479
+    title: Curtain Call at Cactus Creek
+    year: 1950
+  - imdb_id: tt0043264
+    title: Adventures of Captain Fabian
+    year: 1951
+  - imdb_id: tt0043643
+    title: His Kind of Woman
+    year: 1951
+  - imdb_id: tt0044825
+    title: The Las Vegas Story
+    year: 1952
+  - imdb_id: tt0045888
+    title: House of Wax
+    year: 1953
+  - imdb_id: tt0046891
+    title: Dangerous Mission
+    year: 1954
+  - imdb_id: tt0046834
+    title: Casanova's Big Night
+    year: 1954
+  - imdb_id: tt0047200
+    title: The Mad Magician
+    year: 1954
+  - imdb_id: tt0048642
+    title: Son of Sinbad
+    year: 1955
+  - imdb_id: tt0049737
+    title: Serenade
+    year: 1956
+  - imdb_id: tt0049949
+    title: While the City Sleeps
+    year: 1956
+  - imdb_id: tt0049909
+    title: The Vagabond King
+    year: 1956
+  - imdb_id: tt0049833
+    title: The Ten Commandments
+    year: 1956
+  - imdb_id: tt0051016
+    title: The Story of Mankind
+    year: 1957
+  - imdb_id: tt0051622
+    title: The Fly
+    year: 1958
+  - imdb_id: tt0051744
+    title: House on Haunted Hill
+    year: 1959
+  - imdb_id: tt0052626
+    title: The Big Circus
+    year: 1959
+  - imdb_id: tt0053363
+    title: The Tingler
+    year: 1959
+  - imdb_id: tt0053219
+    title: Return of the Fly
+    year: 1959
+  - imdb_id: tt0052602
+    title: The Bat
+    year: 1959
+  - imdb_id: tt0053925
+    title: House of Usher
+    year: 1960
+  - imdb_id: tt0055152
+    title: Master of the World
+    year: 1961
+  - imdb_id: tt0055304
+    title: Pit and the Pendulum
+    year: 1961
+  - imdb_id: tt0055222
+    title: Queen of the Nile
+    year: 1961
+  - imdb_id: tt0054937
+    title: Rage of the Buccaneers
+    year: 1961
+  - imdb_id: tt0055864
+    title: Confessions of an Opium Eater
+    year: 1962
+  - imdb_id: tt0056552
+    title: Tales of Terror
+    year: 1962
+  - imdb_id: tt0055868
+    title: Convicts 4
+    year: 1962
+  - imdb_id: tt0056606
+    title: Tower of London
+    year: 1962
+  - imdb_id: tt0057449
+    title: The Raven
+    year: 1963
+  - imdb_id: tt0056993
+    title: Diary of a Madman
+    year: 1963
+  - imdb_id: tt0056860
+    title: Beach Party
+    year: 1963
+  - imdb_id: tt0057128
+    title: The Haunted Palace
+    year: 1963
+  - imdb_id: tt0057608
+    title: Twice-Told Tales
+    year: 1963
+  - imdb_id: tt0056943
+    title: The Comedy of Terrors
+    year: 1963
+  - imdb_id: tt0058700
+    title: The Last Man on Earth
+    year: 1964
+  - imdb_id: tt0058333
+    title: The Masque of the Red Death
+    year: 1964
+  - imdb_id: tt0059821
+    title: The Tomb of Ligeia
+    year: 1964
+  - imdb_id: tt0059895
+    title: City in the Sea
+    year: 1965
+  - imdb_id: tt0059124
+    title: Dr. Goldfoot and the Bikini Machine
+    year: 1965
+  - imdb_id: tt0061014
+    title: Dr. Goldfoot and the Girl Bombs
+    year: 1966
+  - imdb_id: tt0061451
+    title: House of 1,000 Dolls
+    year: 1967
+  - imdb_id: tt0061832
+    title: The Jackals
+    year: 1967
+  - imdb_id: tt0063285
+    title: Witchfinder General
+    year: 1968
+  - imdb_id: tt0063715
+    title: Spirits of the Dead
+    year: 1968
+  - imdb_id: tt0064695
+    title: More Dead Than Alive
+    year: 1969
+  - imdb_id: tt0065125
+    title: The Trouble with Girls
+    year: 1969
+  - imdb_id: tt0064747
+    title: The Oblong Box
+    year: 1969
+  - imdb_id: tt0229371
+    title: An Evening of Edgar Allan Poe
+    year: 1970
+  - imdb_id: tt0064949
+    title: Scream and Scream Again
+    year: 1970
+  - imdb_id: tt0065597
+    title: Cry of the Banshee
+    year: 1970
+  - imdb_id: tt0066740
+    title: The Abominable Dr. Phibes
+    year: 1971
+  - imdb_id: tt0068503
+    title: Dr. Phibes Rises Again
+    year: 1972
+  - imdb_id: tt0270206
+    title: The Aries Computer
+    year: 1972
+  - imdb_id: tt0070791
+    title: Theater of Blood
+    year: 1973
+  - imdb_id: tt0071790
+    title: Madhouse
+    year: 1974
+  - imdb_id: tt0071677
+    title: It's Not the Size That Counts
+    year: 1974
+  - imdb_id: tt0073213
+    title: Journey Into Fear
+    year: 1975
+  - imdb_id: tt0075419
+    title: "Alice Cooper: Welcome to My Nightmare"
+    year: 1975
+  - imdb_id: tt0074260
+    title: The Butterfly Ball
+    year: 1977
+  - imdb_id: tt0079858
+    title: Scavenger Hunt
+    year: 1979
+  - imdb_id: tt0087925
+    title: I Go Pogo
+    year: 1980
+  - imdb_id: tt0081178
+    title: The Monster Club
+    year: 1981
+  - imdb_id: tt0082121
+    title: Bustin' Loose
+    year: 1981
+  - imdb_id: tt0085693
+    title: House of the Long Shadows
+    year: 1983
+  - imdb_id: tt0188404
+    title: Dexter the Dragon & Bumble the Bear
+    year: 1983
+  - imdb_id: tt0086981
+    title: Bloodbath at the House of Death
+    year: 1984
+  - imdb_id: tt0091149
+    title: The Great Mouse Detective
+    year: 1986
+  - imdb_id: tt0091671
+    title: From a Whisper to a Scream
+    year: 1987
+  - imdb_id: tt0094315
+    title: The Whales of August
+    year: 1987
+  - imdb_id: tt0094961
+    title: Dead Heat
+    year: 1988
+  - imdb_id: tt0096875
+    title: Catchfire
+    year: 1990
+  - imdb_id: tt0099487
+    title: Edward Scissorhands
+    year: 1990
+  - imdb_id: tt0112389
+    title: The Thief and the Cobbler
+    year: 1993

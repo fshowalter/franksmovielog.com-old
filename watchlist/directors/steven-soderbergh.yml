@@ -1,2 +1,88 @@
-id: nm0001752
+frozen: false
+imdb_id: nm0001752
 name: Steven Soderbergh
+titles:
+- imdb_id: tt0098724
+  title: Sex, Lies, and Videotape
+  year: 1989
+- imdb_id: tt0102181
+  title: Kafka
+  year: 1991
+- imdb_id: tt0107322
+  title: King of the Hill
+  year: 1993
+- imdb_id: tt0114788
+  title: The Underneath
+  year: 1995
+- imdb_id: tt0117561
+  title: Schizopolis
+  year: 1996
+- imdb_id: tt0120780
+  title: Out of Sight
+  year: 1998
+- imdb_id: tt0165854
+  title: The Limey
+  year: 1999
+- imdb_id: tt0195685
+  title: Erin Brockovich
+  year: 2000
+- imdb_id: tt0181865
+  title: Traffic
+  year: 2000
+- imdb_id: tt0240772
+  title: Ocean's Eleven
+  year: 2001
+- imdb_id: tt0290212
+  title: Full Frontal
+  year: 2002
+- imdb_id: tt0307479
+  title: Solaris
+  year: 2002
+- imdb_id: tt0343663
+  title: Eros
+  year: 2004
+- imdb_id: tt0349903
+  title: Ocean's Twelve
+  year: 2004
+- imdb_id: tt0454792
+  title: Bubble
+  year: 2005
+- imdb_id: tt0452624
+  title: The Good German
+  year: 2006
+- imdb_id: tt0496806
+  title: Ocean's Thirteen
+  year: 2007
+- imdb_id: tt0892255
+  title: 'Che: Part One'
+  year: 2008
+- imdb_id: tt0374569
+  title: 'Che: Part Two'
+  year: 2008
+- imdb_id: tt1103982
+  title: The Girlfriend Experience
+  year: 2009
+- imdb_id: tt1130080
+  title: The Informant!
+  year: 2009
+- imdb_id: tt1598778
+  title: Contagion
+  year: 2011
+- imdb_id: tt1506999
+  title: Haywire
+  year: 2011
+- imdb_id: tt1915581
+  title: Magic Mike
+  year: 2012
+- imdb_id: tt2053463
+  title: Side Effects
+  year: 2013
+- imdb_id: tt1291580
+  title: Behind the Candelabra
+  year: 2013
+- imdb_id: tt5439796
+  title: Logan Lucky
+  year: 2017
+- imdb_id: tt7153766
+  title: Unsane
+  year: 2018

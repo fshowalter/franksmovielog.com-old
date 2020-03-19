@@ -1,2 +1,19 @@
-id: nm1296554
+frozen: false
+imdb_id: nm1296554
 name: Ben Wheatley
+titles:
+- imdb_id: tt2023690
+  title: Sightseers
+  year: 2012
+- imdb_id: tt1935896
+  title: The ABCs of Death
+  year: 2012
+- imdb_id: tt2375574
+  title: A Field in England
+  year: 2013
+- imdb_id: tt0462335
+  title: High-Rise
+  year: 2015
+- imdb_id: tt4158096
+  title: Free Fire
+  year: 2016

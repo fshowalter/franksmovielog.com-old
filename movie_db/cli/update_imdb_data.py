@@ -9,7 +9,7 @@ def prompt() -> None:
     options = _radio_list.CallableOptions([
         (None, 'Go back'),
         (update_imdb_s3_data, HTML('<cyan>Update datasets</cyan>')),
-        (update_imdb_web_data, HTML('<cyan>Update Watchlist credits</cyan>')),
+        (update_imdb_web_data, HTML('<cyan>Update credits</cyan>')),
     ])
 
     option_function = _radio_list.prompt(

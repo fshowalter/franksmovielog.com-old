@@ -7,6 +7,12 @@ from movie_db.logger import logger
 
 FILE_NAME = 'title.basics.tsv.gz'
 TABLE_NAME = 'movies'
+Whitelist = {
+    'tt0116671',  # Jack Frost (1997) [V]
+    'tt0148615',  # Play Motel (1979) [X]
+    'tt1801096',  # Sexy Evil Genius (2013) [V]
+    'tt0093135',  # Hack-O-Lantern (1988) [V]
+}
 
 
 @dataclass
@@ -79,8 +85,9 @@ def _extract_movies(downloaded_file_path: str) -> Mapping[str, Movie]:
     movies: Dict[str, Movie] = {}
 
     for fields in _imdb_s3_extractor.extract(downloaded_file_path):
-        if _title_is_valid(fields):
-            movies[str(fields[0])] = Movie(fields)
+        imdb_id = str(fields[0])
+        if imdb_id in Whitelist or _title_is_valid(fields):
+            movies[imdb_id] = Movie(fields)
 
     logger.log('Extracted {} {}.', humanize.intcomma(len(movies)), TABLE_NAME)
     return movies

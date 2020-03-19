@@ -1,2 +1,46 @@
-id: nm0000464
+frozen: false
+imdb_id: nm0000464
 name: Jim Jarmusch
+titles:
+- imdb_id: tt0084488
+  title: Permanent Vacation
+  year: 1980
+- imdb_id: tt0088184
+  title: Stranger Than Paradise
+  year: 1984
+- imdb_id: tt0090967
+  title: Down by Law
+  year: 1986
+- imdb_id: tt0097940
+  title: Mystery Train
+  year: 1989
+- imdb_id: tt0102536
+  title: Night on Earth
+  year: 1991
+- imdb_id: tt0112817
+  title: Dead Man
+  year: 1995
+- imdb_id: tt0165798
+  title: 'Ghost Dog: The Way of the Samurai'
+  year: 1999
+- imdb_id: tt0304808
+  title: 'Ten Minutes Older: The Trumpet'
+  year: 2002
+- imdb_id: tt0379217
+  title: Coffee and Cigarettes
+  year: 2003
+- imdb_id: tt0412019
+  title: Broken Flowers
+  year: 2005
+- imdb_id: tt1135092
+  title: The Limits of Control
+  year: 2009
+- imdb_id: tt1714915
+  title: Only Lovers Left Alive
+  year: 2013
+- imdb_id: tt5247022
+  title: Paterson
+  year: 2016
+- imdb_id: tt8695030
+  title: The Dead Don't Die
+  year: 2019

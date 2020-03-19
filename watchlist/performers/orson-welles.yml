@@ -1,4 +1,256 @@
-id: nm0000080
+frozen: false
+imdb_id: nm0000080
 name: Orson Welles
-notes: null
-title_ids_to_exclude: []
+titles:
+- imdb_id: tt0030881
+  title: Too Much Johnson
+  year: 1938
+- imdb_id: tt0033124
+  title: Swiss Family Robinson
+  year: 1940
+- imdb_id: tt0033467
+  title: Citizen Kane
+  year: 1941
+- imdb_id: tt0035015
+  title: The Magnificent Ambersons
+  year: 1942
+- imdb_id: tt0034922
+  title: Journey Into Fear
+  year: 1943
+- imdb_id: tt0036969
+  title: Jane Eyre
+  year: 1943
+- imdb_id: tt0036832
+  title: Follow the Boys
+  year: 1944
+- imdb_id: tt0039041
+  title: Tomorrow Is Forever
+  year: 1946
+- imdb_id: tt0038991
+  title: The Stranger
+  year: 1946
+- imdb_id: tt0038499
+  title: Duel in the Sun
+  year: 1946
+- imdb_id: tt0040525
+  title: The Lady from Shanghai
+  year: 1947
+- imdb_id: tt0040558
+  title: Macbeth
+  year: 1948
+- imdb_id: tt0041959
+  title: The Third Man
+  year: 1949
+- imdb_id: tt0041182
+  title: Black Magic
+  year: 1949
+- imdb_id: tt0041767
+  title: Prince of Foxes
+  year: 1949
+- imdb_id: tt0042256
+  title: The Black Rose
+  year: 1950
+- imdb_id: tt0045251
+  title: Othello
+  year: 1951
+- imdb_id: tt0043918
+  title: The Little World of Don Camillo
+  year: 1952
+- imdb_id: tt0045259
+  title: Trent's Last Case
+  year: 1952
+- imdb_id: tt0046483
+  title: L'uomo la bestia e la virtù
+  year: 1953
+- imdb_id: tt0047484
+  title: Royal Affairs in Versailles
+  year: 1954
+- imdb_id: tt0046465
+  title: Trouble in the Glen
+  year: 1954
+- imdb_id: tt0047579
+  title: Three Cases of Murder
+  year: 1955
+- imdb_id: tt0048413
+  title: Napoleon
+  year: 1955
+- imdb_id: tt0048393
+  title: Confidential Report
+  year: 1955
+- imdb_id: tt0049513
+  title: Moby Dick
+  year: 1956
+- imdb_id: tt0050680
+  title: Man in the Shadow
+  year: 1957
+- imdb_id: tt0051878
+  title: The Long, Hot Summer
+  year: 1958
+- imdb_id: tt0052311
+  title: Touch of Evil
+  year: 1958
+- imdb_id: tt0052365
+  title: The Vikings
+  year: 1958
+- imdb_id: tt0052226
+  title: South Seas Adventure
+  year: 1958
+- imdb_id: tt0052148
+  title: The Roots of Heaven
+  year: 1958
+- imdb_id: tt0052700
+  title: Compulsion
+  year: 1959
+- imdb_id: tt0052799
+  title: Ferry to Hong Kong
+  year: 1959
+- imdb_id: tt0054788
+  title: David and Goliath
+  year: 1960
+- imdb_id: tt0053735
+  title: Crack in the Mirror
+  year: 1960
+- imdb_id: tt0053638
+  title: The Battle of Austerlitz
+  year: 1960
+- imdb_id: tt0056558
+  title: The Tartars
+  year: 1961
+- imdb_id: tt0055047
+  title: King of Kings
+  year: 1961
+- imdb_id: tt0055070
+  title: Lafayette
+  year: 1962
+- imdb_id: tt0057427
+  title: The Trial
+  year: 1962
+- imdb_id: tt0056171
+  title: Ro.Go.Pa.G.
+  year: 1963
+- imdb_id: tt0057634
+  title: The V.I.P.s
+  year: 1963
+- imdb_id: tt0059429
+  title: Marco the Magnificent
+  year: 1965
+- imdb_id: tt0059012
+  title: Chimes at Midnight
+  year: 1965
+- imdb_id: tt0060814
+  title: Is Paris Burning?
+  year: 1966
+- imdb_id: tt0060665
+  title: A Man for All Seasons
+  year: 1966
+- imdb_id: tt0061452
+  title: Casino Royale
+  year: 1967
+- imdb_id: tt0062225
+  title: The Sailor from Gibraltar
+  year: 1967
+- imdb_id: tt0061801
+  title: I'll Never Forget What's'isname
+  year: 1967
+- imdb_id: tt0063376
+  title: Oedipus the King
+  year: 1968
+- imdb_id: tt0064448
+  title: House of Cards
+  year: 1968
+- imdb_id: tt0063174
+  title: The Last Roman
+  year: 1968
+- imdb_id: tt0063679
+  title: Tepepa
+  year: 1969
+- imdb_id: tt0065025
+  title: The Southern Star
+  year: 1969
+- imdb_id: tt0064534
+  title: Kampf um Rom II - Der Verrat
+  year: 1969
+- imdb_id: tt0064091
+  title: The Battle of Neretva
+  year: 1969
+- imdb_id: tt0065361
+  title: 12 + 1
+  year: 1969
+- imdb_id: tt0065950
+  title: The Kremlin Letter
+  year: 1970
+- imdb_id: tt0066402
+  title: Start the Revolution Without Me
+  year: 1970
+- imdb_id: tt0065528
+  title: Catch-22
+  year: 1970
+- imdb_id: tt0066549
+  title: Waterloo
+  year: 1970
+- imdb_id: tt0209994
+  title: The Deep
+  year: 1970
+- imdb_id: tt0067699
+  title: A Safe Place
+  year: 1971
+- imdb_id: tt0068521
+  title: Ten Days Wonder
+  year: 1971
+- imdb_id: tt0067386
+  title: Malpertuis
+  year: 1971
+- imdb_id: tt0068994
+  title: Necromancy
+  year: 1972
+- imdb_id: tt0068637
+  title: Get to Know Your Rabbit
+  year: 1972
+- imdb_id: tt0069229
+  title: Treasure Island
+  year: 1972
+- imdb_id: tt0070758
+  title: The Battle of Sutjeska
+  year: 1973
+- imdb_id: tt0072263
+  title: Ten Little Indians
+  year: 1974
+- imdb_id: tt0075406
+  title: Voyage of the Damned
+  year: 1976
+- imdb_id: tt0076160
+  title: Hot Tomorrows
+  year: 1977
+- imdb_id: tt0076102
+  title: The Biggest Battle
+  year: 1978
+- imdb_id: tt0079588
+  title: The Muppet Movie
+  year: 1979
+- imdb_id: tt0079070
+  title: The Double McGuffin
+  year: 1979
+- imdb_id: tt0079985
+  title: The Secret Life of Nikola Tesla
+  year: 1980
+- imdb_id: tt0081109
+  title: The Man Who Saw Tomorrow
+  year: 1981
+- imdb_id: tt0082517
+  title: 'History of the World: Part I'
+  year: 1981
+- imdb_id: tt0082122
+  title: Butterfly
+  year: 1982
+- imdb_id: tt0088134
+  title: Slapstick of Another Kind
+  year: 1982
+- imdb_id: tt0086577
+  title: Where Is Parsifal?
+  year: 1984
+- imdb_id: tt0092106
+  title: 'The Transformers: The Movie'
+  year: 1986
+- imdb_id: tt0094007
+  title: Someone to Love
+  year: 1987

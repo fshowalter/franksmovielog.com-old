@@ -38,7 +38,7 @@ def add_writer(imdb_id: str, name: str) -> '_watchlist_item.Writer':
 
 
 def update_titles_for_people() -> None:
-    _watchlist_item.Director.refresh_all_item_titles()
+    # _watchlist_item.Director.refresh_all_item_titles()
     _watchlist_item.Performer.refresh_all_item_titles()
     _watchlist_item.Writer.refresh_all_item_titles()
 

@@ -1,4 +1,46 @@
-id: nm0001361
+frozen: true
+imdb_id: nm0001361
 name: Tobe Hooper
-notes: null
-title_ids_to_exclude: []
+titles:
+  - imdb_id: tt0404011
+    title: Eggshells
+    year: 1969
+  - imdb_id: tt0072271
+    title: The Texas Chain Saw Massacre
+    year: 1974
+  - imdb_id: tt0074455
+    title: Eaten Alive
+    year: 1976
+  - imdb_id: tt0079027
+    title: The Dark
+    year: 1979
+  - imdb_id: tt0082427
+    title: The Funhouse
+    year: 1981
+  - imdb_id: tt0084516
+    title: Poltergeist
+    year: 1982
+  - imdb_id: tt0089489
+    title: Lifeforce
+    year: 1985
+  - imdb_id: tt0091276
+    title: Invaders from Mars
+    year: 1986
+  - imdb_id: tt0092076
+    title: The Texas Chainsaw Massacre 2
+    year: 1986
+  - imdb_id: tt0098375
+    title: Spontaneous Combustion
+    year: 1990
+  - imdb_id: tt0108350
+    title: Night Terrors
+    year: 1993
+  - imdb_id: tt0113762
+    title: The Mangler
+    year: 1995
+  - imdb_id: tt0367153
+    title: Toolbox Murders
+    year: 2004
+  - imdb_id: tt0415167
+    title: Mortuary
+    year: 2005

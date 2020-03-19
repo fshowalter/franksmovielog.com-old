@@ -1,4 +1,97 @@
-id: nm0000054
+frozen: true
+imdb_id: nm0000054
 name: Marilyn Monroe
-notes: null
-title_ids_to_exclude: []
+titles:
+  - imdb_id: tt0040267
+    title: Dangerous Years
+    year: 1947
+  - imdb_id: tt0040983
+    title: You Were Meant for Me
+    year: 1948
+  - imdb_id: tt0040762
+    title: Scudda Hoo! Scudda Hay!
+    year: 1948
+  - imdb_id: tt0040402
+    title: Green Grass of Wyoming
+    year: 1948
+  - imdb_id: tt0041571
+    title: Ladies of the Chorus
+    year: 1948
+  - imdb_id: tt0041604
+    title: Love Happy
+    year: 1949
+  - imdb_id: tt0043046
+    title: A Ticket to Tomahawk
+    year: 1950
+  - imdb_id: tt0042208
+    title: The Asphalt Jungle
+    year: 1950
+  - imdb_id: tt0042894
+    title: Right Cross
+    year: 1950
+  - imdb_id: tt0042463
+    title: The Fireball
+    year: 1950
+  - imdb_id: tt0042192
+    title: All About Eve
+    year: 1950
+  - imdb_id: tt0043651
+    title: Home Town Story
+    year: 1951
+  - imdb_id: tt0043299
+    title: As Young as You Feel
+    year: 1951
+  - imdb_id: tt0043759
+    title: Love Nest
+    year: 1951
+  - imdb_id: tt0043736
+    title: Let's Make It Legal
+    year: 1951
+  - imdb_id: tt0044502
+    title: Clash by Night
+    year: 1952
+  - imdb_id: tt0045317
+    title: We're Not Married!
+    year: 1952
+  - imdb_id: tt0044557
+    title: Don't Bother to Knock
+    year: 1952
+  - imdb_id: tt0044981
+    title: O. Henry's Full House
+    year: 1952
+  - imdb_id: tt0044916
+    title: Monkey Business
+    year: 1952
+  - imdb_id: tt0046126
+    title: Niagara
+    year: 1953
+  - imdb_id: tt0045810
+    title: Gentlemen Prefer Blondes
+    year: 1953
+  - imdb_id: tt0045891
+    title: How to Marry a Millionaire
+    year: 1953
+  - imdb_id: tt0047422
+    title: River of No Return
+    year: 1954
+  - imdb_id: tt0047574
+    title: There's No Business Like Show Business
+    year: 1954
+  - imdb_id: tt0048605
+    title: The Seven Year Itch
+    year: 1955
+  - imdb_id: tt0049038
+    title: Bus Stop
+    year: 1956
+  - imdb_id: tt0050861
+    title: The Prince and the Showgirl
+    year: 1957
+  - imdb_id: tt0053291
+    title: Some Like It Hot
+    year: 1959
+  - imdb_id: tt0054022
+    title: Let's Make Love
+    year: 1960
+  - imdb_id: tt0055184
+    title: The Misfits
+    year: 1961

@@ -1,2 +1,31 @@
-id: nm0661791
+frozen: false
+imdb_id: nm0661791
 name: Chan-wook Park
+titles:
+- imdb_id: tt0260991
+  title: Joint Security Area
+  year: 2000
+- imdb_id: tt0310775
+  title: Sympathy for Mr. Vengeance
+  year: 2002
+- imdb_id: tt0364569
+  title: Oldboy
+  year: 2003
+- imdb_id: tt0420251
+  title: Three... Extremes
+  year: 2004
+- imdb_id: tt0451094
+  title: Lady Vengeance
+  year: 2005
+- imdb_id: tt0762073
+  title: Thirst
+  year: 2009
+- imdb_id: tt2129860
+  title: 60 Seconds of Solitude in Year Zero
+  year: 2011
+- imdb_id: tt1682180
+  title: Stoker
+  year: 2013
+- imdb_id: tt4016934
+  title: The Handmaiden
+  year: 2016

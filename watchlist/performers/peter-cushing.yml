@@ -1,4 +1,277 @@
-id: nm0001088
+frozen: true
+imdb_id: nm0001088
 name: Peter Cushing
-notes: null
-title_ids_to_exclude: []
+titles:
+  - imdb_id: tt0031619
+    title: The Man in the Iron Mask
+    year: 1939
+  - imdb_id: tt0032339
+    title: A Chump at Oxford
+    year: 1939
+  - imdb_id: tt0032683
+    title: Laddie
+    year: 1940
+  - imdb_id: tt0033221
+    title: Vigil in the Night
+    year: 1940
+  - imdb_id: tt0033274
+    title: Women in War
+    year: 1940
+  - imdb_id: tt0032612
+    title: The Howards of Virginia
+    year: 1940
+  - imdb_id: tt0034276
+    title: They Dare Not Love
+    year: 1941
+  - imdb_id: tt0040416
+    title: Hamlet
+    year: 1948
+  - imdb_id: tt0044926
+    title: Moulin Rouge
+    year: 1952
+  - imdb_id: tt0046786
+    title: The Black Knight
+    year: 1954
+  - imdb_id: tt0048034
+    title: The End of the Affair
+    year: 1955
+  - imdb_id: tt0049461
+    title: Magic Fire
+    year: 1955
+  - imdb_id: tt0048937
+    title: Alexander the Great
+    year: 1956
+  - imdb_id: tt0049856
+    title: Time Without Pity
+    year: 1957
+  - imdb_id: tt0050280
+    title: The Curse of Frankenstein
+    year: 1957
+  - imdb_id: tt0050095
+    title: The Abominable Snowman
+    year: 1957
+  - imdb_id: tt0052367
+    title: Violent Playground
+    year: 1958
+  - imdb_id: tt0051554
+    title: Horror of Dracula
+    year: 1958
+  - imdb_id: tt0050894
+    title: The Revenge of Frankenstein
+    year: 1958
+  - imdb_id: tt0052905
+    title: The Hound of the Baskervilles
+    year: 1959
+  - imdb_id: tt0052946
+    title: John Paul Jones
+    year: 1959
+  - imdb_id: tt0053085
+    title: The Mummy
+    year: 1959
+  - imdb_id: tt0052811
+    title: The Flesh and the Fiends
+    year: 1960
+  - imdb_id: tt0054762
+    title: Trouble in the Sky
+    year: 1960
+  - imdb_id: tt0053677
+    title: The Brides of Dracula
+    year: 1960
+  - imdb_id: tt0054244
+    title: The Risk
+    year: 1960
+  - imdb_id: tt0054358
+    title: Sword of Sherwood Forest
+    year: 1960
+  - imdb_id: tt0053903
+    title: The Hellfire Club
+    year: 1961
+  - imdb_id: tt0057085
+    title: Fury at Smugglers' Bay
+    year: 1961
+  - imdb_id: tt0055214
+    title: The Naked Edge
+    year: 1961
+  - imdb_id: tt0054731
+    title: Cash on Demand
+    year: 1961
+  - imdb_id: tt0056277
+    title: Night Creatures
+    year: 1962
+  - imdb_id: tt0054806
+    title: The Devil's Agent
+    year: 1962
+  - imdb_id: tt0056216
+    title: The Man Who Finally Died
+    year: 1963
+  - imdb_id: tt0058073
+    title: The Evil of Frankenstein
+    year: 1964
+  - imdb_id: tt0058155
+    title: The Gorgon
+    year: 1964
+  - imdb_id: tt0059125
+    title: Dr. Terror's House of Horrors
+    year: 1965
+  - imdb_id: tt0059710
+    title: She
+    year: 1965
+  - imdb_id: tt0059126
+    title: Dr. Who and the Daleks
+    year: 1965
+  - imdb_id: tt0059727
+    title: The Skull
+    year: 1965
+  - imdb_id: tt0060548
+    title: Island of Terror
+    year: 1966
+  - imdb_id: tt0060278
+    title: Daleks' Invasion Earth 2150 A.D.
+    year: 1966
+  - imdb_id: tt0061683
+    title: Frankenstein Created Woman
+    year: 1967
+  - imdb_id: tt0062037
+    title: Island of the Burning Damned
+    year: 1967
+  - imdb_id: tt0062287
+    title: Some May Live
+    year: 1967
+  - imdb_id: tt0062384
+    title: Torture Garden
+    year: 1967
+  - imdb_id: tt0061411
+    title: The Blood Beast Terror
+    year: 1968
+  - imdb_id: tt0061520
+    title: Corruption
+    year: 1968
+  - imdb_id: tt0065738
+    title: Frankenstein Must Be Destroyed
+    year: 1969
+  - imdb_id: tt0064949
+    title: Scream and Scream Again
+    year: 1970
+  - imdb_id: tt0066183
+    title: One More Time
+    year: 1970
+  - imdb_id: tt0066518
+    title: The Vampire Lovers
+    year: 1970
+  - imdb_id: tt0065854
+    title: The House That Dripped Blood
+    year: 1971
+  - imdb_id: tt0065887
+    title: Incense for the Damned
+    year: 1971
+  - imdb_id: tt0069427
+    title: Twins of Evil
+    year: 1971
+  - imdb_id: tt0068727
+    title: I, Monster
+    year: 1971
+  - imdb_id: tt0069341
+    title: Tales from the Crypt
+    year: 1972
+  - imdb_id: tt0068505
+    title: Dracula A.D. 1972
+    year: 1972
+  - imdb_id: tt0068230
+    title: Asylum
+    year: 1972
+  - imdb_id: tt0068577
+    title: Fear in the Night
+    year: 1972
+  - imdb_id: tt0068503
+    title: Dr. Phibes Rises Again
+    year: 1972
+  - imdb_id: tt0068713
+    title: Horror Express
+    year: 1972
+  - imdb_id: tt0069024
+    title: Nothing But the Night
+    year: 1973
+  - imdb_id: tt0068424
+    title: The Creeping Flesh
+    year: 1973
+  - imdb_id: tt0069715
+    title: And Now the Screaming Starts!
+    year: 1973
+  - imdb_id: tt0070634
+    title: The Satanic Rites of Dracula
+    year: 1973
+  - imdb_id: tt0070078
+    title: From Beyond the Grave
+    year: 1974
+  - imdb_id: tt0071790
+    title: Madhouse
+    year: 1974
+  - imdb_id: tt0071200
+    title: The Beast Must Die
+    year: 1974
+  - imdb_id: tt0071519
+    title: Frankenstein and the Monster from Hell
+    year: 1974
+  - imdb_id: tt0070297
+    title: The Legend of the 7 Golden Vampires
+    year: 1974
+  - imdb_id: tt0073794
+    title: The Big Scare
+    year: 1974
+  - imdb_id: tt0074268
+    title: Shatter
+    year: 1974
+  - imdb_id: tt0073275
+    title: Legend of the Werewolf
+    year: 1975
+  - imdb_id: tt0073042
+    title: The Ghoul
+    year: 1975
+  - imdb_id: tt0074409
+    title: A Dirty Knight's Work
+    year: 1976
+  - imdb_id: tt0074157
+    title: At the Earth's Core
+    year: 1976
+  - imdb_id: tt0074769
+    title: The Devil's Men
+    year: 1976
+  - imdb_id: tt0074060
+    title: The Standard
+    year: 1977
+  - imdb_id: tt0076759
+    title: "Star Wars: Episode IV - A New Hope"
+    year: 1977
+  - imdb_id: tt0076704
+    title: Shock Waves
+    year: 1977
+  - imdb_id: tt0076853
+    title: The Uncanny
+    year: 1977
+  - imdb_id: tt0077686
+    title: Son of Hitler
+    year: 1979
+  - imdb_id: tt0078792
+    title: Arabian Adventure
+    year: 1979
+  - imdb_id: tt0080039
+    title: A Touch of the Sun
+    year: 1979
+  - imdb_id: tt0082769
+    title: Mystery on Monster Island
+    year: 1981
+  - imdb_id: tt0080441
+    title: Black Jack
+    year: 1981
+  - imdb_id: tt0085693
+    title: House of the Long Shadows
+    year: 1983
+  - imdb_id: tt0088286
+    title: Top Secret!
+    year: 1984
+  - imdb_id: tt0084750
+    title: "Sword of the Valiant: The Legend of Sir Gawain and the Green Knight"
+    year: 1984
+  - imdb_id: tt0090729
+    title: "Biggles: Adventures in Time"
+    year: 1986

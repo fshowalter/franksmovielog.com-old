@@ -1,4 +1,241 @@
-id: nm0000071
+frozen: true
+imdb_id: nm0000071
 name: James Stewart
-notes: null
-title_ids_to_exclude: []
+titles:
+  - imdb_id: tt0026739
+    title: The Murder Man
+    year: 1935
+  - imdb_id: tt0028207
+    title: Rose-Marie
+    year: 1936
+  - imdb_id: tt0028029
+    title: Next Time We Love
+    year: 1936
+  - imdb_id: tt0028505
+    title: Wife vs. Secretary
+    year: 1936
+  - imdb_id: tt0028269
+    title: Small Town Girl
+    year: 1936
+  - imdb_id: tt0028291
+    title: Speed
+    year: 1936
+  - imdb_id: tt0027690
+    title: The Gorgeous Hussy
+    year: 1936
+  - imdb_id: tt0027387
+    title: Born to Dance
+    year: 1936
+  - imdb_id: tt0027260
+    title: After the Thin Man
+    year: 1936
+  - imdb_id: tt0029539
+    title: Seventh Heaven
+    year: 1937
+  - imdb_id: tt0029118
+    title: The Last Gangster
+    year: 1937
+  - imdb_id: tt0029297
+    title: Navy Blue and Gold
+    year: 1937
+  - imdb_id: tt0030517
+    title: Of Human Hearts
+    year: 1938
+  - imdb_id: tt0030944
+    title: Vivacious Lady
+    year: 1938
+  - imdb_id: tt0030744
+    title: The Shopworn Angel
+    year: 1938
+  - imdb_id: tt0030993
+    title: You Can't Take It with You
+    year: 1938
+  - imdb_id: tt0031602
+    title: Made for Each Other
+    year: 1939
+  - imdb_id: tt0031470
+    title: The Ice Follies of 1939
+    year: 1939
+  - imdb_id: tt0031500
+    title: It's a Wonderful World
+    year: 1939
+  - imdb_id: tt0031679
+    title: Mr. Smith Goes to Washington
+    year: 1939
+  - imdb_id: tt0031225
+    title: Destry Rides Again
+    year: 1939
+  - imdb_id: tt0033045
+    title: The Shop Around the Corner
+    year: 1940
+  - imdb_id: tt0032811
+    title: The Mortal Storm
+    year: 1940
+  - imdb_id: tt0032846
+    title: No Time for Comedy
+    year: 1940
+  - imdb_id: tt0032904
+    title: The Philadelphia Story
+    year: 1940
+  - imdb_id: tt0033477
+    title: Come Live with Me
+    year: 1941
+  - imdb_id: tt0034055
+    title: Pot o' Gold
+    year: 1941
+  - imdb_id: tt0034415
+    title: Ziegfeld Girl
+    year: 1941
+  - imdb_id: tt0038650
+    title: It's a Wonderful Life
+    year: 1946
+  - imdb_id: tt0039595
+    title: Magic Town
+    year: 1947
+  - imdb_id: tt0040664
+    title: On Our Merry Way
+    year: 1948
+  - imdb_id: tt0040202
+    title: Call Northside 777
+    year: 1948
+  - imdb_id: tt0040746
+    title: Rope
+    year: 1948
+  - imdb_id: tt0040982
+    title: You Gotta Stay Happy
+    year: 1948
+  - imdb_id: tt0041928
+    title: The Stratton Story
+    year: 1949
+  - imdb_id: tt0041622
+    title: Malaya
+    year: 1949
+  - imdb_id: tt0043137
+    title: Winchester '73
+    year: 1950
+  - imdb_id: tt0042286
+    title: Broken Arrow
+    year: 1950
+  - imdb_id: tt0042610
+    title: The Jackpot
+    year: 1950
+  - imdb_id: tt0042546
+    title: Harvey
+    year: 1950
+  - imdb_id: tt0043859
+    title: No Highway in the Sky
+    year: 1951
+  - imdb_id: tt0044672
+    title: The Greatest Show on Earth
+    year: 1952
+  - imdb_id: tt0044413
+    title: Bend of the River
+    year: 1952
+  - imdb_id: tt0044480
+    title: Carbine Williams
+    year: 1952
+  - imdb_id: tt0044953
+    title: The Naked Spur
+    year: 1953
+  - imdb_id: tt0046425
+    title: Thunder Bay
+    year: 1953
+  - imdb_id: tt0047030
+    title: The Glenn Miller Story
+    year: 1954
+  - imdb_id: tt0048055
+    title: The Far Country
+    year: 1954
+  - imdb_id: tt0047396
+    title: Rear Window
+    year: 1954
+  - imdb_id: tt0048667
+    title: Strategic Air Command
+    year: 1955
+  - imdb_id: tt0048342
+    title: The Man from Laramie
+    year: 1955
+  - imdb_id: tt0049470
+    title: The Man Who Knew Too Much
+    year: 1956
+  - imdb_id: tt0051003
+    title: The Spirit of St. Louis
+    year: 1957
+  - imdb_id: tt0050763
+    title: Night Passage
+    year: 1957
+  - imdb_id: tt0052357
+    title: Vertigo
+    year: 1958
+  - imdb_id: tt0051406
+    title: Bell Book and Candle
+    year: 1958
+  - imdb_id: tt0052561
+    title: Anatomy of a Murder
+    year: 1959
+  - imdb_id: tt0052792
+    title: The FBI Story
+    year: 1959
+  - imdb_id: tt0054095
+    title: The Mountain Road
+    year: 1960
+  - imdb_id: tt0055558
+    title: Two Rode Together
+    year: 1961
+  - imdb_id: tt0056217
+    title: The Man Who Shot Liberty Valance
+    year: 1962
+  - imdb_id: tt0056255
+    title: Mr. Hobbs Takes a Vacation
+    year: 1962
+  - imdb_id: tt0056085
+    title: How the West Was Won
+    year: 1962
+  - imdb_id: tt0057556
+    title: Take Her, She's Mine
+    year: 1963
+  - imdb_id: tt0057940
+    title: Cheyenne Autumn
+    year: 1964
+  - imdb_id: tt0059094
+    title: Dear Brigitte
+    year: 1965
+  - imdb_id: tt0059711
+    title: Shenandoah
+    year: 1965
+  - imdb_id: tt0059183
+    title: The Flight of the Phoenix
+    year: 1965
+  - imdb_id: tt0060884
+    title: The Rare Breed
+    year: 1966
+  - imdb_id: tt0062975
+    title: Firecreek
+    year: 1968
+  - imdb_id: tt0062708
+    title: Bandolero!
+    year: 1968
+  - imdb_id: tt0065542
+    title: The Cheyenne Social Club
+    year: 1970
+  - imdb_id: tt0067109
+    title: Fools' Parade
+    year: 1971
+  - imdb_id: tt0075213
+    title: The Shootist
+    year: 1976
+  - imdb_id: tt0075648
+    title: Airport '77
+    year: 1977
+  - imdb_id: tt0077234
+    title: The Big Sleep
+    year: 1978
+  - imdb_id: tt0077890
+    title: The Magic of Lassie
+    year: 1978
+  - imdb_id: tt0081987
+    title: A Tale of Africa
+    year: 1980
+  - imdb_id: tt0101329
+    title: "An American Tail: Fievel Goes West"
+    year: 1991

@@ -1,2 +1,67 @@
-id: nm0001692
+frozen: false
+imdb_id: nm0001692
 name: Ken Russell
+titles:
+- imdb_id: tt0057073
+  title: French Dressing
+  year: 1964
+- imdb_id: tt0061405
+  title: Billion Dollar Brain
+  year: 1967
+- imdb_id: tt0066579
+  title: Women in Love
+  year: 1969
+- imdb_id: tt0066109
+  title: The Music Lovers
+  year: 1971
+- imdb_id: tt0066993
+  title: The Devils
+  year: 1971
+- imdb_id: tt0066858
+  title: The Boy Friend
+  year: 1971
+- imdb_id: tt0069225
+  title: Savage Messiah
+  year: 1972
+- imdb_id: tt0071797
+  title: Mahler
+  year: 1974
+- imdb_id: tt0073812
+  title: Tommy
+  year: 1975
+- imdb_id: tt0073298
+  title: Lisztomania
+  year: 1975
+- imdb_id: tt0076868
+  title: Valentino
+  year: 1977
+- imdb_id: tt0080360
+  title: Altered States
+  year: 1980
+- imdb_id: tt0087100
+  title: Crimes of Passion
+  year: 1984
+- imdb_id: tt0091142
+  title: Gothic
+  year: 1986
+- imdb_id: tt0092580
+  title: Aria
+  year: 1987
+- imdb_id: tt0096029
+  title: Salome's Last Dance
+  year: 1988
+- imdb_id: tt0095488
+  title: The Lair of the White Worm
+  year: 1988
+- imdb_id: tt0098165
+  title: The Rainbow
+  year: 1989
+- imdb_id: tt0103253
+  title: Whore
+  year: 1991
+- imdb_id: tt0268295
+  title: 'The Fall of the Louse of Usher: A Gothic Tale for the 21st Century'
+  year: 2002
+- imdb_id: tt0478303
+  title: Trapped Ashes
+  year: 2006

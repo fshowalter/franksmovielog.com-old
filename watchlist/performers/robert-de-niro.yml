@@ -1,4 +1,295 @@
-id: nm0000134
+frozen: false
+imdb_id: nm0000134
 name: Robert De Niro
-notes: null
-title_ids_to_exclude: []
+titles:
+- imdb_id: tt0179492
+  title: Three Rooms in Manhattan
+  year: 1965
+- imdb_id: tt0063154
+  title: Young Wolves
+  year: 1968
+- imdb_id: tt0063036
+  title: Greetings
+  year: 1968
+- imdb_id: tt0065198
+  title: The Wedding Party
+  year: 1969
+- imdb_id: tt0064924
+  title: Sam's Song
+  year: 1969
+- imdb_id: tt0065481
+  title: Bloody Mama
+  year: 1970
+- imdb_id: tt0065836
+  title: Hi, Mom!
+  year: 1970
+- imdb_id: tt0067266
+  title: Jennifer on My Mind
+  year: 1971
+- imdb_id: tt0066856
+  title: Born to Win
+  year: 1971
+- imdb_id: tt0067124
+  title: The Gang That Couldn't Shoot Straight
+  year: 1971
+- imdb_id: tt0069765
+  title: Bang the Drum Slowly
+  year: 1973
+- imdb_id: tt0070379
+  title: Mean Streets
+  year: 1973
+- imdb_id: tt0071562
+  title: 'The Godfather: Part II'
+  year: 1974
+- imdb_id: tt0075314
+  title: Taxi Driver
+  year: 1976
+- imdb_id: tt0074084
+  title: '1900'
+  year: 1976
+- imdb_id: tt0074777
+  title: The Last Tycoon
+  year: 1976
+- imdb_id: tt0076451
+  title: New York, New York
+  year: 1977
+- imdb_id: tt0077416
+  title: The Deer Hunter
+  year: 1978
+- imdb_id: tt0081398
+  title: Raging Bull
+  year: 1980
+- imdb_id: tt0083232
+  title: True Confessions
+  year: 1981
+- imdb_id: tt0085794
+  title: The King of Comedy
+  year: 1982
+- imdb_id: tt0087843
+  title: Once Upon a Time in America
+  year: 1984
+- imdb_id: tt0087233
+  title: Falling in Love
+  year: 1984
+- imdb_id: tt0088846
+  title: Brazil
+  year: 1985
+- imdb_id: tt0091530
+  title: The Mission
+  year: 1986
+- imdb_id: tt0092563
+  title: Angel Heart
+  year: 1987
+- imdb_id: tt0094226
+  title: The Untouchables
+  year: 1987
+- imdb_id: tt0095631
+  title: Midnight Run
+  year: 1988
+- imdb_id: tt0097607
+  title: Jacknife
+  year: 1989
+- imdb_id: tt0098625
+  title: We're No Angels
+  year: 1989
+- imdb_id: tt0100680
+  title: Stanley & Iris
+  year: 1990
+- imdb_id: tt0099685
+  title: Goodfellas
+  year: 1990
+- imdb_id: tt0099077
+  title: Awakenings
+  year: 1990
+- imdb_id: tt0101984
+  title: Guilty by Suspicion
+  year: 1991
+- imdb_id: tt0101393
+  title: Backdraft
+  year: 1991
+- imdb_id: tt0101540
+  title: Cape Fear
+  year: 1991
+- imdb_id: tt0104892
+  title: Mistress
+  year: 1992
+- imdb_id: tt0105001
+  title: Night and the City
+  year: 1992
+- imdb_id: tt0107473
+  title: Mad Dog and Glory
+  year: 1993
+- imdb_id: tt0108330
+  title: This Boy's Life
+  year: 1993
+- imdb_id: tt0106489
+  title: A Bronx Tale
+  year: 1993
+- imdb_id: tt0109836
+  title: Mary Shelley's Frankenstein
+  year: 1994
+- imdb_id: tt0112654
+  title: One Hundred and One Nights
+  year: 1995
+- imdb_id: tt0112641
+  title: Casino
+  year: 1995
+- imdb_id: tt0113277
+  title: Heat
+  year: 1995
+- imdb_id: tt0116277
+  title: The Fan
+  year: 1996
+- imdb_id: tt0117665
+  title: Sleepers
+  year: 1996
+- imdb_id: tt0116999
+  title: Marvin's Room
+  year: 1996
+- imdb_id: tt0118887
+  title: Cop Land
+  year: 1997
+- imdb_id: tt0119396
+  title: Jackie Brown
+  year: 1997
+- imdb_id: tt0120885
+  title: Wag the Dog
+  year: 1997
+- imdb_id: tt0119223
+  title: Great Expectations
+  year: 1998
+- imdb_id: tt0122690
+  title: Ronin
+  year: 1998
+- imdb_id: tt0122933
+  title: Analyze This
+  year: 1999
+- imdb_id: tt0155711
+  title: Flawless
+  year: 1999
+- imdb_id: tt0131704
+  title: The Adventures of Rocky & Bullwinkle
+  year: 2000
+- imdb_id: tt0203019
+  title: Men of Honor
+  year: 2000
+- imdb_id: tt0212338
+  title: Meet the Parents
+  year: 2000
+- imdb_id: tt0179626
+  title: 15 Minutes
+  year: 2001
+- imdb_id: tt0227445
+  title: The Score
+  year: 2001
+- imdb_id: tt0284490
+  title: Showtime
+  year: 2002
+- imdb_id: tt0269095
+  title: City by the Sea
+  year: 2002
+- imdb_id: tt0289848
+  title: Analyze That
+  year: 2002
+- imdb_id: tt0335121
+  title: Godsend
+  year: 2004
+- imdb_id: tt0307453
+  title: Shark Tale
+  year: 2004
+- imdb_id: tt0290002
+  title: Meet the Fockers
+  year: 2004
+- imdb_id: tt0356443
+  title: The Bridge of San Luis Rey
+  year: 2004
+- imdb_id: tt0382077
+  title: Hide and Seek
+  year: 2005
+- imdb_id: tt0344854
+  title: Arthur and the Invisibles
+  year: 2006
+- imdb_id: tt0343737
+  title: The Good Shepherd
+  year: 2006
+- imdb_id: tt0486655
+  title: Stardust
+  year: 2007
+- imdb_id: tt0486674
+  title: What Just Happened
+  year: 2008
+- imdb_id: tt1034331
+  title: Righteous Kill
+  year: 2008
+- imdb_id: tt0780511
+  title: Everybody's Fine
+  year: 2009
+- imdb_id: tt0985694
+  title: Machete
+  year: 2010
+- imdb_id: tt1423995
+  title: Stone
+  year: 2010
+- imdb_id: tt0970866
+  title: Little Fockers
+  year: 2010
+- imdb_id: tt1219289
+  title: Limitless
+  year: 2011
+- imdb_id: tt1448755
+  title: Killer Elite
+  year: 2011
+- imdb_id: tt1598822
+  title: New Year's Eve
+  year: 2011
+- imdb_id: tt1748179
+  title: Red Lights
+  year: 2012
+- imdb_id: tt0455323
+  title: Being Flynn
+  year: 2012
+- imdb_id: tt1815708
+  title: Freelancers
+  year: 2012
+- imdb_id: tt1045658
+  title: Silver Linings Playbook
+  year: 2012
+- imdb_id: tt1931435
+  title: The Big Wedding
+  year: 2013
+- imdb_id: tt1480295
+  title: Killing Season
+  year: 2013
+- imdb_id: tt2404311
+  title: The Family
+  year: 2013
+- imdb_id: tt1204975
+  title: Last Vegas
+  year: 2013
+- imdb_id: tt1800241
+  title: American Hustle
+  year: 2013
+- imdb_id: tt1661382
+  title: Grudge Match
+  year: 2013
+- imdb_id: tt2212008
+  title: The Bag Man
+  year: 2014
+- imdb_id: tt2361509
+  title: The Intern
+  year: 2015
+- imdb_id: tt3276924
+  title: Heist
+  year: 2015
+- imdb_id: tt2446980
+  title: Joy
+  year: 2015
+- imdb_id: tt1781827
+  title: Hands of Stone
+  year: 2016
+- imdb_id: tt7286456
+  title: Joker
+  year: 2019
+- imdb_id: tt1302006
+  title: The Irishman
+  year: 2019

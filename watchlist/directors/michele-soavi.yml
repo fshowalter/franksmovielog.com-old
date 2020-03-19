@@ -1,2 +1,16 @@
-id: nm0811714
+frozen: false
+imdb_id: nm0811714
 name: Michele Soavi
+titles:
+- imdb_id: tt0092576
+  title: StageFright
+  year: 1987
+- imdb_id: tt0094860
+  title: The Church
+  year: 1989
+- imdb_id: tt0100581
+  title: The Sect
+  year: 1991
+- imdb_id: tt0109592
+  title: Cemetery Man
+  year: 1994

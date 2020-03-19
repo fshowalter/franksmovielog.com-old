@@ -1,2 +1,55 @@
-id: nm0000958
+frozen: false
+imdb_id: nm0000958
 name: John Boorman
+titles:
+- imdb_id: tt0059258
+  title: Having a Wild Weekend
+  year: 1965
+- imdb_id: tt0062138
+  title: Point Blank
+  year: 1967
+- imdb_id: tt0063056
+  title: Hell in the Pacific
+  year: 1968
+- imdb_id: tt0065974
+  title: Leo the Last
+  year: 1970
+- imdb_id: tt0068473
+  title: Deliverance
+  year: 1972
+- imdb_id: tt0070948
+  title: Zardoz
+  year: 1974
+- imdb_id: tt0076009
+  title: 'Exorcist II: The Heretic'
+  year: 1977
+- imdb_id: tt0082348
+  title: Excalibur
+  year: 1981
+- imdb_id: tt0089087
+  title: The Emerald Forest
+  year: 1985
+- imdb_id: tt0093209
+  title: Hope and Glory
+  year: 1987
+- imdb_id: tt0100924
+  title: Where the Heart Is
+  year: 1990
+- imdb_id: tt0112495
+  title: Beyond Rangoon
+  year: 1995
+- imdb_id: tt0120706
+  title: The General
+  year: 1998
+- imdb_id: tt0236784
+  title: The Tailor of Panama
+  year: 2001
+- imdb_id: tt0349260
+  title: In My Country
+  year: 2004
+- imdb_id: tt0490499
+  title: The Tiger's Tail
+  year: 2006
+- imdb_id: tt2392810
+  title: Queen & Country
+  year: 2014

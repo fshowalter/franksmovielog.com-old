@@ -1,2 +1,31 @@
-id: nm0898288
+frozen: false
+imdb_id: nm0898288
 name: Denis Villeneuve
+titles:
+- imdb_id: tt0220627
+  title: Maelstrom
+  year: 2000
+- imdb_id: tt1194238
+  title: Polytechnique
+  year: 2009
+- imdb_id: tt1255953
+  title: Incendies
+  year: 2010
+- imdb_id: tt1392214
+  title: Prisoners
+  year: 2013
+- imdb_id: tt2316411
+  title: Enemy
+  year: 2013
+- imdb_id: tt3397884
+  title: Sicario
+  year: 2015
+- imdb_id: tt2543164
+  title: Arrival
+  year: 2016
+- imdb_id: tt1856101
+  title: Blade Runner 2049
+  year: 2017
+- imdb_id: tt1160419
+  title: Dune
+  year: 2020

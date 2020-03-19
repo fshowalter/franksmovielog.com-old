@@ -1,4 +1,151 @@
-id: nm0001258
+frozen: true
+imdb_id: nm0001258
 name: James Garner
-notes: null
-title_ids_to_exclude: []
+titles:
+  - imdb_id: tt0049870
+    title: Toward the Unknown
+    year: 1956
+  - imdb_id: tt0049264
+    title: The Girl He Left Behind
+    year: 1956
+  - imdb_id: tt0050963
+    title: Shoot-Out at Medicine Bend
+    year: 1957
+  - imdb_id: tt0050933
+    title: Sayonara
+    year: 1957
+  - imdb_id: tt0051519
+    title: Darby's Rangers
+    year: 1958
+  - imdb_id: tt0053399
+    title: Up Periscope
+    year: 1959
+  - imdb_id: tt0052545
+    title: Alias Jesse James
+    year: 1959
+  - imdb_id: tt0052680
+    title: Cash McCall
+    year: 1960
+  - imdb_id: tt0054743
+    title: The Children's Hour
+    year: 1961
+  - imdb_id: tt0055809
+    title: Boys' Night Out
+    year: 1962
+  - imdb_id: tt0057115
+    title: The Great Escape
+    year: 1963
+  - imdb_id: tt0057581
+    title: The Thrill of It All
+    year: 1963
+  - imdb_id: tt0057681
+    title: The Wheeler Dealers
+    year: 1963
+  - imdb_id: tt0057329
+    title: Move Over, Darling
+    year: 1963
+  - imdb_id: tt0057840
+    title: The Americanization of Emily
+    year: 1964
+  - imdb_id: tt0057809
+    title: 36 Hours
+    year: 1964
+  - imdb_id: tt0058920
+    title: The Art of Love
+    year: 1965
+  - imdb_id: tt0060662
+    title: A Man Could Get Killed
+    year: 1966
+  - imdb_id: tt0060355
+    title: Duel at Diablo
+    year: 1966
+  - imdb_id: tt0059453
+    title: Mister Buddwing
+    year: 1966
+  - imdb_id: tt0060472
+    title: Grand Prix
+    year: 1966
+  - imdb_id: tt0061787
+    title: Hour of the Gun
+    year: 1967
+  - imdb_id: tt0063098
+    title: How Sweet It Is!
+    year: 1968
+  - imdb_id: tt0063429
+    title: The Pink Jungle
+    year: 1968
+  - imdb_id: tt0065051
+    title: Support Your Local Sheriff!
+    year: 1969
+  - imdb_id: tt0064638
+    title: Marlowe
+    year: 1969
+  - imdb_id: tt0066050
+    title: A Man Called Sledge
+    year: 1970
+  - imdb_id: tt0067809
+    title: Support Your Local Gunfighter
+    year: 1971
+  - imdb_id: tt0067763
+    title: Skin Game
+    year: 1971
+  - imdb_id: tt0069371
+    title: They Only Kill Their Masters
+    year: 1972
+  - imdb_id: tt0070481
+    title: One Little Indian
+    year: 1973
+  - imdb_id: tt0071288
+    title: The Castaway Cowboy
+    year: 1974
+  - imdb_id: tt0079256
+    title: HealtH
+    year: 1980
+  - imdb_id: tt0082362
+    title: The Fan
+    year: 1981
+  - imdb_id: tt0084865
+    title: Victor Victoria
+    year: 1982
+  - imdb_id: tt0088224
+    title: Tank
+    year: 1984
+  - imdb_id: tt0089643
+    title: Murphy's Romance
+    year: 1985
+  - imdb_id: tt0096193
+    title: Sunset
+    year: 1988
+  - imdb_id: tt0104114
+    title: The Distinguished Gentleman
+    year: 1992
+  - imdb_id: tt0106912
+    title: Fire in the Sky
+    year: 1993
+  - imdb_id: tt0110478
+    title: Maverick
+    year: 1994
+  - imdb_id: tt0117119
+    title: My Fellow Americans
+    year: 1996
+  - imdb_id: tt0119594
+    title: Twilight
+    year: 1998
+  - imdb_id: tt0186566
+    title: Space Cowboys
+    year: 2000
+  - imdb_id: tt0230011
+    title: "Atlantis: The Lost Empire"
+    year: 2001
+  - imdb_id: tt0279778
+    title: Divine Secrets of the Ya-Ya Sisterhood
+    year: 2002
+  - imdb_id: tt0332280
+    title: The Notebook
+    year: 2004
+  - imdb_id: tt0482629
+    title: The Ultimate Gift
+    year: 2006
+  - imdb_id: tt0858486
+    title: Battle for Terra
+    year: 2007

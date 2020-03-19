@@ -1,2 +1,136 @@
-id: nm0000216
+frozen: false
+imdb_id: nm0000216
 name: Arnold Schwarzenegger
+titles:
+- imdb_id: tt0065832
+  title: Hercules in New York
+  year: 1970
+- imdb_id: tt0070334
+  title: The Long Goodbye
+  year: 1973
+- imdb_id: tt0075268
+  title: Stay Hungry
+  year: 1976
+- imdb_id: tt0080097
+  title: The Villain
+  year: 1979
+- imdb_id: tt0079858
+  title: Scavenger Hunt
+  year: 1979
+- imdb_id: tt0082198
+  title: Conan the Barbarian
+  year: 1982
+- imdb_id: tt0087078
+  title: Conan the Destroyer
+  year: 1984
+- imdb_id: tt0088247
+  title: The Terminator
+  year: 1984
+- imdb_id: tt0089893
+  title: Red Sonja
+  year: 1985
+- imdb_id: tt0088944
+  title: Commando
+  year: 1985
+- imdb_id: tt0091828
+  title: Raw Deal
+  year: 1986
+- imdb_id: tt0093773
+  title: Predator
+  year: 1987
+- imdb_id: tt0093894
+  title: The Running Man
+  year: 1987
+- imdb_id: tt0095963
+  title: Red Heat
+  year: 1988
+- imdb_id: tt0096320
+  title: Twins
+  year: 1988
+- imdb_id: tt0100802
+  title: Total Recall
+  year: 1990
+- imdb_id: tt0099938
+  title: Kindergarten Cop
+  year: 1990
+- imdb_id: tt0103064
+  title: 'Terminator 2: Judgment Day'
+  year: 1991
+- imdb_id: tt0106673
+  title: Dave
+  year: 1993
+- imdb_id: tt0107362
+  title: Last Action Hero
+  year: 1993
+- imdb_id: tt0138322
+  title: Beretta's Island
+  year: 1993
+- imdb_id: tt0111503
+  title: True Lies
+  year: 1994
+- imdb_id: tt0110216
+  title: Junior
+  year: 1994
+- imdb_id: tt0116213
+  title: Eraser
+  year: 1996
+- imdb_id: tt0116705
+  title: Jingle All the Way
+  year: 1996
+- imdb_id: tt0118688
+  title: Batman & Robin
+  year: 1997
+- imdb_id: tt0146675
+  title: End of Days
+  year: 1999
+- imdb_id: tt0216216
+  title: The 6th Day
+  year: 2000
+- imdb_id: tt0233469
+  title: Collateral Damage
+  year: 2002
+- imdb_id: tt0181852
+  title: 'Terminator 3: Rise of the Machines'
+  year: 2003
+- imdb_id: tt0327850
+  title: The Rundown
+  year: 2003
+- imdb_id: tt0327437
+  title: Around the World in 80 Days
+  year: 2004
+- imdb_id: tt0416891
+  title: The Kid & I
+  year: 2005
+- imdb_id: tt1320253
+  title: The Expendables
+  year: 2010
+- imdb_id: tt1764651
+  title: The Expendables 2
+  year: 2012
+- imdb_id: tt1549920
+  title: The Last Stand
+  year: 2013
+- imdb_id: tt1211956
+  title: Escape Plan
+  year: 2013
+- imdb_id: tt1742334
+  title: Sabotage
+  year: 2014
+- imdb_id: tt2333784
+  title: The Expendables 3
+  year: 2014
+- imdb_id: tt1881002
+  title: Maggie
+  year: 2015
+- imdb_id: tt1340138
+  title: Terminator Genisys
+  year: 2015
+- imdb_id: tt5689068
+  title: Killing Gunther
+  year: 2017
+- imdb_id: tt6218010
+  title: The Iron Mask
+  year: 2019
+- imdb_id: tt6450804
+  title: 'Terminator: Dark Fate'
+  year: 2019

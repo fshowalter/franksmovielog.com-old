@@ -1,4 +1,130 @@
-id: nm0005458
+frozen: false
+imdb_id: nm0005458
 name: Jason Statham
-notes: null
-title_ids_to_exclude: []
+titles:
+- imdb_id: tt0120735
+  title: Lock, Stock and Two Smoking Barrels
+  year: 1998
+- imdb_id: tt0208092
+  title: Snatch
+  year: 2000
+- imdb_id: tt0216772
+  title: Turn It Up
+  year: 2000
+- imdb_id: tt0228333
+  title: Ghosts of Mars
+  year: 2001
+- imdb_id: tt0267804
+  title: The One
+  year: 2001
+- imdb_id: tt0291341
+  title: Mean Machine
+  year: 2001
+- imdb_id: tt0293662
+  title: The Transporter
+  year: 2002
+- imdb_id: tt0317740
+  title: The Italian Job
+  year: 2003
+- imdb_id: tt0369339
+  title: Collateral
+  year: 2004
+- imdb_id: tt0337921
+  title: Cellular
+  year: 2004
+- imdb_id: tt0388482
+  title: Transporter 2
+  year: 2005
+- imdb_id: tt0449061
+  title: London
+  year: 2005
+- imdb_id: tt0365686
+  title: Revolver
+  year: 2005
+- imdb_id: tt0402910
+  title: Chaos
+  year: 2005
+- imdb_id: tt0383216
+  title: The Pink Panther
+  year: 2006
+- imdb_id: tt0479884
+  title: Crank
+  year: 2006
+- imdb_id: tt0460780
+  title: 'In the Name of the King: A Dungeon Siege Tale'
+  year: 2007
+- imdb_id: tt0499556
+  title: War
+  year: 2007
+- imdb_id: tt0200465
+  title: The Bank Job
+  year: 2008
+- imdb_id: tt0452608
+  title: Death Race
+  year: 2008
+- imdb_id: tt1129442
+  title: Transporter 3
+  year: 2008
+- imdb_id: tt1121931
+  title: 'Crank: High Voltage'
+  year: 2009
+- imdb_id: tt0798817
+  title: '13'
+  year: 2010
+- imdb_id: tt1320253
+  title: The Expendables
+  year: 2010
+- imdb_id: tt0472399
+  title: The Mechanic
+  year: 2011
+- imdb_id: tt0377981
+  title: Gnomeo & Juliet
+  year: 2011
+- imdb_id: tt1297919
+  title: Blitz
+  year: 2011
+- imdb_id: tt1448755
+  title: Killer Elite
+  year: 2011
+- imdb_id: tt1656190
+  title: Safe
+  year: 2012
+- imdb_id: tt1764651
+  title: The Expendables 2
+  year: 2012
+- imdb_id: tt1904996
+  title: Parker
+  year: 2013
+- imdb_id: tt1893256
+  title: Redemption
+  year: 2013
+- imdb_id: tt1905041
+  title: Fast & Furious 6
+  year: 2013
+- imdb_id: tt2312718
+  title: Homefront
+  year: 2013
+- imdb_id: tt2333784
+  title: The Expendables 3
+  year: 2014
+- imdb_id: tt2231253
+  title: Wild Card
+  year: 2015
+- imdb_id: tt3079380
+  title: Spy
+  year: 2015
+- imdb_id: tt2820852
+  title: Furious 7
+  year: 2015
+- imdb_id: tt3522806
+  title: 'Mechanic: Resurrection'
+  year: 2016
+- imdb_id: tt4630562
+  title: The Fate of the Furious
+  year: 2017
+- imdb_id: tt4779682
+  title: The Meg
+  year: 2018
+- imdb_id: tt6806448
+  title: 'Fast & Furious Presents: Hobbs & Shaw'
+  year: 2019

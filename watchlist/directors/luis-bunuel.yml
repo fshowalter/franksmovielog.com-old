@@ -1,2 +1,97 @@
-id: nm0000320
+frozen: false
+imdb_id: nm0000320
 name: Luis Buñuel
+titles:
+- imdb_id: tt0021577
+  title: L'Age d'Or
+  year: 1930
+- imdb_id: tt0028534
+  title: ¿Quién me quiere a mí?
+  year: 1936
+- imdb_id: tt0028533
+  title: ¡Centinela, alerta!
+  year: 1937
+- imdb_id: tt0039434
+  title: Gran Casino
+  year: 1947
+- imdb_id: tt0041423
+  title: The Great Madcap
+  year: 1949
+- imdb_id: tt0042804
+  title: The Young and the Damned
+  year: 1950
+- imdb_id: tt0043018
+  title: Susana
+  year: 1951
+- imdb_id: tt0043639
+  title: Daughter of Deceit
+  year: 1951
+- imdb_id: tt0044084
+  title: Mexican Bus Ride
+  year: 1952
+- imdb_id: tt0043824
+  title: A Woman Without Love
+  year: 1952
+- imdb_id: tt0044453
+  title: El bruto
+  year: 1953
+- imdb_id: tt0045361
+  title: El
+  year: 1953
+- imdb_id: tt0045907
+  title: Illusion Travels by Streetcar
+  year: 1954
+- imdb_id: tt0046675
+  title: Wuthering Heights
+  year: 1954
+- imdb_id: tt0044386
+  title: Robinson Crusoe
+  year: 1954
+- imdb_id: tt0047435
+  title: The River and Death
+  year: 1954
+- imdb_id: tt0048037
+  title: The Criminal Life of Archibaldo de la Cruz
+  year: 1955
+- imdb_id: tt0047925
+  title: That Is the Dawn
+  year: 1956
+- imdb_id: tt0049521
+  title: Death in the Garden
+  year: 1956
+- imdb_id: tt0051983
+  title: Nazarin
+  year: 1959
+- imdb_id: tt0052810
+  title: Fever Mounts at El Pao
+  year: 1959
+- imdb_id: tt0053967
+  title: The Young One
+  year: 1960
+- imdb_id: tt0055601
+  title: Viridiana
+  year: 1961
+- imdb_id: tt0056732
+  title: The Exterminating Angel
+  year: 1962
+- imdb_id: tt0058249
+  title: Diary of a Chambermaid
+  year: 1964
+- imdb_id: tt0061395
+  title: Belle de Jour
+  year: 1967
+- imdb_id: tt0066534
+  title: The Milky Way
+  year: 1969
+- imdb_id: tt0066491
+  title: Tristana
+  year: 1970
+- imdb_id: tt0068361
+  title: The Discreet Charm of the Bourgeoisie
+  year: 1972
+- imdb_id: tt0071487
+  title: The Phantom of Liberty
+  year: 1974
+- imdb_id: tt0075824
+  title: That Obscure Object of Desire
+  year: 1977

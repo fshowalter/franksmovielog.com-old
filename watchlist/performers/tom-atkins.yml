@@ -1,4 +1,70 @@
-id: nm0040662
+frozen: false
+imdb_id: nm0040662
 name: Tom Atkins
-notes: null
-title_ids_to_exclude: []
+titles:
+- imdb_id: tt0062883
+  title: The Detective
+  year: 1968
+- imdb_id: tt0066563
+  title: Where's Poppa?
+  year: 1970
+- imdb_id: tt0066195
+  title: The Owl and the Pussycat
+  year: 1970
+- imdb_id: tt0075250
+  title: Special Delivery
+  year: 1976
+- imdb_id: tt0080749
+  title: The Fog
+  year: 1980
+- imdb_id: tt0081237
+  title: The Ninth Configuration
+  year: 1980
+- imdb_id: tt0082340
+  title: Escape from New York
+  year: 1981
+- imdb_id: tt0083767
+  title: Creepshow
+  year: 1982
+- imdb_id: tt0085636
+  title: 'Halloween III: Season of the Witch'
+  year: 1982
+- imdb_id: tt0089679
+  title: The New Kids
+  year: 1985
+- imdb_id: tt0091630
+  title: Night of the Creeps
+  year: 1986
+- imdb_id: tt0093409
+  title: Lethal Weapon
+  year: 1987
+- imdb_id: tt0093403
+  title: Lemon Sky
+  year: 1988
+- imdb_id: tt0095583
+  title: Maniac Cop
+  year: 1988
+- imdb_id: tt0100827
+  title: Two Evil Eyes
+  year: 1990
+- imdb_id: tt0103850
+  title: Bob Roberts
+  year: 1992
+- imdb_id: tt0108238
+  title: Striking Distance
+  year: 1993
+- imdb_id: tt0212830
+  title: Bruiser
+  year: 2000
+- imdb_id: tt0250636
+  title: Out of the Black
+  year: 2001
+- imdb_id: tt0250790
+  title: Turn of Faith
+  year: 2002
+- imdb_id: tt1179891
+  title: My Bloody Valentine
+  year: 2009
+- imdb_id: tt1502404
+  title: Drive Angry
+  year: 2011

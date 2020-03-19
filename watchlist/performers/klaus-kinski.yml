@@ -1,4 +1,388 @@
-id: nm0001428
+frozen: true
+imdb_id: nm0001428
 name: Klaus Kinski
-notes: null
-title_ids_to_exclude: []
+titles:
+  - imdb_id: tt0040609
+    title: Morituri
+    year: 1948
+  - imdb_id: tt0043459
+    title: Decision Before Dawn
+    year: 1951
+  - imdb_id: tt0047336
+    title: Fear
+    year: 1954
+  - imdb_id: tt0047195
+    title: "Ludwig II: Glanz und Ende eines Königs"
+    year: 1955
+  - imdb_id: tt0048255
+    title: Sons, Mothers and a General
+    year: 1955
+  - imdb_id: tt0048761
+    title: Sarajevo
+    year: 1955
+  - imdb_id: tt0048147
+    title: Hanussen
+    year: 1955
+  - imdb_id: tt0049930
+    title: Waldwinter
+    year: 1956
+  - imdb_id: tt0049253
+    title: Corinna Darling
+    year: 1956
+  - imdb_id: tt0052296
+    title: A Time to Love and a Time to Die
+    year: 1958
+  - imdb_id: tt0054257
+    title: The Avenger
+    year: 1960
+  - imdb_id: tt0054395
+    title: Dead Eyes of London
+    year: 1961
+  - imdb_id: tt0054912
+    title: The Devil's Daffodil
+    year: 1961
+  - imdb_id: tt0054661
+    title: Bankraub in der Rue Latour
+    year: 1961
+  - imdb_id: tt0055429
+    title: Die seltsame Gräfin
+    year: 1961
+  - imdb_id: tt0055391
+    title: Secret of the Red Orchid
+    year: 1962
+  - imdb_id: tt0055871
+    title: The Counterfeit Traitor
+    year: 1962
+  - imdb_id: tt0056428
+    title: Der rote Rausch
+    year: 1962
+  - imdb_id: tt0056630
+    title: Front à la Scotland Yard
+    year: 1962
+  - imdb_id: tt0056012
+    title: The Inn on the River
+    year: 1962
+  - imdb_id: tt0057718
+    title: The Squeaker
+    year: 1963
+  - imdb_id: tt0057477
+    title: The Black Cobra
+    year: 1963
+  - imdb_id: tt0057476
+    title: The Black Abbot
+    year: 1963
+  - imdb_id: tt0057183
+    title: The Indian Scarf
+    year: 1963
+  - imdb_id: tt0057479
+    title: Dr. Mabuse vs. Scotland Yard
+    year: 1963
+  - imdb_id: tt0057217
+    title: Kali Yug, la dea della vendetta
+    year: 1963
+  - imdb_id: tt0057095
+    title: Das Geheimnis der schwarzen Witwe
+    year: 1963
+  - imdb_id: tt0057411
+    title: Piccadilly null Uhr zwölf
+    year: 1963
+  - imdb_id: tt0057247
+    title: The Last Ride to Santa Cruz
+    year: 1964
+  - imdb_id: tt0058737
+    title: Mark of the Tortoise
+    year: 1964
+  - imdb_id: tt0058161
+    title: Die Gruft mit dem Rätselschloß
+    year: 1964
+  - imdb_id: tt0058751
+    title: "Winnetou: The Red Gentleman"
+    year: 1964
+  - imdb_id: tt0058132
+    title: Das Geheimnis der chinesischen Nelke
+    year: 1964
+  - imdb_id: tt0058718
+    title: Das Verrätertor
+    year: 1964
+  - imdb_id: tt0059607
+    title: The Pleasure Girls
+    year: 1965
+  - imdb_id: tt0059501
+    title: Again the Ringer
+    year: 1965
+  - imdb_id: tt0059108
+    title: The Secret Agents
+    year: 1965
+  - imdb_id: tt0059546
+    title: That Man in Istanbul
+    year: 1965
+  - imdb_id: tt0059578
+    title: For a Few Dollars More
+    year: 1965
+  - imdb_id: tt0059113
+    title: Doctor Zhivago
+    year: 1965
+  - imdb_id: tt0060865
+    title: Psycho-Circus
+    year: 1966
+  - imdb_id: tt0060148
+    title: Bang! Bang! You're Dead!
+    year: 1966
+  - imdb_id: tt0060213
+    title: Killer's Carnival
+    year: 1966
+  - imdb_id: tt0060449
+    title: Target for Killing
+    year: 1966
+  - imdb_id: tt0061429
+    title: A Bullet for the General
+    year: 1967
+  - imdb_id: tt0061409
+    title: Creature with the Blue Hand
+    year: 1967
+  - imdb_id: tt0061670
+    title: Five Golden Dragons
+    year: 1967
+  - imdb_id: tt0061976
+    title: The Million Eyes of Sumuru
+    year: 1967
+  - imdb_id: tt0062636
+    title: Grand Slam
+    year: 1967
+  - imdb_id: tt0062424
+    title: Man, Pride & Vengeance
+    year: 1967
+  - imdb_id: tt0060777
+    title: The Ruthless Four
+    year: 1968
+  - imdb_id: tt0061516
+    title: Coplan Saves His Skin
+    year: 1968
+  - imdb_id: tt0061983
+    title: Mister Zehn Prozent - Miezen und Moneten
+    year: 1968
+  - imdb_id: tt0063568
+    title: If You Meet Sartana... Pray for Your Death
+    year: 1968
+  - imdb_id: tt0062630
+    title: The Vatican Affair
+    year: 1968
+  - imdb_id: tt0062712
+    title: The Bastard
+    year: 1968
+  - imdb_id: tt0063032
+    title: The Great Silence
+    year: 1968
+  - imdb_id: tt0062915
+    title: Twice a Judas
+    year: 1968
+  - imdb_id: tt0062807
+    title: Five for Hell
+    year: 1969
+  - imdb_id: tt0062870
+    title: Marquis de Sade's Justine
+    year: 1969
+  - imdb_id: tt0063979
+    title: Double Face
+    year: 1969
+  - imdb_id: tt0064870
+    title: La legge dei gangsters
+    year: 1969
+  - imdb_id: tt0064237
+    title: War Fever
+    year: 1969
+  - imdb_id: tt0064789
+    title: Venus in Furs
+    year: 1969
+  - imdb_id: tt0065019
+    title: I Am Sartana, Your Angel of Death
+    year: 1969
+  - imdb_id: tt0066083
+    title: Mir hat es immer Spaß gemacht
+    year: 1970
+  - imdb_id: tt0064273
+    title: And God Said to Cain
+    year: 1970
+  - imdb_id: tt0065569
+    title: Count Dracula
+    year: 1970
+  - imdb_id: tt0064796
+    title: Only the Cool
+    year: 1970
+  - imdb_id: tt0065413
+    title: The Night of the Assassin
+    year: 1970
+  - imdb_id: tt0065975
+    title: Churchill's Leopards
+    year: 1970
+  - imdb_id: tt0065460
+    title: The Beast
+    year: 1970
+  - imdb_id: tt0066210
+    title: Coffin Full of Dollars
+    year: 1971
+  - imdb_id: tt0067354
+    title: His Name Was King
+    year: 1971
+  - imdb_id: tt0066827
+    title: Cold Blooded Beast
+    year: 1971
+  - imdb_id: tt0067931
+    title: Vengeance Is a Dish Served Cold
+    year: 1971
+  - imdb_id: tt0066240
+    title: Shoot the Living and Pray for the Dead
+    year: 1971
+  - imdb_id: tt0066132
+    title: Web of the Spider
+    year: 1971
+  - imdb_id: tt0067395
+    title: Il venditore di morte
+    year: 1971
+  - imdb_id: tt0067512
+    title: L'occhio del ragno
+    year: 1971
+  - imdb_id: tt0066835
+    title: Black Killer
+    year: 1971
+  - imdb_id: tt0067011
+    title: Adios Compañeros
+    year: 1971
+  - imdb_id: tt0069184
+    title: A Noose Is Waiting for You Trinity
+    year: 1972
+  - imdb_id: tt0068182
+    title: Aguirre, the Wrath of God
+    year: 1972
+  - imdb_id: tt0068972
+    title: Death Smiles on a Murderer
+    year: 1973
+  - imdb_id: tt0070370
+    title: La mano spietata della legge
+    year: 1973
+  - imdb_id: tt0068954
+    title: Shanghai Joe
+    year: 1973
+  - imdb_id: tt0070368
+    title: The Hand That Feeds the Dead
+    year: 1974
+  - imdb_id: tt0421593
+    title: Lover of the Monster
+    year: 1974
+  - imdb_id: tt0070036
+    title: Heroes in Hell
+    year: 1974
+  - imdb_id: tt0072404
+    title: Chi ha rubato il tesoro dello scia?
+    year: 1974
+  - imdb_id: tt0071950
+    title: Footprints on the Moon
+    year: 1975
+  - imdb_id: tt0073155
+    title: L'important c'est d'aimer
+    year: 1975
+  - imdb_id: tt0072084
+    title: Return of Shanghai Joe
+    year: 1975
+  - imdb_id: tt0071756
+    title: Lifespan
+    year: 1975
+  - imdb_id: tt0073036
+    title: A Genius, Two Partners and a Dupe
+    year: 1975
+  - imdb_id: tt0074959
+    title: The Net
+    year: 1975
+  - imdb_id: tt0074408
+    title: Jack the Ripper
+    year: 1976
+  - imdb_id: tt0076473
+    title: Golden Night
+    year: 1976
+  - imdb_id: tt0076398
+    title: Operation Thunderbolt
+    year: 1977
+  - imdb_id: tt0076347
+    title: The French Woman
+    year: 1977
+  - imdb_id: tt0076410
+    title: Death of a Corrupt Man
+    year: 1977
+  - imdb_id: tt0077317
+    title: The Song of Roland
+    year: 1978
+  - imdb_id: tt0079641
+    title: Nosferatu the Vampyre
+    year: 1979
+  - imdb_id: tt0078530
+    title: Zoo zéro
+    year: 1979
+  - imdb_id: tt0080149
+    title: Woyzeck
+    year: 1979
+  - imdb_id: tt0079260
+    title: Haine
+    year: 1980
+  - imdb_id: tt0083933
+    title: La femme enfant
+    year: 1980
+  - imdb_id: tt0081459
+    title: Schizoid
+    year: 1980
+  - imdb_id: tt0082422
+    title: Fruits of Passion
+    year: 1981
+  - imdb_id: tt0084274
+    title: Love & Money
+    year: 1981
+  - imdb_id: tt0084854
+    title: Venom
+    year: 1981
+  - imdb_id: tt0082111
+    title: Buddy Buddy
+    year: 1981
+  - imdb_id: tt0083946
+    title: Fitzcarraldo
+    year: 1982
+  - imdb_id: tt0084704
+    title: The Soldier
+    year: 1982
+  - imdb_id: tt0083557
+    title: Android
+    year: 1982
+  - imdb_id: tt0087068
+    title: "Code Name: Wild Geese"
+    year: 1984
+  - imdb_id: tt0087629
+    title: The Little Drummer Girl
+    year: 1984
+  - imdb_id: tt0088073
+    title: The Secret Diary of Sigmund Freud
+    year: 1984
+  - imdb_id: tt0088961
+    title: Creature
+    year: 1985
+  - imdb_id: tt0089436
+    title: Kommando Leopard
+    year: 1985
+  - imdb_id: tt0088870
+    title: Star Knight
+    year: 1985
+  - imdb_id: tt0089911
+    title: Revenge of the Stolen Stars
+    year: 1986
+  - imdb_id: tt0090881
+    title: Crawlspace
+    year: 1986
+  - imdb_id: tt0094888
+    title: Cobra Verde
+    year: 1987
+  - imdb_id: tt0091651
+    title: Vampire in Venice
+    year: 1988
+  - imdb_id: tt0098052
+    title: Paganini
+    year: 1989
+  - imdb_id: tt0155726
+    title: Grandi Cacciatori
+    year: 1990

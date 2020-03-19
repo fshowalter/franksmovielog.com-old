@@ -1,2 +1,271 @@
-id: nm0000012
+frozen: true
+imdb_id: nm0000012
 name: Bette Davis
+titles:
+  - imdb_id: tt0021636
+    title: The Bad Sister
+    year: 1931
+  - imdb_id: tt0022360
+    title: Seed
+    year: 1931
+  - imdb_id: tt0022550
+    title: Waterloo Bridge
+    year: 1931
+  - imdb_id: tt0022551
+    title: Way Back Home
+    year: 1931
+  - imdb_id: tt0020875
+    title: The Menace
+    year: 1932
+  - imdb_id: tt0022991
+    title: Hell's House
+    year: 1932
+  - imdb_id: tt0023181
+    title: The Man Who Played God
+    year: 1932
+  - imdb_id: tt0023491
+    title: So Big!
+    year: 1932
+  - imdb_id: tt0023394
+    title: The Rich Are Always with Us
+    year: 1932
+  - imdb_id: tt0022802
+    title: The Dark Horse
+    year: 1932
+  - imdb_id: tt0022735
+    title: The Cabin in the Cotton
+    year: 1932
+  - imdb_id: tt0023590
+    title: Three on a Match
+    year: 1932
+  - imdb_id: tt0023731
+    title: 20,000 Years in Sing Sing
+    year: 1932
+  - imdb_id: tt0024426
+    title: Parachute Jumper
+    year: 1933
+  - imdb_id: tt0024785
+    title: The Working Man
+    year: 1933
+  - imdb_id: tt0023993
+    title: Ex-Lady
+    year: 1933
+  - imdb_id: tt0023856
+    title: Bureau of Missing Persons
+    year: 1933
+  - imdb_id: tt0024890
+    title: The Big Shakedown
+    year: 1934
+  - imdb_id: tt0025101
+    title: Fashions of 1934
+    year: 1934
+  - imdb_id: tt0025330
+    title: Jimmy the Gent
+    year: 1934
+  - imdb_id: tt0025129
+    title: Fog Over Frisco
+    year: 1934
+  - imdb_id: tt0025586
+    title: Of Human Bondage
+    year: 1934
+  - imdb_id: tt0025273
+    title: Housewife
+    year: 1934
+  - imdb_id: tt0026129
+    title: Bordertown
+    year: 1935
+  - imdb_id: tt0026413
+    title: The Girl from 10th Avenue
+    year: 1935
+  - imdb_id: tt0026388
+    title: Front Page Woman
+    year: 1935
+  - imdb_id: tt0027029
+    title: Special Agent
+    year: 1935
+  - imdb_id: tt0026261
+    title: Dangerous
+    year: 1935
+  - imdb_id: tt0028096
+    title: The Petrified Forest
+    year: 1936
+  - imdb_id: tt0027687
+    title: The Golden Arrow
+    year: 1936
+  - imdb_id: tt0028219
+    title: Satan Met a Lady
+    year: 1936
+  - imdb_id: tt0029217
+    title: Marked Woman
+    year: 1937
+  - imdb_id: tt0029080
+    title: Kid Galahad
+    year: 1937
+  - imdb_id: tt0029650
+    title: That Certain Woman
+    year: 1937
+  - imdb_id: tt0029058
+    title: It's Love I'm After
+    year: 1937
+  - imdb_id: tt0030287
+    title: Jezebel
+    year: 1938
+  - imdb_id: tt0030755
+    title: The Sisters
+    year: 1938
+  - imdb_id: tt0031210
+    title: Dark Victory
+    year: 1939
+  - imdb_id: tt0031516
+    title: Juarez
+    year: 1939
+  - imdb_id: tt0031750
+    title: The Old Maid
+    year: 1939
+  - imdb_id: tt0031826
+    title: The Private Lives of Elizabeth and Essex
+    year: 1939
+  - imdb_id: tt0032194
+    title: All This, and Heaven Too
+    year: 1940
+  - imdb_id: tt0032701
+    title: The Letter
+    year: 1940
+  - imdb_id: tt0033677
+    title: The Great Lie
+    year: 1941
+  - imdb_id: tt0034184
+    title: Shining Victory
+    year: 1941
+  - imdb_id: tt0033432
+    title: The Bride Came C.O.D.
+    year: 1941
+  - imdb_id: tt0033836
+    title: The Little Foxes
+    year: 1941
+  - imdb_id: tt0033874
+    title: The Man Who Came to Dinner
+    year: 1942
+  - imdb_id: tt0034890
+    title: In This Our Life
+    year: 1942
+  - imdb_id: tt0035140
+    title: Now, Voyager
+    year: 1942
+  - imdb_id: tt0036515
+    title: Watch on the Rhine
+    year: 1943
+  - imdb_id: tt0036422
+    title: Thank Your Lucky Stars
+    year: 1943
+  - imdb_id: tt0036230
+    title: Old Acquaintance
+    year: 1943
+  - imdb_id: tt0037094
+    title: Mr. Skeffington
+    year: 1944
+  - imdb_id: tt0036922
+    title: Hollywood Canteen
+    year: 1944
+  - imdb_id: tt0037614
+    title: The Corn Is Green
+    year: 1945
+  - imdb_id: tt0038984
+    title: A Stolen Life
+    year: 1946
+  - imdb_id: tt0038461
+    title: Deception
+    year: 1946
+  - imdb_id: tt0040971
+    title: Winter Meeting
+    year: 1948
+  - imdb_id: tt0040499
+    title: June Bride
+    year: 1948
+  - imdb_id: tt0041172
+    title: Beyond the Forest
+    year: 1949
+  - imdb_id: tt0042192
+    title: All About Eve
+    year: 1950
+  - imdb_id: tt0043910
+    title: Payment on Demand
+    year: 1951
+  - imdb_id: tt0044364
+    title: Another Man's Poison
+    year: 1951
+  - imdb_id: tt0045029
+    title: Phone Call from a Stranger
+    year: 1952
+  - imdb_id: tt0045186
+    title: The Star
+    year: 1952
+  - imdb_id: tt0048791
+    title: The Virgin Queen
+    year: 1955
+  - imdb_id: tt0049061
+    title: The Catered Affair
+    year: 1956
+  - imdb_id: tt0049800
+    title: Storm Center
+    year: 1956
+  - imdb_id: tt0052946
+    title: John Paul Jones
+    year: 1959
+  - imdb_id: tt0053247
+    title: The Scapegoat
+    year: 1959
+  - imdb_id: tt0055312
+    title: Pocketful of Miracles
+    year: 1961
+  - imdb_id: tt0056687
+    title: What Ever Happened to Baby Jane?
+    year: 1962
+  - imdb_id: tt0058413
+    title: The Empty Canvas
+    year: 1963
+  - imdb_id: tt0057997
+    title: Dead Ringer
+    year: 1964
+  - imdb_id: tt0058745
+    title: Where Love Has Gone
+    year: 1964
+  - imdb_id: tt0058213
+    title: Hush...Hush, Sweet Charlotte
+    year: 1964
+  - imdb_id: tt0059496
+    title: The Nanny
+    year: 1965
+  - imdb_id: tt0062671
+    title: The Anniversary
+    year: 1968
+  - imdb_id: tt0066943
+    title: Connecting Rooms
+    year: 1970
+  - imdb_id: tt0066870
+    title: Bunny O'Hare
+    year: 1971
+  - imdb_id: tt0067375
+    title: Madame Sin
+    year: 1972
+  - imdb_id: tt0069235
+    title: The Scopone Game
+    year: 1972
+  - imdb_id: tt0074258
+    title: Burnt Offerings
+    year: 1976
+  - imdb_id: tt0078158
+    title: Return from Witch Mountain
+    year: 1978
+  - imdb_id: tt0077413
+    title: Death on the Nile
+    year: 1978
+  - imdb_id: tt0081738
+    title: The Watcher in the Woods
+    year: 1980
+  - imdb_id: tt0094315
+    title: The Whales of August
+    year: 1987
+  - imdb_id: tt0098649
+    title: Wicked Stepmother
+    year: 1989

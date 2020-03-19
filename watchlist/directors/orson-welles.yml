@@ -1,2 +1,64 @@
-id: nm0000080
+frozen: true
+imdb_id: nm0000080
 name: Orson Welles
+titles:
+  - imdb_id: tt0030881
+    title: Too Much Johnson
+    year: 1938
+  - imdb_id: tt0033467
+    title: Citizen Kane
+    year: 1941
+  - imdb_id: tt0035015
+    title: The Magnificent Ambersons
+    year: 1942
+  - imdb_id: tt0034922
+    title: Journey Into Fear
+    year: 1943
+  - imdb_id: tt0038991
+    title: The Stranger
+    year: 1946
+  - imdb_id: tt0040525
+    title: The Lady from Shanghai
+    year: 1947
+  - imdb_id: tt0040558
+    title: Macbeth
+    year: 1948
+  - imdb_id: tt0041182
+    title: Black Magic
+    year: 1949
+  - imdb_id: tt0045251
+    title: Othello
+    year: 1951
+  - imdb_id: tt0047579
+    title: Three Cases of Murder
+    year: 1955
+  - imdb_id: tt0048393
+    title: Confidential Report
+    year: 1955
+  - imdb_id: tt0052311
+    title: Touch of Evil
+    year: 1958
+  - imdb_id: tt0054788
+    title: David and Goliath
+    year: 1960
+  - imdb_id: tt0056282
+    title: No Exit
+    year: 1962
+  - imdb_id: tt0057427
+    title: The Trial
+    year: 1962
+  - imdb_id: tt0059012
+    title: Chimes at Midnight
+    year: 1965
+  - imdb_id: tt0065025
+    title: The Southern Star
+    year: 1969
+  - imdb_id: tt0209994
+    title: The Deep
+    year: 1970
+  - imdb_id: tt0104121
+    title: Don Quixote
+    year: 1992
+  - imdb_id: tt0069049
+    title: The Other Side of the Wind
+    year: 2018

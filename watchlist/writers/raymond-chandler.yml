@@ -1,4 +1,52 @@
-id: nm0151452
+frozen: false
+imdb_id: nm0151452
 name: Raymond Chandler
-notes: null
-title_ids_to_exclude: []
+titles:
+- imdb_id: tt0034716
+  title: The Falcon Takes Over
+  year: 1942
+- imdb_id: tt0035443
+  title: Time to Kill
+  year: 1942
+- imdb_id: tt0036775
+  title: Double Indemnity
+  year: 1944
+- imdb_id: tt0036599
+  title: And Now Tomorrow
+  year: 1944
+- imdb_id: tt0037101
+  title: Murder, My Sweet
+  year: 1944
+- imdb_id: tt0038205
+  title: The Unseen
+  year: 1945
+- imdb_id: tt0038369
+  title: The Blue Dahlia
+  year: 1946
+- imdb_id: tt0038355
+  title: The Big Sleep
+  year: 1946
+- imdb_id: tt0039545
+  title: Lady in the Lake
+  year: 1946
+- imdb_id: tt0039217
+  title: The Brasher Doubloon
+  year: 1947
+- imdb_id: tt0044079
+  title: Strangers on a Train
+  year: 1951
+- imdb_id: tt0064638
+  title: Marlowe
+  year: 1969
+- imdb_id: tt0070334
+  title: The Long Goodbye
+  year: 1973
+- imdb_id: tt0072973
+  title: Farewell, My Lovely
+  year: 1975
+- imdb_id: tt0077234
+  title: The Big Sleep
+  year: 1978
+- imdb_id: tt0378341
+  title: Smart Philip
+  year: 2003

@@ -1,4 +1,25 @@
-frozen: false
+frozen: true
 imdb_id: nm0001466
 name: Sergio Leone
-titles: null
+titles:
+  - imdb_id: tt0054756
+    title: The Colossus of Rhodes
+    year: 1961
+  - imdb_id: tt0058461
+    title: A Fistful of Dollars
+    year: 1964
+  - imdb_id: tt0059578
+    title: For a Few Dollars More
+    year: 1965
+  - imdb_id: tt0060196
+    title: The Good, the Bad and the Ugly
+    year: 1966
+  - imdb_id: tt0064116
+    title: Once Upon a Time in the West
+    year: 1968
+  - imdb_id: tt0067140
+    title: Duck, You Sucker
+    year: 1971
+  - imdb_id: tt0087843
+    title: Once Upon a Time in America
+    year: 1984

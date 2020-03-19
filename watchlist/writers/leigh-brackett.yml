@@ -1,4 +1,40 @@
-id: nm0102824
+frozen: false
+imdb_id: nm0102824
 name: Leigh Brackett
-notes: null
-title_ids_to_exclude: []
+titles:
+- imdb_id: tt0038214
+  title: The Vampire's Ghost
+  year: 1945
+- imdb_id: tt0038355
+  title: The Big Sleep
+  year: 1946
+- imdb_id: tt0038430
+  title: Crime Doctor's Man Hunt
+  year: 1946
+- imdb_id: tt0047634
+  title: The Unholy Four
+  year: 1954
+- imdb_id: tt0053221
+  title: Rio Bravo
+  year: 1959
+- imdb_id: tt0054934
+  title: Gold of the Seven Saints
+  year: 1961
+- imdb_id: tt0055718
+  title: 13 West Street
+  year: 1962
+- imdb_id: tt0056059
+  title: Hatari!
+  year: 1962
+- imdb_id: tt0061619
+  title: El Dorado
+  year: 1967
+- imdb_id: tt0066301
+  title: Rio Lobo
+  year: 1970
+- imdb_id: tt0070334
+  title: The Long Goodbye
+  year: 1973
+- imdb_id: tt0080684
+  title: 'Star Wars: Episode V - The Empire Strikes Back'
+  year: 1980

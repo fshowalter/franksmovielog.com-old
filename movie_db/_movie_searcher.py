@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Set
+from typing import Any, Dict, List
 
 from movie_db import _db
 
@@ -8,8 +8,8 @@ class Result(object):
         self.imdb_id: str = row['imdb_id']
         self.title: str = row['title']
         self.year: int = int(row['year'])
-        self.directors: Set[str] = set()
-        self.principals: Set[str] = set()
+        self.directors: List[str] = []
+        self.principals: List[str] = []
 
 
 def search(query: str) -> List[Result]:
@@ -48,9 +48,9 @@ def _append_directors(connection: _db.Connection, search_results: List[Result]) 
     results_hash = _hash_rows_by_title_id(rows)
 
     for search_result in search_results:
-        search_result_imdb_id = results_hash.get(search_result.imdb_id)
-        if search_result_imdb_id:
-            search_result.directors.update(search_result_imdb_id)
+        search_result_directors = results_hash.get(search_result.imdb_id)
+        if search_result_directors:
+            search_result.directors.extend(list(dict.fromkeys(search_result_directors).keys()))
 
 
 def _append_principals(connection: _db.Connection, search_results: List[Result]) -> None:
@@ -68,9 +68,10 @@ def _append_principals(connection: _db.Connection, search_results: List[Result])
     results_hash = _hash_rows_by_title_id(rows)
 
     for search_result in search_results:
-        search_result_imdb_id = results_hash.get(search_result.imdb_id)
-        if search_result_imdb_id:
-            search_result.principals.update(search_result_imdb_id)
+        search_result_principals = results_hash.get(search_result.imdb_id)
+
+        if search_result_principals:
+            search_result.principals.extend(list(dict.fromkeys(search_result_principals).keys()))
 
 
 def _hash_rows_by_title_id(rows: List[Any]) -> Dict[str, List[str]]:

@@ -1,2 +1,106 @@
-id: nm0000485
+frozen: true
+imdb_id: nm0000485
 name: Fritz Lang
+titles:
+  - imdb_id: tt0015175
+    title: "Die Nibelungen: Siegfried"
+    year: 1924
+  - imdb_id: tt0017136
+    title: Metropolis
+    year: 1927
+  - imdb_id: tt0022100
+    title: M
+    year: 1931
+  - imdb_id: tt0023563
+    title: The Testament of Dr. Mabuse
+    year: 1933
+  - imdb_id: tt0025397
+    title: Liliom
+    year: 1934
+  - imdb_id: tt0027652
+    title: Fury
+    year: 1936
+  - imdb_id: tt0029808
+    title: You Only Live Once
+    year: 1937
+  - imdb_id: tt0030996
+    title: You and Me
+    year: 1938
+  - imdb_id: tt0032983
+    title: The Return of Frank James
+    year: 1940
+  - imdb_id: tt0034384
+    title: Western Union
+    year: 1941
+  - imdb_id: tt0033873
+    title: Man Hunt
+    year: 1941
+  - imdb_id: tt0033486
+    title: Confirm or Deny
+    year: 1941
+  - imdb_id: tt0035082
+    title: Moontide
+    year: 1942
+  - imdb_id: tt0035966
+    title: Hangmen Also Die!
+    year: 1943
+  - imdb_id: tt0037075
+    title: Ministry of Fear
+    year: 1944
+  - imdb_id: tt0037469
+    title: The Woman in the Window
+    year: 1944
+  - imdb_id: tt0038057
+    title: Scarlet Street
+    year: 1945
+  - imdb_id: tt0038417
+    title: Cloak and Dagger
+    year: 1946
+  - imdb_id: tt0040766
+    title: Secret Beyond the Door...
+    year: 1947
+  - imdb_id: tt0042579
+    title: House by the River
+    year: 1950
+  - imdb_id: tt0042195
+    title: American Guerrilla in the Philippines
+    year: 1950
+  - imdb_id: tt0045070
+    title: Rancho Notorious
+    year: 1952
+  - imdb_id: tt0044502
+    title: Clash by Night
+    year: 1952
+  - imdb_id: tt0045564
+    title: The Blue Gardenia
+    year: 1953
+  - imdb_id: tt0045555
+    title: The Big Heat
+    year: 1953
+  - imdb_id: tt0047101
+    title: Human Desire
+    year: 1954
+  - imdb_id: tt0048387
+    title: Moonfleet
+    year: 1955
+  - imdb_id: tt0049949
+    title: While the City Sleeps
+    year: 1956
+  - imdb_id: tt0049006
+    title: Beyond a Reasonable Doubt
+    year: 1956
+  - imdb_id: tt0052295
+    title: Tiger of Bengal
+    year: 1959
+  - imdb_id: tt0052924
+    title: The Indian Tomb
+    year: 1959
+  - imdb_id: tt0054371
+    title: The 1,000 Eyes of Dr. Mabuse
+    year: 1960
+  - imdb_id: tt0052949
+    title: Journey to the Lost City
+    year: 1960
+  - imdb_id: tt9098914
+    title: Die 1000 Glotzböbbel vom Dr. Mabuse
+    year: 2018

@@ -36,7 +36,9 @@ def _build_add_to_collection_options() -> _radio_list.CollectionOptions:
 def _prompt_for_new_title(collection: watchlist.Collection) -> Optional[str]:
     formatted_titles = []
     for title in collection.titles:
-        formatted_titles.append(f'\u00B7 {title.title} ({title.year}) \n')
+        formatted_titles.append(
+            f'\u00B7 {html.escape(title.title)} ({title.year}) \n',
+        )
 
     prompt_text = HTML(
         '<cyan>{0}</cyan> titles:\n{1}\nNew Title: '.format(
@@ -76,7 +78,7 @@ def build_options_for_select_movie_for_collection(
 
     for search_result in search_results:
         option = HTML('<cyan>{0} ({1})</cyan> ({2})'.format(
-            search_result.title,
+            html.escape(search_result.title),
             search_result.year,
             ', '.join(html.escape(principal) for principal in search_result.principals),
         ))

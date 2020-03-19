@@ -1,2 +1,238 @@
-id: nm0000007
+frozen: true
+imdb_id: nm0000007
 name: Humphrey Bogart
+titles:
+  - imdb_id: tt0021508
+    title: Up the River
+    year: 1930
+  - imdb_id: tt0020822
+    title: A Devil with Women
+    year: 1930
+  - imdb_id: tt0021680
+    title: Body and Soul
+    year: 1931
+  - imdb_id: tt0021636
+    title: The Bad Sister
+    year: 1931
+  - imdb_id: tt0022576
+    title: Women of All Nations
+    year: 1931
+  - imdb_id: tt0021966
+    title: A Holy Terror
+    year: 1931
+  - imdb_id: tt0023153
+    title: Love Affair
+    year: 1932
+  - imdb_id: tt0022676
+    title: Big City Blues
+    year: 1932
+  - imdb_id: tt0023590
+    title: Three on a Match
+    year: 1932
+  - imdb_id: tt0025499
+    title: Midnight
+    year: 1934
+  - imdb_id: tt0028426
+    title: Two Against the World
+    year: 1936
+  - imdb_id: tt0028096
+    title: The Petrified Forest
+    year: 1936
+  - imdb_id: tt0027407
+    title: Bullets or Ballots
+    year: 1936
+  - imdb_id: tt0027445
+    title: China Clipper
+    year: 1936
+  - imdb_id: tt0027805
+    title: Isle of Fury
+    year: 1936
+  - imdb_id: tt0027367
+    title: Black Legion
+    year: 1937
+  - imdb_id: tt0028955
+    title: The Great O'Malley
+    year: 1937
+  - imdb_id: tt0029217
+    title: Marked Woman
+    year: 1937
+  - imdb_id: tt0029511
+    title: San Quentin
+    year: 1937
+  - imdb_id: tt0029080
+    title: Kid Galahad
+    year: 1937
+  - imdb_id: tt0028773
+    title: Dead End
+    year: 1937
+  - imdb_id: tt0029605
+    title: Stand-In
+    year: 1937
+  - imdb_id: tt0030820
+    title: Swing Your Lady
+    year: 1938
+  - imdb_id: tt0030026
+    title: Crime School
+    year: 1938
+  - imdb_id: tt0030433
+    title: Men Are Such Fools
+    year: 1938
+  - imdb_id: tt0030650
+    title: Racket Busters
+    year: 1938
+  - imdb_id: tt0029864
+    title: The Amazing Dr. Clitterhouse
+    year: 1938
+  - imdb_id: tt0029870
+    title: Angels with Dirty Faces
+    year: 1938
+  - imdb_id: tt0031536
+    title: King of the Underworld
+    year: 1939
+  - imdb_id: tt0031747
+    title: The Oklahoma Kid
+    year: 1939
+  - imdb_id: tt0032153
+    title: You Can't Get Away with Murder
+    year: 1939
+  - imdb_id: tt0031210
+    title: Dark Victory
+    year: 1939
+  - imdb_id: tt0031867
+    title: The Roaring Twenties
+    year: 1939
+  - imdb_id: tt0031851
+    title: The Return of Doctor X
+    year: 1939
+  - imdb_id: tt0032636
+    title: Invisible Stripes
+    year: 1939
+  - imdb_id: tt0033226
+    title: Virginia City
+    year: 1940
+  - imdb_id: tt0032643
+    title: It All Came True
+    year: 1940
+  - imdb_id: tt0032285
+    title: Brother Orchid
+    year: 1940
+  - imdb_id: tt0033149
+    title: They Drive by Night
+    year: 1940
+  - imdb_id: tt0033717
+    title: High Sierra
+    year: 1941
+  - imdb_id: tt0034370
+    title: The Wagons Roll at Night
+    year: 1941
+  - imdb_id: tt0033870
+    title: The Maltese Falcon
+    year: 1941
+  - imdb_id: tt0034449
+    title: All Through the Night
+    year: 1942
+  - imdb_id: tt0034513
+    title: The Big Shot
+    year: 1942
+  - imdb_id: tt0034428
+    title: Across the Pacific
+    year: 1942
+  - imdb_id: tt0034583
+    title: Casablanca
+    year: 1942
+  - imdb_id: tt0035608
+    title: Action in the North Atlantic
+    year: 1943
+  - imdb_id: tt0036323
+    title: Sahara
+    year: 1943
+  - imdb_id: tt0036422
+    title: Thank Your Lucky Stars
+    year: 1943
+  - imdb_id: tt0037166
+    title: Passage to Marseille
+    year: 1944
+  - imdb_id: tt0037382
+    title: To Have and Have Not
+    year: 1944
+  - imdb_id: tt0037611
+    title: Conflict
+    year: 1945
+  - imdb_id: tt0039053
+    title: Two Guys from Milwaukee
+    year: 1946
+  - imdb_id: tt0038355
+    title: The Big Sleep
+    year: 1946
+  - imdb_id: tt0038773
+    title: Never Say Goodbye
+    year: 1946
+  - imdb_id: tt0039305
+    title: Dead Reckoning
+    year: 1947
+  - imdb_id: tt0039926
+    title: The Two Mrs. Carrolls
+    year: 1947
+  - imdb_id: tt0039302
+    title: Dark Passage
+    year: 1947
+  - imdb_id: tt0040089
+    title: Always Together
+    year: 1947
+  - imdb_id: tt0040897
+    title: The Treasure of the Sierra Madre
+    year: 1948
+  - imdb_id: tt0040506
+    title: Key Largo
+    year: 1948
+  - imdb_id: tt0041555
+    title: Knock on Any Door
+    year: 1949
+  - imdb_id: tt0041967
+    title: Tokyo Joe
+    year: 1949
+  - imdb_id: tt0042324
+    title: Chain Lightning
+    year: 1950
+  - imdb_id: tt0042593
+    title: In a Lonely Place
+    year: 1950
+  - imdb_id: tt0043503
+    title: The Enforcer
+    year: 1951
+  - imdb_id: tt0044040
+    title: Sirocco
+    year: 1951
+  - imdb_id: tt0043265
+    title: The African Queen
+    year: 1951
+  - imdb_id: tt0044533
+    title: Deadline - U.S.A.
+    year: 1952
+  - imdb_id: tt0045544
+    title: Battle Circus
+    year: 1953
+  - imdb_id: tt0046414
+    title: Beat the Devil
+    year: 1953
+  - imdb_id: tt0046816
+    title: The Caine Mutiny
+    year: 1954
+  - imdb_id: tt0047437
+    title: Sabrina
+    year: 1954
+  - imdb_id: tt0046754
+    title: The Barefoot Contessa
+    year: 1954
+  - imdb_id: tt0048801
+    title: We're No Angels
+    year: 1955
+  - imdb_id: tt0048291
+    title: The Left Hand of God
+    year: 1955
+  - imdb_id: tt0047985
+    title: The Desperate Hours
+    year: 1955
+  - imdb_id: tt0049291
+    title: The Harder They Fall
+    year: 1956

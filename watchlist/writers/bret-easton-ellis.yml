@@ -1,4 +1,16 @@
-id: nm0254735
+frozen: false
+imdb_id: nm0254735
 name: Bret Easton Ellis
-notes: null
-title_ids_to_exclude: []
+titles:
+- imdb_id: tt0093407
+  title: Less Than Zero
+  year: 1987
+- imdb_id: tt0144084
+  title: American Psycho
+  year: 2000
+- imdb_id: tt0292644
+  title: The Rules of Attraction
+  year: 2002
+- imdb_id: tt0865554
+  title: The Informers
+  year: 2008

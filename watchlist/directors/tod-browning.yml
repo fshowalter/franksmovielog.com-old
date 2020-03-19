@@ -1,2 +1,37 @@
-id: nm0115218
+frozen: true
+imdb_id: nm0115218
 name: Tod Browning
+titles:
+  - imdb_id: tt0019563
+    title: West of Zanzibar
+    year: 1928
+  - imdb_id: tt0020581
+    title: Where East Is East
+    year: 1929
+  - imdb_id: tt0020492
+    title: The Thirteenth Chair
+    year: 1929
+  - imdb_id: tt0021224
+    title: Outside the Law
+    year: 1930
+  - imdb_id: tt0021814
+    title: Dracula
+    year: 1931
+  - imdb_id: tt0022002
+    title: Iron Man
+    year: 1931
+  - imdb_id: tt0022913
+    title: Freaks
+    year: 1932
+  - imdb_id: tt0024005
+    title: Fast Workers
+    year: 1933
+  - imdb_id: tt0026685
+    title: Mark of the Vampire
+    year: 1935
+  - imdb_id: tt0027521
+    title: The Devil-Doll
+    year: 1936
+  - imdb_id: tt0031657
+    title: Miracles for Sale
+    year: 1939

@@ -1,6 +1,7 @@
 import abc
 import operator
 import os
+import time
 from dataclasses import asdict, dataclass
 from glob import glob
 from typing import Any, Dict, Iterable, List, Optional, Sequence, Type, TypeVar
@@ -48,6 +49,8 @@ T = TypeVar('T', bound='Base')  # noqa: WPS111
 
 
 class Base(abc.ABC):  # noqa: WPS214
+    folder = EMPTY
+
     def __init__(
         self,
         name: str,
@@ -71,20 +74,9 @@ class Base(abc.ABC):  # noqa: WPS214
         """
         return EMPTY
 
-    @property
-    @classmethod
-    @abc.abstractmethod
-    def folder(cls) -> str:
-        """The folder under which this item is stored.
-
-        Returns:
-            str: The folder name.
-        """
-        return EMPTY
-
     @classmethod
     def folder_path(cls) -> str:
-        return os.path.join(WATCHLIST_PATH, cls.folder())
+        return os.path.join(WATCHLIST_PATH, cls.folder)
 
     @classmethod
     @abc.abstractmethod
@@ -121,7 +113,9 @@ class Base(abc.ABC):  # noqa: WPS214
         return EMPTY
 
     def _write(self) -> str:
-        if not self.file_path:
+        file_path = self.file_path
+
+        if not file_path:
             slug = slugify(self.name)
             file_path = os.path.join(self.__class__.folder_path(), f'{slug}.yml')
             if not os.path.exists(os.path.dirname(file_path)):
@@ -134,9 +128,7 @@ class Base(abc.ABC):  # noqa: WPS214
 
 
 class Collection(Base):
-    @classmethod
-    def folder(cls) -> str:
-        return 'collections'
+    folder = 'collections'
 
     @classmethod
     def new(cls, name: str) -> 'Collection':
@@ -212,6 +204,8 @@ PersonType = TypeVar('PersonType', bound='PersonBase')  # noqa: WPS111
 
 
 class PersonBase(Base):  # noqa: WPS214
+    credit_key = EMPTY
+
     def __init__(  # noqa: WPS211
         self,
         imdb_id: str,
@@ -257,35 +251,31 @@ class PersonBase(Base):  # noqa: WPS214
     def refresh_item_titles(self) -> None:
         imdb_person = _imdb_http.Person(self.imdb_id)
 
-        for credit_key in self.__class__.credit_keys():
-            logger.log(
-                '==== Begin refreshing {} credits for {}...',
-                credit_key,
-                self.name,
-            )
-            for movie in reversed(imdb_person.filmography[credit_key]):
-                imdb_movie = _imdb_http.Movie(movie)
+        self.titles = []
+        credit_key = self.__class__.credit_key
 
-                if imdb_movie.imdb_id not in _movies.title_ids():
-                    log_skip(imdb_movie, imdb_person.name, imdb_movie.notes)
-                    continue
-                if _imdb_http.movie_is_silent(imdb_movie):
-                    log_skip(imdb_movie, imdb_person.name, '(silent film)')
-                    continue
+        logger.log(
+            '==== Begin refreshing {} credits for {}...',
+            credit_key,
+            self.name,
+        )
+        for movie in reversed(imdb_person.filmography.get(credit_key, [])):
+            imdb_movie = _imdb_http.Movie(movie)
 
-                self.titles.append(Title.from_imdb_http_movie(imdb_movie))
-            self.save()
+            if imdb_movie.imdb_id not in _movies.title_ids():
+                log_skip(imdb_movie, imdb_person.name, imdb_movie.notes)
+                continue
+            if not imdb_movie.has_sound_mix:
+                log_skip(imdb_movie, imdb_person.name, '(no sound mix)')
+                continue
+            if imdb_movie.is_silent:
+                log_skip(imdb_movie, imdb_person.name, '(silent film)')
+                continue
 
-    @property
-    @classmethod
-    @abc.abstractmethod
-    def credit_keys(cls) -> Iterable[str]:
-        """Returns an array of keys for an `imdb_http.Person` filmography.
+            self.titles.append(Title.from_imdb_http_movie(imdb_movie))
+            time.sleep(1)
 
-        Returns:
-            Iterable[str]: An iterable of keys.
-        """
-        return []
+        self.save()
 
     @classmethod
     def refresh_all_item_titles(cls) -> None:
@@ -304,7 +294,7 @@ class PersonBase(Base):  # noqa: WPS214
             yaml_object = yaml.safe_load(yaml_file)
 
         return cls(
-            imdb_id=yaml_object['id'],
+            imdb_id=yaml_object.get('id', yaml_object.get(IMDB_ID)),
             name=yaml_object[NAME],
             frozen=yaml_object.get(FROZEN, False),  # noqa: WPS425,
             titles=yaml_object.get(TITLES, []),
@@ -313,14 +303,14 @@ class PersonBase(Base):  # noqa: WPS214
 
 class Director(PersonBase):
     folder = 'directors'
-    credit_keys = ['director']
+    credit_key = 'director'
 
 
 class Performer(PersonBase):
     folder = 'performers'
-    credit_keys = ['actor', 'actress']
+    credit_key = 'performer'
 
 
 class Writer(PersonBase):
     folder = 'writers'
-    credit_keys = ['writer']
+    credit_key = 'writer'

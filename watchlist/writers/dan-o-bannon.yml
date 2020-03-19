@@ -1,4 +1,64 @@
-id: nm0639321
+frozen: false
+imdb_id: nm0639321
 name: Dan O'Bannon
-notes: null
-title_ids_to_exclude: []
+titles:
+- imdb_id: tt0069945
+  title: Dark Star
+  year: 1974
+- imdb_id: tt0078748
+  title: Alien
+  year: 1979
+- imdb_id: tt0081334
+  title: Phobia
+  year: 1980
+- imdb_id: tt0082242
+  title: Dead & Buried
+  year: 1981
+- imdb_id: tt0082509
+  title: Heavy Metal
+  year: 1981
+- imdb_id: tt0085255
+  title: Blue Thunder
+  year: 1983
+- imdb_id: tt0089907
+  title: The Return of the Living Dead
+  year: 1985
+- imdb_id: tt0089489
+  title: Lifeforce
+  year: 1985
+- imdb_id: tt0091276
+  title: Invaders from Mars
+  year: 1986
+- imdb_id: tt0090605
+  title: Aliens
+  year: 1986
+- imdb_id: tt0100802
+  title: Total Recall
+  year: 1990
+- imdb_id: tt0103644
+  title: Alien³
+  year: 1992
+- imdb_id: tt0114367
+  title: Screamers
+  year: 1995
+- imdb_id: tt0119279
+  title: Hemoglobin
+  year: 1997
+- imdb_id: tt0118583
+  title: 'Alien: Resurrection'
+  year: 1997
+- imdb_id: tt0370263
+  title: Alien vs. Predator
+  year: 2004
+- imdb_id: tt0758730
+  title: 'Aliens vs. Predator: Requiem'
+  year: 2007
+- imdb_id: tt1446714
+  title: Prometheus
+  year: 2012
+- imdb_id: tt1386703
+  title: Total Recall
+  year: 2012
+- imdb_id: tt2316204
+  title: 'Alien: Covenant'
+  year: 2017

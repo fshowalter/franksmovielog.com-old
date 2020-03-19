@@ -1,2 +1,52 @@
-id: nm0001681
+frozen: true
+imdb_id: nm0001681
 name: George A. Romero
+titles:
+  - imdb_id: tt0063350
+    title: Night of the Living Dead
+    year: 1968
+  - imdb_id: tt0166843
+    title: There's Always Vanilla
+    year: 1971
+  - imdb_id: tt0069239
+    title: Season of the Witch
+    year: 1972
+  - imdb_id: tt0069895
+    title: The Crazies
+    year: 1973
+  - imdb_id: tt0077914
+    title: Martin
+    year: 1977
+  - imdb_id: tt0077402
+    title: Dawn of the Dead
+    year: 1978
+  - imdb_id: tt0082622
+    title: Knightriders
+    year: 1981
+  - imdb_id: tt0083767
+    title: Creepshow
+    year: 1982
+  - imdb_id: tt0088993
+    title: Day of the Dead
+    year: 1985
+  - imdb_id: tt0095652
+    title: Monkey Shines
+    year: 1988
+  - imdb_id: tt0100827
+    title: Two Evil Eyes
+    year: 1990
+  - imdb_id: tt0106664
+    title: The Dark Half
+    year: 1993
+  - imdb_id: tt0212830
+    title: Bruiser
+    year: 2000
+  - imdb_id: tt0418819
+    title: Land of the Dead
+    year: 2005
+  - imdb_id: tt0848557
+    title: Diary of the Dead
+    year: 2007
+  - imdb_id: tt1134854
+    title: Survival of the Dead
+    year: 2009
