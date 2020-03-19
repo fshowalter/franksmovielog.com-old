@@ -1,8 +1,9 @@
 import os
+import re
 from dataclasses import asdict, dataclass
 from datetime import date
 from glob import glob
-from typing import Any, List, Optional, Sequence
+from typing import Any, List, Optional, Sequence, Tuple
 
 import yaml
 from slugify import slugify
@@ -11,16 +12,22 @@ from movie_db import _table_base, humanize
 from movie_db.logger import logger
 
 TABLE_NAME = 'viewings'
+TITLE_AND_YEAR_REGEX = re.compile(r'^(.*)\s\((\d{4})\)$')
+
+
+class ViewingError(Exception):
+    def __init__(self, message: str) -> None:
+        self.message = message
 
 
 @dataclass
 class Viewing(object):
     imdb_id: str
     title: str
-    year: int
     venue: str
     sequence: int
     date: date
+    year: int
     file_path: Optional[str]
 
     @classmethod
@@ -30,10 +37,12 @@ class Viewing(object):
         with open(yaml_file_path, 'r') as yaml_file:
             yaml_object = yaml.safe_load(yaml_file)
 
+        title, year = cls.split_title_and_year(yaml_object['title'])
+
         return cls(
             imdb_id=yaml_object['imdb_id'],
-            title=yaml_object['title'],
-            year=yaml_object['year'],
+            title=title,
+            year=year,
             venue=yaml_object['venue'],
             sequence=yaml_object['sequence'],
             date=yaml_object['date'],
@@ -43,6 +52,13 @@ class Viewing(object):
     @property
     def title_with_year(self) -> str:
         return f'{self.title} ({self.year})'
+
+    @classmethod
+    def split_title_and_year(cls, title_and_year: str) -> Tuple[str, int]:
+        match = TITLE_AND_YEAR_REGEX.match(title_and_year)
+        if match:
+            return (match.group(1), int(match.group(2)))
+        raise ViewingError(f'Unable to parse {title_and_year} for title and year')
 
     def save(self) -> str:
         file_path = self.file_path

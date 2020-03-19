@@ -125,6 +125,25 @@ def fix_viewings() -> None:
             os.remove(yaml_file_path)
 
 
+@logger.catch
+def fix_viewing_sort() -> None:
+    files = glob(os.path.join('viewings', '*.yml'))
+    files.sort()
+    # files.reverse()
+
+    counter = 0
+
+    for yaml_file_path in files:
+        viewing = viewings.Viewing.load(yaml_file_path)
+        if viewing.sequence != counter + 1:
+            viewing.sequence = counter + 1
+            viewing.file_path = None
+            # viewing.save()
+            # os.remove(yaml_file_path)
+            logger.log(f'{viewing.sequence} {yaml_file_path}')
+        counter += 1
+
+
 if __name__ == '__main__':
-    fix_viewings()
+    fix_viewing_sort()
    # main.prompt()
