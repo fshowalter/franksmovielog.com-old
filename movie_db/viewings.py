@@ -1,3 +1,4 @@
+import operator
 import os
 import re
 from dataclasses import asdict, dataclass
@@ -13,6 +14,7 @@ from movie_db.logger import logger
 
 TABLE_NAME = 'viewings'
 TITLE_AND_YEAR_REGEX = re.compile(r'^(.*)\s\((\d{4})\)$')
+SEQUENCE = 'sequence'
 
 
 class ViewingError(Exception):
@@ -44,7 +46,7 @@ class Viewing(object):
             title=title,
             year=year,
             venue=yaml_object['venue'],
-            sequence=yaml_object['sequence'],
+            sequence=yaml_object[SEQUENCE],
             date=yaml_object['date'],
             file_path=yaml_file_path,
         )
@@ -81,7 +83,7 @@ class Viewing(object):
     def to_yaml(self) -> Any:
         return yaml.dump(  # type: ignore
             {
-                'sequence': self.sequence,
+                SEQUENCE: self.sequence,
                 'date': self.date,
                 'imdb_id': self.imdb_id,
                 'title': self.title_with_year,
@@ -119,7 +121,7 @@ class ViewingsTable(_table_base.TableBase):
         parameter_seq = [asdict(viewing) for viewing in viewings]
 
         super()._insert(ddl=ddl, parameter_seq=parameter_seq)
-        super()._add_index('sequence')
+        super()._add_index(SEQUENCE)
         super()._add_index('venue')
         super()._add_index('movie_imdb_id')
         super()._validate(viewings)
@@ -134,10 +136,49 @@ def update() -> None:
     viewings_table.insert(viewings)
 
 
+def add(imdb_id: str, title: str, venue: str, viewing_date: date, year: int) -> Viewing:
+    existing_viewings = _load_viewings()
+    next_sequence = len(existing_viewings) + 1
+
+    last_viewing = existing_viewings[-1]
+
+    if last_viewing.sequence != (next_sequence - 1):
+        raise ViewingError(
+            'Last viewing ({0} has sequence {1} but next sequence is {2}'.format(
+                existing_viewings[-1:],
+                last_viewing.sequence,
+                next_sequence,
+            ),
+        )
+
+    viewing = Viewing(
+        imdb_id=imdb_id,
+        title=title,
+        venue=venue,
+        date=viewing_date,
+        year=year,
+        sequence=next_sequence,
+        file_path=None,
+    )
+
+    viewing.save()
+
+    return viewing
+
+
+def venues() -> Sequence[str]:
+    viewings = _load_viewings()
+    venue_items = list(dict.fromkeys([viewing.venue for viewing in viewings]).keys())
+    venue_items.sort()
+    return venue_items
+
+
 def _load_viewings() -> Sequence[Viewing]:
     viewings: List[Viewing] = []
     for yaml_file_path in glob(os.path.join(TABLE_NAME, '*.yml')):
         viewings.append(Viewing.load(yaml_file_path))
+
+    viewings.sort(key=operator.attrgetter(SEQUENCE))
 
     logger.log('Loaded {} {}.', humanize.intcomma(len(viewings)), TABLE_NAME)
     return viewings

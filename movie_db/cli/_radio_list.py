@@ -22,6 +22,9 @@ CollectionOptions = NewType('CollectionOptions', List[CollectionOptionType])
 MovieSearchResultOptionType = Tuple[Optional[queries.MovieSearchResult], str]
 MovieSearchOptions = NewType('MovieSearchOptions', List[MovieSearchResultOptionType])
 
+VenueOptionType = Tuple[Optional[str], HTML]
+VenueOptions = NewType('VenueOptions', List[VenueOptionType])
+
 
 @overload
 def prompt(title: str, options: CallableOptions) -> OptionalCallableType:
@@ -40,6 +43,11 @@ def prompt(title: str, options: PersonSearchOptions) -> Optional[queries.PersonS
 
 @overload
 def prompt(title: str, options: MovieSearchOptions) -> Optional[queries.MovieSearchResult]:
+    ...  # noqa: WPS428
+
+
+@overload
+def prompt(title: str, options: VenueOptions) -> Optional[str]:
     ...  # noqa: WPS428
 
 
