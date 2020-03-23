@@ -1,28 +1,28 @@
 frozen: false
-imdb_id: nm0001754
 name: Todd Solondz
+imdb_id: nm0001754
 titles:
-- imdb_id: tt0169895
-  title: Fear, Anxiety & Depression
+- title: Fear, Anxiety & Depression
+  imdb_id: tt0169895
   year: 1989
-- imdb_id: tt0114906
-  title: Welcome to the Dollhouse
+- title: Welcome to the Dollhouse
+  imdb_id: tt0114906
   year: 1995
-- imdb_id: tt0147612
-  title: Happiness
+- title: Happiness
+  imdb_id: tt0147612
   year: 1998
-- imdb_id: tt0250081
-  title: Storytelling
+- title: Storytelling
+  imdb_id: tt0250081
   year: 2001
-- imdb_id: tt0362004
-  title: Palindromes
+- title: Palindromes
+  imdb_id: tt0362004
   year: 2004
-- imdb_id: tt0808526
-  title: Life During Wartime
+- title: Life During Wartime
+  imdb_id: tt0808526
   year: 2009
-- imdb_id: tt1690455
-  title: Dark Horse
+- title: Dark Horse
+  imdb_id: tt1690455
   year: 2011
-- imdb_id: tt4144190
-  title: Wiener-Dog
+- title: Wiener-Dog
+  imdb_id: tt4144190
   year: 2016

@@ -1,82 +1,86 @@
 frozen: false
-imdb_id: nm0000631
 name: Ridley Scott
+imdb_id: nm0000631
 titles:
-- imdb_id: tt0075968
-  title: The Duellists
+- title: The Duellists
+  imdb_id: tt0075968
   year: 1977
-- imdb_id: tt0078748
-  title: Alien
+- title: Alien
+  imdb_id: tt0078748
   year: 1979
-- imdb_id: tt0083658
-  title: Blade Runner
+- title: Blade Runner
+  notes: (directed by)
+  imdb_id: tt0083658
   year: 1982
-- imdb_id: tt0089469
-  title: Legend
+- title: Legend
+  imdb_id: tt0089469
   year: 1985
-- imdb_id: tt0094008
-  title: Someone to Watch Over Me
+- title: Someone to Watch Over Me
+  imdb_id: tt0094008
   year: 1987
-- imdb_id: tt0096933
-  title: Black Rain
+- title: Black Rain
+  imdb_id: tt0096933
   year: 1989
-- imdb_id: tt0103074
-  title: Thelma & Louise
+- title: Thelma & Louise
+  imdb_id: tt0103074
   year: 1991
-- imdb_id: tt0103594
-  title: '1492: Conquest of Paradise'
+- title: '1492: Conquest of Paradise'
+  imdb_id: tt0103594
   year: 1992
-- imdb_id: tt0118158
-  title: White Squall
+- title: White Squall
+  imdb_id: tt0118158
   year: 1996
-- imdb_id: tt0119173
-  title: G.I. Jane
+- title: G.I. Jane
+  imdb_id: tt0119173
   year: 1997
-- imdb_id: tt0172495
-  title: Gladiator
+- title: Gladiator
+  imdb_id: tt0172495
   year: 2000
-- imdb_id: tt0212985
-  title: Hannibal
+- title: Hannibal
+  imdb_id: tt0212985
   year: 2001
-- imdb_id: tt0265086
-  title: Black Hawk Down
+- title: Black Hawk Down
+  imdb_id: tt0265086
   year: 2001
-- imdb_id: tt0325805
-  title: Matchstick Men
+- title: Matchstick Men
+  imdb_id: tt0325805
   year: 2003
-- imdb_id: tt0320661
-  title: Kingdom of Heaven
+- title: Kingdom of Heaven
+  imdb_id: tt0320661
   year: 2005
-- imdb_id: tt0411098
-  title: All the Invisible Children
+- title: All the Invisible Children
+  notes: (segment "Jonathan")
+  imdb_id: tt0411098
   year: 2005
-- imdb_id: tt0401445
-  title: A Good Year
+- title: A Good Year
+  imdb_id: tt0401445
   year: 2006
-- imdb_id: tt0765429
-  title: American Gangster
+- title: American Gangster
+  imdb_id: tt0765429
   year: 2007
-- imdb_id: tt0758774
-  title: Body of Lies
+- title: Body of Lies
+  imdb_id: tt0758774
   year: 2008
-- imdb_id: tt0955308
-  title: Robin Hood
+- title: Robin Hood
+  imdb_id: tt0955308
   year: 2010
-- imdb_id: tt1446714
-  title: Prometheus
+- title: Prometheus
+  imdb_id: tt1446714
   year: 2012
-- imdb_id: tt2193215
-  title: The Counselor
+- title: The Counselor
+  imdb_id: tt2193215
   year: 2013
-- imdb_id: tt1528100
-  title: 'Exodus: Gods and Kings'
+- title: 'Exodus: Gods and Kings'
+  imdb_id: tt1528100
   year: 2014
-- imdb_id: tt3659388
-  title: The Martian
+- title: The Martian
+  notes: (directed by)
+  imdb_id: tt3659388
   year: 2015
-- imdb_id: tt2316204
-  title: 'Alien: Covenant'
+- title: 'Alien: Covenant'
+  notes: (directed by)
+  imdb_id: tt2316204
   year: 2017
-- imdb_id: tt5294550
-  title: All the Money in the World
+- title: All the Money in the World
+  imdb_id: tt5294550
   year: 2017

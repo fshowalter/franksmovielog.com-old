@@ -1,82 +1,83 @@
 frozen: false
-imdb_id: nm0000217
 name: Martin Scorsese
+imdb_id: nm0000217
 titles:
-- imdb_id: tt0063803
-  title: Who's That Knocking at My Door
+- title: Who's That Knocking at My Door
+  imdb_id: tt0063803
   year: 1967
-- imdb_id: tt0068309
-  title: Boxcar Bertha
+- title: Boxcar Bertha
+  imdb_id: tt0068309
   year: 1972
-- imdb_id: tt0070379
-  title: Mean Streets
+- title: Mean Streets
+  imdb_id: tt0070379
   year: 1973
-- imdb_id: tt0071115
-  title: Alice Doesn't Live Here Anymore
+- title: Alice Doesn't Live Here Anymore
+  imdb_id: tt0071115
   year: 1974
-- imdb_id: tt0075314
-  title: Taxi Driver
+- title: Taxi Driver
+  imdb_id: tt0075314
   year: 1976
-- imdb_id: tt0076451
-  title: New York, New York
+- title: New York, New York
+  imdb_id: tt0076451
   year: 1977
-- imdb_id: tt0081398
-  title: Raging Bull
+- title: Raging Bull
+  imdb_id: tt0081398
   year: 1980
-- imdb_id: tt0085794
-  title: The King of Comedy
+- title: The King of Comedy
+  imdb_id: tt0085794
   year: 1982
-- imdb_id: tt0088680
-  title: After Hours
+- title: After Hours
+  imdb_id: tt0088680
   year: 1985
-- imdb_id: tt0090863
-  title: The Color of Money
+- title: The Color of Money
+  imdb_id: tt0090863
   year: 1986
-- imdb_id: tt0095497
-  title: The Last Temptation of Christ
+- title: The Last Temptation of Christ
+  imdb_id: tt0095497
   year: 1988
-- imdb_id: tt0097965
-  title: New York Stories
+- title: New York Stories
+  notes: (segment "Life Lessons")
+  imdb_id: tt0097965
   year: 1989
-- imdb_id: tt0099685
-  title: Goodfellas
+- title: Goodfellas
+  imdb_id: tt0099685
   year: 1990
-- imdb_id: tt0101540
-  title: Cape Fear
+- title: Cape Fear
+  imdb_id: tt0101540
   year: 1991
-- imdb_id: tt0106226
-  title: The Age of Innocence
+- title: The Age of Innocence
+  imdb_id: tt0106226
   year: 1993
-- imdb_id: tt0112641
-  title: Casino
+- title: Casino
+  imdb_id: tt0112641
   year: 1995
-- imdb_id: tt0119485
-  title: Kundun
+- title: Kundun
+  imdb_id: tt0119485
   year: 1997
-- imdb_id: tt0163988
-  title: Bringing Out the Dead
+- title: Bringing Out the Dead
+  imdb_id: tt0163988
   year: 1999
-- imdb_id: tt0217505
-  title: Gangs of New York
+- title: Gangs of New York
+  imdb_id: tt0217505
   year: 2002
-- imdb_id: tt0338751
-  title: The Aviator
+- title: The Aviator
+  imdb_id: tt0338751
   year: 2004
-- imdb_id: tt0407887
-  title: The Departed
+- title: The Departed
+  imdb_id: tt0407887
   year: 2006
-- imdb_id: tt1130884
-  title: Shutter Island
+- title: Shutter Island
+  imdb_id: tt1130884
   year: 2010
-- imdb_id: tt0970179
-  title: Hugo
+- title: Hugo
+  imdb_id: tt0970179
   year: 2011
-- imdb_id: tt0993846
-  title: The Wolf of Wall Street
+- title: The Wolf of Wall Street
+  imdb_id: tt0993846
   year: 2013
-- imdb_id: tt0490215
-  title: Silence
+- title: Silence
+  imdb_id: tt0490215
   year: 2016
-- imdb_id: tt1302006
-  title: The Irishman
+- title: The Irishman
+  imdb_id: tt1302006
   year: 2019

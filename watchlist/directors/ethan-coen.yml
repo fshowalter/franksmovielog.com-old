@@ -1,64 +1,77 @@
 frozen: false
-imdb_id: nm0001053
 name: Ethan Coen
+imdb_id: nm0001053
 titles:
-- imdb_id: tt0086979
-  title: Blood Simple
+- title: Blood Simple
+  notes: (uncredited)
+  imdb_id: tt0086979
   year: 1984
-- imdb_id: tt0093822
-  title: Raising Arizona
+- title: Raising Arizona
+  notes: (uncredited)
+  imdb_id: tt0093822
   year: 1987
-- imdb_id: tt0100150
-  title: Miller's Crossing
+- title: Miller's Crossing
+  notes: (uncredited)
+  imdb_id: tt0100150
   year: 1990
-- imdb_id: tt0101410
-  title: Barton Fink
+- title: Barton Fink
+  notes: (uncredited)
+  imdb_id: tt0101410
   year: 1991
-- imdb_id: tt0110074
-  title: The Hudsucker Proxy
+- title: The Hudsucker Proxy
+  notes: (uncredited)
+  imdb_id: tt0110074
   year: 1994
-- imdb_id: tt0116282
-  title: Fargo
+- title: Fargo
+  notes: (uncredited)
+  imdb_id: tt0116282
   year: 1996
-- imdb_id: tt0118715
-  title: The Big Lebowski
+- title: The Big Lebowski
+  notes: (uncredited)
+  imdb_id: tt0118715
   year: 1998
-- imdb_id: tt0190590
-  title: O Brother, Where Art Thou?
+- title: O Brother, Where Art Thou?
+  notes: (uncredited)
+  imdb_id: tt0190590
   year: 2000
-- imdb_id: tt0243133
-  title: The Man Who Wasn't There
+- title: The Man Who Wasn't There
+  notes: (uncredited)
+  imdb_id: tt0243133
   year: 2001
-- imdb_id: tt0138524
-  title: Intolerable Cruelty
+- title: Intolerable Cruelty
+  notes: (uncredited)
+  imdb_id: tt0138524
   year: 2003
-- imdb_id: tt0335245
-  title: The Ladykillers
+- title: The Ladykillers
+  imdb_id: tt0335245
   year: 2004
-- imdb_id: tt0401711
-  title: Paris, je t'aime
+- title: Paris, je t'aime
+  notes: (segment "Tuileries")
+  imdb_id: tt0401711
   year: 2006
-- imdb_id: tt0477348
-  title: No Country for Old Men
+- title: No Country for Old Men
+  imdb_id: tt0477348
   year: 2007
-- imdb_id: tt0973844
-  title: To Each His Own Cinema
+- title: To Each His Own Cinema
+  notes: (segment "World Cinema")
+  imdb_id: tt0973844
   year: 2007
-- imdb_id: tt0887883
-  title: Burn After Reading
+- title: Burn After Reading
+  imdb_id: tt0887883
   year: 2008
-- imdb_id: tt1019452
-  title: A Serious Man
+- title: A Serious Man
+  imdb_id: tt1019452
   year: 2009
-- imdb_id: tt1403865
-  title: True Grit
+- title: True Grit
+  imdb_id: tt1403865
   year: 2010
-- imdb_id: tt2042568
-  title: Inside Llewyn Davis
+- title: Inside Llewyn Davis
+  imdb_id: tt2042568
   year: 2013
-- imdb_id: tt0475290
-  title: Hail, Caesar!
+- title: Hail, Caesar!
+  notes: (directed by)
+  imdb_id: tt0475290
   year: 2016
-- imdb_id: tt6412452
-  title: The Ballad of Buster Scruggs
+- title: The Ballad of Buster Scruggs
+  imdb_id: tt6412452
   year: 2018

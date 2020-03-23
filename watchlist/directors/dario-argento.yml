@@ -1,58 +1,63 @@
 frozen: false
-imdb_id: nm0000783
 name: Dario Argento
+imdb_id: nm0000783
 titles:
-- imdb_id: tt0065143
-  title: The Bird with the Crystal Plumage
+- title: The Bird with the Crystal Plumage
+  imdb_id: tt0065143
   year: 1970
-- imdb_id: tt0065761
-  title: The Cat o' Nine Tails
+- title: The Cat o' Nine Tails
+  imdb_id: tt0065761
   year: 1971
-- imdb_id: tt0066735
-  title: Four Flies on Grey Velvet
+- title: Four Flies on Grey Velvet
+  imdb_id: tt0066735
   year: 1971
-- imdb_id: tt0073582
-  title: Deep Red
+- title: The Five Days
+  imdb_id: tt0069884
+  year: 1973
+- title: Deep Red
+  notes: (directed by)
+  imdb_id: tt0073582
   year: 1975
-- imdb_id: tt0076786
-  title: Suspiria
+- title: Suspiria
+  imdb_id: tt0076786
   year: 1977
-- imdb_id: tt0080923
-  title: Inferno
+- title: Inferno
+  imdb_id: tt0080923
   year: 1980
-- imdb_id: tt0084777
-  title: Tenebrae
+- title: Tenebrae
+  imdb_id: tt0084777
   year: 1982
-- imdb_id: tt0087909
-  title: Phenomena
+- title: Phenomena
+  imdb_id: tt0087909
   year: 1985
-- imdb_id: tt0093677
-  title: Opera
+- title: Opera
+  imdb_id: tt0093677
   year: 1987
-- imdb_id: tt0100827
-  title: Two Evil Eyes
+- title: Two Evil Eyes
+  notes: (segment "The Black Cat")
+  imdb_id: tt0100827
   year: 1990
-- imdb_id: tt0104053
-  title: Trauma
+- title: Trauma
+  imdb_id: tt0104053
   year: 1993
-- imdb_id: tt0117658
-  title: The Stendhal Syndrome
+- title: The Stendhal Syndrome
+  imdb_id: tt0117658
   year: 1996
-- imdb_id: tt0119889
-  title: The Phantom of the Opera
+- title: The Phantom of the Opera
+  imdb_id: tt0119889
   year: 1998
-- imdb_id: tt0220827
-  title: Sleepless
+- title: Sleepless
+  imdb_id: tt0220827
   year: 2001
-- imdb_id: tt0330691
-  title: The Card Player
+- title: The Card Player
+  imdb_id: tt0330691
   year: 2004
-- imdb_id: tt0804507
-  title: Mother of Tears
+- title: Mother of Tears
+  imdb_id: tt0804507
   year: 2007
-- imdb_id: tt1107816
-  title: Giallo
+- title: Giallo
+  imdb_id: tt1107816
   year: 2009
-- imdb_id: tt1852770
-  title: Dracula 3D
+- title: Dracula 3D
+  imdb_id: tt1852770
   year: 2012

@@ -11,8 +11,11 @@ class TableBase(abc.ABC):
 
     def _add_index(self, column: str) -> None:
         with _db.connect() as connection:
-            connection.execute(
-                'CREATE INDEX "index_{0}_on_{1}" ON "{0}" ("{1}");'.format(self.table_name, column),
+            connection.executescript(
+                """
+                DROP INDEX IF EXISTS "index_{0}_on_{1}";
+                CREATE INDEX "index_{0}_on_{1}" ON "{0}" ("{1}");
+                """.format(self.table_name, column),
             )
 
     def _drop_and_create(self, ddl: str) -> None:

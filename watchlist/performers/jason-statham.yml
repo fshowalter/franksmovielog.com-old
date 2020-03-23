@@ -1,130 +1,172 @@
 frozen: false
-imdb_id: nm0005458
 name: Jason Statham
+imdb_id: nm0005458
 titles:
-- imdb_id: tt0120735
-  title: Lock, Stock and Two Smoking Barrels
+- title: Lock, Stock and Two Smoking Barrels
+  notes: Bacon
+  imdb_id: tt0120735
   year: 1998
-- imdb_id: tt0208092
-  title: Snatch
+- title: Snatch
+  notes: Turkish
+  imdb_id: tt0208092
   year: 2000
-- imdb_id: tt0216772
-  title: Turn It Up
+- title: Turn It Up
+  notes: Mr. B
+  imdb_id: tt0216772
   year: 2000
-- imdb_id: tt0228333
-  title: Ghosts of Mars
+- title: Ghosts of Mars
+  notes: Sgt Jericho Butler
+  imdb_id: tt0228333
   year: 2001
-- imdb_id: tt0267804
-  title: The One
+- title: The One
+  notes: MVA Agent Evan Funsch
+  imdb_id: tt0267804
   year: 2001
-- imdb_id: tt0291341
-  title: Mean Machine
+- title: Mean Machine
+  notes: Monk
+  imdb_id: tt0291341
   year: 2001
-- imdb_id: tt0293662
-  title: The Transporter
+- title: The Transporter
+  notes: Frank Martin
+  imdb_id: tt0293662
   year: 2002
-- imdb_id: tt0317740
-  title: The Italian Job
+- title: The Italian Job
+  notes: Handsome Rob
+  imdb_id: tt0317740
   year: 2003
-- imdb_id: tt0369339
-  title: Collateral
+- title: Collateral
+  notes: Airport Man
+  imdb_id: tt0369339
   year: 2004
-- imdb_id: tt0337921
-  title: Cellular
+- title: Cellular
+  notes: Ethan
+  imdb_id: tt0337921
   year: 2004
-- imdb_id: tt0388482
-  title: Transporter 2
+- title: Transporter 2
+  notes: Frank Martin
+  imdb_id: tt0388482
   year: 2005
-- imdb_id: tt0449061
-  title: London
+- title: London
+  notes: Bateman
+  imdb_id: tt0449061
   year: 2005
-- imdb_id: tt0365686
-  title: Revolver
+- title: Revolver
+  notes: Jake Green
+  imdb_id: tt0365686
   year: 2005
-- imdb_id: tt0402910
-  title: Chaos
+- title: Chaos
+  notes: Quentin Conners
+  imdb_id: tt0402910
   year: 2005
-- imdb_id: tt0383216
-  title: The Pink Panther
+- title: The Pink Panther
+  notes: Yves Gluant (uncredited)
+  imdb_id: tt0383216
   year: 2006
-- imdb_id: tt0479884
-  title: Crank
+- title: Crank
+  notes: Chev Chelios
+  imdb_id: tt0479884
   year: 2006
-- imdb_id: tt0460780
-  title: 'In the Name of the King: A Dungeon Siege Tale'
+- title: 'In the Name of the King: A Dungeon Siege Tale'
+  notes: Farmer
+  imdb_id: tt0460780
   year: 2007
-- imdb_id: tt0499556
-  title: War
+- title: War
+  notes: Crawford
+  imdb_id: tt0499556
   year: 2007
-- imdb_id: tt0200465
-  title: The Bank Job
+- title: The Bank Job
+  notes: Terry Leather
+  imdb_id: tt0200465
   year: 2008
-- imdb_id: tt0452608
-  title: Death Race
+- title: Death Race
+  notes: Jensen Ames
+  imdb_id: tt0452608
   year: 2008
-- imdb_id: tt1129442
-  title: Transporter 3
+- title: Transporter 3
+  notes: Frank Martin
+  imdb_id: tt1129442
   year: 2008
-- imdb_id: tt1121931
-  title: 'Crank: High Voltage'
+- title: 'Crank: High Voltage'
+  notes: Chev Chelios
+  imdb_id: tt1121931
   year: 2009
-- imdb_id: tt0798817
-  title: '13'
+- title: '13'
+  notes: Jasper
+  imdb_id: tt0798817
   year: 2010
-- imdb_id: tt1320253
-  title: The Expendables
+- title: The Expendables
+  notes: Lee Christmas
+  imdb_id: tt1320253
   year: 2010
-- imdb_id: tt0472399
-  title: The Mechanic
+- title: The Mechanic
+  notes: Arthur Bishop
+  imdb_id: tt0472399
   year: 2011
-- imdb_id: tt0377981
-  title: Gnomeo & Juliet
+- title: Gnomeo & Juliet
+  notes: Tybalt (voice)
+  imdb_id: tt0377981
   year: 2011
-- imdb_id: tt1297919
-  title: Blitz
+- title: Blitz
+  notes: Brant
+  imdb_id: tt1297919
   year: 2011
-- imdb_id: tt1448755
-  title: Killer Elite
+- title: Killer Elite
+  notes: Danny
+  imdb_id: tt1448755
   year: 2011
-- imdb_id: tt1656190
-  title: Safe
+- title: Safe
+  notes: Luke Wright
+  imdb_id: tt1656190
   year: 2012
-- imdb_id: tt1764651
-  title: The Expendables 2
+- title: The Expendables 2
+  notes: Lee Christmas
+  imdb_id: tt1764651
   year: 2012
-- imdb_id: tt1904996
-  title: Parker
+- title: Parker
+  notes: Parker
+  imdb_id: tt1904996
   year: 2013
-- imdb_id: tt1893256
-  title: Redemption
+- title: Redemption
+  notes: Joey
+  imdb_id: tt1893256
   year: 2013
-- imdb_id: tt1905041
-  title: Fast & Furious 6
+- title: Fast & Furious 6
+  notes: Deckard Shaw (uncredited)
+  imdb_id: tt1905041
   year: 2013
-- imdb_id: tt2312718
-  title: Homefront
+- title: Homefront
+  notes: Phil Broker
+  imdb_id: tt2312718
   year: 2013
-- imdb_id: tt2333784
-  title: The Expendables 3
+- title: The Expendables 3
+  notes: Lee Christmas
+  imdb_id: tt2333784
   year: 2014
-- imdb_id: tt2231253
-  title: Wild Card
+- title: Wild Card
+  notes: Nick Wild
+  imdb_id: tt2231253
   year: 2015
-- imdb_id: tt3079380
-  title: Spy
+- title: Spy
+  notes: Rick Ford
+  imdb_id: tt3079380
   year: 2015
-- imdb_id: tt2820852
-  title: Furious 7
+- title: Furious 7
+  notes: Deckard Shaw
+  imdb_id: tt2820852
   year: 2015
-- imdb_id: tt3522806
-  title: 'Mechanic: Resurrection'
+- title: 'Mechanic: Resurrection'
+  notes: Arthur Bishop
+  imdb_id: tt3522806
   year: 2016
-- imdb_id: tt4630562
-  title: The Fate of the Furious
+- title: The Fate of the Furious
+  notes: Deckard
+  imdb_id: tt4630562
   year: 2017
-- imdb_id: tt4779682
-  title: The Meg
+- title: The Meg
+  notes: Jonas Taylor
+  imdb_id: tt4779682
   year: 2018
-- imdb_id: tt6806448
-  title: 'Fast & Furious Presents: Hobbs & Shaw'
+- title: 'Fast & Furious Presents: Hobbs & Shaw'
+  notes: Shaw
+  imdb_id: tt6806448
   year: 2019

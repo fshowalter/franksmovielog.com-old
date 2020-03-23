@@ -1,49 +1,53 @@
 frozen: false
-imdb_id: nm0000682
 name: Paul Verhoeven
+imdb_id: nm0000682
 titles:
-- imdb_id: tt0067963
-  title: Diary of a Hooker
+- title: Diary of a Hooker
+  imdb_id: tt0067963
   year: 1971
-- imdb_id: tt0070842
-  title: Turkish Delight
+- title: Turkish Delight
+  imdb_id: tt0070842
   year: 1973
-- imdb_id: tt0073233
-  title: Katie Tippel
+- title: Katie Tippel
+  imdb_id: tt0073233
   year: 1975
-- imdb_id: tt0076734
-  title: Soldier of Orange
+- title: Soldier of Orange
+  imdb_id: tt0076734
   year: 1977
-- imdb_id: tt0081547
-  title: Spetters
+- title: Spetters
+  imdb_id: tt0081547
   year: 1980
-- imdb_id: tt0086543
-  title: The 4th Man
+- title: The 4th Man
+  imdb_id: tt0086543
   year: 1983
-- imdb_id: tt0089153
-  title: Flesh+Blood
+- title: Flesh+Blood
+  imdb_id: tt0089153
   year: 1985
-- imdb_id: tt0093870
-  title: RoboCop
+- title: RoboCop
+  imdb_id: tt0093870
   year: 1987
-- imdb_id: tt0100802
-  title: Total Recall
+- title: Total Recall
+  imdb_id: tt0100802
   year: 1990
-- imdb_id: tt0103772
-  title: Basic Instinct
+- title: Basic Instinct
+  imdb_id: tt0103772
   year: 1992
-- imdb_id: tt0114436
-  title: Showgirls
+- title: Showgirls
+  notes: (edited television version, as Jan Jansen, directed by)
+  imdb_id: tt0114436
   year: 1995
-- imdb_id: tt0120201
-  title: Starship Troopers
+- title: Starship Troopers
+  imdb_id: tt0120201
   year: 1997
-- imdb_id: tt0164052
-  title: Hollow Man
+- title: Hollow Man
+  imdb_id: tt0164052
   year: 2000
-- imdb_id: tt0389557
-  title: Black Book
+- title: Black Book
+  imdb_id: tt0389557
   year: 2006
-- imdb_id: tt3716530
-  title: Elle
+- title: Tricked
+  imdb_id: tt2171875
+  year: 2012
+- title: Elle
+  imdb_id: tt3716530
   year: 2016

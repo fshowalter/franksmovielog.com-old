@@ -1,67 +1,68 @@
 frozen: true
-imdb_id: nm0000127
 name: Wes Craven
+imdb_id: nm0000127
 titles:
-  - imdb_id: tt0068833
-    title: The Last House on the Left
-    year: 1972
-  - imdb_id: tt0077681
-    title: The Hills Have Eyes
-    year: 1977
-  - imdb_id: tt0082245
-    title: Deadly Blessing
-    year: 1981
-  - imdb_id: tt0084745
-    title: Swamp Thing
-    year: 1982
-  - imdb_id: tt0089274
-    title: The Hills Have Eyes Part II
-    year: 1984
-  - imdb_id: tt0087800
-    title: A Nightmare on Elm Street
-    year: 1984
-  - imdb_id: tt0090917
-    title: Deadly Friend
-    year: 1986
-  - imdb_id: tt0096071
-    title: The Serpent and the Rainbow
-    year: 1988
-  - imdb_id: tt0098320
-    title: Shocker
-    year: 1989
-  - imdb_id: tt0105121
-    title: The People Under the Stairs
-    year: 1991
-  - imdb_id: tt0111686
-    title: New Nightmare
-    year: 1994
-  - imdb_id: tt0114825
-    title: Vampire in Brooklyn
-    year: 1995
-  - imdb_id: tt0117571
-    title: Scream
-    year: 1996
-  - imdb_id: tt0120082
-    title: Scream 2
-    year: 1997
-  - imdb_id: tt0166943
-    title: Music of the Heart
-    year: 1999
-  - imdb_id: tt0134084
-    title: Scream 3
-    year: 2000
-  - imdb_id: tt0257516
-    title: Cursed
-    year: 2005
-  - imdb_id: tt0421239
-    title: Red Eye
-    year: 2005
-  - imdb_id: tt0401711
-    title: Paris, je t'aime
-    year: 2006
-  - imdb_id: tt0872230
-    title: My Soul to Take
-    year: 2010
-  - imdb_id: tt1262416
-    title: Scream 4
-    year: 2011
+- title: The Last House on the Left
+  imdb_id: tt0068833
+  year: 1972
+- title: The Hills Have Eyes
+  imdb_id: tt0077681
+  year: 1977
+- title: Deadly Blessing
+  imdb_id: tt0082245
+  year: 1981
+- title: Swamp Thing
+  imdb_id: tt0084745
+  year: 1982
+- title: The Hills Have Eyes Part II
+  imdb_id: tt0089274
+  year: 1984
+- title: A Nightmare on Elm Street
+  imdb_id: tt0087800
+  year: 1984
+- title: Deadly Friend
+  imdb_id: tt0090917
+  year: 1986
+- title: The Serpent and the Rainbow
+  imdb_id: tt0096071
+  year: 1988
+- title: Shocker
+  imdb_id: tt0098320
+  year: 1989
+- title: The People Under the Stairs
+  imdb_id: tt0105121
+  year: 1991
+- title: New Nightmare
+  imdb_id: tt0111686
+  year: 1994
+- title: Vampire in Brooklyn
+  imdb_id: tt0114825
+  year: 1995
+- title: Scream
+  imdb_id: tt0117571
+  year: 1996
+- title: Scream 2
+  imdb_id: tt0120082
+  year: 1997
+- title: Music of the Heart
+  imdb_id: tt0166943
+  year: 1999
+- title: Scream 3
+  imdb_id: tt0134084
+  year: 2000
+- title: Cursed
+  imdb_id: tt0257516
+  year: 2005
+- title: Red Eye
+  imdb_id: tt0421239
+  year: 2005
+- title: Paris, je t'aime
+  notes: (segment "Pere-Lachaise")
+  imdb_id: tt0401711
+  year: 2006
+- title: My Soul to Take
+  imdb_id: tt0872230
+  year: 2010
+- title: Scream 4
+  imdb_id: tt1262416
+  year: 2011

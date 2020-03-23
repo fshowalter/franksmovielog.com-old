@@ -1,55 +1,56 @@
 frozen: true
-imdb_id: nm0001716
 name: Tony Scott
+imdb_id: nm0001716
 titles:
-  - imdb_id: tt0241687
-    title: Loving Memory
-    year: 1971
-  - imdb_id: tt0085701
-    title: The Hunger
-    year: 1983
-  - imdb_id: tt0092099
-    title: Top Gun
-    year: 1986
-  - imdb_id: tt0092644
-    title: Beverly Hills Cop II
-    year: 1987
-  - imdb_id: tt0100485
-    title: Revenge
-    year: 1990
-  - imdb_id: tt0099371
-    title: Days of Thunder
-    year: 1990
-  - imdb_id: tt0102266
-    title: The Last Boy Scout
-    year: 1991
-  - imdb_id: tt0108399
-    title: True Romance
-    year: 1993
-  - imdb_id: tt0112740
-    title: Crimson Tide
-    year: 1995
-  - imdb_id: tt0116277
-    title: The Fan
-    year: 1996
-  - imdb_id: tt0120660
-    title: Enemy of the State
-    year: 1998
-  - imdb_id: tt0266987
-    title: Spy Game
-    year: 2001
-  - imdb_id: tt0328107
-    title: Man on Fire
-    year: 2004
-  - imdb_id: tt0421054
-    title: Domino
-    year: 2005
-  - imdb_id: tt0453467
-    title: Deja Vu
-    year: 2006
-  - imdb_id: tt1111422
-    title: The Taking of Pelham 123
-    year: 2009
-  - imdb_id: tt0477080
-    title: Unstoppable
-    year: 2010
+- title: Loving Memory
+  notes: (as Anthony Scott)
+  imdb_id: tt0241687
+  year: 1971
+- title: The Hunger
+  imdb_id: tt0085701
+  year: 1983
+- title: Top Gun
+  imdb_id: tt0092099
+  year: 1986
+- title: Beverly Hills Cop II
+  imdb_id: tt0092644
+  year: 1987
+- title: Revenge
+  imdb_id: tt0100485
+  year: 1990
+- title: Days of Thunder
+  imdb_id: tt0099371
+  year: 1990
+- title: The Last Boy Scout
+  imdb_id: tt0102266
+  year: 1991
+- title: True Romance
+  imdb_id: tt0108399
+  year: 1993
+- title: Crimson Tide
+  imdb_id: tt0112740
+  year: 1995
+- title: The Fan
+  imdb_id: tt0116277
+  year: 1996
+- title: Enemy of the State
+  imdb_id: tt0120660
+  year: 1998
+- title: Spy Game
+  imdb_id: tt0266987
+  year: 2001
+- title: Man on Fire
+  imdb_id: tt0328107
+  year: 2004
+- title: Domino
+  imdb_id: tt0421054
+  year: 2005
+- title: Deja Vu
+  imdb_id: tt0453467
+  year: 2006
+- title: The Taking of Pelham 123
+  imdb_id: tt1111422
+  year: 2009
+- title: Unstoppable
+  imdb_id: tt0477080
+  year: 2010

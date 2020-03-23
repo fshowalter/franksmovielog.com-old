@@ -1,70 +1,116 @@
 frozen: false
-imdb_id: nm0040662
 name: Tom Atkins
+imdb_id: nm0040662
 titles:
-- imdb_id: tt0062883
-  title: The Detective
+- title: The Detective
+  notes: Harmon
+  imdb_id: tt0062883
   year: 1968
-- imdb_id: tt0066563
-  title: Where's Poppa?
+- title: Where's Poppa?
+  notes: Policeman in Apartment
+  imdb_id: tt0066563
   year: 1970
-- imdb_id: tt0066195
-  title: The Owl and the Pussycat
+- title: The Owl and the Pussycat
+  notes: Kid in Car (uncredited)
+  imdb_id: tt0066195
   year: 1970
-- imdb_id: tt0075250
-  title: Special Delivery
+- title: Special Delivery
+  notes: Cop on Beat
+  imdb_id: tt0075250
   year: 1976
-- imdb_id: tt0080749
-  title: The Fog
+- title: The Fog
+  notes: Nick Castle
+  imdb_id: tt0080749
   year: 1980
-- imdb_id: tt0081237
-  title: The Ninth Configuration
+- title: The Ninth Configuration
+  notes: Sgt. Krebs
+  imdb_id: tt0081237
   year: 1980
-- imdb_id: tt0082340
-  title: Escape from New York
+- title: Escape from New York
+  notes: Rehme
+  imdb_id: tt0082340
   year: 1981
-- imdb_id: tt0083767
-  title: Creepshow
+- title: Creepshow
+  notes: Stan (segments "Prologue" / "Epilogue") (uncredited)
+  imdb_id: tt0083767
   year: 1982
-- imdb_id: tt0085636
-  title: 'Halloween III: Season of the Witch'
+- title: 'Halloween III: Season of the Witch'
+  notes: Daniel Challis
+  imdb_id: tt0085636
   year: 1982
-- imdb_id: tt0089679
-  title: The New Kids
+- title: The New Kids
+  notes: '''Mac'' MacWilliams'
+  imdb_id: tt0089679
   year: 1985
-- imdb_id: tt0091630
-  title: Night of the Creeps
+- title: Night of the Creeps
+  notes: Ray Cameron
+  imdb_id: tt0091630
   year: 1986
-- imdb_id: tt0093409
-  title: Lethal Weapon
+- title: Lethal Weapon
+  notes: Michael Hunsaker
+  imdb_id: tt0093409
   year: 1987
-- imdb_id: tt0093403
-  title: Lemon Sky
+- title: Lemon Sky
+  notes: Douglas
+  imdb_id: tt0093403
   year: 1988
-- imdb_id: tt0095583
-  title: Maniac Cop
+- title: Maniac Cop
+  notes: Frank McCrae
+  imdb_id: tt0095583
   year: 1988
-- imdb_id: tt0100827
-  title: Two Evil Eyes
+- title: Two Evil Eyes
+  notes: Det. Grogan (segment "The Facts in the Case of Mr. Valdemar")
+  imdb_id: tt0100827
   year: 1990
-- imdb_id: tt0103850
-  title: Bob Roberts
+- title: Bob Roberts
+  notes: Dr. Caleb Menck
+  imdb_id: tt0103850
   year: 1992
-- imdb_id: tt0108238
-  title: Striking Distance
+- title: Striking Distance
+  notes: Sgt. Fred Hardy
+  imdb_id: tt0108238
   year: 1993
-- imdb_id: tt0212830
-  title: Bruiser
+- title: Bruiser
+  notes: Detective McCleary
+  imdb_id: tt0212830
   year: 2000
-- imdb_id: tt0250636
-  title: Out of the Black
+- title: Out of the Black
+  notes: Eugene Carter
+  imdb_id: tt0250636
   year: 2001
-- imdb_id: tt0250790
-  title: Turn of Faith
+- title: Turn of Faith
+  notes: Charlie Ryan
+  imdb_id: tt0250790
   year: 2002
-- imdb_id: tt1179891
-  title: My Bloody Valentine
+- title: My Bloody Valentine
+  notes: Burke
+  imdb_id: tt1179891
   year: 2009
-- imdb_id: tt1502404
-  title: Drive Angry
+- title: Shannon's Rainbow
+  notes: Captain Martin
+  imdb_id: tt1247691
+  year: 2009
+- title: Trapped
+  notes: Detective Abbott
+  imdb_id: tt1074654
+  year: 2009
+- title: Drive Angry
+  notes: Cap
+  imdb_id: tt1502404
   year: 2011
+- title: Apocalypse Kiss
+  notes: Captain John Vogle
+  imdb_id: tt2217790
+  year: 2014
+- title: Judy's Dead
+  notes: Roy
+  imdb_id: tt2419610
+  year: 2014
+- title: Encounter
+  notes: Professor Westlake
+  imdb_id: tt6613952
+  year: 2018
+- title: Trick
+  notes: Talbott
+  imdb_id: tt9177040
+  year: 2019

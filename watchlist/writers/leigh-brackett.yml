@@ -1,40 +1,52 @@
 frozen: false
-imdb_id: nm0102824
 name: Leigh Brackett
+imdb_id: nm0102824
 titles:
-- imdb_id: tt0038214
-  title: The Vampire's Ghost
+- title: The Vampire's Ghost
+  notes: (original story) / (screenplay)
+  imdb_id: tt0038214
   year: 1945
-- imdb_id: tt0038355
-  title: The Big Sleep
+- title: The Big Sleep
+  notes: (screen play)
+  imdb_id: tt0038355
   year: 1946
-- imdb_id: tt0038430
-  title: Crime Doctor's Man Hunt
+- title: Crime Doctor's Man Hunt
+  notes: (screenplay)
+  imdb_id: tt0038430
   year: 1946
-- imdb_id: tt0047634
-  title: The Unholy Four
+- title: The Unholy Four
+  notes: (novel)
+  imdb_id: tt0047634
   year: 1954
-- imdb_id: tt0053221
-  title: Rio Bravo
+- title: Rio Bravo
+  notes: (screenplay)
+  imdb_id: tt0053221
   year: 1959
-- imdb_id: tt0054934
-  title: Gold of the Seven Saints
+- title: Gold of the Seven Saints
+  notes: (screenplay by)
+  imdb_id: tt0054934
   year: 1961
-- imdb_id: tt0055718
-  title: 13 West Street
+- title: 13 West Street
+  notes: (novel "The Tiger Among Us")
+  imdb_id: tt0055718
   year: 1962
-- imdb_id: tt0056059
-  title: Hatari!
+- title: Hatari!
+  notes: (screenplay)
+  imdb_id: tt0056059
   year: 1962
-- imdb_id: tt0061619
-  title: El Dorado
+- title: El Dorado
+  notes: (screenplay)
+  imdb_id: tt0061619
   year: 1967
-- imdb_id: tt0066301
-  title: Rio Lobo
+- title: Rio Lobo
+  notes: (screenplay)
+  imdb_id: tt0066301
   year: 1970
-- imdb_id: tt0070334
-  title: The Long Goodbye
+- title: The Long Goodbye
+  notes: (screenplay)
+  imdb_id: tt0070334
   year: 1973
-- imdb_id: tt0080684
-  title: 'Star Wars: Episode V - The Empire Strikes Back'
+- title: 'Star Wars: Episode V - The Empire Strikes Back'
+  notes: (screenplay by)
+  imdb_id: tt0080684
   year: 1980

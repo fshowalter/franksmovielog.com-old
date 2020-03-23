@@ -1,4 +1,6 @@
+import fnmatch
 from collections import ChainMap
+from dataclasses import dataclass
 from typing import Optional, Set
 
 import imdb
@@ -8,28 +10,47 @@ no_sound_mix_ids: Set[str] = set()
 imdb_scraper = imdb.IMDb(reraiseExceptions=True)
 
 
+@dataclass
 class Movie(object):  # noqa: WPS230
-    def __init__(self, movie: imdb.Movie.Movie) -> None:
-        self.year = movie.get('year', '????')
-        self.title = movie['title']
-        self.imdb_id = f'tt{movie.movieID}'
-        self.movie_object = movie
-        self.notes = movie.notes
-        self.is_silent: Optional[bool] = None
+    year: str
+    title: str
+    imdb_id: str
+    movie_object: imdb.Movie.Movie
+    notes: str
+    in_production: bool = False
+    is_silent: Optional[bool] = None
+    has_sound_mix: Optional[bool] = None
 
-        if self.imdb_id in no_sound_mix_ids:
-            self.has_sound_mix = False
-        elif self.imdb_id in silent_ids:
-            self.has_sound_mix = True
-            self.is_silent = True
+    @classmethod
+    def from_imdb_movie(cls, imdb_movie: imdb.Movie.Movie) -> 'Movie':
+        movie = Movie(
+            year=imdb_movie.get('year', '????'),
+            title=imdb_movie['title'],
+            imdb_id=f'tt{imdb_movie.movieID}',
+            movie_object=imdb_movie,
+            notes=imdb_movie.notes,
+        )
+
+        in_production = imdb_movie.get('status')
+        if in_production:
+            movie.in_production = True
+            movie.notes = f'({in_production})'
+
+        if movie.imdb_id in no_sound_mix_ids:
+            movie.has_sound_mix = False
+        elif movie.imdb_id in silent_ids:
+            movie.has_sound_mix = True
+            movie.is_silent = True
         else:
-            imdb_scraper.update(movie, info=['technical'])
-            if movie_has_sound_mix(self):
-                self.has_sound_mix = True
-                self.is_silent = movie_is_silent(self)
+            imdb_scraper.update(movie.movie_object, info=['technical'])
+            if movie_has_sound_mix(movie):
+                movie.has_sound_mix = True
+                movie.is_silent = movie_is_silent(movie)
             else:
-                self.has_sound_mix = False
-                self.is_silent = None
+                movie.has_sound_mix = False
+                movie.is_silent = None
+
+        return movie
 
 
 class Person(object):
@@ -51,8 +72,8 @@ def movie_has_sound_mix(movie: Movie) -> bool:
 
     if 'sound mix' in movie.movie_object['technical']:
         return True
-    else:
-        no_sound_mix_ids.add(movie.imdb_id)
+
+    no_sound_mix_ids.add(movie.imdb_id)
 
     return False
 
@@ -61,9 +82,11 @@ def movie_is_silent(movie: Movie) -> bool:
     if movie.imdb_id in silent_ids:
         return True
 
+    pattern = 'Silent*'
+
     sound_mixes = movie.movie_object['technical']['sound mix']
-    if len(sound_mixes) == 1:
-        if sound_mixes[0] == 'Silent':
-            silent_ids.add(movie.imdb_id)
-            return True
+    if fnmatch.filter(sound_mixes, pattern):
+        silent_ids.add(movie.imdb_id)
+        return True
+
     return False

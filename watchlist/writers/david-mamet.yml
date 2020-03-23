@@ -1,82 +1,108 @@
 frozen: false
-imdb_id: nm0000519
 name: David Mamet
+imdb_id: nm0000519
 titles:
-- imdb_id: tt0082934
-  title: The Postman Always Rings Twice
+- title: The Postman Always Rings Twice
+  notes: (screenplay)
+  imdb_id: tt0082934
   year: 1981
-- imdb_id: tt0084855
-  title: The Verdict
+- title: The Verdict
+  notes: (screenplay)
+  imdb_id: tt0084855
   year: 1982
-- imdb_id: tt0090583
-  title: About Last Night...
+- title: About Last Night...
+  notes: (play "Sexual Perversity in Chicago")
+  imdb_id: tt0090583
   year: 1986
-- imdb_id: tt0094226
-  title: The Untouchables
+- title: The Untouchables
+  notes: (written by)
+  imdb_id: tt0094226
   year: 1987
-- imdb_id: tt0093223
-  title: House of Games
+- title: House of Games
+  notes: (screenplay) / (story)
+  imdb_id: tt0093223
   year: 1987
-- imdb_id: tt0096259
-  title: Things Change
+- title: Things Change
+  notes: (written by)
+  imdb_id: tt0096259
   year: 1988
-- imdb_id: tt0098625
-  title: We're No Angels
+- title: We're No Angels
+  notes: (written by)
+  imdb_id: tt0098625
   year: 1989
-- imdb_id: tt0102048
-  title: Homicide
+- title: Homicide
+  notes: (written by)
+  imdb_id: tt0102048
   year: 1991
-- imdb_id: tt0104348
-  title: Glengarry Glen Ross
+- title: Glengarry Glen Ross
+  notes: (based on the play by) / (screenplay by)
+  imdb_id: tt0104348
   year: 1992
-- imdb_id: tt0104427
-  title: Hoffa
+- title: Hoffa
+  notes: (written by)
+  imdb_id: tt0104427
   year: 1992
-- imdb_id: tt0111590
-  title: Vanya on 42nd Street
+- title: Vanya on 42nd Street
+  notes: (play adaptation)
+  imdb_id: tt0111590
   year: 1994
-- imdb_id: tt0110722
-  title: Oleanna
+- title: Oleanna
+  notes: (play) / (screenplay)
+  imdb_id: tt0110722
   year: 1994
-- imdb_id: tt0115530
-  title: American Buffalo
+- title: American Buffalo
+  notes: (play) / (screenplay)
+  imdb_id: tt0115530
   year: 1996
-- imdb_id: tt0119051
-  title: The Edge
+- title: The Edge
+  notes: (written by)
+  imdb_id: tt0119051
   year: 1997
-- imdb_id: tt0120176
-  title: The Spanish Prisoner
+- title: The Spanish Prisoner
+  notes: (written by)
+  imdb_id: tt0120176
   year: 1997
-- imdb_id: tt0120885
-  title: Wag the Dog
+- title: Wag the Dog
+  notes: (screenplay)
+  imdb_id: tt0120885
   year: 1997
-- imdb_id: tt0122690
-  title: Ronin
+- title: Ronin
+  notes: (screenplay - as Richard Weisz)
+  imdb_id: tt0122690
   year: 1998
-- imdb_id: tt0155388
-  title: The Winslow Boy
+- title: The Winslow Boy
+  notes: (screenplay)
+  imdb_id: tt0155388
   year: 1999
-- imdb_id: tt0210149
-  title: Lakeboat
+- title: Lakeboat
+  notes: (play - uncredited) / (written by)
+  imdb_id: tt0210149
   year: 2000
-- imdb_id: tt0120202
-  title: State and Main
+- title: State and Main
+  notes: (written by)
+  imdb_id: tt0120202
   year: 2000
-- imdb_id: tt0212985
-  title: Hannibal
+- title: Hannibal
+  notes: (screenplay)
+  imdb_id: tt0212985
   year: 2001
-- imdb_id: tt0252503
-  title: Heist
+- title: Heist
+  notes: (written by)
+  imdb_id: tt0252503
   year: 2001
-- imdb_id: tt0360009
-  title: Spartan
+- title: Spartan
+  notes: (written by)
+  imdb_id: tt0360009
   year: 2004
-- imdb_id: tt0443496
-  title: Edmond
+- title: Edmond
+  notes: (play) / (screenplay)
+  imdb_id: tt0443496
   year: 2005
-- imdb_id: tt1012804
-  title: Redbelt
+- title: Redbelt
+  notes: (written by)
+  imdb_id: tt1012804
   year: 2008
-- imdb_id: tt1826590
-  title: About Last Night
+- title: About Last Night
+  notes: (based upon "Sexual Perversity in Chicago" by)
+  imdb_id: tt1826590
   year: 2014

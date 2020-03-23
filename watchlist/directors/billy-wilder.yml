@@ -1,82 +1,84 @@
 frozen: true
-imdb_id: nm0000697
 name: Billy Wilder
+imdb_id: nm0000697
 titles:
-  - imdb_id: tt0025480
-    title: Bad Seed
-    year: 1934
-  - imdb_id: tt0035019
-    title: The Major and the Minor
-    year: 1942
-  - imdb_id: tt0035884
-    title: Five Graves to Cairo
-    year: 1943
-  - imdb_id: tt0036775
-    title: Double Indemnity
-    year: 1944
-  - imdb_id: tt0037884
-    title: The Lost Weekend
-    year: 1945
-  - imdb_id: tt0040317
-    title: The Emperor Waltz
-    year: 1948
-  - imdb_id: tt0040367
-    title: A Foreign Affair
-    year: 1948
-  - imdb_id: tt0043014
-    title: Sunset Blvd.
-    year: 1950
-  - imdb_id: tt0043338
-    title: Ace in the Hole
-    year: 1951
-  - imdb_id: tt0046359
-    title: Stalag 17
-    year: 1953
-  - imdb_id: tt0047437
-    title: Sabrina
-    year: 1954
-  - imdb_id: tt0048605
-    title: The Seven Year Itch
-    year: 1955
-  - imdb_id: tt0051003
-    title: The Spirit of St. Louis
-    year: 1957
-  - imdb_id: tt0050658
-    title: Love in the Afternoon
-    year: 1957
-  - imdb_id: tt0051201
-    title: Witness for the Prosecution
-    year: 1957
-  - imdb_id: tt0053291
-    title: Some Like It Hot
-    year: 1959
-  - imdb_id: tt0053604
-    title: The Apartment
-    year: 1960
-  - imdb_id: tt0055256
-    title: One, Two, Three
-    year: 1961
-  - imdb_id: tt0057187
-    title: Irma la Douce
-    year: 1963
-  - imdb_id: tt0058265
-    title: Kiss Me, Stupid
-    year: 1964
-  - imdb_id: tt0060424
-    title: The Fortune Cookie
-    year: 1966
-  - imdb_id: tt0066249
-    title: The Private Life of Sherlock Holmes
-    year: 1970
-  - imdb_id: tt0068240
-    title: Avanti!
-    year: 1972
-  - imdb_id: tt0071524
-    title: The Front Page
-    year: 1974
-  - imdb_id: tt0077539
-    title: Fedora
-    year: 1978
-  - imdb_id: tt0082111
-    title: Buddy Buddy
-    year: 1981
+- title: Bad Seed
+  notes: (as Billie Wilder)
+  imdb_id: tt0025480
+  year: 1934
+- title: The Major and the Minor
+  imdb_id: tt0035019
+  year: 1942
+- title: Five Graves to Cairo
+  imdb_id: tt0035884
+  year: 1943
+- title: Double Indemnity
+  imdb_id: tt0036775
+  year: 1944
+- title: The Lost Weekend
+  imdb_id: tt0037884
+  year: 1945
+- title: The Emperor Waltz
+  imdb_id: tt0040317
+  year: 1948
+- title: A Foreign Affair
+  imdb_id: tt0040367
+  year: 1948
+- title: Sunset Blvd.
+  imdb_id: tt0043014
+  year: 1950
+- title: Ace in the Hole
+  imdb_id: tt0043338
+  year: 1951
+- title: Stalag 17
+  imdb_id: tt0046359
+  year: 1953
+- title: Sabrina
+  imdb_id: tt0047437
+  year: 1954
+- title: The Seven Year Itch
+  imdb_id: tt0048605
+  year: 1955
+- title: The Spirit of St. Louis
+  notes: (directed by)
+  imdb_id: tt0051003
+  year: 1957
+- title: Love in the Afternoon
+  imdb_id: tt0050658
+  year: 1957
+- title: Witness for the Prosecution
+  imdb_id: tt0051201
+  year: 1957
+- title: Some Like It Hot
+  imdb_id: tt0053291
+  year: 1959
+- title: The Apartment
+  imdb_id: tt0053604
+  year: 1960
+- title: One, Two, Three
+  imdb_id: tt0055256
+  year: 1961
+- title: Irma la Douce
+  imdb_id: tt0057187
+  year: 1963
+- title: Kiss Me, Stupid
+  imdb_id: tt0058265
+  year: 1964
+- title: The Fortune Cookie
+  imdb_id: tt0060424
+  year: 1966
+- title: The Private Life of Sherlock Holmes
+  imdb_id: tt0066249
+  year: 1970
+- title: Avanti!
+  imdb_id: tt0068240
+  year: 1972
+- title: The Front Page
+  imdb_id: tt0071524
+  year: 1974
+- title: Fedora
+  imdb_id: tt0077539
+  year: 1978
+- title: Buddy Buddy
+  imdb_id: tt0082111
+  year: 1981

@@ -4,29 +4,45 @@ import os
 import time
 from dataclasses import asdict, dataclass
 from glob import glob
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Type, TypeVar
+from typing import Any, Dict, Iterable, List, Optional, Sequence, Type, TypeVar, Union
 
 import yaml
 from slugify import slugify
-from typing_extensions import Final
 
 from movie_db import _imdb_http, _movies
 from movie_db.logger import logger
 
-WATCHLIST_PATH: Final = 'watchlist'
+WATCHLIST_PATH = 'watchlist'
 
-NAME: Final = 'name'
-FROZEN: Final = 'frozen'
-TITLES: Final = 'titles'
-IMDB_ID: Final = 'imdb_id'
-EMPTY: Final = ''
+NAME = 'name'
+FROZEN = 'frozen'
+TITLES = 'titles'
+IMDB_ID = 'imdb_id'
+EMPTY = ''
+YEAR = 'year'
 
 
 @dataclass
 class Title(object):
     imdb_id: str
-    year: int
+    year: Union[str, int]
     title: str
+    notes: Optional[str] = None
+
+    def to_yaml(self) -> Dict[str, Any]:
+        if self.notes:
+            return {
+                'title': self.title,
+                'notes': self.notes,
+                IMDB_ID: self.imdb_id,
+                YEAR: self.year,
+            }
+
+        return {
+            'title': self.title,
+            IMDB_ID: self.imdb_id,
+            YEAR: self.year,
+        }
 
     @classmethod
     def from_imdb_http_movie(cls, imdb_movie: _imdb_http.Movie) -> 'Title':
@@ -34,6 +50,7 @@ class Title(object):
             imdb_id=imdb_movie.imdb_id,
             title=imdb_movie.title,
             year=imdb_movie.year,
+            notes=imdb_movie.notes,
         )
 
     @classmethod
@@ -41,7 +58,8 @@ class Title(object):
         return cls(
             imdb_id=str(yaml_object.get(IMDB_ID)),
             title=str(yaml_object.get('title')),
-            year=int(str(yaml_object.get('year'))),
+            year=int(str(yaml_object.get(YEAR))),
+            notes=yaml_object.get('notes', None),
         )
 
 
@@ -92,10 +110,16 @@ class Base(abc.ABC):  # noqa: WPS214
         return cls(EMPTY)
 
     @classmethod
+    def all_items(cls: Type[T]) -> List[T]:
+        yaml_files_path = os.path.join(cls.folder_path(), '*.yml')
+
+        return [cls.load(yaml_file_path) for yaml_file_path in glob(yaml_files_path)]
+
+    @classmethod
     def unfrozen_items(cls: Type[T]) -> Iterable[T]:
         yaml_files_path = os.path.join(cls.folder_path(), '*.yml')
 
-        for yaml_file_path in glob(yaml_files_path):
+        for yaml_file_path in sorted(glob(yaml_files_path)):
             watchlist_item = cls.load(yaml_file_path)
 
             if watchlist_item.frozen:
@@ -143,7 +167,7 @@ class Collection(Base):
             ),
         )
 
-        self.titles.sort(key=operator.attrgetter('year'))
+        self.titles.sort(key=operator.attrgetter(YEAR))
 
         return self.titles
 
@@ -225,14 +249,17 @@ class PersonBase(Base):  # noqa: WPS214
     def to_yaml(self) -> Any:
         return yaml.dump(
             {
-                IMDB_ID: self.imdb_id,
-                NAME: self.name,
                 FROZEN: self.frozen,
-                TITLES: [asdict(title) for title in self.titles],
+                NAME: self.name,
+                IMDB_ID: self.imdb_id,
+                TITLES: [
+                    title.to_yaml() for title in self.titles
+                ],
             },
             encoding='utf-8',
             allow_unicode=True,
             default_flow_style=False,
+            sort_keys=False,
         )
 
     def save(self) -> str:
@@ -260,16 +287,16 @@ class PersonBase(Base):  # noqa: WPS214
             self.name,
         )
         for movie in reversed(imdb_person.filmography.get(credit_key, [])):
-            imdb_movie = _imdb_http.Movie(movie)
+            imdb_movie = _imdb_http.Movie.from_imdb_movie(movie)
 
             if imdb_movie.imdb_id not in _movies.title_ids():
                 log_skip(imdb_movie, imdb_person.name, imdb_movie.notes)
                 continue
-            if not imdb_movie.has_sound_mix:
-                log_skip(imdb_movie, imdb_person.name, '(no sound mix)')
-                continue
             if imdb_movie.is_silent:
                 log_skip(imdb_movie, imdb_person.name, '(silent film)')
+                continue
+            if imdb_movie.in_production:
+                log_skip(imdb_movie, imdb_person.name, imdb_movie.notes)
                 continue
 
             self.titles.append(Title.from_imdb_http_movie(imdb_movie))
@@ -293,11 +320,16 @@ class PersonBase(Base):  # noqa: WPS214
         with open(yaml_file_path, 'r') as yaml_file:
             yaml_object = yaml.safe_load(yaml_file)
 
+        titles: List[Title] = []
+
+        for yaml_title in yaml_object.get(TITLES, []):
+            titles.append(Title.from_yaml(yaml_title))
+
         return cls(
             imdb_id=yaml_object.get('id', yaml_object.get(IMDB_ID)),
             name=yaml_object[NAME],
             frozen=yaml_object.get(FROZEN, False),  # noqa: WPS425,
-            titles=yaml_object.get(TITLES, []),
+            titles=titles,
         )
 
 

@@ -1,31 +1,32 @@
 frozen: false
-imdb_id: nm0027572
 name: Wes Anderson
+imdb_id: nm0027572
 titles:
-- imdb_id: tt0115734
-  title: Bottle Rocket
+- title: Bottle Rocket
+  imdb_id: tt0115734
   year: 1996
-- imdb_id: tt0128445
-  title: Rushmore
+- title: Rushmore
+  imdb_id: tt0128445
   year: 1998
-- imdb_id: tt0265666
-  title: The Royal Tenenbaums
+- title: The Royal Tenenbaums
+  imdb_id: tt0265666
   year: 2001
-- imdb_id: tt0362270
-  title: The Life Aquatic with Steve Zissou
+- title: The Life Aquatic with Steve Zissou
+  imdb_id: tt0362270
   year: 2004
-- imdb_id: tt0838221
-  title: The Darjeeling Limited
+- title: The Darjeeling Limited
+  imdb_id: tt0838221
   year: 2007
-- imdb_id: tt0432283
-  title: Fantastic Mr. Fox
+- title: Fantastic Mr. Fox
+  imdb_id: tt0432283
   year: 2009
-- imdb_id: tt1748122
-  title: Moonrise Kingdom
+- title: Moonrise Kingdom
+  imdb_id: tt1748122
   year: 2012
-- imdb_id: tt2278388
-  title: The Grand Budapest Hotel
+- title: The Grand Budapest Hotel
+  imdb_id: tt2278388
   year: 2014
-- imdb_id: tt5104604
-  title: Isle of Dogs
+- title: Isle of Dogs
+  notes: (directed by)
+  imdb_id: tt5104604
   year: 2018

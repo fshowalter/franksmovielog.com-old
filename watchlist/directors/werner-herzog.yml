@@ -1,64 +1,69 @@
 frozen: false
-imdb_id: nm0001348
 name: Werner Herzog
+imdb_id: nm0001348
 titles:
-- imdb_id: tt0063218
-  title: Signs of Life
+- title: Signs of Life
+  imdb_id: tt0063218
   year: 1968
-- imdb_id: tt0065436
-  title: Even Dwarfs Started Small
+- title: Even Dwarfs Started Small
+  imdb_id: tt0065436
   year: 1970
-- imdb_id: tt0068182
-  title: Aguirre, the Wrath of God
+- title: Aguirre, the Wrath of God
+  notes: (a film by)
+  imdb_id: tt0068182
   year: 1972
-- imdb_id: tt0071691
-  title: The Enigma of Kaspar Hauser
+- title: The Enigma of Kaspar Hauser
+  imdb_id: tt0071691
   year: 1974
-- imdb_id: tt0074626
-  title: Heart of Glass
+- title: Heart of Glass
+  imdb_id: tt0074626
   year: 1976
-- imdb_id: tt0075276
-  title: Stroszek
+- title: Stroszek
+  imdb_id: tt0075276
   year: 1977
-- imdb_id: tt0079641
-  title: Nosferatu the Vampyre
+- title: Nosferatu the Vampyre
+  imdb_id: tt0079641
   year: 1979
-- imdb_id: tt0080149
-  title: Woyzeck
+- title: Woyzeck
+  imdb_id: tt0080149
   year: 1979
-- imdb_id: tt0083946
-  title: Fitzcarraldo
+- title: Fitzcarraldo
+  imdb_id: tt0083946
   year: 1982
-- imdb_id: tt0088412
-  title: Where the Green Ants Dream
+- title: Where the Green Ants Dream
+  imdb_id: tt0088412
   year: 1984
-- imdb_id: tt0094888
-  title: Cobra Verde
+- title: Cobra Verde
+  imdb_id: tt0094888
   year: 1987
-- imdb_id: tt0102855
-  title: Scream of Stone
+- title: Scream of Stone
+  imdb_id: tt0102855
   year: 1991
-- imdb_id: tt0245171
-  title: Invincible
+- title: Invincible
+  imdb_id: tt0245171
   year: 2001
-- imdb_id: tt0304808
-  title: 'Ten Minutes Older: The Trumpet'
+- title: 'Ten Minutes Older: The Trumpet'
+  notes: (segment "Ten Thousand Years Older")
+  imdb_id: tt0304808
   year: 2002
-- imdb_id: tt0443693
-  title: The Wild Blue Yonder
+- title: The Wild Blue Yonder
+  imdb_id: tt0443693
   year: 2005
-- imdb_id: tt0462504
-  title: Rescue Dawn
+- title: Rescue Dawn
+  imdb_id: tt0462504
   year: 2006
-- imdb_id: tt1095217
-  title: 'Bad Lieutenant: Port of Call New Orleans'
+- title: 'Bad Lieutenant: Port of Call New Orleans'
+  imdb_id: tt1095217
   year: 2009
-- imdb_id: tt1233219
-  title: My Son, My Son, What Have Ye Done
+- title: My Son, My Son, What Have Ye Done
+  imdb_id: tt1233219
   year: 2009
-- imdb_id: tt1837636
-  title: Queen of the Desert
+- title: Queen of the Desert
+  imdb_id: tt1837636
   year: 2015
-- imdb_id: tt4441150
-  title: Salt and Fire
+- title: Salt and Fire
+  imdb_id: tt4441150
   year: 2016
+- title: Family Romance, LLC
+  imdb_id: tt10208194
+  year: 2019

@@ -1,40 +1,41 @@
 frozen: false
-imdb_id: nm0000186
 name: David Lynch
+imdb_id: nm0000186
 titles:
-- imdb_id: tt0074486
-  title: Eraserhead
+- title: Eraserhead
+  imdb_id: tt0074486
   year: 1977
-- imdb_id: tt0080678
-  title: The Elephant Man
+- title: The Elephant Man
+  imdb_id: tt0080678
   year: 1980
-- imdb_id: tt0087182
-  title: Dune
+- title: Dune
+  imdb_id: tt0087182
   year: 1984
-- imdb_id: tt0090756
-  title: Blue Velvet
+- title: Blue Velvet
+  imdb_id: tt0090756
   year: 1986
-- imdb_id: tt0100935
-  title: Wild at Heart
+- title: Wild at Heart
+  imdb_id: tt0100935
   year: 1990
-- imdb_id: tt0105665
-  title: 'Twin Peaks: Fire Walk with Me'
+- title: 'Twin Peaks: Fire Walk with Me'
+  imdb_id: tt0105665
   year: 1992
-- imdb_id: tt0116922
-  title: Lost Highway
+- title: Lost Highway
+  imdb_id: tt0116922
   year: 1997
-- imdb_id: tt0166896
-  title: The Straight Story
+- title: The Straight Story
+  imdb_id: tt0166896
   year: 1999
-- imdb_id: tt0166924
-  title: Mulholland Drive
+- title: Mulholland Drive
+  imdb_id: tt0166924
   year: 2001
-- imdb_id: tt0460829
-  title: Inland Empire
+- title: Inland Empire
+  imdb_id: tt0460829
   year: 2006
-- imdb_id: tt0973844
-  title: To Each His Own Cinema
+- title: To Each His Own Cinema
+  notes: (segment "Absurda", special version)
+  imdb_id: tt0973844
   year: 2007
-- imdb_id: tt5334704
-  title: 'Twin Peaks: The Missing Pieces'
+- title: 'Twin Peaks: The Missing Pieces'
+  imdb_id: tt5334704
   year: 2014

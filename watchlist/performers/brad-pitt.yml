@@ -1,166 +1,224 @@
 frozen: false
-imdb_id: nm0000093
 name: Brad Pitt
+imdb_id: nm0000093
 titles:
-- imdb_id: tt0093231
-  title: Hunk
+- title: Hunk
+  notes: Boy at the Beach (uncredited)
+  imdb_id: tt0093231
   year: 1987
-- imdb_id: tt0093638
-  title: No Man's Land
+- title: No Man's Land
+  notes: Waiter (uncredited)
+  imdb_id: tt0093638
   year: 1987
-- imdb_id: tt0093407
-  title: Less Than Zero
+- title: Less Than Zero
+  notes: Partygoer / Preppie Kid at Fight (uncredited)
+  imdb_id: tt0093407
   year: 1987
-- imdb_id: tt0118930
-  title: The Dark Side of the Sun
+- title: The Dark Side of the Sun
+  notes: Rick
+  imdb_id: tt0118930
   year: 1988
-- imdb_id: tt0097136
-  title: Cutting Class
+- title: Cutting Class
+  notes: Dwight Ingalls
+  imdb_id: tt0097136
   year: 1989
-- imdb_id: tt0097478
-  title: Happy Together
+- title: Happy Together
+  notes: Brian
+  imdb_id: tt0097478
   year: 1989
-- imdb_id: tt0101268
-  title: Across the Tracks
+- title: Across the Tracks
+  notes: Joe Maloney
+  imdb_id: tt0101268
   year: 1990
-- imdb_id: tt0103074
-  title: Thelma & Louise
+- title: Thelma & Louise
+  notes: J.D.
+  imdb_id: tt0103074
   year: 1991
-- imdb_id: tt0104009
-  title: Cool World
+- title: Johnny Suede
+  notes: Johnny Suede
+  imdb_id: tt0104567
+  year: 1991
+- title: Cool World
+  notes: Frank Harris
+  imdb_id: tt0104009
   year: 1992
-- imdb_id: tt0105265
-  title: A River Runs Through It
+- title: A River Runs Through It
+  notes: Paul Maclean
+  imdb_id: tt0105265
   year: 1992
-- imdb_id: tt0107302
-  title: Kalifornia
+- title: Kalifornia
+  notes: Early Grayce
+  imdb_id: tt0107302
   year: 1993
-- imdb_id: tt0108399
-  title: True Romance
+- title: True Romance
+  notes: Floyd (Dick's Roommate)
+  imdb_id: tt0108399
   year: 1993
-- imdb_id: tt0109783
-  title: The Favor
+- title: The Favor
+  notes: Elliott Fowler
+  imdb_id: tt0109783
   year: 1994
-- imdb_id: tt0110148
-  title: 'Interview with the Vampire: The Vampire Chronicles'
+- title: 'Interview with the Vampire: The Vampire Chronicles'
+  notes: Louis
+  imdb_id: tt0110148
   year: 1994
-- imdb_id: tt0110322
-  title: Legends of the Fall
+- title: Legends of the Fall
+  notes: Tristan
+  imdb_id: tt0110322
   year: 1994
-- imdb_id: tt0114369
-  title: Se7en
+- title: Se7en
+  notes: Mills
+  imdb_id: tt0114369
   year: 1995
-- imdb_id: tt0114746
-  title: 12 Monkeys
+- title: 12 Monkeys
+  notes: Jeffrey Goines
+  imdb_id: tt0114746
   year: 1995
-- imdb_id: tt0117665
-  title: Sleepers
+- title: Sleepers
+  notes: Michael
+  imdb_id: tt0117665
   year: 1996
-- imdb_id: tt0118972
-  title: The Devil's Own
+- title: The Devil's Own
+  notes: Rory Devaney
+  imdb_id: tt0118972
   year: 1997
-- imdb_id: tt0120102
-  title: Seven Years in Tibet
+- title: Seven Years in Tibet
+  notes: Heinrich Harrer
+  imdb_id: tt0120102
   year: 1997
-- imdb_id: tt0119643
-  title: Meet Joe Black
+- title: Meet Joe Black
+  notes: Joe Black / Young Man in Coffee Shop
+  imdb_id: tt0119643
   year: 1998
-- imdb_id: tt0120601
-  title: Being John Malkovich
+- title: Being John Malkovich
+  notes: Brad Pitt (uncredited)
+  imdb_id: tt0120601
   year: 1999
-- imdb_id: tt0137523
-  title: Fight Club
+- title: Fight Club
+  notes: Tyler Durden
+  imdb_id: tt0137523
   year: 1999
-- imdb_id: tt0208092
-  title: Snatch
+- title: Snatch
+  notes: Mickey O'Neil
+  imdb_id: tt0208092
   year: 2000
-- imdb_id: tt0236493
-  title: The Mexican
+- title: The Mexican
+  notes: Jerry Welbach
+  imdb_id: tt0236493
   year: 2001
-- imdb_id: tt0266987
-  title: Spy Game
+- title: Spy Game
+  notes: Tom Bishop
+  imdb_id: tt0266987
   year: 2001
-- imdb_id: tt0240772
-  title: Ocean's Eleven
+- title: Ocean's Eleven
+  notes: Rusty Ryan
+  imdb_id: tt0240772
   year: 2001
-- imdb_id: tt0270288
-  title: Confessions of a Dangerous Mind
+- title: Confessions of a Dangerous Mind
+  notes: 'Brad, Bachelor #1'
+  imdb_id: tt0270288
   year: 2002
-- imdb_id: tt0165982
-  title: 'Sinbad: Legend of the Seven Seas'
+- title: 'Sinbad: Legend of the Seven Seas'
+  notes: Sinbad (voice)
+  imdb_id: tt0165982
   year: 2003
-- imdb_id: tt0332452
-  title: Troy
+- title: Troy
+  notes: Achilles
+  imdb_id: tt0332452
   year: 2004
-- imdb_id: tt0349903
-  title: Ocean's Twelve
+- title: Ocean's Twelve
+  notes: Rusty Ryan
+  imdb_id: tt0349903
   year: 2004
-- imdb_id: tt0356910
-  title: Mr. & Mrs. Smith
+- title: Mr. & Mrs. Smith
+  notes: John Smith
+  imdb_id: tt0356910
   year: 2005
-- imdb_id: tt0449467
-  title: Babel
+- title: Babel
+  notes: Richard
+  imdb_id: tt0449467
   year: 2006
-- imdb_id: tt0496806
-  title: Ocean's Thirteen
+- title: Ocean's Thirteen
+  notes: Rusty Ryan
+  imdb_id: tt0496806
   year: 2007
-- imdb_id: tt0443680
-  title: The Assassination of Jesse James by the Coward Robert Ford
+- title: The Assassination of Jesse James by the Coward Robert Ford
+  notes: Jesse James
+  imdb_id: tt0443680
   year: 2007
-- imdb_id: tt0887883
-  title: Burn After Reading
+- title: Burn After Reading
+  notes: Chad Feldheimer
+  imdb_id: tt0887883
   year: 2008
-- imdb_id: tt0421715
-  title: The Curious Case of Benjamin Button
+- title: The Curious Case of Benjamin Button
+  notes: Benjamin Button
+  imdb_id: tt0421715
   year: 2008
-- imdb_id: tt0361748
-  title: Inglourious Basterds
+- title: Inglourious Basterds
+  notes: Lt. Aldo Raine
+  imdb_id: tt0361748
   year: 2009
-- imdb_id: tt1001526
-  title: Megamind
+- title: Megamind
+  notes: Metro Man (voice)
+  imdb_id: tt1001526
   year: 2010
-- imdb_id: tt0478304
-  title: The Tree of Life
+- title: The Tree of Life
+  notes: Mr. O'Brien
+  imdb_id: tt0478304
   year: 2011
-- imdb_id: tt1210166
-  title: Moneyball
+- title: Moneyball
+  notes: Billy Beane
+  imdb_id: tt1210166
   year: 2011
-- imdb_id: tt1402488
-  title: Happy Feet Two
+- title: Happy Feet Two
+  notes: Will the Krill (voice)
+  imdb_id: tt1402488
   year: 2011
-- imdb_id: tt1764234
-  title: Killing Them Softly
+- title: Killing Them Softly
+  notes: Jackie
+  imdb_id: tt1764234
   year: 2012
-- imdb_id: tt0816711
-  title: World War Z
+- title: World War Z
+  notes: Gerry Lane
+  imdb_id: tt0816711
   year: 2013
-- imdb_id: tt2024544
-  title: 12 Years a Slave
+- title: 12 Years a Slave
+  notes: Bass
+  imdb_id: tt2024544
   year: 2013
-- imdb_id: tt2193215
-  title: The Counselor
+- title: The Counselor
+  notes: Westray
+  imdb_id: tt2193215
   year: 2013
-- imdb_id: tt2713180
-  title: Fury
+- title: Fury
+  notes: Don 'Wardaddy' Collier
+  imdb_id: tt2713180
   year: 2014
-- imdb_id: tt3707106
-  title: By the Sea
+- title: By the Sea
+  notes: Roland
+  imdb_id: tt3707106
   year: 2015
-- imdb_id: tt1596363
-  title: The Big Short
+- title: The Big Short
+  notes: Ben Rickert
+  imdb_id: tt1596363
   year: 2015
-- imdb_id: tt3640424
-  title: Allied
+- title: Allied
+  notes: Max Vatan
+  imdb_id: tt3640424
   year: 2016
-- imdb_id: tt4758646
-  title: War Machine
+- title: War Machine
+  notes: Glen McMahon
+  imdb_id: tt4758646
   year: 2017
-- imdb_id: tt5463162
-  title: Deadpool 2
+- title: Deadpool 2
+  notes: Vanisher
+  imdb_id: tt5463162
   year: 2018
-- imdb_id: tt7131622
-  title: Once Upon a Time... in Hollywood
+- title: Once Upon a Time... in Hollywood
+  notes: Cliff Booth
+  imdb_id: tt7131622
   year: 2019
-- imdb_id: tt2935510
-  title: Ad Astra
+- title: Ad Astra
+  notes: Roy McBride
+  imdb_id: tt2935510
   year: 2019

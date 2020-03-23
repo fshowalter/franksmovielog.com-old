@@ -1,52 +1,59 @@
 frozen: false
-imdb_id: nm0001885
 name: Lars von Trier
+imdb_id: nm0001885
 titles:
-- imdb_id: tt0083634
-  title: Befrielsesbilleder
+- title: Befrielsesbilleder
+  imdb_id: tt0083634
   year: 1982
-- imdb_id: tt0087280
-  title: The Element of Crime
+- title: The Element of Crime
+  notes: (as Lars Von Trier)
+  imdb_id: tt0087280
   year: 1984
-- imdb_id: tt0092972
-  title: Epidemic
+- title: Epidemic
+  imdb_id: tt0092972
   year: 1987
-- imdb_id: tt0101829
-  title: Europa
+- title: Europa
+  imdb_id: tt0101829
   year: 1991
-- imdb_id: tt0115751
-  title: Breaking the Waves
+- title: Breaking the Waves
+  notes: (as Lars Von Trier)
+  imdb_id: tt0115751
   year: 1996
-- imdb_id: tt0154421
-  title: The Idiots
+- title: The Idiots
+  notes: (uncredited)
+  imdb_id: tt0154421
   year: 1998
-- imdb_id: tt0168629
-  title: Dancer in the Dark
+- title: Dancer in the Dark
+  notes: (as Lars Von Trier)
+  imdb_id: tt0168629
   year: 2000
-- imdb_id: tt0276919
-  title: Dogville
+- title: Dogville
+  notes: (as Lars Von Trier)
+  imdb_id: tt0276919
   year: 2003
-- imdb_id: tt0342735
-  title: Manderlay
+- title: Manderlay
+  notes: (as Lars Von Trier)
+  imdb_id: tt0342735
   year: 2005
-- imdb_id: tt0469754
-  title: The Boss of It All
+- title: The Boss of It All
+  imdb_id: tt0469754
   year: 2006
-- imdb_id: tt0973844
-  title: To Each His Own Cinema
+- title: To Each His Own Cinema
+  notes: (segment "Occupations")
+  imdb_id: tt0973844
   year: 2007
-- imdb_id: tt0870984
-  title: Antichrist
+- title: Antichrist
+  imdb_id: tt0870984
   year: 2009
-- imdb_id: tt1527186
-  title: Melancholia
+- title: Melancholia
+  imdb_id: tt1527186
   year: 2011
-- imdb_id: tt2382009
-  title: 'Nymphomaniac: Vol. II'
+- title: 'Nymphomaniac: Vol. II'
+  imdb_id: tt2382009
   year: 2013
-- imdb_id: tt1937390
-  title: 'Nymphomaniac: Vol. I'
+- title: 'Nymphomaniac: Vol. I'
+  imdb_id: tt1937390
   year: 2013
-- imdb_id: tt4003440
-  title: The House That Jack Built
+- title: The House That Jack Built
+  imdb_id: tt4003440
   year: 2018

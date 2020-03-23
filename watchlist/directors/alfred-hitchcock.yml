@@ -1,148 +1,139 @@
 frozen: true
-imdb_id: nm0000033
 name: Alfred Hitchcock
+imdb_id: nm0000033
 titles:
-  - imdb_id: tt0019702
-    title: Blackmail
+  - title: Blackmail
+    imdb_id: tt0019702
     year: 1929
-  - imdb_id: tt0020852
-    title: Elstree Calling
+  - title: Juno and the Paycock
+    imdb_id: tt0021015
     year: 1930
-  - imdb_id: tt0021015
-    title: Juno and the Paycock
+  - title: Murder!
+    imdb_id: tt0021165
     year: 1930
-  - imdb_id: tt0021165
-    title: Murder!
-    year: 1930
-  - imdb_id: tt0022395
-    title: The Skin Game
+  - title: The Skin Game
+    imdb_id: tt0022395
     year: 1931
-  - imdb_id: tt0021128
-    title: Mary
+  - title: Mary
+    imdb_id: tt0021128
     year: 1931
-  - imdb_id: tt0023395
-    title: East of Shanghai
+  - title: East of Shanghai
+    imdb_id: tt0023395
     year: 1931
-  - imdb_id: tt0023285
-    title: Number 17
+  - title: Number 17
+    imdb_id: tt0023285
     year: 1932
-  - imdb_id: tt0024747
-    title: Strauss' Great Waltz
+  - title: Strauss' Great Waltz
+    imdb_id: tt0024747
     year: 1934
-  - imdb_id: tt0025452
-    title: The Man Who Knew Too Much
+  - title: The Man Who Knew Too Much
+    imdb_id: tt0025452
     year: 1934
-  - imdb_id: tt0026966
-    title: Sanders of the River
+  - title: The 39 Steps
+    imdb_id: tt0026029
     year: 1935
-  - imdb_id: tt0026029
-    title: The 39 Steps
-    year: 1935
-  - imdb_id: tt0028231
-    title: Secret Agent
+  - title: Secret Agent
+    imdb_id: tt0028231
     year: 1936
-  - imdb_id: tt0028212
-    title: Sabotage
+  - title: Sabotage
+    imdb_id: tt0028212
     year: 1936
-  - imdb_id: tt0029811
-    title: Young and Innocent
+  - title: Young and Innocent
+    imdb_id: tt0029811
     year: 1937
-  - imdb_id: tt0030341
-    title: The Lady Vanishes
+  - title: The Lady Vanishes
+    imdb_id: tt0030341
     year: 1938
-  - imdb_id: tt0031505
-    title: Jamaica Inn
+  - title: Jamaica Inn
+    imdb_id: tt0031505
     year: 1939
-  - imdb_id: tt0032609
-    title: The House Across the Bay
+  - title: Rebecca
+    imdb_id: tt0032976
     year: 1940
-  - imdb_id: tt0032976
-    title: Rebecca
+  - title: Foreign Correspondent
+    imdb_id: tt0032484
     year: 1940
-  - imdb_id: tt0032484
-    title: Foreign Correspondent
-    year: 1940
-  - imdb_id: tt0033922
-    title: Mr. & Mrs. Smith
+  - title: Mr. & Mrs. Smith
+    imdb_id: tt0033922
     year: 1941
-  - imdb_id: tt0034248
-    title: Suspicion
+  - title: Suspicion
+    imdb_id: tt0034248
     year: 1941
-  - imdb_id: tt0035279
-    title: Saboteur
+  - title: Saboteur
+    imdb_id: tt0035279
     year: 1942
-  - imdb_id: tt0036342
-    title: Shadow of a Doubt
+  - title: Shadow of a Doubt
+    imdb_id: tt0036342
     year: 1943
-  - imdb_id: tt0037017
-    title: Lifeboat
+  - title: Lifeboat
+    imdb_id: tt0037017
     year: 1944
-  - imdb_id: tt0038109
-    title: Spellbound
+  - title: Spellbound
+    imdb_id: tt0038109
     year: 1945
-  - imdb_id: tt0038787
-    title: Notorious
+  - title: Notorious
+    imdb_id: tt0038787
     year: 1946
-  - imdb_id: tt0039694
-    title: The Paradine Case
+  - title: The Paradine Case
+    imdb_id: tt0039694
     year: 1947
-  - imdb_id: tt0040746
-    title: Rope
+  - title: Rope
+    imdb_id: tt0040746
     year: 1948
-  - imdb_id: tt0042004
-    title: Under Capricorn
+  - title: Under Capricorn
+    imdb_id: tt0042004
     year: 1949
-  - imdb_id: tt0042994
-    title: Stage Fright
+  - title: Stage Fright
+    imdb_id: tt0042994
     year: 1950
-  - imdb_id: tt0044079
-    title: Strangers on a Train
+  - title: Strangers on a Train
+    imdb_id: tt0044079
     year: 1951
-  - imdb_id: tt0045897
-    title: I Confess
+  - title: I Confess
+    imdb_id: tt0045897
     year: 1953
-  - imdb_id: tt0046912
-    title: Dial M for Murder
+  - title: Dial M for Murder
+    imdb_id: tt0046912
     year: 1954
-  - imdb_id: tt0047396
-    title: Rear Window
+  - title: Rear Window
+    imdb_id: tt0047396
     year: 1954
-  - imdb_id: tt0048728
-    title: To Catch a Thief
+  - title: To Catch a Thief
+    imdb_id: tt0048728
     year: 1955
-  - imdb_id: tt0048750
-    title: The Trouble with Harry
+  - title: The Trouble with Harry
+    imdb_id: tt0048750
     year: 1955
-  - imdb_id: tt0049470
-    title: The Man Who Knew Too Much
+  - title: The Man Who Knew Too Much
+    imdb_id: tt0049470
     year: 1956
-  - imdb_id: tt0051207
-    title: The Wrong Man
+  - title: The Wrong Man
+    imdb_id: tt0051207
     year: 1956
-  - imdb_id: tt0052357
-    title: Vertigo
+  - title: Vertigo
+    imdb_id: tt0052357
     year: 1958
-  - imdb_id: tt0053125
-    title: North by Northwest
+  - title: North by Northwest
+    imdb_id: tt0053125
     year: 1959
-  - imdb_id: tt0054215
-    title: Psycho
+  - title: Psycho
+    imdb_id: tt0054215
     year: 1960
-  - imdb_id: tt0056869
-    title: The Birds
+  - title: The Birds
+    imdb_id: tt0056869
     year: 1963
-  - imdb_id: tt0058329
-    title: Marnie
+  - title: Marnie
+    imdb_id: tt0058329
     year: 1964
-  - imdb_id: tt0061107
-    title: Torn Curtain
+  - title: Torn Curtain
+    imdb_id: tt0061107
     year: 1966
-  - imdb_id: tt0065112
-    title: Topaz
+  - title: Topaz
+    imdb_id: tt0065112
     year: 1969
-  - imdb_id: tt0068611
-    title: Frenzy
+  - title: Frenzy
+    imdb_id: tt0068611
     year: 1972
-  - imdb_id: tt0074512
-    title: Family Plot
+  - title: Family Plot
+    imdb_id: tt0074512
     year: 1976

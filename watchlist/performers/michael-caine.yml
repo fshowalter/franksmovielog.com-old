@@ -1,373 +1,507 @@
 frozen: false
-imdb_id: nm0000323
 name: Michael Caine
+imdb_id: nm0000323
 titles:
-- imdb_id: tt0050818
-  title: Panic in the Parlor
+- title: Panic in the Parlor
+  notes: Sailor (uncredited)
+  imdb_id: tt0050818
   year: 1956
-- imdb_id: tt0049302
-  title: Hell in Korea
+- title: Hell in Korea
+  notes: 'The National Servicemen: Pte. Lockyer / Pte Lockyer'
+  imdb_id: tt0049302
   year: 1956
-- imdb_id: tt0051009
-  title: The Steel Bayonet
+- title: The Steel Bayonet
+  notes: German Soldier (uncredited)
+  imdb_id: tt0051009
   year: 1957
-- imdb_id: tt0050527
-  title: How to Murder a Rich Uncle
+- title: How to Murder a Rich Uncle
+  notes: Gilrony
+  imdb_id: tt0050527
   year: 1957
-- imdb_id: tt0051454
-  title: Carve Her Name with Pride
+- title: Carve Her Name with Pride
+  notes: Thirsty Prisoner on Train (uncredited)
+  imdb_id: tt0051454
   year: 1958
-- imdb_id: tt0052404
-  title: A Woman of Mystery
+- title: A Woman of Mystery
+  notes: Minor Role (uncredited)
+  imdb_id: tt0052404
   year: 1958
-- imdb_id: tt0051816
-  title: The Key
+- title: The Key
+  notes: Seaman (uncredited)
+  imdb_id: tt0051816
   year: 1958
-- imdb_id: tt0051416
-  title: Blind Spot
+- title: Blind Spot
+  notes: Johnny Brent
+  imdb_id: tt0051416
   year: 1958
-- imdb_id: tt0052327
-  title: The Two-Headed Spy
+- title: The Two-Headed Spy
+  notes: Gestapo Agent
+  imdb_id: tt0052327
   year: 1958
-- imdb_id: tt0053225
-  title: Room 43
+- title: Room 43
+  notes: Bridegroom (uncredited)
+  imdb_id: tt0053225
   year: 1958
-- imdb_id: tt0052648
-  title: Breakout
+- title: Breakout
+  notes: Prisoner with Pin-Up (uncredited)
+  imdb_id: tt0052648
   year: 1959
-- imdb_id: tt0054891
-  title: Foxhole in Cairo
+- title: Foxhole in Cairo
+  notes: Hans Weber
+  imdb_id: tt0054891
   year: 1960
-- imdb_id: tt0053683
-  title: The Bulldog Breed
+- title: The Bulldog Breed
+  notes: Sailor in Cinema Fight (uncredited)
+  imdb_id: tt0053683
   year: 1960
-- imdb_id: tt0054790
-  title: The Day the Earth Caught Fire
+- title: The Day the Earth Caught Fire
+  notes: Checkpoint Policeman (uncredited)
+  imdb_id: tt0054790
   year: 1961
-- imdb_id: tt1729224
-  title: Solo for Sparrow
+- title: Solo for Sparrow
+  notes: Mooney
+  imdb_id: tt1729224
   year: 1962
-- imdb_id: tt0056704
-  title: The Wrong Arm of the Law
+- title: The Wrong Arm of the Law
+  notes: Police Station PC (uncredited)
+  imdb_id: tt0056704
   year: 1963
-- imdb_id: tt0058777
-  title: Zulu
+- title: Zulu
+  notes: Lt. Gonville Bromhead
+  imdb_id: tt0058777
   year: 1964
-- imdb_id: tt0059319
-  title: The Ipcress File
+- title: The Ipcress File
+  notes: Harry Palmer
+  imdb_id: tt0059319
   year: 1965
-- imdb_id: tt0060086
-  title: Alfie
+- title: Alfie
+  notes: Alfie
+  imdb_id: tt0060086
   year: 1966
-- imdb_id: tt0061204
-  title: The Wrong Box
+- title: The Wrong Box
+  notes: Michael Finsbury
+  imdb_id: tt0061204
   year: 1966
-- imdb_id: tt0060445
-  title: Gambit
+- title: Gambit
+  notes: Harry
+  imdb_id: tt0060445
   year: 1966
-- imdb_id: tt0060437
-  title: Funeral in Berlin
+- title: Funeral in Berlin
+  notes: Harry Palmer
+  imdb_id: tt0060437
   year: 1966
-- imdb_id: tt0061796
-  title: Hurry Sundown
+- title: Hurry Sundown
+  notes: Henry Warren
+  imdb_id: tt0061796
   year: 1967
-- imdb_id: tt0062502
-  title: Woman Times Seven
+- title: Woman Times Seven
+  notes: Handsome Stranger (segment "Snow")
+  imdb_id: tt0062502
   year: 1967
-- imdb_id: tt0061405
-  title: Billion Dollar Brain
+- title: Billion Dollar Brain
+  notes: Harry Palmer
+  imdb_id: tt0061405
   year: 1967
-- imdb_id: tt0062868
-  title: Deadfall
+- title: Deadfall
+  notes: Henry
+  imdb_id: tt0062868
   year: 1968
-- imdb_id: tt0063260
-  title: The Magus
+- title: The Magus
+  notes: Nicholas Urfe
+  imdb_id: tt0063260
   year: 1968
-- imdb_id: tt0063443
-  title: Play Dirty
+- title: Play Dirty
+  notes: Capt. Douglas
+  imdb_id: tt0063443
   year: 1969
-- imdb_id: tt0064505
-  title: The Italian Job
+- title: The Italian Job
+  notes: Charlie Croker
+  imdb_id: tt0064505
   year: 1969
-- imdb_id: tt0064072
-  title: Battle of Britain
+- title: Battle of Britain
+  notes: Squadron Leader Canfield
+  imdb_id: tt0064072
   year: 1969
-- imdb_id: tt0066471
-  title: Too Late the Hero
+- title: Too Late the Hero
+  notes: Pvt. Tosh Hearne
+  imdb_id: tt0066471
   year: 1970
-- imdb_id: tt0065969
-  title: The Last Valley
+- title: The Last Valley
+  notes: The Captain
+  imdb_id: tt0065969
   year: 1971
-- imdb_id: tt0067128
-  title: Get Carter
+- title: Get Carter
+  notes: Jack Carter
+  imdb_id: tt0067128
   year: 1971
-- imdb_id: tt0067302
-  title: Kidnapped
+- title: Kidnapped
+  notes: Alan Breck
+  imdb_id: tt0067302
   year: 1971
-- imdb_id: tt0069516
-  title: X, Y and Zee
+- title: X, Y and Zee
+  notes: Robert Blakeley
+  imdb_id: tt0069516
   year: 1972
-- imdb_id: tt0069134
-  title: Pulp
+- title: Pulp
+  notes: Mickey King
+  imdb_id: tt0069134
   year: 1972
-- imdb_id: tt0069281
-  title: Sleuth
+- title: Sleuth
+  notes: Milo Tindle
+  imdb_id: tt0069281
   year: 1972
-- imdb_id: tt0071229
-  title: The Black Windmill
+- title: The Black Windmill
+  notes: Maj. John Tarrant
+  imdb_id: tt0071229
   year: 1974
-- imdb_id: tt0071412
-  title: The Destructors
+- title: The Destructors
+  notes: John Deray
+  imdb_id: tt0071412
   year: 1974
-- imdb_id: tt0073901
-  title: The Wilby Conspiracy
+- title: The Wilby Conspiracy
+  notes: Jim Keogh
+  imdb_id: tt0073901
   year: 1975
-- imdb_id: tt0073634
-  title: The Romantic Englishwoman
+- title: The Romantic Englishwoman
+  notes: Lewis
+  imdb_id: tt0073634
   year: 1975
-- imdb_id: tt0073341
-  title: The Man Who Would Be King
+- title: The Man Who Would Be King
+  notes: Peachy Carnehan
+  imdb_id: tt0073341
   year: 1975
-- imdb_id: tt0073526
-  title: Peeper
+- title: Peeper
+  notes: Leslie C. Tucker
+  imdb_id: tt0073526
   year: 1975
-- imdb_id: tt0074608
-  title: Harry and Walter Go to New York
+- title: Harry and Walter Go to New York
+  notes: Adam Worth
+  imdb_id: tt0074608
   year: 1976
-- imdb_id: tt0074452
-  title: The Eagle Has Landed
+- title: The Eagle Has Landed
+  notes: Oberst Kurt Steiner
+  imdb_id: tt0074452
   year: 1976
-- imdb_id: tt0076715
-  title: Silver Bears
+- title: Silver Bears
+  notes: Doc Fletcher
+  imdb_id: tt0076715
   year: 1977
-- imdb_id: tt0075784
-  title: A Bridge Too Far
+- title: A Bridge Too Far
+  notes: Ltl Col. J.O.E. Vandeleur
+  imdb_id: tt0075784
   year: 1977
-- imdb_id: tt0078350
-  title: The Swarm
+- title: The Swarm
+  notes: Brad Crane
+  imdb_id: tt0078350
   year: 1978
-- imdb_id: tt0077289
-  title: California Suite
+- title: California Suite
+  notes: Sidney Cochran
+  imdb_id: tt0077289
   year: 1978
-- imdb_id: tt0078801
-  title: Ashanti
+- title: Ashanti
+  notes: Dr. David Linderby
+  imdb_id: tt0078801
   year: 1979
-- imdb_id: tt0078856
-  title: Beyond the Poseidon Adventure
+- title: Beyond the Poseidon Adventure
+  notes: Captain Mike Turner
+  imdb_id: tt0078856
   year: 1979
-- imdb_id: tt0080934
-  title: The Island
+- title: The Island
+  notes: Blair Maynard
+  imdb_id: tt0080934
   year: 1980
-- imdb_id: tt0080661
-  title: Dressed to Kill
+- title: Dressed to Kill
+  notes: Doctor Robert Elliott
+  imdb_id: tt0080661
   year: 1980
-- imdb_id: tt0082497
-  title: The Hand
+- title: The Hand
+  notes: Jonathan Lansdale
+  imdb_id: tt0082497
   year: 1981
-- imdb_id: tt0083284
-  title: Victory
+- title: Victory
+  notes: 'The Players: England - Capt. John Colby'
+  imdb_id: tt0083284
   year: 1981
-- imdb_id: tt0083806
-  title: Deathtrap
+- title: Deathtrap
+  notes: Sidney Bruhl
+  imdb_id: tt0083806
   year: 1982
-- imdb_id: tt0085478
-  title: Educating Rita
+- title: Educating Rita
+  notes: Dr. Frank Bryant
+  imdb_id: tt0085478
   year: 1983
-- imdb_id: tt0085236
-  title: Beyond the Limit
+- title: Beyond the Limit
+  notes: Charley Fortnum
+  imdb_id: tt0085236
   year: 1983
-- imdb_id: tt0085755
-  title: The Jigsaw Man
+- title: The Jigsaw Man
+  notes: Philip Kimberley / Sergei Kuzminsky
+  imdb_id: tt0085755
   year: 1983
-- imdb_id: tt0086973
-  title: Blame It on Rio
+- title: Blame It on Rio
+  notes: Matthew Hollis
+  imdb_id: tt0086973
   year: 1984
-- imdb_id: tt0090297
-  title: Water
+- title: Water
+  notes: Baxter
+  imdb_id: tt0090297
   year: 1985
-- imdb_id: tt0089283
-  title: The Holcroft Covenant
+- title: The Holcroft Covenant
+  notes: Noel Holcroft
+  imdb_id: tt0089283
   year: 1985
-- imdb_id: tt0091167
-  title: Hannah and Her Sisters
+- title: Hannah and Her Sisters
+  notes: Elliot
+  imdb_id: tt0091167
   year: 1986
-- imdb_id: tt0092035
-  title: Sweet Liberty
+- title: Sweet Liberty
+  notes: Elliott James
+  imdb_id: tt0092035
   year: 1986
-- imdb_id: tt0091538
-  title: Mona Lisa
+- title: Mona Lisa
+  notes: Mortwell
+  imdb_id: tt0091538
   year: 1986
-- imdb_id: tt0091164
-  title: Half Moon Street
+- title: Half Moon Street
+  notes: Lord Bulbeck
+  imdb_id: tt0091164
   year: 1986
-- imdb_id: tt0092206
-  title: The Whistle Blower
+- title: The Whistle Blower
+  notes: Frank Jones
+  imdb_id: tt0092206
   year: 1986
-- imdb_id: tt0093044
-  title: The Fourth Protocol
+- title: The Fourth Protocol
+  notes: John Preston
+  imdb_id: tt0093044
   year: 1987
-- imdb_id: tt0093300
-  title: 'Jaws: The Revenge'
+- title: 'Jaws: The Revenge'
+  notes: Hoagie
+  imdb_id: tt0093300
   year: 1987
-- imdb_id: tt0094078
-  title: Surrender
+- title: Surrender
+  notes: Sean Stein
+  imdb_id: tt0094078
   year: 1987
-- imdb_id: tt0096454
-  title: Without a Clue
+- title: Without a Clue
+  notes: Reginald Kincaid / Sherlock Holmes
+  imdb_id: tt0096454
   year: 1988
-- imdb_id: tt0095031
-  title: Dirty Rotten Scoundrels
+- title: Dirty Rotten Scoundrels
+  notes: Lawrence Jamieson
+  imdb_id: tt0095031
   year: 1988
-- imdb_id: tt0100602
-  title: A Shock to the System
+- title: A Shock to the System
+  notes: Graham Marshall
+  imdb_id: tt0100602
   year: 1990
-- imdb_id: tt0100201
-  title: Mr. Destiny
+- title: Mr. Destiny
+  notes: Mike
+  imdb_id: tt0100201
   year: 1990
-- imdb_id: tt0101518
-  title: Bullseye!
+- title: Bullseye!
+  notes: Sidney Lipton / Doctor Hicklar
+  imdb_id: tt0101518
   year: 1990
-- imdb_id: tt0105017
-  title: Noises Off...
+- title: Noises Off...
+  notes: Lloyd Fellowes
+  imdb_id: tt0105017
   year: 1992
-- imdb_id: tt0103848
-  title: Blue Ice
+- title: Blue Ice
+  notes: Harry Anders
+  imdb_id: tt0103848
   year: 1992
-- imdb_id: tt0104940
-  title: The Muppet Christmas Carol
+- title: The Muppet Christmas Carol
+  notes: Scrooge
+  imdb_id: tt0104940
   year: 1992
-- imdb_id: tt0110725
-  title: On Deadly Ground
+- title: On Deadly Ground
+  notes: Michael Jennings
+  imdb_id: tt0110725
   year: 1994
-- imdb_id: tt0115710
-  title: Blood and Wine
+- title: Blood and Wine
+  notes: Victor
+  imdb_id: tt0115710
   year: 1996
-- imdb_id: tt0133197
-  title: Shadow Run
+- title: Shadow Run
+  notes: Haskell
+  imdb_id: tt0133197
   year: 1998
-- imdb_id: tt0147004
-  title: Little Voice
+- title: Little Voice
+  notes: Ray Say
+  imdb_id: tt0147004
   year: 1998
-- imdb_id: tt0124315
-  title: The Cider House Rules
+- title: It All Came True
+  notes: Max Gale
+  imdb_id: tt0119505
+  year: 1998
+- title: The Cider House Rules
+  notes: Dr. Wilbur Larch
+  imdb_id: tt0124315
   year: 1999
-- imdb_id: tt0167110
-  title: The Debtors
+- title: The Debtors
+  imdb_id: tt0167110
   year: 1999
-- imdb_id: tt0180073
-  title: Quills
+- title: Quills
+  notes: Royer-Collard
+  imdb_id: tt0180073
   year: 2000
-- imdb_id: tt0232632
-  title: Shiner
+- title: Shiner
+  notes: Billy 'Shiner' Simpson
+  imdb_id: tt0232632
   year: 2000
-- imdb_id: tt0208988
-  title: Get Carter
+- title: Get Carter
+  notes: Cliff Brumby
+  imdb_id: tt0208988
   year: 2000
-- imdb_id: tt0212346
-  title: Miss Congeniality
+- title: Miss Congeniality
+  notes: Victor Melling
+  imdb_id: tt0212346
   year: 2000
-- imdb_id: tt0253200
-  title: Last Orders
+- title: Last Orders
+  notes: Jack
+  imdb_id: tt0253200
   year: 2001
-- imdb_id: tt0295178
-  title: Austin Powers in Goldmember
+- title: Austin Powers in Goldmember
+  notes: Nigel Powers
+  imdb_id: tt0295178
   year: 2002
-- imdb_id: tt0258068
-  title: The Quiet American
+- title: The Quiet American
+  notes: Thomas Fowler
+  imdb_id: tt0258068
   year: 2002
-- imdb_id: tt0271136
-  title: Quicksand
+- title: Quicksand
+  notes: Jake Mellows
+  imdb_id: tt0271136
   year: 2003
-- imdb_id: tt0307919
-  title: The Actors
+- title: The Actors
+  notes: Anthony O'Malley
+  imdb_id: tt0307919
   year: 2003
-- imdb_id: tt0327137
-  title: Secondhand Lions
+- title: Secondhand Lions
+  notes: Garth
+  imdb_id: tt0327137
   year: 2003
-- imdb_id: tt0340376
-  title: The Statement
+- title: The Statement
+  notes: Pierre Brossard
+  imdb_id: tt0340376
   year: 2003
-- imdb_id: tt0384810
-  title: Around the Bend
+- title: Around the Bend
+  notes: Henry Lair
+  imdb_id: tt0384810
   year: 2004
-- imdb_id: tt0372784
-  title: Batman Begins
+- title: Batman Begins
+  notes: Alfred
+  imdb_id: tt0372784
   year: 2005
-- imdb_id: tt0374536
-  title: Bewitched
+- title: Bewitched
+  notes: Nigel Bigelow
+  imdb_id: tt0374536
   year: 2005
-- imdb_id: tt0384680
-  title: The Weather Man
+- title: The Weather Man
+  notes: Robert Spritzel
+  imdb_id: tt0384680
   year: 2005
-- imdb_id: tt0206634
-  title: Children of Men
+- title: Children of Men
+  notes: Jasper
+  imdb_id: tt0206634
   year: 2006
-- imdb_id: tt0482571
-  title: The Prestige
+- title: The Prestige
+  notes: Cutter
+  imdb_id: tt0482571
   year: 2006
-- imdb_id: tt0857265
-  title: Sleuth
+- title: Sleuth
+  notes: Andrew
+  imdb_id: tt0857265
   year: 2007
-- imdb_id: tt0780516
-  title: Flawless
+- title: Flawless
+  notes: Hobbs
+  imdb_id: tt0780516
   year: 2007
-- imdb_id: tt0468569
-  title: The Dark Knight
+- title: The Dark Knight
+  notes: Alfred
+  imdb_id: tt0468569
   year: 2008
-- imdb_id: tt1130088
-  title: Is Anybody There?
+- title: Is Anybody There?
+  notes: Clarence
+  imdb_id: tt1130088
   year: 2008
-- imdb_id: tt1289406
-  title: Harry Brown
+- title: Harry Brown
+  notes: Harry Brown
+  imdb_id: tt1289406
   year: 2009
-- imdb_id: tt1375666
-  title: Inception
+- title: Inception
+  notes: Miles
+  imdb_id: tt1375666
   year: 2010
-- imdb_id: tt0377981
-  title: Gnomeo & Juliet
+- title: Gnomeo & Juliet
+  notes: Lord Redbrick (voice)
+  imdb_id: tt0377981
   year: 2011
-- imdb_id: tt1216475
-  title: Cars 2
+- title: Cars 2
+  notes: Finn McMissile (voice)
+  imdb_id: tt1216475
   year: 2011
-- imdb_id: tt1397514
-  title: 'Journey 2: The Mysterious Island'
+- title: 'Journey 2: The Mysterious Island'
+  notes: Alexander
+  imdb_id: tt1397514
   year: 2012
-- imdb_id: tt1345836
-  title: The Dark Knight Rises
+- title: The Dark Knight Rises
+  notes: Alfred
+  imdb_id: tt1345836
   year: 2012
-- imdb_id: tt1670345
-  title: Now You See Me
+- title: Now You See Me
+  notes: Arthur Tressler
+  imdb_id: tt1670345
   year: 2013
-- imdb_id: tt1838603
-  title: Last Love
+- title: Last Love
+  notes: Matthew Morgan
+  imdb_id: tt1838603
   year: 2013
-- imdb_id: tt1772264
-  title: Stonehearst Asylum
+- title: Stonehearst Asylum
+  notes: Benjamin Salt
+  imdb_id: tt1772264
   year: 2014
-- imdb_id: tt0816692
-  title: Interstellar
+- title: Interstellar
+  notes: Professor Brand
+  imdb_id: tt0816692
   year: 2014
-- imdb_id: tt2802144
-  title: 'Kingsman: The Secret Service'
+- title: 'Kingsman: The Secret Service'
+  notes: Arthur
+  imdb_id: tt2802144
   year: 2014
-- imdb_id: tt3312830
-  title: Youth
+- title: Youth
+  notes: Fred Ballinger
+  imdb_id: tt3312830
   year: 2015
-- imdb_id: tt1618442
-  title: The Last Witch Hunter
+- title: The Last Witch Hunter
+  notes: Dolan 36th
+  imdb_id: tt1618442
   year: 2015
-- imdb_id: tt3110958
-  title: Now You See Me 2
+- title: Now You See Me 2
+  notes: Arthur Tressler
+  imdb_id: tt3110958
   year: 2016
-- imdb_id: tt2568862
-  title: Going in Style
+- title: Going in Style
+  notes: Joe Harding
+  imdb_id: tt2568862
   year: 2017
-- imdb_id: tt5013056
-  title: Dunkirk
+- title: Dear Dictator
+  notes: General Anton Vincent
+  imdb_id: tt5779540
   year: 2017
-- imdb_id: tt2296777
-  title: Sherlock Gnomes
+- title: Dunkirk
+  notes: Fortis Leader (voice, uncredited)
+  imdb_id: tt5013056
+  year: 2017
+- title: Sherlock Gnomes
+  notes: Lord Redbrick (voice)
+  imdb_id: tt2296777
   year: 2018
-- imdb_id: tt6723592
-  title: Tenet
+- title: King of Thieves
+  notes: Brian Reader
+  imdb_id: tt5789976
+  year: 2018
+- title: Come Away
+  notes: Charlie
+  imdb_id: tt5714470
   year: 2020

@@ -1,46 +1,48 @@
 frozen: false
-imdb_id: nm0000464
 name: Jim Jarmusch
+imdb_id: nm0000464
 titles:
-- imdb_id: tt0084488
-  title: Permanent Vacation
+- title: Permanent Vacation
+  imdb_id: tt0084488
   year: 1980
-- imdb_id: tt0088184
-  title: Stranger Than Paradise
+- title: Stranger Than Paradise
+  imdb_id: tt0088184
   year: 1984
-- imdb_id: tt0090967
-  title: Down by Law
+- title: Down by Law
+  imdb_id: tt0090967
   year: 1986
-- imdb_id: tt0097940
-  title: Mystery Train
+- title: Mystery Train
+  imdb_id: tt0097940
   year: 1989
-- imdb_id: tt0102536
-  title: Night on Earth
+- title: Night on Earth
+  imdb_id: tt0102536
   year: 1991
-- imdb_id: tt0112817
-  title: Dead Man
+- title: Dead Man
+  imdb_id: tt0112817
   year: 1995
-- imdb_id: tt0165798
-  title: 'Ghost Dog: The Way of the Samurai'
+- title: 'Ghost Dog: The Way of the Samurai'
+  imdb_id: tt0165798
   year: 1999
-- imdb_id: tt0304808
-  title: 'Ten Minutes Older: The Trumpet'
+- title: 'Ten Minutes Older: The Trumpet'
+  notes: (segment "Int. Trailer Night")
+  imdb_id: tt0304808
   year: 2002
-- imdb_id: tt0379217
-  title: Coffee and Cigarettes
+- title: Coffee and Cigarettes
+  imdb_id: tt0379217
   year: 2003
-- imdb_id: tt0412019
-  title: Broken Flowers
+- title: Broken Flowers
+  imdb_id: tt0412019
   year: 2005
-- imdb_id: tt1135092
-  title: The Limits of Control
+- title: The Limits of Control
+  imdb_id: tt1135092
   year: 2009
-- imdb_id: tt1714915
-  title: Only Lovers Left Alive
+- title: Only Lovers Left Alive
+  imdb_id: tt1714915
   year: 2013
-- imdb_id: tt5247022
-  title: Paterson
+- title: Paterson
+  notes: (directed by)
+  imdb_id: tt5247022
   year: 2016
-- imdb_id: tt8695030
-  title: The Dead Don't Die
+- title: The Dead Don't Die
+  imdb_id: tt8695030
   year: 2019

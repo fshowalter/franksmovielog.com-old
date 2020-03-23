@@ -1,169 +1,248 @@
 frozen: false
-imdb_id: nm0000175
 name: Stephen King
+imdb_id: nm0000175
 titles:
-- imdb_id: tt0074285
-  title: Carrie
+- title: Carrie
+  notes: (novel)
+  imdb_id: tt0074285
   year: 1976
-- imdb_id: tt0081505
-  title: The Shining
+- title: The Shining
+  notes: (novel)
+  imdb_id: tt0081505
   year: 1980
-- imdb_id: tt0083767
-  title: Creepshow
+- title: Creepshow
+  notes: (original screenplay by)
+  imdb_id: tt0083767
   year: 1982
-- imdb_id: tt0085382
-  title: Cujo
+- title: Cujo
+  notes: (novel)
+  imdb_id: tt0085382
   year: 1983
-- imdb_id: tt0085407
-  title: The Dead Zone
+- title: The Dead Zone
+  notes: (novel)
+  imdb_id: tt0085407
   year: 1983
-- imdb_id: tt0085333
-  title: Christine
+- title: Christine
+  notes: (based upon the novel by)
+  imdb_id: tt0085333
   year: 1983
-- imdb_id: tt0087050
-  title: Children of the Corn
+- title: Children of the Corn
+  notes: (short story)
+  imdb_id: tt0087050
   year: 1984
-- imdb_id: tt0087262
-  title: Firestarter
+- title: Firestarter
+  notes: (novel)
+  imdb_id: tt0087262
   year: 1984
-- imdb_id: tt0218937
-  title: The Devil's Gift
+- title: The Devil's Gift
+  notes: (short story "The Monkey")
+  imdb_id: tt0218937
   year: 1984
-- imdb_id: tt0088889
-  title: Cat's Eye
+- title: Cat's Eye
+  notes: (screenplay)
+  imdb_id: tt0088889
   year: 1985
-- imdb_id: tt0090021
-  title: Silver Bullet
+- title: Silver Bullet
+  notes: (novella "Cycle of the Werewolf") / (screenplay)
+  imdb_id: tt0090021
   year: 1985
-- imdb_id: tt0091499
-  title: Maximum Overdrive
+- title: Maximum Overdrive
+  notes: (film by) / (written for the screen by)
+  imdb_id: tt0091499
   year: 1986
-- imdb_id: tt0092005
-  title: Stand by Me
+- title: Stand by Me
+  notes: (novella "The Body")
+  imdb_id: tt0092005
   year: 1986
-- imdb_id: tt0092796
-  title: Creepshow 2
+- title: Creepshow 2
+  notes: (stories)
+  imdb_id: tt0092796
   year: 1987
-- imdb_id: tt0093855
-  title: A Return to Salem's Lot
+- title: A Return to Salem's Lot
+  notes: (characters)
+  imdb_id: tt0093855
   year: 1987
-- imdb_id: tt0093894
-  title: The Running Man
+- title: The Running Man
+  notes: (novel - as Richard Bachman)
+  imdb_id: tt0093894
   year: 1987
-- imdb_id: tt0098084
-  title: Pet Sematary
+- title: Pet Sematary
+  notes: (novel) / (screenplay)
+  imdb_id: tt0098084
   year: 1989
-- imdb_id: tt0100740
-  title: 'Tales from the Darkside: The Movie'
+- title: 'Tales from the Darkside: The Movie'
+  notes: (short story - segment "Cat From Hell")
+  imdb_id: tt0100740
   year: 1990
-- imdb_id: tt0099697
-  title: Graveyard Shift
+- title: Graveyard Shift
+  notes: (short story)
+  imdb_id: tt0099697
   year: 1990
-- imdb_id: tt0100157
-  title: Misery
+- title: Misery
+  notes: (novel "Misery")
+  imdb_id: tt0100157
   year: 1990
-- imdb_id: tt0104692
-  title: The Lawnmower Man
+- title: The Lawnmower Man
+  notes: (title only - credit removed following lawsuit)
+  imdb_id: tt0104692
   year: 1992
-- imdb_id: tt0105428
-  title: Sleepwalkers
+- title: Sleepwalkers
+  notes: (written by)
+  imdb_id: tt0105428
   year: 1992
-- imdb_id: tt0106557
-  title: 'Children of the Corn II: The Final Sacrifice'
+- title: 'Children of the Corn II: The Final Sacrifice'
+  notes: (short story "Children of the Corn")
+  imdb_id: tt0106557
   year: 1992
-- imdb_id: tt0106664
-  title: The Dark Half
+- title: The Dark Half
+  notes: (novel "The Dark Half")
+  imdb_id: tt0106664
   year: 1993
-- imdb_id: tt0107665
-  title: Needful Things
+- title: Needful Things
+  notes: (book)
+  imdb_id: tt0107665
   year: 1993
-- imdb_id: tt0111161
-  title: The Shawshank Redemption
+- title: The Shawshank Redemption
+  notes: (short story "Rita Hayworth and Shawshank Redemption")
+  imdb_id: tt0111161
   year: 1994
-- imdb_id: tt0113762
-  title: The Mangler
+- title: The Mangler
+  notes: (short story)
+  imdb_id: tt0113762
   year: 1995
-- imdb_id: tt0109642
-  title: Dolores Claiborne
+- title: Dolores Claiborne
+  notes: (book)
+  imdb_id: tt0109642
   year: 1995
-- imdb_id: tt0109415
-  title: 'Children of the Corn III: Urban Harvest'
+- title: 'Children of the Corn III: Urban Harvest'
+  notes: (short story "Children of the Corn")
+  imdb_id: tt0109415
   year: 1995
-- imdb_id: tt0117894
-  title: Thinner
+- title: Thinner
+  notes: (novel)
+  imdb_id: tt0117894
   year: 1996
-- imdb_id: tt0119784
-  title: The Night Flier
+- title: The Night Flier
+  notes: (story)
+  imdb_id: tt0119784
   year: 1997
-- imdb_id: tt0118636
-  title: Apt Pupil
+- title: Apt Pupil
+  notes: (novella "Apt Pupil")
+  imdb_id: tt0118636
   year: 1998
-- imdb_id: tt0144814
-  title: 'The Rage: Carrie 2'
+- title: 'The Rage: Carrie 2'
+  notes: (characters)
+  imdb_id: tt0144814
   year: 1999
-- imdb_id: tt0120689
-  title: The Green Mile
+- title: The Green Mile
+  notes: (novel)
+  imdb_id: tt0120689
   year: 1999
-- imdb_id: tt0252501
-  title: Hearts in Atlantis
+- title: Hearts in Atlantis
+  notes: (book)
+  imdb_id: tt0252501
   year: 2001
-- imdb_id: tt0285531
-  title: Dreamcatcher
+- title: Dreamcatcher
+  notes: (novel "Dreamcatcher")
+  imdb_id: tt0285531
   year: 2003
-- imdb_id: tt0363988
-  title: Secret Window
+- title: Secret Window
+  notes: '(novella "Four Past Midnight: Secret Window, Secret Garden")'
+  imdb_id: tt0363988
   year: 2004
-- imdb_id: tt0355954
-  title: Riding the Bullet
+- title: Riding the Bullet
+  notes: (novella "Riding the Bullet")
+  imdb_id: tt0355954
   year: 2004
-- imdb_id: tt0450385
-  title: '1408'
+- title: '1408'
+  notes: (short story)
+  imdb_id: tt0450385
   year: 2007
-- imdb_id: tt0884328
-  title: The Mist
+- title: The Mist
+  notes: (novella)
+  imdb_id: tt0884328
   year: 2007
-- imdb_id: tt0963965
-  title: Dolan's Cadillac
+- title: Dolan's Cadillac
+  notes: (short story)
+  imdb_id: tt0963965
   year: 2009
-- imdb_id: tt2199723
-  title: Willa
+- title: Everything's Eventual
+  notes: (short story)
+  imdb_id: tt1409829
+  year: 2009
+- title: 'Children of the Corn: Genesis'
+  notes: (short story "Children of the Corn")
+  imdb_id: tt1745672
+  year: 2011
+- title: Willa
+  notes: (short story)
+  imdb_id: tt2199723
   year: 2012
-- imdb_id: tt1939659
-  title: Carrie
+- title: Carrie
+  notes: (novel)
+  imdb_id: tt1939659
   year: 2013
-- imdb_id: tt3812686
-  title: The Boogeyman
+- title: The Boogeyman
+  notes: (short story)
+  imdb_id: tt3812686
   year: 2014
-- imdb_id: tt2180994
-  title: A Good Marriage
+- title: A Good Marriage
+  notes: (short story - screenplay)
+  imdb_id: tt2180994
   year: 2014
-- imdb_id: tt2481496
-  title: Mercy
+- title: Mercy
+  notes: (short story "Gramma")
+  imdb_id: tt2481496
   year: 2014
-- imdb_id: tt0775440
-  title: Cell
+- title: Cell
+  notes: (based on the novel by) / (screenplay by)
+  imdb_id: tt0775440
   year: 2016
-- imdb_id: tt1648190
-  title: The Dark Tower
+- title: The Dark Tower
+  notes: (based on "The Dark Tower" novels by)
+  imdb_id: tt1648190
   year: 2017
-- imdb_id: tt1396484
-  title: It
+- title: It
+  notes: (based on the novel by)
+  imdb_id: tt1396484
   year: 2017
-- imdb_id: tt6214928
-  title: '1922'
+- title: Gerald's Game
+  notes: (based on the novel by)
+  imdb_id: tt3748172
   year: 2017
-- imdb_id: tt6952166
-  title: The Doctor's Case
+- title: '1922'
+  notes: (novella)
+  imdb_id: tt6214928
+  year: 2017
+- title: The Milkman
+  notes: (story)
+  imdb_id: tt2332833
+  year: 2017
+- title: The Doctor's Case
+  notes: (based on the short story by)
+  imdb_id: tt6952166
   year: 2018
-- imdb_id: tt0837563
-  title: Pet Sematary
+- title: Mute
+  notes: (story by)
+  imdb_id: tt7286958
+  year: 2018
+- title: Pet Sematary
+  notes: (based on the novel by)
+  imdb_id: tt0837563
   year: 2019
-- imdb_id: tt7349950
-  title: It Chapter Two
+- title: It Chapter Two
+  notes: (based on the novel "It" by)
+  imdb_id: tt7349950
   year: 2019
-- imdb_id: tt4687108
-  title: In the Tall Grass
+- title: In the Tall Grass
+  notes: (based on the novella by)
+  imdb_id: tt4687108
   year: 2019
-- imdb_id: tt5606664
-  title: Doctor Sleep
+- title: The Doctor's Case
+  notes: (based on a short story by)
+  imdb_id: tt7631002
+  year: 2019
+- title: Doctor Sleep
+  notes: (based on the novel by)
+  imdb_id: tt5606664
   year: 2019

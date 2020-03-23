@@ -1,133 +1,175 @@
 frozen: false
-imdb_id: nm0000123
 name: George Clooney
+imdb_id: nm0000123
 titles:
-- imdb_id: tt1205428
-  title: And They're Off
+- title: And They're Off
+  imdb_id: tt1205428
   year: 1982
-- imdb_id: tt0093119
-  title: 'Grizzly II: Revenge'
+- title: 'Grizzly II: Revenge'
+  notes: Ron
+  imdb_id: tt0093119
   year: 1983
-- imdb_id: tt0093854
-  title: Return to Horror High
+- title: Return to Horror High
+  notes: Oliver
+  imdb_id: tt0093854
   year: 1987
-- imdb_id: tt0095989
-  title: Return of the Killer Tomatoes!
+- title: Return of the Killer Tomatoes!
+  notes: Matt Stevens
+  imdb_id: tt0095989
   year: 1988
-- imdb_id: tt0100468
-  title: Red Surf
+- title: Red Surf
+  notes: Remar
+  imdb_id: tt0100468
   year: 1989
-- imdb_id: tt0107084
-  title: The Harvest
+- title: The Harvest
+  notes: Lip Syncing Transvestite
+  imdb_id: tt0107084
   year: 1992
-- imdb_id: tt0105685
-  title: Unbecoming Age
+- title: Unbecoming Age
+  notes: Mac
+  imdb_id: tt0105685
   year: 1992
-- imdb_id: tt0116367
-  title: From Dusk Till Dawn
+- title: From Dusk Till Dawn
+  notes: Seth Gecko
+  imdb_id: tt0116367
   year: 1996
-- imdb_id: tt0117247
-  title: One Fine Day
+- title: One Fine Day
+  notes: Jack Taylor
+  imdb_id: tt0117247
   year: 1996
-- imdb_id: tt0118688
-  title: Batman & Robin
+- title: Batman & Robin
+  notes: Batman / Bruce Wayne
+  imdb_id: tt0118688
   year: 1997
-- imdb_id: tt0119874
-  title: The Peacemaker
+- title: The Peacemaker
+  notes: Lt. Col. Thomas Devoe
+  imdb_id: tt0119874
   year: 1997
-- imdb_id: tt0120780
-  title: Out of Sight
+- title: Out of Sight
+  notes: Jack Foley
+  imdb_id: tt0120780
   year: 1998
-- imdb_id: tt0120863
-  title: The Thin Red Line
+- title: The Thin Red Line
+  notes: Capt. Bosche
+  imdb_id: tt0120863
   year: 1998
-- imdb_id: tt0158983
-  title: 'South Park: Bigger, Longer & Uncut'
+- title: 'South Park: Bigger, Longer & Uncut'
+  notes: Dr. Gouache (voice)
+  imdb_id: tt0158983
   year: 1999
-- imdb_id: tt0120188
-  title: Three Kings
+- title: Three Kings
+  notes: Archie Gates
+  imdb_id: tt0120188
   year: 1999
-- imdb_id: tt0190590
-  title: O Brother, Where Art Thou?
+- title: O Brother, Where Art Thou?
+  notes: Everett
+  imdb_id: tt0190590
   year: 2000
-- imdb_id: tt0177971
-  title: The Perfect Storm
+- title: The Perfect Storm
+  notes: Billy Tyne
+  imdb_id: tt0177971
   year: 2000
-- imdb_id: tt0227538
-  title: Spy Kids
+- title: Spy Kids
+  notes: Devlin
+  imdb_id: tt0227538
   year: 2001
-- imdb_id: tt0240772
-  title: Ocean's Eleven
+- title: Ocean's Eleven
+  notes: Danny Ocean
+  imdb_id: tt0240772
   year: 2001
-- imdb_id: tt0271259
-  title: Welcome to Collinwood
+- title: Welcome to Collinwood
+  notes: Jerzy
+  imdb_id: tt0271259
   year: 2002
-- imdb_id: tt0307479
-  title: Solaris
+- title: Solaris
+  notes: Chris Kelvin
+  imdb_id: tt0307479
   year: 2002
-- imdb_id: tt0270288
-  title: Confessions of a Dangerous Mind
+- title: Confessions of a Dangerous Mind
+  notes: Jim Byrd
+  imdb_id: tt0270288
   year: 2002
-- imdb_id: tt0338459
-  title: 'Spy Kids 3-D: Game Over'
+- title: 'Spy Kids 3-D: Game Over'
+  notes: Devlin
+  imdb_id: tt0338459
   year: 2003
-- imdb_id: tt0138524
-  title: Intolerable Cruelty
+- title: Intolerable Cruelty
+  notes: Miles
+  imdb_id: tt0138524
   year: 2003
-- imdb_id: tt0349903
-  title: Ocean's Twelve
+- title: Ocean's Twelve
+  notes: Danny Ocean
+  imdb_id: tt0349903
   year: 2004
-- imdb_id: tt0433383
-  title: Good Night, and Good Luck.
+- title: Good Night, and Good Luck.
+  notes: Fred Friendly
+  imdb_id: tt0433383
   year: 2005
-- imdb_id: tt0365737
-  title: Syriana
+- title: Syriana
+  notes: Bob Barnes
+  imdb_id: tt0365737
   year: 2005
-- imdb_id: tt0452624
-  title: The Good German
+- title: The Good German
+  notes: Jake Geismer
+  imdb_id: tt0452624
   year: 2006
-- imdb_id: tt0496806
-  title: Ocean's Thirteen
+- title: Ocean's Thirteen
+  notes: Danny Ocean
+  imdb_id: tt0496806
   year: 2007
-- imdb_id: tt0465538
-  title: Michael Clayton
+- title: Michael Clayton
+  notes: Michael Clayton
+  imdb_id: tt0465538
   year: 2007
-- imdb_id: tt0379865
-  title: Leatherheads
+- title: Leatherheads
+  notes: Dodge Connelly
+  imdb_id: tt0379865
   year: 2008
-- imdb_id: tt0887883
-  title: Burn After Reading
+- title: Burn After Reading
+  notes: Harry Pfarrer
+  imdb_id: tt0887883
   year: 2008
-- imdb_id: tt1193138
-  title: Up in the Air
+- title: Up in the Air
+  notes: Ryan Bingham
+  imdb_id: tt1193138
   year: 2009
-- imdb_id: tt1234548
-  title: The Men Who Stare at Goats
+- title: The Men Who Stare at Goats
+  notes: Lyn Cassady
+  imdb_id: tt1234548
   year: 2009
-- imdb_id: tt0432283
-  title: Fantastic Mr. Fox
+- title: Fantastic Mr. Fox
+  notes: Mr. Fox (voice)
+  imdb_id: tt0432283
   year: 2009
-- imdb_id: tt1440728
-  title: The American
+- title: The American
+  notes: Jack / Edward
+  imdb_id: tt1440728
   year: 2010
-- imdb_id: tt1124035
-  title: The Ides of March
+- title: The Ides of March
+  notes: Governor Mike Morris
+  imdb_id: tt1124035
   year: 2011
-- imdb_id: tt1033575
-  title: The Descendants
+- title: The Descendants
+  notes: Matt King
+  imdb_id: tt1033575
   year: 2011
-- imdb_id: tt1454468
-  title: Gravity
+- title: Gravity
+  notes: Matt Kowalski
+  imdb_id: tt1454468
   year: 2013
-- imdb_id: tt2177771
-  title: The Monuments Men
+- title: The Monuments Men
+  notes: Frank Stokes
+  imdb_id: tt2177771
   year: 2014
-- imdb_id: tt1964418
-  title: Tomorrowland
+- title: Tomorrowland
+  notes: Frank Walker
+  imdb_id: tt1964418
   year: 2015
-- imdb_id: tt0475290
-  title: Hail, Caesar!
+- title: Hail, Caesar!
+  notes: Baird Whitlock
+  imdb_id: tt0475290
   year: 2016
-- imdb_id: tt2241351
-  title: Money Monster
+- title: Money Monster
+  notes: Lee Gates
+  imdb_id: tt2241351
   year: 2016

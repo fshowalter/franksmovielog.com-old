@@ -1,43 +1,43 @@
 frozen: true
-imdb_id: nm0000040
 name: Stanley Kubrick
+imdb_id: nm0000040
 titles:
-  - imdb_id: tt0045758
-    title: Fear and Desire
-    year: 1953
-  - imdb_id: tt0048254
-    title: Killer's Kiss
-    year: 1955
-  - imdb_id: tt0049406
-    title: The Killing
-    year: 1956
-  - imdb_id: tt0050825
-    title: Paths of Glory
-    year: 1957
-  - imdb_id: tt0054331
-    title: Spartacus
-    year: 1960
-  - imdb_id: tt0056193
-    title: Lolita
-    year: 1962
-  - imdb_id: tt0057012
-    title: "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb"
-    year: 1964
-  - imdb_id: tt0062622
-    title: "2001: A Space Odyssey"
-    year: 1968
-  - imdb_id: tt0066921
-    title: A Clockwork Orange
-    year: 1971
-  - imdb_id: tt0072684
-    title: Barry Lyndon
-    year: 1975
-  - imdb_id: tt0081505
-    title: The Shining
-    year: 1980
-  - imdb_id: tt0093058
-    title: Full Metal Jacket
-    year: 1987
-  - imdb_id: tt0120663
-    title: Eyes Wide Shut
-    year: 1999
+- title: Fear and Desire
+  imdb_id: tt0045758
+  year: 1953
+- title: Killer's Kiss
+  imdb_id: tt0048254
+  year: 1955
+- title: The Killing
+  imdb_id: tt0049406
+  year: 1956
+- title: Paths of Glory
+  imdb_id: tt0050825
+  year: 1957
+- title: Spartacus
+  imdb_id: tt0054331
+  year: 1960
+- title: Lolita
+  imdb_id: tt0056193
+  year: 1962
+- title: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb'
+  imdb_id: tt0057012
+  year: 1964
+- title: '2001: A Space Odyssey'
+  imdb_id: tt0062622
+  year: 1968
+- title: A Clockwork Orange
+  imdb_id: tt0066921
+  year: 1971
+- title: Barry Lyndon
+  imdb_id: tt0072684
+  year: 1975
+- title: The Shining
+  imdb_id: tt0081505
+  year: 1980
+- title: Full Metal Jacket
+  imdb_id: tt0093058
+  year: 1987
+- title: Eyes Wide Shut
+  imdb_id: tt0120663
+  year: 1999

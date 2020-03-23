@@ -1,238 +1,312 @@
 frozen: true
-imdb_id: nm0000007
 name: Humphrey Bogart
+imdb_id: nm0000007
 titles:
-  - imdb_id: tt0021508
-    title: Up the River
+  - title: Up the River
+    notes: Steve Jordan
+    imdb_id: tt0021508
     year: 1930
-  - imdb_id: tt0020822
-    title: A Devil with Women
+  - title: A Devil with Women
+    notes: Tom Standish
+    imdb_id: tt0020822
     year: 1930
-  - imdb_id: tt0021680
-    title: Body and Soul
+  - title: Body and Soul
+    notes: Jim Watson
+    imdb_id: tt0021680
     year: 1931
-  - imdb_id: tt0021636
-    title: The Bad Sister
+  - title: The Bad Sister
+    notes: Valentine Corliss
+    imdb_id: tt0021636
     year: 1931
-  - imdb_id: tt0022576
-    title: Women of All Nations
+  - title: A Holy Terror
+    notes: Steve Nash
+    imdb_id: tt0021966
     year: 1931
-  - imdb_id: tt0021966
-    title: A Holy Terror
-    year: 1931
-  - imdb_id: tt0023153
-    title: Love Affair
+  - title: Love Affair
+    notes: Jim Leonard
+    imdb_id: tt0023153
     year: 1932
-  - imdb_id: tt0022676
-    title: Big City Blues
+  - title: Big City Blues
+    notes: Shep Adkins (uncredited)
+    imdb_id: tt0022676
     year: 1932
-  - imdb_id: tt0023590
-    title: Three on a Match
+  - title: Three on a Match
+    notes: Harve
+    imdb_id: tt0023590
     year: 1932
-  - imdb_id: tt0025499
-    title: Midnight
+  - title: Midnight
+    notes: Gar Boni
+    imdb_id: tt0025499
     year: 1934
-  - imdb_id: tt0028426
-    title: Two Against the World
+  - title: Two Against the World
+    notes: Sherry Scott
+    imdb_id: tt0028426
     year: 1936
-  - imdb_id: tt0028096
-    title: The Petrified Forest
+  - title: The Petrified Forest
+    notes: Duke Mantee
+    imdb_id: tt0028096
     year: 1936
-  - imdb_id: tt0027407
-    title: Bullets or Ballots
+  - title: Bullets or Ballots
+    notes: "'Bugs' Fenner"
+    imdb_id: tt0027407
     year: 1936
-  - imdb_id: tt0027445
-    title: China Clipper
+  - title: China Clipper
+    notes: Hap Stuart
+    imdb_id: tt0027445
     year: 1936
-  - imdb_id: tt0027805
-    title: Isle of Fury
+  - title: Isle of Fury
+    notes: Val Stevens
+    imdb_id: tt0027805
     year: 1936
-  - imdb_id: tt0027367
-    title: Black Legion
+  - title: Black Legion
+    notes: Frank Taylor
+    imdb_id: tt0027367
     year: 1937
-  - imdb_id: tt0028955
-    title: The Great O'Malley
+  - title: The Great O'Malley
+    notes: John Phillips
+    imdb_id: tt0028955
     year: 1937
-  - imdb_id: tt0029217
-    title: Marked Woman
+  - title: Marked Woman
+    notes: David Graham
+    imdb_id: tt0029217
     year: 1937
-  - imdb_id: tt0029511
-    title: San Quentin
+  - title: San Quentin
+    notes: Joe 'Red' Kennedy
+    imdb_id: tt0029511
     year: 1937
-  - imdb_id: tt0029080
-    title: Kid Galahad
+  - title: Kid Galahad
+    notes: Turkey Morgan
+    imdb_id: tt0029080
     year: 1937
-  - imdb_id: tt0028773
-    title: Dead End
+  - title: Dead End
+    notes: "'Baby Face' Martin"
+    imdb_id: tt0028773
     year: 1937
-  - imdb_id: tt0029605
-    title: Stand-In
+  - title: Stand-In
+    notes: Quintain
+    imdb_id: tt0029605
     year: 1937
-  - imdb_id: tt0030820
-    title: Swing Your Lady
+  - title: Swing Your Lady
+    notes: Ed
+    imdb_id: tt0030820
     year: 1938
-  - imdb_id: tt0030026
-    title: Crime School
+  - title: Crime School
+    notes: Mark Braden
+    imdb_id: tt0030026
     year: 1938
-  - imdb_id: tt0030433
-    title: Men Are Such Fools
+  - title: Men Are Such Fools
+    notes: Harry Galleon
+    imdb_id: tt0030433
     year: 1938
-  - imdb_id: tt0030650
-    title: Racket Busters
+  - title: Racket Busters
+    notes: John Martin
+    imdb_id: tt0030650
     year: 1938
-  - imdb_id: tt0029864
-    title: The Amazing Dr. Clitterhouse
+  - title: The Amazing Dr. Clitterhouse
+    notes: "'Rocks' Valentine"
+    imdb_id: tt0029864
     year: 1938
-  - imdb_id: tt0029870
-    title: Angels with Dirty Faces
+  - title: Angels with Dirty Faces
+    notes: James Frazier
+    imdb_id: tt0029870
     year: 1938
-  - imdb_id: tt0031536
-    title: King of the Underworld
+  - title: King of the Underworld
+    notes: Joe Gurney
+    imdb_id: tt0031536
     year: 1939
-  - imdb_id: tt0031747
-    title: The Oklahoma Kid
+  - title: The Oklahoma Kid
+    notes: Whip McCord
+    imdb_id: tt0031747
     year: 1939
-  - imdb_id: tt0032153
-    title: You Can't Get Away with Murder
+  - title: You Can't Get Away with Murder
+    notes: Frank Wilson
+    imdb_id: tt0032153
     year: 1939
-  - imdb_id: tt0031210
-    title: Dark Victory
+  - title: Dark Victory
+    notes: Michael O'Leary
+    imdb_id: tt0031210
     year: 1939
-  - imdb_id: tt0031867
-    title: The Roaring Twenties
+  - title: The Roaring Twenties
+    notes: George Hally
+    imdb_id: tt0031867
     year: 1939
-  - imdb_id: tt0031851
-    title: The Return of Doctor X
+  - title: The Return of Doctor X
+    notes: Marshall Quesne
+    imdb_id: tt0031851
     year: 1939
-  - imdb_id: tt0032636
-    title: Invisible Stripes
+  - title: Invisible Stripes
+    notes: Chuck Martin
+    imdb_id: tt0032636
     year: 1939
-  - imdb_id: tt0033226
-    title: Virginia City
+  - title: Virginia City
+    notes: John Murrell
+    imdb_id: tt0033226
     year: 1940
-  - imdb_id: tt0032643
-    title: It All Came True
+  - title: It All Came True
+    notes: Grasselli / Chips Maguire
+    imdb_id: tt0032643
     year: 1940
-  - imdb_id: tt0032285
-    title: Brother Orchid
+  - title: Brother Orchid
+    notes: Jack Buck
+    imdb_id: tt0032285
     year: 1940
-  - imdb_id: tt0033149
-    title: They Drive by Night
+  - title: They Drive by Night
+    notes: Paul Fabrini
+    imdb_id: tt0033149
     year: 1940
-  - imdb_id: tt0033717
-    title: High Sierra
+  - title: High Sierra
+    notes: Roy Earle
+    imdb_id: tt0033717
     year: 1941
-  - imdb_id: tt0034370
-    title: The Wagons Roll at Night
+  - title: The Wagons Roll at Night
+    notes: Nick Coster
+    imdb_id: tt0034370
     year: 1941
-  - imdb_id: tt0033870
-    title: The Maltese Falcon
+  - title: The Maltese Falcon
+    notes: Samuel Spade
+    imdb_id: tt0033870
     year: 1941
-  - imdb_id: tt0034449
-    title: All Through the Night
+  - title: All Through the Night
+    notes: "'Gloves' Donahue"
+    imdb_id: tt0034449
     year: 1942
-  - imdb_id: tt0034513
-    title: The Big Shot
+  - title: The Big Shot
+    notes: Joseph 'Duke' Berne
+    imdb_id: tt0034513
     year: 1942
-  - imdb_id: tt0034428
-    title: Across the Pacific
+  - title: Across the Pacific
+    notes: Rick Leland
+    imdb_id: tt0034428
     year: 1942
-  - imdb_id: tt0034583
-    title: Casablanca
+  - title: Casablanca
+    notes: Rick Blaine
+    imdb_id: tt0034583
     year: 1942
-  - imdb_id: tt0035608
-    title: Action in the North Atlantic
+  - title: Action in the North Atlantic
+    notes: Lt. Joe Rossi
+    imdb_id: tt0035608
     year: 1943
-  - imdb_id: tt0036323
-    title: Sahara
+  - title: Sahara
+    notes: Sgt. Joe Gunn
+    imdb_id: tt0036323
     year: 1943
-  - imdb_id: tt0036422
-    title: Thank Your Lucky Stars
+  - title: Thank Your Lucky Stars
+    notes: Humphrey Bogart
+    imdb_id: tt0036422
     year: 1943
-  - imdb_id: tt0037166
-    title: Passage to Marseille
+  - title: Passage to Marseille
+    notes: Jean Matrac
+    imdb_id: tt0037166
     year: 1944
-  - imdb_id: tt0037382
-    title: To Have and Have Not
+  - title: To Have and Have Not
+    notes: Harry Morgan
+    imdb_id: tt0037382
     year: 1944
-  - imdb_id: tt0037611
-    title: Conflict
+  - title: Conflict
+    notes: Richard Mason
+    imdb_id: tt0037611
     year: 1945
-  - imdb_id: tt0039053
-    title: Two Guys from Milwaukee
+  - title: Two Guys from Milwaukee
+    notes: Humphrey Bogart (uncredited)
+    imdb_id: tt0039053
     year: 1946
-  - imdb_id: tt0038355
-    title: The Big Sleep
+  - title: The Big Sleep
+    notes: Philip Marlowe
+    imdb_id: tt0038355
     year: 1946
-  - imdb_id: tt0038773
-    title: Never Say Goodbye
+  - title: Never Say Goodbye
+    notes: Phil's Bogart Impression (voice, uncredited)
+    imdb_id: tt0038773
     year: 1946
-  - imdb_id: tt0039305
-    title: Dead Reckoning
+  - title: Dead Reckoning
+    notes: Capt. 'Rip' Murdock
+    imdb_id: tt0039305
     year: 1947
-  - imdb_id: tt0039926
-    title: The Two Mrs. Carrolls
+  - title: The Two Mrs. Carrolls
+    notes: Geoffrey Carroll
+    imdb_id: tt0039926
     year: 1947
-  - imdb_id: tt0039302
-    title: Dark Passage
+  - title: Dark Passage
+    notes: Vincent Parry
+    imdb_id: tt0039302
     year: 1947
-  - imdb_id: tt0040089
-    title: Always Together
+  - title: Always Together
+    notes: Humphrey Bogart (uncredited)
+    imdb_id: tt0040089
     year: 1947
-  - imdb_id: tt0040897
-    title: The Treasure of the Sierra Madre
+  - title: The Treasure of the Sierra Madre
+    notes: Fred C. Dobbs
+    imdb_id: tt0040897
     year: 1948
-  - imdb_id: tt0040506
-    title: Key Largo
+  - title: Key Largo
+    notes: Frank McCloud
+    imdb_id: tt0040506
     year: 1948
-  - imdb_id: tt0041555
-    title: Knock on Any Door
+  - title: Knock on Any Door
+    notes: Andrew Morton
+    imdb_id: tt0041555
     year: 1949
-  - imdb_id: tt0041967
-    title: Tokyo Joe
+  - title: Tokyo Joe
+    notes: Joseph 'Joe' Barrett
+    imdb_id: tt0041967
     year: 1949
-  - imdb_id: tt0042324
-    title: Chain Lightning
+  - title: Chain Lightning
+    notes: Lt. Col. Matthew "Matt" Brennan
+    imdb_id: tt0042324
     year: 1950
-  - imdb_id: tt0042593
-    title: In a Lonely Place
+  - title: In a Lonely Place
+    notes: Dixon Steele
+    imdb_id: tt0042593
     year: 1950
-  - imdb_id: tt0043503
-    title: The Enforcer
+  - title: The Enforcer
+    notes: Dist. Atty. Martin Ferguson
+    imdb_id: tt0043503
     year: 1951
-  - imdb_id: tt0044040
-    title: Sirocco
+  - title: Sirocco
+    notes: Harry Smith
+    imdb_id: tt0044040
     year: 1951
-  - imdb_id: tt0043265
-    title: The African Queen
+  - title: The African Queen
+    notes: Charlie Allnutt
+    imdb_id: tt0043265
     year: 1951
-  - imdb_id: tt0044533
-    title: Deadline - U.S.A.
+  - title: Deadline - U.S.A.
+    notes: Ed Hutcheson
+    imdb_id: tt0044533
     year: 1952
-  - imdb_id: tt0045544
-    title: Battle Circus
+  - title: Battle Circus
+    notes: Maj. Jed Webbe
+    imdb_id: tt0045544
     year: 1953
-  - imdb_id: tt0046414
-    title: Beat the Devil
+  - title: Beat the Devil
+    notes: Billy Dannreuther
+    imdb_id: tt0046414
     year: 1953
-  - imdb_id: tt0046816
-    title: The Caine Mutiny
+  - title: The Caine Mutiny
+    notes: Lt. Cmdr. Philip Francis Queeg
+    imdb_id: tt0046816
     year: 1954
-  - imdb_id: tt0047437
-    title: Sabrina
+  - title: Sabrina
+    notes: Linus Larrabee
+    imdb_id: tt0047437
     year: 1954
-  - imdb_id: tt0046754
-    title: The Barefoot Contessa
+  - title: The Barefoot Contessa
+    notes: Harry Dawes
+    imdb_id: tt0046754
     year: 1954
-  - imdb_id: tt0048801
-    title: We're No Angels
+  - title: We're No Angels
+    notes: Joseph
+    imdb_id: tt0048801
     year: 1955
-  - imdb_id: tt0048291
-    title: The Left Hand of God
+  - title: The Left Hand of God
+    notes: James 'Jim' Carmody
+    imdb_id: tt0048291
     year: 1955
-  - imdb_id: tt0047985
-    title: The Desperate Hours
+  - title: The Desperate Hours
+    notes: Glenn Griffin
+    imdb_id: tt0047985
     year: 1955
-  - imdb_id: tt0049291
-    title: The Harder They Fall
+  - title: The Harder They Fall
+    notes: Eddie Willis
+    imdb_id: tt0049291
     year: 1956

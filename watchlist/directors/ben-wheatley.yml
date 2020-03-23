@@ -1,19 +1,30 @@
 frozen: false
-imdb_id: nm1296554
 name: Ben Wheatley
+imdb_id: nm1296554
 titles:
-- imdb_id: tt2023690
-  title: Sightseers
+- title: Down Terrace
+  imdb_id: tt1489167
+  year: 2009
+- title: Kill List
+  imdb_id: tt1788391
+  year: 2011
+- title: Sightseers
+  imdb_id: tt2023690
   year: 2012
-- imdb_id: tt1935896
-  title: The ABCs of Death
+- title: The ABCs of Death
+  notes: (segment "U Is for Unearthed")
+  imdb_id: tt1935896
   year: 2012
-- imdb_id: tt2375574
-  title: A Field in England
+- title: A Field in England
+  imdb_id: tt2375574
   year: 2013
-- imdb_id: tt0462335
-  title: High-Rise
+- title: High-Rise
+  imdb_id: tt0462335
   year: 2015
-- imdb_id: tt4158096
-  title: Free Fire
+- title: Free Fire
+  notes: (directed by)
+  imdb_id: tt4158096
   year: 2016
+- title: Happy New Year, Colin Burstead
+  imdb_id: tt8122018
+  year: 2018

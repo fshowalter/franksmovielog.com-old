@@ -1,172 +1,228 @@
 frozen: true
-imdb_id: nm0001224
 name: Errol Flynn
+imdb_id: nm0001224
 titles:
-  - imdb_id: tt0024176
-    title: In the Wake of the Bounty
-    year: 1933
-  - imdb_id: tt0024149
-    title: I Adore You
-    year: 1933
-  - imdb_id: tt0025527
-    title: Murder at Monte Carlo
-    year: 1935
-  - imdb_id: tt0026184
-    title: The Case of the Curious Bride
-    year: 1935
-  - imdb_id: tt0026289
-    title: Don't Bet on Blondes
-    year: 1935
-  - imdb_id: tt0026174
-    title: Captain Blood
-    year: 1935
-  - imdb_id: tt0027438
-    title: The Charge of the Light Brigade
-    year: 1936
-  - imdb_id: tt0028958
-    title: Green Light
-    year: 1937
-  - imdb_id: tt0029440
-    title: The Prince and the Pauper
-    year: 1937
-  - imdb_id: tt0028579
-    title: Another Dawn
-    year: 1937
-  - imdb_id: tt0029391
-    title: The Perfect Specimen
-    year: 1937
-  - imdb_id: tt0029843
-    title: The Adventures of Robin Hood
-    year: 1938
-  - imdb_id: tt0030151
-    title: Four's a Crowd
-    year: 1938
-  - imdb_id: tt0030755
-    title: The Sisters
-    year: 1938
-  - imdb_id: tt0030044
-    title: The Dawn Patrol
-    year: 1938
-  - imdb_id: tt0031235
-    title: Dodge City
-    year: 1939
-  - imdb_id: tt0031826
-    title: The Private Lives of Elizabeth and Essex
-    year: 1939
-  - imdb_id: tt0033226
-    title: Virginia City
-    year: 1940
-  - imdb_id: tt0033028
-    title: The Sea Hawk
-    year: 1940
-  - imdb_id: tt0033021
-    title: Santa Fe Trail
-    year: 1940
-  - imdb_id: tt0033616
-    title: Footsteps in the Dark
-    year: 1941
-  - imdb_id: tt0033537
-    title: Dive Bomber
-    year: 1941
-  - imdb_id: tt0034277
-    title: They Died with Their Boots On
-    year: 1941
-  - imdb_id: tt0034646
-    title: Desperate Journey
-    year: 1942
-  - imdb_id: tt0034778
-    title: Gentleman Jim
-    year: 1942
-  - imdb_id: tt0034694
-    title: Edge of Darkness
-    year: 1943
-  - imdb_id: tt0036422
-    title: Thank Your Lucky Stars
-    year: 1943
-  - imdb_id: tt0036218
-    title: Northern Pursuit
-    year: 1943
-  - imdb_id: tt0037414
-    title: Uncertain Glory
-    year: 1944
-  - imdb_id: tt0037954
-    title: Objective, Burma!
-    year: 1945
-  - imdb_id: tt0038048
-    title: San Antonio
-    year: 1945
-  - imdb_id: tt0038773
-    title: Never Say Goodbye
-    year: 1946
-  - imdb_id: tt0039288
-    title: Cry Wolf
-    year: 1947
-  - imdb_id: tt0039357
-    title: Escape Me Never
-    year: 1947
-  - imdb_id: tt0040789
-    title: Silver River
-    year: 1948
-  - imdb_id: tt0040076
-    title: Adventures of Don Juan
-    year: 1948
-  - imdb_id: tt0041515
-    title: It's a Great Feeling
-    year: 1949
-  - imdb_id: tt0041955
-    title: That Forsyte Woman
-    year: 1949
-  - imdb_id: tt0042744
-    title: Montana
-    year: 1950
-  - imdb_id: tt0042899
-    title: Rocky Mountain
-    year: 1950
-  - imdb_id: tt0042644
-    title: Kim
-    year: 1950
-  - imdb_id: tt0043264
-    title: Adventures of Captain Fabian
-    year: 1951
-  - imdb_id: tt0043630
-    title: Hello God
-    year: 1951
-  - imdb_id: tt0044884
-    title: Mara Maru
-    year: 1952
-  - imdb_id: tt0044333
-    title: Against All Flags
-    year: 1952
-  - imdb_id: tt0046054
-    title: The Master of Ballantrae
-    year: 1953
-  - imdb_id: tt0046024
-    title: Crossed Swords
-    year: 1954
-  - imdb_id: tt0048294
-    title: Let's Make Up
-    year: 1954
-  - imdb_id: tt0047975
-    title: The Warriors
-    year: 1955
-  - imdb_id: tt0048258
-    title: King's Rhapsody
-    year: 1955
-  - imdb_id: tt0050552
-    title: Istanbul
-    year: 1957
-  - imdb_id: tt0050189
-    title: The Big Boodle
-    year: 1957
-  - imdb_id: tt0051028
-    title: The Sun Also Rises
-    year: 1957
-  - imdb_id: tt0052302
-    title: Too Much, Too Soon
-    year: 1958
-  - imdb_id: tt0052148
-    title: The Roots of Heaven
-    year: 1958
-  - imdb_id: tt0052717
-    title: Cuban Rebel Girls
-    year: 1959
+- title: In the Wake of the Bounty
+  notes: Fletcher Christian
+  imdb_id: tt0024176
+  year: 1933
+- title: I Adore You
+  notes: Bit (uncredited)
+  imdb_id: tt0024149
+  year: 1933
+- title: Murder at Monte Carlo
+  notes: Dyter
+  imdb_id: tt0025527
+  year: 1935
+- title: The Case of the Curious Bride
+  notes: Gregory Moxley
+  imdb_id: tt0026184
+  year: 1935
+- title: Don't Bet on Blondes
+  notes: David Van Dusen
+  imdb_id: tt0026289
+  year: 1935
+- title: Captain Blood
+  notes: Peter Blood
+  imdb_id: tt0026174
+  year: 1935
+- title: The Charge of the Light Brigade
+  notes: Maj. Geoffrey Vickers
+  imdb_id: tt0027438
+  year: 1936
+- title: Green Light
+  notes: Dr. Newell Paige
+  imdb_id: tt0028958
+  year: 1937
+- title: The Prince and the Pauper
+  notes: Miles Hendon
+  imdb_id: tt0029440
+  year: 1937
+- title: Another Dawn
+  notes: Capt. Denny Roark
+  imdb_id: tt0028579
+  year: 1937
+- title: The Perfect Specimen
+  notes: Gerald Beresford Wicks
+  imdb_id: tt0029391
+  year: 1937
+- title: The Adventures of Robin Hood
+  notes: Robin Hood
+  imdb_id: tt0029843
+  year: 1938
+- title: Four's a Crowd
+  notes: Bob Lansford
+  imdb_id: tt0030151
+  year: 1938
+- title: The Sisters
+  notes: Frank Medlin
+  imdb_id: tt0030755
+  year: 1938
+- title: The Dawn Patrol
+  notes: Courtney
+  imdb_id: tt0030044
+  year: 1938
+- title: Dodge City
+  notes: Wade Hatton
+  imdb_id: tt0031235
+  year: 1939
+- title: The Private Lives of Elizabeth and Essex
+  notes: Earl of Essex
+  imdb_id: tt0031826
+  year: 1939
+- title: Virginia City
+  notes: Kerry Bradford
+  imdb_id: tt0033226
+  year: 1940
+- title: The Sea Hawk
+  notes: Geoffrey Thorpe
+  imdb_id: tt0033028
+  year: 1940
+- title: Santa Fe Trail
+  notes: Jeb Stuart
+  imdb_id: tt0033021
+  year: 1940
+- title: Footsteps in the Dark
+  notes: Francis Warren aka F.X. Pettijohn
+  imdb_id: tt0033616
+  year: 1941
+- title: Dive Bomber
+  notes: Lieutenant Doug Lee
+  imdb_id: tt0033537
+  year: 1941
+- title: They Died with Their Boots On
+  notes: George Armstrong Custer
+  imdb_id: tt0034277
+  year: 1941
+- title: Desperate Journey
+  notes: Flight Lt. Terrence Forbes
+  imdb_id: tt0034646
+  year: 1942
+- title: Gentleman Jim
+  notes: James J. Corbett
+  imdb_id: tt0034778
+  year: 1942
+- title: Edge of Darkness
+  notes: Gunnar Brogge
+  imdb_id: tt0034694
+  year: 1943
+- title: Thank Your Lucky Stars
+  notes: Errol Flynn
+  imdb_id: tt0036422
+  year: 1943
+- title: Northern Pursuit
+  notes: Cpl. Steve Wagner
+  imdb_id: tt0036218
+  year: 1943
+- title: Uncertain Glory
+  notes: Jean Picard / Emil DuPont
+  imdb_id: tt0037414
+  year: 1944
+- title: Objective, Burma!
+  notes: Capt. Nelson
+  imdb_id: tt0037954
+  year: 1945
+- title: San Antonio
+  notes: Clay Hardin
+  imdb_id: tt0038048
+  year: 1945
+- title: Never Say Goodbye
+  notes: Phil Gayley
+  imdb_id: tt0038773
+  year: 1946
+- title: Cry Wolf
+  notes: Mark Caldwell
+  imdb_id: tt0039288
+  year: 1947
+- title: Escape Me Never
+  notes: Sebastian Dubrok
+  imdb_id: tt0039357
+  year: 1947
+- title: Silver River
+  notes: Michael J. 'Mike' McComb
+  imdb_id: tt0040789
+  year: 1948
+- title: Adventures of Don Juan
+  notes: Don Juan de Maraña
+  imdb_id: tt0040076
+  year: 1948
+- title: It's a Great Feeling
+  notes: Jeffrey Bushdinkle, the Groom (uncredited)
+  imdb_id: tt0041515
+  year: 1949
+- title: That Forsyte Woman
+  notes: Soames Forsyte
+  imdb_id: tt0041955
+  year: 1949
+- title: Montana
+  notes: Morgan Lane
+  imdb_id: tt0042744
+  year: 1950
+- title: Rocky Mountain
+  notes: Capt. Lafe Barstow (CSA)
+  imdb_id: tt0042899
+  year: 1950
+- title: Kim
+  notes: Mahbub Ali - The Red Beard
+  imdb_id: tt0042644
+  year: 1950
+- title: Adventures of Captain Fabian
+  notes: Capt. Michael Fabian
+  imdb_id: tt0043264
+  year: 1951
+- title: Hello God
+  notes: Man on Anzio Beach
+  imdb_id: tt0043630
+  year: 1951
+- title: Mara Maru
+  notes: Gregory Mason
+  imdb_id: tt0044884
+  year: 1952
+- title: Against All Flags
+  notes: Brian Hawke
+  imdb_id: tt0044333
+  year: 1952
+- title: The Master of Ballantrae
+  notes: Jamie Durie
+  imdb_id: tt0046054
+  year: 1953
+- title: Crossed Swords
+  notes: Renzo
+  imdb_id: tt0046024
+  year: 1954
+- title: Let's Make Up
+  notes: John 'Beau' Beaumont
+  imdb_id: tt0048294
+  year: 1954
+- title: The Warriors
+  notes: Prince Edward
+  imdb_id: tt0047975
+  year: 1955
+- title: King's Rhapsody
+  notes: Richard, King of Laurentia
+  imdb_id: tt0048258
+  year: 1955
+- title: Istanbul
+  notes: James Brennan
+  imdb_id: tt0050552
+  year: 1957
+- title: The Big Boodle
+  notes: Ned Sherwood
+  imdb_id: tt0050189
+  year: 1957
+- title: The Sun Also Rises
+  notes: Mike Campbell
+  imdb_id: tt0051028
+  year: 1957
+- title: Too Much, Too Soon
+  notes: John Barrymore
+  imdb_id: tt0052302
+  year: 1958
+- title: The Roots of Heaven
+  notes: Forsythe
+  imdb_id: tt0052148
+  year: 1958
+- title: Cuban Rebel Girls
+  notes: The American Correspondent
+  imdb_id: tt0052717
+  year: 1959

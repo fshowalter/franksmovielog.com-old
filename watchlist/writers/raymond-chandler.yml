@@ -1,52 +1,72 @@
 frozen: false
-imdb_id: nm0151452
 name: Raymond Chandler
+imdb_id: nm0151452
 titles:
-- imdb_id: tt0034716
-  title: The Falcon Takes Over
+- title: The Falcon Takes Over
+  notes: (novel "Farewell, My Lovely")
+  imdb_id: tt0034716
   year: 1942
-- imdb_id: tt0035443
-  title: Time to Kill
+- title: Time to Kill
+  notes: (novel "The High Window")
+  imdb_id: tt0035443
   year: 1942
-- imdb_id: tt0036775
-  title: Double Indemnity
+- title: Double Indemnity
+  notes: (screenplay)
+  imdb_id: tt0036775
   year: 1944
-- imdb_id: tt0036599
-  title: And Now Tomorrow
+- title: And Now Tomorrow
+  notes: (screen play)
+  imdb_id: tt0036599
   year: 1944
-- imdb_id: tt0037101
-  title: Murder, My Sweet
+- title: Murder, My Sweet
+  notes: (novel)
+  imdb_id: tt0037101
   year: 1944
-- imdb_id: tt0038205
-  title: The Unseen
+- title: The Unseen
+  notes: (screen play)
+  imdb_id: tt0038205
   year: 1945
-- imdb_id: tt0038369
-  title: The Blue Dahlia
+- title: The Blue Dahlia
+  notes: (written by)
+  imdb_id: tt0038369
   year: 1946
-- imdb_id: tt0038355
-  title: The Big Sleep
+- title: The Big Sleep
+  notes: (short story "Killer in the Rain")
+  imdb_id: tt0038355
   year: 1946
-- imdb_id: tt0039545
-  title: Lady in the Lake
+- title: Lady in the Lake
+  notes: (novel)
+  imdb_id: tt0039545
   year: 1946
-- imdb_id: tt0039217
-  title: The Brasher Doubloon
+- title: The Brasher Doubloon
+  notes: (novel "The High Window")
+  imdb_id: tt0039217
   year: 1947
-- imdb_id: tt0044079
-  title: Strangers on a Train
+- title: Strangers on a Train
+  notes: (screen play)
+  imdb_id: tt0044079
   year: 1951
-- imdb_id: tt0064638
-  title: Marlowe
+- title: Marlowe
+  notes: (novel "The Little Sister")
+  imdb_id: tt0064638
   year: 1969
-- imdb_id: tt0070334
-  title: The Long Goodbye
+- title: The Long Goodbye
+  notes: (novel "The Long Goodbye")
+  imdb_id: tt0070334
   year: 1973
-- imdb_id: tt0072973
-  title: Farewell, My Lovely
+- title: Farewell, My Lovely
+  notes: (novel)
+  imdb_id: tt0072973
   year: 1975
-- imdb_id: tt0077234
-  title: The Big Sleep
+- title: The Big Sleep
+  notes: (novel)
+  imdb_id: tt0077234
   year: 1978
-- imdb_id: tt0378341
-  title: Smart Philip
+- title: Morning Patrol
+  notes: (excerpt)
+  imdb_id: tt0093791
+  year: 1987
+- title: Smart Philip
+  notes: (character)
+  imdb_id: tt0378341
   year: 2003

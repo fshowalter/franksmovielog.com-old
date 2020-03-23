@@ -1,61 +1,61 @@
 frozen: false
-imdb_id: nm0001243
 name: William Friedkin
+imdb_id: nm0001243
 titles:
-- imdb_id: tt0061720
-  title: Good Times
+- title: Good Times
+  imdb_id: tt0061720
   year: 1967
-- imdb_id: tt0062732
-  title: The Birthday Party
+- title: The Birthday Party
+  imdb_id: tt0062732
   year: 1968
-- imdb_id: tt0063348
-  title: The Night They Raided Minsky's
+- title: The Night They Raided Minsky's
+  imdb_id: tt0063348
   year: 1968
-- imdb_id: tt0065488
-  title: The Boys in the Band
+- title: The Boys in the Band
+  imdb_id: tt0065488
   year: 1970
-- imdb_id: tt0067116
-  title: The French Connection
+- title: The French Connection
+  imdb_id: tt0067116
   year: 1971
-- imdb_id: tt0070047
-  title: The Exorcist
+- title: The Exorcist
+  imdb_id: tt0070047
   year: 1973
-- imdb_id: tt0076740
-  title: Sorcerer
+- title: Sorcerer
+  imdb_id: tt0076740
   year: 1977
-- imdb_id: tt0077275
-  title: The Brink's Job
+- title: The Brink's Job
+  imdb_id: tt0077275
   year: 1978
-- imdb_id: tt0080569
-  title: Cruising
+- title: Cruising
+  imdb_id: tt0080569
   year: 1980
-- imdb_id: tt0085412
-  title: Deal of the Century
+- title: Deal of the Century
+  imdb_id: tt0085412
   year: 1983
-- imdb_id: tt0090180
-  title: To Live and Die in L.A.
+- title: To Live and Die in L.A.
+  imdb_id: tt0090180
   year: 1985
-- imdb_id: tt0095958
-  title: Rampage
+- title: Rampage
+  imdb_id: tt0095958
   year: 1987
-- imdb_id: tt0099710
-  title: The Guardian
+- title: The Guardian
+  imdb_id: tt0099710
   year: 1990
-- imdb_id: tt0109305
-  title: Blue Chips
+- title: Blue Chips
+  imdb_id: tt0109305
   year: 1994
-- imdb_id: tt0113451
-  title: Jade
+- title: Jade
+  imdb_id: tt0113451
   year: 1995
-- imdb_id: tt0160797
-  title: Rules of Engagement
+- title: Rules of Engagement
+  imdb_id: tt0160797
   year: 2000
-- imdb_id: tt0269347
-  title: The Hunted
+- title: The Hunted
+  imdb_id: tt0269347
   year: 2003
-- imdb_id: tt0470705
-  title: Bug
+- title: Bug
+  imdb_id: tt0470705
   year: 2006
-- imdb_id: tt1726669
-  title: Killer Joe
+- title: Killer Joe
+  imdb_id: tt1726669
   year: 2011

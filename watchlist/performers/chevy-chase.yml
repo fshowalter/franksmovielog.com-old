@@ -1,130 +1,212 @@
 frozen: false
-imdb_id: nm0000331
 name: Chevy Chase
+imdb_id: nm0000331
 titles:
-- imdb_id: tt0071583
-  title: The Groove Tube
+- title: The Groove Tube
+  notes: The Fingers / Geritan / Four Leaf Clover
+  imdb_id: tt0071583
   year: 1974
-- imdb_id: tt0075357
-  title: Tunnel Vision
+- title: Tunnel Vision
+  notes: Chevy Chase
+  imdb_id: tt0075357
   year: 1976
-- imdb_id: tt0077578
-  title: Foul Play
+- title: Foul Play
+  notes: Tony Carlson
+  imdb_id: tt0077578
   year: 1978
-- imdb_id: tt0081269
-  title: Oh Heavenly Dog
+- title: Oh Heavenly Dog
+  notes: Browning
+  imdb_id: tt0081269
   year: 1980
-- imdb_id: tt0080487
-  title: Caddyshack
+- title: Caddyshack
+  notes: Ty Webb
+  imdb_id: tt0080487
   year: 1980
-- imdb_id: tt0081480
-  title: Seems Like Old Times
+- title: Seems Like Old Times
+  notes: Nicholas Gardenia
+  imdb_id: tt0081480
   year: 1980
-- imdb_id: tt0083254
-  title: Under the Rainbow
+- title: Under the Rainbow
+  notes: Bruce Thorpe
+  imdb_id: tt0083254
   year: 1981
-- imdb_id: tt0082763
-  title: Modern Problems
+- title: Modern Problems
+  notes: Max Fielder
+  imdb_id: tt0082763
   year: 1981
-- imdb_id: tt0085995
-  title: Vacation
+- title: Vacation
+  notes: Clark Griswold
+  imdb_id: tt0085995
   year: 1983
-- imdb_id: tt0085412
-  title: Deal of the Century
+- title: Deal of the Century
+  notes: Eddie Muntz
+  imdb_id: tt0085412
   year: 1983
-- imdb_id: tt0089155
-  title: Fletch
+- title: Fletch
+  notes: Irwin 'Fletch' Fletcher
+  imdb_id: tt0089155
   year: 1985
-- imdb_id: tt0089670
-  title: National Lampoon's European Vacation
+- title: National Lampoon's European Vacation
+  notes: Clark Griswold
+  imdb_id: tt0089670
   year: 1985
-- imdb_id: tt0089994
-  title: Follow That Bird
+- title: Follow That Bird
+  notes: Newscaster
+  imdb_id: tt0089994
   year: 1985
-- imdb_id: tt0090056
-  title: Spies Like Us
+- title: Spies Like Us
+  notes: Emmett Fitz-Hume
+  imdb_id: tt0090056
   year: 1985
-- imdb_id: tt0092086
-  title: ¡Three Amigos!
+- title: ¡Three Amigos!
+  notes: Dusty Bottoms
+  imdb_id: tt0092086
   year: 1986
-- imdb_id: tt0094910
-  title: The Couch Trip
+- title: The Couch Trip
+  notes: Condom Father
+  imdb_id: tt0094910
   year: 1988
-- imdb_id: tt0095188
-  title: Funny Farm
+- title: Funny Farm
+  notes: Andy Farmer
+  imdb_id: tt0095188
   year: 1988
-- imdb_id: tt0094824
-  title: Caddyshack II
+- title: Caddyshack II
+  notes: Ty Webb
+  imdb_id: tt0094824
   year: 1988
-- imdb_id: tt0097366
-  title: Fletch Lives
+- title: Fletch Lives
+  notes: Irwin 'Fletch' Fletcher
+  imdb_id: tt0097366
   year: 1989
-- imdb_id: tt0097958
-  title: National Lampoon's Christmas Vacation
+- title: National Lampoon's Christmas Vacation
+  notes: Clark
+  imdb_id: tt0097958
   year: 1989
-- imdb_id: tt0102250
-  title: L.A. Story
+- title: L.A. Story
+  notes: Carlo Christopher (uncredited)
+  imdb_id: tt0102250
   year: 1991
-- imdb_id: tt0102558
-  title: Nothing But Trouble
+- title: Nothing But Trouble
+  notes: Chris Thorne
+  imdb_id: tt0102558
   year: 1991
-- imdb_id: tt0104850
-  title: Memoirs of an Invisible Man
+- title: Memoirs of an Invisible Man
+  notes: Nick Halloway
+  imdb_id: tt0104850
   year: 1992
-- imdb_id: tt0104412
-  title: Hero
+- title: Hero
+  notes: Deke - Channel 4 News Director (uncredited)
+  imdb_id: tt0104412
   year: 1992
-- imdb_id: tt0107362
-  title: Last Action Hero
+- title: Last Action Hero
+  notes: Chevy Chase
+  imdb_id: tt0107362
   year: 1993
-- imdb_id: tt0109480
-  title: Cops and Robbersons
+- title: Cops and Robbersons
+  notes: Norman Robberson
+  imdb_id: tt0109480
   year: 1994
-- imdb_id: tt0113755
-  title: Man of the House
+- title: Man of the House
+  notes: Jack Sturges
+  imdb_id: tt0113755
   year: 1995
-- imdb_id: tt0120434
-  title: Vegas Vacation
+- title: Vegas Vacation
+  notes: Clark Griswold
+  imdb_id: tt0120434
   year: 1997
-- imdb_id: tt0120654
-  title: Dirty Work
+- title: Dirty Work
+  notes: Dr. Farthing
+  imdb_id: tt0120654
   year: 1998
-- imdb_id: tt0184907
-  title: Snow Day
+- title: Snow Day
+  notes: Tom Brandston
+  imdb_id: tt0184907
   year: 2000
-- imdb_id: tt0273923
-  title: Orange County
+- title: Orange County
+  notes: Principal Harbert
+  imdb_id: tt0273923
   year: 2002
-- imdb_id: tt0301771
-  title: Our Italian Husband
+- title: Vacuums
+  notes: Mr. Punch
+  imdb_id: tt0287086
+  year: 2003
+- title: Our Italian Husband
+  notes: Paul Parmesan
+  imdb_id: tt0301771
   year: 2004
-- imdb_id: tt0346562
-  title: Bad Meat
+- title: Bad Meat
+  notes: Congressman Bernard P. Greely
+  imdb_id: tt0346562
   year: 2004
-- imdb_id: tt0763304
-  title: Doogal
+- title: Ellie Parker
+  notes: Dennis Swartzbaum
+  imdb_id: tt0436262
+  year: 2005
+- title: Goose on the Loose
+  notes: Congreve Maddox
+  imdb_id: tt0339086
   year: 2006
-- imdb_id: tt0244521
-  title: Funny Money
+- title: Doogal
+  notes: Train (voice)
+  imdb_id: tt0763304
   year: 2006
-- imdb_id: tt0383060
-  title: Zoom
+- title: Funny Money
+  notes: Henry
+  imdb_id: tt0244521
   year: 2006
-- imdb_id: tt1231587
-  title: Hot Tub Time Machine
+- title: Zoom
+  notes: Dr. Grant
+  imdb_id: tt0383060
+  year: 2006
+- title: Stay Cool
+  notes: Principal Marshall
+  imdb_id: tt1235807
+  year: 2009
+- title: Jack and the Beanstalk
+  notes: General Antipode
+  imdb_id: tt1079968
+  year: 2009
+- title: Hot Tub Time Machine
+  notes: Repairman
+  imdb_id: tt1231587
   year: 2010
-- imdb_id: tt1302019
-  title: Not Another Not Another Movie
+- title: Not Another Not Another Movie
+  notes: Max Storm
+  imdb_id: tt1302019
   year: 2011
-- imdb_id: tt3627780
-  title: Wishin' and Hopin'
+- title: Before I Sleep
+  notes: Gravedigger
+  imdb_id: tt2396659
+  year: 2013
+- title: Lovesick
+  notes: Lester Horn
+  imdb_id: tt2404299
   year: 2014
-- imdb_id: tt2637294
-  title: Hot Tub Time Machine 2
+- title: Shelby
+  notes: Grandpa Geoffrey
+  imdb_id: tt3293174
+  year: 2014
+- title: Wishin' and Hopin'
+  notes: Adult Felix (voice)
+  imdb_id: tt3627780
+  year: 2014
+- title: Hot Tub Time Machine 2
+  notes: Hot Tub Repairman
+  imdb_id: tt2637294
   year: 2015
-- imdb_id: tt1524930
-  title: Vacation
+- title: Vacation
+  notes: Clark Griswold
+  imdb_id: tt1524930
   year: 2015
-- imdb_id: tt7427356
-  title: The Last Laugh
+- title: Hedgehogs
+  notes: ThinkMan (English version, voice)
+  imdb_id: tt3574822
+  year: 2016
+- title: The Last Movie Star
+  notes: Sonny
+  imdb_id: tt5836316
+  year: 2017
+- title: The Last Laugh
+  notes: Al Hart
+  imdb_id: tt7427356
   year: 2019

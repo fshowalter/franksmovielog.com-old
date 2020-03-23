@@ -1,106 +1,99 @@
 frozen: true
-imdb_id: nm0000485
 name: Fritz Lang
+imdb_id: nm0000485
 titles:
-  - imdb_id: tt0015175
-    title: "Die Nibelungen: Siegfried"
-    year: 1924
-  - imdb_id: tt0017136
-    title: Metropolis
-    year: 1927
-  - imdb_id: tt0022100
-    title: M
+  - title: M
+    imdb_id: tt0022100
     year: 1931
-  - imdb_id: tt0023563
-    title: The Testament of Dr. Mabuse
+  - title: The Testament of Dr. Mabuse
+    imdb_id: tt0023563
     year: 1933
-  - imdb_id: tt0025397
-    title: Liliom
+  - title: Liliom
+    imdb_id: tt0025397
     year: 1934
-  - imdb_id: tt0027652
-    title: Fury
+  - title: Fury
+    imdb_id: tt0027652
     year: 1936
-  - imdb_id: tt0029808
-    title: You Only Live Once
+  - title: You Only Live Once
+    imdb_id: tt0029808
     year: 1937
-  - imdb_id: tt0030996
-    title: You and Me
+  - title: You and Me
+    imdb_id: tt0030996
     year: 1938
-  - imdb_id: tt0032983
-    title: The Return of Frank James
+  - title: The Return of Frank James
+    imdb_id: tt0032983
     year: 1940
-  - imdb_id: tt0034384
-    title: Western Union
+  - title: Western Union
+    imdb_id: tt0034384
     year: 1941
-  - imdb_id: tt0033873
-    title: Man Hunt
+  - title: Man Hunt
+    imdb_id: tt0033873
     year: 1941
-  - imdb_id: tt0033486
-    title: Confirm or Deny
+  - title: Confirm or Deny
+    notes: (uncredited)
+    imdb_id: tt0033486
     year: 1941
-  - imdb_id: tt0035082
-    title: Moontide
+  - title: Moontide
+    notes: (uncredited)
+    imdb_id: tt0035082
     year: 1942
-  - imdb_id: tt0035966
-    title: Hangmen Also Die!
+  - title: Hangmen Also Die!
+    imdb_id: tt0035966
     year: 1943
-  - imdb_id: tt0037075
-    title: Ministry of Fear
+  - title: Ministry of Fear
+    imdb_id: tt0037075
     year: 1944
-  - imdb_id: tt0037469
-    title: The Woman in the Window
+  - title: The Woman in the Window
+    imdb_id: tt0037469
     year: 1944
-  - imdb_id: tt0038057
-    title: Scarlet Street
+  - title: Scarlet Street
+    imdb_id: tt0038057
     year: 1945
-  - imdb_id: tt0038417
-    title: Cloak and Dagger
+  - title: Cloak and Dagger
+    imdb_id: tt0038417
     year: 1946
-  - imdb_id: tt0040766
-    title: Secret Beyond the Door...
+  - title: Secret Beyond the Door...
+    imdb_id: tt0040766
     year: 1947
-  - imdb_id: tt0042579
-    title: House by the River
+  - title: House by the River
+    imdb_id: tt0042579
     year: 1950
-  - imdb_id: tt0042195
-    title: American Guerrilla in the Philippines
+  - title: American Guerrilla in the Philippines
+    imdb_id: tt0042195
     year: 1950
-  - imdb_id: tt0045070
-    title: Rancho Notorious
+  - title: Rancho Notorious
+    imdb_id: tt0045070
     year: 1952
-  - imdb_id: tt0044502
-    title: Clash by Night
+  - title: Clash by Night
+    imdb_id: tt0044502
     year: 1952
-  - imdb_id: tt0045564
-    title: The Blue Gardenia
+  - title: The Blue Gardenia
+    imdb_id: tt0045564
     year: 1953
-  - imdb_id: tt0045555
-    title: The Big Heat
+  - title: The Big Heat
+    imdb_id: tt0045555
     year: 1953
-  - imdb_id: tt0047101
-    title: Human Desire
+  - title: Human Desire
+    imdb_id: tt0047101
     year: 1954
-  - imdb_id: tt0048387
-    title: Moonfleet
+  - title: Moonfleet
+    imdb_id: tt0048387
     year: 1955
-  - imdb_id: tt0049949
-    title: While the City Sleeps
+  - title: While the City Sleeps
+    imdb_id: tt0049949
     year: 1956
-  - imdb_id: tt0049006
-    title: Beyond a Reasonable Doubt
+  - title: Beyond a Reasonable Doubt
+    imdb_id: tt0049006
     year: 1956
-  - imdb_id: tt0052295
-    title: Tiger of Bengal
+  - title: Tiger of Bengal
+    imdb_id: tt0052295
     year: 1959
-  - imdb_id: tt0052924
-    title: The Indian Tomb
+  - title: The Indian Tomb
+    imdb_id: tt0052924
     year: 1959
-  - imdb_id: tt0054371
-    title: The 1,000 Eyes of Dr. Mabuse
+  - title: The 1,000 Eyes of Dr. Mabuse
+    imdb_id: tt0054371
     year: 1960
-  - imdb_id: tt0052949
-    title: Journey to the Lost City
+  - title: Journey to the Lost City
+    imdb_id: tt0052949
     year: 1960
-  - imdb_id: tt9098914
-    title: Die 1000 Glotzböbbel vom Dr. Mabuse
-    year: 2018

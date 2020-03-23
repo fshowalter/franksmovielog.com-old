@@ -81,7 +81,7 @@ class Viewing(object):
         return file_path
 
     def to_yaml(self) -> Any:
-        return yaml.dump(  # type: ignore
+        return yaml.dump(
             {
                 SEQUENCE: self.sequence,
                 'date': self.date,
@@ -103,9 +103,9 @@ class ViewingsTable(_table_base.TableBase):
     def drop_and_create(self) -> None:
         ddl = """
         DROP TABLE IF EXISTS "{0}";
-        CREATE TABLE "movies" (
-            "id"
-            "movie_imdb_id" TEXT NOT NULL REFERENCES movies(id) DEFERRABLE INITIALLY DEFERRED,
+        CREATE TABLE "{0}" (
+            "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            "movie_imdb_id" TEXT NOT NULL REFERENCES movies(imdb_id) DEFERRABLE INITIALLY DEFERRED,
             "date" DATE NOT NULL,
             "sequence" INT NOT NULL,
             "venue" TEXT NOT NULL);

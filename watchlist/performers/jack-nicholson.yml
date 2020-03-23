@@ -1,190 +1,252 @@
 frozen: false
-imdb_id: nm0000197
 name: Jack Nicholson
+imdb_id: nm0000197
 titles:
-- imdb_id: tt0051500
-  title: The Cry Baby Killer
+- title: The Cry Baby Killer
+  notes: Jimmy Wallace
+  imdb_id: tt0051500
   year: 1958
-- imdb_id: tt0054392
-  title: Too Soon to Love
+- title: Too Soon to Love
+  notes: Buddy
+  imdb_id: tt0054392
   year: 1960
-- imdb_id: tt0054475
-  title: The Wild Ride
+- title: The Wild Ride
+  notes: Johnny Varron
+  imdb_id: tt0054475
   year: 1960
-- imdb_id: tt0054033
-  title: The Little Shop of Horrors
+- title: The Little Shop of Horrors
+  notes: Wilbur Force
+  imdb_id: tt0054033
   year: 1960
-- imdb_id: tt0054348
-  title: Studs Lonigan
+- title: Studs Lonigan
+  notes: Weary Reilly
+  imdb_id: tt0054348
   year: 1960
-- imdb_id: tt0055811
-  title: The Broken Land
+- title: The Broken Land
+  notes: Will Brocious
+  imdb_id: tt0055811
   year: 1962
-- imdb_id: tt0057449
-  title: The Raven
+- title: The Raven
+  notes: Rexford Bedlo
+  imdb_id: tt0057449
   year: 1963
-- imdb_id: tt0057569
-  title: The Terror
+- title: The Terror
+  notes: Lt. Andre Duvalier
+  imdb_id: tt0057569
   year: 1963
-- imdb_id: tt0058060
-  title: Ensign Pulver
+- title: Ensign Pulver
+  notes: Yeoman Dolan
+  imdb_id: tt0058060
   year: 1964
-- imdb_id: tt0060418
-  title: Flight to Fury
+- title: Flight to Fury
+  notes: Jay Wickham
+  imdb_id: tt0060418
   year: 1964
-- imdb_id: tt0057864
-  title: Back Door to Hell
+- title: Back Door to Hell
+  notes: Burnett
+  imdb_id: tt0057864
   year: 1964
-- imdb_id: tt0062262
-  title: The Shooting
+- title: The Shooting
+  notes: Billy Spear
+  imdb_id: tt0062262
   year: 1966
-- imdb_id: tt0059653
-  title: Ride in the Whirlwind
+- title: Ride in the Whirlwind
+  notes: Wes
+  imdb_id: tt0059653
   year: 1966
-- imdb_id: tt0061758
-  title: Hells Angels on Wheels
+- title: Hells Angels on Wheels
+  notes: Poet
+  imdb_id: tt0061758
   year: 1967
-- imdb_id: tt0062301
-  title: The St. Valentine's Day Massacre
+- title: The St. Valentine's Day Massacre
+  notes: Gino - Hit Man (uncredited)
+  imdb_id: tt0062301
   year: 1967
-- imdb_id: tt0063469
-  title: Psych-Out
+- title: Psych-Out
+  notes: Stoney
+  imdb_id: tt0063469
   year: 1968
-- imdb_id: tt0063049
-  title: Head
+- title: Head
+  notes: Movie Director at Filmshoot in Restaurant (uncredited)
+  imdb_id: tt0063049
   year: 1968
-- imdb_id: tt0064276
-  title: Easy Rider
+- title: Easy Rider
+  notes: George Hanson
+  imdb_id: tt0064276
   year: 1969
-- imdb_id: tt0066286
-  title: The Rebel Rousers
+- title: The Rebel Rousers
+  notes: Bunny
+  imdb_id: tt0066286
   year: 1970
-- imdb_id: tt0066181
-  title: On a Clear Day You Can See Forever
+- title: On a Clear Day You Can See Forever
+  notes: Tad Pringle
+  imdb_id: tt0066181
   year: 1970
-- imdb_id: tt0065724
-  title: Five Easy Pieces
+- title: Five Easy Pieces
+  notes: Robert Eroica Dupea
+  imdb_id: tt0065724
   year: 1970
-- imdb_id: tt0066892
-  title: Carnal Knowledge
+- title: Carnal Knowledge
+  notes: Jonathan
+  imdb_id: tt0066892
   year: 1971
-- imdb_id: tt0067699
-  title: A Safe Place
+- title: A Safe Place
+  notes: Mitch
+  imdb_id: tt0067699
   year: 1971
-- imdb_id: tt0068805
-  title: The King of Marvin Gardens
+- title: The King of Marvin Gardens
+  notes: David Staebler
+  imdb_id: tt0068805
   year: 1972
-- imdb_id: tt0070290
-  title: The Last Detail
+- title: The Last Detail
+  notes: Buddusky
+  imdb_id: tt0070290
   year: 1973
-- imdb_id: tt0071315
-  title: Chinatown
+- title: Chinatown
+  notes: J.J. Gittes
+  imdb_id: tt0071315
   year: 1974
-- imdb_id: tt0073580
-  title: The Passenger
+- title: The Passenger
+  notes: Locke
+  imdb_id: tt0073580
   year: 1975
-- imdb_id: tt0073812
-  title: Tommy
+- title: Tommy
+  notes: The Specialist
+  imdb_id: tt0073812
   year: 1975
-- imdb_id: tt0073008
-  title: The Fortune
+- title: The Fortune
+  notes: Oscar
+  imdb_id: tt0073008
   year: 1975
-- imdb_id: tt0073486
-  title: One Flew Over the Cuckoo's Nest
+- title: One Flew Over the Cuckoo's Nest
+  notes: R.P. McMurphy
+  imdb_id: tt0073486
   year: 1975
-- imdb_id: tt0074906
-  title: The Missouri Breaks
+- title: The Missouri Breaks
+  notes: Tom Logan
+  imdb_id: tt0074906
   year: 1976
-- imdb_id: tt0074777
-  title: The Last Tycoon
+- title: The Last Tycoon
+  notes: Brimmer
+  imdb_id: tt0074777
   year: 1976
-- imdb_id: tt0077621
-  title: Goin' South
+- title: Goin' South
+  notes: Henry Lloyd Moon
+  imdb_id: tt0077621
   year: 1978
-- imdb_id: tt0081505
-  title: The Shining
+- title: The Shining
+  notes: Jack Torrance
+  imdb_id: tt0081505
   year: 1980
-- imdb_id: tt0082934
-  title: The Postman Always Rings Twice
+- title: The Postman Always Rings Twice
+  notes: Frank Chambers
+  imdb_id: tt0082934
   year: 1981
-- imdb_id: tt0082979
-  title: Reds
+- title: Reds
+  notes: Eugene O'Neill
+  imdb_id: tt0082979
   year: 1981
-- imdb_id: tt0083678
-  title: The Border
+- title: The Border
+  notes: Charlie Smith
+  imdb_id: tt0083678
   year: 1982
-- imdb_id: tt0086425
-  title: Terms of Endearment
+- title: Terms of Endearment
+  notes: Garrett Breedlove
+  imdb_id: tt0086425
   year: 1983
-- imdb_id: tt0089841
-  title: Prizzi's Honor
+- title: Prizzi's Honor
+  notes: Charley Partanna
+  imdb_id: tt0089841
   year: 1985
-- imdb_id: tt0091188
-  title: Heartburn
+- title: Heartburn
+  notes: Mark
+  imdb_id: tt0091188
   year: 1986
-- imdb_id: tt0094332
-  title: The Witches of Eastwick
+- title: The Witches of Eastwick
+  notes: Daryl Van Horne
+  imdb_id: tt0094332
   year: 1987
-- imdb_id: tt0092699
-  title: Broadcast News
+- title: Broadcast News
+  notes: Bill Rorish
+  imdb_id: tt0092699
   year: 1987
-- imdb_id: tt0093277
-  title: Ironweed
+- title: Ironweed
+  notes: Francis Phelan
+  imdb_id: tt0093277
   year: 1987
-- imdb_id: tt0096895
-  title: Batman
+- title: Batman
+  notes: Joker / Jack Napier
+  imdb_id: tt0096895
   year: 1989
-- imdb_id: tt0100828
-  title: The Two Jakes
+- title: The Two Jakes
+  notes: Jake Gittes
+  imdb_id: tt0100828
   year: 1990
-- imdb_id: tt0104804
-  title: Man Trouble
+- title: Man Trouble
+  notes: Harry Bliss
+  imdb_id: tt0104804
   year: 1992
-- imdb_id: tt0104257
-  title: A Few Good Men
+- title: A Few Good Men
+  notes: Col. Nathan R. Jessep
+  imdb_id: tt0104257
   year: 1992
-- imdb_id: tt0104427
-  title: Hoffa
+- title: Hoffa
+  notes: James R. Hoffa
+  imdb_id: tt0104427
   year: 1992
-- imdb_id: tt0111742
-  title: Wolf
+- title: Wolf
+  notes: Will Randall
+  imdb_id: tt0111742
   year: 1994
-- imdb_id: tt0112744
-  title: The Crossing Guard
+- title: The Crossing Guard
+  notes: Freddy Gale
+  imdb_id: tt0112744
   year: 1995
-- imdb_id: tt0115710
-  title: Blood and Wine
+- title: Blood and Wine
+  notes: Alex
+  imdb_id: tt0115710
   year: 1996
-- imdb_id: tt0116240
-  title: The Evening Star
+- title: The Evening Star
+  notes: Garrett Breedlove
+  imdb_id: tt0116240
   year: 1996
-- imdb_id: tt0116996
-  title: Mars Attacks!
+- title: Mars Attacks!
+  notes: President James Dale / Art Land
+  imdb_id: tt0116996
   year: 1996
-- imdb_id: tt0119822
-  title: As Good as It Gets
+- title: As Good as It Gets
+  notes: Melvin Udall
+  imdb_id: tt0119822
   year: 1997
-- imdb_id: tt0237572
-  title: The Pledge
+- title: The Pledge
+  notes: Jerry Black
+  imdb_id: tt0237572
   year: 2001
-- imdb_id: tt0257360
-  title: About Schmidt
+- title: About Schmidt
+  notes: Warren Schmidt
+  imdb_id: tt0257360
   year: 2002
-- imdb_id: tt0305224
-  title: Anger Management
+- title: Anger Management
+  notes: Dr. Buddy Rydell
+  imdb_id: tt0305224
   year: 2003
-- imdb_id: tt0337741
-  title: Something's Gotta Give
+- title: Something's Gotta Give
+  notes: Harry Sanborn
+  imdb_id: tt0337741
   year: 2003
-- imdb_id: tt0407887
-  title: The Departed
+- title: The Departed
+  notes: Frank Costello
+  imdb_id: tt0407887
   year: 2006
-- imdb_id: tt0825232
-  title: The Bucket List
+- title: The Bucket List
+  notes: Edward
+  imdb_id: tt0825232
   year: 2007
-- imdb_id: tt1356864
-  title: I'm Still Here
+- title: I'm Still Here
+  notes: Jack Nicholson
+  imdb_id: tt1356864
   year: 2010
-- imdb_id: tt1341188
-  title: How Do You Know
+- title: How Do You Know
+  notes: Charles
+  imdb_id: tt1341188
   year: 2010

@@ -48,8 +48,8 @@ class PrincipalsTable(_table_base.TableBase):
         DROP TABLE IF EXISTS "{0}";
         CREATE TABLE "{0}" (
             "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-            "movie_imdb_id" TEXT NOT NULL REFERENCES movies(id) DEFERRABLE INITIALLY DEFERRED,
-            "person_imdb_id" TEXT NOT NULL REFERENCES people(id) DEFERRABLE INITIALLY DEFERRED,
+            "movie_imdb_id" TEXT NOT NULL REFERENCES movies(imdb_id) DEFERRABLE INITIALLY DEFERRED,
+            "person_imdb_id" TEXT NOT NULL REFERENCES people(imdb_id) DEFERRABLE INITIALLY DEFERRED,
             "sequence" INT NOT NULL,
             "category" TEXT,
             "job" TEXT,

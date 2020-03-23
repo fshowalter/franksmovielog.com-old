@@ -1,190 +1,252 @@
 frozen: false
-imdb_id: nm0000142
 name: Clint Eastwood
+imdb_id: nm0000142
 titles:
-- imdb_id: tt0048554
-  title: Revenge of the Creature
+- title: Revenge of the Creature
+  notes: Jennings (uncredited)
+  imdb_id: tt0048554
   year: 1955
-- imdb_id: tt0048092
-  title: Francis in the Navy
+- title: Francis in the Navy
+  notes: Jonesey
+  imdb_id: tt0048092
   year: 1955
-- imdb_id: tt0048279
-  title: Lady Godiva of Coventry
+- title: Lady Godiva of Coventry
+  notes: Alfred the Fletcher (uncredited)
+  imdb_id: tt0048279
   year: 1955
-- imdb_id: tt0048696
-  title: Tarantula
+- title: Tarantula
+  notes: Jet Squadron Leader (uncredited)
+  imdb_id: tt0048696
   year: 1955
-- imdb_id: tt0049547
-  title: Never Say Goodbye
+- title: Never Say Goodbye
+  notes: Will (uncredited)
+  imdb_id: tt0049547
   year: 1956
-- imdb_id: tt0049793
-  title: Star in the Dust
+- title: Star in the Dust
+  notes: Tom - Ranch Hand (uncredited)
+  imdb_id: tt0049793
   year: 1956
-- imdb_id: tt0049212
-  title: The First Traveling Saleslady
+- title: The First Traveling Saleslady
+  notes: Lt. Jack Rice
+  imdb_id: tt0049212
   year: 1956
-- imdb_id: tt0048971
-  title: Away All Boats
+- title: Away All Boats
+  notes: Corpsman (uncredited)
+  imdb_id: tt0048971
   year: 1956
-- imdb_id: tt0050363
-  title: Escapade in Japan
+- title: Escapade in Japan
+  notes: Dumbo - Pilot (uncredited)
+  imdb_id: tt0050363
   year: 1957
-- imdb_id: tt0051349
-  title: Ambush at Cimarron Pass
+- title: Ambush at Cimarron Pass
+  notes: Keith Williams
+  imdb_id: tt0051349
   year: 1958
-- imdb_id: tt0051840
-  title: Lafayette Escadrille
+- title: Lafayette Escadrille
+  notes: George Moseley
+  imdb_id: tt0051840
   year: 1958
-- imdb_id: tt0058461
-  title: A Fistful of Dollars
+- title: A Fistful of Dollars
+  notes: Joe
+  imdb_id: tt0058461
   year: 1964
-- imdb_id: tt0059578
-  title: For a Few Dollars More
+- title: For a Few Dollars More
+  notes: Monco
+  imdb_id: tt0059578
   year: 1965
-- imdb_id: tt0060196
-  title: The Good, the Bad and the Ugly
+- title: The Good, the Bad and the Ugly
+  notes: Blondie
+  imdb_id: tt0060196
   year: 1966
-- imdb_id: tt0061037
-  title: The Witches
+- title: The Witches
+  notes: Carlo / Charlie (Segment "Sera Come Le Altre, Una")
+  imdb_id: tt0061037
   year: 1967
-- imdb_id: tt0061747
-  title: Hang 'Em High
+- title: Hang 'Em High
+  notes: Marshal Jed Cooper
+  imdb_id: tt0061747
   year: 1968
-- imdb_id: tt0062824
-  title: Coogan's Bluff
+- title: Coogan's Bluff
+  notes: Coogan
+  imdb_id: tt0062824
   year: 1968
-- imdb_id: tt0065207
-  title: Where Eagles Dare
+- title: Where Eagles Dare
+  notes: Schaffer
+  imdb_id: tt0065207
   year: 1968
-- imdb_id: tt0064782
-  title: Paint Your Wagon
+- title: Paint Your Wagon
+  notes: Pardner
+  imdb_id: tt0064782
   year: 1969
-- imdb_id: tt0065134
-  title: Two Mules for Sister Sara
+- title: Two Mules for Sister Sara
+  notes: Hogan
+  imdb_id: tt0065134
   year: 1970
-- imdb_id: tt0065938
-  title: Kelly's Heroes
+- title: Kelly's Heroes
+  notes: Kelly
+  imdb_id: tt0065938
   year: 1970
-- imdb_id: tt0066819
-  title: The Beguiled
+- title: The Beguiled
+  notes: John McBurney
+  imdb_id: tt0066819
   year: 1971
-- imdb_id: tt0067588
-  title: Play Misty for Me
+- title: Play Misty for Me
+  notes: Dave
+  imdb_id: tt0067588
   year: 1971
-- imdb_id: tt0066999
-  title: Dirty Harry
+- title: Dirty Harry
+  notes: Harry
+  imdb_id: tt0066999
   year: 1971
-- imdb_id: tt0068768
-  title: Joe Kidd
+- title: Joe Kidd
+  notes: Joe Kidd
+  imdb_id: tt0068768
   year: 1972
-- imdb_id: tt0068699
-  title: High Plains Drifter
+- title: High Plains Drifter
+  notes: The Stranger
+  imdb_id: tt0068699
   year: 1973
-- imdb_id: tt0069822
-  title: Breezy
+- title: Breezy
+  notes: Man at Marina (uncredited)
+  imdb_id: tt0069822
   year: 1973
-- imdb_id: tt0070355
-  title: Magnum Force
+- title: Magnum Force
+  notes: Harry Callahan
+  imdb_id: tt0070355
   year: 1973
-- imdb_id: tt0072288
-  title: Thunderbolt and Lightfoot
+- title: Thunderbolt and Lightfoot
+  notes: Thunderbolt
+  imdb_id: tt0072288
   year: 1974
-- imdb_id: tt0072926
-  title: The Eiger Sanction
+- title: The Eiger Sanction
+  notes: Jonathan Hemlock
+  imdb_id: tt0072926
   year: 1975
-- imdb_id: tt0075029
-  title: The Outlaw Josey Wales
+- title: The Outlaw Josey Wales
+  notes: Josey Wales
+  imdb_id: tt0075029
   year: 1976
-- imdb_id: tt0074483
-  title: The Enforcer
+- title: The Enforcer
+  notes: Harry Callahan
+  imdb_id: tt0074483
   year: 1976
-- imdb_id: tt0076070
-  title: The Gauntlet
+- title: The Gauntlet
+  notes: Ben Shockley
+  imdb_id: tt0076070
   year: 1977
-- imdb_id: tt0077523
-  title: Every Which Way but Loose
+- title: Every Which Way but Loose
+  notes: Philo Beddoe
+  imdb_id: tt0077523
   year: 1978
-- imdb_id: tt0079116
-  title: Escape from Alcatraz
+- title: Escape from Alcatraz
+  notes: Frank Morris
+  imdb_id: tt0079116
   year: 1979
-- imdb_id: tt0080472
-  title: Bronco Billy
+- title: Bronco Billy
+  notes: Bronco Billy
+  imdb_id: tt0080472
   year: 1980
-- imdb_id: tt0080377
-  title: Any Which Way You Can
+- title: Any Which Way You Can
+  notes: Philo Beddoe
+  imdb_id: tt0080377
   year: 1980
-- imdb_id: tt0083943
-  title: Firefox
+- title: Firefox
+  notes: Mitchell Gant
+  imdb_id: tt0083943
   year: 1982
-- imdb_id: tt0084088
-  title: Honkytonk Man
+- title: Honkytonk Man
+  notes: Red Stovall
+  imdb_id: tt0084088
   year: 1982
-- imdb_id: tt0086383
-  title: Sudden Impact
+- title: Sudden Impact
+  notes: Harry Callahan
+  imdb_id: tt0086383
   year: 1983
-- imdb_id: tt0088272
-  title: Tightrope
+- title: Tightrope
+  notes: Wes Block
+  imdb_id: tt0088272
   year: 1984
-- imdb_id: tt0087062
-  title: City Heat
+- title: City Heat
+  notes: Lieutenant Speer
+  imdb_id: tt0087062
   year: 1984
-- imdb_id: tt0089767
-  title: Pale Rider
+- title: Pale Rider
+  notes: Preacher
+  imdb_id: tt0089767
   year: 1985
-- imdb_id: tt0091187
-  title: Heartbreak Ridge
+- title: Heartbreak Ridge
+  notes: Gunnery Sergent Thomas Highway
+  imdb_id: tt0091187
   year: 1986
-- imdb_id: tt0094963
-  title: The Dead Pool
+- title: The Dead Pool
+  notes: Harry Callahan
+  imdb_id: tt0094963
   year: 1988
-- imdb_id: tt0098097
-  title: Pink Cadillac
+- title: Pink Cadillac
+  notes: Tommy Nowak
+  imdb_id: tt0098097
   year: 1989
-- imdb_id: tt0100928
-  title: White Hunter Black Heart
+- title: White Hunter Black Heart
+  notes: John Wilson
+  imdb_id: tt0100928
   year: 1990
-- imdb_id: tt0100514
-  title: The Rookie
+- title: The Rookie
+  notes: Nick Pulovski
+  imdb_id: tt0100514
   year: 1990
-- imdb_id: tt0105695
-  title: Unforgiven
+- title: Unforgiven
+  notes: Bill Munny
+  imdb_id: tt0105695
   year: 1992
-- imdb_id: tt0107206
-  title: In the Line of Fire
+- title: In the Line of Fire
+  notes: Frank Horrigan
+  imdb_id: tt0107206
   year: 1993
-- imdb_id: tt0107808
-  title: A Perfect World
+- title: A Perfect World
+  notes: Chief Red Garnett
+  imdb_id: tt0107808
   year: 1993
-- imdb_id: tt0112642
-  title: Casper
+- title: Casper
+  notes: Clint Eastwood (uncredited)
+  imdb_id: tt0112642
   year: 1995
-- imdb_id: tt0112579
-  title: The Bridges of Madison County
+- title: The Bridges of Madison County
+  notes: Robert Kincaid
+  imdb_id: tt0112579
   year: 1995
-- imdb_id: tt0118548
-  title: Absolute Power
+- title: Absolute Power
+  notes: Luther Whitney
+  imdb_id: tt0118548
   year: 1997
-- imdb_id: tt0139668
-  title: True Crime
+- title: True Crime
+  notes: Steve Everett
+  imdb_id: tt0139668
   year: 1999
-- imdb_id: tt0186566
-  title: Space Cowboys
+- title: Space Cowboys
+  notes: Frank Corvin
+  imdb_id: tt0186566
   year: 2000
-- imdb_id: tt0309377
-  title: Blood Work
+- title: Blood Work
+  notes: Terry McCaleb
+  imdb_id: tt0309377
   year: 2002
-- imdb_id: tt0405159
-  title: Million Dollar Baby
+- title: Million Dollar Baby
+  notes: Frankie Dunn
+  imdb_id: tt0405159
   year: 2004
-- imdb_id: tt1205489
-  title: Gran Torino
+- title: Gran Torino
+  notes: Walt Kowalski
+  imdb_id: tt1205489
   year: 2008
-- imdb_id: tt2083383
-  title: Trouble with the Curve
+- title: Trouble with the Curve
+  notes: Gus
+  imdb_id: tt2083383
   year: 2012
-- imdb_id: tt2179136
-  title: American Sniper
+- title: American Sniper
+  notes: Church Goer (uncredited)
+  imdb_id: tt2179136
   year: 2014
-- imdb_id: tt7959026
-  title: The Mule
+- title: The Mule
+  notes: Earl Stone
+  imdb_id: tt7959026
   year: 2018
