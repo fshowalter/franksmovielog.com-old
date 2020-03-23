@@ -22,11 +22,10 @@
 /coverage
 /node_modules
 
-package.json
-
 /movie_db_data
 /.venv
 /.vscode
+*.egg-info
 
 __pycache__
 .mypy_cache

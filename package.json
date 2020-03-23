@@ -1,0 +1,28 @@
+{
+  "name": "frankshowalter",
+  "version": "1.0.0",
+  "description": "www.frankshowalter.com",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "gatsby": "^2.20.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fshowalter/frankshowalter.git"
+  },
+  "author": "Frank Showalter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fshowalter/frankshowalter/issues"
+  },
+  "homepage": "https://github.com/fshowalter/frankshowalter#readme"
+}
