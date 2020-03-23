@@ -6,6 +6,26 @@ from movie_db.logger import logger
 
 TABLE_NAME = 'watchlist_titles'
 
+Query = """
+    SELECT
+        year,
+        title,
+        movie_imdb_id,
+        GROUP_CONCAT(directors.full_name, '|'),
+        GROUP_CONCAT(director_imdb_id, ','),
+        GROUP_CONCAT(performers.full_name, '|'),
+        GROUP_CONCAT(performer_imdb_id, ','),
+        GROUP_CONCAT(writers.full_name, '|'),
+        GROUP_CONCAT(writer_imdb_id, ','),
+        GROUP_CONCAT(collection_name, '|') AS collection_names
+        FROM watchlist_titles
+            LEFT JOIN movies ON movie_imdb_id = movies.imdb_id
+            LEFT JOIN people AS directors ON director_imdb_id = directors.imdb_id
+            LEFT JOIN people AS performers ON performer_imdb_id = performers.imdb_id
+            LEFT JOIN people AS writers ON writer_imdb_id = writers.imdb_id
+            GROUP BY (movie_imdb_id) HAVING year < 1930 ORDER BY year;
+"""
+
 
 @dataclass
 class WatchlistTitle(object):
