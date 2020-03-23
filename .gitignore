@@ -23,6 +23,8 @@
 /node_modules
 
 /movie_db_data
+/public
+
 /.venv
 /.vscode
 *.egg-info

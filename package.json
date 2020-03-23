@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "gatsby": "^2.20.3",
+    "gatsby-source-sql": "git+https://github.com/mrfunnyshoes/gatsby-source-sql.git",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "sqlite3": "^4.1.1"
   },
   "devDependencies": {},
   "scripts": {
