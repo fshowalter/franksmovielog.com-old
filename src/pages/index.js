@@ -1,6 +1,23 @@
 import React from "react";
 import { graphql } from "gatsby";
 
+let viewings = {};
+
+const viewed = ({ node, viewing_data }) => {
+  if (!(node.imdb_id in viewings)) {
+    viewings = viewing_data.reduce(function(map, obj) {
+      if (!(obj.node.imdb_id in map)) {
+        map[obj.node.imdb_id] = [];
+      }
+
+      map[obj.node.imdb_id].push(obj.node);
+      return map;
+    }, {});
+  }
+
+  return viewings[node.movie_imdb_id] || [];
+};
+
 export default ({ data }) => {
   return (
     <div>
@@ -13,6 +30,7 @@ export default ({ data }) => {
             <th>Directors</th>
             <th>Performers</th>
             <th>Writers</th>
+            <th>Viewed</th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +41,16 @@ export default ({ data }) => {
               <td>{node.director_names}</td>
               <td>{node.performer_names}</td>
               <td>{node.writer_names}</td>
+              <td>
+                {viewed({
+                  node: node,
+                  viewing_data: data.allViewingsYaml.edges
+                }).map((viewing, viewing_index) => (
+                  <div style={{ whiteSpace: "nowrap" }} key={viewing_index}>
+                    {viewing.date}
+                  </div>
+                ))}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -33,9 +61,20 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
+    allViewingsYaml(sort: { fields: [sequence], order: ASC }) {
+      edges {
+        node {
+          sequence
+          date(formatString: "YYYY-MM-DD")
+          imdb_id
+          venue
+        }
+      }
+    }
     allWatchlistTitle(sort: { fields: [year], order: ASC }) {
       edges {
         node {
+          movie_imdb_id
           title
           year
           director_names

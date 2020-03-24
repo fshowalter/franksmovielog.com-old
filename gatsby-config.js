@@ -10,7 +10,7 @@ module.exports = {
         dbEngine: {
           client: "sqlite3",
           connection: {
-            filename: "./movie_db_data/movie_db.sqlite3"
+            filename: `${__dirname}/movie_db_data/movie_db.sqlite3`
           },
           useNullAsDefault: true
         },
@@ -47,6 +47,14 @@ module.exports = {
             .leftJoin("people AS writers", "writer_imdb_id", "writers.imdb_id")
             .groupBy("movie_imdb_id");
         }
+      }
+    },
+    "gatsby-transformer-yaml",
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `viewing`,
+        path: `${__dirname}/viewings`
       }
     }
   ]
