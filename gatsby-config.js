@@ -1,5 +1,12 @@
 module.exports = {
+  siteMetadata: {
+    title: `Frank's Movie Log`,
+    siteUrl: `https://www.franksmovielog.com`,
+    description: `Quality reviews of films of questionable quality.`
+  },
   plugins: [
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-emotion`,
     {
       // Querying to a SQLite database
       resolve: `gatsby-source-sql`,

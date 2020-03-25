@@ -1,5 +1,17 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { css } from "@emotion/core";
+import LayoutSingle from "../components/LayoutSingle";
+
+const containerStyles = css({
+  background: "#fff",
+  margin: "0 auto",
+  position: "relative",
+  width: "100%",
+  "@media only screen and (min-width: 50em)": {
+    maxWidth: "1000px"
+  }
+});
 
 let viewings = {};
 
@@ -20,7 +32,7 @@ const viewed = ({ node, viewing_data }) => {
 
 export default ({ data }) => {
   return (
-    <div>
+    <LayoutSingle>
       <h1>The Watchlist</h1>
       <table>
         <thead>
@@ -55,7 +67,7 @@ export default ({ data }) => {
           ))}
         </tbody>
       </table>
-    </div>
+    </LayoutSingle>
   );
 };
 
