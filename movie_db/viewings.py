@@ -9,7 +9,7 @@ from typing import Any, List, Optional, Sequence, Tuple
 import yaml
 from slugify import slugify
 
-from movie_db import _table_base, humanize
+from movie_db.internal import humanize, table_base
 from movie_db.logger import logger
 
 TABLE_NAME = 'viewings'
@@ -96,7 +96,7 @@ class Viewing(object):
         )
 
 
-class ViewingsTable(_table_base.TableBase):
+class ViewingsTable(table_base.TableBase):
     def __init__(self) -> None:
         super().__init__(TABLE_NAME)
 

@@ -1,11 +1,11 @@
-from movie_db import _aka_titles, _credits, _movies, _people, _principals
+from movie_db.internal import aka_titles, crew_credits, movies, people, principals
 from movie_db.logger import logger
 
 
 @logger.catch
 def orchestrate_update() -> None:
-    _movies.update()
-    _people.update()
-    _credits.update()
-    _aka_titles.update()
-    _principals.update()
+    movies.update()
+    people.update()
+    crew_credits.update()
+    aka_titles.update()
+    principals.update()

@@ -1,21 +1,69 @@
-import React from "react";
-import { graphql } from "gatsby";
-import { css } from "@emotion/core";
-import LayoutSingle from "../components/LayoutSingle";
+import React, { useState, useEffect } from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import styled from "@emotion/styled";
+import Layout from "../components/Layout";
+import { TwoColumns, Column1, Column2 } from "../components/TwoColumns";
+import { List, ListItem } from "../components/ListWithSlug";
+import PanelHeading from "../components/PanelHeading";
+import pluralize from "pluralize";
+import {
+  FilterPanel,
+  SelectFilter,
+  TextFilter
+} from "../components/FilterPanel";
+import { useDebouncedCallback } from "use-debounce";
+import { timedChunk, buildMatcher, escapeRegExp } from "../utils/filtering";
 
-const containerStyles = css({
-  background: "#fff",
-  margin: "0 auto",
-  position: "relative",
-  width: "100%",
-  "@media only screen and (min-width: 50em)": {
-    maxWidth: "1000px"
+const formatPeople = (people, suffix) => {
+  if (!people) {
+    return "";
   }
-});
+
+  let splitNames = people.split("|");
+  let names = new Intl.ListFormat("en").format(splitNames);
+
+  return `${names} ${suffix}`;
+};
+
+const formatCollections = collections => {
+  if (!collections) {
+    return "";
+  }
+  let splitCollections = collections.split(",");
+  let names = new Intl.ListFormat("en").format(splitCollections);
+  return `it's a ${names} film`;
+};
+
+const slugForNode = node => {
+  let credits = [
+    formatPeople(node.director_names, "directed"),
+    formatPeople(node.performer_names, "performed"),
+    formatPeople(node.writer_names, "wrote it"),
+    formatCollections(node.collection_names)
+  ];
+
+  let slug = `Because `;
+
+  do {
+    let credit = credits.shift();
+
+    if (!credit) {
+      continue;
+    }
+
+    slug += credit;
+    if (credits.find(item => item.length > 0)) {
+      slug += " and ";
+    }
+  } while (credits.length > 0);
+
+  return `${slug}.`;
+};
 
 let viewings = {};
+let items = null;
 
-const viewed = ({ node, viewing_data }) => {
+const viewingsForNode = (node, viewing_data) => {
   if (!(node.imdb_id in viewings)) {
     viewings = viewing_data.reduce(function(map, obj) {
       if (!(obj.node.imdb_id in map)) {
@@ -27,47 +75,77 @@ const viewed = ({ node, viewing_data }) => {
     }, {});
   }
 
-  return viewings[node.movie_imdb_id] || [];
+  let viewingsForNode = viewings[node.movie_imdb_id] || [];
+  let viewingCount = viewingsForNode.length;
+
+  if (viewingCount == 0) {
+    return "";
+  }
+  return `Seen ${pluralize("time", viewingCount, true)}.`;
 };
 
 export default ({ data }) => {
+  const [onTitleChange] = useDebouncedCallback(
+    value => {
+      let regex = new RegExp(escapeRegExp(value), "i");
+
+      const matcher = buildMatcher(item => {
+        return regex.test(item.getAttribute("data-title"));
+      });
+
+      timedChunk(items, matcher);
+    },
+    // delay in ms
+    50
+  );
+
+  useEffect(() => {
+    items = document.querySelectorAll("#watchlist li");
+
+    // Specify how to clean up after this effect:
+    return function cleanup() {
+      items = null;
+    };
+  });
+
   return (
-    <LayoutSingle>
-      <h1>The Watchlist</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Title</th>
-            <th>Directors</th>
-            <th>Performers</th>
-            <th>Writers</th>
-            <th>Viewed</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.allWatchlistTitle.edges.map(({ node }, index) => (
-            <tr key={index}>
-              <td>{node.year}</td>
-              <td>{node.title}</td>
-              <td>{node.director_names}</td>
-              <td>{node.performer_names}</td>
-              <td>{node.writer_names}</td>
-              <td>
-                {viewed({
-                  node: node,
-                  viewing_data: data.allViewingsYaml.edges
-                }).map((viewing, viewing_index) => (
-                  <div style={{ whiteSpace: "nowrap" }} key={viewing_index}>
-                    {viewing.date}
-                  </div>
-                ))}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </LayoutSingle>
+    <Layout>
+      <TwoColumns>
+        <Column1>
+          <PanelHeading
+            title="My Watchlist"
+            slug="My movie bucket list. No silents or documentaries"
+          />
+          <FilterPanel heading="Filter and Sort">
+            <TextFilter
+              type="title"
+              name="Title"
+              onChange={e => onTitleChange(e.target.value)}
+              placeholder="Enter all or part of a title."
+            />
+            <SelectFilter name="Order By">
+              {[
+                ["Date (Oldest First)", "date-asc"],
+                ["Date (Newest First)", "date-desc"],
+                ["Title", "title-asc"]
+              ]}
+            </SelectFilter>
+          </FilterPanel>
+        </Column1>
+        <Column2>
+          <List id="watchlist">
+            {data.allWatchlistTitle.edges.map(({ node }) => (
+              <ListItem
+                key={node.movie_imdb_id}
+                title={`${node.title} (${node.year})`}
+                slug={slugForNode(node)}
+                tag={viewingsForNode(node, data.allViewingsYaml.edges)}
+              ></ListItem>
+            ))}
+          </List>
+        </Column2>
+      </TwoColumns>
+    </Layout>
   );
 };
 
@@ -92,6 +170,7 @@ export const query = graphql`
           director_names
           performer_names
           writer_names
+          collection_names
         }
       }
     }

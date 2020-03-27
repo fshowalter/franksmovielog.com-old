@@ -14,6 +14,12 @@ export default () => (
         box-sizing: inherit;
       }
 
+      a {
+        color: var(--color-link);
+        line-height: inherit;
+        text-decoration: none;
+      }
+
       body {
         margin: 0;
         padding: 0;
