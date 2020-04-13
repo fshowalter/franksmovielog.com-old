@@ -1,8 +1,0 @@
-%ul.fs_timeline#list
-  - posts.each do |post|
-    %li.fs_timeline-event{ 'data-date': post.date.iso8601 }
-      %h3.fs_timeline-event_heading
-        %a.fs_timeline-event_link{ href: post.link }
-          = post.title
-      %p.fs_timeline-event_slug
-        <time datetime="#{post.date.iso8601}">#{post.date.strftime("%b #{post.date.day.ordinalize}")} #{post.date.year}</time> on #{post.location}

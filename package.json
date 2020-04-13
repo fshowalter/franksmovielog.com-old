@@ -1,7 +1,7 @@
 {
-  "name": "frankshowalter",
+  "name": "franksmovielog.com",
   "version": "1.0.0",
-  "description": "www.frankshowalter.com",
+  "description": "www.franksmovielog.com",
   "main": "index.js",
   "directories": {
     "test": "tests"
@@ -9,31 +9,53 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
-    "gatsby": "^2.20.3",
+    "gatsby": "^2.20.15",
+    "gatsby-image": "^2.3.2",
     "gatsby-plugin-emotion": "^4.2.1",
     "gatsby-plugin-react-helmet": "^3.2.1",
+    "gatsby-plugin-sharp": "^2.5.4",
+    "gatsby-plugin-slug": "^1.0.1",
     "gatsby-source-filesystem": "^2.2.2",
     "gatsby-source-sql": "git+https://github.com/mrfunnyshoes/gatsby-source-sql.git",
+    "gatsby-transformer-remark": "^2.7.1",
+    "gatsby-transformer-sharp": "^2.4.4",
     "gatsby-transformer-yaml": "^2.3.1",
+    "html-react-parser": "^0.10.3",
     "pluralize": "^8.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1",
     "sqlite3": "^4.1.1",
-    "use-debounce": "^3.4.0"
+    "ts-node": "^8.8.2",
+    "use-debounce": "^3.4.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^13.11.1",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "gatsby-plugin-graphql-codegen": "^2.7.1",
+    "gatsby-plugin-typescript": "^2.3.1",
+    "prettier": "2.0.4",
+    "typescript": "^3.8.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fshowalter/frankshowalter.git"
+    "url": "git+https://github.com/fshowalter/franksmovielog.com.git"
   },
   "author": "Frank Showalter",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fshowalter/frankshowalter/issues"
+    "url": "https://github.com/fshowalter/franksmovielog.com/issues"
   },
-  "homepage": "https://github.com/fshowalter/frankshowalter#readme"
+  "homepage": "https://github.com/fshowalter/franksmovielog.com#readme"
 }
