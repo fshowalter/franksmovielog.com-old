@@ -1,6 +1,5 @@
 import React from "react";
 import { Global, css } from "@emotion/core";
-import { color } from "./Variables";
 
 export default () => (
   <Global

@@ -7,13 +7,13 @@ import styled from "@emotion/styled";
 import Layout from "../components/Layout";
 import SingleColumn from "../components/SingleColumn";
 
-const ReviewList = styled.ol`
+const List = styled.ol`
   list-style-type: none;
   margin: 0;
   padding: 0;
 `;
 
-const ReviewListItem = styled.li`
+const ListItem = styled.li`
   margin: 0 0 25px;
   padding: 0;
 
@@ -53,6 +53,27 @@ const ReviewListItem = styled.li`
   }
 `;
 
+const Review = styled.article`
+  &:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+`;
+
+const Date = styled.div`
+  color: var(--color-accent);
+  display: block;
+  font-family: var(--font-family-system);
+  font-feature-settings: "tnum";
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 30px;
+  margin: 0;
+  text-transform: uppercase;
+  width: 90px;
+`;
+
 interface Props {
   data: {
     allMarkdownRemark: {
@@ -69,6 +90,7 @@ interface Props {
           frontmatter: {
             title: string;
             sequence: number;
+            date: string;
           };
         };
       }[];
@@ -95,18 +117,31 @@ const imageForNode = (
   );
 };
 
+const dateForNode = (
+  node: Props["data"]["allMarkdownRemark"]["edges"][0]["node"]
+) => {
+  if (node.frontmatter === undefined || node.frontmatter.date == undefined) {
+    return;
+  }
+
+  return node.frontmatter.date;
+};
+
 const HomeTemplate: React.FC<Props> = ({ data }) => {
   return (
     <Layout>
       <SingleColumn>
-        <ReviewList>
+        <List>
           {data.allMarkdownRemark.edges.map(({ node }) => (
-            <ReviewListItem key={node.frontmatter?.sequence}>
-              {imageForNode(node)}
-              {node.frontmatter?.title}
-            </ReviewListItem>
+            <ListItem key={node.frontmatter?.sequence}>
+              <Review>
+                <Date>{dateForNode(node)}</Date>
+                {imageForNode(node)}
+                {node.frontmatter?.title}
+              </Review>
+            </ListItem>
           ))}
-        </ReviewList>
+        </List>
       </SingleColumn>
     </Layout>
   );
@@ -137,6 +172,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             sequence
+            date(formatString: "DD MMM, YYYY")
           }
         }
       }
