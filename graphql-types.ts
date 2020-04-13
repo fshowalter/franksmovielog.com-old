@@ -702,7 +702,6 @@ export type FileFieldsEnum =
   'childMarkdownRemark___excerpt' |
   'childMarkdownRemark___rawMarkdownBody' |
   'childMarkdownRemark___fileAbsolutePath' |
-  'childMarkdownRemark___fields___slug' |
   'childMarkdownRemark___fields___backdrop___sourceInstanceName' |
   'childMarkdownRemark___fields___backdrop___absolutePath' |
   'childMarkdownRemark___fields___backdrop___relativePath' |
@@ -739,6 +738,7 @@ export type FileFieldsEnum =
   'childMarkdownRemark___fields___backdrop___publicURL' |
   'childMarkdownRemark___fields___backdrop___id' |
   'childMarkdownRemark___fields___backdrop___children' |
+  'childMarkdownRemark___fields___firstParagraph' |
   'childMarkdownRemark___html' |
   'childMarkdownRemark___htmlAst' |
   'childMarkdownRemark___excerptAst' |
@@ -1540,8 +1540,8 @@ export type MarkdownRemarkEdge = {
 };
 
 export type MarkdownRemarkFields = {
-  slug?: Maybe<Scalars['String']>;
   backdrop?: Maybe<File>;
+  firstParagraph?: Maybe<Scalars['String']>;
 };
 
 export type MarkdownRemarkFieldsEnum = 
@@ -1555,7 +1555,6 @@ export type MarkdownRemarkFieldsEnum =
   'excerpt' |
   'rawMarkdownBody' |
   'fileAbsolutePath' |
-  'fields___slug' |
   'fields___backdrop___sourceInstanceName' |
   'fields___backdrop___absolutePath' |
   'fields___backdrop___relativePath' |
@@ -1624,6 +1623,7 @@ export type MarkdownRemarkFieldsEnum =
   'fields___backdrop___childViewingsYaml___imdb_id' |
   'fields___backdrop___childViewingsYaml___title' |
   'fields___backdrop___childViewingsYaml___venue' |
+  'fields___firstParagraph' |
   'html' |
   'htmlAst' |
   'excerptAst' |
@@ -1722,8 +1722,8 @@ export type MarkdownRemarkFieldsEnum =
   'internal___type';
 
 export type MarkdownRemarkFieldsFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>;
   backdrop?: Maybe<FileFilterInput>;
+  firstParagraph?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MarkdownRemarkFilterInput = {
@@ -3595,7 +3595,7 @@ export type IndexPostsQueryVariables = {
 
 
 export type IndexPostsQuery = { allMarkdownRemark: { edges: Array<{ node: { fields?: Maybe<(
-          Pick<MarkdownRemarkFields, 'slug'>
+          Pick<MarkdownRemarkFields, 'firstParagraph'>
           & { backdrop?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> }
         )>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'sequence' | 'date'>> } }> } };
 
@@ -3606,10 +3606,7 @@ export type ReviewForSlugQueryVariables = {
 
 export type ReviewForSlugQuery = { review?: Maybe<(
     Pick<MarkdownRemark, 'html'>
-    & { fields?: Maybe<(
-      Pick<MarkdownRemarkFields, 'slug'>
-      & { backdrop?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> }
-    )>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'slug'>> }
+    & { fields?: Maybe<{ backdrop?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> }>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'slug'>> }
   )> };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;

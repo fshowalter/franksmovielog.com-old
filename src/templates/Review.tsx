@@ -94,7 +94,6 @@ export const pageQuery = graphql`
   query ReviewForSlug($slug: String!) {
     review: markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       fields {
-        slug
         backdrop {
           childImageSharp {
             fluid(toFormat: JPG, jpegQuality: 75) {
