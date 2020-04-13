@@ -1,22 +1,25 @@
-const escapeRegExp = str => {
+const escapeRegExp = (str: string): string => {
   return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 };
 
 /*
   Copyright 2009 Nicholas C. Zakas. All rights reserved. MIT Licensed
 */
-const timedChunk = (items, process, context, callback) => {
-  var processItem;
-  var todo;
+const timedChunk = (
+  items: NodeList,
+  process: (node: Node) => void,
+  callback: (nodeList: NodeList) => any
+) => {
+  const todo = nodeListToArray(items);
+  if (todo.length == 0) {
+    return;
+  }
 
-  todo = nodeListToArray(items);
-
-  processItem = function processItemChunk() {
-    var start;
-    start = +new Date();
+  const processItem = function processItemChunk() {
+    const start = +new Date();
 
     do {
-      process(todo.shift());
+      process(todo.shift()!);
     } while (todo.length > 0 && +new Date() - start < 50);
 
     if (todo.length > 0) {
@@ -28,7 +31,7 @@ const timedChunk = (items, process, context, callback) => {
   return setTimeout(processItem, 25);
 };
 
-const nodeListToArray = nodeList => {
+const nodeListToArray = (nodeList: NodeList) => {
   var array = [];
   var i;
   var len;
@@ -40,8 +43,8 @@ const nodeListToArray = nodeList => {
   return array;
 };
 
-const buildMatcher = matcher => {
-  return item => {
+const buildMatcher = (matcher: (node: Node) => boolean) => {
+  return (item: HTMLElement) => {
     let match = true;
 
     if (!matcher(item)) {

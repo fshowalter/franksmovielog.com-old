@@ -10,11 +10,7 @@ export const plugins = [
   {
     resolve: `gatsby-plugin-graphql-codegen`,
     options: {
-      documentPaths: [
-        "./src/**/*.{ts,tsx}",
-        "./node_modules/gatsby-*/**/*.js",
-        "./gatsby-node.ts",
-      ],
+      documentPaths: [`src/**/*.{ts,tsx}`, `node_modules/gatsby-*/**/*.js`],
     },
   },
   {
@@ -32,14 +28,14 @@ export const plugins = [
     resolve: `gatsby-source-filesystem`,
     options: {
       name: "backdrop",
-      path: `${__dirname}/src/assets/backdrops/`,
+      path: `${__dirname}/../assets/backdrops/`,
     },
   },
   {
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `review`,
-      path: `${__dirname}/../movielog-new/reviews/`,
+      path: `${__dirname}/../../../movielog-new/reviews/`,
     },
   },
   `gatsby-plugin-react-helmet`,
@@ -54,7 +50,7 @@ export const plugins = [
       dbEngine: {
         client: "sqlite3",
         connection: {
-          filename: `${__dirname}/../movielog-new/db/movie_db.sqlite3`,
+          filename: `${__dirname}/../../../movielog-new/db/movie_db.sqlite3`,
         },
         useNullAsDefault: true,
       },
@@ -94,7 +90,7 @@ export const plugins = [
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `viewing`,
-      path: `${__dirname}/../movielog-new/viewings`,
+      path: `${__dirname}/../../../movielog-new/viewings/`,
     },
   },
 ];

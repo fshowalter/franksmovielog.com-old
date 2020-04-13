@@ -1,11 +1,10 @@
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import Img, { FluidObject } from "gatsby-image";
 import parse from "html-react-parser";
 import React from "react";
 
 import styled from "@emotion/styled";
 
-import { ReviewForSlugQuery } from "../../graphql-types";
 import Layout from "../components/Layout";
 import SingleColumn from "../components/SingleColumn";
 
@@ -55,7 +54,21 @@ const Content = styled.div`
 `;
 
 interface Props {
-  data: ReviewForSlugQuery;
+  data: {
+    review: {
+      fields: {
+        backdrop?: {
+          childImageSharp: {
+            fluid: FluidObject;
+          };
+        };
+      };
+      frontmatter: {
+        title: string;
+      };
+      html: string;
+    };
+  };
 }
 
 const ReviewTemplate = ({ data }: Props) => {
@@ -64,11 +77,11 @@ const ReviewTemplate = ({ data }: Props) => {
       <SingleColumn>
         <Article>
           <Img
-            fluid={data.review.fields.backdrop.childImageSharp.fluid}
-            alt={`A still from ${review.frontmatter.title}`}
+            fluid={data.review.fields.backdrop?.childImageSharp.fluid}
+            alt={`A still from ${data.review.frontmatter.title}`}
           />
-          <Title>{review.frontmatter.title}</Title>
-          <Content>{parse(review.html)}</Content>
+          <Title>{data.review.frontmatter.title}</Title>
+          <Content>{parse(data.review.html)}</Content>
         </Article>
       </SingleColumn>
     </Layout>

@@ -1858,10 +1858,10 @@ export type Query = {
   allImageSharp: ImageSharpConnection;
   markdownRemark?: Maybe<MarkdownRemark>;
   allMarkdownRemark: MarkdownRemarkConnection;
-  viewingsYaml?: Maybe<ViewingsYaml>;
-  allViewingsYaml: ViewingsYamlConnection;
   watchlistTitle?: Maybe<WatchlistTitle>;
   allWatchlistTitle: WatchlistTitleConnection;
+  viewingsYaml?: Maybe<ViewingsYaml>;
+  allViewingsYaml: ViewingsYamlConnection;
   sqlSource?: Maybe<SqlSource>;
   allSqlSource: SqlSourceConnection;
   siteBuildMetadata?: Maybe<SiteBuildMetadata>;
@@ -2071,27 +2071,6 @@ export type QueryAllMarkdownRemarkArgs = {
 };
 
 
-export type QueryViewingsYamlArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  sequence?: Maybe<IntQueryOperatorInput>;
-  date?: Maybe<DateQueryOperatorInput>;
-  imdb_id?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  venue?: Maybe<StringQueryOperatorInput>;
-};
-
-
-export type QueryAllViewingsYamlArgs = {
-  filter?: Maybe<ViewingsYamlFilterInput>;
-  sort?: Maybe<ViewingsYamlSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
 export type QueryWatchlistTitleArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -2113,6 +2092,27 @@ export type QueryWatchlistTitleArgs = {
 export type QueryAllWatchlistTitleArgs = {
   filter?: Maybe<WatchlistTitleFilterInput>;
   sort?: Maybe<WatchlistTitleSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryViewingsYamlArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  sequence?: Maybe<IntQueryOperatorInput>;
+  date?: Maybe<DateQueryOperatorInput>;
+  imdb_id?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  venue?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllViewingsYamlArgs = {
+  filter?: Maybe<ViewingsYamlFilterInput>;
+  sort?: Maybe<ViewingsYamlSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -2698,7 +2698,6 @@ export type SitePageFieldsEnum =
   'pluginCreator___resolve' |
   'pluginCreator___name' |
   'pluginCreator___version' |
-  'pluginCreator___pluginOptions___documentPaths' |
   'pluginCreator___pluginOptions___toFormat' |
   'pluginCreator___pluginOptions___stripMetadata' |
   'pluginCreator___pluginOptions___defaultQuality' |
@@ -2709,6 +2708,7 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___dbEngine___client' |
   'pluginCreator___pluginOptions___dbEngine___useNullAsDefault' |
   'pluginCreator___pluginOptions___pathCheck' |
+  'pluginCreator___pluginOptions___documentPaths' |
   'pluginCreator___nodeAPIs' |
   'pluginCreator___ssrAPIs' |
   'pluginCreator___pluginFilepath' |
@@ -2893,7 +2893,6 @@ export type SitePluginFieldsEnum =
   'resolve' |
   'name' |
   'version' |
-  'pluginOptions___documentPaths' |
   'pluginOptions___toFormat' |
   'pluginOptions___stripMetadata' |
   'pluginOptions___defaultQuality' |
@@ -2905,6 +2904,7 @@ export type SitePluginFieldsEnum =
   'pluginOptions___dbEngine___connection___filename' |
   'pluginOptions___dbEngine___useNullAsDefault' |
   'pluginOptions___pathCheck' |
+  'pluginOptions___documentPaths' |
   'nodeAPIs' |
   'ssrAPIs' |
   'pluginFilepath' |
@@ -3015,7 +3015,6 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
-  documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
   toFormat?: Maybe<Scalars['String']>;
   stripMetadata?: Maybe<Scalars['Boolean']>;
   defaultQuality?: Maybe<Scalars['Int']>;
@@ -3025,6 +3024,7 @@ export type SitePluginPluginOptions = {
   fieldName?: Maybe<Scalars['String']>;
   dbEngine?: Maybe<SitePluginPluginOptionsDbEngine>;
   pathCheck?: Maybe<Scalars['Boolean']>;
+  documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type SitePluginPluginOptionsDbEngine = {
@@ -3048,7 +3048,6 @@ export type SitePluginPluginOptionsDbEngineFilterInput = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
-  documentPaths?: Maybe<StringQueryOperatorInput>;
   toFormat?: Maybe<StringQueryOperatorInput>;
   stripMetadata?: Maybe<BooleanQueryOperatorInput>;
   defaultQuality?: Maybe<IntQueryOperatorInput>;
@@ -3058,6 +3057,7 @@ export type SitePluginPluginOptionsFilterInput = {
   fieldName?: Maybe<StringQueryOperatorInput>;
   dbEngine?: Maybe<SitePluginPluginOptionsDbEngineFilterInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  documentPaths?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {
@@ -3583,6 +3583,11 @@ export type WatchlistTitleSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
+export type CreatePagesQueryVariables = {};
+
+
+export type CreatePagesQuery = { allMarkdownRemark: { edges: Array<{ node: { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'slug'>> } }> } };
+
 export type IndexPostsQueryVariables = {
   skip: Scalars['Int'];
   limit: Scalars['Int'];
@@ -3592,7 +3597,7 @@ export type IndexPostsQueryVariables = {
 export type IndexPostsQuery = { allMarkdownRemark: { edges: Array<{ node: { fields?: Maybe<(
           Pick<MarkdownRemarkFields, 'slug'>
           & { backdrop?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> }
-        )>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title'>> } }> } };
+        )>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'sequence'>> } }> } };
 
 export type ReviewForSlugQueryVariables = {
   slug: Scalars['String'];
@@ -3654,8 +3659,3 @@ export type GatsbyImageSharpSizes_WithWebp_TracedSvgFragment = Pick<ImageSharpSi
 export type GatsbyImageSharpSizes_NoBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-export type BuildPagesQueryVariables = {};
-
-
-export type BuildPagesQuery = { allMarkdownRemark: { edges: Array<{ node: { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'slug'>> } }> } };

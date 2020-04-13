@@ -68,6 +68,7 @@ interface Props {
           };
           frontmatter: {
             title: string;
+            sequence: number;
           };
         };
       }[];
@@ -75,17 +76,33 @@ interface Props {
   };
 }
 
+const imageForNode = (
+  node: Props["data"]["allMarkdownRemark"]["edges"][0]["node"]
+) => {
+  if (
+    node.fields.backdrop === undefined ||
+    node.fields.backdrop.childImageSharp == undefined ||
+    node.fields.backdrop.childImageSharp == undefined
+  ) {
+    return;
+  }
+
+  return (
+    <Img
+      fluid={node.fields?.backdrop?.childImageSharp?.fluid}
+      alt={`A still from ${node.frontmatter?.title}`}
+    />
+  );
+};
+
 const HomeTemplate: React.FC<Props> = ({ data }) => {
   return (
     <Layout>
       <SingleColumn>
         <ReviewList>
           {data.allMarkdownRemark.edges.map(({ node }) => (
-            <ReviewListItem>
-              <Img
-                fluid={node.fields?.backdrop?.childImageSharp?.fluid}
-                alt={`A still from ${node.frontmatter?.title}`}
-              />
+            <ReviewListItem key={node.frontmatter?.sequence}>
+              {imageForNode(node)}
               {node.frontmatter?.title}
             </ReviewListItem>
           ))}
@@ -119,6 +136,7 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
+            sequence
           }
         }
       }
