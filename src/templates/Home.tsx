@@ -61,7 +61,11 @@ const ReviewHeading = styled.h3`
   word-break: normal;
 `;
 
-const ReviewImageWrap = styled.span`
+const ReviewHeaderLink = styled(Link)`
+  color: inherit;
+`;
+
+const ReviewImageWrap = styled(Link)`
   background-repeat: no-repeat;
   background-size: cover;
   border: 9px solid var(--color-primary);
@@ -152,6 +156,7 @@ interface Props {
           sequence: number;
           date: string;
           grade: string;
+          slug: string;
         };
       }[];
     };
@@ -170,6 +175,7 @@ interface Props {
         frontmatter: {
           grade: string;
           sequence: number;
+          slug: string;
         };
       }[];
     };
@@ -224,50 +230,50 @@ interface PaginationProps {
   pageContext: Props["pageContext"];
 }
 
+const PaginationHeading = styled.div`
+  border-bottom: 1px solid var(--color-primary);
+  font-size: 16px;
+  margin: 60px 0 10px;
+  padding-bottom: 4px;
+  text-rendering: optimizeLegibility;
+  word-wrap: break-word;
+`;
+
+const PaginationWrap = styled.div`
+  margin-bottom: 40px;
+`;
+
+const PaginationLinkWrap = styled.div`
+  margin-top: 20px;
+  text-align: center;
+`;
+
+const PaginationNextPageLink = styled(Link)`
+  border: 1px solid var(--color-primary);
+  border-radius: 5px;
+  color: var(--color-heading);
+  display: inline-block;
+  font-size: 15px;
+  line-height: 38px;
+  margin-top: 30px;
+  padding: 0 60px 0 20px;
+  position: relative;
+  text-align: center;
+
+  &:after {
+    background-image: url('data:Image/svg+xml;charset=utf8,<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M6.165 3.874c-.217-.204-.22-.53-.008-.73.206-.192.56-.195.776.008l5.902 5.48c.11.102.165.236.165.37-.002.126-.055.262-.165.365l-5.902 5.478c-.217.204-.564.207-.776.007-.206-.193-.21-.525.008-.728L11.69 9 6.165 3.873z"></path></svg>');
+    background-size: contain;
+    content: "";
+    height: 20px;
+    opacity: 0.3;
+    position: absolute;
+    right: 20px;
+    top: 9px;
+    width: 20px;
+  }
+`;
+
 const Pagination: React.FC<PaginationProps> = ({ moreNodes, pageContext }) => {
-  const Heading = styled.div`
-    border-bottom: 1px solid var(--color-primary);
-    font-size: 16px;
-    margin: 60px 0 10px;
-    padding-bottom: 4px;
-    text-rendering: optimizeLegibility;
-    word-wrap: break-word;
-  `;
-
-  const PaginationWrap = styled.div`
-    margin-bottom: 40px;
-  `;
-
-  const PaginationLinkWrap = styled.div`
-    margin-top: 20px;
-    text-align: center;
-  `;
-
-  const PaginationNextPageLink = styled(Link)`
-    border: 1px solid var(--color-primary);
-    border-radius: 5px;
-    color: var(--color-heading);
-    display: inline-block;
-    font-size: 15px;
-    line-height: 38px;
-    margin-top: 30px;
-    padding: 0 60px 0 20px;
-    position: relative;
-    text-align: center;
-
-    &:after {
-      background-image: url('data:Image/svg+xml;charset=utf8,<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M6.165 3.874c-.217-.204-.22-.53-.008-.73.206-.192.56-.195.776.008l5.902 5.48c.11.102.165.236.165.37-.002.126-.055.262-.165.365l-5.902 5.478c-.217.204-.564.207-.776.007-.206-.193-.21-.525.008-.728L11.69 9 6.165 3.873z"></path></svg>');
-      background-size: contain;
-      content: "";
-      height: 20px;
-      opacity: 0.3;
-      position: absolute;
-      right: 20px;
-      top: 9px;
-      width: 20px;
-    }
-  `;
-
   const { currentPage, numPages } = pageContext;
   const isLast = currentPage === numPages;
   const nextPage = (currentPage + 1).toString();
@@ -278,11 +284,11 @@ const Pagination: React.FC<PaginationProps> = ({ moreNodes, pageContext }) => {
 
   return (
     <Fragment>
-      <Heading>More from Frank's Movie Log</Heading>
+      <PaginationHeading>More from Frank's Movie Log</PaginationHeading>
       <MoreList nodes={moreNodes} />
       <PaginationWrap>
         <PaginationLinkWrap>
-          <PaginationNextPageLink to={nextPage} rel="next">
+          <PaginationNextPageLink to={`/page-${nextPage}/`} rel="next">
             More reviews
           </PaginationNextPageLink>
         </PaginationLinkWrap>
@@ -302,9 +308,17 @@ const HomeTemplate: React.FC<Props> = ({ pageContext, data }) => {
                 <Review>
                   <ReviewDate>{dateForNode(node)}</ReviewDate>
                   <ReviewHeader>
-                    <ReviewHeading>{node.fields.movie.title}</ReviewHeading>
+                    <ReviewHeading>
+                      <ReviewHeaderLink
+                        to={`/reviews/${node.frontmatter.slug}/`}
+                      >
+                        {node.fields.movie.title}
+                      </ReviewHeaderLink>
+                    </ReviewHeading>
                   </ReviewHeader>
-                  <ReviewImageWrap>{imageForNode(node)}</ReviewImageWrap>
+                  <ReviewImageWrap to={`/reviews/${node.frontmatter.slug}/`}>
+                    {imageForNode(node)}
+                  </ReviewImageWrap>
                   <ReviewExcerpt>{buildExcerpt(node)}</ReviewExcerpt>
                 </Review>
               </ListItem>
@@ -351,6 +365,7 @@ export const pageQuery = graphql`
           sequence
           date(formatString: "DD MMM YYYY")
           grade
+          slug
         }
       }
     }
@@ -376,6 +391,7 @@ export const pageQuery = graphql`
         frontmatter {
           sequence
           grade
+          slug
         }
       }
     }

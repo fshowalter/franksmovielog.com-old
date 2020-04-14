@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import React, { memo } from 'react';
 
@@ -35,7 +36,7 @@ const Title = styled.div`
   width: 95%;
 `;
 
-const ImageWrap = styled.span`
+const ImageWrap = styled(Link)`
   position: relative;
 `;
 
@@ -130,6 +131,7 @@ interface Props {
     frontmatter: {
       grade: string;
       sequence: number;
+      slug: string;
     };
   }[];
 }
@@ -140,7 +142,9 @@ const MoreList: React.FC<Props> = ({ nodes }) => {
       {nodes.map((node) => (
         <ListItem key={node.frontmatter?.sequence}>
           <ListItemWrap>
-            <ImageWrap>{imageForNode(node)}</ImageWrap>
+            <ImageWrap to={`/reviews/${node.frontmatter.slug}/`}>
+              {imageForNode(node)}
+            </ImageWrap>
             <Title>{node.fields.movie.title}</Title>
             <StyledGrade
               grade={node.frontmatter.grade}

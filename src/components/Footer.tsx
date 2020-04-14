@@ -36,11 +36,19 @@ const FooterLink = styled(Link)`
   white-space: nowrap;
 `;
 
-const FooterSubLink = styled(Link)`
+const footerSubLinkCss = `
   color: ${styleVars.colorFooterSubLink};
   font-size: 13px;
   letter-spacing: 0.3px;
   text-rendering: optimizeLegibility;
+`;
+
+const FooterSubLink = styled(Link)`
+  ${footerSubLinkCss}
+`;
+
+const FooterSubExternalLink = styled.a`
+  ${footerSubLinkCss}
 `;
 
 export default () => {
@@ -68,9 +76,9 @@ export default () => {
       </FooterList>
       <FooterList>
         <FooterListItem>
-          <FooterSubLink to="https://letterboxd.com/frankshowalter/">
+          <FooterSubExternalLink href="https://letterboxd.com/frankshowalter/">
             Letterboxd
-          </FooterSubLink>
+          </FooterSubExternalLink>
         </FooterListItem>
         <FooterListItem>
           <FooterSubLink to="/feed.xml">RSS</FooterSubLink>

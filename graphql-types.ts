@@ -3814,7 +3814,7 @@ export type IndexPostsQueryVariables = {
 export type IndexPostsQuery = { reviews: { nodes: Array<{ fields?: Maybe<(
         Pick<MarkdownRemarkFields, 'firstParagraph'>
         & { backdrop?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }>, movie?: Maybe<Pick<Movie, 'title'>> }
-      )>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'sequence' | 'date' | 'grade'>> }> }, more: { nodes: Array<{ fields?: Maybe<{ backdrop?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }>, movie?: Maybe<Pick<Movie, 'title'>> }>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'sequence' | 'grade'>> }> } };
+      )>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'sequence' | 'date' | 'grade' | 'slug'>> }> }, more: { nodes: Array<{ fields?: Maybe<{ backdrop?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }>, movie?: Maybe<Pick<Movie, 'title'>> }>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'sequence' | 'grade' | 'slug'>> }> } };
 
 export type ReviewForSlugQueryVariables = {
   slug: Scalars['String'];

@@ -41,7 +41,7 @@ export const createPages: GatsbyNode["createPages"] = async function createPages
     // Create Review pages
     reviewEdges.forEach(({ node }) => {
       createPage({
-        path: `/reviews/${node.frontmatter.slug}`,
+        path: `/reviews/${node.frontmatter.slug}/`,
         component: require.resolve("../templates/Review.tsx"),
         context: {
           slug: node.frontmatter.slug,
@@ -55,7 +55,7 @@ export const createPages: GatsbyNode["createPages"] = async function createPages
     const numPages = Math.ceil(reviewEdges.length / reviewsPerPage);
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
-        path: i === 0 ? `/` : `/page-${i + 1}`,
+        path: i === 0 ? `/` : `/page-${i + 1}/`,
         component: require.resolve("../templates/Home.tsx"),
         context: {
           limit: reviewsPerPage,
