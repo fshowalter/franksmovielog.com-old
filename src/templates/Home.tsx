@@ -1,7 +1,7 @@
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import parse from 'html-react-parser';
-import React, { memo } from 'react';
+import React, { Fragment, memo } from 'react';
 import { renderToString } from 'react-dom/server';
 import remark from 'remark';
 
@@ -9,6 +9,7 @@ import styled from '@emotion/styled';
 
 import Grade from '../components/Grade';
 import Layout from '../components/Layout';
+import MoreList from '../components/MoreList';
 import SingleColumn from '../components/SingleColumn';
 
 const remarkHTML = require("remark-html");
@@ -127,43 +128,59 @@ const ListItem = styled.li`
 `;
 
 interface Props {
+  pageContext: {
+    currentPage: number;
+    numPages: number;
+  };
   data: {
-    allMarkdownRemark: {
-      edges: {
-        node: {
-          fields: {
-            backdrop?: {
-              childImageSharp?: {
-                fluid: FluidObject;
-              };
+    reviews: {
+      nodes: {
+        fields: {
+          backdrop?: {
+            childImageSharp?: {
+              fluid: FluidObject;
             };
-            movie: {
-              title: string;
-              year: number;
-            };
-            firstParagraph: string;
           };
-          frontmatter: {
+          movie: {
             title: string;
-            sequence: number;
-            date: string;
-            grade: string;
+            year: number;
           };
+          firstParagraph: string;
+        };
+        frontmatter: {
+          title: string;
+          sequence: number;
+          date: string;
+          grade: string;
+        };
+      }[];
+    };
+    more: {
+      nodes: {
+        fields: {
+          backdrop?: {
+            childImageSharp?: {
+              fluid: FluidObject;
+            };
+          };
+          movie: {
+            title: string;
+          };
+        };
+        frontmatter: {
+          grade: string;
+          sequence: number;
         };
       }[];
     };
   };
 }
 
-type ReviewNode = Props["data"]["allMarkdownRemark"]["edges"][0]["node"];
+type ReviewNode = Props["data"]["reviews"]["nodes"][0];
 
 const imageForNode = (node: ReviewNode) => {
-  if (
-    node.fields.backdrop === undefined ||
-    node.fields.backdrop.childImageSharp == undefined ||
-    node.fields.backdrop.childImageSharp == undefined
-  ) {
-    return;
+  if (!node.fields.backdrop || !node.fields.backdrop.childImageSharp) {
+    return null;
   }
 
   return (
@@ -202,13 +219,85 @@ const buildExcerpt = (node: ReviewNode) => {
   return parse(remark().use(remarkHTML).processSync(excerpt).toString());
 };
 
-const HomeTemplate: React.FC<Props> = ({ data }) => {
+interface PaginationProps {
+  moreNodes: Props["data"]["more"]["nodes"];
+  pageContext: Props["pageContext"];
+}
+
+const Pagination: React.FC<PaginationProps> = ({ moreNodes, pageContext }) => {
+  const Heading = styled.div`
+    border-bottom: 1px solid var(--color-primary);
+    font-size: 16px;
+    margin: 60px 0 10px;
+    padding-bottom: 4px;
+    text-rendering: optimizeLegibility;
+    word-wrap: break-word;
+  `;
+
+  const PaginationWrap = styled.div`
+    margin-bottom: 40px;
+  `;
+
+  const PaginationLinkWrap = styled.div`
+    margin-top: 20px;
+    text-align: center;
+  `;
+
+  const PaginationNextPageLink = styled(Link)`
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+    color: var(--color-heading);
+    display: inline-block;
+    font-size: 15px;
+    line-height: 38px;
+    margin-top: 30px;
+    padding: 0 60px 0 20px;
+    position: relative;
+    text-align: center;
+
+    &:after {
+      background-image: url('data:Image/svg+xml;charset=utf8,<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M6.165 3.874c-.217-.204-.22-.53-.008-.73.206-.192.56-.195.776.008l5.902 5.48c.11.102.165.236.165.37-.002.126-.055.262-.165.365l-5.902 5.478c-.217.204-.564.207-.776.007-.206-.193-.21-.525.008-.728L11.69 9 6.165 3.873z"></path></svg>');
+      background-size: contain;
+      content: "";
+      height: 20px;
+      opacity: 0.3;
+      position: absolute;
+      right: 20px;
+      top: 9px;
+      width: 20px;
+    }
+  `;
+
+  const { currentPage, numPages } = pageContext;
+  const isLast = currentPage === numPages;
+  const nextPage = (currentPage + 1).toString();
+
+  if (isLast) {
+    return null;
+  }
+
+  return (
+    <Fragment>
+      <Heading>More from Frank's Movie Log</Heading>
+      <MoreList nodes={moreNodes} />
+      <PaginationWrap>
+        <PaginationLinkWrap>
+          <PaginationNextPageLink to={nextPage} rel="next">
+            More reviews
+          </PaginationNextPageLink>
+        </PaginationLinkWrap>
+      </PaginationWrap>
+    </Fragment>
+  );
+};
+
+const HomeTemplate: React.FC<Props> = ({ pageContext, data }) => {
   return (
     <Layout>
       <SingleColumn>
         <HomeWrap>
           <List>
-            {data.allMarkdownRemark.edges.map(({ node }) => (
+            {data.reviews.nodes.map((node) => (
               <ListItem key={node.frontmatter?.sequence}>
                 <Review>
                   <ReviewDate>{dateForNode(node)}</ReviewDate>
@@ -221,6 +310,7 @@ const HomeTemplate: React.FC<Props> = ({ data }) => {
               </ListItem>
             ))}
           </List>
+          <Pagination moreNodes={data.more.nodes} pageContext={pageContext} />
         </HomeWrap>
       </SingleColumn>
     </Layout>
@@ -230,34 +320,62 @@ const HomeTemplate: React.FC<Props> = ({ data }) => {
 export default memo(HomeTemplate);
 
 export const pageQuery = graphql`
-  query IndexPosts($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
+  query IndexPosts(
+    $skip: Int!
+    $limit: Int!
+    $moreSkip: Int!
+    $moreLimit: Int!
+  ) {
+    reviews: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/reviews/" } }
       sort: { fields: [frontmatter___sequence], order: DESC }
       limit: $limit
       skip: $skip
     ) {
-      edges {
-        node {
-          fields {
-            backdrop {
-              childImageSharp {
-                fluid(toFormat: JPG, jpegQuality: 75) {
-                  ...GatsbyImageSharpFluid
-                }
+      nodes {
+        fields {
+          backdrop {
+            childImageSharp {
+              fluid(toFormat: JPG, jpegQuality: 75) {
+                ...GatsbyImageSharpFluid
               }
             }
-            movie {
-              title
-            }
-            firstParagraph
           }
-          frontmatter {
+          movie {
             title
-            sequence
-            date(formatString: "DD MMM YYYY")
-            grade
           }
+          firstParagraph
+        }
+        frontmatter {
+          title
+          sequence
+          date(formatString: "DD MMM YYYY")
+          grade
+        }
+      }
+    }
+    more: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/reviews/" } }
+      sort: { fields: [frontmatter___sequence], order: DESC }
+      limit: $moreLimit
+      skip: $moreSkip
+    ) {
+      nodes {
+        fields {
+          backdrop {
+            childImageSharp {
+              fluid(toFormat: JPG, jpegQuality: 75) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          movie {
+            title
+          }
+        }
+        frontmatter {
+          sequence
+          grade
         }
       }
     }

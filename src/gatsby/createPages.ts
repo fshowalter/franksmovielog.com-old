@@ -1,4 +1,4 @@
-import { GatsbyNode } from "gatsby";
+import { GatsbyNode } from 'gatsby';
 
 interface CreatePagesQuery {
   allMarkdownRemark: {
@@ -62,6 +62,8 @@ export const createPages: GatsbyNode["createPages"] = async function createPages
           skip: i * reviewsPerPage,
           numPages,
           currentPage: i + 1,
+          moreSkip: i * reviewsPerPage + reviewsPerPage,
+          moreLimit: 4,
         },
       });
     });

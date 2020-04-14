@@ -2750,6 +2750,8 @@ export type SitePageContext = {
   skip?: Maybe<Scalars['Int']>;
   numPages?: Maybe<Scalars['Int']>;
   currentPage?: Maybe<Scalars['Int']>;
+  moreSkip?: Maybe<Scalars['Int']>;
+  moreLimit?: Maybe<Scalars['Int']>;
 };
 
 export type SitePageContextFilterInput = {
@@ -2759,6 +2761,8 @@ export type SitePageContextFilterInput = {
   skip?: Maybe<IntQueryOperatorInput>;
   numPages?: Maybe<IntQueryOperatorInput>;
   currentPage?: Maybe<IntQueryOperatorInput>;
+  moreSkip?: Maybe<IntQueryOperatorInput>;
+  moreLimit?: Maybe<IntQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -2866,6 +2870,8 @@ export type SitePageFieldsEnum =
   'context___skip' |
   'context___numPages' |
   'context___currentPage' |
+  'context___moreSkip' |
+  'context___moreLimit' |
   'pluginCreator___id' |
   'pluginCreator___parent___id' |
   'pluginCreator___parent___parent___id' |
@@ -3800,13 +3806,15 @@ export type CreatePagesQuery = { allMarkdownRemark: { edges: Array<{ node: { fro
 export type IndexPostsQueryVariables = {
   skip: Scalars['Int'];
   limit: Scalars['Int'];
+  moreSkip: Scalars['Int'];
+  moreLimit: Scalars['Int'];
 };
 
 
-export type IndexPostsQuery = { allMarkdownRemark: { edges: Array<{ node: { fields?: Maybe<(
-          Pick<MarkdownRemarkFields, 'firstParagraph'>
-          & { backdrop?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }>, movie?: Maybe<Pick<Movie, 'title'>> }
-        )>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'sequence' | 'date' | 'grade'>> } }> } };
+export type IndexPostsQuery = { reviews: { nodes: Array<{ fields?: Maybe<(
+        Pick<MarkdownRemarkFields, 'firstParagraph'>
+        & { backdrop?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }>, movie?: Maybe<Pick<Movie, 'title'>> }
+      )>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'sequence' | 'date' | 'grade'>> }> }, more: { nodes: Array<{ fields?: Maybe<{ backdrop?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }>, movie?: Maybe<Pick<Movie, 'title'>> }>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'sequence' | 'grade'>> }> } };
 
 export type ReviewForSlugQueryVariables = {
   slug: Scalars['String'];
