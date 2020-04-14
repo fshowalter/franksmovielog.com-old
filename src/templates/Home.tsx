@@ -1,12 +1,25 @@
-import { graphql } from "gatsby";
-import Img, { FluidObject } from "gatsby-image";
-import React, { memo } from "react";
-import parse from "html-react-parser";
+import { graphql } from 'gatsby';
+import Img, { FluidObject } from 'gatsby-image';
+import parse from 'html-react-parser';
+import React, { memo } from 'react';
+import { renderToString } from 'react-dom/server';
+import remark from 'remark';
 
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
-import Layout from "../components/Layout";
-import SingleColumn from "../components/SingleColumn";
+import Grade from '../components/Grade';
+import Layout from '../components/Layout';
+import SingleColumn from '../components/SingleColumn';
+
+const remarkHTML = require("remark-html");
+
+const HomeWrap = styled.div`
+  padding: 20px;
+
+  @media only screen and (min-width: 40.625em) {
+    padding: 20px 110px;
+  }
+`;
 
 const List = styled.ol`
   list-style-type: none;
@@ -78,7 +91,7 @@ const ListItem = styled.li`
   padding: 0;
 
   &:after {
-    background-color: $color_primary;
+    background-color: var(--color-primary);
     clear: both;
     content: "";
     display: block;
@@ -124,12 +137,17 @@ interface Props {
                 fluid: FluidObject;
               };
             };
+            movie: {
+              title: string;
+              year: number;
+            };
             firstParagraph: string;
           };
           frontmatter: {
             title: string;
             sequence: number;
             date: string;
+            grade: string;
           };
         };
       }[];
@@ -137,9 +155,9 @@ interface Props {
   };
 }
 
-const imageForNode = (
-  node: Props["data"]["allMarkdownRemark"]["edges"][0]["node"]
-) => {
+type ReviewNode = Props["data"]["allMarkdownRemark"]["edges"][0]["node"];
+
+const imageForNode = (node: ReviewNode) => {
   if (
     node.fields.backdrop === undefined ||
     node.fields.backdrop.childImageSharp == undefined ||
@@ -156,9 +174,7 @@ const imageForNode = (
   );
 };
 
-const dateForNode = (
-  node: Props["data"]["allMarkdownRemark"]["edges"][0]["node"]
-) => {
+const dateForNode = (node: ReviewNode) => {
   if (node.frontmatter === undefined || node.frontmatter.date == undefined) {
     return;
   }
@@ -166,26 +182,46 @@ const dateForNode = (
   return node.frontmatter.date;
 };
 
+const StyledGrade = styled(Grade)`
+  display: inline-block;
+  height: auto;
+  margin-right: 2px;
+  position: relative;
+  top: 3px;
+  width: 95px;
+`;
+
+const buildExcerpt = (node: ReviewNode) => {
+  let excerpt =
+    renderToString(
+      <StyledGrade grade={node.frontmatter.grade} width={95} height={95} />
+    ) +
+    " " +
+    node.fields.firstParagraph;
+
+  return parse(remark().use(remarkHTML).processSync(excerpt).toString());
+};
+
 const HomeTemplate: React.FC<Props> = ({ data }) => {
   return (
     <Layout>
       <SingleColumn>
-        <List>
-          {data.allMarkdownRemark.edges.map(({ node }) => (
-            <ListItem key={node.frontmatter?.sequence}>
-              <Review>
-                <ReviewDate>{dateForNode(node)}</ReviewDate>
-                <ReviewHeader>
-                  <ReviewHeading>{node.frontmatter?.title}</ReviewHeading>
-                </ReviewHeader>
-                <ReviewImageWrap>{imageForNode(node)}</ReviewImageWrap>
-                <ReviewExcerpt>
-                  {parse(node.fields.firstParagraph)}
-                </ReviewExcerpt>
-              </Review>
-            </ListItem>
-          ))}
-        </List>
+        <HomeWrap>
+          <List>
+            {data.allMarkdownRemark.edges.map(({ node }) => (
+              <ListItem key={node.frontmatter?.sequence}>
+                <Review>
+                  <ReviewDate>{dateForNode(node)}</ReviewDate>
+                  <ReviewHeader>
+                    <ReviewHeading>{node.fields.movie.title}</ReviewHeading>
+                  </ReviewHeader>
+                  <ReviewImageWrap>{imageForNode(node)}</ReviewImageWrap>
+                  <ReviewExcerpt>{buildExcerpt(node)}</ReviewExcerpt>
+                </Review>
+              </ListItem>
+            ))}
+          </List>
+        </HomeWrap>
       </SingleColumn>
     </Layout>
   );
@@ -211,12 +247,16 @@ export const pageQuery = graphql`
                 }
               }
             }
+            movie {
+              title
+            }
             firstParagraph
           }
           frontmatter {
             title
             sequence
             date(formatString: "DD MMM YYYY")
+            grade
           }
         }
       }

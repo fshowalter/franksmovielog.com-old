@@ -1,12 +1,10 @@
 import { GatsbyNode, Actions, Node } from "gatsby";
 import { resolve } from "path";
-import remark from "remark";
-
-const remarkHTML = require("remark-html");
 
 interface MarkdownNode extends Node {
   frontmatter?: {
     slug?: string;
+    imdb_id?: string;
   };
   absolutePath: string;
   rawMarkdownBody: string;
@@ -19,14 +17,9 @@ export const addFirstParagraphField = ({
   markdownNode: MarkdownNode;
   createNodeField: Actions["createNodeField"];
 }) => {
-  let firstParagraph = markdownNode.rawMarkdownBody
+  const firstParagraph = markdownNode.rawMarkdownBody
     ? markdownNode.rawMarkdownBody.trim().split("\n\n")[0]
     : "";
-
-  firstParagraph = remark()
-    .use(remarkHTML)
-    .processSync(firstParagraph)
-    .toString();
 
   createNodeField({
     name: "firstParagraph",
@@ -35,7 +28,7 @@ export const addFirstParagraphField = ({
   });
 };
 
-export const addBackdropFied = ({
+export const addBackdropField = ({
   markdownNode,
   createNodeField,
   getNodes,
@@ -64,6 +57,48 @@ export const addBackdropFied = ({
   });
 };
 
+interface ImdbNode {
+  imdb_id: string;
+  id: string;
+  internal: {
+    type: string;
+  };
+}
+
+export const addMovieInfo = ({
+  markdownNode,
+  createNodeField,
+  getNodes,
+}: {
+  markdownNode: MarkdownNode;
+  createNodeField: Actions["createNodeField"];
+  getNodes: Function;
+}) => {
+  const imdbId = markdownNode.frontmatter
+    ? markdownNode.frontmatter.imdb_id
+    : null;
+
+  if (!imdbId) {
+    return;
+  }
+
+  const imdbNode: ImdbNode = getNodes().find((node: ImdbNode) => {
+    if (node.internal.type != "Movie") {
+      return false;
+    }
+
+    return node.imdb_id === imdbId;
+  });
+
+  const imdbNodeId = imdbNode ? imdbNode.id : null;
+
+  createNodeField({
+    name: "movie___NODE",
+    node: markdownNode,
+    value: imdbNodeId,
+  });
+};
+
 export const onCreateNode: GatsbyNode["onCreateNode"] = ({
   node,
   actions,
@@ -72,8 +107,8 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = ({
   if (node.internal.type === `MarkdownRemark`) {
     const { createNodeField } = actions;
     const markdownNode = node as MarkdownNode;
-
-    addBackdropFied({ markdownNode, createNodeField, getNodes });
+    addBackdropField({ markdownNode, createNodeField, getNodes });
     addFirstParagraphField({ markdownNode, createNodeField });
+    addMovieInfo({ markdownNode, createNodeField, getNodes });
   }
 };

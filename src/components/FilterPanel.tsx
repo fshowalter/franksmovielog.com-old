@@ -1,6 +1,6 @@
-import React, { ChangeEventHandler, ReactNode } from "react";
+import React, { ChangeEventHandler, ReactNode } from 'react';
 
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 const styleVars = {
   filterBackgroundColor: "#fff",
@@ -72,17 +72,13 @@ const Label = styled.label`
 `;
 
 const SelectInput = styled.select`
-  -moz-appearance: none;
-  -webkit-appearance: none;
+  appearance: none;
   backface-visibility: hidden;
-  background-color: ${styleVars.filterBackgroundColor};
   border: 0;
   border-radius: 0;
   box-sizing: border-box;
-  color: ${styleVars.filterTextBoxColor};
   display: block;
   font-family: var(--font-family-system);
-  font-size: 16px;
   padding: 0;
   width: 100%;
   background-color: ${styleVars.filterBackgroundColor};

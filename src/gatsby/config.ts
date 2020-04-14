@@ -7,6 +7,7 @@ export const siteMetadata = {
 };
 
 export const plugins = [
+  ...gatsbySourceSql,
   {
     resolve: `gatsby-plugin-graphql-codegen`,
     options: {
@@ -40,7 +41,6 @@ export const plugins = [
   },
   `gatsby-plugin-react-helmet`,
   `gatsby-plugin-emotion`,
-  gatsbySourceSql,
   "gatsby-transformer-yaml",
   {
     resolve: `gatsby-source-filesystem`,

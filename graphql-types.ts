@@ -739,6 +739,13 @@ export type FileFieldsEnum =
   'childMarkdownRemark___fields___backdrop___id' |
   'childMarkdownRemark___fields___backdrop___children' |
   'childMarkdownRemark___fields___firstParagraph' |
+  'childMarkdownRemark___fields___movie___id' |
+  'childMarkdownRemark___fields___movie___children' |
+  'childMarkdownRemark___fields___movie___imdb_id' |
+  'childMarkdownRemark___fields___movie___year' |
+  'childMarkdownRemark___fields___movie___title' |
+  'childMarkdownRemark___fields___movie___original_title' |
+  'childMarkdownRemark___fields___movie___runtime_minutes' |
   'childMarkdownRemark___html' |
   'childMarkdownRemark___htmlAst' |
   'childMarkdownRemark___excerptAst' |
@@ -1542,6 +1549,7 @@ export type MarkdownRemarkEdge = {
 export type MarkdownRemarkFields = {
   backdrop?: Maybe<File>;
   firstParagraph?: Maybe<Scalars['String']>;
+  movie?: Maybe<Movie>;
 };
 
 export type MarkdownRemarkFieldsEnum = 
@@ -1624,6 +1632,25 @@ export type MarkdownRemarkFieldsEnum =
   'fields___backdrop___childViewingsYaml___title' |
   'fields___backdrop___childViewingsYaml___venue' |
   'fields___firstParagraph' |
+  'fields___movie___id' |
+  'fields___movie___parent___id' |
+  'fields___movie___parent___children' |
+  'fields___movie___children' |
+  'fields___movie___children___id' |
+  'fields___movie___children___children' |
+  'fields___movie___internal___content' |
+  'fields___movie___internal___contentDigest' |
+  'fields___movie___internal___description' |
+  'fields___movie___internal___fieldOwners' |
+  'fields___movie___internal___ignoreType' |
+  'fields___movie___internal___mediaType' |
+  'fields___movie___internal___owner' |
+  'fields___movie___internal___type' |
+  'fields___movie___imdb_id' |
+  'fields___movie___year' |
+  'fields___movie___title' |
+  'fields___movie___original_title' |
+  'fields___movie___runtime_minutes' |
   'html' |
   'htmlAst' |
   'excerptAst' |
@@ -1724,6 +1751,7 @@ export type MarkdownRemarkFieldsEnum =
 export type MarkdownRemarkFieldsFilterInput = {
   backdrop?: Maybe<FileFilterInput>;
   firstParagraph?: Maybe<StringQueryOperatorInput>;
+  movie?: Maybe<MovieFilterInput>;
 };
 
 export type MarkdownRemarkFilterInput = {
@@ -1797,6 +1825,164 @@ export type MarkdownWordCountFilterInput = {
   words?: Maybe<IntQueryOperatorInput>;
 };
 
+export type Movie = Node & {
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  imdb_id?: Maybe<Scalars['String']>;
+  year?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+  original_title?: Maybe<Scalars['String']>;
+  runtime_minutes?: Maybe<Scalars['Int']>;
+};
+
+export type MovieConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<MovieEdge>;
+  nodes: Array<Movie>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<MovieGroupConnection>;
+};
+
+
+export type MovieConnectionDistinctArgs = {
+  field: MovieFieldsEnum;
+};
+
+
+export type MovieConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: MovieFieldsEnum;
+};
+
+export type MovieEdge = {
+  next?: Maybe<Movie>;
+  node: Movie;
+  previous?: Maybe<Movie>;
+};
+
+export type MovieFieldsEnum = 
+  'id' |
+  'parent___id' |
+  'parent___parent___id' |
+  'parent___parent___parent___id' |
+  'parent___parent___parent___children' |
+  'parent___parent___children' |
+  'parent___parent___children___id' |
+  'parent___parent___children___children' |
+  'parent___parent___internal___content' |
+  'parent___parent___internal___contentDigest' |
+  'parent___parent___internal___description' |
+  'parent___parent___internal___fieldOwners' |
+  'parent___parent___internal___ignoreType' |
+  'parent___parent___internal___mediaType' |
+  'parent___parent___internal___owner' |
+  'parent___parent___internal___type' |
+  'parent___children' |
+  'parent___children___id' |
+  'parent___children___parent___id' |
+  'parent___children___parent___children' |
+  'parent___children___children' |
+  'parent___children___children___id' |
+  'parent___children___children___children' |
+  'parent___children___internal___content' |
+  'parent___children___internal___contentDigest' |
+  'parent___children___internal___description' |
+  'parent___children___internal___fieldOwners' |
+  'parent___children___internal___ignoreType' |
+  'parent___children___internal___mediaType' |
+  'parent___children___internal___owner' |
+  'parent___children___internal___type' |
+  'parent___internal___content' |
+  'parent___internal___contentDigest' |
+  'parent___internal___description' |
+  'parent___internal___fieldOwners' |
+  'parent___internal___ignoreType' |
+  'parent___internal___mediaType' |
+  'parent___internal___owner' |
+  'parent___internal___type' |
+  'children' |
+  'children___id' |
+  'children___parent___id' |
+  'children___parent___parent___id' |
+  'children___parent___parent___children' |
+  'children___parent___children' |
+  'children___parent___children___id' |
+  'children___parent___children___children' |
+  'children___parent___internal___content' |
+  'children___parent___internal___contentDigest' |
+  'children___parent___internal___description' |
+  'children___parent___internal___fieldOwners' |
+  'children___parent___internal___ignoreType' |
+  'children___parent___internal___mediaType' |
+  'children___parent___internal___owner' |
+  'children___parent___internal___type' |
+  'children___children' |
+  'children___children___id' |
+  'children___children___parent___id' |
+  'children___children___parent___children' |
+  'children___children___children' |
+  'children___children___children___id' |
+  'children___children___children___children' |
+  'children___children___internal___content' |
+  'children___children___internal___contentDigest' |
+  'children___children___internal___description' |
+  'children___children___internal___fieldOwners' |
+  'children___children___internal___ignoreType' |
+  'children___children___internal___mediaType' |
+  'children___children___internal___owner' |
+  'children___children___internal___type' |
+  'children___internal___content' |
+  'children___internal___contentDigest' |
+  'children___internal___description' |
+  'children___internal___fieldOwners' |
+  'children___internal___ignoreType' |
+  'children___internal___mediaType' |
+  'children___internal___owner' |
+  'children___internal___type' |
+  'internal___content' |
+  'internal___contentDigest' |
+  'internal___description' |
+  'internal___fieldOwners' |
+  'internal___ignoreType' |
+  'internal___mediaType' |
+  'internal___owner' |
+  'internal___type' |
+  'imdb_id' |
+  'year' |
+  'title' |
+  'original_title' |
+  'runtime_minutes';
+
+export type MovieFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  imdb_id?: Maybe<StringQueryOperatorInput>;
+  year?: Maybe<IntQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  original_title?: Maybe<StringQueryOperatorInput>;
+  runtime_minutes?: Maybe<IntQueryOperatorInput>;
+};
+
+export type MovieGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<MovieEdge>;
+  nodes: Array<Movie>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type MovieSortInput = {
+  fields?: Maybe<Array<Maybe<MovieFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
 /** Node Interface */
 export type Node = {
   id: Scalars['ID'];
@@ -1860,6 +2046,8 @@ export type Query = {
   allMarkdownRemark: MarkdownRemarkConnection;
   viewingsYaml?: Maybe<ViewingsYaml>;
   allViewingsYaml: ViewingsYamlConnection;
+  movie?: Maybe<Movie>;
+  allMovie: MovieConnection;
   watchlistTitle?: Maybe<WatchlistTitle>;
   allWatchlistTitle: WatchlistTitleConnection;
   sqlSource?: Maybe<SqlSource>;
@@ -2087,6 +2275,27 @@ export type QueryViewingsYamlArgs = {
 export type QueryAllViewingsYamlArgs = {
   filter?: Maybe<ViewingsYamlFilterInput>;
   sort?: Maybe<ViewingsYamlSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryMovieArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  imdb_id?: Maybe<StringQueryOperatorInput>;
+  year?: Maybe<IntQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  original_title?: Maybe<StringQueryOperatorInput>;
+  runtime_minutes?: Maybe<IntQueryOperatorInput>;
+};
+
+
+export type QueryAllMovieArgs = {
+  filter?: Maybe<MovieFilterInput>;
+  sort?: Maybe<MovieSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -2698,16 +2907,16 @@ export type SitePageFieldsEnum =
   'pluginCreator___resolve' |
   'pluginCreator___name' |
   'pluginCreator___version' |
+  'pluginCreator___pluginOptions___typeName' |
+  'pluginCreator___pluginOptions___fieldName' |
+  'pluginCreator___pluginOptions___dbEngine___client' |
+  'pluginCreator___pluginOptions___dbEngine___useNullAsDefault' |
   'pluginCreator___pluginOptions___documentPaths' |
   'pluginCreator___pluginOptions___toFormat' |
   'pluginCreator___pluginOptions___stripMetadata' |
   'pluginCreator___pluginOptions___defaultQuality' |
   'pluginCreator___pluginOptions___name' |
   'pluginCreator___pluginOptions___path' |
-  'pluginCreator___pluginOptions___typeName' |
-  'pluginCreator___pluginOptions___fieldName' |
-  'pluginCreator___pluginOptions___dbEngine___client' |
-  'pluginCreator___pluginOptions___dbEngine___useNullAsDefault' |
   'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___nodeAPIs' |
   'pluginCreator___ssrAPIs' |
@@ -2893,17 +3102,17 @@ export type SitePluginFieldsEnum =
   'resolve' |
   'name' |
   'version' |
+  'pluginOptions___typeName' |
+  'pluginOptions___fieldName' |
+  'pluginOptions___dbEngine___client' |
+  'pluginOptions___dbEngine___connection___filename' |
+  'pluginOptions___dbEngine___useNullAsDefault' |
   'pluginOptions___documentPaths' |
   'pluginOptions___toFormat' |
   'pluginOptions___stripMetadata' |
   'pluginOptions___defaultQuality' |
   'pluginOptions___name' |
   'pluginOptions___path' |
-  'pluginOptions___typeName' |
-  'pluginOptions___fieldName' |
-  'pluginOptions___dbEngine___client' |
-  'pluginOptions___dbEngine___connection___filename' |
-  'pluginOptions___dbEngine___useNullAsDefault' |
   'pluginOptions___pathCheck' |
   'nodeAPIs' |
   'ssrAPIs' |
@@ -3015,15 +3224,15 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
+  typeName?: Maybe<Scalars['String']>;
+  fieldName?: Maybe<Scalars['String']>;
+  dbEngine?: Maybe<SitePluginPluginOptionsDbEngine>;
   documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>;
   toFormat?: Maybe<Scalars['String']>;
   stripMetadata?: Maybe<Scalars['Boolean']>;
   defaultQuality?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
-  typeName?: Maybe<Scalars['String']>;
-  fieldName?: Maybe<Scalars['String']>;
-  dbEngine?: Maybe<SitePluginPluginOptionsDbEngine>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
@@ -3048,15 +3257,15 @@ export type SitePluginPluginOptionsDbEngineFilterInput = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
+  typeName?: Maybe<StringQueryOperatorInput>;
+  fieldName?: Maybe<StringQueryOperatorInput>;
+  dbEngine?: Maybe<SitePluginPluginOptionsDbEngineFilterInput>;
   documentPaths?: Maybe<StringQueryOperatorInput>;
   toFormat?: Maybe<StringQueryOperatorInput>;
   stripMetadata?: Maybe<BooleanQueryOperatorInput>;
   defaultQuality?: Maybe<IntQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
-  typeName?: Maybe<StringQueryOperatorInput>;
-  fieldName?: Maybe<StringQueryOperatorInput>;
-  dbEngine?: Maybe<SitePluginPluginOptionsDbEngineFilterInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };
 
@@ -3596,8 +3805,8 @@ export type IndexPostsQueryVariables = {
 
 export type IndexPostsQuery = { allMarkdownRemark: { edges: Array<{ node: { fields?: Maybe<(
           Pick<MarkdownRemarkFields, 'firstParagraph'>
-          & { backdrop?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> }
-        )>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'sequence' | 'date'>> } }> } };
+          & { backdrop?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }>, movie?: Maybe<Pick<Movie, 'title'>> }
+        )>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'sequence' | 'date' | 'grade'>> } }> } };
 
 export type ReviewForSlugQueryVariables = {
   slug: Scalars['String'];

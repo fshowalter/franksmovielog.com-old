@@ -46,10 +46,15 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "gatsby-plugin-graphql-codegen": "^2.7.1",
     "gatsby-plugin-typescript": "^2.3.1",
-    "prettier": "2.0.4"
+    "prettier": "2.0.4",
+    "stylelint": "^13.3.2",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:css": "stylelint './src/**/*.ts*'"
   },
   "repository": {
     "type": "git",
