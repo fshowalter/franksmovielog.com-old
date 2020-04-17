@@ -132,77 +132,67 @@ const ListItem = styled.li`
 `;
 
 interface Props {
+  location: {
+    pathname: string;
+  };
   pageContext: {
     currentPage: number;
     numPages: number;
   };
   data: {
-    reviews: {
+    page: {
       nodes: {
-        fields: {
+        sequence: number;
+        date: string;
+        grade: string;
+        slug: string;
+        movie: {
+          title: string;
+          year: number;
+        };
+        markdown: {
           backdrop?: {
             childImageSharp?: {
               fluid: FluidObject;
             };
           };
-          movie: {
-            title: string;
-            year: number;
-          };
           firstParagraph: string;
-        };
-        frontmatter: {
-          title: string;
-          sequence: number;
-          date: string;
-          grade: string;
-          slug: string;
         };
       }[];
     };
     more: {
       nodes: {
-        fields: {
+        grade: string;
+        sequence: number;
+        slug: string;
+        movie: {
+          title: string;
+        };
+        markdown: {
           backdrop?: {
             childImageSharp?: {
               fluid: FluidObject;
             };
           };
-          movie: {
-            title: string;
-          };
-        };
-        frontmatter: {
-          grade: string;
-          sequence: number;
-          slug: string;
         };
       }[];
     };
   };
 }
 
-type ReviewNode = Props["data"]["reviews"]["nodes"][0];
+type ReviewNode = Props["data"]["page"]["nodes"][0];
 
 const imageForNode = (node: ReviewNode) => {
-  if (!node.fields.backdrop || !node.fields.backdrop.childImageSharp) {
+  if (!node.markdown.backdrop || !node.markdown.backdrop.childImageSharp) {
     return null;
   }
 
   return (
     <Img
-      fluid={node.fields?.backdrop?.childImageSharp?.fluid}
-      alt={`A still from ${node.frontmatter?.title}`}
+      fluid={node.markdown.backdrop?.childImageSharp?.fluid}
+      alt={`A still from ${node.movie.title}`}
     />
   );
-};
-
-const dateForNode = (node: ReviewNode) => {
-  if (node.frontmatter === undefined || node.frontmatter.date == undefined) {
-    return;
-  }
-
-  return node.frontmatter.date;
 };
 
 const StyledGrade = styled(Grade)`
@@ -216,19 +206,12 @@ const StyledGrade = styled(Grade)`
 
 const buildExcerpt = (node: ReviewNode) => {
   let excerpt =
-    renderToString(
-      <StyledGrade grade={node.frontmatter.grade} width={95} height={95} />
-    ) +
+    renderToString(<StyledGrade grade={node.grade} width={95} height={95} />) +
     " " +
-    node.fields.firstParagraph;
+    node.markdown.firstParagraph;
 
   return parse(remark().use(remarkHTML).processSync(excerpt).toString());
 };
-
-interface PaginationProps {
-  moreNodes: Props["data"]["more"]["nodes"];
-  pageContext: Props["pageContext"];
-}
 
 const PaginationHeading = styled.div`
   border-bottom: 1px solid var(--color-primary);
@@ -273,6 +256,11 @@ const PaginationNextPageLink = styled(Link)`
   }
 `;
 
+interface PaginationProps {
+  moreNodes: Props["data"]["more"]["nodes"];
+  pageContext: Props["pageContext"];
+}
+
 const Pagination: React.FC<PaginationProps> = ({ moreNodes, pageContext }) => {
   const { currentPage, numPages } = pageContext;
   const isLast = currentPage === numPages;
@@ -297,26 +285,24 @@ const Pagination: React.FC<PaginationProps> = ({ moreNodes, pageContext }) => {
   );
 };
 
-const HomeTemplate: React.FC<Props> = ({ pageContext, data }) => {
+const HomeTemplate: React.FC<Props> = ({ location, pageContext, data }) => {
   return (
-    <Layout>
+    <Layout location={location}>
       <SingleColumn>
         <HomeWrap>
           <List>
-            {data.reviews.nodes.map((node) => (
-              <ListItem key={node.frontmatter?.sequence}>
+            {data.page.nodes.map((node) => (
+              <ListItem key={node.sequence}>
                 <Review>
-                  <ReviewDate>{dateForNode(node)}</ReviewDate>
+                  <ReviewDate>{node.date}</ReviewDate>
                   <ReviewHeader>
                     <ReviewHeading>
-                      <ReviewHeaderLink
-                        to={`/reviews/${node.frontmatter.slug}/`}
-                      >
-                        {node.fields.movie.title}
+                      <ReviewHeaderLink to={`/reviews/${node.slug}/`}>
+                        {node.movie.title}
                       </ReviewHeaderLink>
                     </ReviewHeading>
                   </ReviewHeader>
-                  <ReviewImageWrap to={`/reviews/${node.frontmatter.slug}/`}>
+                  <ReviewImageWrap to={`/reviews/${node.slug}/`}>
                     {imageForNode(node)}
                   </ReviewImageWrap>
                   <ReviewExcerpt>{buildExcerpt(node)}</ReviewExcerpt>
@@ -340,14 +326,21 @@ export const pageQuery = graphql`
     $moreSkip: Int!
     $moreLimit: Int!
   ) {
-    reviews: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/reviews/" } }
-      sort: { fields: [frontmatter___sequence], order: DESC }
+    page: allReview(
+      sort: { fields: [sequence], order: DESC }
       limit: $limit
       skip: $skip
     ) {
       nodes {
-        fields {
+        date(formatString: "DD MMM YYYY")
+        grade
+        slug
+        sequence
+        movie {
+          title
+        }
+        markdown {
+          firstParagraph
           backdrop {
             childImageSharp {
               fluid(toFormat: JPG, jpegQuality: 75) {
@@ -355,28 +348,19 @@ export const pageQuery = graphql`
               }
             }
           }
-          movie {
-            title
-          }
-          firstParagraph
-        }
-        frontmatter {
-          title
-          sequence
-          date(formatString: "DD MMM YYYY")
-          grade
-          slug
         }
       }
     }
-    more: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/reviews/" } }
-      sort: { fields: [frontmatter___sequence], order: DESC }
+    more: allReview(
+      sort: { fields: [sequence], order: DESC }
       limit: $moreLimit
       skip: $moreSkip
     ) {
       nodes {
-        fields {
+        grade
+        slug
+        sequence
+        markdown {
           backdrop {
             childImageSharp {
               fluid(toFormat: JPG, jpegQuality: 75) {
@@ -384,14 +368,9 @@ export const pageQuery = graphql`
               }
             }
           }
-          movie {
-            title
-          }
         }
-        frontmatter {
-          sequence
-          grade
-          slug
+        movie {
+          title
         }
       }
     }

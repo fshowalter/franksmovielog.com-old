@@ -93,14 +93,14 @@ const ListItem = styled.li`
 type ReviewNode = Props["nodes"][0];
 
 const imageForNode = (node: ReviewNode) => {
-  if (!node.fields.backdrop || !node.fields.backdrop.childImageSharp) {
+  if (!node.markdown.backdrop || !node.markdown.backdrop.childImageSharp) {
     return null;
   }
 
   return (
     <Img
-      fluid={node.fields?.backdrop?.childImageSharp?.fluid}
-      alt={`A still from ${node.fields.movie.title}`}
+      fluid={node.markdown.backdrop?.childImageSharp?.fluid}
+      alt={`A still from ${node.movie.title}`}
     />
   );
 };
@@ -118,20 +118,18 @@ const StyledGrade = styled(Grade)`
 
 interface Props {
   nodes: {
-    fields: {
+    grade: string;
+    sequence: number;
+    slug: string;
+    movie: {
+      title: string;
+    };
+    markdown: {
       backdrop?: {
         childImageSharp?: {
           fluid: FluidObject;
         };
       };
-      movie: {
-        title: string;
-      };
-    };
-    frontmatter: {
-      grade: string;
-      sequence: number;
-      slug: string;
     };
   }[];
 }
@@ -140,17 +138,13 @@ const MoreList: React.FC<Props> = ({ nodes }) => {
   return (
     <List>
       {nodes.map((node) => (
-        <ListItem key={node.frontmatter?.sequence}>
+        <ListItem key={node.sequence}>
           <ListItemWrap>
-            <ImageWrap to={`/reviews/${node.frontmatter.slug}/`}>
+            <ImageWrap to={`/reviews/${node.slug}/`}>
               {imageForNode(node)}
             </ImageWrap>
-            <Title>{node.fields.movie.title}</Title>
-            <StyledGrade
-              grade={node.frontmatter.grade}
-              width={90}
-              height={18}
-            />
+            <Title>{node.movie.title}</Title>
+            <StyledGrade grade={node.grade} width={90} height={18} />
           </ListItemWrap>
         </ListItem>
       ))}

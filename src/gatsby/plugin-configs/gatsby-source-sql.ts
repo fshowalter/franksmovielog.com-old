@@ -1,8 +1,36 @@
-import * as Knex from "knex";
+import * as Knex from 'knex';
 
 const dbFileName = `${__dirname}/../../../../movielog-new/db/movie_db.sqlite3`;
 
 export default [
+  {
+    // Querying to a SQLite database
+    resolve: `gatsby-source-sql`,
+    options: {
+      typeName: "Director",
+      // This is the field under which the data will be accessible in a future version
+      fieldName: "unused",
+      dbEngine: {
+        client: "sqlite3",
+        connection: {
+          filename: dbFileName,
+        },
+        useNullAsDefault: true,
+      },
+      queryChain: function queryChain(x: Knex) {
+        return x
+          .select("viewings.movie_imdb_id", "full_name")
+          .from("viewings")
+          .leftJoin(
+            "directing_credits",
+            "directing_credits.movie_imdb_id",
+            "viewings.movie_imdb_id"
+          )
+          .leftJoin("people", "person_imdb_id", "imdb_id")
+          .groupBy("viewings.movie_imdb_id");
+      },
+    },
+  },
   {
     // Querying to a SQLite database
     resolve: `gatsby-source-sql`,

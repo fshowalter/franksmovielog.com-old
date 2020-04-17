@@ -1,4 +1,4 @@
-import gatsbySourceSql from "./plugin-configs/gatsby-source-sql";
+import gatsbySourceSql from './plugin-configs/gatsby-source-sql';
 
 export const siteMetadata = {
   title: `Frank's Movie Log`,
@@ -8,10 +8,19 @@ export const siteMetadata = {
 
 export const plugins = [
   ...gatsbySourceSql,
+  "gatsby-transformer-yaml",
   {
-    resolve: `gatsby-plugin-graphql-codegen`,
+    resolve: `gatsby-source-filesystem`,
     options: {
-      documentPaths: [`src/**/*.{ts,tsx}`, `node_modules/gatsby-*/**/*.js`],
+      name: `viewing`,
+      path: `${__dirname}/../../../movielog-new/viewings/`,
+    },
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `movie_countries`,
+      path: `${__dirname}/../../../movielog-new/movie_countries/`,
     },
   },
   {
@@ -23,8 +32,6 @@ export const plugins = [
     },
   },
   `gatsby-transformer-sharp`,
-  `gatsby-transformer-remark`,
-  `gatsby-plugin-typescript`,
   {
     resolve: `gatsby-source-filesystem`,
     options: {
@@ -32,6 +39,7 @@ export const plugins = [
       path: `${__dirname}/../assets/backdrops/`,
     },
   },
+  `gatsby-transformer-remark`,
   {
     resolve: `gatsby-source-filesystem`,
     options: {
@@ -39,14 +47,7 @@ export const plugins = [
       path: `${__dirname}/../../../movielog-new/reviews/`,
     },
   },
+  `gatsby-plugin-typescript`,
   `gatsby-plugin-react-helmet`,
   `gatsby-plugin-emotion`,
-  "gatsby-transformer-yaml",
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `viewing`,
-      path: `${__dirname}/../../../movielog-new/viewings/`,
-    },
-  },
 ];

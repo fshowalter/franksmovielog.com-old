@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 const styleVars = {
@@ -36,7 +37,7 @@ const FooterLink = styled(Link)`
   white-space: nowrap;
 `;
 
-const footerSubLinkCss = `
+const footerSubLinkMixin = css`
   color: ${styleVars.colorFooterSubLink};
   font-size: 13px;
   letter-spacing: 0.3px;
@@ -44,11 +45,11 @@ const footerSubLinkCss = `
 `;
 
 const FooterSubLink = styled(Link)`
-  ${footerSubLinkCss}
+  ${footerSubLinkMixin}
 `;
 
 const FooterSubExternalLink = styled.a`
-  ${footerSubLinkCss}
+  ${footerSubLinkMixin}
 `;
 
 export default () => {
