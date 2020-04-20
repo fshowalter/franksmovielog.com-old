@@ -17,7 +17,7 @@
     "gatsby-plugin-slug": "^1.0.1",
     "gatsby-source-filesystem": "^2.2.2",
     "gatsby-source-sql": "git+https://github.com/mrfunnyshoes/gatsby-source-sql.git",
-    "gatsby-transformer-remark": "^2.7.1",
+    "gatsby-transformer-remark": "^2.7.3",
     "gatsby-transformer-sharp": "^2.4.4",
     "gatsby-transformer-yaml": "^2.3.1",
     "html-react-parser": "^0.10.3",
