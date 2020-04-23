@@ -1,32 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import styled from "@emotion/styled";
-import Layout from "../components/Layout";
-import { TwoColumns, Column1, Column2 } from "../components/TwoColumns";
-import { List, ListItem } from "../components/ListWithSlug";
-import PanelHeading from "../components/PanelHeading";
-import pluralize from "pluralize";
-import {
-  FilterPanel,
-  SelectFilter,
-  TextFilter
-} from "../components/FilterPanel";
-import { useDebouncedCallback } from "use-debounce";
-import { timedChunk, buildMatcher, escapeRegExp } from "../utils/filtering";
-import moment from "moment";
+import { graphql, useStaticQuery } from 'gatsby';
+import moment from 'moment';
+import pluralize from 'pluralize';
+import React, { useEffect, useState } from 'react';
+import { useDebouncedCallback } from 'use-debounce';
 
-const slugForNode = node => {
+import styled from '@emotion/styled';
+
+import { FilterPanel, SelectFilter, TextFilter } from '../components/FilterPanel';
+import Layout from '../components/Layout';
+import { List, ListItem } from '../components/ListWithSlug';
+import PanelHeading from '../components/PanelHeading';
+import { Column1, Column2, TwoColumns } from '../components/TwoColumnLayout';
+import { buildMatcher, escapeRegExp, timedChunk } from '../utils/filtering';
+
+const slugForNode = (node) => {
   return `${moment(node.date).format("dddd, MMMM Do YYYY")} via ${node.venue}.`;
 };
 
 let items;
 
-export default ({ data }) => {
+export default ({ data, location }) => {
   const [onTitleChange] = useDebouncedCallback(
-    value => {
+    (value) => {
       let regex = new RegExp(escapeRegExp(value), "i");
 
-      const matcher = buildMatcher(item => {
+      const matcher = buildMatcher((item) => {
         return regex.test(item.getAttribute("data-title"));
       });
 
@@ -46,7 +44,7 @@ export default ({ data }) => {
   });
 
   return (
-    <Layout>
+    <Layout location={location}>
       <TwoColumns>
         <Column1>
           <PanelHeading
@@ -57,14 +55,14 @@ export default ({ data }) => {
             <TextFilter
               type="title"
               name="Title"
-              onChange={e => onTitleChange(e.target.value)}
+              onChange={(e) => onTitleChange(e.target.value)}
               placeholder="Enter all or part of a title."
             />
             <SelectFilter name="Order By">
               {[
                 ["Date (Oldest First)", "date-asc"],
                 ["Date (Newest First)", "date-desc"],
-                ["Title", "title-asc"]
+                ["Title", "title-asc"],
               ]}
             </SelectFilter>
           </FilterPanel>
@@ -87,14 +85,15 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allViewingsYaml(sort: { fields: [sequence], order: DESC }) {
-      edges {
-        node {
-          sequence
+    allViewing(sort: { fields: [sequence], order: DESC }) {
+      nodes {
+        sequence
+        date(formatString: "YYYY-MM-DD")
+        imdbId
+        venue
+        movie {
           title
-          date(formatString: "YYYY-MM-DD")
-          imdb_id
-          venue
+          year
         }
       }
     }

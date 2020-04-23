@@ -320,12 +320,7 @@ const HomeTemplate: React.FC<Props> = ({ location, pageContext, data }) => {
 export default memo(HomeTemplate);
 
 export const pageQuery = graphql`
-  query IndexPosts(
-    $skip: Int!
-    $limit: Int!
-    $moreSkip: Int!
-    $moreLimit: Int!
-  ) {
+  query($skip: Int!, $limit: Int!, $moreSkip: Int!, $moreLimit: Int!) {
     page: allReview(
       sort: { fields: [sequence], order: DESC }
       limit: $limit

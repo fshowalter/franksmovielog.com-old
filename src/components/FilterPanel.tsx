@@ -90,7 +90,7 @@ const SelectInput = styled.select`
 
 interface SelectFilterProps {
   name: string;
-  children: [string, string];
+  children: Array<[string, string]>;
 }
 
 const SelectFilter = ({ name, children }: SelectFilterProps) => {

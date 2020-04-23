@@ -252,7 +252,7 @@ const ReviewMeta = ({ review }: Props["data"]) => {
   );
 };
 
-const ReviewTags = ({ review }: Props["data"]) => {
+const ReviewTags = () => {
   return (
     <ReviewTagsWrap>
       <ReviewTagsList></ReviewTagsList>
@@ -284,7 +284,7 @@ const ReviewTemplate = ({ location, data }: Props) => {
             {reviewContent(data.review)}
             <ReviewMeta review={data.review} />
           </ContentWrap>
-          <ReviewTags review={data.review} />
+          <ReviewTags />
         </Article>
       </SingleColumn>
     </Layout>
@@ -303,19 +303,17 @@ export const pageQuery = graphql`
       movie {
         title
         year
-        runtime_minutes
-        original_title
+        runtimeMinutes
+        originalTitle
         directors {
-          full_name
-        }
-        countries {
-          names
+          fullName
         }
         viewings {
           id
         }
       }
       markdown {
+        rawMarkdownBody
         backdrop {
           childImageSharp {
             fluid(toFormat: JPG, jpegQuality: 75) {
@@ -323,7 +321,6 @@ export const pageQuery = graphql`
             }
           }
         }
-        rawMarkdownBody
       }
     }
   }

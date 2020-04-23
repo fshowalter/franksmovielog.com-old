@@ -6,9 +6,9 @@ const escapeRegExp = (str: string): string => {
   Copyright 2009 Nicholas C. Zakas. All rights reserved. MIT Licensed
 */
 const timedChunk = (
-  items: NodeList,
-  process: (node: Node) => void,
-  callback: (nodeList: NodeList) => any
+  process: (node: HTMLElement) => void,
+  items?: NodeListOf<HTMLElement> | null,
+  callback?: (nodeList?: NodeListOf<HTMLElement> | null) => any
 ) => {
   const todo = nodeListToArray(items);
   if (todo.length == 0) {
@@ -31,10 +31,14 @@ const timedChunk = (
   return setTimeout(processItem, 25);
 };
 
-const nodeListToArray = (nodeList: NodeList) => {
+const nodeListToArray = (nodeList?: NodeListOf<HTMLElement> | null) => {
   var array = [];
   var i;
   var len;
+
+  if (!nodeList) {
+    return [];
+  }
 
   for (i = -1, len = nodeList.length; ++i !== len; ) {
     array[i] = nodeList[i];
@@ -43,18 +47,18 @@ const nodeListToArray = (nodeList: NodeList) => {
   return array;
 };
 
-const buildMatcher = (matcher: (node: Node) => boolean) => {
-  return (item: HTMLElement) => {
+const buildMatcher = (matcher: (node: HTMLElement) => boolean) => {
+  return (node: HTMLElement) => {
     let match = true;
 
-    if (!matcher(item)) {
+    if (!matcher(node)) {
       match = false;
     }
 
     if (match) {
-      item.removeAttribute("style");
+      node.removeAttribute("style");
     } else {
-      item.style.display = "none";
+      node.style.display = "none";
     }
   };
 };

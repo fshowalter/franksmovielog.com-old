@@ -1,4 +1,4 @@
-import gatsbySourceSql from './plugin-configs/gatsby-source-sql';
+// import gatsbySourceSql from './plugin-configs/gatsby-source-sql';
 
 export const siteMetadata = {
   title: `Frank's Movie Log`,
@@ -7,22 +7,7 @@ export const siteMetadata = {
 };
 
 export const plugins = [
-  ...gatsbySourceSql,
-  "gatsby-transformer-yaml",
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `viewing`,
-      path: `${__dirname}/../../../movielog-new/viewings/`,
-    },
-  },
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `movie_countries`,
-      path: `${__dirname}/../../../movielog-new/movie_countries/`,
-    },
-  },
+  // ...gatsbySourceSql,
   {
     resolve: `gatsby-plugin-sharp`,
     options: {
