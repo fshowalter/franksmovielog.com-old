@@ -60,7 +60,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:css": "stylelint './src/**/*.ts*'",
-    "develop": "gatsby clean && webpack-cli --config filters.webpack.config.js && gatsby develop"
+    "develop": "gatsby clean && tsc -b external/scripts/filters/tsconfig.json && gatsby develop"
   },
   "repository": {
     "type": "git",

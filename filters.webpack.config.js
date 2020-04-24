@@ -1,14 +1,21 @@
 const { resolve } = require("path");
 
 module.exports = {
-  entry: "./src/utils/filtering.ts",
+  entry: "./external/scripts/filters/tsconfig.json",
+  mode: "production",
   module: {
     rules: [
       {
         test: /\.ts?$/,
         loader: "ts-loader",
         options: {
-          configFile: resolve(__dirname, "tsconfig.filters.json"),
+          configFile: resolve(
+            __dirname,
+            "external",
+            "scripts",
+            "filters",
+            "tsconfig.json"
+          ),
         },
       },
     ],
@@ -18,6 +25,6 @@ module.exports = {
   },
   output: {
     filename: "filters.js",
-    path: resolve(__dirname, "public", "scripts"),
+    path: resolve(__dirname, "static", "scripts"),
   },
 };

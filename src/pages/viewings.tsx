@@ -11,7 +11,7 @@ import Layout from '../components/Layout';
 import { List, ListItem } from '../components/ListWithSlug';
 import PanelHeading from '../components/PanelHeading';
 import { Column1, Column2, TwoColumns } from '../components/TwoColumnLayout';
-import { buildMatcher, escapeRegExp, timedChunk } from '../utils/filtering';
+import { buildMatcher, escapeRegExp, timedChunk } from '../utils/filtering-old';
 
 const slugForNode = (node) => {
   return `${moment(node.date).format("dddd, MMMM Do YYYY")} via ${node.venue}.`;

@@ -14,9 +14,10 @@ interface Props {
   location: {
     pathname: string;
   };
+  javascript?: ReactNode;
 }
 
-const Layout: React.FC<Props> = ({ children, location }) => {
+const Layout: React.FC<Props> = ({ children, location, javascript }) => {
   return (
     <>
       <Helmet>
@@ -40,6 +41,7 @@ const Layout: React.FC<Props> = ({ children, location }) => {
       <Mast />
       {children}
       <Footer />
+      {javascript}
     </>
   );
 };

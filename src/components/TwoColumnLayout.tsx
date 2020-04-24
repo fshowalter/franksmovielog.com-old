@@ -42,11 +42,12 @@ const Column2 = styled.div`
 interface Props {
   location: WindowLocation;
   children: ReactNode;
+  javascript?: ReactNode;
 }
 
-const TwoColumns = ({ location, children }: Props) => {
+const TwoColumns = ({ location, children, javascript }: Props) => {
   return (
-    <Layout location={location}>
+    <Layout location={location} javascript={javascript}>
       <Columns>{children}</Columns>
     </Layout>
   );

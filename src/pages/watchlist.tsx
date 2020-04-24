@@ -1,6 +1,5 @@
 import { graphql } from 'gatsby';
-import React, { ChangeEventHandler, ReactNode, useState } from 'react';
-import { useDebouncedCallback } from 'use-debounce';
+import React, { ReactNode } from 'react';
 
 import styled from '@emotion/styled';
 import { WindowLocation } from '@reach/router';
@@ -161,13 +160,6 @@ const styleVars = {
   filterTextBoxColor: "var(--color-text-secondary)",
 };
 
-const Container = styled.div`
-  border: 1px solid var(--color-primary);
-  border-radius: 5px;
-  margin: 20px;
-  transition: opacity 0.3s ease;
-`;
-
 const Heading = styled.h2`
   border-bottom: 1px solid var(--color-primary);
   color: var(--color-accent);
@@ -185,6 +177,7 @@ const Content = styled.div`
 `;
 
 const TextInput = styled.input`
+  outline: none;
   backface-visibility: hidden;
   background-color: ${styleVars.filterBackgroundColor};
   border: 0;
@@ -205,7 +198,7 @@ const TextInput = styled.input`
 `;
 
 const TextInputWrap = styled.div`
-  border-bottom: solid 1px $filter_border_color;
+  border-bottom: solid 1px var(--color-primary);
   margin-bottom: 8px;
   padding-bottom: 7px;
 `;
@@ -239,6 +232,18 @@ const SelectInput = styled.select`
   text-overflow: "";
 `;
 
+const FiltersWrap = styled.div`
+  border: 1px solid var(--color-primary);
+  border-radius: 5px;
+  margin: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  .js-filters & {
+    opacity: 1;
+  }
+`;
+
 interface SelectFilterProps {
   name: string;
   children: Array<[string, string]>;
@@ -262,17 +267,26 @@ const SelectFilter = ({ name, children }: SelectFilterProps) => {
 };
 
 interface TextFilterProps {
-  name: string;
+  label: string;
   placeholder: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  filterAttribute: string;
 }
 
-const TextFilter = ({ name, placeholder, onChange }: TextFilterProps) => {
+const TextFilter = ({
+  label,
+  placeholder,
+  filterAttribute,
+}: TextFilterProps) => {
   return (
     <FilterControl>
-      <Label htmlFor={name}>{name}</Label>
+      <Label htmlFor={label}>{label}</Label>
       <TextInputWrap>
-        <TextInput onChange={onChange} name={name} placeholder={placeholder} />
+        <TextInput
+          name={label}
+          placeholder={placeholder}
+          data-filter-type="text"
+          data-filter-attribute={filterAttribute}
+        />
       </TextInputWrap>
     </FilterControl>
   );
@@ -285,10 +299,10 @@ interface FilterPanelProps {
 
 const FilterPanel = ({ heading, children }: FilterPanelProps) => {
   return (
-    <Container>
+    <FiltersWrap data-filter-controls={true} data-target={"#watchlist-titles"}>
       <Heading>{heading}</Heading>
       <Content>{children}</Content>
-    </Container>
+    </FiltersWrap>
   );
 };
 
@@ -300,6 +314,7 @@ interface Props {
         imdbId: string;
         movie: {
           title: string;
+          sortTitle: string;
           year: string;
         };
         directors: {
@@ -319,37 +334,11 @@ interface Props {
   };
 }
 
-const escapeRegExp = (str: string): string => {
-  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
-};
-
 const Watchlist: React.FC<Props> = ({ location, data }) => {
-  const [items, setItems] = useState(
-    data.allWatchlistTitle.nodes.map((watchlistTitle) => {
-      return { filtered: false, ...watchlistTitle };
-    })
-  );
-
-  const [onTitleChange] = useDebouncedCallback(
-    (value: string) => {
-      const regex = new RegExp(escapeRegExp(value), "i");
-      const newItems = items.map((watchlistTitle) => {
-        return {
-          ...watchlistTitle,
-          filtered: !regex.test(watchlistTitle.movie.title),
-        };
-      });
-
-      console.log(newItems);
-
-      setItems(newItems);
-    },
-    // delay in ms
-    100
-  );
+  const filtersScript = <script src="/scripts/filters.js" async></script>;
 
   return (
-    <TwoColumns location={location}>
+    <TwoColumns location={location} javascript={filtersScript}>
       <Column1>
         <PanelHead
           title={"The Watchlist"}
@@ -357,9 +346,9 @@ const Watchlist: React.FC<Props> = ({ location, data }) => {
         />
         <FilterPanel heading="Filter and Sort">
           <TextFilter
-            name="Title"
-            onChange={(e) => onTitleChange(e.target.value)}
+            label="Title"
             placeholder="Enter all or part of a title."
+            filterAttribute="data-title"
           />
           <SelectFilter name="Order By">
             {[
@@ -371,13 +360,13 @@ const Watchlist: React.FC<Props> = ({ location, data }) => {
         </FilterPanel>
       </Column1>
       <Column2>
-        <List>
-          {items.map((watchlistTitle) => (
+        <List id="watchlist-titles">
+          {data.allWatchlistTitle.nodes.map((watchlistTitle) => (
             <ListItem
               key={watchlistTitle.imdbId}
-              style={watchlistTitle.filtered ? { display: "none" } : undefined}
+              data-title={watchlistTitle.movie.title}
+              data-sort-title={watchlistTitle.movie.sortTitle}
             >
-              {watchlistTitle.filtered}
               <Title>
                 {watchlistTitle.movie.title} ({watchlistTitle.movie.year})
               </Title>
@@ -390,7 +379,7 @@ const Watchlist: React.FC<Props> = ({ location, data }) => {
   );
 };
 
-export default Watchlist;
+export default React.memo(Watchlist);
 
 export const query = graphql`
   query {
@@ -399,6 +388,7 @@ export const query = graphql`
         imdbId
         movie {
           title
+          sortTitle
           year
         }
         directors {
