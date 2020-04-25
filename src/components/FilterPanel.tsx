@@ -113,15 +113,14 @@ const SelectFilter = ({ name, children }: SelectFilterProps) => {
 interface TextFilterProps {
   name: string;
   placeholder: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
-const TextFilter = ({ name, placeholder, onChange }: TextFilterProps) => {
+const TextFilter = ({ name, placeholder }: TextFilterProps) => {
   return (
     <FilterControl>
       <Label htmlFor={name}>{name}</Label>
       <TextInputWrap>
-        <TextInput onChange={onChange} name={name} placeholder={placeholder} />
+        <TextInput name={name} placeholder={placeholder} />
       </TextInputWrap>
     </FilterControl>
   );

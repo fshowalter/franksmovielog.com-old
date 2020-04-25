@@ -1,5 +1,6 @@
 /// <reference path="./filterExecutor.ts" />
 /// <reference path="./textFilter.ts" />
+/// <reference path="./sorter.ts" />
 
 (function setFiltersFromQueryString() {
   function getQueryParameters() {

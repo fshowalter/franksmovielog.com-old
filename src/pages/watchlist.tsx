@@ -1,10 +1,11 @@
 import { graphql } from 'gatsby';
+import pluralize from 'pluralize';
 import React, { ReactNode } from 'react';
 
 import styled from '@emotion/styled';
 import { WindowLocation } from '@reach/router';
 
-import { Column1, Column2, TwoColumns } from '../components/TwoColumnLayout';
+import { Column1, Column2, TwoColumnLayout } from '../components/TwoColumnLayout';
 
 const PanelHeader = styled.header`
   padding: 35px 20px 20px;
@@ -130,7 +131,7 @@ const buildSlug = (
   let credits = [
     formatPeople(watchlistTitle.directors, "directed"),
     formatPeople(watchlistTitle.performers, "performed"),
-    formatPeople(watchlistTitle.writers, "wrote some or all of it"),
+    formatPeople(watchlistTitle.writers, "has a writing credit"),
     formatCollections(watchlistTitle.collections),
   ];
 
@@ -306,6 +307,33 @@ const FilterPanel = ({ heading, children }: FilterPanelProps) => {
   );
 };
 
+interface SorterProps {
+  name: string;
+  children: Array<[string, string]>;
+  target: string;
+}
+
+const Sorter = ({ name, children, target }: SorterProps) => {
+  return (
+    <FilterControl>
+      <Label htmlFor={name}>{name}</Label>
+      <SelectInput
+        name={name}
+        data-sorter={children[0][1]}
+        data-target={target}
+      >
+        {children.map(([name, value]) => {
+          return (
+            <option key={value} value={value}>
+              {name}
+            </option>
+          );
+        })}
+      </SelectInput>
+    </FilterControl>
+  );
+};
+
 interface Props {
   location: WindowLocation;
   data: {
@@ -335,14 +363,17 @@ interface Props {
 }
 
 const Watchlist: React.FC<Props> = ({ location, data }) => {
-  const filtersScript = <script src="/scripts/filters.js" async></script>;
-
   return (
-    <TwoColumns location={location} javascript={filtersScript}>
+    <TwoColumnLayout location={location}>
       <Column1>
         <PanelHead
           title={"The Watchlist"}
-          slug={"My movie review bucketlist. No silents or documentaries."}
+          slug={`My movie review bucketlist. ${Number(
+            data.allWatchlistTitle.nodes.length
+          ).toLocaleString()} ${pluralize(
+            "title",
+            data.allWatchlistTitle.nodes.length
+          )}. No silents or documentaries.`}
         />
         <FilterPanel heading="Filter and Sort">
           <TextFilter
@@ -350,13 +381,13 @@ const Watchlist: React.FC<Props> = ({ location, data }) => {
             placeholder="Enter all or part of a title."
             filterAttribute="data-title"
           />
-          <SelectFilter name="Order By">
+          <Sorter name="Order By" target="#watchlist-titles">
             {[
-              ["Date (Oldest First)", "date-asc"],
-              ["Date (Newest First)", "date-desc"],
-              ["Title", "title-asc"],
+              ["Year (Oldest First)", "year-asc"],
+              ["Year (Newest First)", "year-desc"],
+              ["Title", "sort-title-asc"],
             ]}
-          </SelectFilter>
+          </Sorter>
         </FilterPanel>
       </Column1>
       <Column2>
@@ -366,6 +397,7 @@ const Watchlist: React.FC<Props> = ({ location, data }) => {
               key={watchlistTitle.imdbId}
               data-title={watchlistTitle.movie.title}
               data-sort-title={watchlistTitle.movie.sortTitle}
+              data-year={watchlistTitle.movie.year}
             >
               <Title>
                 {watchlistTitle.movie.title} ({watchlistTitle.movie.year})
@@ -375,7 +407,7 @@ const Watchlist: React.FC<Props> = ({ location, data }) => {
           ))}
         </List>
       </Column2>
-    </TwoColumns>
+    </TwoColumnLayout>
   );
 };
 

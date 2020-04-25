@@ -2,15 +2,15 @@ import { graphql, useStaticQuery } from 'gatsby';
 import moment from 'moment';
 import pluralize from 'pluralize';
 import React, { useEffect, useState } from 'react';
-import { useDebouncedCallback } from 'use-debounce';
 
 import styled from '@emotion/styled';
+import { WindowLocation } from '@reach/router';
 
 import { FilterPanel, SelectFilter, TextFilter } from '../components/FilterPanel';
 import Layout from '../components/Layout';
 import { List, ListItem } from '../components/ListWithSlug';
 import PanelHeading from '../components/PanelHeading';
-import { Column1, Column2, TwoColumns } from '../components/TwoColumnLayout';
+import { Column1, Column2, TwoColumnLayout } from '../components/TwoColumnLayout';
 import { buildMatcher, escapeRegExp, timedChunk } from '../utils/filtering-old';
 
 const slugForReview = (review: Props["data"]["reviews"]["nodes"][0]) => {
@@ -22,9 +22,7 @@ const slugForReview = (review: Props["data"]["reviews"]["nodes"][0]) => {
 let items: NodeListOf<HTMLElement> | null = null;
 
 interface Props {
-  location: {
-    pathname: string;
-  };
+  location: WindowLocation;
   data: {
     reviews: {
       nodes: {
@@ -50,56 +48,39 @@ const Reviews: React.FC<Props> = ({ location, data }) => {
     };
   });
 
-  const [onTitleChange] = useDebouncedCallback(
-    (value: string) => {
-      let regex = new RegExp(escapeRegExp(value), "i");
-
-      const matcher = buildMatcher((item: HTMLElement) => {
-        return regex.test(item.getAttribute("data-title") || "");
-      });
-
-      timedChunk(matcher, items);
-    },
-    // delay in ms
-    50
-  );
-
   return (
-    <Layout location={location}>
-      <TwoColumns>
-        <Column1>
-          <PanelHeading
-            title="Reviews"
-            slug={`I've published ${data.reviews.nodes.length} movies since 2014`}
+    <TwoColumnLayout location={location}>
+      <Column1>
+        <PanelHeading
+          title="Reviews"
+          slug={`I've published ${data.reviews.nodes.length} movies since 2014`}
+        />
+        <FilterPanel heading="Filter and Sort">
+          <TextFilter
+            name="Title"
+            placeholder="Enter all or part of a title."
           />
-          <FilterPanel heading="Filter and Sort">
-            <TextFilter
-              name="Title"
-              onChange={(e) => onTitleChange(e.target.value)}
-              placeholder="Enter all or part of a title."
-            />
-            <SelectFilter name="Order By">
-              {[
-                ["Date (Oldest First)", "date-asc"],
-                ["Date (Newest First)", "date-desc"],
-                ["Title", "title-asc"],
-              ]}
-            </SelectFilter>
-          </FilterPanel>
-        </Column1>
-        <Column2>
-          <List id="reviews">
-            {data.reviews.nodes.map((review) => (
-              <ListItem
-                key={review.sequence}
-                title={`${review.movie.title}`}
-                slug={slugForReview(review)}
-              ></ListItem>
-            ))}
-          </List>
-        </Column2>
-      </TwoColumns>
-    </Layout>
+          <SelectFilter name="Order By">
+            {[
+              ["Date (Oldest First)", "date-asc"],
+              ["Date (Newest First)", "date-desc"],
+              ["Title", "title-asc"],
+            ]}
+          </SelectFilter>
+        </FilterPanel>
+      </Column1>
+      <Column2>
+        <List id="reviews">
+          {data.reviews.nodes.map((review) => (
+            <ListItem
+              key={review.sequence}
+              title={`${review.movie.title}`}
+              slug={slugForReview(review)}
+            ></ListItem>
+          ))}
+        </List>
+      </Column2>
+    </TwoColumnLayout>
   );
 };
 

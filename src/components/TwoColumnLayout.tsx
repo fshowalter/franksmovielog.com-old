@@ -42,15 +42,14 @@ const Column2 = styled.div`
 interface Props {
   location: WindowLocation;
   children: ReactNode;
-  javascript?: ReactNode;
 }
 
-const TwoColumns = ({ location, children, javascript }: Props) => {
+const TwoColumnLayout = ({ location, children }: Props) => {
   return (
-    <Layout location={location} javascript={javascript}>
+    <Layout location={location}>
       <Columns>{children}</Columns>
     </Layout>
   );
 };
 
-export { Column1, Column2, TwoColumns };
+export { Column1, Column2, TwoColumnLayout };
