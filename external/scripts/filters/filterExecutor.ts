@@ -6,7 +6,6 @@ interface IFilterExecutor {
 type Matcher = (item: HTMLElement) => boolean;
 
 interface Filter {
-  id: string;
   getMatcher(): Matcher;
 }
 
@@ -103,11 +102,11 @@ interface Filter {
         return setTimeout(processItem, 25);
       }
 
-      static getMatchers(filters: Map<string, Filter>) {
+      static getMatchers(filters: Set<Filter>) {
         var matcher: Matcher;
         var matchers: Matcher[] = [];
 
-        filters.forEach((filter: Filter, _id: string) => {
+        filters.forEach((filter: Filter) => {
           matcher = filter.getMatcher();
 
           if (matcher) {
@@ -120,7 +119,7 @@ interface Filter {
 
       itemsSelector: string;
       items: NodeListOf<HTMLElement>;
-      filters: Map<string, Filter> = new Map<string, Filter>();
+      filters: Set<Filter> = new Set<Filter>();
 
       constructor(node: HTMLElement) {
         this.itemsSelector =
@@ -131,7 +130,7 @@ interface Filter {
       }
 
       addFilter(filter: Filter) {
-        this.filters.set(filter.id, filter);
+        this.filters.add(filter);
       }
 
       filter() {

@@ -2,6 +2,7 @@ import { graphql } from 'gatsby';
 import pluralize from 'pluralize';
 import React, { ReactNode } from 'react';
 
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { WindowLocation } from '@reach/router';
 
@@ -245,6 +246,162 @@ const FiltersWrap = styled.div`
   }
 `;
 
+const RangeFilterWrap = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+
+  .noUi-target * {
+    background-color: rgba(0, 0, 0, 0.02);
+    box-sizing: border-box;
+    cursor: default;
+    touch-action: none;
+    -webkit-touch-callout: none;
+    transition: transform 0.3s ease-in-out;
+    user-select: none;
+  }
+
+  .noUi-state-drag .noUi-active {
+    transform: scale(1.25);
+  }
+
+  .noUi-base {
+    background: rgba(0, 0, 0, 0.02);
+    border-bottom: solid 0.5rem #fff;
+    border-top: solid 0.5rem #fff;
+    height: 2rem;
+    margin: auto 0.8rem;
+    position: relative;
+
+    @media only screen and (min-width: 35em) {
+      border-color: #fff;
+    }
+  }
+
+  .noUi-handle {
+    background-color: #fff;
+    border: 1px solid var(--color-accent);
+    border-radius: 50%;
+    height: 2rem;
+    left: -1rem;
+    position: relative;
+    top: -0.5rem;
+    width: 2rem;
+    z-index: 1;
+  }
+
+  .noUi-active {
+    background-color: #eaeaea;
+    box-shadow: inset 0 0 5px var(--color-primary);
+  }
+
+  .noUiSlider {
+    flex: 1 100%;
+  }
+
+  .noUi-origin {
+    border-radius: inherit;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .noUi-stacking .noUi-handle {
+    z-index: 10;
+  }
+`;
+
+const rangeInputMixin = css`
+  -moz-appearance: textfield;
+  background-color: #fff;
+  border: 0;
+  box-sizing: content-box;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-system);
+  font-size: 14px;
+  line-height: 1.2rem;
+  padding: 0;
+  width: 25%;
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  width: 3rem;
+
+  @media (min-width: 50em) {
+    height: 1.4rem;
+    line-height: 1.4rem;
+  }
+`;
+
+const RangeInputMin = styled.input`
+  ${rangeInputMixin}
+  margin-right: auto;
+`;
+
+const RangeInputMax = styled.input`
+  ${rangeInputMixin}
+  align-self: flex-start;
+  text-align: right;
+`;
+
+interface RangeFilterProps {
+  name: string;
+  attribute: string;
+  min: string;
+  max: string;
+}
+
+const RangeFilter = ({ name, attribute, min, max }: RangeFilterProps) => {
+  return (
+    <FilterControl>
+      <Label htmlFor={name}>{name}</Label>
+      <RangeFilterWrap
+        data-filter-attribute={attribute}
+        data-filter-type="range"
+        data-filter-min-value={min}
+        data-filter-max-value={max}
+      >
+        <div className="noUiSlider noUi-target">
+          <div className="noUi-base noUi-background noUi-horizontal">
+            <div
+              className="noUi-origin noUi-origin-lower"
+              style={{ left: "0%" }}
+            >
+              <div className="noUi-handle noUi-handle-lower" />
+            </div>
+            <div
+              className="noUi-origin noUi-origin-upper"
+              style={{ left: "100%" }}
+            >
+              <div className="noUi-handle noUi-handle-upper" />
+            </div>
+          </div>
+        </div>
+        <RangeInputMin
+          type="number"
+          defaultValue={min}
+          min={min}
+          max={max}
+          step="1"
+          className="filter-numeric min"
+        />
+        <RangeInputMax
+          type="number"
+          defaultValue={max}
+          min={min}
+          max={max}
+          step="1"
+          className="filter-numeric max"
+        />
+      </RangeFilterWrap>
+    </FilterControl>
+  );
+};
+
 interface SelectFilterProps {
   name: string;
   children: Array<[string, string]>;
@@ -363,6 +520,15 @@ interface Props {
 }
 
 const Watchlist: React.FC<Props> = ({ location, data }) => {
+  const releaseYears = data.allWatchlistTitle.nodes
+    .map((node) => {
+      return node.movie.year;
+    })
+    .sort();
+
+  const minYear = releaseYears[0];
+  const maxYear = releaseYears[releaseYears.length - 1];
+
   return (
     <TwoColumnLayout location={location}>
       <Column1>
@@ -380,6 +546,12 @@ const Watchlist: React.FC<Props> = ({ location, data }) => {
             label="Title"
             placeholder="Enter all or part of a title."
             filterAttribute="data-title"
+          />
+          <RangeFilter
+            name="Release Year"
+            attribute="data-year"
+            min={minYear}
+            max={maxYear}
           />
           <Sorter name="Order By" target="#watchlist-titles">
             {[

@@ -5,7 +5,7 @@
     '[data-filter-type="text"]'
   );
 
-  var textFilters = new Map<string, Filter>();
+  var textFilters = new WeakMap<HTMLElement, Filter>();
 
   Array.prototype.forEach.call(
     textFilterElements,
@@ -13,9 +13,9 @@
       filterElement.addEventListener("keyup", function handleTextFilterKeyUp(
         this: HTMLInputElement
       ) {
-        var filter = textFilters.get(this.id) || factory.create(this);
+        var filter = textFilters.get(this) || factory.create(this);
 
-        textFilters.set(this.id, filter);
+        textFilters.set(this, filter);
 
         var event = new CustomEvent("filter-changed", {
           bubbles: true,
@@ -40,30 +40,12 @@
 
       readonly node: HTMLInputElement;
       readonly attribute: string;
-      readonly id: string;
 
       constructor(node: HTMLInputElement) {
         this.node = node;
 
-        if (!this.node.id) {
-          this.node.setAttribute("id", this.uuidv4());
-        }
-
-        this.id = this.node.id;
-
         this.attribute =
           node.dataset.filterAttribute || TextFilter.DEFAULTS.filterAttribute;
-      }
-
-      uuidv4() {
-        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-          /[xy]/g,
-          function (c) {
-            var r = (Math.random() * 16) | 0,
-              v = c == "x" ? r : (r & 0x3) | 0x8;
-            return v.toString(16);
-          }
-        );
       }
 
       getMatcher() {

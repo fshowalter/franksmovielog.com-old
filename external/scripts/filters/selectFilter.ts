@@ -5,7 +5,7 @@
     '[data-filter-type="select"]'
   );
 
-  var selectFilters = new Map<string, Filter>();
+  var selectFilters = new WeakMap<HTMLElement, Filter>();
 
   Array.prototype.forEach.call(
     selectFilterElements,
@@ -16,9 +16,9 @@
       ) {
         e.preventDefault();
 
-        var filter = selectFilters.get(this.id) || factory.create(this);
+        var filter = selectFilters.get(this) || factory.create(this);
 
-        selectFilters.set(this.id, filter);
+        selectFilters.set(this, filter);
 
         var event = new CustomEvent("filter-changed", {
           bubbles: true,
@@ -35,16 +35,9 @@
     class SelectFilter implements Filter {
       readonly node: HTMLInputElement;
       readonly attribute: string;
-      readonly id: string;
 
       constructor(node: HTMLInputElement) {
         this.node = node;
-
-        if (!this.node.id) {
-          this.node.setAttribute("id", this.uuidv4());
-        }
-
-        this.id = this.node.id;
 
         this.attribute =
           node.dataset.filterAttribute || SelectFilter.DEFAULTS.filterAttribute;
@@ -65,17 +58,6 @@
 
           return item.getAttribute(attribute) === value;
         };
-      }
-
-      uuidv4() {
-        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-          /[xy]/g,
-          function (c) {
-            var r = (Math.random() * 16) | 0,
-              v = c == "x" ? r : (r & 0x3) | 0x8;
-            return v.toString(16);
-          }
-        );
       }
     }
 
