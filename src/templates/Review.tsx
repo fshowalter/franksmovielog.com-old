@@ -105,17 +105,14 @@ interface Props {
         rawMarkdownBody: string;
       };
       movie: {
-        imdb_id: string;
+        imdbId: string;
         title: string;
         year: string;
-        runtime_minutes: number;
-        original_title: string;
+        runtimeMinutes: number;
+        originalTitle: string;
         directors: {
-          full_name: string;
+          fullName: string;
         }[];
-        countries: {
-          names: [string];
-        };
         viewings: {
           id: string;
         }[];
@@ -147,9 +144,9 @@ const ReviewMetaDetails = styled.span`
 const ReviewMetaAkaWrap = styled.div``;
 
 const ReviewMetaAkaHeading = styled.div`
-  &:after {
+  /* &:after {
     content: ": ";
-  }
+  } */
 `;
 
 const ReviewMetaAkaTitle = styled.div`
@@ -197,30 +194,18 @@ const ReviewTagsList = styled.ul`
 `;
 
 const ReviewMetaAkaTitles = ({ review }: Props["data"]) => {
-  if (review.movie.original_title === review.movie.title) {
+  if (review.movie.originalTitle === review.movie.title) {
     return null;
   }
 
   return (
     <ReviewMetaAkaWrap>
-      <ReviewMetaAkaHeading>aka</ReviewMetaAkaHeading>
-      <ReviewMetaAkaTitle> {review.movie.original_title}</ReviewMetaAkaTitle>
+      <ReviewMetaAkaHeading>
+        aka:{" "}
+        <ReviewMetaAkaTitle> {review.movie.originalTitle}</ReviewMetaAkaTitle>
+      </ReviewMetaAkaHeading>
     </ReviewMetaAkaWrap>
   );
-};
-
-const ReviewCountries = ({
-  names,
-}: Props["data"]["review"]["movie"]["countries"]) => {
-  const countryNames = names.map((name) => {
-    return (
-      <span key={name}>
-        {name} <ReviewMetaDivider>|</ReviewMetaDivider>{" "}
-      </span>
-    );
-  });
-
-  return <>{countryNames}</>;
 };
 
 const ReviewMeta = ({ review }: Props["data"]) => {
@@ -229,22 +214,21 @@ const ReviewMeta = ({ review }: Props["data"]) => {
       <ReviewMetaTitle>
         {review.movie.title} ({review.movie.year})
       </ReviewMetaTitle>
+      <ReviewMetaAkaTitles review={review} />
       <ReviewMetaDirector>
         D:{" "}
         {review.movie.directors
-          .map((director) => director.full_name)
+          .map((director) => director.fullName)
           .join(" & ")}
       </ReviewMetaDirector>
       <ReviewMetaDetails>
         {review.movie.year} <ReviewMetaDivider>|</ReviewMetaDivider>{" "}
-        <ReviewCountries names={review.movie.countries.names} />
-        {review.movie.runtime_minutes}
+        {review.movie.runtimeMinutes}
         &thinsp;mins.
       </ReviewMetaDetails>
-      <ReviewMetaAkaTitles review={review} />
       <ReviewMetaSeen>
         I've seen it{" "}
-        <Link to={`/viewings/?imdb_id=${review.movie.imdb_id}`}>
+        <Link to={`/viewings/?imdb_id=${review.movie.imdbId}`}>
           {pluralize("time", review.movie.viewings.length, true)}
         </Link>
       </ReviewMetaSeen>
@@ -268,16 +252,26 @@ const reviewContent = (review: Props["data"]["review"]) => {
   return parse(remark().use(remarkHTML).processSync(content).toString());
 };
 
+const reviewImage = (review: Props["data"]["review"]) => {
+  if (!review.markdown.backdrop) {
+    return null;
+  }
+
+  return (
+    <Img
+      fluid={review.markdown.backdrop?.childImageSharp.fluid}
+      alt={`A still from ${review.movie.title}`}
+    />
+  );
+};
+
 const ReviewTemplate = ({ location, data }: Props) => {
   console.log(data);
   return (
     <Layout location={location}>
       <SingleColumn>
         <Article>
-          <Img
-            fluid={data.review.markdown.backdrop?.childImageSharp.fluid}
-            alt={`A still from ${data.review.movie.title}`}
-          />
+          {reviewImage(data.review)}
           <Title>{data.review.movie.title}</Title>
           <StyledGrade grade={data.review.grade} />
           <ContentWrap>
