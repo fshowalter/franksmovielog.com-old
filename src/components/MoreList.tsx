@@ -1,8 +1,8 @@
-import { Link } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
-import React, { memo } from 'react';
+import { Link } from "gatsby";
+import Img, { FluidObject } from "gatsby-image";
+import React from "react";
 
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 import Grade from "./Grade";
 
@@ -92,7 +92,7 @@ const ListItem = styled.li`
 
 type ReviewNode = Props["nodes"][0];
 
-const imageForNode = (node: ReviewNode) => {
+function imageForNode(node: ReviewNode): JSX.Element | null {
   if (!node.markdown.backdrop || !node.markdown.backdrop.childImageSharp) {
     return null;
   }
@@ -103,7 +103,7 @@ const imageForNode = (node: ReviewNode) => {
       alt={`A still from ${node.movie.title}`}
     />
   );
-};
+}
 
 const StyledGrade = styled(Grade)`
   display: block;
@@ -134,7 +134,7 @@ interface Props {
   }[];
 }
 
-const MoreList: React.FC<Props> = ({ nodes }) => {
+export default function MoreList({ nodes }: Props): JSX.Element {
   return (
     <List>
       {nodes.map((node) => (
@@ -150,6 +150,4 @@ const MoreList: React.FC<Props> = ({ nodes }) => {
       ))}
     </List>
   );
-};
-
-export default memo(MoreList);
+}

@@ -1,5 +1,8 @@
-const { createPages } = require("./src/gatsby/createPages");
+const sqlite3 = require("sqlite3");
+const { open } = require("sqlite");
 const { resolve } = require("path");
+
+const { createPages } = require("./src/gatsby/createPages.ts");
 
 /** @type { import("gatsby").GatsbyNode } */
 const config = {};
@@ -88,7 +91,7 @@ config.createSchemaCustomization = ({ actions, schema }) => {
       fields: {
         backdrop: {
           type: "File",
-          resolve: (source, args, context, info) => {
+          resolve: (source, args, context) => {
             if (!source.frontmatter || !source.frontmatter.slug) {
               return null;
             }
@@ -108,7 +111,7 @@ config.createSchemaCustomization = ({ actions, schema }) => {
         },
         firstParagraph: {
           type: "String",
-          resolve: (source, args, context, info) => {
+          resolve: (source) => {
             return source.rawMarkdownBody
               ? source.rawMarkdownBody.trim().split("\n\n")[0]
               : "";
@@ -126,7 +129,6 @@ config.onCreateNode = ({ node, actions, createContentDigest, reporter }) => {
 
   if (node.internal.type === "Movie") {
     if (!node.imdbId) {
-      console.log(node);
       reporter.panic("null imdbId");
     }
   }
@@ -164,9 +166,6 @@ config.onCreateNode = ({ node, actions, createContentDigest, reporter }) => {
   }
 };
 
-const sqlite3 = require("sqlite3");
-const { open } = require("sqlite");
-
 const dbFileName = `${__dirname}/../movielog-new/db/movie_db.sqlite3`;
 
 const openDb = async () => {
@@ -186,10 +185,10 @@ config.sourceNodes = async ({ actions, createContentDigest }) => {
     movie_imdb_id as imdbId
       , title
       , year
-      , GROUP_CONCAT(director_imdb_id) as _directorImdbIdsConcat
-      , GROUP_CONCAT(performer_imdb_id) as _performerImdbIdsConcat
-      , GROUP_CONCAT(writer_imdb_id) as _writerImdbIdsConcat
-      , GROUP_CONCAT(collection_name, '|') AS _collectionNamesConcat
+      , GROUP_CONCAT(director_imdb_id) as directorImdbIdsConcat
+      , GROUP_CONCAT(performer_imdb_id) as performerImdbIdsConcat
+      , GROUP_CONCAT(writer_imdb_id) as writerImdbIdsConcat
+      , GROUP_CONCAT(collection_name, '|') AS collectionNamesConcat
     FROM watchlist_titles
     LEFT JOIN movies ON imdbId = movies.imdb_id
     LEFT JOIN people AS directors ON director_imdb_id = directors.imdb_id
@@ -203,33 +202,33 @@ config.sourceNodes = async ({ actions, createContentDigest }) => {
 
   watchlistTitles.forEach((watchlistTitle) => {
     const data = { ...watchlistTitle };
-    if (!data._directorImdbIdsConcat) {
+    if (!data.directorImdbIdsConcat) {
       data.directorImdbIds = [];
     } else {
-      data.directorImdbIds = data._directorImdbIdsConcat.split(",");
+      data.directorImdbIds = data.directorImdbIdsConcat.split(",");
     }
-    delete data._directorImdbIdsConcat;
+    delete data.directorImdbIdsConcat;
 
-    if (!data._performerImdbIdsConcat) {
+    if (!data.performerImdbIdsConcat) {
       data.performerImdbIds = [];
     } else {
-      data.performerImdbIds = data._performerImdbIdsConcat.split(",");
+      data.performerImdbIds = data.performerImdbIdsConcat.split(",");
     }
-    delete data._performerImdbIdsConcat;
+    delete data.performerImdbIdsConcat;
 
-    if (!data._writerImdbIdsConcat) {
+    if (!data.writerImdbIdsConcat) {
       data.writerImdbIds = [];
     } else {
-      data.writerImdbIds = data._writerImdbIdsConcat.split(",");
+      data.writerImdbIds = data.writerImdbIdsConcat.split(",");
     }
-    delete data._writerImdbIdsConcat;
+    delete data.writerImdbIdsConcat;
 
-    if (!data._collectionNamesConcat) {
+    if (!data.collectionNamesConcat) {
       data.collectionIds = [];
     } else {
-      data.collectionIds = data._collectionNamesConcat.split(",");
+      data.collectionIds = data.collectionNamesConcat.split(",");
     }
-    delete data._collectionNamesConcat;
+    delete data.collectionNamesConcat;
 
     createNode({
       ...data,
@@ -249,7 +248,7 @@ config.sourceNodes = async ({ actions, createContentDigest }) => {
         people.imdb_id AS imdbId
       , people.full_name as fullName
       , slug
-      , GROUP_CONCAT(DISTINCT watchlist_titles.movie_imdb_id) AS _watchlistTitleImdbIdsConcat
+      , GROUP_CONCAT(DISTINCT watchlist_titles.movie_imdb_id) AS watchlistTitleImdbIdsConcat
     FROM (
           SELECT
               imdb_id
@@ -278,12 +277,12 @@ config.sourceNodes = async ({ actions, createContentDigest }) => {
 
   directorResults.forEach((directorResult) => {
     const data = { ...directorResult };
-    if (!data._watchlistTitleImdbIdsConcat) {
+    if (!data.watchlistTitleImdbIdsConcat) {
       data.watchlistTitleImdbIds = [];
     } else {
-      data.watchlistTitleImdbIds = data._watchlistTitleImdbIdsConcat.split(",");
+      data.watchlistTitleImdbIds = data.watchlistTitleImdbIdsConcat.split(",");
     }
-    delete data._watchlistTitleImdbIdsConcat;
+    delete data.watchlistTitleImdbIdsConcat;
     createNode({
       ...data,
       // Required fields.
@@ -302,7 +301,7 @@ config.sourceNodes = async ({ actions, createContentDigest }) => {
       people.imdb_id AS imdbId
     , people.full_name AS fullName
     , slug
-    , GROUP_CONCAT(DISTINCT watchlist_titles.movie_imdb_id) AS _watchlistTitleImdbIdsConcat
+    , GROUP_CONCAT(DISTINCT watchlist_titles.movie_imdb_id) AS watchlistTitleImdbIdsConcat
     FROM people
     JOIN watchlist_titles ON imdb_id = watchlist_titles.performer_imdb_id
     GROUP BY
@@ -311,12 +310,12 @@ config.sourceNodes = async ({ actions, createContentDigest }) => {
 
   performerResults.forEach((performerResult) => {
     const data = { ...performerResult };
-    if (!data._watchlistTitleImdbIdsConcat) {
+    if (!data.watchlistTitleImdbIdsConcat) {
       data.watchlistTitleImdbIds = [];
     } else {
-      data.watchlistTitleImdbIds = data._watchlistTitleImdbIdsConcat.split(",");
+      data.watchlistTitleImdbIds = data.watchlistTitleImdbIdsConcat.split(",");
     }
-    delete data._watchlistTitleImdbIdsConcat;
+    delete data.watchlistTitleImdbIdsConcat;
     createNode({
       ...data,
       // Required fields.
@@ -335,7 +334,7 @@ config.sourceNodes = async ({ actions, createContentDigest }) => {
         people.imdb_id AS imdbId
       , people.full_name as fullName
       , slug
-      , GROUP_CONCAT(DISTINCT watchlist_titles.movie_imdb_id) AS _watchlistTitleImdbIdsConcat
+      , GROUP_CONCAT(DISTINCT watchlist_titles.movie_imdb_id) AS watchlistTitleImdbIdsConcat
     FROM people
     JOIN watchlist_titles ON imdb_id = watchlist_titles.writer_imdb_id
     GROUP BY
@@ -344,12 +343,12 @@ config.sourceNodes = async ({ actions, createContentDigest }) => {
 
   writerResults.forEach((writerResult) => {
     const data = { ...writerResult };
-    if (!data._watchlistTitleImdbIdsConcat) {
+    if (!data.watchlistTitleImdbIdsConcat) {
       data.watchlistTitleImdbIds = [];
     } else {
-      data.watchlistTitleImdbIds = data._watchlistTitleImdbIdsConcat.split(",");
+      data.watchlistTitleImdbIds = data.watchlistTitleImdbIdsConcat.split(",");
     }
-    delete data._watchlistTitleImdbIdsConcat;
+    delete data.watchlistTitleImdbIdsConcat;
     createNode({
       ...data,
       // Required fields.
@@ -392,7 +391,7 @@ config.sourceNodes = async ({ actions, createContentDigest }) => {
     SELECT
         collection_name as name
       , slug
-      , group_concat(movie_imdb_id) AS _movieImdbIdsConcat
+      , group_concat(movie_imdb_id) AS movieImdbIdsConcat
     FROM watchlist_titles
     WHERE collection_name IS NOT NULL
     GROUP BY
@@ -402,12 +401,12 @@ config.sourceNodes = async ({ actions, createContentDigest }) => {
   collectionResults.forEach((collectionResult) => {
     const data = { ...collectionResult };
 
-    if (!data._movieImdbIdsConcat) {
+    if (!data.movieImdbIdsConcat) {
       data.movieImdbIds = [];
     } else {
-      data.movieImdbIds = data._movieImdbIdsConcat.split(",");
+      data.movieImdbIds = data.movieImdbIdsConcat.split(",");
     }
-    delete data._movieImdbIdsConcat;
+    delete data.movieImdbIdsConcat;
 
     createNode({
       ...data,
@@ -429,7 +428,7 @@ config.sourceNodes = async ({ actions, createContentDigest }) => {
     , title
     , original_title AS originalTitle
     , runtime_minutes AS runtimeMinutes
-    , GROUP_CONCAT(DISTINCT directing_credits.person_imdb_id) AS _directorImdbIdsConcat
+    , GROUP_CONCAT(DISTINCT directing_credits.person_imdb_id) AS directorImdbIdsConcat
     FROM (
           SELECT
             imdb_id
@@ -456,13 +455,12 @@ config.sourceNodes = async ({ actions, createContentDigest }) => {
 
   movieResults.forEach((movieResult) => {
     const data = { ...movieResult };
-    if (!data._directorImdbIdsConcat) {
+    if (!data.directorImdbIdsConcat) {
       data.directorImdbIds = [];
-      console.log(data);
     } else {
-      data.directorImdbIds = data._directorImdbIdsConcat.split(",");
+      data.directorImdbIds = data.directorImdbIdsConcat.split(",");
     }
-    delete data._directorImdbIdsConcat;
+    delete data.directorImdbIdsConcat;
 
     const titleLower = data.title.toLowerCase();
     const words = titleLower.split(" ");

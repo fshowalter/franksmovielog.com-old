@@ -1,30 +1,33 @@
 import React from "react";
-import { Global, css } from "@emotion/core";
 
-export default () => (
-  <Global
-    styles={css`
-      html {
-        box-sizing: border-box;
-      }
+import { css, Global } from "@emotion/core";
 
-      *,
-      *:before,
-      *:after {
-        box-sizing: inherit;
-      }
+export default function GlobalStyleReset(): JSX.Element {
+  return (
+    <Global
+      styles={css`
+        html {
+          box-sizing: border-box;
+        }
 
-      a {
-        color: var(--color-link);
-        line-height: inherit;
-        text-decoration: none;
-      }
+        *,
+        *:before,
+        *:after {
+          box-sizing: inherit;
+        }
 
-      body {
-        margin: 0;
-        padding: 0;
-        position: relative;
-      }
-    `}
-  />
-);
+        a {
+          color: var(--color-link);
+          line-height: inherit;
+          text-decoration: none;
+        }
+
+        body {
+          margin: 0;
+          padding: 0;
+          position: relative;
+        }
+      `}
+    />
+  );
+}

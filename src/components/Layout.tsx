@@ -1,13 +1,13 @@
-import React, { ReactNode } from 'react';
-import { Helmet } from 'react-helmet';
+import React, { ReactNode } from "react";
+import { Helmet } from "react-helmet";
 
-import favicon152 from '../assets/apple-touch-icon-152x152.png';
-import favicon160 from '../assets/favicon-160x160.png';
-import favicon196 from '../assets/favicon-196x196.png';
-import favicon32 from '../assets/favicon-32x32.png';
-import Footer from './Footer';
-import GlobalStyles from './GlobalStyles';
-import Mast from './Mast';
+import favicon152 from "../assets/apple-touch-icon-152x152.png";
+import favicon160 from "../assets/favicon-160x160.png";
+import favicon196 from "../assets/favicon-196x196.png";
+import favicon32 from "../assets/favicon-32x32.png";
+import Footer from "./Footer";
+import GlobalStyles from "./GlobalStyles";
+import Mast from "./Mast";
 
 interface Props {
   children: ReactNode;
@@ -17,7 +17,11 @@ interface Props {
   javascript?: ReactNode;
 }
 
-const Layout: React.FC<Props> = ({ children, location, javascript }) => {
+export default function Layout({
+  children,
+  location,
+  javascript,
+}: Props): JSX.Element {
   return (
     <>
       <Helmet>
@@ -44,6 +48,4 @@ const Layout: React.FC<Props> = ({ children, location, javascript }) => {
       {javascript}
     </>
   );
-};
-
-export default Layout;
+}

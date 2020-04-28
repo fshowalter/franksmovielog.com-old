@@ -1,10 +1,10 @@
 import React from "react";
 
-import A from "../assets/5-stars.svg";
-import B from "../assets/4-stars.svg";
-import C from "../assets/3-stars.svg";
-import D from "../assets/2-stars.svg";
 import F from "../assets/1-star.svg";
+import D from "../assets/2-stars.svg";
+import C from "../assets/3-stars.svg";
+import B from "../assets/4-stars.svg";
+import A from "../assets/5-stars.svg";
 
 const gradeMap: { [key: string]: [string, string] } = {
   A: [A, "5 stars (out of 5)"],
@@ -21,7 +21,12 @@ interface Props {
   className?: string;
 }
 
-const Grade = ({ grade, width, height, className }: Props) => {
+export default function Grade({
+  grade,
+  width,
+  height,
+  className,
+}: Props): JSX.Element | null {
   if (!grade || !(grade[0] in gradeMap)) {
     return null;
   }
@@ -37,6 +42,4 @@ const Grade = ({ grade, width, height, className }: Props) => {
       height={height}
     />
   );
-};
-
-export default Grade;
+}

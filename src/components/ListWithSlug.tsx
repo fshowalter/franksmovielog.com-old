@@ -53,13 +53,13 @@ interface Props {
   slug: string;
 }
 
-const ListItem = ({ title, slug }: Props) => {
+function ListItem({ title, slug }: Props): JSX.Element {
   return (
     <Item data-title={title}>
       <Title>{title}</Title>
       <Slug>{slug}</Slug>
     </Item>
   );
-};
+}
 
 export { List, ListItem };

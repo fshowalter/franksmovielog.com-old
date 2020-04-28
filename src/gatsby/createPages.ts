@@ -1,4 +1,4 @@
-import { GatsbyNode } from 'gatsby';
+import { CreatePagesArgs } from "gatsby";
 
 interface CreatePagesQuery {
   allMarkdownRemark: {
@@ -12,10 +12,10 @@ interface CreatePagesQuery {
   };
 }
 
-export const createPages: GatsbyNode["createPages"] = async function createPages({
+export default async function createPages({
   graphql,
   actions,
-}) {
+}: CreatePagesArgs): Promise<void> {
   const { createPage } = actions;
   await graphql(
     `
@@ -68,4 +68,4 @@ export const createPages: GatsbyNode["createPages"] = async function createPages
       });
     });
   });
-};
+}

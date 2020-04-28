@@ -1,6 +1,6 @@
-import React, { ChangeEventHandler, ReactNode } from 'react';
+import React, { ReactNode } from "react";
 
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 const styleVars = {
   filterBackgroundColor: "#fff",
@@ -71,51 +71,12 @@ const Label = styled.label`
   line-height: 2.2;
 `;
 
-const SelectInput = styled.select`
-  appearance: none;
-  backface-visibility: hidden;
-  border: 0;
-  border-radius: 0;
-  box-sizing: border-box;
-  display: block;
-  font-family: var(--font-family-system);
-  padding: 0;
-  width: 100%;
-  background-color: ${styleVars.filterBackgroundColor};
-  color: ${styleVars.filterTextBoxColor};
-  font-size: 15px;
-  text-indent: 0.01px;
-  text-overflow: "";
-`;
-
-interface SelectFilterProps {
-  name: string;
-  children: Array<[string, string]>;
-}
-
-const SelectFilter = ({ name, children }: SelectFilterProps) => {
-  return (
-    <FilterControl>
-      <Label htmlFor={name}>{name}</Label>
-      <SelectInput>
-        {children.map(([name, value]) => {
-          return (
-            <option key={value} value={value}>
-              {name}
-            </option>
-          );
-        })}
-      </SelectInput>
-    </FilterControl>
-  );
-};
-
 interface TextFilterProps {
   name: string;
   placeholder: string;
 }
 
-const TextFilter = ({ name, placeholder }: TextFilterProps) => {
+function TextFilter({ name, placeholder }: TextFilterProps): JSX.Element {
   return (
     <FilterControl>
       <Label htmlFor={name}>{name}</Label>
@@ -124,20 +85,20 @@ const TextFilter = ({ name, placeholder }: TextFilterProps) => {
       </TextInputWrap>
     </FilterControl>
   );
-};
+}
 
 interface FilterPanelProps {
   heading: string;
   children: ReactNode;
 }
 
-const FilterPanel = ({ heading, children }: FilterPanelProps) => {
+function FilterPanel({ heading, children }: FilterPanelProps): JSX.Element {
   return (
     <Container>
       <Heading>{heading}</Heading>
       <Content>{children}</Content>
     </Container>
   );
-};
+}
 
-export { FilterPanel, TextFilter, SelectFilter };
+export { FilterPanel, TextFilter };

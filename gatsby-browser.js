@@ -1,5 +1,7 @@
+/* eslint-env browser */
+
 exports.onInitialClientRender = () => {
-  var script = document.createElement("script");
+  const script = document.createElement("script");
   script.src = "/scripts/filters.js";
   document.body.appendChild(script);
 };

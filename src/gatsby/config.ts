@@ -1,5 +1,3 @@
-// import gatsbySourceSql from './plugin-configs/gatsby-source-sql';
-
 export const siteMetadata = {
   title: `Frank's Movie Log`,
   siteUrl: `https://www.franksmovielog.com`,
@@ -7,7 +5,6 @@ export const siteMetadata = {
 };
 
 export const plugins = [
-  // ...gatsbySourceSql,
   {
     resolve: `gatsby-plugin-sharp`,
     options: {

@@ -1,6 +1,7 @@
-import React from "react";
-import styled from "@emotion/styled";
 import { Link } from "gatsby";
+import React from "react";
+
+import styled from "@emotion/styled";
 
 const styleVars = {
   colorMastNavLink: "#c9c4b3",
@@ -141,7 +142,7 @@ const SubTitle = styled.div`
   }
 `;
 
-const Mast = () => {
+export default function Mast(): JSX.Element {
   return (
     <>
       <Header>
@@ -170,12 +171,10 @@ const Mast = () => {
       </Header>
       <TitleWrap>
         <Title>
-          <TitleLink to="/">Frank's Movie Log</TitleLink>
+          <TitleLink to="/">Frank&apos;s Movie Log</TitleLink>
         </Title>
         <SubTitle>Quality reviews of films of questionable quality.</SubTitle>
       </TitleWrap>
     </>
   );
-};
-
-export default Mast;
+}

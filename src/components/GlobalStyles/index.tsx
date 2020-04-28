@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import { css } from '@emotion/core';
+import { css } from "@emotion/core";
 
-import Reset from './Reset';
-import Typography from './Typography';
-import Variables from './Variables';
+import Reset from "./Reset";
+import Typography from "./Typography";
+import Vars from "./Vars";
 
 export const bodyTextMixin = css`
   font-feature-settings: "ordn", "lnum";
@@ -21,10 +21,12 @@ export const bodyTextMixin = css`
   }
 `;
 
-export default () => (
-  <>
-    <Variables />
-    <Reset />
-    <Typography />
-  </>
-);
+export default function GlobalStyles(): JSX.Element {
+  return (
+    <>
+      <Vars />
+      <Reset />
+      <Typography />
+    </>
+  );
+}

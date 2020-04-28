@@ -10,7 +10,7 @@ const styleVars = {
   colorFooterSubLink: "#b5b5b5",
 };
 
-const Footer = styled.footer`
+const FooterWrap = styled.footer`
   background-color: ${styleVars.colorFooterBackground};
   margin: 0 auto;
   max-width: 1000px;
@@ -52,9 +52,9 @@ const FooterSubExternalLink = styled.a`
   ${footerSubLinkMixin}
 `;
 
-export default (): React.ReactNode => {
+export default function Footer(): JSX.Element {
   return (
-    <Footer>
+    <FooterWrap>
       <FooterList>
         <FooterListItem>
           <FooterLink to="/about/">About</FooterLink>
@@ -85,6 +85,6 @@ export default (): React.ReactNode => {
           <FooterSubLink to="/feed.xml">RSS</FooterSubLink>
         </FooterListItem>
       </FooterList>
-    </Footer>
+    </FooterWrap>
   );
-};
+}
