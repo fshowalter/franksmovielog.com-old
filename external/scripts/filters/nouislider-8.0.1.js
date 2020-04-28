@@ -1,7 +1,5 @@
-/*! noUiSlider - 8.0.1 - 2015-06-29 19:11:22 */
-
-/*jslint browser: true */
-/*jslint white: true */
+/* eslint-disable */
+// noUiSlider - 8.0.1 - 2015-06-29 19:11:22
 
 (function (factory) {
   if (typeof define === "function" && define.amd) {

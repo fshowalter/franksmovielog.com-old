@@ -95,9 +95,7 @@ interface WatchlistPerson {
   fullName: string;
 }
 
-interface WatchlistPersons extends Array<WatchlistPerson> {}
-
-const formatPeople = (people: WatchlistPersons, suffix: string) => {
+const formatPeople = (people: Array<WatchlistPerson>, suffix: string) => {
   if (people.length === 0) {
     return "";
   }
@@ -112,9 +110,7 @@ interface WatchlistCollection {
   name: string;
 }
 
-interface Collections extends Array<WatchlistCollection> {}
-
-const formatCollections = (collections: Collections) => {
+const formatCollections = (collections: Array<WatchlistCollection>) => {
   if (collections.length === 0) {
     return "";
   }
@@ -129,7 +125,7 @@ const formatCollections = (collections: Collections) => {
 const buildSlug = (
   watchlistTitle: Props["data"]["allWatchlistTitle"]["nodes"][0]
 ) => {
-  let credits = [
+  const credits = [
     formatPeople(watchlistTitle.directors, "directed"),
     formatPeople(watchlistTitle.performers, "performed"),
     formatPeople(watchlistTitle.writers, "has a writing credit"),
@@ -138,18 +134,14 @@ const buildSlug = (
 
   let slug = `Because `;
 
-  do {
-    let credit = credits.shift();
-
-    if (!credit) {
-      continue;
-    }
+  if (credits.length > 0) {
+    const credit = credits.shift();
 
     slug += credit;
     if (credits.find((item) => item.length > 0)) {
       slug += " and ";
     }
-  } while (credits.length > 0);
+  }
 
   return `${slug}.`;
 };
@@ -412,10 +404,10 @@ const SelectFilter = ({ name, children }: SelectFilterProps) => {
     <FilterControl>
       <Label htmlFor={name}>{name}</Label>
       <SelectInput>
-        {children.map(([name, value]) => {
+        {children.map(([optionName, optionValue]) => {
           return (
-            <option key={value} value={value}>
-              {name}
+            <option key={optionValue} value={optionValue}>
+              {optionName}
             </option>
           );
         })}
@@ -457,7 +449,7 @@ interface FilterPanelProps {
 
 const FilterPanel = ({ heading, children }: FilterPanelProps) => {
   return (
-    <FiltersWrap data-filter-controls={true} data-target={"#watchlist-titles"}>
+    <FiltersWrap data-filter-controls data-target="#watchlist-titles">
       <Heading>{heading}</Heading>
       <Content>{children}</Content>
     </FiltersWrap>
@@ -533,7 +525,7 @@ const Watchlist: React.FC<Props> = ({ location, data }) => {
     <TwoColumnLayout location={location}>
       <Column1>
         <PanelHead
-          title={"The Watchlist"}
+          title="The Watchlist"
           slug={`My movie review bucketlist. ${Number(
             data.allWatchlistTitle.nodes.length
           ).toLocaleString()} ${pluralize(
@@ -572,7 +564,11 @@ const Watchlist: React.FC<Props> = ({ location, data }) => {
               data-year={watchlistTitle.movie.year}
             >
               <Title>
-                {watchlistTitle.movie.title} ({watchlistTitle.movie.year})
+                {watchlistTitle.movie.title}
+                {' '}
+                (
+                {watchlistTitle.movie.year}
+                )
               </Title>
               <Slug>{buildSlug(watchlistTitle)}</Slug>
             </ListItem>

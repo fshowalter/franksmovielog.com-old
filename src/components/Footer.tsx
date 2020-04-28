@@ -52,7 +52,7 @@ const FooterSubExternalLink = styled.a`
   ${footerSubLinkMixin}
 `;
 
-export default () => {
+export default (): React.ReactNode => {
   return (
     <Footer>
       <FooterList>

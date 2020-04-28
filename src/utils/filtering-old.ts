@@ -24,7 +24,7 @@ const timedChunk = (
 
     if (todo.length > 0) {
       return setTimeout(processItem, 25);
-    } else if (callback) {
+    } if (callback) {
       return callback(items);
     }
   };
@@ -32,9 +32,9 @@ const timedChunk = (
 };
 
 const nodeListToArray = (nodeList?: NodeListOf<HTMLElement> | null) => {
-  var array = [];
-  var i;
-  var len;
+  const array = [];
+  let i;
+  let len;
 
   if (!nodeList) {
     return [];

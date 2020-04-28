@@ -205,10 +205,10 @@ const StyledGrade = styled(Grade)`
 `;
 
 const buildExcerpt = (node: ReviewNode) => {
-  let excerpt =
-    renderToString(<StyledGrade grade={node.grade} width={95} height={95} />) +
-    " " +
-    node.markdown.firstParagraph;
+  const excerpt =
+    `${renderToString(<StyledGrade grade={node.grade} width={95} height={95} />) 
+    } ${ 
+      node.markdown.firstParagraph}`;
 
   return parse(remark().use(remarkHTML).processSync(excerpt).toString());
 };
@@ -271,7 +271,7 @@ const Pagination: React.FC<PaginationProps> = ({ moreNodes, pageContext }) => {
   }
 
   return (
-    <Fragment>
+    <>
       <PaginationHeading>More from Frank's Movie Log</PaginationHeading>
       <MoreList nodes={moreNodes} />
       <PaginationWrap>
@@ -281,7 +281,7 @@ const Pagination: React.FC<PaginationProps> = ({ moreNodes, pageContext }) => {
           </PaginationNextPageLink>
         </PaginationLinkWrap>
       </PaginationWrap>
-    </Fragment>
+    </>
   );
 };
 

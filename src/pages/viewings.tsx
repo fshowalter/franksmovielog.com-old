@@ -45,7 +45,7 @@ export default ({ data, location }) => {
               key={node.sequence}
               title={`${node.title}`}
               slug={slugForNode(node)}
-            ></ListItem>
+            />
           ))}
         </List>
       </Column2>

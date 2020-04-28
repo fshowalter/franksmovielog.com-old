@@ -44,7 +44,7 @@ interface Props {
   children: ReactNode;
 }
 
-const TwoColumnLayout = ({ location, children }: Props) => {
+const TwoColumnLayout = ({ location, children }: Props): React.ReactNode => {
   return (
     <Layout location={location}>
       <Columns>{children}</Columns>

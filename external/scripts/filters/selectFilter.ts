@@ -1,11 +1,12 @@
+/* eslint-env node, browser */
 /// <reference path="./filterExecutor.ts" />
 
-(function initFilter(factory) {
-  var selectFilterElements = document.querySelectorAll<HTMLInputElement>(
+(function initFilter(factory): void {
+  const selectFilterElements = document.querySelectorAll<HTMLInputElement>(
     '[data-filter-type="select"]'
   );
 
-  var selectFilters = new WeakMap<HTMLElement, Filter>();
+  const selectFilters = new WeakMap<HTMLElement, Filter>();
 
   Array.prototype.forEach.call(
     selectFilterElements,
@@ -16,11 +17,11 @@
       ) {
         e.preventDefault();
 
-        var filter = selectFilters.get(this) || factory.create(this);
+        const filter = selectFilters.get(this) || factory.create(this);
 
         selectFilters.set(this, filter);
 
-        var event = new CustomEvent("filter-changed", {
+        const event = new CustomEvent("filter-changed", {
           bubbles: true,
           cancelable: false,
           detail: filter,
@@ -34,6 +35,7 @@
   (function buildSelectFilterFactory() {
     class SelectFilter implements Filter {
       readonly node: HTMLInputElement;
+
       readonly attribute: string;
 
       constructor(node: HTMLInputElement) {
@@ -48,8 +50,8 @@
       };
 
       getMatcher() {
-        var attribute = this.attribute;
-        var value = this.node.value;
+        const { attribute } = this;
+        const { value } = this.node;
 
         return function matcher(item: HTMLElement) {
           if (!value) {

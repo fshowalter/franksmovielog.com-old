@@ -4,7 +4,7 @@ import React, { memo } from 'react';
 
 import styled from '@emotion/styled';
 
-import Grade from '../components/Grade';
+import Grade from "./Grade";
 
 const List = styled.ol`
   display: flex;

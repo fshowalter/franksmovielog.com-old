@@ -1,4 +1,6 @@
-interface IFilterExecutor {
+/* eslint-env node, browser */
+
+interface FilterExecutor {
   addFilter(filter: Filter): void;
   filter(): void;
 }
@@ -9,8 +11,8 @@ interface Filter {
   getMatcher(): Matcher;
 }
 
-(function initFilterer(factory) {
-  var filterWrap = document.querySelector<HTMLElement>(
+(function initFilterer(factory): void {
+  const filterWrap = document.querySelector<HTMLElement>(
     "[data-filter-controls]"
   );
 
@@ -18,36 +20,42 @@ interface Filter {
     return;
   }
 
-  function underscoreDebounce(func: Function, wait: number) {
-    var args: any;
-    var context: any;
-    var result: any;
-    var timeout: NodeJS.Timeout | null = null;
-    var timestamp: Date | null = null;
+  function underscoreDebounce(func: Function, wait: number): () => void {
+    let funcArgs: [] | null;
+    let timeout: NodeJS.Timeout | null = null;
+    let timestamp: Date | null = null;
 
-    var later = function later() {
-      var last = new Date().getTime() - timestamp!.getTime();
+    function later(): void {
+      let last;
 
-      if (last < wait && last >= 0) {
+      if (timestamp) {
+        last = new Date().getTime() - timestamp.getTime();
+      }
+
+      if (last && last < wait && last >= 0) {
         timeout = setTimeout(later, wait - last);
       } else {
         timeout = null;
-        result = func.apply(context, args);
-        if (!timeout) context = args = null;
+        if (funcArgs) {
+          func(...funcArgs);
+        } else {
+          func();
+        }
+        if (!timeout) {
+          funcArgs = null;
+        }
       }
-    };
+    }
 
-    return function debouncedFunction() {
-      args = arguments;
+    return function debouncedFunction(...args): void {
+      funcArgs = args;
       timestamp = new Date();
 
       if (!timeout) timeout = setTimeout(later, wait);
-
-      return result;
     };
   }
 
-  var filterExecutor: IFilterExecutor | null = null;
+  let filterExecutor: FilterExecutor | null = null;
 
   filterWrap.addEventListener("filter-changed", function handleFilterChanged(
     this: HTMLElement,
@@ -59,23 +67,25 @@ interface Filter {
 
     filterExecutor.addFilter((e as CustomEvent).detail as Filter);
 
-    underscoreDebounce(function debouncedFilter() {
-      filterExecutor!.filter();
+    underscoreDebounce(() => {
+      if (filterExecutor) {
+        filterExecutor.filter();
+      }
     }, 50)();
   });
 })(
-  (function buildFiltererFactory() {
-    class FilterExecutor implements IFilterExecutor {
+  (function buildFiltererFactory(): {
+    create(element: HTMLElement): FilterExecutor;
+  } {
+    class FilterExecutorImpl implements FilterExecutor {
       static DEFAULTS = {
         itemsSelector: "li",
       };
 
-      static nodeListToArray(nodeList: NodeList) {
-        var array = [];
-        var i: number;
-        var len: number;
+      static nodeListToArray(nodeList: NodeList): Node[] {
+        const array = [];
 
-        for (i = -1, len = nodeList.length; ++i !== len; ) {
+        for (let i = -1, len = nodeList.length; i < len; i += 1) {
           array[i] = nodeList[i];
         }
 
@@ -85,10 +95,10 @@ interface Filter {
       /*
         Copyright 2009 Nicholas C. Zakas. All rights reserved. MIT Licensed
       */
-      static timedChunk(items: NodeList, process: Function) {
-        var todo = FilterExecutor.nodeListToArray(items);
-        var processItem = function processItemChunk() {
-          var start = +new Date();
+      static timedChunk(items: NodeList, process: Function): NodeJS.Timeout {
+        const todo = FilterExecutorImpl.nodeListToArray(items);
+        function processItem(): NodeJS.Timeout | null {
+          const start = +new Date();
 
           do {
             process.call(undefined, todo.shift());
@@ -97,14 +107,16 @@ interface Filter {
           if (todo.length > 0) {
             return setTimeout(processItem, 25);
           }
-        };
+
+          return null;
+        }
 
         return setTimeout(processItem, 25);
       }
 
-      static getMatchers(filters: Set<Filter>) {
-        var matcher: Matcher;
-        var matchers: Matcher[] = [];
+      static getMatchers(filters: Set<Filter>): Matcher[] {
+        let matcher: Matcher;
+        const matchers: Matcher[] = [];
 
         filters.forEach((filter: Filter) => {
           matcher = filter.getMatcher();
@@ -118,31 +130,32 @@ interface Filter {
       }
 
       itemsSelector: string;
+
       items: NodeListOf<HTMLElement>;
+
       filters: Set<Filter> = new Set<Filter>();
 
       constructor(node: HTMLElement) {
         this.itemsSelector =
-          node.dataset.itemsSelector || FilterExecutor.DEFAULTS.itemsSelector;
+          node.dataset.itemsSelector ||
+          FilterExecutorImpl.DEFAULTS.itemsSelector;
         this.items = document.querySelectorAll<HTMLElement>(
-          node.dataset.target + " " + this.itemsSelector
+          `${node.dataset.target} ${this.itemsSelector}`
         );
       }
 
-      addFilter(filter: Filter) {
+      addFilter(filter: Filter): void {
         this.filters.add(filter);
       }
 
-      filter() {
-        var matcher;
-        var matchers = FilterExecutor.getMatchers(this.filters);
+      filter(): void {
+        let matcher;
+        const matchers = FilterExecutorImpl.getMatchers(this.filters);
 
-        function matchItem(item: HTMLElement) {
-          var i;
-          var len;
-          var match = true;
+        function matchItem(item: HTMLElement): void {
+          let match = true;
 
-          for (i = 0, len = matchers.length; i < len; i++) {
+          for (let i = 0, len = matchers.length; i < len; i += 1) {
             matcher = matchers[i];
             if (!matcher(item)) {
               match = false;
@@ -152,17 +165,17 @@ interface Filter {
           if (match) {
             item.removeAttribute("style");
           } else {
-            item.style.display = "none";
+            item.style.display = "none"; // eslint-disable-line no-param-reassign
           }
         }
 
-        FilterExecutor.timedChunk(this.items, matchItem);
+        FilterExecutorImpl.timedChunk(this.items, matchItem);
       }
     }
 
     // Run the standard initializer
-    function initialize(element: HTMLElement) {
-      return new FilterExecutor(element);
+    function initialize(element: HTMLElement): FilterExecutor {
+      return new FilterExecutorImpl(element);
     }
 
     // Use an object instead of a function for future expansibility;

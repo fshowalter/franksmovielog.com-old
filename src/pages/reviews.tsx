@@ -76,7 +76,7 @@ const Reviews: React.FC<Props> = ({ location, data }) => {
               key={review.sequence}
               title={`${review.movie.title}`}
               slug={slugForReview(review)}
-            ></ListItem>
+            />
           ))}
         </List>
       </Column2>

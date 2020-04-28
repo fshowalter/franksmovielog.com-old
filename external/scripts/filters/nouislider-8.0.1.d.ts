@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/class-name-casing */
 // Type definitions for nouislider v8.0.2
 // Project: https://github.com/leongersen/noUiSlider
 // Definitions by: Patrick Davies <https://github.com/bleuarg>
@@ -20,7 +21,7 @@ declare namespace noUiSlider {
      * or the edges of the slider. Use "lower" to connect to the lower side,
      * or "upper" to connect to the upper side. Setting true sets the bar between the handles.
      */
-    range: Object;
+    range: Record<string, Array<number, number>>;
     /**
      * noUiSlider offers several ways to handle user interaction.
      * The range can be set to drag, and handles can move to taps.
@@ -72,7 +73,7 @@ declare namespace noUiSlider {
      * See manual formatting to the right for usage information.
      * By default, noUiSlider will format output with 2 decimals.
      */
-    format?: Object | ((...args: any[]) => any);
+    format?: Record<string, any> | ((...args: any[]) => any); // eslint-disable-line @typescript-eslint/no-explicit-any
 
     /**
      * Allows you to generate points along the slider.
@@ -108,12 +109,12 @@ declare namespace noUiSlider {
      * Step Mode: The filter option can be used to filter the generated pips.
      * The filter function must return 0 (no value), 1 (large value) or 2 (small value).
      */
-    filter?: (...args: any[]) => PipFilterResult;
+    filter?: (...args: any[]) => PipFilterResult; // eslint-disable-line @typescript-eslint/no-explicit-any
     /**
      * format for step mode
      * see noUiSlider format
      */
-    format?: Object;
+    format?: Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
     /**
      *
      * values for positions and values mode
@@ -137,7 +138,7 @@ declare namespace noUiSlider {
      * Array for both one-handle and two-handle sliders. It contains the current slider values,
      * with formatting applied.
      */
-    (values: any[], handle: number, unencoded: number): void;
+    (values: any[], handle: number, unencoded: number): void; // eslint-disable-line @typescript-eslint/no-explicit-any
   }
 
   interface noUiSlider {

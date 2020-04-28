@@ -1,20 +1,25 @@
+/* eslint-env node, browser */
 /// <reference path="./nouislider-8.0.1.d.ts" />
 /// <reference path="./nouislider-8.0.1.js" />
 /// <reference path="./filterExecutor.ts" />
 
-(function initRangeFilter(factory) {
-  var rangeFilterElements = document.querySelectorAll<HTMLElement>(
+(function initRangeFilter(factory): void {
+  const rangeFilterElements = document.querySelectorAll<HTMLElement>(
     '[data-filter-type="range"]'
   );
 
-  var rangeFilters = new WeakMap<HTMLElement, Filter>();
+  const rangeFilters = new WeakMap<HTMLElement, Filter>();
 
-  function handleRangeFilterInit(this: HTMLElement, e: Event) {
+  function handleRangeFilterInit(this: HTMLElement, e: Event): void {
+    if (!e.target) {
+      return;
+    }
+
     e.preventDefault();
 
-    e.target!.removeEventListener(e.type, handleRangeFilterInit);
+    e.target.removeEventListener(e.type, handleRangeFilterInit);
 
-    var filter = rangeFilters.get(this);
+    let filter = rangeFilters.get(this);
 
     if (!filter) {
       filter = factory.create(this);
@@ -22,7 +27,9 @@
     }
 
     setTimeout(function redispatchMouseDownEvent() {
-      e.target!.dispatchEvent(e);
+      if (e.target) {
+        e.target.dispatchEvent(e);
+      }
     }, 10);
   }
 
@@ -45,7 +52,7 @@
               handleRangeFilterKeyDown
             );
 
-            var filter = rangeFilters.get(this);
+            let filter = rangeFilters.get(this);
 
             if (!filter) {
               filter = factory.create(this);
@@ -57,16 +64,23 @@
     }
   );
 })(
-  (function buildRangeFilterFactory() {
+  (function buildRangeFilterFactory(): {
+    create(element: HTMLElement): Filter;
+  } {
     class RangeFilter implements Filter {
       readonly element: HTMLElement;
+
       readonly options: {
         filterMinValue: number;
         filterMaxValue: number;
       };
+
       readonly attribute!: string;
+
       readonly sliderElement: noUiSlider.Instance;
+
       readonly minInputElement: HTMLInputElement;
+
       readonly maxInputElement: HTMLInputElement;
 
       constructor(element: HTMLElement) {
@@ -88,13 +102,26 @@
           RangeFilter.DEFAULTS.filterAttribute;
         this.sliderElement = element.querySelector<HTMLElement>(
           ".noUiSlider"
-        )! as noUiSlider.Instance;
-        this.minInputElement = element.querySelector<HTMLInputElement>(
+        ) as noUiSlider.Instance;
+        const minInputElement = element.querySelector<HTMLInputElement>(
           ".filter-numeric.min"
-        )!;
-        this.maxInputElement = element.querySelector<HTMLInputElement>(
+        );
+
+        if (!minInputElement) {
+          throw new Error("minInputElement not found");
+        }
+
+        this.minInputElement = minInputElement;
+
+        const maxInputElement = element.querySelector<HTMLInputElement>(
           ".filter-numeric.max"
-        )!;
+        );
+
+        if (!maxInputElement) {
+          throw new Error("maxInputElement not found");
+        }
+
+        this.maxInputElement = maxInputElement;
 
         this.initSlider();
       }
@@ -105,17 +132,17 @@
         filterMaxValue: "10",
       };
 
-      initSlider() {
+      initSlider(): void {
         if (this.sliderElement.noUiSlider) {
           return;
         }
 
-        var element = this.element;
-        var sliderElement = this.sliderElement;
-        var minInputElement = this.minInputElement;
-        var maxInputElement = this.maxInputElement;
+        const { element } = this;
+        const { sliderElement } = this;
+        const { minInputElement } = this;
+        const { maxInputElement } = this;
 
-        noUiSlider.create(sliderElement, {
+        window.noUiSlider.create(sliderElement, {
           range: {
             min: this.options.filterMinValue,
             max: this.options.filterMaxValue,
@@ -123,22 +150,20 @@
           start: [this.options.filterMinValue, this.options.filterMaxValue],
           step: 1,
           format: {
-            to: function formatToValue(value: number) {
+            to: function formatToValue(value: number): number {
               return value;
             },
-            from: function formatFromValue(value: number) {
+            from: function formatFromValue(value: number): number {
               return value;
             },
           },
         });
 
-        var filter = this;
-
-        sliderElement.noUiSlider.on("set", function handleSliderSet() {
-          var event = new CustomEvent("filter-changed", {
+        sliderElement.noUiSlider.on("set", () => {
+          const event = new CustomEvent("filter-changed", {
             bubbles: true,
             cancelable: false,
-            detail: filter,
+            detail: this,
           });
 
           return element.dispatchEvent(event);
@@ -166,25 +191,25 @@
         );
       }
 
-      getMatcher() {
-        var attribute = this.attribute;
-        var range: number[] = this.sliderElement.noUiSlider.get() as number[];
-        var filterMinValue = this.options.filterMinValue;
-        var filterMaxValue = this.options.filterMaxValue;
+      getMatcher(): (element: HTMLElement) => boolean {
+        const { attribute } = this;
+        const range: number[] = this.sliderElement.noUiSlider.get() as number[];
+        const { filterMinValue } = this.options;
+        const { filterMaxValue } = this.options;
 
-        return function matcher(item: HTMLElement) {
+        return function matcher(item: HTMLElement): boolean {
           if (range[0] === filterMinValue && range[1] === filterMaxValue) {
             return true;
           }
 
-          var value = parseInt(item.getAttribute(attribute)!, 10);
+          const value = parseInt(item.getAttribute(attribute) || "", 10);
           return value >= range[0] && value <= range[1];
         };
       }
     }
 
     // Run the standard initializer
-    function initialize(element: HTMLElement) {
+    function initialize(element: HTMLElement): Filter {
       return new RangeFilter(element);
     }
 

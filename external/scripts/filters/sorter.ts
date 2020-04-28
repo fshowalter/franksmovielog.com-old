@@ -1,3 +1,5 @@
+/* eslint-env node, browser */
+
 interface ISorter {
   sort(): void;
 }
@@ -5,8 +7,8 @@ interface ISorter {
 type ItemsBySortAttribute = Map<string, Item[]>;
 type Item = { element: HTMLElement; sortValue: string };
 
-(function initSorter(factory) {
-  var sorterElement = document.querySelector<HTMLSelectElement>(
+(function initSorter(factory): void {
+  const sorterElement = document.querySelector<HTMLSelectElement>(
     "[data-sorter]"
   );
 
@@ -14,7 +16,7 @@ type Item = { element: HTMLElement; sortValue: string };
     return;
   }
 
-  var sorter: ISorter;
+  let sorter: ISorter;
 
   sorterElement.addEventListener("change", function handleSorterChange(
     this: HTMLSelectElement,
@@ -30,10 +32,12 @@ type Item = { element: HTMLElement; sortValue: string };
   (function buildSorterFactory() {
     class Sorter implements ISorter {
       readonly targetElement: HTMLElement;
+
       readonly itemsBySortAttribute: ItemsBySortAttribute = new Map<
         string,
         { element: HTMLElement; sortValue: string }[]
       >();
+
       readonly sortAttributes: string[];
 
       readonly selectInput: HTMLSelectElement;
@@ -44,8 +48,8 @@ type Item = { element: HTMLElement; sortValue: string };
           this.selectInput.dataset.target!
         )!;
 
-        var options = [];
-        for (var i = -1, len = selectInput.options.length; ++i !== len; ) {
+        const options = [];
+        for (let i = -1, len = selectInput.options.length; ++i !== len; ) {
           options[i] = selectInput.options[i];
         }
 
@@ -71,8 +75,8 @@ type Item = { element: HTMLElement; sortValue: string };
       }
 
       static removeElementToInsertLater(element: HTMLElement) {
-        var parentNode = element.parentNode;
-        var nextSibling = element.nextSibling;
+        const { parentNode } = element;
+        const { nextSibling } = element;
 
         parentNode!.removeChild(element);
 
@@ -102,26 +106,26 @@ type Item = { element: HTMLElement; sortValue: string };
       }
 
       sortListItems(sortAttributeAndOrder: string) {
-        var parsedSortAttributeAndOrder = Sorter.parseSortAttributeAndOrder(
+        const parsedSortAttributeAndOrder = Sorter.parseSortAttributeAndOrder(
           sortAttributeAndOrder
         );
 
-        var sortAttribute = parsedSortAttributeAndOrder[0];
-        var sortOrder = parsedSortAttributeAndOrder[1];
+        const sortAttribute = parsedSortAttributeAndOrder[0];
+        const sortOrder = parsedSortAttributeAndOrder[1];
 
-        var sortFunction =
+        const sortFunction =
           sortOrder === "desc" ? Sorter.descendingSort : Sorter.ascendingSort;
 
         return this.itemsBySortAttribute.get(sortAttribute)!.sort(sortFunction);
       }
 
       mapValuesForElement(element: HTMLElement) {
-        for (var i = 0, len = this.sortAttributes.length; i < len; i++) {
-          var sortAttribute = this.sortAttributes[i];
-          var sortValue =
+        for (let i = 0, len = this.sortAttributes.length; i < len; i++) {
+          const sortAttribute = this.sortAttributes[i];
+          const sortValue =
             element.dataset[Sorter.camelCase(sortAttribute)] || "";
 
-          var items = this.itemsBySortAttribute.get(sortAttribute);
+          let items = this.itemsBySortAttribute.get(sortAttribute);
 
           if (!items) {
             items = [];
@@ -129,28 +133,28 @@ type Item = { element: HTMLElement; sortValue: string };
           }
 
           items.push({
-            element: element,
-            sortValue: sortValue,
+            element,
+            sortValue,
           });
         }
       }
 
       mapItems(items: NodeListOf<HTMLElement>) {
-        for (var i = 0, len = items.length; i < len; i++) {
-          var item = items[i];
+        for (let i = 0, len = items.length; i < len; i++) {
+          const item = items[i];
           this.mapValuesForElement(item);
         }
       }
 
       sort() {
-        var sortedItem;
+        let sortedItem;
 
-        var reinsert = Sorter.removeElementToInsertLater(this.targetElement);
+        const reinsert = Sorter.removeElementToInsertLater(this.targetElement);
 
         this.targetElement.innerHTML = "";
-        var sortedItems = this.sortListItems(this.selectInput.value);
+        const sortedItems = this.sortListItems(this.selectInput.value);
 
-        for (var i = 0, len = sortedItems.length; i < len; i++) {
+        for (let i = 0, len = sortedItems.length; i < len; i++) {
           sortedItem = sortedItems[i];
           this.targetElement.appendChild(sortedItem.element);
         }

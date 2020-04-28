@@ -201,8 +201,12 @@ const ReviewMetaAkaTitles = ({ review }: Props["data"]) => {
   return (
     <ReviewMetaAkaWrap>
       <ReviewMetaAkaHeading>
-        aka:{" "}
-        <ReviewMetaAkaTitle> {review.movie.originalTitle}</ReviewMetaAkaTitle>
+        aka:
+        {" "}
+        <ReviewMetaAkaTitle> 
+          {' '}
+          {review.movie.originalTitle}
+        </ReviewMetaAkaTitle>
       </ReviewMetaAkaHeading>
     </ReviewMetaAkaWrap>
   );
@@ -212,22 +216,31 @@ const ReviewMeta = ({ review }: Props["data"]) => {
   return (
     <ReviewMetaWrap>
       <ReviewMetaTitle>
-        {review.movie.title} ({review.movie.year})
+        {review.movie.title}
+        {' '}
+        (
+        {review.movie.year}
+        )
       </ReviewMetaTitle>
       <ReviewMetaAkaTitles review={review} />
       <ReviewMetaDirector>
-        D:{" "}
+        D:
+        {" "}
         {review.movie.directors
           .map((director) => director.fullName)
           .join(" & ")}
       </ReviewMetaDirector>
       <ReviewMetaDetails>
-        {review.movie.year} <ReviewMetaDivider>|</ReviewMetaDivider>{" "}
+        {review.movie.year} 
+        {' '}
+        <ReviewMetaDivider>|</ReviewMetaDivider>
+        {" "}
         {review.movie.runtimeMinutes}
         &thinsp;mins.
       </ReviewMetaDetails>
       <ReviewMetaSeen>
-        I've seen it{" "}
+        I've seen it
+        {" "}
         <Link to={`/viewings/?imdb_id=${review.movie.imdbId}`}>
           {pluralize("time", review.movie.viewings.length, true)}
         </Link>
@@ -239,13 +252,13 @@ const ReviewMeta = ({ review }: Props["data"]) => {
 const ReviewTags = () => {
   return (
     <ReviewTagsWrap>
-      <ReviewTagsList></ReviewTagsList>
+      <ReviewTagsList />
     </ReviewTagsWrap>
   );
 };
 
 const reviewContent = (review: Props["data"]["review"]) => {
-  let content = `${review.prettyDate.toUpperCase()}&#8212;${review.markdown.rawMarkdownBody.trim()}\n\n**Grade: ${
+  const content = `${review.prettyDate.toUpperCase()}&#8212;${review.markdown.rawMarkdownBody.trim()}\n\n**Grade: ${
     review.grade
   }**`;
 

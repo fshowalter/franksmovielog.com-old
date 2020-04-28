@@ -1,11 +1,11 @@
 /// <reference path="./filterExecutor.ts" />
 
 (function initFilter(factory) {
-  var textFilterElements = document.querySelectorAll<HTMLInputElement>(
+  const textFilterElements = document.querySelectorAll<HTMLInputElement>(
     '[data-filter-type="text"]'
   );
 
-  var textFilters = new WeakMap<HTMLElement, Filter>();
+  const textFilters = new WeakMap<HTMLElement, Filter>();
 
   Array.prototype.forEach.call(
     textFilterElements,
@@ -13,11 +13,11 @@
       filterElement.addEventListener("keyup", function handleTextFilterKeyUp(
         this: HTMLInputElement
       ) {
-        var filter = textFilters.get(this) || factory.create(this);
+        const filter = textFilters.get(this) || factory.create(this);
 
         textFilters.set(this, filter);
 
-        var event = new CustomEvent("filter-changed", {
+        const event = new CustomEvent("filter-changed", {
           bubbles: true,
           cancelable: false,
           detail: filter,
@@ -39,6 +39,7 @@
       }
 
       readonly node: HTMLInputElement;
+
       readonly attribute: string;
 
       constructor(node: HTMLInputElement) {
@@ -49,10 +50,10 @@
       }
 
       getMatcher() {
-        var attribute = this.attribute;
-        var value = this.node.value;
+        const {attribute} = this;
+        const {value} = this.node;
 
-        var regex = new RegExp(TextFilter.escapeRegExp(value), "i");
+        const regex = new RegExp(TextFilter.escapeRegExp(value), "i");
 
         return function matcher(item: HTMLElement) {
           if (!value) {
