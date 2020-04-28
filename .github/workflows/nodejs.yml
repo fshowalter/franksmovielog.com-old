@@ -23,8 +23,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ steps.node_version.outputs.NODE_VERSION }}
-    - run: npm lint
-    - run: npm lint:css
-    # - run: npm ci
+    - run: npm ci
+    - run: npm run lint
+    - run: npm run lint:css
+   
     # - run: npm run build --if-present
     # - run: npm test
