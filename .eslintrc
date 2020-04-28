@@ -1,57 +1,66 @@
 {
-  "extends": [
-    "airbnb",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "eslint-config-prettier"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "prettier"],
-  "settings": {
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
-    },
-    "import/resolver": {
-      "node": {
-        "paths": ["./src"],
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      },
-      "typescript": {
-        "directory": [
-          "./tsconfig.json",
-          "external/scripts/filters/tsconfig.json"
-        ]
-      }
-    }
-  },
-  "parserOptions": {
-    "project": ["./tsconfig.json", "./external/scripts/filters/tsconfig.json"]
-  },
-  "rules": {
-    "@typescript-eslint/indent": [2, 2],
-    "@typescript-eslint/triple-slash-reference": ["off"],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-    ],
-    "spaced-comment": ["off"],
-    "react/jsx-filename-extension": [
-      2,
-      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-    ]
-  },
+  "root": true,
+  "extends": ["airbnb", "plugin:prettier/recommended"],
   "overrides": [
     {
-      "files": "**/*.ts",
+      "files": ["**/*.ts", "**/*.tsx"],
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "prettier/react",
+        "plugin:prettier/recommended"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "settings": {
+        "import/parsers": {
+          "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
+        "import/resolver": {
+          "node": {
+            "paths": ["./src"],
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+          },
+          "typescript": {
+            "directory": [
+              "./tsconfig.json",
+              "external/scripts/filters/tsconfig.json"
+            ]
+          }
+        }
+      },
+      "parserOptions": {
+        "project": [
+          "./tsconfig.json",
+          "./external/scripts/filters/tsconfig.json"
+        ]
+      },
       "rules": {
+        "@typescript-eslint/indent": ["off"],
+        "@typescript-eslint/no-useless-constructor": "error",
+        "@typescript-eslint/triple-slash-reference": ["off"],
+        "@typescript-eslint/unbound-method": [
+          "error",
+          {
+            "ignoreStatic": true
+          }
+        ],
+        "import/extensions": [
+          "error",
+          "ignorePackages",
+          {
+            "js": "never",
+            "jsx": "never",
+            "ts": "never",
+            "tsx": "never"
+          }
+        ],
         "no-useless-constructor": "off",
-        "@typescript-eslint/no-useless-constructor": "error"
+        "spaced-comment": ["off"],
+        "react/jsx-filename-extension": [
+          2,
+          { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+        ]
       }
     }
   ]

@@ -1,18 +1,17 @@
-import { graphql, Link } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
-import parse from 'html-react-parser';
-import pluralize from 'pluralize';
-import React from 'react';
-import remark from 'remark';
+import { graphql, Link } from "gatsby";
+import Img, { FluidObject } from "gatsby-image";
+import parse from "html-react-parser";
+import pluralize from "pluralize";
+import React from "react";
+import remark from "remark";
+import remarkHTML from "remark-html";
 
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
-import { bodyTextMixin } from '../components/GlobalStyles';
-import Grade from '../components/Grade';
-import Layout from '../components/Layout';
-import SingleColumn from '../components/SingleColumn';
-
-const remarkHTML = require("remark-html");
+import { bodyTextMixin } from "../components/GlobalStyles";
+import Grade from "../components/Grade";
+import Layout from "../components/Layout";
+import SingleColumn from "../components/SingleColumn";
 
 const Title = styled.h1`
   font-size: 32px;
@@ -193,7 +192,9 @@ const ReviewTagsList = styled.ul`
   padding: 0 0 40px;
 `;
 
-const ReviewMetaAkaTitles = ({ review }: Props["data"]) => {
+const ReviewMetaAkaTitles: React.FC<Props["data"]> = ({
+  review,
+}: Props["data"]) => {
   if (review.movie.originalTitle === review.movie.title) {
     return null;
   }
@@ -201,46 +202,33 @@ const ReviewMetaAkaTitles = ({ review }: Props["data"]) => {
   return (
     <ReviewMetaAkaWrap>
       <ReviewMetaAkaHeading>
-        aka:
-        {" "}
-        <ReviewMetaAkaTitle> 
-          {' '}
-          {review.movie.originalTitle}
-        </ReviewMetaAkaTitle>
+        aka:{" "}
+        <ReviewMetaAkaTitle> {review.movie.originalTitle}</ReviewMetaAkaTitle>
       </ReviewMetaAkaHeading>
     </ReviewMetaAkaWrap>
   );
 };
 
-const ReviewMeta = ({ review }: Props["data"]) => {
+const ReviewMeta: React.FC<Props["data"]> = ({ review }: Props["data"]) => {
   return (
     <ReviewMetaWrap>
       <ReviewMetaTitle>
-        {review.movie.title}
-        {' '}
-        (
-        {review.movie.year}
-        )
+        {review.movie.title} ({review.movie.year})
       </ReviewMetaTitle>
       <ReviewMetaAkaTitles review={review} />
       <ReviewMetaDirector>
-        D:
-        {" "}
+        D:{" "}
         {review.movie.directors
           .map((director) => director.fullName)
           .join(" & ")}
       </ReviewMetaDirector>
       <ReviewMetaDetails>
-        {review.movie.year} 
-        {' '}
-        <ReviewMetaDivider>|</ReviewMetaDivider>
-        {" "}
+        {review.movie.year} <ReviewMetaDivider>|</ReviewMetaDivider>{" "}
         {review.movie.runtimeMinutes}
         &thinsp;mins.
       </ReviewMetaDetails>
       <ReviewMetaSeen>
-        I've seen it
-        {" "}
+        I&apos;ve seen it{" "}
         <Link to={`/viewings/?imdb_id=${review.movie.imdbId}`}>
           {pluralize("time", review.movie.viewings.length, true)}
         </Link>
@@ -249,7 +237,7 @@ const ReviewMeta = ({ review }: Props["data"]) => {
   );
 };
 
-const ReviewTags = () => {
+const ReviewTags: React.FC = () => {
   return (
     <ReviewTagsWrap>
       <ReviewTagsList />
@@ -257,7 +245,9 @@ const ReviewTags = () => {
   );
 };
 
-const reviewContent = (review: Props["data"]["review"]) => {
+const reviewContent = (
+  review: Props["data"]["review"]
+): JSX.Element | JSX.Element[] => {
   const content = `${review.prettyDate.toUpperCase()}&#8212;${review.markdown.rawMarkdownBody.trim()}\n\n**Grade: ${
     review.grade
   }**`;
@@ -265,7 +255,9 @@ const reviewContent = (review: Props["data"]["review"]) => {
   return parse(remark().use(remarkHTML).processSync(content).toString());
 };
 
-const reviewImage = (review: Props["data"]["review"]) => {
+const reviewImage: React.FC<Props["data"]["review"]> = (
+  review: Props["data"]["review"]
+) => {
   if (!review.markdown.backdrop) {
     return null;
   }
@@ -278,8 +270,7 @@ const reviewImage = (review: Props["data"]["review"]) => {
   );
 };
 
-const ReviewTemplate = ({ location, data }: Props) => {
-  console.log(data);
+const ReviewTemplate: React.FC<Props> = ({ location, data }: Props) => {
   return (
     <Layout location={location}>
       <SingleColumn>

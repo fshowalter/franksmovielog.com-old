@@ -16,6 +16,6 @@
     "strictNullChecks": true,
     "noImplicitAny": true
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "./*.js"],
   "exclude": ["**/*.svg"]
 }

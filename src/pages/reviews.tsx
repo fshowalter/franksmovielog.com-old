@@ -1,25 +1,80 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import moment from 'moment';
-import pluralize from 'pluralize';
-import React, { useEffect, useState } from 'react';
+import { graphql } from "gatsby";
+import moment from "moment";
+import React from "react";
 
-import styled from '@emotion/styled';
-import { WindowLocation } from '@reach/router';
+import styled from "@emotion/styled";
+import { WindowLocation } from "@reach/router";
 
-import { FilterPanel, SelectFilter, TextFilter } from '../components/FilterPanel';
-import Layout from '../components/Layout';
-import { List, ListItem } from '../components/ListWithSlug';
-import PanelHeading from '../components/PanelHeading';
-import { Column1, Column2, TwoColumnLayout } from '../components/TwoColumnLayout';
-import { buildMatcher, escapeRegExp, timedChunk } from '../utils/filtering-old';
+import { FilterPanel, TextFilter } from "../components/FilterPanel";
+import { List, ListItem } from "../components/ListWithSlug";
+import PanelHeading from "../components/PanelHeading";
+import {
+  Column1,
+  Column2,
+  TwoColumnLayout,
+} from "../components/TwoColumnLayout";
 
-const slugForReview = (review: Props["data"]["reviews"]["nodes"][0]) => {
+const slugForReview = (
+  review: Props["data"]["reviews"]["nodes"][0]
+): string => {
   return `${moment(review.date).format("dddd, MMMM Do YYYY")} via ${
     review.venue
   }.`;
 };
 
-let items: NodeListOf<HTMLElement> | null = null;
+const FilterControl = styled.div`
+  margin-bottom: 35px;
+`;
+
+const Label = styled.label`
+  color: var(--color-accent);
+  display: block;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 2.2;
+`;
+
+const SelectInput = styled.select`
+  appearance: none;
+  backface-visibility: hidden;
+  border: 0;
+  border-radius: 0;
+  box-sizing: border-box;
+  display: block;
+  font-family: var(--font-family-system);
+  padding: 0;
+  width: 100%;
+  background-color: #fff;
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  text-indent: 0.01px;
+  text-overflow: "";
+`;
+
+interface SelectFilterProps {
+  name: string;
+  children: Array<[string, string]>;
+}
+
+const SelectFilter: React.FC<SelectFilterProps> = ({
+  name,
+  children,
+}: SelectFilterProps) => {
+  return (
+    <FilterControl>
+      <Label htmlFor={name}>{name}</Label>
+      <SelectInput>
+        {children.map(([optionName, optionValue]) => {
+          return (
+            <option key={optionValue} value={optionValue}>
+              {optionName}
+            </option>
+          );
+        })}
+      </SelectInput>
+    </FilterControl>
+  );
+};
 
 interface Props {
   location: WindowLocation;
@@ -32,22 +87,14 @@ interface Props {
         venue: string;
         movie: {
           title: string;
+          year: string;
         };
       }[];
     };
   };
 }
 
-const Reviews: React.FC<Props> = ({ location, data }) => {
-  useEffect(() => {
-    items = document.querySelectorAll<HTMLLIElement>("#reviews li");
-
-    // Specify how to clean up after this effect:
-    return function cleanup() {
-      items = null;
-    };
-  });
-
+const Reviews: React.FC<Props> = ({ location, data }: Props) => {
   return (
     <TwoColumnLayout location={location}>
       <Column1>
@@ -96,6 +143,7 @@ export const pageQuery = graphql`
         date(formatString: "YYYY-MM-DD")
         movie {
           title
+          year
         }
       }
     }

@@ -1,6 +1,7 @@
+/* eslint-env node, browser */
 /// <reference path="./filterExecutor.ts" />
 
-(function initFilter(factory) {
+(function initFilter(factory): void {
   const textFilterElements = document.querySelectorAll<HTMLInputElement>(
     '[data-filter-type="text"]'
   );
@@ -28,14 +29,14 @@
     }
   );
 })(
-  (function buildTextFilterFactory() {
+  (function buildTextFilterFactory(): { create(element: HTMLElement): Filter } {
     class TextFilter implements Filter {
       static DEFAULTS = {
         filterAttribute: "text",
       };
 
-      static escapeRegExp(str: string) {
-        return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+      static escapeRegExp(str: string): string {
+        return str.replace(/[-[\]/{}()*+?.\\^$|]/g, "\\$&");
       }
 
       readonly node: HTMLInputElement;
@@ -49,13 +50,13 @@
           node.dataset.filterAttribute || TextFilter.DEFAULTS.filterAttribute;
       }
 
-      getMatcher() {
-        const {attribute} = this;
-        const {value} = this.node;
+      getMatcher(): (element: HTMLElement) => boolean {
+        const { attribute } = this;
+        const { value } = this.node;
 
         const regex = new RegExp(TextFilter.escapeRegExp(value), "i");
 
-        return function matcher(item: HTMLElement) {
+        return function matcher(item: HTMLElement): boolean {
           if (!value) {
             return true;
           }
@@ -66,7 +67,7 @@
     }
 
     // Run the standard initializer
-    function initialize(element: HTMLInputElement) {
+    function initialize(element: HTMLInputElement): Filter {
       return new TextFilter(element);
     }
 

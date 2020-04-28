@@ -1,18 +1,17 @@
-import { graphql, Link } from 'gatsby';
-import Img, { FluidObject } from 'gatsby-image';
-import parse from 'html-react-parser';
-import React, { Fragment, memo } from 'react';
-import { renderToString } from 'react-dom/server';
-import remark from 'remark';
+import { graphql, Link } from "gatsby";
+import Img, { FluidObject } from "gatsby-image";
+import parse from "html-react-parser";
+import React from "react";
+import { renderToString } from "react-dom/server";
+import remark from "remark";
+import remarkHTML from "remark-html";
 
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
-import Grade from '../components/Grade';
-import Layout from '../components/Layout';
-import MoreList from '../components/MoreList';
-import SingleColumn from '../components/SingleColumn';
-
-const remarkHTML = require("remark-html");
+import Grade from "../components/Grade";
+import Layout from "../components/Layout";
+import MoreList from "../components/MoreList";
+import SingleColumn from "../components/SingleColumn";
 
 const HomeWrap = styled.div`
   padding: 20px;
@@ -182,7 +181,7 @@ interface Props {
 
 type ReviewNode = Props["data"]["page"]["nodes"][0];
 
-const imageForNode = (node: ReviewNode) => {
+const imageForNode = (node: ReviewNode): React.ReactElement | null => {
   if (!node.markdown.backdrop || !node.markdown.backdrop.childImageSharp) {
     return null;
   }
@@ -204,11 +203,10 @@ const StyledGrade = styled(Grade)`
   width: 95px;
 `;
 
-const buildExcerpt = (node: ReviewNode) => {
-  const excerpt =
-    `${renderToString(<StyledGrade grade={node.grade} width={95} height={95} />) 
-    } ${ 
-      node.markdown.firstParagraph}`;
+const buildExcerpt = (node: ReviewNode): JSX.Element | JSX.Element[] => {
+  const excerpt = `${renderToString(
+    <StyledGrade grade={node.grade} width={95} height={95} />
+  )} ${node.markdown.firstParagraph}`;
 
   return parse(remark().use(remarkHTML).processSync(excerpt).toString());
 };
@@ -261,7 +259,10 @@ interface PaginationProps {
   pageContext: Props["pageContext"];
 }
 
-const Pagination: React.FC<PaginationProps> = ({ moreNodes, pageContext }) => {
+const Pagination: React.FC<PaginationProps> = ({
+  moreNodes,
+  pageContext,
+}: PaginationProps) => {
   const { currentPage, numPages } = pageContext;
   const isLast = currentPage === numPages;
   const nextPage = (currentPage + 1).toString();
@@ -272,7 +273,7 @@ const Pagination: React.FC<PaginationProps> = ({ moreNodes, pageContext }) => {
 
   return (
     <>
-      <PaginationHeading>More from Frank's Movie Log</PaginationHeading>
+      <PaginationHeading>More from Frank&apos;s Movie Log</PaginationHeading>
       <MoreList nodes={moreNodes} />
       <PaginationWrap>
         <PaginationLinkWrap>
@@ -285,7 +286,11 @@ const Pagination: React.FC<PaginationProps> = ({ moreNodes, pageContext }) => {
   );
 };
 
-const HomeTemplate: React.FC<Props> = ({ location, pageContext, data }) => {
+const HomeTemplate: React.FC<Props> = ({
+  location,
+  pageContext,
+  data,
+}: Props) => {
   return (
     <Layout location={location}>
       <SingleColumn>
@@ -317,7 +322,7 @@ const HomeTemplate: React.FC<Props> = ({ location, pageContext, data }) => {
   );
 };
 
-export default memo(HomeTemplate);
+export default HomeTemplate;
 
 export const pageQuery = graphql`
   query($skip: Int!, $limit: Int!, $moreSkip: Int!, $moreLimit: Int!) {

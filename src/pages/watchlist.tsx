@@ -1,12 +1,16 @@
-import { graphql } from 'gatsby';
-import pluralize from 'pluralize';
-import React, { ReactNode } from 'react';
+import { graphql } from "gatsby";
+import pluralize from "pluralize";
+import React, { ReactNode } from "react";
 
-import { css } from '@emotion/core';
-import styled from '@emotion/styled';
-import { WindowLocation } from '@reach/router';
+import { css } from "@emotion/core";
+import styled from "@emotion/styled";
+import { WindowLocation } from "@reach/router";
 
-import { Column1, Column2, TwoColumnLayout } from '../components/TwoColumnLayout';
+import {
+  Column1,
+  Column2,
+  TwoColumnLayout,
+} from "../components/TwoColumnLayout";
 
 const PanelHeader = styled.header`
   padding: 35px 20px 20px;
@@ -95,7 +99,10 @@ interface WatchlistPerson {
   fullName: string;
 }
 
-const formatPeople = (people: Array<WatchlistPerson>, suffix: string) => {
+const formatPeople = (
+  people: Array<WatchlistPerson>,
+  suffix: string
+): string => {
   if (people.length === 0) {
     return "";
   }
@@ -110,7 +117,7 @@ interface WatchlistCollection {
   name: string;
 }
 
-const formatCollections = (collections: Array<WatchlistCollection>) => {
+const formatCollections = (collections: Array<WatchlistCollection>): string => {
   if (collections.length === 0) {
     return "";
   }
@@ -124,7 +131,7 @@ const formatCollections = (collections: Array<WatchlistCollection>) => {
 
 const buildSlug = (
   watchlistTitle: Props["data"]["allWatchlistTitle"]["nodes"][0]
-) => {
+): string => {
   const credits = [
     formatPeople(watchlistTitle.directors, "directed"),
     formatPeople(watchlistTitle.performers, "performed"),
@@ -347,7 +354,12 @@ interface RangeFilterProps {
   max: string;
 }
 
-const RangeFilter = ({ name, attribute, min, max }: RangeFilterProps) => {
+const RangeFilter: React.FC<RangeFilterProps> = ({
+  name,
+  attribute,
+  min,
+  max,
+}: RangeFilterProps) => {
   return (
     <FilterControl>
       <Label htmlFor={name}>{name}</Label>
@@ -394,35 +406,13 @@ const RangeFilter = ({ name, attribute, min, max }: RangeFilterProps) => {
   );
 };
 
-interface SelectFilterProps {
-  name: string;
-  children: Array<[string, string]>;
-}
-
-const SelectFilter = ({ name, children }: SelectFilterProps) => {
-  return (
-    <FilterControl>
-      <Label htmlFor={name}>{name}</Label>
-      <SelectInput>
-        {children.map(([optionName, optionValue]) => {
-          return (
-            <option key={optionValue} value={optionValue}>
-              {optionName}
-            </option>
-          );
-        })}
-      </SelectInput>
-    </FilterControl>
-  );
-};
-
 interface TextFilterProps {
   label: string;
   placeholder: string;
   filterAttribute: string;
 }
 
-const TextFilter = ({
+const TextFilter: React.FC<TextFilterProps> = ({
   label,
   placeholder,
   filterAttribute,
@@ -447,7 +437,10 @@ interface FilterPanelProps {
   children: ReactNode;
 }
 
-const FilterPanel = ({ heading, children }: FilterPanelProps) => {
+const FilterPanel: React.FC<FilterPanelProps> = ({
+  heading,
+  children,
+}: FilterPanelProps) => {
   return (
     <FiltersWrap data-filter-controls data-target="#watchlist-titles">
       <Heading>{heading}</Heading>
@@ -462,7 +455,11 @@ interface SorterProps {
   target: string;
 }
 
-const Sorter = ({ name, children, target }: SorterProps) => {
+const Sorter: React.FC<SorterProps> = ({
+  name,
+  children,
+  target,
+}: SorterProps) => {
   return (
     <FilterControl>
       <Label htmlFor={name}>{name}</Label>
@@ -471,9 +468,9 @@ const Sorter = ({ name, children, target }: SorterProps) => {
         data-sorter={children[0][1]}
         data-target={target}
       >
-        {children.map(([name, value]) => {
+        {children.map(([optionName, optionValue]) => {
           return (
-            <option key={value} value={value}>
+            <option key={optionName} value={optionValue}>
               {name}
             </option>
           );
@@ -511,7 +508,7 @@ interface Props {
   };
 }
 
-const Watchlist: React.FC<Props> = ({ location, data }) => {
+const Watchlist: React.FC<Props> = ({ location, data }: Props) => {
   const releaseYears = data.allWatchlistTitle.nodes
     .map((node) => {
       return node.movie.year;
@@ -564,11 +561,7 @@ const Watchlist: React.FC<Props> = ({ location, data }) => {
               data-year={watchlistTitle.movie.year}
             >
               <Title>
-                {watchlistTitle.movie.title}
-                {' '}
-                (
-                {watchlistTitle.movie.year}
-                )
+                {watchlistTitle.movie.title} ({watchlistTitle.movie.year})
               </Title>
               <Slug>{buildSlug(watchlistTitle)}</Slug>
             </ListItem>

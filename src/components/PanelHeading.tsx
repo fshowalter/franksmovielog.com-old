@@ -1,4 +1,5 @@
 import React from "react";
+
 import styled from "@emotion/styled";
 
 const Header = styled.header`
@@ -29,11 +30,11 @@ interface Props {
   slug: string;
 }
 
-export default ({ title, slug }: Props) => {
+export default function PanelHeading({ title, slug }: Props): JSX.Element {
   return (
     <Header>
       <Heading>{title}</Heading>
       <Slug>{slug}</Slug>
     </Header>
   );
-};
+}

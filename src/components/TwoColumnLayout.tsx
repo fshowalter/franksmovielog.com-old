@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 
-import styled from '@emotion/styled';
-import { WindowLocation } from '@reach/router';
+import styled from "@emotion/styled";
+import { WindowLocation } from "@reach/router";
 
-import Layout from './Layout';
+import Layout from "./Layout";
 
 const Columns = styled.div`
   background: var(--color-content-background);
@@ -44,7 +44,7 @@ interface Props {
   children: ReactNode;
 }
 
-const TwoColumnLayout = ({ location, children }: Props): React.ReactNode => {
+const TwoColumnLayout: React.FC<Props> = ({ location, children }: Props) => {
   return (
     <Layout location={location}>
       <Columns>{children}</Columns>

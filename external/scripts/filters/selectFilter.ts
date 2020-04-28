@@ -32,7 +32,9 @@
     }
   );
 })(
-  (function buildSelectFilterFactory() {
+  (function buildSelectFilterFactory(): {
+    create(element: HTMLElement): Filter;
+  } {
     class SelectFilter implements Filter {
       readonly node: HTMLInputElement;
 
@@ -49,11 +51,11 @@
         filterAttribute: "select",
       };
 
-      getMatcher() {
+      getMatcher(): Matcher {
         const { attribute } = this;
         const { value } = this.node;
 
-        return function matcher(item: HTMLElement) {
+        return function matcher(item: HTMLElement): boolean {
           if (!value) {
             return true;
           }
@@ -64,7 +66,7 @@
     }
 
     // Run the standard initializer
-    function initialize(node: HTMLInputElement) {
+    function initialize(node: HTMLInputElement): Filter {
       return new SelectFilter(node);
     }
 
