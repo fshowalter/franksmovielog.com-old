@@ -260,6 +260,11 @@ const RangeFilterWrap = styled.div`
     user-select: none;
   }
 
+  .noUi-active {
+    background-color: #eaeaea;
+    box-shadow: inset 0 0 5px var(--color-primary);
+  }
+
   .noUi-state-drag .noUi-active {
     transform: scale(1.25);
   }
@@ -289,11 +294,6 @@ const RangeFilterWrap = styled.div`
     z-index: 1;
   }
 
-  .noUi-active {
-    background-color: #eaeaea;
-    box-shadow: inset 0 0 5px var(--color-primary);
-  }
-
   .noUiSlider {
     flex: 1 100%;
   }
@@ -312,7 +312,7 @@ const RangeFilterWrap = styled.div`
 `;
 
 const rangeInputMixin = css`
-  -moz-appearance: textfield;
+  appearance: textfield;
   background-color: #fff;
   border: 0;
   box-sizing: content-box;
@@ -324,7 +324,7 @@ const rangeInputMixin = css`
   width: 25%;
 
   &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+    appearance: none;
     margin: 0;
   }
 
