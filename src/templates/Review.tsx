@@ -85,46 +85,23 @@ interface Props {
   };
 }
 
-const ReviewMetaDirector = styled.span`
-  color: #765;
-  display: block;
-  margin-top: 1em;
-`;
-
 const ReviewMetaDetails = styled.span`
   color: #765;
   display: block;
 `;
 
-const ReviewMetaAkaWrap = styled.div`
+const AkaWrap = styled.div`
+  color: rgba(0, 0, 0, 0.54);
   padding-bottom: 1em;
+  padding-top: 0.25em;
 `;
 
-const ReviewMetaAkaHeading = styled.div``;
-
-const ReviewMetaAkaTitle = styled.div`
-  display: block;
+const AkaTitle = styled.div`
+  color: rgba(0, 0, 0, 0.87);
+  display: inline-block;
   font-size: 18px;
   font-style: italic;
   white-space: nowrap;
-
-  &:nth-of-type(2) {
-    display: inline;
-  }
-
-  @media only screen and (min-width: 40.625em) {
-    display: inline;
-
-    &:after {
-      color: $color_accent;
-      content: "|";
-      white-space: normal;
-    }
-
-    &:last-of-type:after {
-      content: "";
-    }
-  }
 `;
 
 const ReviewMetaDivider = styled.span`
@@ -140,22 +117,17 @@ const InlineGrade = styled(Grade)`
   width: 95px;
 `;
 
-const ReviewMetaAkaTitles: React.FC<Props["data"]> = ({
-  review,
-}: Props["data"]) => {
+function AkaTitles({ review }: Props["data"]): JSX.Element | null {
   if (review.movie.originalTitle === review.movie.title) {
     return null;
   }
 
   return (
-    <ReviewMetaAkaWrap>
-      <ReviewMetaAkaHeading>
-        aka:{" "}
-        <ReviewMetaAkaTitle> {review.movie.originalTitle}</ReviewMetaAkaTitle>
-      </ReviewMetaAkaHeading>
-    </ReviewMetaAkaWrap>
+    <AkaWrap>
+      aka: <AkaTitle>{review.movie.originalTitle}</AkaTitle>
+    </AkaWrap>
   );
-};
+}
 
 const CWrap = styled.div`
   border-top: solid 1px #eee;
@@ -192,21 +164,31 @@ const reviewImage: React.FC<Props["data"]["review"]> = (
   );
 };
 
+const DirectorsWrap = styled.span`
+  color: rgba(0, 0, 0, 0.54);
+  display: block;
+  margin-top: 1em;
+`;
+
+function Directors({ review }: Props["data"]): JSX.Element {
+  return (
+    <DirectorsWrap>
+      D:{" "}
+      {review.movie.directors.map((director) => director.fullName).join(" & ")}
+    </DirectorsWrap>
+  );
+}
+
 const Via = styled.span``;
 
-export default function ReviewTemplate({ data }: Props): JSX.Element {
+export default function Review({ data }: Props): JSX.Element {
   return (
     <Layout>
       <Article>
         {reviewImage(data.review)}
         <Title>{data.review.movie.title}</Title>
-        <ReviewMetaAkaTitles review={data.review} />
-        <ReviewMetaDirector>
-          D:{" "}
-          {data.review.movie.directors
-            .map((director) => director.fullName)
-            .join(" & ")}
-        </ReviewMetaDirector>
+        <AkaTitles review={data.review} />
+        <Directors review={data.review} />
         <ReviewMetaDetails>
           {data.review.movie.year} <ReviewMetaDivider>|</ReviewMetaDivider>{" "}
           {data.review.movie.runtimeMinutes}
