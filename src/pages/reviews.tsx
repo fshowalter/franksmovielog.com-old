@@ -37,18 +37,18 @@ const Label = styled.label`
 const SelectInput = styled.select`
   appearance: none;
   backface-visibility: hidden;
+  background-color: #fff;
   border: 0;
   border-radius: 0;
   box-sizing: border-box;
+  color: var(--color-text-secondary);
   display: block;
   font-family: var(--font-family-system);
-  padding: 0;
-  width: 100%;
-  background-color: #fff;
-  color: var(--color-text-secondary);
   font-size: 15px;
+  padding: 0;
   text-indent: 0.01px;
   text-overflow: "";
+  width: 100%;
 `;
 
 interface SelectFilterProps {

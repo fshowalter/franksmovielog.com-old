@@ -178,7 +178,6 @@ const Content = styled.div`
 `;
 
 const TextInput = styled.input`
-  outline: none;
   backface-visibility: hidden;
   background-color: ${styleVars.filterBackgroundColor};
   border: 0;
@@ -188,6 +187,7 @@ const TextInput = styled.input`
   display: block;
   font-family: var(--font-family-system);
   font-size: 16px;
+  outline: none;
   padding: 0;
   width: 100%;
   ::placeholder {
@@ -219,18 +219,18 @@ const Label = styled.label`
 const SelectInput = styled.select`
   appearance: none;
   backface-visibility: hidden;
+  background-color: ${styleVars.filterBackgroundColor};
   border: 0;
   border-radius: 0;
   box-sizing: border-box;
+  color: ${styleVars.filterTextBoxColor};
   display: block;
   font-family: var(--font-family-system);
-  padding: 0;
-  width: 100%;
-  background-color: ${styleVars.filterBackgroundColor};
-  color: ${styleVars.filterTextBoxColor};
   font-size: 15px;
+  padding: 0;
   text-indent: 0.01px;
   text-overflow: "";
+  width: 100%;
 `;
 
 const FiltersWrap = styled.div`
