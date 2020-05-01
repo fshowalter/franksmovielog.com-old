@@ -222,6 +222,7 @@ const ContentWrap = styled.div`
   @media only screen and (min-width: 48em) {
     margin: 0 auto;
     max-width: 700px;
+    padding: 20px 0;
   }
 
   @media only screen and (min-width: 71.25em) {

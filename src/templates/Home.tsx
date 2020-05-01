@@ -24,7 +24,7 @@ const HomeWrap = styled.div`
   text-rendering: optimizelegibility;
 
   @media only screen and (min-width: 48em) {
-    padding: 20px 0;
+    padding: 0;
   }
 `;
 
