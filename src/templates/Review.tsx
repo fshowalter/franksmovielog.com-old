@@ -9,6 +9,7 @@ import remarkHTML from "remark-html";
 
 import styled from "@emotion/styled";
 
+import { bodyTextMixin } from "../components/GlobalStyles";
 import Grade from "../components/Grade";
 import Layout from "../components/Layout";
 
@@ -26,9 +27,13 @@ const Title = styled.h1`
 const Article = styled.article`
   max-width: 900px;
   padding: 0 20px 30px;
+
+  p {
+    ${bodyTextMixin};
+  }
 `;
 
-const Aside = styled.aside`
+const DateAndVia = styled.aside`
   border-right: solid 1px #eee;
   color: rgba(0, 0, 0, 0.54);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -43,11 +48,14 @@ const Aside = styled.aside`
 `;
 
 const Main = styled.main`
+  border-top: 1px solid #eee;
   color: rgba(0, 0, 0, 0.87);
   font-size: 18px;
   line-height: 1.5;
+  margin-top: 30px;
   max-width: 66ch;
   order: 3;
+  padding-top: 30px;
 `;
 
 interface Props {
@@ -85,8 +93,8 @@ interface Props {
   };
 }
 
-const ReviewMetaDetails = styled.span`
-  color: #765;
+const YearAndRuntimeWrap = styled.span`
+  color: rgba(0, 0, 0, 0.54);
   display: block;
 `;
 
@@ -104,8 +112,8 @@ const AkaTitle = styled.div`
   white-space: nowrap;
 `;
 
-const ReviewMetaDivider = styled.span`
-  color: $color_accent;
+const YearAndRuntimeDivider = styled.span`
+  color: #eee;
 `;
 
 const InlineGrade = styled(Grade)`
@@ -128,12 +136,6 @@ function AkaTitles({ review }: Props["data"]): JSX.Element | null {
     </AkaWrap>
   );
 }
-
-const CWrap = styled.div`
-  border-top: solid 1px #eee;
-  display: flex;
-  margin-top: 1em;
-`;
 
 const reviewContent = (
   review: Props["data"]["review"]
@@ -179,6 +181,16 @@ function Directors({ review }: Props["data"]): JSX.Element {
   );
 }
 
+function YearAndRuntime({ review }: Props["data"]): JSX.Element {
+  return (
+    <YearAndRuntimeWrap>
+      {review.movie.year} <YearAndRuntimeDivider>|</YearAndRuntimeDivider>{" "}
+      {review.movie.runtimeMinutes}
+      &thinsp;mins.
+    </YearAndRuntimeWrap>
+  );
+}
+
 const Via = styled.span``;
 
 export default function Review({ data }: Props): JSX.Element {
@@ -189,18 +201,12 @@ export default function Review({ data }: Props): JSX.Element {
         <Title>{data.review.movie.title}</Title>
         <AkaTitles review={data.review} />
         <Directors review={data.review} />
-        <ReviewMetaDetails>
-          {data.review.movie.year} <ReviewMetaDivider>|</ReviewMetaDivider>{" "}
-          {data.review.movie.runtimeMinutes}
-          &thinsp;mins.
-        </ReviewMetaDetails>
-        <CWrap>
-          <Main>{reviewContent(data.review)}</Main>
-          <Aside>
-            {moment.utc(data.review.date).format("dddd, MMMM Do YYYY")}{" "}
-            <Via>via Shudder</Via>
-          </Aside>
-        </CWrap>
+        <YearAndRuntime review={data.review} />
+        <Main>{reviewContent(data.review)}</Main>
+        <DateAndVia>
+          {moment.utc(data.review.date).format("dddd, MMMM Do YYYY")}{" "}
+          <Via>via Shudder</Via>
+        </DateAndVia>
       </Article>
     </Layout>
   );
