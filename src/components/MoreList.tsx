@@ -19,7 +19,7 @@ const List = styled.ol`
     content: "";
     display: table;
 
-    @media only screen and (min-width: 35em) {
+    @media only screen and (min-width: 48em) {
       display: none;
     }
   }
@@ -28,6 +28,7 @@ const List = styled.ol`
 const Title = styled.div`
   color: var(--color-text-primary);
   display: block;
+  font-family: "Charter", "Georgia", "Times New Roman", Times, serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.3;
@@ -44,7 +45,7 @@ const ListItemWrap = styled.div`
   display: block;
   padding: 0 10px 30px;
 
-  @media only screen and (min-width: 35em) {
+  @media only screen and (min-width: 48em) {
     padding-bottom: 0;
   }
 `;
@@ -65,7 +66,7 @@ const ListItem = styled.li`
     }
   }
 
-  @media only screen and (max-width: 34.9375em) {
+  @media only screen and (min-width: 48em) {
     &:nth-of-type(odd) {
       ${ListItemWrap} {
         padding-left: 0;
@@ -79,14 +80,18 @@ const ListItem = styled.li`
     }
   }
 
-  @media only screen and (min-width: 35em) {
+  @media only screen and (min-width: 48em) {
     ${ListItemWrap} {
       padding: 0;
     }
   }
 
-  @media only screen and (min-width: 35em) {
+  @media only screen and (min-width: 48em) {
     width: 23.5%;
+  }
+
+  @media only screen and (min-width: 71.25em) {
+    width: 200px;
   }
 `;
 
@@ -111,7 +116,7 @@ const StyledGrade = styled(Grade)`
   max-width: 90px;
   width: 50%;
 
-  @media only screen and (min-width: 35em) {
+  @media only screen and (min-width: 48em) {
     max-width: 75px;
   }
 `;

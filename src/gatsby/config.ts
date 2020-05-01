@@ -6,6 +6,14 @@ export const siteMetadata = {
 
 export const plugins = [
   {
+    resolve: "gatsby-plugin-react-svg",
+    options: {
+      rule: {
+        include: /\.inline\.svg$/,
+      },
+    },
+  },
+  {
     resolve: `gatsby-plugin-sharp`,
     options: {
       toFormat: "JPG",

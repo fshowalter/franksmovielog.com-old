@@ -25,7 +25,8 @@
           "typescript": {
             "directory": [
               "./tsconfig.json",
-              "external/scripts/filters/tsconfig.json"
+              "external/scripts/filters/tsconfig.json",
+              "external/scripts/toggleMenu/tsconfig.json"
             ]
           }
         }
@@ -33,6 +34,7 @@
       "parserOptions": {
         "project": [
           "./tsconfig.json",
+          "./external/scripts/toggleMenu/tsconfig.json",
           "./external/scripts/filters/tsconfig.json"
         ]
       },

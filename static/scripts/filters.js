@@ -125,13 +125,13 @@
     };
 })());
 (function initFilter(factory) {
-    var textFilterElements = document.querySelectorAll('[data-filter-type="text"]');
-    var textFilters = new WeakMap();
+    const textFilterElements = document.querySelectorAll('[data-filter-type="text"]');
+    const textFilters = new WeakMap();
     Array.prototype.forEach.call(textFilterElements, function addEventListenersToNodeListItem(filterElement) {
         filterElement.addEventListener("keyup", function handleTextFilterKeyUp() {
-            var filter = textFilters.get(this) || factory.create(this);
+            const filter = textFilters.get(this) || factory.create(this);
             textFilters.set(this, filter);
-            var event = new CustomEvent("filter-changed", {
+            const event = new CustomEvent("filter-changed", {
                 bubbles: true,
                 cancelable: false,
                 detail: filter,
@@ -147,12 +147,12 @@
                 node.dataset.filterAttribute || TextFilter.DEFAULTS.filterAttribute;
         }
         static escapeRegExp(str) {
-            return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+            return str.replace(/[-[\]/{}()*+?.\\^$|]/g, "\\$&");
         }
         getMatcher() {
-            var attribute = this.attribute;
-            var value = this.node.value;
-            var regex = new RegExp(TextFilter.escapeRegExp(value), "i");
+            const { attribute } = this;
+            const { value } = this.node;
+            const regex = new RegExp(TextFilter.escapeRegExp(value), "i");
             return function matcher(item) {
                 if (!value) {
                     return true;
@@ -172,38 +172,49 @@
     };
 })());
 (function initSorter(factory) {
-    var sorterElement = document.querySelector("[data-sorter]");
+    const sorterElement = document.querySelector("[data-sorter]");
     if (!sorterElement) {
         return;
     }
-    var sorter;
+    let sorter;
     sorterElement.addEventListener("change", function handleSorterChange(e) {
         e.preventDefault();
         sorter = sorter || factory.create(this);
         sorter.sort();
     });
 })((function buildSorterFactory() {
-    class Sorter {
+    class SorterImpl {
         constructor(selectInput) {
             this.itemsBySortAttribute = new Map();
             this.selectInput = selectInput;
-            this.targetElement = document.querySelector(this.selectInput.dataset.target);
-            var options = [];
-            for (var i = -1, len = selectInput.options.length; ++i !== len;) {
+            const { dataset: { target: targetSelector }, } = this.selectInput;
+            if (!targetSelector) {
+                throw new Error("data-target property not found on selectInput");
+            }
+            const targetElement = document.querySelector(targetSelector);
+            if (!targetElement) {
+                throw new Error("targetElement not found");
+            }
+            this.targetElement = targetElement;
+            const options = [];
+            for (let i = -1, len = selectInput.options.length; i < len; i += 1) {
                 options[i] = selectInput.options[i];
             }
-            this.sortAttributes = options.map((option) => Sorter.parseSortAttributeAndOrder(option.value)[0]);
-            this.mapItems(this.targetElement.querySelectorAll(Sorter.DEFAULTS.itemsSelector));
+            this.sortAttributes = options.map((option) => SorterImpl.parseSortAttributeAndOrder(option.value)[0]);
+            this.mapItems(this.targetElement.querySelectorAll(SorterImpl.DEFAULTS.itemsSelector));
         }
         static descendingSort(a, b) {
-            return -1 * Sorter.ascendingSort(a, b);
+            return -1 * SorterImpl.ascendingSort(a, b);
         }
         static ascendingSort(a, b) {
             return a.sortValue.localeCompare(b.sortValue);
         }
         static removeElementToInsertLater(element) {
-            var parentNode = element.parentNode;
-            var nextSibling = element.nextSibling;
+            const { parentNode } = element;
+            const { nextSibling } = element;
+            if (!parentNode) {
+                throw new Error("parentNode not found");
+            }
             parentNode.removeChild(element);
             return function insertRemovedElement() {
                 if (nextSibling) {
@@ -221,53 +232,55 @@
             });
         }
         static parseSortAttributeAndOrder(sortAttributeAndOrder) {
-            return /(.*)-(asc|desc)$/.exec(sortAttributeAndOrder).slice(1, 3);
+            return (/(.*)-(asc|desc)$/.exec(sortAttributeAndOrder)?.slice(1, 3) || []);
         }
         sortListItems(sortAttributeAndOrder) {
-            var parsedSortAttributeAndOrder = Sorter.parseSortAttributeAndOrder(sortAttributeAndOrder);
-            var sortAttribute = parsedSortAttributeAndOrder[0];
-            var sortOrder = parsedSortAttributeAndOrder[1];
-            var sortFunction = sortOrder === "desc" ? Sorter.descendingSort : Sorter.ascendingSort;
-            return this.itemsBySortAttribute.get(sortAttribute).sort(sortFunction);
+            const parsedSortAttributeAndOrder = SorterImpl.parseSortAttributeAndOrder(sortAttributeAndOrder);
+            const sortAttribute = parsedSortAttributeAndOrder[0];
+            const sortOrder = parsedSortAttributeAndOrder[1];
+            const sortFunction = sortOrder === "desc"
+                ? SorterImpl.descendingSort
+                : SorterImpl.ascendingSort;
+            return (this.itemsBySortAttribute.get(sortAttribute)?.sort(sortFunction) || []);
         }
         mapValuesForElement(element) {
-            for (var i = 0, len = this.sortAttributes.length; i < len; i++) {
-                var sortAttribute = this.sortAttributes[i];
-                var sortValue = element.dataset[Sorter.camelCase(sortAttribute)] || "";
-                var items = this.itemsBySortAttribute.get(sortAttribute);
+            for (let i = 0, len = this.sortAttributes.length; i < len; i += 1) {
+                const sortAttribute = this.sortAttributes[i];
+                const sortValue = element.dataset[SorterImpl.camelCase(sortAttribute)] || "";
+                let items = this.itemsBySortAttribute.get(sortAttribute);
                 if (!items) {
                     items = [];
                     this.itemsBySortAttribute.set(sortAttribute, items);
                 }
                 items.push({
-                    element: element,
-                    sortValue: sortValue,
+                    element,
+                    sortValue,
                 });
             }
         }
         mapItems(items) {
-            for (var i = 0, len = items.length; i < len; i++) {
-                var item = items[i];
+            for (let i = 0, len = items.length; i < len; i += 1) {
+                const item = items[i];
                 this.mapValuesForElement(item);
             }
         }
         sort() {
-            var sortedItem;
-            var reinsert = Sorter.removeElementToInsertLater(this.targetElement);
+            let sortedItem;
+            const reinsert = SorterImpl.removeElementToInsertLater(this.targetElement);
             this.targetElement.innerHTML = "";
-            var sortedItems = this.sortListItems(this.selectInput.value);
-            for (var i = 0, len = sortedItems.length; i < len; i++) {
+            const sortedItems = this.sortListItems(this.selectInput.value);
+            for (let i = 0, len = sortedItems.length; i < len; i += 1) {
                 sortedItem = sortedItems[i];
                 this.targetElement.appendChild(sortedItem.element);
             }
             return reinsert();
         }
     }
-    Sorter.DEFAULTS = {
+    SorterImpl.DEFAULTS = {
         itemsSelector: "li",
     };
     function initialize(node) {
-        return new Sorter(node);
+        return new SorterImpl(node);
     }
     return {
         create: initialize,
@@ -275,34 +288,31 @@
 })());
 (function setFiltersFromQueryString() {
     function getQueryParameters() {
-        var map = new Map();
-        var query;
-        var queryString = document.location.search;
+        const map = new Map();
+        let query;
+        const queryString = document.location.search;
         queryString
             .replace(/(^\?)/, "")
             .split("&")
-            .map(function mapQueryString(q) {
+            .forEach(function mapQueryString(q) {
             query = q.split("=");
             map.set(query[0], query[1]);
         });
         return map;
     }
-    var params = getQueryParameters();
-    for (var key in params) {
-        if ({}.hasOwnProperty.call(params, key)) {
-            var value = params.get(key);
-            var filter = document.querySelector("[data-filter-attribute=data-" + key.toLowerCase() + "]");
-            if (filter) {
-                filter.value = decodeURI(value || "");
-                var keyUpevent = document.createEvent("HTMLEvents");
-                keyUpevent.initEvent("keyup", true, false);
-                filter.dispatchEvent(keyUpevent);
-            }
+    const params = getQueryParameters();
+    Object.keys(params).forEach((key) => {
+        const value = params.get(key);
+        const filter = document.querySelector(`[data-filter-attribute=data-${key.toLowerCase()}]`);
+        if (filter) {
+            filter.value = decodeURI(value || "");
+            const keyUpevent = document.createEvent("HTMLEvents");
+            keyUpevent.initEvent("keyup", true, false);
+            filter.dispatchEvent(keyUpevent);
         }
-    }
+    });
     document.documentElement.classList.add("js-filters");
 })();
-/*! noUiSlider - 8.0.1 - 2015-06-29 19:11:22 */
 (function (factory) {
     if (typeof define === "function" && define.amd) {
         define([], factory);
@@ -1254,18 +1264,23 @@
     };
 });
 (function initRangeFilter(factory) {
-    var rangeFilterElements = document.querySelectorAll('[data-filter-type="range"]');
-    var rangeFilters = new WeakMap();
+    const rangeFilterElements = document.querySelectorAll('[data-filter-type="range"]');
+    const rangeFilters = new WeakMap();
     function handleRangeFilterInit(e) {
+        if (!e.target) {
+            return;
+        }
         e.preventDefault();
         e.target.removeEventListener(e.type, handleRangeFilterInit);
-        var filter = rangeFilters.get(this);
+        let filter = rangeFilters.get(this);
         if (!filter) {
             filter = factory.create(this);
             rangeFilters.set(this, filter);
         }
         setTimeout(function redispatchMouseDownEvent() {
-            e.target.dispatchEvent(e);
+            if (e.target) {
+                e.target.dispatchEvent(e);
+            }
         }, 10);
     }
     Array.prototype.forEach.call(rangeFilterElements, function addEventListenersToNodeListItem(filterElement) {
@@ -1275,7 +1290,7 @@
         filterElement.addEventListener("keydown", function handleRangeFilterKeyDown(e) {
             if (e.which !== 9) {
                 filterElement.removeEventListener("keydown", handleRangeFilterKeyDown);
-                var filter = rangeFilters.get(this);
+                let filter = rangeFilters.get(this);
                 if (!filter) {
                     filter = factory.create(this);
                     rangeFilters.set(this, filter);
@@ -1297,19 +1312,27 @@
                 element.dataset.filterAttribute ||
                     RangeFilter.DEFAULTS.filterAttribute;
             this.sliderElement = element.querySelector(".noUiSlider");
-            this.minInputElement = element.querySelector(".filter-numeric.min");
-            this.maxInputElement = element.querySelector(".filter-numeric.max");
+            const minInputElement = element.querySelector(".filter-numeric.min");
+            if (!minInputElement) {
+                throw new Error("minInputElement not found");
+            }
+            this.minInputElement = minInputElement;
+            const maxInputElement = element.querySelector(".filter-numeric.max");
+            if (!maxInputElement) {
+                throw new Error("maxInputElement not found");
+            }
+            this.maxInputElement = maxInputElement;
             this.initSlider();
         }
         initSlider() {
             if (this.sliderElement.noUiSlider) {
                 return;
             }
-            var element = this.element;
-            var sliderElement = this.sliderElement;
-            var minInputElement = this.minInputElement;
-            var maxInputElement = this.maxInputElement;
-            noUiSlider.create(sliderElement, {
+            const { element } = this;
+            const { sliderElement } = this;
+            const { minInputElement } = this;
+            const { maxInputElement } = this;
+            window.noUiSlider.create(sliderElement, {
                 range: {
                     min: this.options.filterMinValue,
                     max: this.options.filterMaxValue,
@@ -1325,12 +1348,11 @@
                     },
                 },
             });
-            var filter = this;
-            sliderElement.noUiSlider.on("set", function handleSliderSet() {
-                var event = new CustomEvent("filter-changed", {
+            sliderElement.noUiSlider.on("set", () => {
+                const event = new CustomEvent("filter-changed", {
                     bubbles: true,
                     cancelable: false,
-                    detail: filter,
+                    detail: this,
                 });
                 return element.dispatchEvent(event);
             });
@@ -1346,15 +1368,15 @@
             });
         }
         getMatcher() {
-            var attribute = this.attribute;
-            var range = this.sliderElement.noUiSlider.get();
-            var filterMinValue = this.options.filterMinValue;
-            var filterMaxValue = this.options.filterMaxValue;
+            const { attribute } = this;
+            const range = this.sliderElement.noUiSlider.get();
+            const { filterMinValue } = this.options;
+            const { filterMaxValue } = this.options;
             return function matcher(item) {
                 if (range[0] === filterMinValue && range[1] === filterMaxValue) {
                     return true;
                 }
-                var value = parseInt(item.getAttribute(attribute), 10);
+                const value = parseInt(item.getAttribute(attribute) || "", 10);
                 return value >= range[0] && value <= range[1];
             };
         }
@@ -1372,14 +1394,14 @@
     };
 })());
 (function initFilter(factory) {
-    var selectFilterElements = document.querySelectorAll('[data-filter-type="select"]');
-    var selectFilters = new WeakMap();
+    const selectFilterElements = document.querySelectorAll('[data-filter-type="select"]');
+    const selectFilters = new WeakMap();
     Array.prototype.forEach.call(selectFilterElements, function addEventListenersToNodeListItem(filterElement) {
         filterElement.addEventListener("change", function handleFilterChange(e) {
             e.preventDefault();
-            var filter = selectFilters.get(this) || factory.create(this);
+            const filter = selectFilters.get(this) || factory.create(this);
             selectFilters.set(this, filter);
-            var event = new CustomEvent("filter-changed", {
+            const event = new CustomEvent("filter-changed", {
                 bubbles: true,
                 cancelable: false,
                 detail: filter,
@@ -1395,8 +1417,8 @@
                 node.dataset.filterAttribute || SelectFilter.DEFAULTS.filterAttribute;
         }
         getMatcher() {
-            var attribute = this.attribute;
-            var value = this.node.value;
+            const { attribute } = this;
+            const { value } = this.node;
             return function matcher(item) {
                 if (!value) {
                     return true;

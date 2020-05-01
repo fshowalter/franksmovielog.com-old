@@ -2,6 +2,7 @@
 
 declare module "*.svg";
 declare module "*.png";
+declare module "*.jpg";
 
 declare namespace Intl {
   declare class ListFormat {

@@ -1,9 +1,13 @@
 {
-  "processors": [
-    "stylelint-processor-styled-components"
+  "plugins": [
+    "stylelint-order"
   ],
   "extends": [
     "stylelint-config-recommended",
-    "stylelint-config-styled-components"
-  ]
+    "stylelint-config-styled-components",
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "order/properties-alphabetical-order": true
+  }
 }
