@@ -12,13 +12,13 @@ export const bodyTextMixin = css`
   letter-spacing: -0.05px;
   line-height: 27px;
   margin: 0 auto 30px;
-  max-width: 700px;
+  max-width: 66ch;
 
-  @media (min-width: 48em) {
+  /* @media (min-width: 48em) {
     font-size: 21px;
     line-height: 1.58;
     margin-bottom: 21px;
-  }
+  } */
 `;
 
 export default function GlobalStyles(): JSX.Element {

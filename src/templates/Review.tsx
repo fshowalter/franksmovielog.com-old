@@ -24,7 +24,7 @@ const Title = styled.h1`
   }
 `;
 
-const Article = styled.article`
+const Wrap = styled.div`
   max-width: 900px;
   padding: 0 20px 30px;
 
@@ -44,7 +44,28 @@ const DateAndVia = styled.aside`
   min-width: 170px;
   order: 2;
   padding-right: 30px;
-  padding-top: 22px;
+
+  @media only screen and (min-width: 71.25em) {
+    order: 1;
+    padding-right: 20px;
+    padding-top: 26px;
+    position: relative;
+    width: 220px;
+
+    &:after {
+      background: #fdfdfd;
+      border: #e9e7e0 1px solid;
+      border-radius: 100%;
+      content: "";
+      display: block;
+      height: 7px;
+      position: absolute;
+      right: -5px;
+      top: 30px;
+      width: 7px;
+      z-index: 500;
+    }
+  }
 `;
 
 const Main = styled.main`
@@ -56,6 +77,13 @@ const Main = styled.main`
   max-width: 66ch;
   order: 3;
   padding-top: 30px;
+
+  @media only screen and (min-width: 71.25em) {
+    border-top: none;
+    margin-top: 0;
+    order: 2;
+    padding-top: 20px;
+  }
 `;
 
 interface Props {
@@ -191,23 +219,33 @@ function YearAndRuntime({ review }: Props["data"]): JSX.Element {
   );
 }
 
+const Review = styled.article`
+  @media only screen and (min-width: 71.25em) {
+    border-top: solid 1px #eee;
+    display: flex;
+    margin-top: 16px;
+  }
+`;
+
 const Via = styled.span``;
 
-export default function Review({ data }: Props): JSX.Element {
+export default function ReviewTemplate({ data }: Props): JSX.Element {
   return (
     <Layout>
-      <Article>
+      <Wrap>
         {reviewImage(data.review)}
         <Title>{data.review.movie.title}</Title>
         <AkaTitles review={data.review} />
         <Directors review={data.review} />
         <YearAndRuntime review={data.review} />
-        <Main>{reviewContent(data.review)}</Main>
-        <DateAndVia>
-          {moment.utc(data.review.date).format("dddd, MMMM Do YYYY")}{" "}
-          <Via>via Shudder</Via>
-        </DateAndVia>
-      </Article>
+        <Review>
+          <Main>{reviewContent(data.review)}</Main>
+          <DateAndVia>
+            {moment.utc(data.review.date).format("ddd MMM Do YYYY")}{" "}
+            <Via>via Shudder</Via>
+          </DateAndVia>
+        </Review>
+      </Wrap>
     </Layout>
   );
 }
