@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 const React = require("react");
 
 let pageScripts;
