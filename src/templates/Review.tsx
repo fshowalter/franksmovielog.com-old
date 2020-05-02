@@ -1,11 +1,10 @@
 import { graphql } from "gatsby";
 import Img, { FluidObject } from "gatsby-image";
 import parse from "html-react-parser";
+import marked from "marked";
 import moment from "moment";
 import React from "react";
 import { renderToString } from "react-dom/server";
-import remark from "remark";
-import remarkHTML from "remark-html";
 
 import styled from "@emotion/styled";
 
@@ -172,7 +171,7 @@ const reviewContent = (
     <InlineGrade grade={review.grade} width={95} height={95} />
   )}&#8212;${review.markdown.rawMarkdownBody.trim()}`;
 
-  return parse(remark().use(remarkHTML).processSync(content).toString());
+  return parse(marked(content).toString());
 };
 
 const ReviewImage = styled(Img)`

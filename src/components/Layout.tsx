@@ -55,19 +55,19 @@ const Hamburger = styled(hamburger)`
     transition: all 0.2s linear;
   }
 
-  [aria-expanded="true"] & rect:nth-child(1) {
+  [aria-expanded="true"] & rect:nth-of-type(1) {
     transform: rotate(45deg);
   }
-  [aria-expanded="true"] & rect:nth-child(2) {
+  [aria-expanded="true"] & rect:nth-of-type(2) {
     opacity: 0;
     width: 0;
   }
-  [aria-expanded="true"] & rect:nth-child(3) {
+  [aria-expanded="true"] & rect:nth-of-type(3) {
     opacity: 0;
     width: 0;
   }
 
-  [aria-expanded="true"] & rect:nth-child(4) {
+  [aria-expanded="true"] & rect:nth-of-type(4) {
     transform: rotate(-45deg);
   }
 `;

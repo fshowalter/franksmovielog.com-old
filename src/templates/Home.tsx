@@ -1,11 +1,10 @@
 import { graphql, Link } from "gatsby";
 import Img, { FluidObject } from "gatsby-image";
 import parse from "html-react-parser";
+import marked from "marked";
 import moment from "moment";
 import React from "react";
 import { renderToString } from "react-dom/server";
-import remark from "remark";
-import remarkHTML from "remark-html";
 
 import styled from "@emotion/styled";
 import { WindowLocation } from "@reach/router";
@@ -322,9 +321,9 @@ const reviewContent = (
 ): JSX.Element | JSX.Element[] => {
   const content = `${renderToString(
     <InlineGrade grade={review.grade} width={95} height={95} />
-  )} ${review.markdown.firstParagraph.trim()}`;
+  )} ${marked(review.markdown.firstParagraph.trim())}`;
 
-  return parse(remark().use(remarkHTML).processSync(content).toString());
+  return parse(content.toString());
 };
 
 export default function HomeTemplate({
@@ -348,7 +347,9 @@ export default function HomeTemplate({
                     </ReviewHeading>
                   </ReviewHeader>
                   <Main>{reviewContent(node)}</Main>
-                  <Aside>{moment.utc(node.date).format("DD MMM YYYY")}</Aside>
+                  <Aside>
+                    {moment.utc(node.date, "DD MMM YYYY").format("DD MMM YYYY")}
+                  </Aside>
                 </CWrap>
               </Review>
             </ListItem>

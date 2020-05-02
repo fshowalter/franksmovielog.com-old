@@ -1,19 +1,49 @@
-const React = require("react");
+import React, { ReactElement, ReactNode } from "react";
 
-let pageScripts;
+interface OnRenderBodyArgs {
+  scripts?: Script[];
+  pathname: string;
+  setPostBodyComponents(ReactNode: ReactNode[]): void;
+}
 
-function checkPathExclusion(pathname, pluginOptions) {
+interface OnPreRenderHTMLArgs {
+  getHeadComponents(): ReactNode[];
+  replaceHeadComponents(reactNodes: ReactNode[]): void;
+  getPostBodyComponents(): ReactNode[];
+  replacePostBodyComponents(ReactNode: ReactNode[]): void;
+  pathname: string;
+}
+
+interface Script {
+  name: string;
+  rel: string;
+}
+
+interface PluginOptions {
+  excludeFiles?: RegExp | string;
+  excludePaths?: RegExp | string;
+}
+
+let pageScripts: Script[];
+
+function checkPathExclusion(
+  pathname: string,
+  pluginOptions: PluginOptions
+): boolean {
   if (!pluginOptions.excludePaths) return false;
 
   return RegExp(pluginOptions.excludePaths).test(pathname);
 }
 
-function isReactElement(reactNode) {
-  return reactNode.props !== undefined;
+function isReactElement(reactNode: ReactNode): reactNode is ReactElement {
+  return (reactNode as ReactElement).props !== undefined;
 }
 
-function getHeadComponentsNoJS(headComponents, pluginOptions) {
-  return headComponents.filter((headComponent) => {
+function getHeadComponentsNoJS(
+  headComponents: ReactNode[],
+  pluginOptions: PluginOptions
+): ReactNode[] {
+  return headComponents.filter((headComponent): boolean => {
     // Not a react component and therefore not a <script>.
     if (!isReactElement(headComponent)) {
       return true;
@@ -38,7 +68,7 @@ function getHeadComponentsNoJS(headComponents, pluginOptions) {
     }
 
     return (
-      pageScripts.find((script) => {
+      pageScripts.find((script): boolean => {
         return (
           headComponent.props.as === "script" &&
           `/${script.name}` === headComponent.props.href &&
@@ -49,8 +79,11 @@ function getHeadComponentsNoJS(headComponents, pluginOptions) {
   });
 }
 
-function getPostBodyComponentsNoJS(postBodyComponents, pluginOptions) {
-  return postBodyComponents.filter((postBodyComponent) => {
+function getPostBodyComponentsNoJS(
+  postBodyComponents: ReactNode[],
+  pluginOptions: PluginOptions
+): ReactNode[] {
+  return postBodyComponents.filter((postBodyComponent): boolean => {
     // Not a react component and therefore not a <script>.
     if (!isReactElement(postBodyComponent)) {
       return true;
@@ -75,7 +108,7 @@ function getPostBodyComponentsNoJS(postBodyComponents, pluginOptions) {
 
     return (
       pageScripts.find(
-        (script) =>
+        (script): boolean =>
           postBodyComponent.type === "script" &&
           `/${script.name}` === postBodyComponent.props.src
       ) === undefined
@@ -88,7 +121,11 @@ function getPostBodyComponentsNoJS(postBodyComponents, pluginOptions) {
 // https://github.com/gatsbyjs/gatsby/blob/d9cf5a21403c474846ebdf7a0508902b9b8a2ea9/packages/gatsby/cache-dir/static-entry.js#L270-L283,
 // puts into the head and post body. We will be relying on this undocumented variable until it does not work anymore as
 // the alternative is to read the webpack.stats.json file and parse it ourselves.
-function onRenderBody({ pathname, setPostBodyComponents, scripts }) {
+function onRenderBody({
+  pathname,
+  setPostBodyComponents,
+  scripts,
+}: OnRenderBodyArgs): void {
   if (process.env.NODE_ENV !== "production") {
     // During a gatsby development build (gatsby develop) we do nothing.
     return;
@@ -102,11 +139,9 @@ function onRenderBody({ pathname, setPostBodyComponents, scripts }) {
   }
   pageScripts = scripts;
 
-  setPostBodyComponents([<script src="/scripts/toggleMenu.js" defer />]);
-
   const pages = ["watchlist"];
 
-  if (!pages.some((page) => pathname.endsWith(`${page}/`))) {
+  if (!pages.some((page) => pathname.endsWith(page))) {
     return;
   }
 
@@ -122,9 +157,9 @@ function onPreRenderHTML(
     replaceHeadComponents,
     getPostBodyComponents,
     replacePostBodyComponents,
-  },
-  pluginOptions
-) {
+  }: OnPreRenderHTMLArgs,
+  pluginOptions: PluginOptions
+): void {
   if (
     process.env.NODE_ENV !== "production" ||
     checkPathExclusion(pathname, pluginOptions)
