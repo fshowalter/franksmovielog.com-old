@@ -1,17 +1,12 @@
 "use strict";
 (function initUpdateImages() {
     function removePlaceholderForLoadedImage() {
-        const placeholder = this.previousSibling;
-        if (!placeholder) {
-            return;
-        }
-        placeholder.remove();
+        this.style.opacity = "1";
     }
     function updateImages() {
-        let i;
         const nodes = document.querySelectorAll("picture");
         const nodesLength = nodes.length;
-        for (i = 0; i < nodesLength; i += 1) {
+        for (let i = 0; i < nodesLength; i += 1) {
             nodes[i].addEventListener("load", removePlaceholderForLoadedImage);
         }
     }
