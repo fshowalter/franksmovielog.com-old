@@ -11,8 +11,8 @@
             nodes[i].addEventListener("load", updateOpacityForImage);
             if (nodes[i].complete) {
                 nodes[i].style.opacity = "1";
+                nodes[i].removeEventListener("load", updateOpacityForImage);
             }
-            nodes[i].removeEventListener("load", updateOpacityForImage);
         }
     }
     updateImages();
