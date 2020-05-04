@@ -23,7 +23,7 @@
     "gatsby-transformer-yaml": "^2.3.3",
     "html-react-parser": "^0.10.3",
     "marked": "^1.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.25.1",
     "pluralize": "^8.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
