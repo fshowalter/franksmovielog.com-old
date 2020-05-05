@@ -26,6 +26,7 @@
             "directory": [
               "./tsconfig.json",
               "external/scripts/filters/tsconfig.json",
+              "external/scripts/loadImages/tsconfig.json",
               "external/scripts/toggleMenu/tsconfig.json"
             ]
           }
@@ -35,6 +36,7 @@
         "project": [
           "./tsconfig.json",
           "./external/scripts/toggleMenu/tsconfig.json",
+          "./external/scripts/loadImages/tsconfig.json",
           "./external/scripts/filters/tsconfig.json"
         ]
       },

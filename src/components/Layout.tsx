@@ -309,9 +309,10 @@ export default function Layout({ children }: Props): JSX.Element {
             </Link>
             <MenuWrap className="js-toggle js-toggle_off" id="menu">
               <NavLink to="/">Home</NavLink>
-              <NavLink to="/">How I Grade</NavLink>
+              <NavLink to="/about/">About</NavLink>
+              <NavLink to="/how-i-grade/">How I Grade</NavLink>
               <NavLink to="/">Reviews</NavLink>
-              <NavLink to="/">Viewing Log</NavLink>
+              <NavLink to="/viewings/">Viewing Log</NavLink>
               <NavLink to="/">Watchlist</NavLink>
               <NavLink to="/">Stats</NavLink>
               <TextInputWrap>

@@ -37,6 +37,14 @@ export const plugins = [
       path: `${__dirname}/../../../movielog-new/reviews/`,
     },
   },
+  `gatsby-transformer-remark`,
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `review`,
+      path: `${__dirname}/../../pages/`,
+    },
+  },
   `gatsby-plugin-typescript`,
   `gatsby-plugin-react-helmet`,
   `gatsby-plugin-emotion`,

@@ -198,6 +198,7 @@ const imageForNode = (node: ReviewNode): React.ReactElement | null => {
       <Img
         fluid={node.markdown.backdrop?.childImageSharp?.fluid}
         alt={`A still from ${node.movie.title}`}
+        loading="eager"
       />
     </ReviewImageWrap>
   );

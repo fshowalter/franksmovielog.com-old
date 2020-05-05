@@ -109,6 +109,12 @@ config.createSchemaCustomization = ({ actions, schema }) => {
       imdbId: String!
       movie: Movie! @link(by: "imdbId", from: "imdbId")
     }`,
+    `type Page implements Node {
+      slug: String!
+      title: String!
+      date: String!
+      markdown: MarkdownRemark! @link(by: "frontmatter.slug", from: "slug")
+    }`,
     `type Review implements Node {
       id: ID!
       imdbId: String!
@@ -212,6 +218,33 @@ config.onCreateNode = ({ node, actions, createContentDigest, reporter }) => {
       children: [],
       internal: {
         type: `Review`,
+        contentDigest: createContentDigest(data),
+      },
+    });
+
+    return;
+  }
+
+  if (
+    node.fileAbsolutePath.includes("/pages/") &&
+    node.frontmatter.title &&
+    node.frontmatter.date &&
+    node.frontmatter.slug
+  ) {
+    const data = {
+      slug: node.frontmatter.slug,
+      date: node.frontmatter.date,
+      title: node.frontmatter.title,
+    };
+
+    createNode({
+      ...data,
+      // Required fields.
+      id: `page-${data.slug}`,
+      parent: undefined,
+      children: [],
+      internal: {
+        type: `Page`,
         contentDigest: createContentDigest(data),
       },
     });

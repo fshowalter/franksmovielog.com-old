@@ -26,18 +26,13 @@ const Title = styled.h1`
 const Wrap = styled.div`
   max-width: 900px;
   padding: 0 20px 30px;
-
-  p {
-    ${bodyTextMixin};
-  }
 `;
 
 const DateAndVia = styled.aside`
   border-right: solid 1px #eee;
-  color: rgba(0, 0, 0, 0.54);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  font-size: 12px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 16px;
+  letter-spacing: 0.25px;
   line-height: 1.4;
   margin-right: 30px;
   min-width: 170px;
@@ -47,9 +42,20 @@ const DateAndVia = styled.aside`
   @media only screen and (min-width: 71.25em) {
     order: 1;
     padding-right: 20px;
-    padding-top: 26px;
+    padding-top: 23px;
     position: relative;
     width: 220px;
+
+    &:before {
+      background: #eee;
+      content: "";
+      height: 1px;
+      position: absolute;
+      right: 0px;
+      top: 34px;
+      width: 20px;
+      z-index: -1;
+    }
 
     &:after {
       background: #fdfdfd;
@@ -70,12 +76,16 @@ const DateAndVia = styled.aside`
 const Main = styled.main`
   border-top: 1px solid #eee;
   color: rgba(0, 0, 0, 0.87);
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.5;
   margin-top: 30px;
   max-width: 66ch;
   order: 3;
   padding-top: 30px;
+
+  p {
+    ${bodyTextMixin};
+  }
 
   @media only screen and (min-width: 71.25em) {
     border-top: none;
@@ -171,7 +181,7 @@ const reviewContent = (
     <InlineGrade grade={review.grade} width={95} height={95} />
   )}&#8212;${review.markdown.rawMarkdownBody.trim()}`;
 
-  return parse(marked(content).toString());
+  return parse(marked(content, { pedantic: true }).toString());
 };
 
 const ReviewImage = styled(Img)`
@@ -181,7 +191,7 @@ const ReviewImage = styled(Img)`
 const reviewImage: React.FC<Props["data"]["review"]> = (
   review: Props["data"]["review"]
 ) => {
-  if (!review.markdown.backdrop) {
+  if (!review?.markdown?.backdrop) {
     return null;
   }
 
@@ -189,6 +199,7 @@ const reviewImage: React.FC<Props["data"]["review"]> = (
     <ReviewImage
       fluid={review.markdown.backdrop?.childImageSharp.fluid}
       alt={`A still from ${review.movie.title}`}
+      loading="eager"
     />
   );
 };
@@ -196,6 +207,7 @@ const reviewImage: React.FC<Props["data"]["review"]> = (
 const DirectorsWrap = styled.span`
   color: rgba(0, 0, 0, 0.54);
   display: block;
+  letter-spacing: 0.25px;
   margin-top: 1em;
 `;
 
@@ -226,7 +238,10 @@ const Review = styled.article`
   }
 `;
 
-const Via = styled.span``;
+const Via = styled.span`
+  color: rgba(0, 0, 0, 0.54);
+  display: block;
+`;
 
 export default function ReviewTemplate({ data }: Props): JSX.Element {
   return (

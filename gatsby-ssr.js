@@ -103,6 +103,7 @@ function onRenderBody({ pathname, setPostBodyComponents, scripts }) {
   }
   pageScripts = scripts;
 
+  setPostBodyComponents([<script src="/scripts/loadImages.js" defer />]);
   setPostBodyComponents([<script src="/scripts/toggleMenu.js" defer />]);
 
   const pages = ["watchlist"];
