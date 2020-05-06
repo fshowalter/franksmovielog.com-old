@@ -4,10 +4,10 @@ import React, { ReactNode } from "react";
 import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import background from "../assets/bkg_dark.png";
 import hamburger from "../assets/hamburger.inline.svg";
 import mobileBackground from "../assets/imissnotcomingsoon.jpg";
 import logo from "../assets/logo.inline.svg";
-import Footer from "./Footer";
 
 const LayoutWrap = styled.div`
   @media only screen and (min-width: 71.25em) {
@@ -95,7 +95,7 @@ const MenuToggle = styled.button`
 `;
 
 const MenuWrap = styled.div`
-  background: #fff;
+  background: transparent;
   box-sizing: border-box;
   font-size: 16px;
   font-weight: 300;
@@ -146,7 +146,7 @@ const Header = styled.header`
   z-index: 100;
 
   @media only screen and (min-width: 48em) {
-    background: #fff;
+    background: transparent;
     box-sizing: border-box;
     margin: 0 auto;
     max-width: 700px;
@@ -228,6 +228,104 @@ const ContentWrap = styled.div`
     order: 1;
   }
 `;
+
+const footerStyleVars = {
+  colorFooterBackground: "#202020",
+  colorFooterLink: "#717171",
+  colorFooterSubLink: "#b5b5b5",
+};
+
+const FooterWrap = styled.footer`
+  background: #202020 url(${background}) repeat;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+`;
+
+const FooterList = styled.ul`
+  line-height: 1.75;
+  margin: 0 0 10px;
+  padding: 0;
+  text-align: center;
+`;
+
+const FooterListItem = styled.li`
+  display: inline-block;
+  padding: 0 8px;
+`;
+
+const FooterLink = styled(Link)`
+  color: ${footerStyleVars.colorFooterLink};
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  white-space: nowrap;
+`;
+
+const footerSubLinkMixin = css`
+  color: ${footerStyleVars.colorFooterSubLink};
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  text-rendering: optimizeLegibility;
+`;
+
+const FooterSubLink = styled(Link)`
+  ${footerSubLinkMixin}
+`;
+
+const FooterSubExternalLink = styled.a`
+  ${footerSubLinkMixin}
+`;
+
+const FooterTextInputWrap = styled.div`
+  border-bottom: solid 1px var(--color-primary);
+  margin: 0 auto 10px;
+  max-width: 180px;
+`;
+
+interface FooterProps {
+  className?: string;
+}
+
+function Footer({ className }: FooterProps): JSX.Element {
+  return (
+    <FooterWrap className={className}>
+      <FooterList>
+        <FooterListItem>
+          <FooterLink to="/about/">About</FooterLink>
+        </FooterListItem>
+        <FooterListItem>
+          <FooterLink to="/how-i-grade/">How I Grade</FooterLink>
+        </FooterListItem>
+        <FooterListItem>
+          <FooterLink to="/reviews/">Reviews</FooterLink>
+        </FooterListItem>
+        <FooterListItem>
+          <FooterLink to="/viewings/">Viewing Log</FooterLink>
+        </FooterListItem>
+        <FooterListItem>
+          <FooterLink to="/cast-and-crew/">Watchlist</FooterLink>
+        </FooterListItem>
+        <FooterListItem>
+          <FooterLink to="/stats/">Stats</FooterLink>
+        </FooterListItem>
+      </FooterList>
+      <FooterTextInputWrap>
+        <TextInput placeholder="Search" />
+      </FooterTextInputWrap>
+      <FooterList>
+        <FooterListItem>
+          <FooterSubExternalLink href="https://letterboxd.com/frankshowalter/">
+            Letterboxd
+          </FooterSubExternalLink>
+        </FooterListItem>
+        <FooterListItem>
+          <FooterSubLink to="/feed.xml">RSS</FooterSubLink>
+        </FooterListItem>
+      </FooterList>
+    </FooterWrap>
+  );
+}
 
 const StyledFooter = styled(Footer)`
   @media only screen and (min-width: 71.25em) {
