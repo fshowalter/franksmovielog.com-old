@@ -2,17 +2,17 @@
 /// <reference path="./filterExecutor.ts" />
 
 (function initFilter(factory): void {
-  const selectFilterElements = document.querySelectorAll<HTMLInputElement>(
+  const selectFilterElements = document.querySelectorAll<HTMLSelectElement>(
     '[data-filter-type="select"]'
   );
 
-  const selectFilters = new WeakMap<HTMLElement, Filter>();
+  const selectFilters = new WeakMap<HTMLSelectElement, Filter>();
 
   Array.prototype.forEach.call(
     selectFilterElements,
     function addEventListenersToNodeListItem(filterElement) {
       filterElement.addEventListener("change", function handleFilterChange(
-        this: HTMLInputElement,
+        this: HTMLSelectElement,
         e: Event
       ) {
         e.preventDefault();
@@ -36,11 +36,11 @@
     create(element: HTMLElement): Filter;
   } {
     class SelectFilter implements Filter {
-      readonly node: HTMLInputElement;
+      readonly node: HTMLSelectElement;
 
       readonly attribute: string;
 
-      constructor(node: HTMLInputElement) {
+      constructor(node: HTMLSelectElement) {
         this.node = node;
 
         this.attribute =
@@ -53,20 +53,22 @@
 
       getMatcher(): Matcher {
         const { attribute } = this;
-        const { value } = this.node;
+        const value = this.node.selectedOptions[0].getAttribute("value");
+
+        if (!value) {
+          return function matcher(): boolean {
+            return true;
+          };
+        }
 
         return function matcher(item: HTMLElement): boolean {
-          if (!value) {
-            return true;
-          }
-
           return item.getAttribute(attribute) === value;
         };
       }
     }
 
     // Run the standard initializer
-    function initialize(node: HTMLInputElement): Filter {
+    function initialize(node: HTMLSelectElement): Filter {
       return new SelectFilter(node);
     }
 

@@ -462,7 +462,7 @@ config.sourceNodes = async ({ actions, createContentDigest }) => {
     createNode({
       ...data,
       // Required fields.
-      id: `viewing-${data.imdbId}`,
+      id: `viewing-${data.sequence}`,
       parent: undefined,
       children: [],
       internal: {

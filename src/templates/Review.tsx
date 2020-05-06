@@ -26,6 +26,10 @@ const Title = styled.h1`
 const Wrap = styled.div`
   max-width: 900px;
   padding: 0 20px 30px;
+
+  @media only screen and (min-width: 71.24em) {
+    padding: 0 0 30px;
+  }
 `;
 
 const DateAndVia = styled.aside`
@@ -39,7 +43,7 @@ const DateAndVia = styled.aside`
   order: 2;
   padding-right: 30px;
 
-  @media only screen and (min-width: 71.25em) {
+  @media only screen and (min-width: 71.24em) {
     order: 1;
     padding-right: 20px;
     padding-top: 23px;
@@ -154,12 +158,13 @@ const YearAndRuntimeDivider = styled.span`
 `;
 
 const InlineGrade = styled(Grade)`
-  display: inline-block;
+  display: block;
   height: auto;
-  margin-right: 2px;
+  margin-bottom: 5px;
+  /* margin-right: 2px; */
   position: relative;
-  top: 3px;
-  width: 95px;
+  /* top: 3px; */
+  /* width: 95px; */
 `;
 
 function AkaTitles({ review }: Props["data"]): JSX.Element | null {
@@ -177,15 +182,17 @@ function AkaTitles({ review }: Props["data"]): JSX.Element | null {
 const reviewContent = (
   review: Props["data"]["review"]
 ): JSX.Element | JSX.Element[] => {
-  const content = `${renderToString(
-    <InlineGrade grade={review.grade} width={95} height={95} />
-  )}&#8212;${review.markdown.rawMarkdownBody.trim()}`;
+  const content = review.markdown.rawMarkdownBody.trim();
 
   return parse(marked(content, { pedantic: true }).toString());
 };
 
 const ReviewImage = styled(Img)`
   margin: 0 -20px;
+
+  @media only screen and (min-width: 71.24em) {
+    margin: 0;
+  }
 `;
 
 const reviewImage: React.FC<Props["data"]["review"]> = (
@@ -255,7 +262,8 @@ export default function ReviewTemplate({ data }: Props): JSX.Element {
         <Review>
           <Main>{reviewContent(data.review)}</Main>
           <DateAndVia>
-            {moment.utc(data.review.date).format("ddd MMM Do YYYY")}{" "}
+            <InlineGrade grade={data.review.grade} width={95} height={95} />
+            on {moment.utc(data.review.date).format("ddd MMM Do YYYY")}{" "}
             <Via>via Shudder</Via>
           </DateAndVia>
         </Review>

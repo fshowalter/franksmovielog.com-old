@@ -22,21 +22,28 @@ const Logo = styled(logo)`
   background-color: transparent;
   fill: transparent;
   height: 50px;
-  margin-left: 10px;
   width: 50px;
 
   @media only screen and (min-width: 48em) {
     background: #202020 url(${mobileBackground}) repeat;
     height: 70px;
+    width: 70px;
+  }
+`;
+
+const LogoLink = styled(Link)`
+  display: inline-block;
+  margin-left: 10px;
+
+  @media only screen and (min-width: 48em) {
     left: 0;
     margin-left: 0;
     position: absolute;
     top: 11px;
-    width: 70px;
   }
 
   @media only screen and (min-width: 71.25em) {
-    margin: 0 0 40px;
+    margin: 0 0 24px;
     position: relative;
     top: 0;
   }
@@ -144,22 +151,9 @@ const Header = styled.header`
     margin: 0 auto;
     max-width: 700px;
     padding-left: 90px;
-
-    &::after {
-      background-color: #eee;
-      clear: both;
-      content: "";
-      display: block;
-      height: 1px;
-      margin: 40px 20px 0;
-
-      @media only screen and (min-width: 71.25em) {
-        display: none;
-      }
-    }
   }
 
-  @media only screen and (min-width: 71.25em) {
+  @media only screen and (min-width: 71.24em) {
     border-left: solid 1px #eee;
     margin-left: 25px;
     margin-top: 20px;
@@ -174,14 +168,17 @@ const NavLink = styled(Link)`
   clear: both;
   color: inherit;
   display: block;
+  line-height: 49px;
   margin: 0;
-  padding: 10px 0;
+  padding: 0;
   text-decoration: none;
 
   @media only screen and (min-width: 48em) and (max-width: 71.24em) {
     border-bottom: none;
     display: inline-block;
+    line-height: inherit;
     margin-right: 20px;
+    padding: 10px 0;
   }
 `;
 
@@ -304,9 +301,9 @@ export default function Layout({ children }: Props): JSX.Element {
         />
         <HeaderWrap>
           <Header>
-            <Link to="/">
+            <LogoLink to="/">
               <Logo />
-            </Link>
+            </LogoLink>
             <MenuWrap className="js-toggle js-toggle_off" id="menu">
               <NavLink to="/">Home</NavLink>
               <NavLink to="/about/">About</NavLink>

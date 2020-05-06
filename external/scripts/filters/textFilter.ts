@@ -56,11 +56,13 @@
 
         const regex = new RegExp(TextFilter.escapeRegExp(value), "i");
 
-        return function matcher(item: HTMLElement): boolean {
-          if (!value) {
+        if (!value) {
+          return function matcher(): boolean {
             return true;
-          }
+          };
+        }
 
+        return function matcher(item: HTMLElement): boolean {
           return regex.test(item.getAttribute(attribute) || "");
         };
       }

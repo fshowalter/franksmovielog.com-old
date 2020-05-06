@@ -313,7 +313,7 @@ const InlineGrade = styled(Grade)`
   height: auto;
   margin-right: 2px;
   position: relative;
-  top: 3px;
+  top: 0px;
   width: 95px;
 `;
 

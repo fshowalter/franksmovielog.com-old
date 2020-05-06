@@ -25,13 +25,15 @@ const Label = styled.label`
 `;
 
 const Container = styled.div`
-  /* background: #fefefe; */
   border: 1px solid #eee;
   border-left: none;
   border-right: none;
-  /* border-radius: 5px; */
-  /* margin: 20px; */
   transition: opacity 0.3s ease;
+
+  @media only screen and (min-width: 48em) {
+    border: none;
+    border-right: solid 1px #eee;
+  }
 `;
 
 const Heading = styled.h2`
@@ -43,11 +45,18 @@ const Heading = styled.h2`
   padding: 20px;
   position: relative;
   text-decoration: none;
-  /* letter-spacing: 0.5px; */
+
+  @media only screen and (min-width: 48em) {
+    padding: 20px 0;
+  }
 `;
 
 const Content = styled.div`
   padding: 0 20px;
+
+  @media only screen and (min-width: 48em) {
+    padding: 0 50px 20px 0;
+  }
 `;
 
 const TextInput = styled.input`
@@ -72,7 +81,7 @@ const TextInput = styled.input`
 `;
 
 const TextInputWrap = styled.div`
-  border-bottom: solid 1px $filter_border_color;
+  border-bottom: solid 1px #eee;
   margin-bottom: 8px;
   padding-bottom: 7px;
 `;
@@ -107,7 +116,7 @@ function SelectFilter({
   children,
 }: SelectFilterProps): JSX.Element {
   const options = [
-    <option>All</option>,
+    <option key="all">All</option>,
     ...children.map(([optionName, optionValue]) => {
       return (
         <option key={optionValue} value={optionValue}>
@@ -362,10 +371,13 @@ function RangeFilter({
 const PanelHeaderHeader = styled.header`
   padding: 20px;
 
-  @media only screen and (min-width: 50em) {
-    margin: 20px;
-    padding: 20px;
+  @media only screen and (min-width: 48em) {
+    padding: 10px 0 20px;
     text-align: left;
+  }
+
+  @media only screen and (min-width: 71.24em) {
+    padding-top: 0;
   }
 `;
 
@@ -375,7 +387,7 @@ const PanelHeaderHeading = styled.h1`
 `;
 
 const PanelHeaderSlug = styled.div`
-  color: var(--color-text-secondary);
+  color: rgba(0, 0, 0, 0.54);
   font-size: 15px;
   line-height: 20px;
   margin-bottom: 0;
@@ -398,10 +410,6 @@ function PanelHeader({ title, slug }: PanelHeaderProps): JSX.Element {
 const List = styled.ol`
   margin: 0 0 35px;
   padding: 0;
-
-  @media only screen and (min-width: 50em) {
-    margin-top: 24px;
-  }
 `;
 
 const ListItem = React.memo(styled.li`
@@ -411,7 +419,7 @@ const ListItem = React.memo(styled.li`
   position: relative;
 
   &:after {
-    background-color: var(--color-primary);
+    background-color: #eee;
     bottom: 0;
     content: "";
     display: block;
@@ -434,12 +442,53 @@ const Title = styled.div`
 `;
 
 const Slug = styled.div`
-  color: var(--color-text-hint);
+  color: rgba(0, 0, 0, 0.38);
   font-size: 15px;
   line-height: 20px;
   padding: 0 20px 20px;
   text-rendering: optimizeLegibility;
 `;
+
+const ColumnWrap = styled.div`
+  @media only screen and (min-width: 48em) {
+    border-top: solid 1px #eee;
+    display: flex;
+    margin: 0 auto;
+    width: 700px;
+  }
+  @media only screen and (min-width: 71.24em) {
+    width: 900px;
+  }
+`;
+
+const Column1 = styled.div`
+  @media only screen and (min-width: 48em) {
+    width: 250px;
+  }
+
+  @media only screen and (min-width: 71.24em) {
+    width: 340px;
+  }
+`;
+
+const Column2 = styled.div`
+  @media only screen and (min-width: 48em) {
+    padding-left: 30px;
+    width: 420px;
+  }
+
+  @media only screen and (min-width: 71.24em) {
+    width: 540px;
+  }
+`;
+
+interface TwoColumnsProps {
+  children: React.ReactNode;
+}
+
+function TwoColumns({ children }: TwoColumnsProps): JSX.Element {
+  return <ColumnWrap>{children}</ColumnWrap>;
+}
 
 interface Props {
   data: {
@@ -507,53 +556,62 @@ export default function Viewings({ data }: Props): JSX.Element {
         title="Viewing Log"
         slug={`I've watched ${data.allViewing.nodes.length} movies since 2012`}
       />
-      <FilterPanel heading="Filter and Sort">
-        <TextFilter
-          label="Title"
-          placeholder="Enter all or part of a title."
-          filterAttribute="data-title"
-        />
-        <RangeFilter
-          name="Release Year"
-          attribute="data-release-date"
-          min={minYear}
-          max={maxYear}
-        />
-        <SelectFilter label="Viewing Year" filterAttribute="data-viewing-year">
-          {yearOptions}
-        </SelectFilter>
-        <SelectFilter label="Via" filterAttribute="data-via">
-          {venueOptions}
-        </SelectFilter>
+      <TwoColumns>
+        <Column1>
+          <FilterPanel heading="Filter and Sort">
+            <TextFilter
+              label="Title"
+              placeholder="Enter all or part of a title."
+              filterAttribute="data-title"
+            />
+            <RangeFilter
+              name="Release Year"
+              attribute="data-release-date"
+              min={minYear}
+              max={maxYear}
+            />
+            <SelectFilter
+              label="Viewing Year"
+              filterAttribute="data-viewing-year"
+            >
+              {yearOptions}
+            </SelectFilter>
+            <SelectFilter label="Via" filterAttribute="data-via">
+              {venueOptions}
+            </SelectFilter>
 
-        <Sorter name="Order By" target="#viewings">
-          {[
-            ["Viewing Date (Newest First)", "viewing-date-desc"],
-            ["Viewing Date (Oldest First)", "viewing-date-asc"],
-            ["Release Date (Newest First)", "release-date-desc"],
-            ["Release Date (Oldest First)", "release-date-asc"],
-            ["Title", "sort-title-asc"],
-          ]}
-        </Sorter>
-      </FilterPanel>
-      <List id="viewings">
-        {data.allViewing.nodes.map((viewing) => (
-          <ListItem
-            key={viewing.imdbId}
-            data-title={viewing.movie.title}
-            data-sort-title={viewing.movie.sortTitle}
-            data-viewing-date={viewing.date}
-            data-release-date={viewing.movie.year}
-            data-via={slugForVenue(viewing.venue)}
-            data-viewing-year={viewing.date.substring(0, 4)}
-          >
-            <Title>
-              {viewing.movie.title} ({viewing.movie.year})
-            </Title>
-            <Slug>{buildSlug(viewing)}</Slug>
-          </ListItem>
-        ))}
-      </List>
+            <Sorter name="Order By" target="#viewings">
+              {[
+                ["Viewing Date (Newest First)", "viewing-date-desc"],
+                ["Viewing Date (Oldest First)", "viewing-date-asc"],
+                ["Release Date (Newest First)", "release-date-desc"],
+                ["Release Date (Oldest First)", "release-date-asc"],
+                ["Title", "sort-title-asc"],
+              ]}
+            </Sorter>
+          </FilterPanel>
+        </Column1>
+        <Column2>
+          <List id="viewings">
+            {data.allViewing.nodes.map((viewing) => (
+              <ListItem
+                key={`${viewing.sequence}-${viewing.imdbId}`}
+                data-title={viewing.movie.title}
+                data-sort-title={viewing.movie.sortTitle}
+                data-viewing-date={viewing.date}
+                data-release-date={viewing.movie.year}
+                data-via={slugForVenue(viewing.venue)}
+                data-viewing-year={viewing.date.substring(0, 4)}
+              >
+                <Title>
+                  {viewing.movie.title} ({viewing.movie.year})
+                </Title>
+                <Slug>{buildSlug(viewing)}</Slug>
+              </ListItem>
+            ))}
+          </List>
+        </Column2>
+      </TwoColumns>
     </Layout>
   );
 }

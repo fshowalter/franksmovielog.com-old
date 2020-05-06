@@ -153,10 +153,12 @@
             const { attribute } = this;
             const { value } = this.node;
             const regex = new RegExp(TextFilter.escapeRegExp(value), "i");
-            return function matcher(item) {
-                if (!value) {
+            if (!value) {
+                return function matcher() {
                     return true;
-                }
+                };
+            }
+            return function matcher(item) {
                 return regex.test(item.getAttribute(attribute) || "");
             };
         }
@@ -1418,11 +1420,13 @@
         }
         getMatcher() {
             const { attribute } = this;
-            const { value } = this.node;
-            return function matcher(item) {
-                if (!value) {
+            const value = this.node.selectedOptions[0].getAttribute("value");
+            if (!value) {
+                return function matcher() {
                     return true;
-                }
+                };
+            }
+            return function matcher(item) {
                 return item.getAttribute(attribute) === value;
             };
         }
