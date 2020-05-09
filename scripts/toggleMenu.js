@@ -25,12 +25,10 @@
         menu.setAttribute("aria-expanded", "true");
         toggle.setAttribute("aria-expanded", "true");
         const toggleAttribute = toggle;
-        menu.addEventListener("transitionend", function handleTransitionEnd(event) {
-            if (event.propertyName === "opacity") {
-                menu.removeEventListener("transitionend", handleTransitionEnd);
-                this.classList.remove("js-toggling");
-                toggleAttribute.innerHTML = "Cancel";
-            }
+        menu.addEventListener("transitionend", function handleTransitionEnd() {
+            menu.removeEventListener("transitionend", handleTransitionEnd);
+            this.classList.remove("js-toggling");
+            toggleAttribute.innerHTML = "Cancel";
         });
     }
     function handleSearchToggleClick() {
