@@ -12,10 +12,10 @@
     toggle.setAttribute("aria-expanded", "false");
     const toggleAttribute = toggle;
     menu.addEventListener("transitionend", function handleTransitionEnd(event) {
-      if (event.propertyName === "opacity") {
-        menu.removeEventListener("transitionend", handleTransitionEnd);
-        this.classList.remove("js-toggling");
-      }
+      // if (event.propertyName === "height") {
+      menu.removeEventListener("transitionend", handleTransitionEnd);
+      this.classList.remove("js-toggling");
+      // }
     });
   }
   function show(menu, toggle) {
