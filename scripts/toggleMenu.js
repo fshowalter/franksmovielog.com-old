@@ -8,12 +8,9 @@
         menu.classList.add("js-toggling", "js-toggle_off");
         menu.setAttribute("aria-expanded", "false");
         toggle.setAttribute("aria-expanded", "false");
-        const toggleAttribute = toggle;
         menu.addEventListener("transitionend", function handleTransitionEnd() {
             menu.removeEventListener("transitionend", handleTransitionEnd);
             this.classList.remove("js-toggling");
-            toggleAttribute.innerHTML =
-                toggleAttribute.getAttribute("data-toggle-label") || "";
         });
     }
     function show(menu, toggle) {
@@ -24,11 +21,9 @@
         menu.classList.remove("js-toggle_off");
         menu.setAttribute("aria-expanded", "true");
         toggle.setAttribute("aria-expanded", "true");
-        const toggleAttribute = toggle;
         menu.addEventListener("transitionend", function handleTransitionEnd() {
             menu.removeEventListener("transitionend", handleTransitionEnd);
             this.classList.remove("js-toggling");
-            toggleAttribute.innerHTML = "Cancel";
         });
     }
     function handleSearchToggleClick() {
