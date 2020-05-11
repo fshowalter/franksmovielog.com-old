@@ -8,7 +8,7 @@ import styled from "@emotion/styled";
 import Layout from "../components/Layout";
 
 function buildSlug(node: Props["data"]["allViewing"]["nodes"][0]): string {
-  return `${moment(node.date).format("dddd, MMMM Do YYYY")} via ${node.venue}.`;
+  return `${moment(node.date).format("dddd MMM D, YYYY")} via ${node.venue}.`;
 }
 
 const FilterControl = styled.div`

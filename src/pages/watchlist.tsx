@@ -6,12 +6,6 @@ import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { WindowLocation } from "@reach/router";
 
-import {
-  Column1,
-  Column2,
-  TwoColumnLayout,
-} from "../components/TwoColumnLayout";
-
 const PanelHeader = styled.header`
   padding: 35px 20px 20px;
   text-align: center;
@@ -508,7 +502,7 @@ interface Props {
   };
 }
 
-const Watchlist: React.FC<Props> = ({ location, data }: Props) => {
+const Watchlist: React.FC<Props> = ({ data }: Props) => {
   const releaseYears = data.allWatchlistTitle.nodes
     .map((node) => {
       return node.movie.year;
@@ -519,56 +513,52 @@ const Watchlist: React.FC<Props> = ({ location, data }: Props) => {
   const maxYear = releaseYears[releaseYears.length - 1];
 
   return (
-    <TwoColumnLayout location={location}>
-      <Column1>
-        <PanelHead
-          title="The Watchlist"
-          slug={`My movie review bucketlist. ${Number(
-            data.allWatchlistTitle.nodes.length
-          ).toLocaleString()} ${pluralize(
-            "title",
-            data.allWatchlistTitle.nodes.length
-          )}. No silents or documentaries.`}
+    <>
+      <PanelHead
+        title="The Watchlist"
+        slug={`My movie review bucketlist. ${Number(
+          data.allWatchlistTitle.nodes.length
+        ).toLocaleString()} ${pluralize(
+          "title",
+          data.allWatchlistTitle.nodes.length
+        )}. No silents or documentaries.`}
+      />
+      <FilterPanel heading="Filter and Sort">
+        <TextFilter
+          label="Title"
+          placeholder="Enter all or part of a title."
+          filterAttribute="data-title"
         />
-        <FilterPanel heading="Filter and Sort">
-          <TextFilter
-            label="Title"
-            placeholder="Enter all or part of a title."
-            filterAttribute="data-title"
-          />
-          <RangeFilter
-            name="Release Year"
-            attribute="data-year"
-            min={minYear}
-            max={maxYear}
-          />
-          <Sorter name="Order By" target="#watchlist-titles">
-            {[
-              ["Year (Oldest First)", "year-asc"],
-              ["Year (Newest First)", "year-desc"],
-              ["Title", "sort-title-asc"],
-            ]}
-          </Sorter>
-        </FilterPanel>
-      </Column1>
-      <Column2>
-        <List id="watchlist-titles">
-          {data.allWatchlistTitle.nodes.map((watchlistTitle) => (
-            <ListItem
-              key={watchlistTitle.imdbId}
-              data-title={watchlistTitle.movie.title}
-              data-sort-title={watchlistTitle.movie.sortTitle}
-              data-year={watchlistTitle.movie.year}
-            >
-              <Title>
-                {watchlistTitle.movie.title} ({watchlistTitle.movie.year})
-              </Title>
-              <Slug>{buildSlug(watchlistTitle)}</Slug>
-            </ListItem>
-          ))}
-        </List>
-      </Column2>
-    </TwoColumnLayout>
+        <RangeFilter
+          name="Release Year"
+          attribute="data-year"
+          min={minYear}
+          max={maxYear}
+        />
+        <Sorter name="Order By" target="#watchlist-titles">
+          {[
+            ["Year (Oldest First)", "year-asc"],
+            ["Year (Newest First)", "year-desc"],
+            ["Title", "sort-title-asc"],
+          ]}
+        </Sorter>
+      </FilterPanel>
+      <List id="watchlist-titles">
+        {data.allWatchlistTitle.nodes.map((watchlistTitle) => (
+          <ListItem
+            key={watchlistTitle.imdbId}
+            data-title={watchlistTitle.movie.title}
+            data-sort-title={watchlistTitle.movie.sortTitle}
+            data-year={watchlistTitle.movie.year}
+          >
+            <Title>
+              {watchlistTitle.movie.title} ({watchlistTitle.movie.year})
+            </Title>
+            <Slug>{buildSlug(watchlistTitle)}</Slug>
+          </ListItem>
+        ))}
+      </List>
+    </>
   );
 };
 

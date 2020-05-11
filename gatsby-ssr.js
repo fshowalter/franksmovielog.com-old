@@ -1,5 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 const React = require("react");
+const md5File = require("md5-file");
+const fs = require("fs");
 
 let pageScripts;
 
@@ -84,6 +86,8 @@ function getPostBodyComponentsNoJS(postBodyComponents, pluginOptions) {
   });
 }
 
+let hashedToggleMenu;
+
 // The "scripts" variable is not documented by Gatsby, https://www.gatsbyjs.org/docs/ssr-apis/#onRenderBody, and that is
 // probably for a good reason. The variable contains the scripts the Gatsby internals,
 // https://github.com/gatsbyjs/gatsby/blob/d9cf5a21403c474846ebdf7a0508902b9b8a2ea9/packages/gatsby/cache-dir/static-entry.js#L270-L283,
@@ -104,7 +108,20 @@ function onRenderBody({ pathname, setPostBodyComponents, scripts }) {
   pageScripts = scripts;
 
   setPostBodyComponents([<script src="/scripts/loadImages.js" defer />]);
-  setPostBodyComponents([<script src="/scripts/toggleMenu.js" defer />]);
+
+  if (!hashedToggleMenu) {
+    hashedToggleMenu = `${md5File.sync("./static/scripts/toggleMenu.js")}.js`;
+    if (!fs.existsSync(`./public/scripts/${hashedToggleMenu}`)) {
+      fs.copyFileSync(
+        "./static/scripts/toggleMenu.js",
+        `./public/scripts/${hashedToggleMenu}`
+      );
+    }
+  }
+
+  setPostBodyComponents([
+    <script src={`/scripts/${hashedToggleMenu}`} defer />,
+  ]);
 
   const pages = ["watchlist"];
 

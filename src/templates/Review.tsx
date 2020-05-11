@@ -9,7 +9,7 @@ import styled from "@emotion/styled";
 
 import { bodyTextMixin } from "../components/GlobalStyles";
 import Grade from "../components/Grade";
-import Layout from "../components/Layout";
+import Layout, { breakpoints } from "../components/Layout";
 
 const Title = styled.h1`
   font-size: 32px;
@@ -17,7 +17,7 @@ const Title = styled.h1`
   margin-bottom: 0;
   padding: 30px 0 0;
 
-  @media only screen and (min-width: 35em) {
+  @media only screen and (min-width: ${breakpoints.mid}) {
     font-size: 42px;
   }
 `;
@@ -26,50 +26,53 @@ const Wrap = styled.div`
   max-width: 900px;
   padding: 0 20px 30px;
 
-  @media only screen and (min-width: 71.24em) {
+  @media only screen and (min-width: ${breakpoints.max}) {
     padding: 0 0 30px;
   }
 `;
 
-const DateAndVia = styled.aside`
-  border-right: solid 1px #eee;
-  color: rgba(0, 0, 0, 0.8);
-  font-size: 16px;
+const Meta = styled.aside`
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-system);
+  font-size: 14px;
+  font-weight: 400;
   letter-spacing: 0.25px;
   line-height: 1.4;
-  margin-right: 30px;
   min-width: 170px;
   order: 2;
-  padding-right: 30px;
 
-  @media only screen and (min-width: 71.24em) {
+  @media only screen and (min-width: ${breakpoints.max}) {
+    border-right: solid 1px var(--color-border);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
     order: 1;
     padding-right: 20px;
-    padding-top: 23px;
+    padding-top: 44px;
     position: relative;
     width: 220px;
 
     &:before {
-      background: #eee;
+      background: var(--color-border);
       content: "";
       height: 1px;
       position: absolute;
       right: 0px;
-      top: 34px;
+      top: 54px;
       width: 20px;
       z-index: -1;
     }
 
     &:after {
       background: #fdfdfd;
-      border: #e9e7e0 1px solid;
+      border: var(--color-border) 1px solid;
       border-radius: 100%;
       content: "";
       display: block;
       height: 7px;
       position: absolute;
       right: -5px;
-      top: 30px;
+      top: 50px;
       width: 7px;
       z-index: 500;
     }
@@ -77,24 +80,23 @@ const DateAndVia = styled.aside`
 `;
 
 const Main = styled.main`
-  border-top: 1px solid #eee;
-  color: rgba(0, 0, 0, 0.87);
+  color: var(--color-text);
   font-size: 20px;
   line-height: 1.5;
-  margin-top: 30px;
   max-width: 66ch;
   order: 3;
-  padding-top: 30px;
+  padding-top: 20px;
 
   p {
     ${bodyTextMixin};
   }
 
-  @media only screen and (min-width: 71.25em) {
+  @media only screen and (min-width: ${breakpoints.max}) {
     border-top: none;
     margin-top: 0;
     order: 2;
-    padding-top: 20px;
+    padding-left: 30px;
+    padding-top: 40px;
   }
 `;
 
@@ -134,18 +136,18 @@ interface Props {
 }
 
 const YearAndRuntimeWrap = styled.span`
-  color: rgba(0, 0, 0, 0.54);
+  color: var(--color-text-secondary);
   display: block;
 `;
 
 const AkaWrap = styled.div`
-  color: rgba(0, 0, 0, 0.54);
+  color: var(--color-text-secondary);
   padding-bottom: 1em;
   padding-top: 0.25em;
 `;
 
 const AkaTitle = styled.div`
-  color: rgba(0, 0, 0, 0.87);
+  color: var(--color-text);
   display: inline-block;
   font-size: 18px;
   font-style: italic;
@@ -153,17 +155,21 @@ const AkaTitle = styled.div`
 `;
 
 const YearAndRuntimeDivider = styled.span`
-  color: #eee;
+  color: var(--color-border);
 `;
 
-const InlineGrade = styled(Grade)`
+const ReviewGrade = styled(Grade)`
   display: block;
   height: auto;
+  line-height: 49px;
   margin-bottom: 5px;
-  /* margin-right: 2px; */
   position: relative;
-  /* top: 3px; */
-  /* width: 95px; */
+  width: 110px;
+
+  @media only screen and (min-width: ${breakpoints.max}) {
+    position: absolute;
+    top: 10px;
+  }
 `;
 
 function AkaTitles({ review }: Props["data"]): JSX.Element | null {
@@ -181,37 +187,30 @@ function AkaTitles({ review }: Props["data"]): JSX.Element | null {
 const reviewContent = (
   review: Props["data"]["review"]
 ): JSX.Element | JSX.Element[] => {
-  const content = review.markdown.rawMarkdownBody.trim();
+  const content = `${moment
+    .utc(review.date)
+    .format("MMM D, YYYY")
+    .toUpperCase()}&mdash;${review.markdown.rawMarkdownBody.trim()}`;
 
   return parse(marked(content, { pedantic: true }).toString());
 };
 
-const ReviewImage = styled(Img)`
-  margin: 0 -20px;
-
-  @media only screen and (min-width: 71.24em) {
-    margin: 0;
-  }
-`;
-
-const reviewImage: React.FC<Props["data"]["review"]> = (
-  review: Props["data"]["review"]
-) => {
+function ReviewImage({ review }: Props["data"]): JSX.Element | null {
   if (!review?.markdown?.backdrop) {
     return null;
   }
 
   return (
-    <ReviewImage
+    <Img
       fluid={review.markdown.backdrop?.childImageSharp.fluid}
       alt={`A still from ${review.movie.title}`}
       loading="eager"
     />
   );
-};
+}
 
 const DirectorsWrap = styled.span`
-  color: rgba(0, 0, 0, 0.54);
+  color: var(--color-text-secondary);
   display: block;
   letter-spacing: 0.25px;
   margin-top: 1em;
@@ -237,34 +236,54 @@ function YearAndRuntime({ review }: Props["data"]): JSX.Element {
 }
 
 const Review = styled.article`
-  @media only screen and (min-width: 71.25em) {
-    border-top: solid 1px #eee;
+  border-top: 1px solid var(--color-border);
+  margin-top: 30px;
+  padding-top: 20px;
+
+  @media only screen and (min-width: ${breakpoints.max}) {
     display: flex;
     margin-top: 16px;
+    padding-top: 0;
+    position: relative;
   }
 `;
 
 const Via = styled.span`
   color: rgba(0, 0, 0, 0.54);
-  display: block;
 `;
+
+const Date = styled.span``;
 
 export default function ReviewTemplate({ data }: Props): JSX.Element {
   return (
     <Layout>
       <Wrap>
-        {reviewImage(data.review)}
+        <ReviewImage review={data.review} />
         <Title>{data.review.movie.title}</Title>
         <AkaTitles review={data.review} />
         <Directors review={data.review} />
         <YearAndRuntime review={data.review} />
         <Review>
+          <ReviewGrade grade={data.review.grade} width={95} height={95} />
           <Main>{reviewContent(data.review)}</Main>
-          <DateAndVia>
-            <InlineGrade grade={data.review.grade} width={95} height={95} />
-            on {moment.utc(data.review.date).format("ddd MMM Do YYYY")}{" "}
+          <Meta>
+            {"# "}
+            <Date>
+              {moment.utc(data.review.date).format("ddd MMM Do YYYY")}{" "}
+            </Date>
             <Via>via Shudder</Via>
-          </DateAndVia>
+          </Meta>
+        </Review>
+        <Review>
+          <ReviewGrade grade={data.review.grade} width={95} height={95} />
+          <Main>{reviewContent(data.review)}</Main>
+          <Meta>
+            {"# "}
+            <Date>
+              {moment.utc(data.review.date).format("ddd MMM Do YYYY")}{" "}
+            </Date>
+            <Via>on Shudder</Via>
+          </Meta>
         </Review>
       </Wrap>
     </Layout>

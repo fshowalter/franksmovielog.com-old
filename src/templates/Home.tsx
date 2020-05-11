@@ -10,19 +10,22 @@ import styled from "@emotion/styled";
 import { WindowLocation } from "@reach/router";
 
 import Grade from "../components/Grade";
-import Layout from "../components/Layout";
+import Layout, { breakpoints } from "../components/Layout";
 import MoreList from "../components/MoreList";
 
-const HomeWrap = styled.div`
-  background: #fff;
-  font-family: "Charter", "Iowan Old Style", Georgia, Cambria, "Times New Roman",
-    Times, serif;
+const listBreakpoint = "650px";
+
+const Home = styled.section`
   letter-spacing: 0.16px;
   margin: 0;
   padding: 20px;
   text-rendering: optimizelegibility;
 
-  @media only screen and (min-width: 48em) {
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    padding: 0 30px;
+  }
+
+  @media only screen and (min-width: ${breakpoints.max}) {
     padding: 0;
   }
 `;
@@ -32,7 +35,6 @@ const List = styled.ol`
   margin: 0;
   padding: 0;
   width: 100%;
-  /* padding-right: 25px; */
 `;
 
 const Review = styled.article`
@@ -41,10 +43,10 @@ const Review = styled.article`
 `;
 
 const ReviewHeader = styled.header`
-  margin-top: 30px;
+  margin-top: 20px;
 `;
 
-const ReviewHeading = styled.h3`
+const ReviewHeading = styled.h2`
   font-size: 26px;
   font-weight: 700;
   line-height: 1.1;
@@ -53,7 +55,7 @@ const ReviewHeading = styled.h3`
   padding: 0 0 0;
   /* text-align: center; */
 
-  @media only screen and (min-width: 35em) {
+  @media only screen and (min-width: ${listBreakpoint}) {
     font-size: 24px;
   }
 `;
@@ -69,10 +71,6 @@ const ReviewImageWrap = styled(Link)`
   display: block;
   margin: 0;
   min-width: 200px;
-
-  @media only screen and (min-width: 71.25em) {
-    border: none;
-  }
 `;
 
 const CWrap = styled.div`
@@ -83,8 +81,8 @@ const CWrap = styled.div`
   padding: 0;
 `;
 
-const Aside = styled.aside`
-  color: rgba(0, 0, 0, 0.54);
+const Date = styled.time`
+  color: var(--color-secondary);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   font-size: 13px;
@@ -107,7 +105,7 @@ const ListItem = styled.li`
     height: 1px;
     margin: 40px 20px 0;
 
-    @media only screen and (min-width: 40.625em) {
+    @media only screen and (min-width: ${listBreakpoint}) {
       margin: 40px 0 0;
     }
   }
@@ -119,7 +117,7 @@ const ListItem = styled.li`
   &:not(:first-of-type) {
     margin-left: 0;
 
-    @media only screen and (min-width: 40.625em) {
+    @media only screen and (min-width: ${listBreakpoint}) {
       ${Review} {
         flex-direction: row;
         justify-content: space-between;
@@ -204,38 +202,30 @@ const imageForNode = (node: ReviewNode): React.ReactElement | null => {
   );
 };
 
-const PaginationHeading = styled.div`
-  border-bottom: 1px solid #eee;
-  color: rgba(0, 0, 0, 0.54);
+const MoreHeading = styled.h4`
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
   font-size: 16px;
+  font-style: normal;
   margin: 60px 0 10px;
   padding-bottom: 4px;
   text-rendering: optimizeLegibility;
   word-wrap: break-word;
 `;
 
-const PaginationItemsWrap = styled.div`
-  margin-bottom: 40px;
-`;
-
-const PaginationLinkWrap = styled.div`
-  font-family: "Charter", "Georgia", "Times New Roman", Times, serif;
-  margin-top: 20px;
-  text-align: center;
-`;
-
-const PaginationNextPageLink = styled(Link)`
+const NextPageLink = styled(Link)`
   border: 1px solid #eee;
   border-radius: 5px;
   color: inherit;
-  display: inline-block;
+  display: block;
   font-size: 15px;
   line-height: 38px;
-  margin-top: 30px;
+  margin: 30px auto 60px;
   padding: 0 60px 0 20px;
   position: relative;
   text-align: center;
   text-decoration: none;
+  width: 175px;
 
   &:after {
     background-image: url('data:Image/svg+xml;charset=utf8,<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M6.165 3.874c-.217-.204-.22-.53-.008-.73.206-.192.56-.195.776.008l5.902 5.48c.11.102.165.236.165.37-.002.126-.055.262-.165.365l-5.902 5.478c-.217.204-.564.207-.776.007-.206-.193-.21-.525.008-.728L11.69 9 6.165 3.873z"></path></svg>');
@@ -250,28 +240,17 @@ const PaginationNextPageLink = styled(Link)`
   }
 `;
 
-interface PaginationProps {
+interface MoreReviewsProps {
   moreNodes: Props["data"]["more"]["nodes"];
   pageContext: Props["pageContext"];
 }
 
-const PaginationWrap = styled.div`
-  margin: 0 auto 40px;
-  padding: 0;
+const MoreSection = styled.section``;
 
-  @media only screen and (min-width: 48em) {
-    padding: 0;
-  }
-`;
-
-const MoreReviewsList = styled(MoreList)`
-  font-family: "Charter", "Georgia", "Times New Roman", Times, serif;
-`;
-
-const MoreReviews: React.FC<PaginationProps> = ({
+function MoreReviews({
   moreNodes,
   pageContext,
-}: PaginationProps) => {
+}: MoreReviewsProps): JSX.Element | null {
   const { currentPage, numPages } = pageContext;
   const isLast = currentPage === numPages;
   const nextPage = (currentPage + 1).toString();
@@ -281,19 +260,17 @@ const MoreReviews: React.FC<PaginationProps> = ({
   }
 
   return (
-    <PaginationWrap>
-      <PaginationHeading>More Posts</PaginationHeading>
-      <MoreReviewsList nodes={moreNodes} />
-      <PaginationItemsWrap>
-        <PaginationLinkWrap>
-          <PaginationNextPageLink to={`/page-${nextPage}/`} rel="next">
-            More reviews
-          </PaginationNextPageLink>
-        </PaginationLinkWrap>
-      </PaginationItemsWrap>
-    </PaginationWrap>
+    <>
+      <MoreSection>
+        <MoreHeading>More Reviews</MoreHeading>
+        <MoreList nodes={moreNodes} />
+      </MoreSection>
+      <NextPageLink to={`/page-${nextPage}/`} rel="next">
+        Next page
+      </NextPageLink>
+    </>
   );
-};
+}
 
 const Main = styled.main`
   color: rgba(0, 0, 0, 0.54);
@@ -333,8 +310,8 @@ export default function HomeTemplate({
 }: Props): JSX.Element {
   return (
     <Layout>
-      <HomeWrap>
-        <List>
+      <Home>
+        <List start={data.page.nodes[0].sequence} reversed>
           {data.page.nodes.map((node) => (
             <ListItem key={node.sequence}>
               <Review>
@@ -348,16 +325,16 @@ export default function HomeTemplate({
                     </ReviewHeading>
                   </ReviewHeader>
                   <Main>{reviewContent(node)}</Main>
-                  <Aside>
+                  <Date dateTime={node.date}>
                     {moment.utc(node.date, "DD MMM YYYY").format("DD MMM YYYY")}
-                  </Aside>
+                  </Date>
                 </CWrap>
               </Review>
             </ListItem>
           ))}
         </List>
         <MoreReviews moreNodes={data.more.nodes} pageContext={pageContext} />
-      </HomeWrap>
+      </Home>
     </Layout>
   );
 }

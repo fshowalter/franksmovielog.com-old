@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable max-classes-per-file */
 
 declare module "*.svg";
 declare module "*.png";
@@ -12,4 +13,12 @@ declare namespace Intl {
   }
 
   // const ListFormat: any; // Use this instead of the class if you don't want to declare all properties/methods
+}
+
+declare module "remarkable";
+
+declare namespace remarkable {
+  declare class Remarkable {
+    render(markdown: string): string;
+  }
 }
