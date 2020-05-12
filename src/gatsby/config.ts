@@ -47,5 +47,10 @@ export const plugins = [
   },
   `gatsby-plugin-typescript`,
   `gatsby-plugin-react-helmet`,
-  `gatsby-plugin-emotion`,
+  {
+    resolve: `gatsby-plugin-emotion`,
+    options: {
+      sourceMap: false,
+    },
+  },
 ];
