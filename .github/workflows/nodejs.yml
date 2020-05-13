@@ -5,27 +5,25 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Read .nvmrc
-      id: node_version
-      run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ steps.node_version.outputs.NODE_VERSION }}
-    - run: npm ci
-    - run: npm run lint
-    - run: npm run lint:css
-   
+      - uses: actions/checkout@v2
+      - name: Read .nvmrc
+        id: node_version
+        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ steps.node_version.outputs.NODE_VERSION }}
+      - run: yarn install --frozen-lockfile
+      - run: yarn run lint
+      - run: yarn run lint:css
     # - run: npm run build --if-present
     # - run: npm test
