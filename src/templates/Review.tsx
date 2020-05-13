@@ -7,7 +7,6 @@ import React from "react";
 
 import styled from "@emotion/styled";
 
-import { bodyTextMixin } from "../components/GlobalStyles";
 import Grade from "../components/Grade";
 import Layout, { breakpoints } from "../components/Layout";
 
@@ -86,10 +85,6 @@ const Main = styled.main`
   max-width: 66ch;
   order: 3;
   padding-top: 20px;
-
-  p {
-    ${bodyTextMixin};
-  }
 
   @media only screen and (min-width: ${breakpoints.max}) {
     border-top: none;

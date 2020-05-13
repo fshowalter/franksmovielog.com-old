@@ -6,7 +6,6 @@ import { Remarkable } from "remarkable";
 
 import styled from "@emotion/styled";
 
-import { bodyTextMixin } from "../components/GlobalStyles";
 import Layout from "../components/Layout";
 
 const Title = styled.h1`
@@ -36,10 +35,6 @@ const Main = styled.main`
   max-width: 66ch;
   order: 3;
   padding-top: 20px;
-
-  p {
-    ${bodyTextMixin};
-  }
 
   @media only screen and (min-width: 71.25em) {
     border-top: none;
