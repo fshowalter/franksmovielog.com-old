@@ -155,7 +155,7 @@ function SelectFilter({
   );
 }
 
-interface ViewingYearSelectFilter {
+interface ViewingSelectFilterProps {
   label: string;
   viewings: Viewing[];
   onChange(filterId: string, matcher: (viewing: Viewing) => boolean): void;
@@ -165,7 +165,7 @@ function ViewingYearSelectFilter({
   label,
   viewings,
   onChange,
-}: ViewingYearSelectFilter): JSX.Element {
+}: ViewingSelectFilterProps): JSX.Element {
   const yearOptions = [
     ...new Set(
       viewings.map((viewing) => {
@@ -196,6 +196,45 @@ function ViewingYearSelectFilter({
       label={label}
     >
       {yearOptions}
+    </SelectFilter>
+  );
+}
+
+function VenueFilter({
+  label,
+  viewings,
+  onChange,
+}: ViewingSelectFilterProps): JSX.Element {
+  const venues = [
+    ...new Set(
+      viewings.map((viewing) => {
+        return viewing.venue;
+      })
+    ),
+  ].sort();
+
+  const venueOptions = venues.map((venue): [string, string] => {
+    return [venue, venue];
+  });
+
+  const handleChange = (value: string): void => {
+    console.log("change");
+    console.log(value);
+    onChange("venu", (viewing: Viewing): boolean => {
+      if (value === "All") {
+        return true;
+      }
+
+      return viewing.venue === value;
+    });
+  };
+
+  return (
+    <SelectFilter
+      onChange={(e): void => handleChange(e.target.value)}
+      label={label}
+    >
+      {venueOptions}
     </SelectFilter>
   );
 }
@@ -299,14 +338,6 @@ function Sorter({ name, children, target }: SorterProps): JSX.Element {
   );
 }
 
-function slugForVenue(venue: string): string {
-  return venue
-    .toLowerCase()
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/&/g, "-and-") // Replace & with 'and'
-    .replace(/[^\w-]+/g, "");
-}
-
 interface ViewingListItem extends Viewing {
   match: boolean;
 }
@@ -352,18 +383,6 @@ function FilterPanel({
     filterViewings();
   };
 
-  const venues = [
-    ...new Set(
-      state.viewings.map((viewing) => {
-        return viewing.venue;
-      })
-    ),
-  ].sort();
-
-  const venueOptions = venues.map((venue): [string, string] => {
-    return [venue, slugForVenue(venue)];
-  });
-
   return (
     <Container data-filter-controls data-target="#viewings">
       <Heading>{heading}</Heading>
@@ -380,6 +399,11 @@ function FilterPanel({
         />
         <ViewingYearSelectFilter
           label="Viewing Year"
+          viewings={state.viewings}
+          onChange={onFilterChange}
+        />
+        <VenueFilter
+          label="Venue"
           viewings={state.viewings}
           onChange={onFilterChange}
         />
@@ -466,6 +490,8 @@ const RangeFilterWrap = styled.div`
 
 const StyledSlider = styled(ReactSlider)`
   flex: 1 100%;
+  height: 32px;
+  width: 100%;
 `;
 
 const StyledThumb = styled.div`
@@ -476,17 +502,20 @@ const StyledThumb = styled.div`
   height: 2rem;
   left: -1rem;
   position: relative;
-  top: -0.5rem;
+  top: 0;
+  transition: transform 0.3s ease-in-out;
   width: 2rem;
   z-index: 1;
+
+  &.dragging {
+    transform: scale(1.25);
+  }
 `;
 
-const Thumb = (props, state) => (
-  <StyledThumb {...props}>{state.valueNow}</StyledThumb>
-);
+const Thumb = (props, state) => <StyledThumb {...props}></StyledThumb>;
 
 const StyledTrack = styled.div`
-  background: rgba(0, 0, 0, 0.02);
+  background: rgba(0, 0, 0, 0.06);
   border-bottom: solid 0.5rem #fff;
   border-top: solid 0.5rem #fff;
   height: 2rem;
@@ -558,8 +587,25 @@ function RangeFilter({
 
   const [state, setState] = React.useState(initialState.slice());
 
-  console.log(minYear);
-  console.log(maxYear);
+  const fireOnChange = (values: number[]): void => {
+    onChange("releaseYear", (viewing: Viewing): boolean => {
+      if (values === initialState) {
+        return true;
+      }
+
+      const value = parseInt(viewing.movie.year, 10);
+      return value >= values[0] && value <= values[1];
+    });
+  };
+
+  const valuesAreValid = (values: number[]): boolean => {
+    console.log(values);
+    return (
+      values[0] < values[1] &&
+      values[0] >= initialState[0] &&
+      values[1] <= initialState[1]
+    );
+  };
 
   const handleSliderChange = (
     values: number | number[] | null | undefined
@@ -567,25 +613,26 @@ function RangeFilter({
     if (!Array.isArray(values)) {
       return;
     }
-    console.log("change");
-    console.log(Date.now());
     setState(values);
-    onChange("releaseYear", (viewing: Viewing): boolean => {
-      if (state === initialState) {
-        return true;
-      }
-
-      const value = parseInt(viewing.movie.year, 10);
-      return value >= state[0] && value <= state[1];
-    });
+    fireOnChange(values);
   };
 
   const handleMinChange = (value: string): void => {
-    setState([parseInt(value, 10), state[1]]);
+    const newState = [parseInt(value, 10), state[1]];
+    setState(newState);
+
+    if (valuesAreValid(newState)) {
+      fireOnChange(newState);
+    }
   };
 
   const handleMaxChange = (value: string): void => {
-    setState([state[0], parseInt(value, 10)]);
+    const newState = [state[0], parseInt(value, 10)];
+    setState(newState);
+
+    if (valuesAreValid(newState)) {
+      fireOnChange(newState);
+    }
   };
 
   return (
@@ -599,6 +646,7 @@ function RangeFilter({
           renderTrack={Track}
           renderThumb={Thumb}
           onAfterChange={handleSliderChange}
+          thumbActiveClassName="dragging"
         />
         <RangeInputMin
           type="number"
@@ -606,7 +654,7 @@ function RangeFilter({
           min={minYear}
           max={maxYear}
           step="1"
-          onChange={(e) => handleMinChange(e.target.value)}
+          onChange={(e): void => handleMinChange(e.target.value)}
           className="filter-numeric min"
         />
         <RangeInputMax
@@ -614,7 +662,7 @@ function RangeFilter({
           value={state[1]}
           min={minYear}
           max={maxYear}
-          onChange={(e) => handleMaxChange(e.target.value)}
+          onChange={(e): void => handleMaxChange(e.target.value)}
           step="1"
           className="filter-numeric max"
         />
