@@ -7,6 +7,7 @@ import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
 import Layout from "../components/Layout";
+import TextFilter from "../components/TextFilter";
 
 interface Viewing {
   sequence: number;
@@ -78,33 +79,6 @@ const Content = styled.div`
   @media only screen and (min-width: 48em) {
     padding: 0 50px 20px 0;
   }
-`;
-
-const TextInput = styled.input`
-  backface-visibility: hidden;
-  background-color: #fff;
-  border: 0;
-  border-radius: 0;
-  box-sizing: border-box;
-  color: var(--color-text-secondary);
-  display: block;
-  font-family: var(--font-family-system);
-  font-size: 16px;
-  padding: 0;
-  width: 100%;
-  ::placeholder {
-    color: rgba(0, 0, 0, 0.54);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 14px;
-    font-weight: normal;
-  }
-`;
-
-const TextInputWrap = styled.div`
-  border-bottom: solid 1px #eee;
-  margin-bottom: 8px;
-  padding-bottom: 7px;
 `;
 
 const SelectInput = styled.select`
@@ -239,75 +213,34 @@ function VenueFilter({
   );
 }
 
-interface TextFilterProps {
+function escapeRegExp(str = ""): string {
+  return str.replace(/[-[\]/{}()*+?.\\^$|]/g, "\\$&");
+}
+
+interface TitleFilterProps {
   label: string;
   placeholder: string;
   onChange(filterId: string, matcher: (viewing: Viewing) => boolean): void;
 }
 
-function escapeRegExp(str = ""): string {
-  return str.replace(/[-[\]/{}()*+?.\\^$|]/g, "\\$&");
-}
-
-const delay = (func: Function, wait: number, ...args: any[]) => {
-  console.log(`delaying for ${wait}`);
-  return setTimeout(function () {
-    return func(...args);
-  }, wait);
-};
-
-function underscoreDebounce(
-  func: Function,
-  wait: number
-): (...args: any[]) => void {
-  let result: unknown;
-  let timeout: NodeJS.Timeout | null = null;
-
-  const later = function (context: Function, args: any) {
-    timeout = null;
-    if (args) {
-      result = func.apply(context, args);
-    }
-  };
-
-  return function debouncedFunction(...args): unknown {
-    if (timeout) {
-      console.log("clearing");
-      clearTimeout(timeout);
-    }
-
-    timeout = delay(later, wait, this, args);
-    return result;
-  };
-}
-
-function TextFilter({
+function TitleFilter({
   label,
   placeholder,
   onChange,
-}: TextFilterProps): JSX.Element {
+}: TitleFilterProps): JSX.Element {
   const handleChange = (value: string): void => {
     const regex = new RegExp(escapeRegExp(value), "i");
-    console.log("change");
-    console.log(Date.now());
     onChange("title", (viewing: Viewing): boolean => {
       return regex.test(viewing.movie.title);
     });
   };
 
-  const debouncedHandleChange = underscoreDebounce(handleChange, 150);
-
   return (
-    <FilterControl>
-      <Label htmlFor={label}>{label}</Label>
-      <TextInputWrap>
-        <TextInput
-          name={label}
-          placeholder={placeholder}
-          onChange={(e): void => debouncedHandleChange(e.target.value)}
-        />
-      </TextInputWrap>
-    </FilterControl>
+    <TextFilter
+      label={label}
+      placeholder={placeholder}
+      handleChange={handleChange}
+    />
   );
 }
 
@@ -387,7 +320,7 @@ function FilterPanel({
     <Container data-filter-controls data-target="#viewings">
       <Heading>{heading}</Heading>
       <Content>
-        <TextFilter
+        <TitleFilter
           onChange={onFilterChange}
           label="Title"
           placeholder="Enter all or part of a title."
