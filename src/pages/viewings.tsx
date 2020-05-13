@@ -1,12 +1,11 @@
 import { graphql } from "gatsby";
 import moment from "moment";
 import React from "react";
-import ReactSlider from "react-slider";
 
-import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
 import Layout from "../components/Layout";
+import RangeFilter from "../components/RangeFilter";
 import TextFilter from "../components/TextFilter";
 
 interface Viewing {
@@ -325,8 +324,8 @@ function FilterPanel({
           label="Title"
           placeholder="Enter all or part of a title."
         />
-        <RangeFilter
-          name="Release Year"
+        <ReleaseYearFilter
+          label="Release Year"
           viewings={state.viewings}
           onChange={onFilterChange}
         />
@@ -355,158 +354,17 @@ function FilterPanel({
   );
 }
 
-const RangeFilterWrap = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-
-  .noUi-target * {
-    background-color: rgba(0, 0, 0, 0.02);
-    box-sizing: border-box;
-    cursor: default;
-    touch-action: none;
-    -webkit-touch-callout: none;
-    transition: transform 0.3s ease-in-out;
-    user-select: none;
-  }
-
-  .noUi-active {
-    background-color: #eaeaea;
-    box-shadow: inset 0 0 5px #222;
-  }
-
-  .noUi-state-drag .noUi-active {
-    transform: scale(1.25);
-  }
-
-  .noUi-base {
-    background: rgba(0, 0, 0, 0.02);
-    border-bottom: solid 0.5rem #fff;
-    border-top: solid 0.5rem #fff;
-    height: 2rem;
-    margin: auto 0.8rem;
-    position: relative;
-
-    @media only screen and (min-width: 35em) {
-      border-color: #fff;
-    }
-  }
-
-  .noUi-handle {
-    background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.54);
-    border-radius: 50%;
-    height: 2rem;
-    left: -1rem;
-    position: relative;
-    top: -0.5rem;
-    width: 2rem;
-    z-index: 1;
-  }
-
-  .noUiSlider {
-    flex: 1 100%;
-  }
-
-  .noUi-origin {
-    border-radius: inherit;
-    bottom: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
-  .noUi-stacking .noUi-handle {
-    z-index: 10;
-  }
-`;
-
-const StyledSlider = styled(ReactSlider)`
-  flex: 1 100%;
-  height: 32px;
-  width: 100%;
-`;
-
-const StyledThumb = styled.div`
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.54);
-  border-radius: 50%;
-  cursor: grab;
-  height: 2rem;
-  left: -1rem;
-  position: relative;
-  top: 0;
-  transition: transform 0.3s ease-in-out;
-  width: 2rem;
-  z-index: 1;
-
-  &.dragging {
-    transform: scale(1.25);
-  }
-`;
-
-const Thumb = (props, state) => <StyledThumb {...props}></StyledThumb>;
-
-const StyledTrack = styled.div`
-  background: rgba(0, 0, 0, 0.06);
-  border-bottom: solid 0.5rem #fff;
-  border-top: solid 0.5rem #fff;
-  height: 2rem;
-  margin: auto 0.8rem;
-  position: relative;
-
-  @media only screen and (min-width: 35em) {
-    border-color: #fff;
-  }
-`;
-
-const Track = (props, state) => <StyledTrack {...props} index={state.index} />;
-
-const rangeInputMixin = css`
-  appearance: textfield;
-  background-color: #fff;
-  border: 0;
-  box-sizing: content-box;
-  color: rgba(0, 0, 0, 0.54);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.2rem;
-  padding: 0;
-  width: 25%;
-  &::-webkit-inner-spin-button {
-    appearance: none;
-    margin: 0;
-  }
-  width: 3rem;
-  @media (min-width: 50em) {
-    height: 1.4rem;
-    line-height: 1.4rem;
-  }
-`;
-
-const RangeInputMin = styled.input`
-  ${rangeInputMixin}
-  margin-right: auto;
-`;
-
-const RangeInputMax = styled.input`
-  ${rangeInputMixin}
-  align-self: flex-start;
-  text-align: right;
-`;
-
-interface RangeFilterProps {
-  name: string;
+interface ReleaseYearFilterProps {
+  label: string;
   viewings: Viewing[];
   onChange(filterId: string, matcher: (viewing: Viewing) => boolean): void;
 }
 
-function RangeFilter({
-  name,
+function ReleaseYearFilter({
+  label,
   viewings,
   onChange,
-}: RangeFilterProps): JSX.Element {
+}: ReleaseYearFilterProps): JSX.Element {
   const releaseYears = viewings
     .map((viewing) => {
       return viewing.movie.year;
@@ -516,13 +374,9 @@ function RangeFilter({
   const minYear = parseInt(releaseYears[0], 10);
   const maxYear = parseInt(releaseYears[releaseYears.length - 1], 10);
 
-  const initialState = [minYear, maxYear];
-
-  const [state, setState] = React.useState(initialState.slice());
-
-  const fireOnChange = (values: number[]): void => {
+  const handleChange = (values: number[]): void => {
     onChange("releaseYear", (viewing: Viewing): boolean => {
-      if (values === initialState) {
+      if (values === [minYear, maxYear]) {
         return true;
       }
 
@@ -531,76 +385,13 @@ function RangeFilter({
     });
   };
 
-  const valuesAreValid = (values: number[]): boolean => {
-    console.log(values);
-    return (
-      values[0] < values[1] &&
-      values[0] >= initialState[0] &&
-      values[1] <= initialState[1]
-    );
-  };
-
-  const handleSliderChange = (
-    values: number | number[] | null | undefined
-  ): void => {
-    if (!Array.isArray(values)) {
-      return;
-    }
-    setState(values);
-    fireOnChange(values);
-  };
-
-  const handleMinChange = (value: string): void => {
-    const newState = [parseInt(value, 10), state[1]];
-    setState(newState);
-
-    if (valuesAreValid(newState)) {
-      fireOnChange(newState);
-    }
-  };
-
-  const handleMaxChange = (value: string): void => {
-    const newState = [state[0], parseInt(value, 10)];
-    setState(newState);
-
-    if (valuesAreValid(newState)) {
-      fireOnChange(newState);
-    }
-  };
-
   return (
-    <FilterControl>
-      <Label htmlFor={name}>{name}</Label>
-      <RangeFilterWrap>
-        <StyledSlider
-          value={state}
-          max={maxYear}
-          min={minYear}
-          renderTrack={Track}
-          renderThumb={Thumb}
-          onAfterChange={handleSliderChange}
-          thumbActiveClassName="dragging"
-        />
-        <RangeInputMin
-          type="number"
-          value={state[0]}
-          min={minYear}
-          max={maxYear}
-          step="1"
-          onChange={(e): void => handleMinChange(e.target.value)}
-          className="filter-numeric min"
-        />
-        <RangeInputMax
-          type="number"
-          value={state[1]}
-          min={minYear}
-          max={maxYear}
-          onChange={(e): void => handleMaxChange(e.target.value)}
-          step="1"
-          className="filter-numeric max"
-        />
-      </RangeFilterWrap>
-    </FilterControl>
+    <RangeFilter
+      label={label}
+      min={minYear}
+      max={maxYear}
+      handleChange={handleChange}
+    />
   );
 }
 
