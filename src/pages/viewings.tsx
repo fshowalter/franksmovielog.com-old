@@ -6,6 +6,12 @@ import styled from "@emotion/styled";
 
 import Layout from "../components/Layout";
 import RangeFilter from "../components/RangeFilter";
+import SelectFilter from "../components/SelectFilter";
+import Sorter, {
+  collator,
+  sortStringAsc,
+  sortStringDesc,
+} from "../components/Sorter";
 import TextFilter from "../components/TextFilter";
 
 interface Viewing {
@@ -31,19 +37,6 @@ interface Props {
 function buildSlug(node: Props["data"]["allViewing"]["nodes"][0]): string {
   return `${moment(node.date).format("dddd MMM D, YYYY")} via ${node.venue}.`;
 }
-
-const FilterControl = styled.div`
-  margin-bottom: 35px;
-`;
-
-const Label = styled.label`
-  color: #222;
-  display: block;
-  font-size: 15px;
-  font-weight: normal;
-  letter-spacing: 0.5px;
-  line-height: 2.2;
-`;
 
 const Container = styled.div`
   border: 1px solid #eee;
@@ -80,54 +73,6 @@ const Content = styled.div`
   }
 `;
 
-const SelectInput = styled.select`
-  appearance: none;
-  backface-visibility: hidden;
-  background-color: #fff;
-  border: 0;
-  border-radius: 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.54);
-  display: block;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  font-size: 15px;
-  padding: 0;
-  text-indent: 0.01px;
-  text-overflow: "";
-  width: 100%;
-`;
-
-interface SelectFilterProps {
-  label: string;
-  children: Array<[string, string]>;
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-}
-
-function SelectFilter({
-  label,
-  children,
-  onChange,
-}: SelectFilterProps): JSX.Element {
-  const options = [
-    <option key="all">All</option>,
-    ...children.map(([optionName, optionValue]) => {
-      return (
-        <option key={optionValue} value={optionValue}>
-          {optionName}
-        </option>
-      );
-    }),
-  ];
-
-  return (
-    <FilterControl>
-      <Label htmlFor={label}>{label}</Label>
-      <SelectInput onChange={onChange}>{options}</SelectInput>
-    </FilterControl>
-  );
-}
-
 interface ViewingSelectFilterProps {
   label: string;
   viewings: Viewing[];
@@ -152,8 +97,6 @@ function ViewingYearSelectFilter({
     });
 
   const handleChange = (value: string): void => {
-    console.log("change");
-    console.log(value);
     onChange("viewingYear", (viewing: Viewing): boolean => {
       if (value === "All") {
         return true;
@@ -164,10 +107,7 @@ function ViewingYearSelectFilter({
   };
 
   return (
-    <SelectFilter
-      onChange={(e): void => handleChange(e.target.value)}
-      label={label}
-    >
+    <SelectFilter onChange={handleChange} label={label}>
       {yearOptions}
     </SelectFilter>
   );
@@ -191,9 +131,7 @@ function VenueFilter({
   });
 
   const handleChange = (value: string): void => {
-    console.log("change");
-    console.log(value);
-    onChange("venu", (viewing: Viewing): boolean => {
+    onChange("venue", (viewing: Viewing): boolean => {
       if (value === "All") {
         return true;
       }
@@ -203,10 +141,7 @@ function VenueFilter({
   };
 
   return (
-    <SelectFilter
-      onChange={(e): void => handleChange(e.target.value)}
-      label={label}
-    >
+    <SelectFilter onChange={handleChange} label={label}>
       {venueOptions}
     </SelectFilter>
   );
@@ -243,30 +178,55 @@ function TitleFilter({
   );
 }
 
-interface SorterProps {
-  name: string;
-  children: Array<[string, string]>;
-  target: string;
+interface ViewingSorterProps {
+  label: string;
+  viewings: Viewing[];
+  onChange(sortedViewings: Viewing[]): void;
 }
 
-function Sorter({ name, children, target }: SorterProps): JSX.Element {
+function ViewingSorter({
+  label,
+  viewings,
+  onChange,
+}: ViewingSorterProps): JSX.Element {
+  const sortViewingDateAsc = (a: Viewing, b: Viewing): number => {
+    return sortStringAsc(a.date, b.date);
+  };
+
+  const sortViewingDateDesc = (a: Viewing, b: Viewing): number => {
+    return sortStringDesc(a.date, b.date);
+  };
+
+  const sortReleaseDateAsc = (a: Viewing, b: Viewing): number => {
+    return sortStringAsc(a.movie.year, b.movie.year);
+  };
+
+  const sortReleaseDateDesc = (a: Viewing, b: Viewing): number => {
+    return sortStringDesc(a.movie.year, b.movie.year);
+  };
+
+  const sortTitleAsc = (a: Viewing, b: Viewing): number => {
+    return collator.compare(a.movie.sortTitle, b.movie.sortTitle);
+  };
+
+  const handleChange = (sortViewings: Viewing[]): void => {
+    onChange(sortViewings);
+  };
+
   return (
-    <FilterControl>
-      <Label htmlFor={name}>{name}</Label>
-      <SelectInput
-        name={name}
-        data-sorter={children[0][1]}
-        data-target={target}
-      >
-        {children.map(([optionName, optionValue]) => {
-          return (
-            <option key={optionName} value={optionValue}>
-              {optionName}
-            </option>
-          );
-        })}
-      </SelectInput>
-    </FilterControl>
+    <Sorter<Viewing>
+      label={label}
+      collection={viewings}
+      onChange={handleChange}
+    >
+      {{
+        "Viewing Date (Newest First)": sortViewingDateDesc,
+        "Viewing Date (Oldest First)": sortViewingDateAsc,
+        "Release Date (Newest First)": sortReleaseDateDesc,
+        "Release Date (Oldest First)": sortReleaseDateAsc,
+        Title: sortTitleAsc,
+      }}
+    </Sorter>
   );
 }
 
@@ -279,7 +239,7 @@ interface FilterPanelProps {
     viewings: ViewingListItem[];
     ids: number[];
   };
-  setState(state: { ids: number[]; viewings: ViewingListItem[] }): void;
+  setState(state: { viewings: ViewingListItem[]; ids: number[] }): void;
   heading: string;
 }
 
@@ -290,9 +250,11 @@ function FilterPanel({
   setState,
   heading,
 }: FilterPanelProps): JSX.Element {
-  function filterViewings(): void {
-    console.log("debounceasync");
-    console.log(Date.now());
+  const onFilterChange = (
+    filterId: string,
+    matcher: (viewing: Viewing) => boolean
+  ): void => {
+    matchers[filterId] = matcher;
 
     const viewings = state.viewings.map((viewing) => {
       const match = !Object.values(matchers).some((filterMatcher) => {
@@ -303,20 +265,14 @@ function FilterPanel({
     });
 
     setState({ ...state, viewings });
-  }
+  };
 
-  const onFilterChange = (
-    filterId: string,
-    matcher: (viewing: Viewing) => boolean
-  ): void => {
-    matchers[filterId] = matcher;
-    console.log("filterChange");
-    console.log(Date.now());
-    filterViewings();
+  const onSortChange = (sortedViewings: ViewingListItem[]): void => {
+    setState({ ...state, viewings: sortedViewings });
   };
 
   return (
-    <Container data-filter-controls data-target="#viewings">
+    <Container>
       <Heading>{heading}</Heading>
       <Content>
         <TitleFilter
@@ -339,16 +295,11 @@ function FilterPanel({
           viewings={state.viewings}
           onChange={onFilterChange}
         />
-
-        <Sorter name="Order By" target="#viewings">
-          {[
-            ["Viewing Date (Newest First)", "viewing-date-desc"],
-            ["Viewing Date (Oldest First)", "viewing-date-asc"],
-            ["Release Date (Newest First)", "release-date-desc"],
-            ["Release Date (Oldest First)", "release-date-asc"],
-            ["Title", "sort-title-asc"],
-          ]}
-        </Sorter>
+        <ViewingSorter
+          label="Order By"
+          viewings={state.viewings}
+          onChange={onSortChange}
+        />
       </Content>
     </Container>
   );
