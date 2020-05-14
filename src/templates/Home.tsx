@@ -53,7 +53,6 @@ const ReviewHeading = styled.h2`
   margin-bottom: 8px;
   margin-top: 0;
   padding: 0 0 0;
-  /* text-align: center; */
 
   @media only screen and (min-width: ${listBreakpoint}) {
     font-size: 24px;
