@@ -1,97 +1,323 @@
 import { graphql } from "gatsby";
 import pluralize from "pluralize";
-import React, { ReactNode } from "react";
+import React from "react";
 
-import { css } from "@emotion/core";
 import styled from "@emotion/styled";
-import { WindowLocation } from "@reach/router";
 
-const PanelHeader = styled.header`
-  padding: 35px 20px 20px;
-  text-align: center;
-
-  @media only screen and (min-width: 50em) {
-    margin: 20px;
-    padding: 20px;
-    text-align: left;
-  }
-`;
-
-const PanelHeading = styled.h1`
-  line-height: 60px;
-  margin-bottom: 0;
-`;
-
-const PanelSlug = styled.div`
-  color: var(--color-text-secondary);
-  font-size: 15px;
-  line-height: 20px;
-  margin-bottom: 0;
-`;
-
-interface PanelHeaderProps {
-  title: string;
-  slug: string;
-}
-
-const PanelHead = React.memo(({ title, slug }: PanelHeaderProps) => {
-  return (
-    <PanelHeader>
-      <PanelHeading>{title}</PanelHeading>
-      <PanelSlug>{slug}</PanelSlug>
-    </PanelHeader>
-  );
-});
-
-const List = styled.ol`
-  margin: 0 0 35px;
-  padding: 0;
-
-  @media only screen and (min-width: 50em) {
-    margin-top: 24px;
-  }
-`;
-
-const ListItem = React.memo(styled.li`
-  font-weight: normal;
-  list-style-type: none;
-  padding: 0;
-  position: relative;
-
-  &:after {
-    background-color: var(--color-primary);
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 1px;
-    left: 20px;
-    margin: 0;
-    position: absolute;
-    right: 0;
-  }
-`);
-
-const Title = styled.div`
-  display: block;
-  font-size: 18px;
-  line-height: 40px;
-  overflow: hidden;
-  padding: 20px 20px 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`;
-
-const Slug = styled.div`
-  color: var(--color-text-hint);
-  font-size: 15px;
-  line-height: 20px;
-  padding: 0 20px 20px;
-  text-rendering: optimizeLegibility;
-`;
+import Layout from "../components/Layout";
+import ListItemWithSlug from "../components/ListItemWithSlug";
+import PageHeader from "../components/PageHeader";
+import Panel from "../components/Panel";
+import RangeFilter from "../components/RangeFilter";
+import SelectFilter from "../components/SelectFilter";
+import Sorter, {
+  collator,
+  sortStringAsc,
+  sortStringDesc,
+} from "../components/Sorter";
+import TitleFilter from "../components/TitleFilter";
+import TwoColumns, { Column1, Column2 } from "../components/TwoColumns";
 
 interface WatchlistPerson {
   fullName: string;
 }
+
+interface WatchlistCollection {
+  name: string;
+}
+
+interface WatchlistTitle {
+  imdbId: string;
+  movie: {
+    title: string;
+    sortTitle: string;
+    year: string;
+  };
+  directors: WatchlistPerson[];
+  performers: WatchlistPerson[];
+  writers: WatchlistPerson[];
+  collections: WatchlistCollection[];
+}
+
+interface WatchlistSelectFilterProps {
+  label: string;
+  titles: WatchlistTitle[];
+  onChange(filterId: string, matcher: (title: WatchlistTitle) => boolean): void;
+}
+
+function DirectorFilter({
+  label,
+  titles,
+  onChange,
+}: WatchlistSelectFilterProps): JSX.Element {
+  const personOptions = [
+    ...new Set(
+      titles
+        .map((title) => {
+          return title.directors.map((person) => person.fullName);
+        })
+        .reduce((prev, current) => {
+          return prev.concat(current);
+        })
+    ),
+  ]
+    .sort()
+    .map((person): [string, string] => {
+      return [person, person];
+    });
+
+  const handleChange = (value: string): void => {
+    onChange("director", (title: WatchlistTitle): boolean => {
+      if (value === "All") {
+        return true;
+      }
+
+      return title.directors.some((person) => {
+        return person.fullName === value;
+      });
+    });
+  };
+
+  return (
+    <SelectFilter onChange={handleChange} label={label}>
+      {personOptions}
+    </SelectFilter>
+  );
+}
+
+function PerformerFilter({
+  label,
+  titles,
+  onChange,
+}: WatchlistSelectFilterProps): JSX.Element {
+  const personOptions = [
+    ...new Set(
+      titles
+        .map((title) => {
+          return title.performers.map((person) => person.fullName);
+        })
+        .reduce((prev, current) => {
+          return prev.concat(current);
+        })
+    ),
+  ]
+    .sort()
+    .map((person): [string, string] => {
+      return [person, person];
+    });
+
+  const handleChange = (value: string): void => {
+    onChange("performer", (title: WatchlistTitle): boolean => {
+      if (value === "All") {
+        return true;
+      }
+
+      return title.performers.some((person) => {
+        return person.fullName === value;
+      });
+    });
+  };
+
+  return (
+    <SelectFilter onChange={handleChange} label={label}>
+      {personOptions}
+    </SelectFilter>
+  );
+}
+
+function WriterFilter({
+  label,
+  titles,
+  onChange,
+}: WatchlistSelectFilterProps): JSX.Element {
+  const personOptions = [
+    ...new Set(
+      titles
+        .map((title) => {
+          return title.writers.map((person) => person.fullName);
+        })
+        .reduce((prev, current) => {
+          return prev.concat(current);
+        })
+    ),
+  ]
+    .sort()
+    .map((person): [string, string] => {
+      return [person, person];
+    });
+
+  const handleChange = (value: string): void => {
+    onChange("writer", (title: WatchlistTitle): boolean => {
+      if (value === "All") {
+        return true;
+      }
+
+      return title.writers.some((person) => {
+        return person.fullName === value;
+      });
+    });
+  };
+
+  return (
+    <SelectFilter onChange={handleChange} label={label}>
+      {personOptions}
+    </SelectFilter>
+  );
+}
+
+interface TitleSorterProps {
+  label: string;
+  titles: WatchlistTitle[];
+  onChange(sortedTitles: WatchlistTitle[]): void;
+}
+
+function TitleSorter({
+  label,
+  titles,
+  onChange,
+}: TitleSorterProps): JSX.Element {
+  const sortReleaseDateAsc = (a: WatchlistTitle, b: WatchlistTitle): number => {
+    return sortStringAsc(a.movie.year, b.movie.year);
+  };
+
+  const sortReleaseDateDesc = (
+    a: WatchlistTitle,
+    b: WatchlistTitle
+  ): number => {
+    return sortStringDesc(a.movie.year, b.movie.year);
+  };
+
+  const sortTitleAsc = (a: WatchlistTitle, b: WatchlistTitle): number => {
+    return collator.compare(a.movie.sortTitle, b.movie.sortTitle);
+  };
+
+  const handleChange = (sortedViewings: WatchlistTitle[]): void => {
+    onChange([...sortedViewings]);
+  };
+
+  return (
+    <Sorter<WatchlistTitle>
+      label={label}
+      collection={titles}
+      onChange={handleChange}
+    >
+      {{
+        "Release Date (Oldest First)": sortReleaseDateAsc,
+        "Release Date (Newest First)": sortReleaseDateDesc,
+        Title: sortTitleAsc,
+      }}
+    </Sorter>
+  );
+}
+
+interface WatchlistTitleItem extends WatchlistTitle {
+  match: boolean;
+}
+
+interface FilterPanelProps {
+  state: WatchlistTitleItem[];
+  setState(state: WatchlistTitleItem[]): void;
+  heading: string;
+}
+
+const matchers: { [key: string]: (title: WatchlistTitle) => boolean } = {};
+
+function FilterPanel({
+  state,
+  setState,
+  heading,
+}: FilterPanelProps): JSX.Element {
+  const onFilterChange = (
+    filterId: string,
+    matcher: (title: WatchlistTitle) => boolean
+  ): void => {
+    matchers[filterId] = matcher;
+
+    const titles = state.map((title) => {
+      const match = !Object.values(matchers).some((filterMatcher) => {
+        return !filterMatcher(title);
+      });
+
+      if (match === title.match) {
+        return title;
+      }
+
+      return { ...title, match };
+    });
+    setState(titles);
+  };
+
+  const onSortChange = (sortedTitles: WatchlistTitleItem[]): void => {
+    setState(sortedTitles);
+  };
+
+  return (
+    <Panel heading={heading}>
+      <TitleFilter
+        onChange={onFilterChange}
+        label="Title"
+        placeholder="Enter all or part of a title."
+      />
+      <DirectorFilter
+        label="Director"
+        titles={state}
+        onChange={onFilterChange}
+      />
+      <PerformerFilter
+        label="Performer"
+        titles={state}
+        onChange={onFilterChange}
+      />
+      <WriterFilter label="Writer" titles={state} onChange={onFilterChange} />
+      <ReleaseYearFilter
+        label="Release Year"
+        titles={state}
+        onChange={onFilterChange}
+      />
+      <TitleSorter label="Order By" titles={state} onChange={onSortChange} />
+    </Panel>
+  );
+}
+
+function ReleaseYearFilter({
+  label,
+  titles,
+  onChange,
+}: WatchlistSelectFilterProps): JSX.Element {
+  const releaseYears = titles
+    .map((title) => {
+      return title.movie.year;
+    })
+    .sort();
+
+  const minYear = parseInt(releaseYears[0], 10);
+  const maxYear = parseInt(releaseYears[releaseYears.length - 1], 10);
+
+  const handleChange = (values: number[]): void => {
+    onChange("releaseYear", (title: WatchlistTitle): boolean => {
+      if (values === [minYear, maxYear]) {
+        return true;
+      }
+
+      const value = parseInt(title.movie.year, 10);
+      return value >= values[0] && value <= values[1];
+    });
+  };
+
+  return (
+    <RangeFilter
+      label={label}
+      min={minYear}
+      max={maxYear}
+      handleChange={handleChange}
+    />
+  );
+}
+
+const List = styled.ol`
+  margin: 0 0 35px;
+  padding: 0;
+`;
 
 const formatPeople = (
   people: Array<WatchlistPerson>,
@@ -107,10 +333,6 @@ const formatPeople = (
   return `${formattedNames} ${suffix}`;
 };
 
-interface WatchlistCollection {
-  name: string;
-}
-
 const formatCollections = (collections: Array<WatchlistCollection>): string => {
   if (collections.length === 0) {
     return "";
@@ -123,9 +345,7 @@ const formatCollections = (collections: Array<WatchlistCollection>): string => {
   return `it's a ${formattedNames} film`;
 };
 
-const buildSlug = (
-  watchlistTitle: Props["data"]["allWatchlistTitle"]["nodes"][0]
-): string => {
+const buildSlug = (watchlistTitle: WatchlistTitle): string => {
   const credits = [
     formatPeople(watchlistTitle.directors, "directed"),
     formatPeople(watchlistTitle.performers, "performed"),
@@ -133,389 +353,56 @@ const buildSlug = (
     formatCollections(watchlistTitle.collections),
   ];
 
-  let slug = `Because `;
+  let slug = "";
 
-  if (credits.length > 0) {
+  while (credits.length > 0) {
     const credit = credits.shift();
 
     slug += credit;
-    if (credits.find((item) => item.length > 0)) {
+
+    if (slug && credits.find((item) => item.length > 0)) {
       slug += " and ";
     }
   }
 
-  return `${slug}.`;
+  return `Because ${slug}.`;
 };
 
-const styleVars = {
-  filterBackgroundColor: "#fff",
-  filterBorderColor: "var(--color-primary)",
-  filterSliderActiveHandleBackgroundColor: "#eaeaea",
-  filterSliderBackgroundColor: "rgba(0, 0, 0, .02)",
-  filterTextBoxColor: "var(--color-text-secondary)",
-};
-
-const Heading = styled.h2`
-  border-bottom: 1px solid var(--color-primary);
-  color: var(--color-accent);
-  display: block;
-  font-size: 19px;
-  font-weight: normal;
-  margin: 0 0 20px;
-  padding: 20px;
-  position: relative;
-  text-decoration: none;
-`;
-
-const Content = styled.div`
-  padding: 0 20px;
-`;
-
-const TextInput = styled.input`
-  backface-visibility: hidden;
-  background-color: ${styleVars.filterBackgroundColor};
-  border: 0;
-  border-radius: 0;
-  box-sizing: border-box;
-  color: ${styleVars.filterTextBoxColor};
-  display: block;
-  font-family: var(--font-family-system);
-  font-size: 16px;
-  outline: none;
-  padding: 0;
-  width: 100%;
-  ::placeholder {
-    color: var(--color-text-hint);
-    font-family: var(--font-family-system);
-    font-size: 14px;
-    font-weight: normal;
-  }
-`;
-
-const TextInputWrap = styled.div`
-  border-bottom: solid 1px var(--color-primary);
-  margin-bottom: 8px;
-  padding-bottom: 7px;
-`;
-
-const FilterControl = styled.div`
-  margin-bottom: 35px;
-`;
-
-const Label = styled.label`
-  color: var(--color-accent);
-  display: block;
-  font-size: 15px;
-  font-weight: normal;
-  line-height: 2.2;
-`;
-
-const SelectInput = styled.select`
-  appearance: none;
-  backface-visibility: hidden;
-  background-color: ${styleVars.filterBackgroundColor};
-  border: 0;
-  border-radius: 0;
-  box-sizing: border-box;
-  color: ${styleVars.filterTextBoxColor};
-  display: block;
-  font-family: var(--font-family-system);
-  font-size: 15px;
-  padding: 0;
-  text-indent: 0.01px;
-  text-overflow: "";
-  width: 100%;
-`;
-
-const FiltersWrap = styled.div`
-  border: 1px solid var(--color-primary);
-  border-radius: 5px;
-  margin: 20px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-
-  .js-filters & {
-    opacity: 1;
-  }
-`;
-
-const RangeFilterWrap = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-
-  .noUi-target * {
-    background-color: rgba(0, 0, 0, 0.02);
-    box-sizing: border-box;
-    cursor: default;
-    touch-action: none;
-    -webkit-touch-callout: none;
-    transition: transform 0.3s ease-in-out;
-    user-select: none;
-  }
-
-  .noUi-active {
-    background-color: #eaeaea;
-    box-shadow: inset 0 0 5px var(--color-primary);
-  }
-
-  .noUi-state-drag .noUi-active {
-    transform: scale(1.25);
-  }
-
-  .noUi-base {
-    background: rgba(0, 0, 0, 0.02);
-    border-bottom: solid 0.5rem #fff;
-    border-top: solid 0.5rem #fff;
-    height: 2rem;
-    margin: auto 0.8rem;
-    position: relative;
-
-    @media only screen and (min-width: 35em) {
-      border-color: #fff;
-    }
-  }
-
-  .noUi-handle {
-    background-color: #fff;
-    border: 1px solid var(--color-accent);
-    border-radius: 50%;
-    height: 2rem;
-    left: -1rem;
-    position: relative;
-    top: -0.5rem;
-    width: 2rem;
-    z-index: 1;
-  }
-
-  .noUiSlider {
-    flex: 1 100%;
-  }
-
-  .noUi-origin {
-    border-radius: inherit;
-    bottom: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
-  .noUi-stacking .noUi-handle {
-    z-index: 10;
-  }
-`;
-
-const rangeInputMixin = css`
-  appearance: textfield;
-  background-color: #fff;
-  border: 0;
-  box-sizing: content-box;
-  color: var(--color-text-secondary);
-  font-family: var(--font-family-system);
-  font-size: 14px;
-  line-height: 1.2rem;
-  padding: 0;
-  width: 25%;
-
-  &::-webkit-inner-spin-button {
-    appearance: none;
-    margin: 0;
-  }
-
-  width: 3rem;
-
-  @media (min-width: 50em) {
-    height: 1.4rem;
-    line-height: 1.4rem;
-  }
-`;
-
-const RangeInputMin = styled.input`
-  ${rangeInputMixin}
-  margin-right: auto;
-`;
-
-const RangeInputMax = styled.input`
-  ${rangeInputMixin}
-  align-self: flex-start;
-  text-align: right;
-`;
-
-interface RangeFilterProps {
-  name: string;
-  attribute: string;
-  min: string;
-  max: string;
+interface WatchlistTitleItemProps {
+  watchlistTitle: WatchlistTitleItem;
 }
 
-const RangeFilter: React.FC<RangeFilterProps> = ({
-  name,
-  attribute,
-  min,
-  max,
-}: RangeFilterProps) => {
+const WatchlistTitleItem = React.memo(function WatchlistTitleItem({
+  watchlistTitle,
+}: WatchlistTitleItemProps): JSX.Element {
   return (
-    <FilterControl>
-      <Label htmlFor={name}>{name}</Label>
-      <RangeFilterWrap
-        data-filter-attribute={attribute}
-        data-filter-type="range"
-        data-filter-min-value={min}
-        data-filter-max-value={max}
-      >
-        <div className="noUiSlider noUi-target">
-          <div className="noUi-base noUi-background noUi-horizontal">
-            <div
-              className="noUi-origin noUi-origin-lower"
-              style={{ left: "0%" }}
-            >
-              <div className="noUi-handle noUi-handle-lower" />
-            </div>
-            <div
-              className="noUi-origin noUi-origin-upper"
-              style={{ left: "100%" }}
-            >
-              <div className="noUi-handle noUi-handle-upper" />
-            </div>
-          </div>
-        </div>
-        <RangeInputMin
-          type="number"
-          defaultValue={min}
-          min={min}
-          max={max}
-          step="1"
-          className="filter-numeric min"
-        />
-        <RangeInputMax
-          type="number"
-          defaultValue={max}
-          min={min}
-          max={max}
-          step="1"
-          className="filter-numeric max"
-        />
-      </RangeFilterWrap>
-    </FilterControl>
+    <ListItemWithSlug
+      visible={watchlistTitle.match}
+      title={`${watchlistTitle.movie.title} (${watchlistTitle.movie.year})`}
+      slug={buildSlug(watchlistTitle)}
+    />
   );
-};
-
-interface TextFilterProps {
-  label: string;
-  placeholder: string;
-  filterAttribute: string;
-}
-
-const TextFilter: React.FC<TextFilterProps> = ({
-  label,
-  placeholder,
-  filterAttribute,
-}: TextFilterProps) => {
-  return (
-    <FilterControl>
-      <Label htmlFor={label}>{label}</Label>
-      <TextInputWrap>
-        <TextInput
-          name={label}
-          placeholder={placeholder}
-          data-filter-type="text"
-          data-filter-attribute={filterAttribute}
-        />
-      </TextInputWrap>
-    </FilterControl>
-  );
-};
-
-interface FilterPanelProps {
-  heading: string;
-  children: ReactNode;
-}
-
-const FilterPanel: React.FC<FilterPanelProps> = ({
-  heading,
-  children,
-}: FilterPanelProps) => {
-  return (
-    <FiltersWrap data-filter-controls data-target="#watchlist-titles">
-      <Heading>{heading}</Heading>
-      <Content>{children}</Content>
-    </FiltersWrap>
-  );
-};
-
-interface SorterProps {
-  name: string;
-  children: Array<[string, string]>;
-  target: string;
-}
-
-const Sorter: React.FC<SorterProps> = ({
-  name,
-  children,
-  target,
-}: SorterProps) => {
-  return (
-    <FilterControl>
-      <Label htmlFor={name}>{name}</Label>
-      <SelectInput
-        name={name}
-        data-sorter={children[0][1]}
-        data-target={target}
-      >
-        {children.map(([optionName, optionValue]) => {
-          return (
-            <option key={optionName} value={optionValue}>
-              {name}
-            </option>
-          );
-        })}
-      </SelectInput>
-    </FilterControl>
-  );
-};
+});
 
 interface Props {
-  location: WindowLocation;
   data: {
     allWatchlistTitle: {
-      nodes: {
-        imdbId: string;
-        movie: {
-          title: string;
-          sortTitle: string;
-          year: string;
-        };
-        directors: {
-          fullName: string;
-        }[];
-        performers: {
-          fullName: string;
-        }[];
-        writers: {
-          fullName: string;
-        }[];
-        collections: {
-          name: string;
-        }[];
-      }[];
+      nodes: WatchlistTitle[];
     };
   };
 }
 
-const Watchlist: React.FC<Props> = ({ data }: Props) => {
-  const releaseYears = data.allWatchlistTitle.nodes
-    .map((node) => {
-      return node.movie.year;
-    })
-    .sort();
+export default function Watchlist({ data }: Props): JSX.Element {
+  const titles = data.allWatchlistTitle.nodes.map((node) => {
+    return { ...node, match: true };
+  });
 
-  const minYear = releaseYears[0];
-  const maxYear = releaseYears[releaseYears.length - 1];
+  const [state, setState] = React.useState(titles);
 
   return (
-    <>
-      <PanelHead
-        title="The Watchlist"
+    <Layout>
+      <PageHeader
+        header="The Watchlist"
         slug={`My movie review bucketlist. ${Number(
           data.allWatchlistTitle.nodes.length
         ).toLocaleString()} ${pluralize(
@@ -523,46 +410,26 @@ const Watchlist: React.FC<Props> = ({ data }: Props) => {
           data.allWatchlistTitle.nodes.length
         )}. No silents or documentaries.`}
       />
-      <FilterPanel heading="Filter and Sort">
-        <TextFilter
-          label="Title"
-          placeholder="Enter all or part of a title."
-          filterAttribute="data-title"
-        />
-        <RangeFilter
-          name="Release Year"
-          attribute="data-year"
-          min={minYear}
-          max={maxYear}
-        />
-        <Sorter name="Order By" target="#watchlist-titles">
-          {[
-            ["Year (Oldest First)", "year-asc"],
-            ["Year (Newest First)", "year-desc"],
-            ["Title", "sort-title-asc"],
-          ]}
-        </Sorter>
-      </FilterPanel>
-      <List id="watchlist-titles">
-        {data.allWatchlistTitle.nodes.map((watchlistTitle) => (
-          <ListItem
-            key={watchlistTitle.imdbId}
-            data-title={watchlistTitle.movie.title}
-            data-sort-title={watchlistTitle.movie.sortTitle}
-            data-year={watchlistTitle.movie.year}
-          >
-            <Title>
-              {watchlistTitle.movie.title} ({watchlistTitle.movie.year})
-            </Title>
-            <Slug>{buildSlug(watchlistTitle)}</Slug>
-          </ListItem>
-        ))}
-      </List>
-    </>
-  );
-};
 
-export default React.memo(Watchlist);
+      <TwoColumns>
+        <Column1>
+          <FilterPanel
+            state={state}
+            setState={setState}
+            heading="Filter and Sort"
+          />
+        </Column1>
+        <Column2>
+          <List>
+            {state.map((title) => (
+              <WatchlistTitleItem key={title.imdbId} watchlistTitle={title} />
+            ))}
+          </List>
+        </Column2>
+      </TwoColumns>
+    </Layout>
+  );
+}
 
 export const query = graphql`
   query {

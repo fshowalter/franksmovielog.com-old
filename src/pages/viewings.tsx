@@ -336,7 +336,7 @@ const ViewingListItem = React.memo(function ViewingListItem({
   );
 });
 
-function Viewings({ data }: Props): JSX.Element {
+export default function Viewings({ data }: Props): JSX.Element {
   const viewings = data.allViewing.nodes.map((node) => {
     return { ...node, match: true };
   });
@@ -376,10 +376,6 @@ function Viewings({ data }: Props): JSX.Element {
     </Layout>
   );
 }
-
-Viewings.whyDidYouRender = true;
-
-export default Viewings;
 
 export const query = graphql`
   query {

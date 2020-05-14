@@ -121,14 +121,22 @@ export default function RangeFilter({
     );
   };
 
+  const handleSliderUpdate = (
+    values: number | number[] | null | undefined
+  ): void => {
+    if (!Array.isArray(values)) {
+      return;
+    }
+    handleChange(values);
+  };
+
   const handleSliderChange = (
     values: number | number[] | null | undefined
   ): void => {
     if (!Array.isArray(values)) {
       return;
     }
-    setState(values);
-    handleChange(values);
+    setState([...values]);
   };
 
   const handleMinChange = (value: string): void => {
@@ -159,7 +167,8 @@ export default function RangeFilter({
           min={min}
           renderTrack={Track}
           renderThumb={Thumb}
-          onAfterChange={handleSliderChange}
+          onChange={handleSliderChange}
+          onAfterChange={handleSliderUpdate}
           thumbActiveClassName="dragging"
         />
         <RangeInputMin
