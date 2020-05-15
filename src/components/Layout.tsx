@@ -1,7 +1,6 @@
 import { Link } from "gatsby";
 import React, { ReactNode } from "react";
 import { Helmet } from "react-helmet";
-import { CSSTransition } from "react-transition-group";
 
 import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
@@ -227,7 +226,7 @@ const Nav = styled.nav`
   width: 100%;
   z-index: 200;
 
-  &.enter-done {
+  &.open {
     opacity: 1;
   }
 
@@ -463,38 +462,36 @@ export default function Layout({ pageTitle, children }: Props): JSX.Element {
         <MenuToggle onClick={toggleNav} aria-expanded={showNav}>
           <Hamburger />
         </MenuToggle>
-        <CSSTransition in={showNav} timeout={0}>
-          <Nav role="navigation">
-            <NavList>
-              <NavListItem>
-                <NavLink to="/">Home</NavLink>
-              </NavListItem>
-              <NavListItem>
-                <NavLink to="/about/">About</NavLink>
-              </NavListItem>
-              <NavListItem>
-                <NavLink to="/how-i-grade/">How I Grade</NavLink>
-              </NavListItem>
-              <NavListItem>
-                <NavLink to="/reviews/">Reviews</NavLink>
-              </NavListItem>
-              <NavListItem>
-                <NavLink to="/viewings/">Viewing Log</NavLink>
-              </NavListItem>
-              <NavListItem>
-                <NavLink to="/watchlist/">Watchlist</NavLink>
-              </NavListItem>
-              <NavListItem>
-                <NavLink to="/stats/">Stats</NavLink>
-              </NavListItem>
-            </NavList>
-            <SearchForm>
-              <TextInputWrap>
-                <TextInput aria-label="search" name="q" placeholder="Search" />
-              </TextInputWrap>
-            </SearchForm>
-          </Nav>
-        </CSSTransition>
+        <Nav role="navigation" className={showNav ? "open" : undefined}>
+          <NavList>
+            <NavListItem>
+              <NavLink to="/">Home</NavLink>
+            </NavListItem>
+            <NavListItem>
+              <NavLink to="/about/">About</NavLink>
+            </NavListItem>
+            <NavListItem>
+              <NavLink to="/how-i-grade/">How I Grade</NavLink>
+            </NavListItem>
+            <NavListItem>
+              <NavLink to="/reviews/">Reviews</NavLink>
+            </NavListItem>
+            <NavListItem>
+              <NavLink to="/viewings/">Viewing Log</NavLink>
+            </NavListItem>
+            <NavListItem>
+              <NavLink to="/watchlist/">Watchlist</NavLink>
+            </NavListItem>
+            <NavListItem>
+              <NavLink to="/stats/">Stats</NavLink>
+            </NavListItem>
+          </NavList>
+          <SearchForm>
+            <TextInputWrap>
+              <TextInput aria-label="search" name="q" placeholder="Search" />
+            </TextInputWrap>
+          </SearchForm>
+        </Nav>
       </Header>
       <ContentWrap>{children}</ContentWrap>
       <Footer>
