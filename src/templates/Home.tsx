@@ -18,7 +18,7 @@ const listBreakpoint = "650px";
 const Home = styled.section`
   letter-spacing: 0.16px;
   margin: 0;
-  padding: 20px;
+  padding: 24px;
   text-rendering: optimizelegibility;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
