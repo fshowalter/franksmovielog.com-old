@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React, { ReactNode } from "react";
 import { Helmet } from "react-helmet";
+import { CSSTransition } from "react-transition-group";
 
 import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
@@ -116,8 +117,14 @@ const LayoutWrap = styled.div`
 `;
 
 const LogoHeading = styled.h1`
+  line-height: 0;
   margin: 0;
   padding: 0;
+
+  @media only screen and (min-width: ${breakpoints.max}) {
+    border-left: solid 1px var(--color-border);
+    padding-left: 30px;
+  }
 `;
 
 const Logo = styled(logo)`
@@ -129,22 +136,30 @@ const Logo = styled(logo)`
   @media only screen and (min-width: ${breakpoints.mid}) {
     background: #202020 url(${mobileBackground}) repeat;
     height: 70px;
+    margin-right: 20px;
     width: 70px;
+  }
+
+  @media only screen and (min-width: ${breakpoints.max}) {
+    margin-right: 0;
   }
 `;
 
 const LogoLink = styled(Link)`
-  display: inline-block;
-  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 56px;
+  justify-content: center;
+  margin-left: 14px;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
-    left: 30px;
+    height: auto;
     margin-left: 0;
-    position: absolute;
-    top: 11px;
+    margin-top: 11px;
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
+    display: inline-block;
     left: 0;
     margin: 0 0 24px;
     position: relative;
@@ -156,6 +171,7 @@ const Hamburger = styled(hamburger)`
   background-color: transparent;
   fill: #ddd;
   height: 25px;
+  margin: 0 10px 0 15px;
   stroke: #ddd;
   width: 25px;
 
@@ -186,11 +202,10 @@ const MenuToggle = styled.button`
   appearance: none;
   background: transparent;
   border: none;
+  height: 56px;
+  margin-right: 14px;
   padding: 0;
-  position: absolute;
-  right: 20px;
-  top: 14px;
-  width: auto;
+  width: 50px;
 
   @media only screen and (min-width: 48em) {
     display: none;
@@ -204,76 +219,72 @@ const Nav = styled.nav`
   font-weight: 300;
   height: calc(100vh - 56px);
   letter-spacing: 1px;
-  opacity: 1;
-  padding: 20px 20px 40px;
+  opacity: 0;
+  padding: 20px 24px 40px;
   position: absolute;
-  transform: scale(1);
-  transform-origin: 100% 0;
-  transition: all 0.2s;
+  top: 56px;
+  transition: opacity 0.2s;
   width: 100%;
   z-index: 200;
 
-  &.js-toggle_off {
+  &.enter-done {
     opacity: 1;
-    transform: scale(0);
-
-    @media only screen and (min-width: ${breakpoints.mid}) {
-      transform: scale(1);
-    }
   }
 
   @media only screen and (min-width: ${breakpoints.mid}) {
     background: transparent;
-    display: block;
     height: auto;
+    opacity: 1;
     padding: 0;
     position: relative;
+    top: auto;
     visibility: visible;
+  }
 
-    &.js-toggle_off {
-      opacity: 1;
-      visibility: visible;
-    }
+  @media only screen and (min-width: ${breakpoints.max}) {
+    border-left: solid 1px var(--color-border);
+    padding-bottom: 8px;
+    padding-left: 30px;
   }
 `;
 
 const NavList = styled.ul`
   margin: 0;
   padding: 0;
+
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media only screen and (min-width: ${breakpoints.max}) {
+    flex-direction: column;
+  }
 `;
 
 const NavListItem = styled.li`
   display: block;
 `;
 
-const HeaderWrap = styled.div`
+const Header = styled.header`
   background: #202020 url(${mobileBackground}) repeat;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
   width: 100%;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
     background: var(--color-content-background);
+    padding: 20px 30px 25px;
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
-    margin: 20px 0 0 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 30px 0 0;
     max-width: 210px;
     order: 2;
-  }
-`;
-
-const Header = styled.header`
-  margin: 0;
-  opacity: 1;
-  position: relative;
-
-  @media only screen and (min-width: ${breakpoints.mid}) {
-    padding: 0 30px 20px 120px;
-  }
-
-  @media only screen and (min-width: ${breakpoints.max}) {
-    border-left: solid 1px var(--color-border);
-    margin: 0 auto;
-    padding: 0 30px 2px 20px;
+    padding: 0 30px 0 0;
   }
 `;
 
@@ -289,13 +300,16 @@ const NavLink = styled(Link)`
 
   @media only screen and (min-width: ${breakpoints.mid}) and (max-width: ${breakpoints.max}) {
     border-bottom: none;
-    display: inline-block;
     line-height: inherit;
     margin-right: 20px;
     padding: 10px 0;
 
     :nth-of-type(1) {
       margin-left: 10px;
+    }
+
+    :last-of-type {
+      margin-right: 0;
     }
   }
 `;
@@ -317,17 +331,14 @@ const TextInput = styled.input`
   box-sizing: border-box;
   color: #222;
   display: block;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: var(--font-family-system);
   font-size: 16px;
   padding: 10px;
   width: 100%;
 
   ::placeholder {
     color: var(--color-text-hint);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
+    font-family: var(--font-family-system);
     font-size: 14px;
     font-weight: normal;
   }
@@ -343,7 +354,7 @@ const ContentWrap = styled.div`
 
   @media only screen and (min-width: ${breakpoints.max}) {
     flex-basis: 900px;
-    margin: 0 20px 0 30px;
+    margin: 30px 20px 0 30px;
     order: 1;
   }
 `;
@@ -429,6 +440,12 @@ export default function Layout({ pageTitle, children }: Props): JSX.Element {
     ? `${pageTitle} | Frank's Movie Log`
     : `Frank's Movie Log`;
 
+  const [showNav, setShowNav] = React.useState(false);
+
+  const toggleNav = (): void => {
+    setShowNav(!showNav);
+  };
+
   return (
     <LayoutWrap>
       <Helmet>
@@ -437,14 +454,17 @@ export default function Layout({ pageTitle, children }: Props): JSX.Element {
       </Helmet>
       <Global styles={cssVars} />
       <Global styles={cssReset} />
-      <HeaderWrap>
-        <Header>
-          <LogoHeading>
-            <LogoLink to="/">
-              <Logo />
-            </LogoLink>
-          </LogoHeading>
-          <Nav role="navigation" className="js-toggle js-toggle_off" id="menu">
+      <Header>
+        <LogoHeading>
+          <LogoLink to="/">
+            <Logo />
+          </LogoLink>
+        </LogoHeading>
+        <MenuToggle onClick={toggleNav} aria-expanded={showNav}>
+          <Hamburger />
+        </MenuToggle>
+        <CSSTransition in={showNav} timeout={0}>
+          <Nav role="navigation">
             <NavList>
               <NavListItem>
                 <NavLink to="/">Home</NavLink>
@@ -474,11 +494,8 @@ export default function Layout({ pageTitle, children }: Props): JSX.Element {
               </TextInputWrap>
             </SearchForm>
           </Nav>
-          <MenuToggle data-toggle="true" data-toggle-target="menu">
-            <Hamburger />
-          </MenuToggle>
-        </Header>
-      </HeaderWrap>
+        </CSSTransition>
+      </Header>
       <ContentWrap>{children}</ContentWrap>
       <Footer>
         <FooterList>
