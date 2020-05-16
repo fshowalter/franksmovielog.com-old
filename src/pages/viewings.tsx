@@ -16,7 +16,7 @@ import Sorter, {
   sortStringDesc,
 } from "../components/Sorter";
 import TextFilter from "../components/TextFilter";
-import TwoColumns, { Column1, Column2 } from "../components/TwoColumns";
+import TwoColumns from "../components/TwoColumns";
 
 interface Viewing {
   sequence: number;
@@ -353,25 +353,20 @@ export default function Viewings({ data }: Props): JSX.Element {
         header="Viewing Log"
         slug={`I've watched ${data.allViewing.nodes.length} movies since 2012`}
       />
-
       <TwoColumns>
-        <Column1>
-          <FilterPanel
-            state={state}
-            setState={setState}
-            heading="Filter and Sort"
-          />
-        </Column1>
-        <Column2>
-          <List>
-            {state.viewings.map((viewing) => (
-              <ViewingListItem
-                key={`${viewing.sequence}-${viewing.imdbId}`}
-                viewing={viewing}
-              />
-            ))}
-          </List>
-        </Column2>
+        <FilterPanel
+          state={state}
+          setState={setState}
+          heading="Filter and Sort"
+        />
+        <List>
+          {state.viewings.map((viewing) => (
+            <ViewingListItem
+              key={`${viewing.sequence}-${viewing.imdbId}`}
+              viewing={viewing}
+            />
+          ))}
+        </List>
       </TwoColumns>
     </Layout>
   );

@@ -2,20 +2,16 @@ import React, { ReactNode } from "react";
 
 import styled from "@emotion/styled";
 
-const Container = styled.div`
-  border: 1px solid #eee;
-  border-left: none;
-  border-right: none;
-  transition: opacity 0.3s ease;
+import { breakpoints } from "./Layout";
 
-  @media only screen and (min-width: 48em) {
-    border: none;
-    border-right: solid 1px #eee;
-  }
+const Container = styled.div`
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
 `;
 
 const Heading = styled.h2`
-  border-bottom: 1px solid var(--color-primary);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
   display: block;
   font-size: 19px;
   font-weight: normal;
@@ -23,18 +19,10 @@ const Heading = styled.h2`
   padding: 20px;
   position: relative;
   text-decoration: none;
-
-  @media only screen and (min-width: 48em) {
-    padding: 20px 0;
-  }
 `;
 
 const Content = styled.div`
   padding: 0 20px;
-
-  @media only screen and (min-width: 48em) {
-    padding: 0 50px 20px 0;
-  }
 `;
 
 interface PanelProps {

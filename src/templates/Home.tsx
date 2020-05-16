@@ -37,10 +37,7 @@ const List = styled.ol`
   width: 100%;
 `;
 
-const Review = styled.article`
-  display: flex;
-  flex-direction: column;
-`;
+const Review = styled.article``;
 
 const ReviewHeader = styled.header`
   margin-top: 20px;
@@ -69,26 +66,37 @@ const ReviewImageWrap = styled(Link)`
   background-size: cover;
   display: block;
   margin: 0;
-  min-width: 200px;
-`;
-
-const CWrap = styled.div`
-  /* border-top: solid 1px #eee; */
-  /* padding-left: 30px; */
-  /* flex: 1; */
-  /* display: flex; */
-  padding: 0;
+  min-width: 33%;
 `;
 
 const Date = styled.time`
-  color: var(--color-secondary);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-system);
   font-size: 13px;
+  font-weight: 300;
   line-height: 2.5;
   order: 3;
   text-transform: uppercase;
   width: 200px;
+
+  &:after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+`;
+
+const Main = styled.main`
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  max-width: 66ch;
+  order: 3;
+
+  p {
+    margin: 0;
+  }
 `;
 
 const ListItem = styled.li`
@@ -97,15 +105,15 @@ const ListItem = styled.li`
   position: relative;
 
   &:after {
-    background-color: #eee;
+    background-color: var(--color-primary);
     clear: both;
     content: "";
     display: block;
     height: 1px;
-    margin: 40px 20px 0;
+    margin: 35px 0 30px;
 
     @media only screen and (min-width: ${listBreakpoint}) {
-      margin: 40px 0 0;
+      margin: 40px 0 0 0;
     }
   }
 
@@ -117,86 +125,37 @@ const ListItem = styled.li`
     margin-left: 0;
 
     @media only screen and (min-width: ${listBreakpoint}) {
-      ${Review} {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
       ${ReviewImageWrap} {
-        margin: 30px 0 16px;
-        order: 2;
+        float: right;
+        margin: 10px 0 16px 24px;
+        width: 33.333333%;
       }
 
-      ${CWrap} {
-        order: 1;
-        padding-right: 24px;
+      ${Date} {
+        grid-column: 1;
       }
     }
   }
 `;
 
-interface Props {
-  location: WindowLocation;
-  pageContext: {
-    currentPage: number;
-    numPages: number;
-  };
-  data: {
-    page: {
-      nodes: {
-        sequence: number;
-        date: string;
-        grade: string;
-        slug: string;
-        movie: {
-          title: string;
-          year: number;
-        };
-        markdown: {
-          rawMarkdownBody: string;
-          backdrop?: {
-            childImageSharp?: {
-              fluid: FluidObject;
-            };
-          };
-          firstParagraph: string;
-        };
-      }[];
-    };
-    more: {
-      nodes: {
-        grade: string;
-        sequence: number;
-        slug: string;
-        movie: {
-          title: string;
-        };
-        markdown: {
-          backdrop?: {
-            childImageSharp?: {
-              fluid: FluidObject;
-            };
-          };
-        };
-      }[];
-    };
-  };
-}
-
 type ReviewNode = Props["data"]["page"]["nodes"][0];
 
-const imageForNode = (node: ReviewNode): React.ReactElement | null => {
+const imageForNode = (node: ReviewNode, index: number): JSX.Element | null => {
   if (!node.markdown.backdrop || !node.markdown.backdrop.childImageSharp) {
     return null;
   }
 
+  const fluid = {
+    ...node.markdown.backdrop?.childImageSharp?.fluid,
+  };
+
+  if (index === 0) {
+    fluid.sizes = `(max-width: ${breakpoints.mid}) calc(100vw - 48px), 1800px`;
+  }
+
   return (
     <ReviewImageWrap to={`/reviews/${node.slug}/`}>
-      <Img
-        fluid={node.markdown.backdrop?.childImageSharp?.fluid}
-        alt={`A still from ${node.movie.title}`}
-        loading="eager"
-      />
+      <Img fluid={fluid} alt={`A still from ${node.movie.title}`} />
     </ReviewImageWrap>
   );
 };
@@ -271,19 +230,6 @@ function MoreReviews({
   );
 }
 
-const Main = styled.main`
-  color: rgba(0, 0, 0, 0.54);
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 28px;
-  max-width: 66ch;
-  order: 3;
-
-  p {
-    margin: 0;
-  }
-`;
-
 const InlineGrade = styled(Grade)`
   display: inline-block;
   height: auto;
@@ -303,6 +249,54 @@ const reviewContent = (
   return parse(content.toString());
 };
 
+interface Props {
+  location: WindowLocation;
+  pageContext: {
+    currentPage: number;
+    numPages: number;
+  };
+  data: {
+    page: {
+      nodes: {
+        sequence: number;
+        date: string;
+        grade: string;
+        slug: string;
+        movie: {
+          title: string;
+          year: number;
+        };
+        markdown: {
+          rawMarkdownBody: string;
+          backdrop?: {
+            childImageSharp?: {
+              fluid: FluidObject;
+            };
+          };
+          firstParagraph: string;
+        };
+      }[];
+    };
+    more: {
+      nodes: {
+        grade: string;
+        sequence: number;
+        slug: string;
+        movie: {
+          title: string;
+        };
+        markdown: {
+          backdrop?: {
+            childImageSharp?: {
+              fluid: FluidObject;
+            };
+          };
+        };
+      }[];
+    };
+  };
+}
+
 export default function HomeTemplate({
   pageContext,
   data,
@@ -311,23 +305,21 @@ export default function HomeTemplate({
     <Layout>
       <Home>
         <List start={data.page.nodes[0].sequence} reversed>
-          {data.page.nodes.map((node) => (
+          {data.page.nodes.map((node, index) => (
             <ListItem key={node.sequence}>
               <Review>
-                {imageForNode(node)}
-                <CWrap>
-                  <ReviewHeader>
-                    <ReviewHeading>
-                      <ReviewHeaderLink to={`/reviews/${node.slug}/`}>
-                        {node.movie.title}
-                      </ReviewHeaderLink>
-                    </ReviewHeading>
-                  </ReviewHeader>
-                  <Main>{reviewContent(node)}</Main>
-                  <Date dateTime={node.date}>
-                    {moment.utc(node.date, "DD MMM YYYY").format("DD MMM YYYY")}
-                  </Date>
-                </CWrap>
+                {imageForNode(node, index)}
+                <ReviewHeader>
+                  <ReviewHeading>
+                    <ReviewHeaderLink to={`/reviews/${node.slug}/`}>
+                      {node.movie.title}
+                    </ReviewHeaderLink>
+                  </ReviewHeading>
+                </ReviewHeader>
+                <Main>{reviewContent(node)}</Main>
+                <Date dateTime={node.date}>
+                  {moment.utc(node.date, "DD MMM YYYY").format("DD MMM YYYY")}
+                </Date>
               </Review>
             </ListItem>
           ))}
@@ -364,7 +356,7 @@ export const pageQuery = graphql`
           rawMarkdownBody
           backdrop {
             childImageSharp {
-              fluid(toFormat: JPG, jpegQuality: 75) {
+              fluid(toFormat: JPG, jpegQuality: 75, maxWidth: 1800) {
                 ...GatsbyImageSharpFluid
               }
             }
@@ -384,7 +376,7 @@ export const pageQuery = graphql`
         markdown {
           backdrop {
             childImageSharp {
-              fluid(toFormat: JPG, jpegQuality: 75) {
+              fluid(toFormat: JPG, jpegQuality: 75, maxWidth: 684) {
                 ...GatsbyImageSharpFluid
               }
             }

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export default styled.label`
-  color: #222;
+  color: var(--color-text-secondary);
   display: block;
   font-size: 15px;
   font-weight: normal;

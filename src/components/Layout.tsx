@@ -102,6 +102,8 @@ const cssReset = css`
 `;
 
 const LayoutWrap = styled.div`
+  min-height: 100vh;
+
   @media only screen and (min-width: ${breakpoints.mid}) {
     background: var(--color-content-background);
     margin: 0 auto;
@@ -111,7 +113,8 @@ const LayoutWrap = styled.div`
   @media only screen and (min-width: ${breakpoints.max}) {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1160px;
+    max-width: 1200px;
+    padding: 30px 30px 0;
   }
 `;
 
@@ -280,10 +283,10 @@ const Header = styled.header`
   @media only screen and (min-width: ${breakpoints.max}) {
     flex-direction: column;
     justify-content: flex-start;
-    margin: 30px 0 0;
-    max-width: 210px;
+    margin: 0;
+    max-width: 200px;
     order: 2;
-    padding: 0 30px 0 0;
+    padding: 0;
   }
 `;
 
@@ -348,12 +351,11 @@ const ContentWrap = styled.div`
 
   @media only screen and (min-width: ${breakpoints.mid}) {
     margin: 0 auto;
-    max-width: 900px;
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
-    flex-basis: 900px;
-    margin: 30px 20px 0 30px;
+    flex-grow: 1;
+    margin: 0;
     order: 1;
   }
 `;
@@ -366,8 +368,9 @@ const Footer = styled.footer`
   width: 100%;
 
   @media only screen and (min-width: ${breakpoints.max}) {
-    flex-basis: 100%;
+    margin: 0 -30px;
     order: 3;
+    width: calc(100% + 60px);
   }
 `;
 

@@ -21,7 +21,7 @@ const StyledSlider = styled(ReactSlider)`
 
 const StyledThumb = styled.div`
   background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.54);
+  border: 1px solid var(--color-text-secondary);
   border-radius: 50%;
   cursor: grab;
   height: 2rem;
@@ -67,7 +67,7 @@ const rangeInputMixin = css`
   background-color: #fff;
   border: 0;
   box-sizing: content-box;
-  color: rgba(0, 0, 0, 0.54);
+  color: var(--color-text-primary);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   font-size: 14px;

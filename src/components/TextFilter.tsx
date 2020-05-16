@@ -11,7 +11,7 @@ const TextInput = styled.input`
   border: 0;
   border-radius: 0;
   box-sizing: border-box;
-  color: var(--color-text-secondary);
+  color: var(--color-text);
   display: block;
   font-family: var(--font-family-system);
   font-size: 16px;

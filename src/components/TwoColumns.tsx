@@ -2,36 +2,26 @@ import React from "react";
 
 import styled from "@emotion/styled";
 
+import { breakpoints } from "./Layout";
+
 const ColumnWrap = styled.div`
-  @media only screen and (min-width: 48em) {
-    border-top: solid 1px #eee;
-    display: flex;
-    margin: 0 auto;
-    width: 700px;
-  }
-  @media only screen and (min-width: 71.24em) {
-    width: 900px;
-  }
-`;
-
-export const Column1 = styled.div`
-  @media only screen and (min-width: 48em) {
-    width: 250px;
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    display: grid;
+    grid-template-columns: 38.2% 61.8%;
+    width: 100%;
   }
 
-  @media only screen and (min-width: 71.24em) {
-    width: 340px;
-  }
-`;
-
-export const Column2 = styled.div`
-  @media only screen and (min-width: 48em) {
-    padding-left: 30px;
-    width: 420px;
+  & > :nth-child(1) {
+    @media only screen and (min-width: ${breakpoints.mid}) {
+      grid-column: 1;
+      grid-row: 1;
+    }
   }
 
-  @media only screen and (min-width: 71.24em) {
-    width: 540px;
+  & > :nth-child(2) {
+    @media only screen and (min-width: ${breakpoints.mid}) {
+      grid-row: 1 / span 2;
+    }
   }
 `;
 

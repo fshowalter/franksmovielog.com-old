@@ -2,6 +2,8 @@ import React from "react";
 
 import styled from "@emotion/styled";
 
+import { breakpoints } from "./Layout";
+
 const ListItem = styled.li`
   font-weight: normal;
   list-style-type: none;
@@ -9,7 +11,7 @@ const ListItem = styled.li`
   position: relative;
 
   &:after {
-    background-color: #eee;
+    background-color: var(--color-border);
     bottom: 0;
     content: "";
     display: block;
@@ -18,6 +20,20 @@ const ListItem = styled.li`
     margin: 0;
     position: absolute;
     right: 0;
+  }
+
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    margin: 0 30px 0 30px;
+    max-width: 480px;
+
+    &:after {
+      left: 0;
+      right: 20px;
+    }
+  }
+
+  @media only screen and (min-width: ${breakpoints.max}) {
+    margin: 0 60px;
   }
 `;
 
@@ -29,14 +45,22 @@ const Title = styled.div`
   padding: 20px 20px 0;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    padding: 20px 0 0;
+  }
 `;
 
 const Slug = styled.div`
-  color: rgba(0, 0, 0, 0.38);
+  color: var(--color-text-secondary);
   font-size: 15px;
   line-height: 20px;
   padding: 0 20px 20px;
   text-rendering: optimizeLegibility;
+
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    padding: 0 0 20px;
+  }
 `;
 
 interface ListItemWithSlugProps {
