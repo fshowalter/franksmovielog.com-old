@@ -7,7 +7,7 @@ export default styled.select`
   border: 0;
   border-radius: 0;
   box-sizing: border-box;
-  color: var(--color-text-primary);
+  color: var(--color-text-secondary);
   display: block;
   font-family: var(--font-family-system);
   font-size: 15px;

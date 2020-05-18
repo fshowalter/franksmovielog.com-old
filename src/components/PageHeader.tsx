@@ -5,10 +5,12 @@ import styled from "@emotion/styled";
 import { breakpoints } from "./Layout";
 
 const Header = styled.header`
-  padding: 20px;
+  padding: 30px;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
-    padding: 10px 20px 28px;
+    border-bottom: solid 1px var(--color-border);
+    margin: 0;
+    padding: 12px 0 24px;
     text-align: left;
   }
 
@@ -19,27 +21,30 @@ const Header = styled.header`
 
 const Heading = styled.h1`
   line-height: 1;
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
 `;
 
 const Slug = styled.div`
   color: rgba(0, 0, 0, 0.54);
-  font-size: 15px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
   line-height: 20px;
-  margin: 14px 0 0;
+  margin: 0;
 `;
 
 interface PageHeaderProps {
+  className?: string;
   header: string;
   slug: string;
 }
 
 export default function PageHeader({
+  className,
   header,
   slug,
 }: PageHeaderProps): JSX.Element {
   return (
-    <Header>
+    <Header className={className}>
       <Heading>{header}</Heading>
       <Slug>{slug}</Slug>
     </Header>

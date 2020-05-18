@@ -102,6 +102,9 @@ const cssReset = css`
 `;
 
 const LayoutWrap = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
@@ -111,10 +114,8 @@ const LayoutWrap = styled.div`
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
-    display: flex;
-    flex-wrap: wrap;
     max-width: 1200px;
-    padding: 30px 30px 0;
+    padding: 30px 0 0;
   }
 `;
 
@@ -124,7 +125,6 @@ const LogoHeading = styled.h1`
   padding: 0;
 
   @media only screen and (min-width: ${breakpoints.max}) {
-    border-left: solid 1px var(--color-border);
     padding-left: 30px;
   }
 `;
@@ -217,7 +217,8 @@ const MenuToggle = styled.button`
 const Nav = styled.nav`
   background: #fff;
   box-sizing: border-box;
-  font-size: 16px;
+  font-family: var(--font-family-system);
+  font-size: 14px;
   font-weight: 300;
   height: calc(100vh - 56px);
   letter-spacing: 1px;
@@ -226,11 +227,13 @@ const Nav = styled.nav`
   position: absolute;
   top: 56px;
   transition: opacity 0.2s;
+  visibility: hidden;
   width: 100%;
   z-index: 200;
 
   &.open {
     opacity: 1;
+    visibility: visible;
   }
 
   @media only screen and (min-width: ${breakpoints.mid}) {
@@ -244,7 +247,6 @@ const Nav = styled.nav`
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
-    border-left: solid 1px var(--color-border);
     padding-bottom: 8px;
     padding-left: 30px;
   }
@@ -277,13 +279,15 @@ const Header = styled.header`
 
   @media only screen and (min-width: ${breakpoints.mid}) {
     background: var(--color-content-background);
+    grid-column: 2 / 3;
+    grid-row: 2 /3;
     padding: 20px 30px 25px;
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
     flex-direction: column;
     justify-content: flex-start;
-    margin: 0;
+    margin: 0 60px 0 0;
     max-width: 200px;
     order: 2;
     padding: 0;
@@ -348,57 +352,74 @@ const TextInput = styled.input`
 
 const ContentWrap = styled.div`
   background: var(--color-content-background);
+  flex: 1;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
-    margin: 0 auto;
+    grid-column: 1;
+    grid-row: 2 /3;
+
+    &:after {
+      clear: both;
+      content: "";
+      display: block;
+    }
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
-    flex-grow: 1;
-    margin: 0;
-    order: 1;
+    padding-left: 60px;
   }
 `;
 
 const Footer = styled.footer`
   background: #202020 url(${background}) repeat;
-  color: var(--color-secondary);
+  color: var(--color-primary);
+  font-family: var(--font-family-system);
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
   margin: 0 auto;
   padding: 40px 20px 60px;
   width: 100%;
 
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+    max-height: 250px;
+  }
+
   @media only screen and (min-width: ${breakpoints.max}) {
-    margin: 0 -30px;
-    order: 3;
-    width: calc(100% + 60px);
+    order: 2;
   }
 `;
 
 const FooterList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   line-height: 1.75;
   margin: 0 auto 20px;
   padding: 0;
-  text-align: center;
 `;
 
 const FooterListItem = styled.li`
-  display: inline-block;
+  display: block;
   line-height: 2;
-  margin: 0 0.75rem;
+  margin: 0;
 `;
 
 const FooterLink = styled(Link)`
   color: inherit;
-  letter-spacing: 0.3px;
+  display: block;
+  padding: 8px 12px;
   text-decoration: none;
-  text-rendering: optimizeLegibility;
   white-space: nowrap;
 `;
 
 const footerSubLinkMixin = css`
-  color: var(--color-secondary);
-  letter-spacing: 0.3px;
-  text-rendering: optimizeLegibility;
+  color: var(--color-primary);
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
 `;
 
 const FooterSubLink = styled(Link)`
@@ -483,7 +504,7 @@ export default function Layout({ pageTitle, children }: Props): JSX.Element {
               <NavLink to="/viewings/">Viewing Log</NavLink>
             </NavListItem>
             <NavListItem>
-              <NavLink to="/watchlist/">Watchlist</NavLink>
+              <NavLink to="/to-watch/">To-Watch</NavLink>
             </NavListItem>
             <NavListItem>
               <NavLink to="/stats/">Stats</NavLink>
@@ -500,6 +521,9 @@ export default function Layout({ pageTitle, children }: Props): JSX.Element {
       <Footer>
         <FooterList>
           <FooterListItem>
+            <FooterLink to="/">Home</FooterLink>
+          </FooterListItem>
+          <FooterListItem>
             <FooterLink to="/about/">About</FooterLink>
           </FooterListItem>
           <FooterListItem>
@@ -512,7 +536,7 @@ export default function Layout({ pageTitle, children }: Props): JSX.Element {
             <FooterLink to="/viewings/">Viewing Log</FooterLink>
           </FooterListItem>
           <FooterListItem>
-            <FooterLink to="/watchlist/">Watchlist</FooterLink>
+            <FooterLink to="/to-watch/">To-Watch</FooterLink>
           </FooterListItem>
           <FooterListItem>
             <FooterLink to="/stats/">Stats</FooterLink>

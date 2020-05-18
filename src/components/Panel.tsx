@@ -7,16 +7,22 @@ import { breakpoints } from "./Layout";
 const Container = styled.div`
   border: 1px solid var(--color-border);
   border-radius: 5px;
+  margin: 0 20px;
+
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    margin: 0;
+  }
 `;
 
 const Heading = styled.h2`
   border-bottom: 1px solid var(--color-border);
   color: var(--color-text-secondary);
   display: block;
-  font-size: 19px;
-  font-weight: normal;
+  font-family: var(--font-family-system);
+  font-size: 18px;
+  font-weight: 300;
   margin: 0 0 20px;
-  padding: 20px;
+  padding: 16px 20px;
   position: relative;
   text-decoration: none;
 `;
@@ -27,12 +33,17 @@ const Content = styled.div`
 
 interface PanelProps {
   children: ReactNode;
+  className?: string;
   heading: string;
 }
 
-export default function Panel({ heading, children }: PanelProps): JSX.Element {
+export default function Panel({
+  className,
+  heading,
+  children,
+}: PanelProps): JSX.Element {
   return (
-    <Container>
+    <Container className={className}>
       <Heading>{heading}</Heading>
       <Content>{children}</Content>
     </Container>

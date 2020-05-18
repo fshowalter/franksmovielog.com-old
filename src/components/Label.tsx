@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 export default styled.label`
   color: var(--color-text-secondary);
   display: block;
-  font-size: 15px;
+  font-family: var(--font-family-system);
+  font-size: 12px;
   font-weight: normal;
-  letter-spacing: 0.5px;
   line-height: 2.2;
 `;

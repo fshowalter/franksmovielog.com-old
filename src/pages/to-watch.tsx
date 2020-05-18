@@ -2,10 +2,7 @@ import { graphql } from "gatsby";
 import pluralize from "pluralize";
 import React from "react";
 
-import styled from "@emotion/styled";
-
 import Layout from "../components/Layout";
-import ListItemWithSlug from "../components/ListItemWithSlug";
 import PageHeader from "../components/PageHeader";
 import Panel from "../components/Panel";
 import RangeFilter from "../components/RangeFilter";
@@ -16,7 +13,7 @@ import Sorter, {
   sortStringDesc,
 } from "../components/Sorter";
 import TitleFilter from "../components/TitleFilter";
-import TwoColumns, { Column1, Column2 } from "../components/TwoColumns";
+import { TitleList, TitleListItem } from "../components/TitleList";
 
 interface WatchlistPerson {
   fullName: string;
@@ -314,11 +311,6 @@ function ReleaseYearFilter({
   );
 }
 
-const List = styled.ol`
-  margin: 0 0 35px;
-  padding: 0;
-`;
-
 const formatPeople = (
   people: Array<WatchlistPerson>,
   suffix: string
@@ -376,9 +368,10 @@ const WatchlistTitleItem = React.memo(function WatchlistTitleItem({
   watchlistTitle,
 }: WatchlistTitleItemProps): JSX.Element {
   return (
-    <ListItemWithSlug
+    <TitleListItem
       visible={watchlistTitle.match}
-      title={`${watchlistTitle.movie.title} (${watchlistTitle.movie.year})`}
+      title={watchlistTitle.movie.title}
+      year={watchlistTitle.movie.year}
       slug={buildSlug(watchlistTitle)}
     />
   );
@@ -410,23 +403,16 @@ export default function Watchlist({ data }: Props): JSX.Element {
           data.allWatchlistTitle.nodes.length
         )}. No silents or documentaries.`}
       />
-
-      <TwoColumns>
-        <Column1>
-          <FilterPanel
-            state={state}
-            setState={setState}
-            heading="Filter and Sort"
-          />
-        </Column1>
-        <Column2>
-          <List>
-            {state.map((title) => (
-              <WatchlistTitleItem key={title.imdbId} watchlistTitle={title} />
-            ))}
-          </List>
-        </Column2>
-      </TwoColumns>
+      <FilterPanel
+        state={state}
+        setState={setState}
+        heading="Filter and Sort"
+      />
+      <TitleList>
+        {state.map((title) => (
+          <WatchlistTitleItem key={title.imdbId} watchlistTitle={title} />
+        ))}
+      </TitleList>
     </Layout>
   );
 }

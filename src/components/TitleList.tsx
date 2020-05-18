@@ -23,62 +23,91 @@ const ListItem = styled.li`
   }
 
   @media only screen and (min-width: ${breakpoints.mid}) {
-    margin: 0 30px 0 30px;
-    max-width: 480px;
+    margin: 0;
 
     &:after {
       left: 0;
-      right: 20px;
     }
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
-    margin: 0 60px;
+    margin: 0;
   }
 `;
 
 const Title = styled.div`
   display: block;
   font-size: 18px;
-  line-height: 40px;
-  overflow: hidden;
-  padding: 20px 20px 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  padding: 34px 20px 0;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
     padding: 20px 0 0;
+  }
+
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    padding: 27px 0 0;
   }
 `;
 
 const Slug = styled.div`
   color: var(--color-text-secondary);
-  font-size: 15px;
+  font-family: var(--font-family-system);
+  font-size: 12px;
+  font-weight: 300;
   line-height: 20px;
   padding: 0 20px 20px;
   text-rendering: optimizeLegibility;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
+    font-size: 13px;
     padding: 0 0 20px;
+  }
+
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    padding: 0 0 27px;
   }
 `;
 
-interface ListItemWithSlugProps {
+const Year = styled.span`
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-system);
+  font-size: 13px;
+`;
+
+interface TitleListItem {
   title: string;
+  year: string;
   slug: string;
   visible: boolean;
 }
 
-export default function ListItemWithSlug({
+export const TitleList = styled.ol`
+  margin: 0;
+  padding: 0 0 60px;
+
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    border-right: solid 1px var(--color-border);
+    padding-left: 30px;
+  }
+
+  @media only screen and (min-width: ${breakpoints.max}) {
+    padding-left: 60px;
+  }
+`;
+
+export function TitleListItem({
   title,
+  year,
   slug,
   visible,
-}: ListItemWithSlugProps): JSX.Element {
+}: TitleListItem): JSX.Element {
   const style = visible ? undefined : { display: "none" };
 
   return (
     <ListItem style={style}>
-      <Title>{title}</Title>
+      <Title>
+        {title} <Year>({year})</Year>
+      </Title>
       <Slug>{slug}</Slug>
     </ListItem>
   );

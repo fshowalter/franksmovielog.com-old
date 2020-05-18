@@ -4,23 +4,23 @@ import styled from "@emotion/styled";
 
 import { breakpoints } from "./Layout";
 
-const ColumnWrap = styled.div`
+const TwoColumnWrap = styled.div`
   @media only screen and (min-width: ${breakpoints.mid}) {
-    display: grid;
     grid-template-columns: 38.2% 61.8%;
     width: 100%;
   }
 
   & > :nth-child(1) {
     @media only screen and (min-width: ${breakpoints.mid}) {
-      grid-column: 1;
-      grid-row: 1;
+      float: left;
+      width: 38.2%;
     }
   }
 
   & > :nth-child(2) {
     @media only screen and (min-width: ${breakpoints.mid}) {
-      grid-row: 1 / span 2;
+      float: right;
+      width: 61.8%;
     }
   }
 `;
@@ -30,5 +30,5 @@ interface TwoColumnsProps {
 }
 
 export default function TwoColumns({ children }: TwoColumnsProps): JSX.Element {
-  return <ColumnWrap>{children}</ColumnWrap>;
+  return <TwoColumnWrap>{children}</TwoColumnWrap>;
 }

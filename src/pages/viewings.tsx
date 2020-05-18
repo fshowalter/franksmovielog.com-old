@@ -1,11 +1,12 @@
+/** @jsx jsx  */
 import { graphql } from "gatsby";
 import moment from "moment";
 import React from "react";
 
+import { css, jsx } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import Layout from "../components/Layout";
-import ListItemWithSlug from "../components/ListItemWithSlug";
+import Layout, { breakpoints } from "../components/Layout";
 import PageHeader from "../components/PageHeader";
 import Panel from "../components/Panel";
 import RangeFilter from "../components/RangeFilter";
@@ -16,7 +17,7 @@ import Sorter, {
   sortStringDesc,
 } from "../components/Sorter";
 import TextFilter from "../components/TextFilter";
-import TwoColumns from "../components/TwoColumns";
+import { TitleList, TitleListItem } from "../components/TitleList";
 
 interface Viewing {
   sequence: number;
@@ -204,6 +205,7 @@ interface ViewingListItem extends Viewing {
 }
 
 interface FilterPanelProps {
+  className?: string;
   state: {
     viewings: ViewingListItem[];
     ids: number[];
@@ -215,6 +217,7 @@ interface FilterPanelProps {
 const matchers: { [key: string]: (viewing: Viewing) => boolean } = {};
 
 function FilterPanel({
+  className,
   state,
   setState,
   heading,
@@ -244,7 +247,7 @@ function FilterPanel({
   };
 
   return (
-    <Panel heading={heading}>
+    <Panel heading={heading} className={className}>
       <TitleFilter
         onChange={onFilterChange}
         label="Title"
@@ -315,11 +318,6 @@ function ReleaseYearFilter({
   );
 }
 
-const List = styled.ol`
-  margin: 0 0 35px;
-  padding: 0;
-`;
-
 interface ViewingListItemProps {
   viewing: ViewingListItem;
 }
@@ -328,13 +326,23 @@ const ViewingListItem = React.memo(function ViewingListItem({
   viewing,
 }: ViewingListItemProps): JSX.Element {
   return (
-    <ListItemWithSlug
+    <TitleListItem
       visible={viewing.match}
-      title={`${viewing.movie.title} (${viewing.movie.year})`}
+      title={viewing.movie.title}
+      year={viewing.movie.year}
       slug={buildSlug(viewing)}
     />
   );
 });
+
+const ViewingsWrap = styled.div`
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    display: grid;
+    grid-template-columns: 38.2% 61.8%;
+    grid-template-rows: auto auto 1fr;
+    height: 100%;
+  }
+`;
 
 export default function Viewings({ data }: Props): JSX.Element {
   const viewings = data.allViewing.nodes.map((node) => {
@@ -349,25 +357,46 @@ export default function Viewings({ data }: Props): JSX.Element {
 
   return (
     <Layout>
-      <PageHeader
-        header="Viewing Log"
-        slug={`I've watched ${data.allViewing.nodes.length} movies since 2012`}
-      />
-      <TwoColumns>
+      <ViewingsWrap>
+        <PageHeader
+          css={css`
+            @media only screen and (min-width: ${breakpoints.mid}) {
+              grid-column: 1 / -1;
+              grid-row: 1 / 2;
+            }
+          `}
+          header="Viewing Log"
+          slug={`I've watched ${data.allViewing.nodes.length} movies since 2012.`}
+        />
         <FilterPanel
+          css={css`
+            @media only screen and (min-width: ${breakpoints.mid}) {
+              grid-column: 1 / 2;
+              grid-row: 2 /3;
+              margin-top: 52px;
+            }
+          `}
           state={state}
           setState={setState}
           heading="Filter and Sort"
         />
-        <List>
+        <TitleList
+          css={css`
+            @media only screen and (min-width: ${breakpoints.mid}) {
+              grid-column: 2 / 3;
+              grid-row: 2 / 4;
+              padding-top: 9px;
+            }
+          `}
+        >
           {state.viewings.map((viewing) => (
             <ViewingListItem
               key={`${viewing.sequence}-${viewing.imdbId}`}
               viewing={viewing}
             />
           ))}
-        </List>
-      </TwoColumns>
+        </TitleList>
+      </ViewingsWrap>
     </Layout>
   );
 }

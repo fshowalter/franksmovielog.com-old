@@ -11,7 +11,7 @@ const TextInput = styled.input`
   border: 0;
   border-radius: 0;
   box-sizing: border-box;
-  color: var(--color-text);
+  color: var(--color-text-secondary);
   display: block;
   font-family: var(--font-family-system);
   font-size: 16px;
@@ -77,13 +77,14 @@ export default function TextFilter({
   handleChange,
 }: TextFilterProps): JSX.Element {
   const debouncedHandleChange = underscoreDebounce(handleChange, 150);
+  const slugLabel = label.toLowerCase().replace(" ", "-");
 
   return (
     <FilterControl>
-      <Label htmlFor={label}>{label}</Label>
+      <Label htmlFor={slugLabel}>{label}</Label>
       <TextInputWrap>
         <TextInput
-          name={label}
+          id={slugLabel}
           placeholder={placeholder}
           onChange={(e): void => debouncedHandleChange(e.target.value)}
         />
