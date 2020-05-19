@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import testBackground from "../assets/background.jpg";
 import background from "../assets/bkg_dark.png";
 import hamburger from "../assets/hamburger.inline.svg";
 import mobileBackground from "../assets/imissnotcomingsoon.jpg";
@@ -27,7 +28,8 @@ const cssVars = css`
     --color-text-hint: rgba(0, 0, 0, 0.38);
     --color-text-primary: rgba(0, 0, 0, 0.87);
     --color-text-secondary: rgba(0, 0, 0, 0.54);
-    --font-family-sans: "Charter", "Iowan Old Style", Georgia, Cambria,
+    --color-text-heading: rgba(0, 0, 0, 0.75);
+    --font-family-serif: "Charter", "Iowan Old Style", Georgia, Cambria,
       "Times New Roman", Times, serif;
     --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
       Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -58,7 +60,7 @@ const cssReset = css`
     background: var(--color-primary);
     box-sizing: border-box;
     color: var(--color-text-primary);
-    font-family: var(--font-family-sans);
+    font-family: var(--font-family-system);
     -webkit-font-smoothing: antialiased;
     font-style: normal;
     font-weight: 500;
@@ -102,13 +104,15 @@ const cssReset = css`
 `;
 
 const LayoutWrap = styled.div`
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
     background: var(--color-content-background);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr auto;
     margin: 0 auto;
     max-width: 900px;
   }
@@ -271,7 +275,7 @@ const NavListItem = styled.li`
 `;
 
 const Header = styled.header`
-  background: #202020 url(${mobileBackground}) repeat;
+  background: #202020 url(${testBackground}) repeat;
   display: flex;
   justify-content: space-between;
   position: relative;

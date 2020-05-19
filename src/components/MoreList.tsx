@@ -5,6 +5,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import Grade from "./Grade";
+import { breakpoints } from "./Layout";
 
 const List = styled.ol`
   display: flex;
@@ -13,24 +14,13 @@ const List = styled.ol`
   list-style-type: none;
   margin: 0;
   padding: 0;
-
-  &:after {
-    clear: both;
-    content: "";
-    display: table;
-
-    @media only screen and (min-width: 48em) {
-      display: none;
-    }
-  }
 `;
 
 const Title = styled.div`
-  color: var(--color-text-primary);
+  color: var(--color-text-heading);
   display: block;
-  font-family: "Charter", "Georgia", "Times New Roman", Times, serif;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 800;
   line-height: 1.3;
   margin-bottom: 3px;
   text-rendering: optimizeLegibility;
@@ -38,14 +28,16 @@ const Title = styled.div`
 `;
 
 const ImageWrap = styled(Link)`
+  display: block;
+  margin-bottom: 3px;
   position: relative;
 `;
 
 const ListItemWrap = styled.div`
   display: block;
-  padding: 0 10px 30px;
+  padding: 0 12px 30px;
 
-  @media only screen and (min-width: 48em) {
+  @media only screen and (min-width: ${breakpoints.mid}) {
     padding-bottom: 0;
   }
 `;
@@ -66,7 +58,7 @@ const ListItem = styled.li`
     }
   }
 
-  @media only screen and (min-width: 48em) {
+  @media only screen and (max-width: ${breakpoints.mid}) {
     &:nth-of-type(odd) {
       ${ListItemWrap} {
         padding-left: 0;
@@ -80,17 +72,17 @@ const ListItem = styled.li`
     }
   }
 
-  @media only screen and (min-width: 48em) {
+  @media only screen and (min-width: ${breakpoints.mid}) {
     ${ListItemWrap} {
       padding: 0;
     }
   }
 
-  @media only screen and (min-width: 48em) {
+  @media only screen and (min-width: ${breakpoints.mid}) {
     width: 23.5%;
   }
 
-  @media only screen and (min-width: 71.25em) {
+  @media only screen and (min-width: ${breakpoints.max}) {
     width: 200px;
   }
 `;

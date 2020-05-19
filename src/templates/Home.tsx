@@ -37,19 +37,19 @@ const List = styled.ol`
   width: 100%;
 `;
 
-const Review = styled.article``;
-
-const ReviewHeader = styled.header`
-  margin-top: 20px;
+const Review = styled.article`
+  display: flex;
+  flex-direction: column;
 `;
 
 const ReviewHeading = styled.h2`
+  color: rgba(0, 0, 0, 0.75);
   font-size: 26px;
-  font-weight: 700;
+  font-weight: 900;
   line-height: 1.1;
-  margin-bottom: 8px;
-  margin-top: 0;
-  padding: 0 0 0;
+  margin: 0 0 10px;
+  order: 2;
+  padding: 0;
 
   @media only screen and (min-width: ${listBreakpoint}) {
     font-size: 24px;
@@ -65,17 +65,17 @@ const ReviewImageWrap = styled(Link)`
   background-repeat: no-repeat;
   background-size: cover;
   display: block;
-  margin: 0;
+  margin: 0 0 12px;
   min-width: 33%;
+  order: 3;
 `;
 
 const Date = styled.time`
   color: var(--color-text-secondary);
-  font-family: var(--font-family-system);
-  font-size: 13px;
-  font-weight: 300;
+  font-size: 12px;
+  font-weight: 400;
   line-height: 2.5;
-  order: 3;
+  order: 1;
   text-transform: uppercase;
   width: 200px;
 
@@ -88,14 +88,21 @@ const Date = styled.time`
 
 const Main = styled.main`
   color: rgba(0, 0, 0, 0.54);
+  font-family: var(--font-family-serif);
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 28px;
+  margin-bottom: 12px;
   max-width: 66ch;
-  order: 3;
+  order: 4;
+  position: relative;
 
   p {
     margin: 0;
+
+    &:nth-of-type(1) {
+      text-indent: 105px;
+    }
   }
 `;
 
@@ -162,24 +169,26 @@ const imageForNode = (node: ReviewNode, index: number): JSX.Element | null => {
 
 const MoreHeading = styled.h4`
   border-bottom: 1px solid var(--color-border);
-  color: var(--color-text);
-  font-size: 16px;
-  font-style: normal;
-  margin: 60px 0 10px;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0 0 10px;
   padding-bottom: 4px;
   text-rendering: optimizeLegibility;
+  text-transform: uppercase;
   word-wrap: break-word;
 `;
 
 const NextPageLink = styled(Link)`
-  border: 1px solid #eee;
+  border: 1px solid var(--color-border);
   border-radius: 5px;
   color: inherit;
   display: block;
-  font-size: 15px;
+  font-size: 14px;
+  letter-spacing: 1px;
   line-height: 38px;
   margin: 30px auto 60px;
-  padding: 0 60px 0 20px;
+  padding: 0 40px 0 20px;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -203,7 +212,9 @@ interface MoreReviewsProps {
   pageContext: Props["pageContext"];
 }
 
-const MoreSection = styled.section``;
+const MoreSection = styled.section`
+  padding-top: 60px;
+`;
 
 function MoreReviews({
   moreNodes,
@@ -231,11 +242,11 @@ function MoreReviews({
 }
 
 const InlineGrade = styled(Grade)`
-  display: inline-block;
+  display: block;
   height: auto;
-  margin-right: 2px;
-  position: relative;
-  top: 0px;
+  position: absolute;
+  left: 1px;
+  top: 5px;
   width: 95px;
 `;
 
@@ -306,16 +317,14 @@ export default function HomeTemplate({
       <Home>
         <List start={data.page.nodes[0].sequence} reversed>
           {data.page.nodes.map((node, index) => (
-            <ListItem key={node.sequence}>
+            <ListItem to="" key={node.sequence}>
               <Review>
+                <ReviewHeading>
+                  <ReviewHeaderLink to={`/reviews/${node.slug}/`}>
+                    {node.movie.title}
+                  </ReviewHeaderLink>
+                </ReviewHeading>
                 {imageForNode(node, index)}
-                <ReviewHeader>
-                  <ReviewHeading>
-                    <ReviewHeaderLink to={`/reviews/${node.slug}/`}>
-                      {node.movie.title}
-                    </ReviewHeaderLink>
-                  </ReviewHeading>
-                </ReviewHeader>
                 <Main>{reviewContent(node)}</Main>
                 <Date dateTime={node.date}>
                   {moment.utc(node.date, "DD MMM YYYY").format("DD MMM YYYY")}
