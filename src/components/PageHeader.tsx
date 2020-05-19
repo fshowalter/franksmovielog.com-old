@@ -34,18 +34,18 @@ const Slug = styled.div`
 
 interface PageHeaderProps {
   className?: string;
-  header: string;
+  heading: string;
   slug: string;
 }
 
 export default function PageHeader({
   className,
-  header,
+  heading,
   slug,
 }: PageHeaderProps): JSX.Element {
   return (
     <Header className={className}>
-      <Heading>{header}</Heading>
+      <Heading>{heading}</Heading>
       <Slug>{slug}</Slug>
     </Header>
   );

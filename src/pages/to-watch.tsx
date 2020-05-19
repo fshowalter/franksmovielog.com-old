@@ -395,7 +395,7 @@ export default function Watchlist({ data }: Props): JSX.Element {
   return (
     <Layout>
       <PageHeader
-        header="The Watchlist"
+        heading="The Watchlist"
         slug={`My movie review bucketlist. ${Number(
           data.allWatchlistTitle.nodes.length
         ).toLocaleString()} ${pluralize(

@@ -365,7 +365,7 @@ export default function Viewings({ data }: Props): JSX.Element {
               grid-row: 1 / 2;
             }
           `}
-          header="Viewing Log"
+          heading="Viewing Log"
           slug={`I've watched ${data.allViewing.nodes.length} movies since 2012.`}
         />
         <FilterPanel

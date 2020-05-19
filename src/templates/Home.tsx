@@ -244,8 +244,8 @@ function MoreReviews({
 const InlineGrade = styled(Grade)`
   display: block;
   height: auto;
-  position: absolute;
   left: 1px;
+  position: absolute;
   top: 5px;
   width: 95px;
 `;
