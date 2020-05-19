@@ -1,23 +1,21 @@
 // Using .js to allow comments
 module.exports = {
   root: true,
-  extends: ["airbnb", "plugin:prettier/recommended"],
+  extends: ["airbnb-base", "plugin:prettier/recommended"],
   ignorePatterns: ["node_modules/", "static/", "public/"],
   overrides: [
     {
-      files: ["*.ts", "*.tsx"],
-      env: {
-        "jest/globals": true,
-      },
+      files: ["**/*.ts", "**/*.tsx"],
       extends: [
         "airbnb",
+        "airbnb/hooks",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "prettier/react",
         "plugin:jest/all",
-        "plugin:prettier/recommended",
+        "prettier",
+        "prettier/react",
+        "prettier/@typescript-eslint",
       ],
-      parser: "esprima",
       parser: "@typescript-eslint/parser",
       parserOptions: {
         project: "./tsconfig.json",
@@ -40,27 +38,11 @@ module.exports = {
             ignore: ["describe"],
           },
         ],
+        "no-useless-constructor": "off",
         "react/jsx-filename-extension": [
           2,
           { extensions: [".js", ".jsx", ".ts", ".tsx"] },
         ],
-
-        // "@typescript-eslint/indent": ["off"],
-        // "@typescript-eslint/no-useless-constructor": "error",
-        // "@typescript-eslint/triple-slash-reference": ["off"],
-        // "@typescript-eslint/unbound-method": [
-        //   "error",
-        //   {
-        //     ignoreStatic: true,
-        //   },
-        // ],
-
-        // "no-useless-constructor": "off",
-        // "spaced-comment": ["off"],
-        // "react/jsx-filename-extension": [
-        //   2,
-        //   { extensions: [".js", ".jsx", ".ts", ".tsx"] },
-        // ],
       },
       settings: {
         "import/parsers": {
