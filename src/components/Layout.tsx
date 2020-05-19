@@ -339,10 +339,11 @@ const TextInput = styled.input`
   border: 0;
   border-radius: 0;
   box-sizing: border-box;
-  color: #222;
+  color: var(--color-text);
   display: block;
   font-family: var(--font-family-system);
   font-size: 16px;
+  margin: 0;
   padding: 10px;
   width: 100%;
 
@@ -377,12 +378,11 @@ const ContentWrap = styled.div`
 const Footer = styled.footer`
   background: #202020 url(${background}) repeat;
   color: var(--color-primary);
-  font-family: var(--font-family-system);
   font-size: 14px;
   font-weight: 300;
   letter-spacing: 1px;
   margin: 0 auto;
-  padding: 40px 20px 60px;
+  padding: 24px;
   width: 100%;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
@@ -400,8 +400,7 @@ const FooterList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  line-height: 1.75;
-  margin: 0 auto 20px;
+  margin: 0 auto 12px;
   padding: 0;
 `;
 
@@ -414,7 +413,7 @@ const FooterListItem = styled.li`
 const FooterLink = styled(Link)`
   color: inherit;
   display: block;
-  padding: 8px 12px;
+  padding: 4px 12px;
   text-decoration: none;
   white-space: nowrap;
 `;
@@ -422,7 +421,7 @@ const FooterLink = styled(Link)`
 const footerSubLinkMixin = css`
   color: var(--color-primary);
   display: block;
-  padding: 8px 12px;
+  padding: 4px 12px;
   text-decoration: none;
 `;
 
@@ -436,8 +435,8 @@ const FooterSubExternalLink = styled.a`
 
 const FooterTextInputWrap = styled.div`
   border-bottom: solid 1px var(--color-primary);
-  margin: 0 auto 10px;
-  max-width: 180px;
+  margin: 0 auto 24px;
+  max-width: 80%;
 `;
 
 interface SearchFormProps {
