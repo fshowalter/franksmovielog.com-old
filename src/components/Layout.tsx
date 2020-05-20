@@ -8,11 +8,10 @@ import styled from "@emotion/styled";
 import testBackground from "../assets/background.jpg";
 import background from "../assets/bkg_dark.png";
 import hamburger from "../assets/hamburger.inline.svg";
-import mobileBackground from "../assets/imissnotcomingsoon.jpg";
 import logo from "../assets/logo.inline.svg";
 
 export const breakpoints: { mid: string; max: string } = {
-  mid: "768px",
+  mid: "750px",
   max: "1200px",
 };
 
@@ -21,7 +20,6 @@ const cssVars = css`
     --color-accent: #a9a287;
     --color-border: #e9e7e0;
     --color-content-background: #fff;
-    --color-heading: #000;
     --color-link: #579;
     --color-primary: #e9e7e0;
     --color-secondary: #c9c4b3;
@@ -110,9 +108,6 @@ const LayoutWrap = styled.div`
 
   @media only screen and (min-width: ${breakpoints.mid}) {
     background: var(--color-content-background);
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto 1fr auto;
     margin: 0 auto;
     max-width: 900px;
   }
@@ -140,9 +135,9 @@ const Logo = styled(logo)`
   width: 50px;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
-    background: #202020 url(${mobileBackground}) repeat;
+    background: #202020 url(${testBackground}) repeat;
     height: 70px;
-    margin-right: 20px;
+    margin-right: 24px;
     width: 70px;
   }
 
@@ -160,8 +155,7 @@ const LogoLink = styled(Link)`
 
   @media only screen and (min-width: ${breakpoints.mid}) {
     height: auto;
-    margin-left: 0;
-    margin-top: 11px;
+    margin: 0;
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
@@ -213,7 +207,7 @@ const MenuToggle = styled.button`
   padding: 0;
   width: 50px;
 
-  @media only screen and (min-width: 48em) {
+  @media only screen and (min-width: ${breakpoints.mid}) {
     display: none;
   }
 `;
@@ -223,7 +217,7 @@ const Nav = styled.nav`
   box-sizing: border-box;
   font-family: var(--font-family-system);
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 900;
   height: calc(100vh - 56px);
   letter-spacing: 1px;
   opacity: 0;
@@ -242,7 +236,10 @@ const Nav = styled.nav`
 
   @media only screen and (min-width: ${breakpoints.mid}) {
     background: transparent;
+    color: var(--color-text-secondary);
+    font-weight: 900;
     height: auto;
+    letter-spacing: normal;
     opacity: 1;
     padding: 0;
     position: relative;
@@ -257,12 +254,13 @@ const Nav = styled.nav`
 `;
 
 const NavList = styled.ul`
-  margin: 0;
+  margin: 0 0 24px;
   padding: 0;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
     display: flex;
     justify-content: space-between;
+    margin: 0;
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
@@ -301,7 +299,7 @@ const Header = styled.header`
 const NavLink = styled(Link)`
   border-bottom: 1px solid var(--color-border);
   clear: both;
-  color: inherit;
+  color: var(--color-text-secondary);
   display: block;
   line-height: 49px;
   margin: 0;
@@ -311,25 +309,24 @@ const NavLink = styled(Link)`
   @media only screen and (min-width: ${breakpoints.mid}) and (max-width: ${breakpoints.max}) {
     border-bottom: none;
     line-height: inherit;
-    margin-right: 20px;
-    padding: 10px 0;
+    margin: 0;
+    padding: 0;
 
     :nth-of-type(1) {
       margin-left: 10px;
     }
 
     :last-of-type {
-      margin-right: 0;
+      margin-right: 10px;
     }
   }
 `;
 
 const TextInputWrap = styled.div`
-  margin-top: 20px;
   width: 100%;
 
   @media only screen and (min-width: ${breakpoints.mid}) and (max-width: ${breakpoints.max}) {
-    margin-top: 0;
+    padding: 8px 0 0;
   }
 `;
 
@@ -339,7 +336,7 @@ const TextInput = styled.input`
   border: 0;
   border-radius: 0;
   box-sizing: border-box;
-  color: var(--color-text);
+  color: var(--color-text-primary);
   display: block;
   font-family: var(--font-family-system);
   font-size: 16px;
@@ -377,19 +374,11 @@ const ContentWrap = styled.div`
 
 const Footer = styled.footer`
   background: #202020 url(${background}) repeat;
-  color: var(--color-primary);
   font-size: 14px;
-  font-weight: 300;
-  letter-spacing: 1px;
+  font-weight: 900;
   margin: 0 auto;
   padding: 24px;
   width: 100%;
-
-  @media only screen and (min-width: ${breakpoints.mid}) {
-    grid-column: 1 / -1;
-    grid-row: 3 / 4;
-    max-height: 250px;
-  }
 
   @media only screen and (min-width: ${breakpoints.max}) {
     order: 2;
@@ -400,7 +389,7 @@ const FooterList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0 auto 12px;
+  margin: 0 auto 24px;
   padding: 0;
 `;
 
@@ -411,7 +400,7 @@ const FooterListItem = styled.li`
 `;
 
 const FooterLink = styled(Link)`
-  color: inherit;
+  color: rgba(255, 255, 255, 0.54);
   display: block;
   padding: 4px 12px;
   text-decoration: none;
@@ -419,7 +408,7 @@ const FooterLink = styled(Link)`
 `;
 
 const footerSubLinkMixin = css`
-  color: var(--color-primary);
+  color: rgba(255, 255, 255, 0.54);
   display: block;
   padding: 4px 12px;
   text-decoration: none;
@@ -437,6 +426,10 @@ const FooterTextInputWrap = styled.div`
   border-bottom: solid 1px var(--color-primary);
   margin: 0 auto 24px;
   max-width: 80%;
+
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    max-width: 50%;
+  }
 `;
 
 interface SearchFormProps {

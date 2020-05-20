@@ -20,7 +20,14 @@ module.exports = {
       parserOptions: {
         project: "./tsconfig.json",
       },
-      plugins: ["jest", "@typescript-eslint"],
+      plugins: [
+        "react",
+        "jest",
+        "jsx-a11y",
+        "import",
+        "prettier",
+        "@typescript-eslint",
+      ],
       rules: {
         "import/extensions": [
           "error",

@@ -72,18 +72,12 @@ const ReviewImageWrap = styled(Link)`
 
 const Date = styled.time`
   color: var(--color-text-secondary);
+  display: block;
   font-size: 12px;
   font-weight: 400;
   line-height: 2.5;
   order: 1;
   text-transform: uppercase;
-  width: 200px;
-
-  &:after {
-    clear: both;
-    content: "";
-    display: block;
-  }
 `;
 
 const Main = styled.main`
@@ -104,6 +98,12 @@ const Main = styled.main`
       text-indent: 105px;
     }
   }
+
+  &:after {
+    clear: both;
+    content: "";
+    display: block;
+  }
 `;
 
 const ListItem = styled.li`
@@ -118,10 +118,6 @@ const ListItem = styled.li`
     display: block;
     height: 1px;
     margin: 35px 0 30px;
-
-    @media only screen and (min-width: ${listBreakpoint}) {
-      margin: 40px 0 0 0;
-    }
   }
 
   &:last-of-type:after {
@@ -132,14 +128,25 @@ const ListItem = styled.li`
     margin-left: 0;
 
     @media only screen and (min-width: ${listBreakpoint}) {
+      ${Review} {
+        display: block;
+        position: relative;
+      }
+
       ${ReviewImageWrap} {
         float: right;
-        margin: 10px 0 16px 24px;
+        margin-left: 30px;
         width: 33.333333%;
       }
 
-      ${Date} {
-        grid-column: 1;
+      ${ReviewHeading} {
+        float: left;
+        max-width: calc(66.66666% - 30px);
+      }
+
+      ${Main} {
+        clear: left;
+        /* margin-right: calc(33.333333% + 30px); */
       }
     }
   }
@@ -182,9 +189,10 @@ const MoreHeading = styled.h4`
 const NextPageLink = styled(Link)`
   border: 1px solid var(--color-border);
   border-radius: 5px;
-  color: inherit;
+  color: var(--color-text-heading);
   display: block;
   font-size: 14px;
+  font-weight: 900;
   letter-spacing: 1px;
   line-height: 38px;
   margin: 30px auto 60px;
@@ -319,6 +327,9 @@ export default function HomeTemplate({
           {data.page.nodes.map((node, index) => (
             <ListItem to="" key={node.sequence}>
               <Review>
+                <Date dateTime={node.date}>
+                  {moment.utc(node.date, "DD MMM YYYY").format("DD MMM YYYY")}
+                </Date>
                 <ReviewHeading>
                   <ReviewHeaderLink to={`/reviews/${node.slug}/`}>
                     {node.movie.title}
@@ -326,9 +337,6 @@ export default function HomeTemplate({
                 </ReviewHeading>
                 {imageForNode(node, index)}
                 <Main>{reviewContent(node)}</Main>
-                <Date dateTime={node.date}>
-                  {moment.utc(node.date, "DD MMM YYYY").format("DD MMM YYYY")}
-                </Date>
               </Review>
             </ListItem>
           ))}
