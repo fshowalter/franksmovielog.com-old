@@ -87,8 +87,12 @@ const Date = styled.time`
   order: 1;
   text-transform: uppercase;
 
+  @media only screen and (min-width: ${listBreakpoint}) {
+    font-size: 13px;
+  }
+
   @media only screen and (min-width: ${breakpoints.max}) {
-    order: 2;
+    order: 4;
   }
 `;
 
@@ -98,7 +102,6 @@ const Main = styled.main`
   font-size: 18px;
   font-weight: 300;
   line-height: 28px;
-  margin-bottom: 12px;
   max-width: 66ch;
   order: 4;
   position: relative;
@@ -111,13 +114,8 @@ const Main = styled.main`
     }
   }
 
-  &:after {
-    clear: both;
-    content: "";
-    display: block;
-  }
-
   @media only screen and (min-width: ${listBreakpoint}) {
+    margin-bottom: 12px;
     order: 3;
   }
 `;
@@ -160,9 +158,20 @@ const ListItem = styled.li`
         max-width: calc(66.66666% - 30px);
       }
 
+      ${Date} {
+        font-weight: 300;
+        margin-bottom: 12px;
+
+        &:after {
+          clear: both;
+          content: "";
+          display: block;
+        }
+      }
+
       ${Main} {
         clear: left;
-        /* margin-right: calc(33.333333% + 30px); */
+        margin-bottom: 2px;
       }
     }
   }
@@ -343,9 +352,6 @@ export default function HomeTemplate({
           {data.page.nodes.map((node, index) => (
             <ListItem key={node.sequence}>
               <Review>
-                <Date dateTime={node.date}>
-                  {moment.utc(node.date, "DD MMM YYYY").format("DD MMM YYYY")}
-                </Date>
                 <ReviewHeading>
                   <ReviewHeaderLink to={`/reviews/${node.slug}/`}>
                     {node.movie.title}
@@ -353,6 +359,9 @@ export default function HomeTemplate({
                 </ReviewHeading>
                 {imageForNode(node, index)}
                 <Main>{reviewContent(node)}</Main>
+                <Date dateTime={node.date}>
+                  {moment.utc(node.date, "DD MMM YYYY").format("DD MMM YYYY")}
+                </Date>
               </Review>
             </ListItem>
           ))}
