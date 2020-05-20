@@ -68,6 +68,14 @@ const ReviewImageWrap = styled(Link)`
   margin: 0 0 12px;
   min-width: 33%;
   order: 3;
+
+  @media only screen and (min-width: ${listBreakpoint}) {
+    margin: 0 0 18px;
+  }
+
+  @media only screen and (min-width: ${breakpoints.max}) {
+    order: 1;
+  }
 `;
 
 const Date = styled.time`
@@ -78,6 +86,10 @@ const Date = styled.time`
   line-height: 2.5;
   order: 1;
   text-transform: uppercase;
+
+  @media only screen and (min-width: ${breakpoints.max}) {
+    order: 2;
+  }
 `;
 
 const Main = styled.main`
@@ -103,6 +115,10 @@ const Main = styled.main`
     clear: both;
     content: "";
     display: block;
+  }
+
+  @media only screen and (min-width: ${listBreakpoint}) {
+    order: 3;
   }
 `;
 
@@ -325,7 +341,7 @@ export default function HomeTemplate({
       <Home>
         <List start={data.page.nodes[0].sequence} reversed>
           {data.page.nodes.map((node, index) => (
-            <ListItem to="" key={node.sequence}>
+            <ListItem key={node.sequence}>
               <Review>
                 <Date dateTime={node.date}>
                   {moment.utc(node.date, "DD MMM YYYY").format("DD MMM YYYY")}

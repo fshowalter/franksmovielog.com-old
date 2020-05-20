@@ -113,6 +113,8 @@ const LayoutWrap = styled.div`
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
+    flex-direction: row;
+    flex-wrap: wrap;
     max-width: 1200px;
     padding: 30px 0 0;
   }
