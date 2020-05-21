@@ -36,8 +36,10 @@ const ListItem = styled.li`
 `;
 
 const Title = styled.div`
+  color: var(--color-text-heading);
   display: block;
   font-size: 18px;
+  font-weight: 900;
   padding: 34px 20px 0;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
@@ -51,7 +53,6 @@ const Title = styled.div`
 
 const Slug = styled.div`
   color: var(--color-text-secondary);
-  font-family: var(--font-family-system);
   font-size: 12px;
   font-weight: 300;
   line-height: 20px;
@@ -60,18 +61,18 @@ const Slug = styled.div`
 
   @media only screen and (min-width: ${breakpoints.mid}) {
     font-size: 13px;
-    padding: 0 0 20px;
+    padding: 0 0 27px;
   }
 
-  @media only screen and (min-width: ${breakpoints.mid}) {
-    padding: 0 0 27px;
+  @media only screen and (min-width: ${breakpoints.max}) {
+    font-size: 14px;
   }
 `;
 
 const Year = styled.span`
   color: var(--color-text-secondary);
-  font-family: var(--font-family-system);
   font-size: 13px;
+  font-weight: 400;
 `;
 
 interface TitleListItem {

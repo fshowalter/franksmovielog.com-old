@@ -308,6 +308,10 @@ const NavLink = styled(Link)`
   padding: 0;
   text-decoration: none;
 
+  &.active {
+    color: var(--color-text-primary);
+  }
+
   @media only screen and (min-width: ${breakpoints.mid}) and (max-width: ${breakpoints.max}) {
     border-bottom: none;
     line-height: inherit;
@@ -487,25 +491,39 @@ export default function Layout({ pageTitle, children }: Props): JSX.Element {
         <Nav role="navigation" className={showNav ? "open" : undefined}>
           <NavList>
             <NavListItem>
-              <NavLink to="/">Home</NavLink>
+              <NavLink activeClassName="active" to="/">
+                Home
+              </NavLink>
             </NavListItem>
             <NavListItem>
-              <NavLink to="/about/">About</NavLink>
+              <NavLink activeClassName="active" to="/about/">
+                About
+              </NavLink>
             </NavListItem>
             <NavListItem>
-              <NavLink to="/how-i-grade/">How I Grade</NavLink>
+              <NavLink activeClassName="active" to="/how-i-grade/">
+                How I Grade
+              </NavLink>
             </NavListItem>
             <NavListItem>
-              <NavLink to="/reviews/">Reviews</NavLink>
+              <NavLink activeClassName="active" to="/reviews/">
+                Reviews
+              </NavLink>
             </NavListItem>
             <NavListItem>
-              <NavLink to="/viewings/">Viewing Log</NavLink>
+              <NavLink activeClassName="active" to="/viewings/">
+                Viewing Log
+              </NavLink>
             </NavListItem>
             <NavListItem>
-              <NavLink to="/to-watch/">To-Watch</NavLink>
+              <NavLink activeClassName="active" to="/to-watch/">
+                To-Watch
+              </NavLink>
             </NavListItem>
             <NavListItem>
-              <NavLink to="/stats/">Stats</NavLink>
+              <NavLink activeClassName="active" to="/stats/">
+                Stats
+              </NavLink>
             </NavListItem>
           </NavList>
           <SearchForm>

@@ -10,7 +10,7 @@ const Container = styled.div`
   margin: 0 20px;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
-    margin: 0;
+    margin: 0 0 60px 0;
   }
 `;
 
@@ -18,17 +18,16 @@ const Heading = styled.h2`
   border-bottom: 1px solid var(--color-border);
   color: var(--color-text-secondary);
   display: block;
-  font-family: var(--font-family-system);
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 900;
   margin: 0 0 20px;
-  padding: 16px 20px;
+  padding: 16px 24px;
   position: relative;
   text-decoration: none;
 `;
 
 const Content = styled.div`
-  padding: 0 20px;
+  padding: 0 24px;
 `;
 
 interface PanelProps {

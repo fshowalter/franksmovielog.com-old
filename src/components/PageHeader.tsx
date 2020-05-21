@@ -20,12 +20,14 @@ const Header = styled.header`
 `;
 
 const Heading = styled.h1`
+  font-weight: 900;
   line-height: 1;
   margin-bottom: 0.5rem;
 `;
 
 const Slug = styled.div`
   color: rgba(0, 0, 0, 0.54);
+  font-family: var(--font-family-serif);
   font-size: 16px;
   letter-spacing: 0.5px;
   line-height: 20px;

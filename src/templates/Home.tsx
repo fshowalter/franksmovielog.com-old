@@ -93,6 +93,7 @@ const Date = styled.time`
 
   @media only screen and (min-width: ${breakpoints.max}) {
     order: 4;
+    font-weight: 300;
   }
 `;
 
@@ -115,7 +116,7 @@ const Main = styled.main`
   }
 
   @media only screen and (min-width: ${listBreakpoint}) {
-    margin-bottom: 12px;
+    margin-bottom: 2px;
     order: 3;
   }
 `;
@@ -171,7 +172,6 @@ const ListItem = styled.li`
 
       ${Main} {
         clear: left;
-        margin-bottom: 2px;
       }
     }
   }
