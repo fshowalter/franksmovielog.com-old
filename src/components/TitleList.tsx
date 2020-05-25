@@ -87,12 +87,12 @@ export const TitleList = styled.ol`
   padding: 0 0 60px;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
-    border-right: solid 1px var(--color-border);
-    padding-left: 30px;
+    padding: 0 1rem 60px 30px;
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
-    padding-left: 60px;
+    border-right: solid 1px var(--color-border);
+    /* padding-left: 60px; */
   }
 `;
 

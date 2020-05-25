@@ -341,7 +341,7 @@ const ViewingsWrap = styled.div`
     grid-template-columns: 38.2% 61.8%;
     grid-template-rows: auto auto 1fr;
     height: 100%;
-    padding: 0 0 0 30px;
+    /* padding: 0 0 0 30px; */
   }
 `;
 

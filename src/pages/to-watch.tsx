@@ -1,8 +1,12 @@
+/** @jsx jsx  */
 import { graphql } from "gatsby";
 import pluralize from "pluralize";
 import React from "react";
 
-import Layout from "../components/Layout";
+import { css, jsx } from "@emotion/core";
+import styled from "@emotion/styled";
+
+import Layout, { breakpoints } from "../components/Layout";
 import PageHeader from "../components/PageHeader";
 import Panel from "../components/Panel";
 import RangeFilter from "../components/RangeFilter";
@@ -212,6 +216,7 @@ interface WatchlistTitleItem extends WatchlistTitle {
 }
 
 interface FilterPanelProps {
+  className?: string;
   state: WatchlistTitleItem[];
   setState(state: WatchlistTitleItem[]): void;
   heading: string;
@@ -220,6 +225,7 @@ interface FilterPanelProps {
 const matchers: { [key: string]: (title: WatchlistTitle) => boolean } = {};
 
 function FilterPanel({
+  className,
   state,
   setState,
   heading,
@@ -249,7 +255,7 @@ function FilterPanel({
   };
 
   return (
-    <Panel heading={heading}>
+    <Panel className={className} heading={heading}>
       <TitleFilter
         onChange={onFilterChange}
         label="Title"
@@ -377,6 +383,16 @@ const WatchlistTitleItem = React.memo(function WatchlistTitleItem({
   );
 });
 
+const ToWatchWrap = styled.div`
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    display: grid;
+    grid-template-columns: 38.2% 61.8%;
+    grid-template-rows: auto auto 1fr;
+    height: 100%;
+    padding: 0 0 0 30px;
+  }
+`;
+
 interface Props {
   data: {
     allWatchlistTitle: {
@@ -394,25 +410,48 @@ export default function Watchlist({ data }: Props): JSX.Element {
 
   return (
     <Layout>
-      <PageHeader
-        heading="The Watchlist"
-        slug={`My movie review bucketlist. ${Number(
-          data.allWatchlistTitle.nodes.length
-        ).toLocaleString()} ${pluralize(
-          "title",
-          data.allWatchlistTitle.nodes.length
-        )}. No silents or documentaries.`}
-      />
-      <FilterPanel
-        state={state}
-        setState={setState}
-        heading="Filter and Sort"
-      />
-      <TitleList>
-        {state.map((title) => (
-          <WatchlistTitleItem key={title.imdbId} watchlistTitle={title} />
-        ))}
-      </TitleList>
+      <ToWatchWrap>
+        <PageHeader
+          css={css`
+            @media only screen and (min-width: ${breakpoints.mid}) {
+              grid-column: 1 / -1;
+              grid-row: 1 / 2;
+            }
+          `}
+          heading="The Watchlist"
+          slug={`My movie review bucketlist. ${Number(
+            data.allWatchlistTitle.nodes.length
+          ).toLocaleString()} ${pluralize(
+            "title",
+            data.allWatchlistTitle.nodes.length
+          )}. No silents or documentaries.`}
+        />
+        <FilterPanel
+          css={css`
+            @media only screen and (min-width: ${breakpoints.mid}) {
+              grid-column: 1 / 2;
+              grid-row: 2 /3;
+              margin-top: 52px;
+            }
+          `}
+          state={state}
+          setState={setState}
+          heading="Filter and Sort"
+        />
+        <TitleList
+          css={css`
+            @media only screen and (min-width: ${breakpoints.mid}) {
+              grid-column: 2 / 3;
+              grid-row: 2 / 4;
+              padding-top: 9px;
+            }
+          `}
+        >
+          {state.map((title) => (
+            <WatchlistTitleItem key={title.imdbId} watchlistTitle={title} />
+          ))}
+        </TitleList>
+      </ToWatchWrap>
     </Layout>
   );
 }

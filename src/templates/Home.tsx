@@ -1,3 +1,5 @@
+/* eslint-env node, browser */
+
 import { graphql, Link } from "gatsby";
 import Img, { FluidObject } from "gatsby-image";
 import parse from "html-react-parser";
@@ -18,11 +20,11 @@ const listBreakpoint = "650px";
 const Home = styled.section`
   letter-spacing: 0.16px;
   margin: 0;
-  padding: 24px;
+  padding: 28px 0;
   text-rendering: optimizelegibility;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
-    padding: 0 30px;
+    padding: 0;
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
@@ -40,14 +42,13 @@ const List = styled.ol`
 const Review = styled.article`
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 const ReviewHeading = styled.h2`
   color: rgba(0, 0, 0, 0.75);
   font-size: 26px;
   font-weight: 900;
-  line-height: 1.1;
-  margin: 0 0 10px;
   order: 2;
   padding: 0;
 
@@ -61,49 +62,12 @@ const ReviewHeaderLink = styled(Link)`
   text-decoration: none;
 `;
 
-const ReviewImageWrap = styled(Link)`
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: block;
-  margin: 0 0 12px;
-  min-width: 33%;
-  order: 3;
-
-  @media only screen and (min-width: ${listBreakpoint}) {
-    margin: 0 0 18px;
-  }
-
-  @media only screen and (min-width: ${breakpoints.max}) {
-    order: 1;
-  }
-`;
-
-const Date = styled.time`
-  color: var(--color-text-secondary);
-  display: block;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 2.5;
-  order: 1;
-  text-transform: uppercase;
-
-  @media only screen and (min-width: ${listBreakpoint}) {
-    font-size: 13px;
-  }
-
-  @media only screen and (min-width: ${breakpoints.max}) {
-    order: 4;
-    font-weight: 300;
-  }
-`;
-
 const Main = styled.main`
   color: rgba(0, 0, 0, 0.54);
   font-family: var(--font-family-serif);
   font-size: 18px;
   font-weight: 300;
   line-height: 28px;
-  max-width: 66ch;
   order: 4;
   position: relative;
 
@@ -116,8 +80,44 @@ const Main = styled.main`
   }
 
   @media only screen and (min-width: ${listBreakpoint}) {
-    margin-bottom: 2px;
+    /* margin-bottom: 2px; */
     order: 3;
+  }
+`;
+
+const ReviewImageWrap = styled(Link)`
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  margin: 0;
+  min-width: 33%;
+  order: 3;
+
+  @media only screen and (min-width: ${listBreakpoint}) {
+    margin: 0;
+  }
+
+  @media only screen and (min-width: ${breakpoints.max}) {
+    order: 1;
+  }
+`;
+
+const Date = styled.time`
+  color: var(--color-text-secondary);
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: calc(0.5 * var(--one-line));
+  order: 1;
+  text-transform: uppercase;
+
+  @media only screen and (min-width: ${listBreakpoint}) {
+    font-size: 13px;
+  }
+
+  @media only screen and (min-width: ${breakpoints.max}) {
+    font-weight: 300;
+    order: 4;
   }
 `;
 
@@ -132,7 +132,7 @@ const ListItem = styled.li`
     content: "";
     display: block;
     height: 1px;
-    margin: 35px 0 30px;
+    margin: calc(var(--one-line) - 1px) 0 var(--one-line);
   }
 
   &:last-of-type:after {
@@ -148,16 +148,16 @@ const ListItem = styled.li`
         position: relative;
       }
 
-      ${ReviewImageWrap} {
+      /* ${ReviewImageWrap} {
         float: right;
         margin-left: 30px;
         width: 33.333333%;
-      }
+      } */
 
-      ${ReviewHeading} {
+      /* ${ReviewHeading} {
         float: left;
         max-width: calc(66.66666% - 30px);
-      }
+      } */
 
       ${Date} {
         font-weight: 300;
