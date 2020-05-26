@@ -25,8 +25,6 @@ const Title = styled.h1`
 `;
 
 const ReviewSection = styled.section`
-  max-width: 900px;
-
   @media only screen and (min-width: ${breakpoints.max}) {
     padding: 0 0 30px;
   }

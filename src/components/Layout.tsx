@@ -136,11 +136,9 @@ const Logo = styled(logo)`
 
   @media only screen and (min-width: ${breakpoints.mid}) {
     background: #202020 url(${testBackground}) repeat;
-    /* background: #222; */
     height: 70px;
-    margin-right: 24px;
-    width: 70px;
     margin-right: 1rem;
+    width: 70px;
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
@@ -192,13 +190,22 @@ const Hamburger = styled(hamburger)`
 `;
 
 const Search = styled(search)`
-  background-color: transparent;
-  display: block;
-  fill: #fff;
-  height: 25px;
-  /* margin: 0 10px 0 15px; */
-  /* stroke: #000; */
-  width: 23px;
+  @media only screen and (min-width: ${breakpoints.mid}) {
+    background-color: transparent;
+    display: block;
+    fill: #fff;
+    height: 25px;
+    width: 23px;
+  }
+
+  @media only screen and (min-width: ${breakpoints.max}) {
+    margin-right: 0;
+  }
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
 `;
 
 const Menu = styled(menu)`
@@ -225,10 +232,10 @@ const CloseSearch = styled(close)`
   background-color: transparent;
   display: block;
   fill: var(--color-text-primary);
-  height: 16px;
+  height: 25px;
   /* margin: 0 10px 0 15px; */
   /* stroke: #000; */
-  width: 24px;
+  width: 25px;
 `;
 
 const SearchToggle = styled.button`
@@ -298,21 +305,14 @@ const CloseNav = styled.button`
 const CloseSearchButton = styled.button`
   background: none;
   border: none;
-  border-bottom: 1px solid var(--color-border);
   border-radius: 0;
   box-shadow: none;
   display: flex;
-  justify-content: flex-end;
-  padding: 27px 24px;
-  width: 100%;
-
-  @media only screen and (min-width: ${breakpoints.mid}) {
-    display: none;
-  }
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const Nav = styled.nav`
-  background: #fff;
   box-sizing: border-box;
   height: 100vh;
   left: 0;
@@ -331,7 +331,6 @@ const Nav = styled.nav`
   }
 
   @media only screen and (min-width: ${breakpoints.mid}) {
-    background: none;
     display: flex;
     height: auto;
     opacity: 1;
@@ -359,7 +358,8 @@ const NavListItem = styled.li`
 `;
 
 const Header = styled.header`
-  background-color: var(--color-text-primary);
+  background-color: #262626;
+
   width: 100%;
 `;
 
@@ -382,7 +382,7 @@ const NavLink = styled(Link)`
     color: #fff;
     font-size: 14px;
     font-weight: 500;
-    line-height: 26px;
+    line-height: 23px;
     margin: 0;
 
     :nth-of-type(1) {
@@ -399,8 +399,13 @@ const TextInputWrap = styled.div`
   margin: 0 24px;
   width: calc(100% - 48px);
 
-  @media only screen and (min-width: ${breakpoints.mid}) and (max-width: ${breakpoints.max}) {
-    padding: 8px 0 0;
+  @media only screen and (min-width: ${breakpoints.mid}) {
+  }
+
+  @media only screen and (min-width: ${breakpoints.max}) {
+    /* margin: 0; */
+    padding: 0;
+    /* width: inherit; */
   }
 `;
 
@@ -424,6 +429,10 @@ const TextInput = styled.input`
     font-size: 14px;
     font-weight: normal;
   }
+
+  @media only screen and (min-width: ${breakpoints.max}) {
+    padding: 5px 10px;
+  }
 `;
 
 const ContentWrap = styled.div`
@@ -433,9 +442,6 @@ const ContentWrap = styled.div`
   max-width: 1000px;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
-    grid-column: 1;
-    grid-row: 2 /3;
-
     &:after {
       clear: both;
       content: "";
@@ -508,28 +514,59 @@ const FooterTextInputWrap = styled.div`
   }
 `;
 
-const StyledSearchForm = styled.form`
+const SearchWrap = styled.div`
+  display: flex;
+  height: 76px;
+  justify-content: flex-end;
+  left: 0;
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 14px 24px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translateY(-100%);
+  transition: transform 0.15s linear, opacity 0.15s linear;
+  width: 100%;
+
   @media only screen and (min-width: ${breakpoints.mid}) {
+    background: #fff;
     opacity: 0;
-    position: absolute;
-    visibility: hidden;
+
+    &.open {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  & ${Search} {
+    fill: #000;
   }
 `;
 
 interface SearchFormProps {
+  className?: string;
+  role?: string;
   children: ReactNode;
 }
 
 function SearchForm({ children }: SearchFormProps): JSX.Element {
   return (
-    <StyledSearchForm
+    <form
+      css={css`
+        align-items: center;
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+      `}
       action="https://www.google.com/search"
       acceptCharset="UTF-8"
       method="get"
+      role="search"
     >
       <input type="hidden" name="q" value="site:www.franksmovielog.com" />
       {children}
-    </StyledSearchForm>
+    </form>
   );
 }
 
@@ -576,13 +613,17 @@ const LogoWrap = styled.div`
   @media only screen and (min-width: ${breakpoints.mid}) {
     width: 50%;
   }
+
+  @media only screen and (min-width: ${breakpoints.max}) {
+    width: 33%;
+  }
 `;
 
 const HeaderWrap = styled.div`
   display: flex;
   justify-content: left;
   margin: 0 auto;
-  max-width: 1048px;
+  max-width: 1000px;
   padding: 14px 24px;
   position: relative;
 
@@ -590,8 +631,6 @@ const HeaderWrap = styled.div`
     justify-content: space-between;
   }
 `;
-
-const SearchWrap = styled.div``;
 
 interface Props {
   children: ReactNode;
@@ -644,11 +683,6 @@ export default function Layout({ pageTitle, children }: Props): JSX.Element {
             </CloseNav>
             <NavList>
               <NavListItem>
-                <NavLink activeClassName="active" to="/">
-                  Home
-                </NavLink>
-              </NavListItem>
-              <NavListItem>
                 <NavLink activeClassName="active" to="/about/">
                   About
                 </NavLink>
@@ -679,18 +713,25 @@ export default function Layout({ pageTitle, children }: Props): JSX.Element {
                 </NavLink>
               </NavListItem>
             </NavList>
-            <SearchToggle onClick={toggleNav} aria-expanded={navVisible}>
+            <SearchToggle onClick={toggleSearch} aria-expanded={searchVisible}>
               <Search />
               <ButtonLabel>Search</ButtonLabel>
             </SearchToggle>
-            <SearchForm>
-              <TextInputWrap>
-                <TextInput aria-label="search" name="q" placeholder="Search" />
-              </TextInputWrap>
-              <CloseSearchButton onClick={toggleNav}>
+            <SearchWrap className={searchVisible ? "open" : undefined}>
+              <SearchForm>
+                <Search />
+                <TextInputWrap>
+                  <TextInput
+                    aria-label="search"
+                    name="q"
+                    placeholder="Search"
+                  />
+                </TextInputWrap>
+              </SearchForm>
+              <CloseSearchButton onClick={toggleSearch}>
                 <CloseSearch />
               </CloseSearchButton>
-            </SearchForm>
+            </SearchWrap>
           </Nav>
         </HeaderWrap>
       </Header>
