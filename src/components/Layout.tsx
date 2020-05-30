@@ -413,6 +413,8 @@ const Nav = styled.nav`
   height: 100vh;
   left: -99999rem;
   opacity: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding: 0 0 48px;
   position: fixed;
   right: 99999rem;
