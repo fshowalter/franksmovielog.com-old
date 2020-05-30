@@ -69,7 +69,7 @@ const rangeInputMixin = css`
   box-sizing: content-box;
   color: var(--color-text-secondary);
   font-family: var(--font-family-system);
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 1.2rem;
   padding: 0;
   width: 25%;
@@ -77,7 +77,7 @@ const rangeInputMixin = css`
     appearance: none;
     margin: 0;
   }
-  width: 3rem;
+  width: 4rem;
   @media (min-width: 50em) {
     height: 1.4rem;
     line-height: 1.4rem;

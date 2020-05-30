@@ -340,7 +340,7 @@ const formatCollections = (collections: Array<WatchlistCollection>): string => {
 
   const formattedNames = new Intl.ListFormat("en").format(names);
 
-  return `it's a ${formattedNames} film`;
+  return `it's in the "${formattedNames}" collection`;
 };
 
 const buildSlug = (watchlistTitle: WatchlistTitle): string => {
@@ -418,7 +418,7 @@ export default function Watchlist({ data }: Props): JSX.Element {
               grid-row: 1 / 2;
             }
           `}
-          heading="The Watchlist"
+          heading="To-Watch List"
           slug={`My movie review bucketlist. ${Number(
             data.allWatchlistTitle.nodes.length
           ).toLocaleString()} ${pluralize(

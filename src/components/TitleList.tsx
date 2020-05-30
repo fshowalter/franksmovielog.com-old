@@ -11,18 +11,18 @@ const ListItem = styled.li`
   position: relative;
 
   &:after {
-    background-color: var(--color-border);
+    background-color: #d8d8d8;
     bottom: 0;
     content: "";
     display: block;
-    height: 1px;
-    left: 20px;
+    height: 0.1rem;
+    left: 2rem;
     margin: 0;
     position: absolute;
     right: 0;
   }
 
-  @media only screen and (min-width: ${breakpoints.mid}) {
+  /* @media only screen and (min-width: ${breakpoints.mid}) {
     margin: 0;
 
     &:after {
@@ -32,46 +32,29 @@ const ListItem = styled.li`
 
   @media only screen and (min-width: ${breakpoints.max}) {
     margin: 0;
-  }
+  } */
 `;
 
 const Title = styled.div`
-  color: var(--color-text-heading);
   display: block;
-  font-size: 18px;
-  font-weight: 900;
-  padding: 34px 20px 0;
-
-  @media only screen and (min-width: ${breakpoints.mid}) {
-    padding: 20px 0 0;
-  }
-
-  @media only screen and (min-width: ${breakpoints.mid}) {
-    padding: 27px 0 0;
-  }
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.388888889;
+  padding: 3rem 2rem 0;
 `;
 
 const Slug = styled.div`
-  color: var(--color-text-secondary);
-  font-size: 12px;
+  color: #6d6d6d;
+  font-size: 1.5rem;
   font-weight: 300;
   line-height: 20px;
-  padding: 0 20px 20px;
+  padding: 0.5rem 2rem 2rem;
   text-rendering: optimizeLegibility;
-
-  @media only screen and (min-width: ${breakpoints.mid}) {
-    font-size: 13px;
-    padding: 0 0 27px;
-  }
-
-  @media only screen and (min-width: ${breakpoints.max}) {
-    font-size: 14px;
-  }
 `;
 
 const Year = styled.span`
   color: var(--color-text-secondary);
-  font-size: 13px;
+  font-size: 1.3rem;
   font-weight: 400;
 `;
 
@@ -84,16 +67,16 @@ interface TitleListItem {
 
 export const TitleList = styled.ol`
   margin: 0;
-  padding: 0 0 60px;
+  padding: 0 0 6rem;
 
-  @media only screen and (min-width: ${breakpoints.mid}) {
+  /* @media only screen and (min-width: ${breakpoints.mid}) {
     padding: 0 1rem 60px 30px;
   }
 
   @media only screen and (min-width: ${breakpoints.max}) {
     border-right: solid 1px var(--color-border);
-    /* padding-left: 60px; */
-  }
+    padding-left: 60px;
+  } */
 `;
 
 export function TitleListItem({

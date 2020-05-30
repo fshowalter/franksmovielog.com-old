@@ -336,12 +336,19 @@ const ViewingListItem = React.memo(function ViewingListItem({
 });
 
 const ViewingsWrap = styled.div`
-  @media only screen and (min-width: ${breakpoints.mid}) {
-    display: grid;
-    grid-template-columns: 38.2% 61.8%;
-    grid-template-rows: auto auto 1fr;
-    height: 100%;
-    /* padding: 0 0 0 30px; */
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 168rem;
+
+  @media screen and (min-width: 700px) {
+    width: calc(100% - 8rem);
+  }
+
+  @media screen and (min-width: 1220px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 `;
 
@@ -361,20 +368,15 @@ export default function Viewings({ data }: Props): JSX.Element {
       <ViewingsWrap>
         <PageHeader
           css={css`
-            @media only screen and (min-width: ${breakpoints.mid}) {
-              grid-column: 1 / -1;
-              grid-row: 1 / 2;
-            }
+            width: 100%;
           `}
           heading="Viewing Log"
           slug={`I've watched ${data.allViewing.nodes.length} movies since 2012.`}
         />
         <FilterPanel
           css={css`
-            @media only screen and (min-width: ${breakpoints.mid}) {
-              grid-column: 1 / 2;
-              grid-row: 2 /3;
-              margin-top: 52px;
+            @media screen and (min-width: 1220px) {
+              width: 33%;
             }
           `}
           state={state}
@@ -383,10 +385,8 @@ export default function Viewings({ data }: Props): JSX.Element {
         />
         <TitleList
           css={css`
-            @media only screen and (min-width: ${breakpoints.mid}) {
-              grid-column: 2 / 3;
-              grid-row: 2 / 4;
-              padding-top: 9px;
+            @media screen and (min-width: 1220px) {
+              width: 66%;
             }
           `}
         >

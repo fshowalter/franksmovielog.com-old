@@ -1,99 +1,82 @@
 /* eslint-env node, browser */
 
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Img, { FluidObject } from "gatsby-image";
 import parse from "html-react-parser";
 import marked from "marked";
 import moment from "moment";
 import React from "react";
 
+import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import calendar from "../assets/calendar.inline.svg";
 import Grade from "../components/Grade";
 import Layout, { breakpoints } from "../components/Layout";
 
 const Title = styled.h1`
-  font-size: 32px;
-  font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 0;
-  padding: 30px 0 0;
+  font-family: var(--font-family-system);
+  font-feature-settings: "lnum";
+  font-size: 3.6rem;
+  font-variant-numeric: lining-nums;
+  font-weight: 800;
+  letter-spacing: -0.0415625em;
+  line-height: 1.138888889;
+  margin: 0 auto;
+  max-width: 100rem;
+  order: 2;
+  padding: 0;
+  text-align: center;
+  width: calc(100% - 4rem);
 
-  @media only screen and (min-width: ${breakpoints.mid}) {
-    font-size: 42px;
+  @media (min-width: 700px) {
+    font-size: 6.4rem;
+    width: calc(100% - 8rem);
   }
 `;
 
-const ReviewSection = styled.section`
-  @media only screen and (min-width: ${breakpoints.max}) {
-    padding: 0 0 30px;
-  }
+const Calendar = styled(calendar)`
+  display: block;
+  fill: #6d6d6d;
+  flex-shrink: 0;
+  height: 1.8rem;
+  margin-right: 1rem;
+  max-width: 100%;
+  width: 1.7rem;
 `;
 
 const Meta = styled.aside`
-  color: var(--color-text-secondary);
-  font-size: 14px;
-  font-weight: 300;
-  line-height: 1.4;
-  min-width: 170px;
-  order: 2;
+  color: #6d6d6d;
+  display: flex;
+  font-size: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4rem;
+  max-width: 66rem;
+  order: 3;
+  width: calc(100% - 4rem);
 
-  @media only screen and (min-width: ${breakpoints.max}) {
-    border-right: solid 1px var(--color-border);
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 500;
-    order: 1;
-    padding-right: 20px;
-    padding-top: 44px;
-    position: relative;
-    width: 220px;
-
-    &:before {
-      background: var(--color-border);
-      content: "";
-      height: 1px;
-      position: absolute;
-      right: 0px;
-      top: 54px;
-      width: 20px;
-      z-index: -1;
-    }
-
-    &:after {
-      background: #fdfdfd;
-      border: var(--color-border) 1px solid;
-      border-radius: 100%;
-      content: "";
-      display: block;
-      height: 7px;
-      position: absolute;
-      right: -5px;
-      top: 50px;
-      width: 7px;
-      z-index: 500;
-    }
+  @media (min-width: 700px) {
+    font-size: 1.6rem;
+    margin-top: 6rem;
   }
 `;
 
 const Main = styled.main`
-  color: var(--color-text);
   font-family: var(--font-family-serif);
-  font-size: 20px;
-  line-height: 1.5;
-  max-width: 66ch;
-  order: 3;
-  padding: 20px 0 0;
+  line-height: 1.4;
+  margin: 0 auto;
+  max-width: 66rem;
+  padding-top: 1.25em;
+  width: calc(100% - 4rem);
 
   p {
-    margin-bottom: 30px;
+    margin-bottom: 1.25em;
   }
 
-  @media only screen and (min-width: ${breakpoints.max}) {
-    margin-top: 0;
-    order: 2;
-    padding-left: 30px;
-    padding-top: 40px;
+  @media only screen and (min-width: 700px) {
+    font-size: 2.1rem;
+    line-height: 1.476;
   }
 `;
 
@@ -132,15 +115,9 @@ interface Props {
   };
 }
 
-const YearAndRuntimeWrap = styled.span`
-  color: var(--color-text-secondary);
-  display: block;
-  font-size: 14px;
-  font-weight: 300;
-`;
-
 const AkaWrap = styled.div`
   color: var(--color-text-secondary);
+  order: 3;
   padding-bottom: 1em;
   padding-top: 0.25em;
 `;
@@ -153,21 +130,36 @@ const AkaTitle = styled.div`
   white-space: nowrap;
 `;
 
-const YearAndRuntimeDivider = styled.span`
-  color: var(--color-border);
+const Director = styled.span`
+  display: inline-block;
+  text-indent: -9999px;
+  width: 0.5ch;
+
+  &:before {
+    content: ":";
+    display: inline-block;
+    position: absolute;
+    text-indent: 9999px;
+  }
+
+  @media (min-width: 700px) {
+    text-indent: 0;
+
+    &:after {
+      content: none;
+    }
+  }
 `;
 
 const ReviewGrade = styled(Grade)`
   display: block;
-  height: auto;
-  line-height: 49px;
-  margin-bottom: 5px;
-  position: relative;
-  width: 110px;
+  height: 3rem;
+  margin: 1.5rem 0 0;
+  order: 3;
 
-  @media only screen and (min-width: ${breakpoints.max}) {
-    position: absolute;
-    top: 10px;
+  @media (min-width: 700px) {
+    height: 4.5rem;
+    margin-top: 2rem;
   }
 `;
 
@@ -196,40 +188,35 @@ const reviewContent = (
   return parse(marked(content, { pedantic: true }).toString());
 };
 
-function ReviewImage({ review }: Props["data"]): JSX.Element | null {
-  const isSSR = typeof window === "undefined";
+const StyledImage = styled(Img)`
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* border: 9px solid var(--color-border); */
+  display: block;
+  /* margin: 0 0 10px; */
+  margin: 0 auto 0;
+  max-width: 1000px;
+  order: 3;
+  width: 100%;
 
+  @media only screen and (min-width: 700px) {
+    /* margin-top: 8rem; */
+    order: 3;
+  }
+`;
+
+function ReviewImage({ review }: Props["data"]): JSX.Element | null {
   if (!review?.markdown?.backdrop) {
     return null;
   }
 
-  const parseMarginBottom = (): string => {
-    const imageWidth: number = parseInt(
-      getComputedStyle(document.documentElement)
-        .getPropertyValue("--gutter")
-        .slice(0, -2),
-      10
-    );
-
-    const lineHeight: number = parseInt(
-      getComputedStyle(document.documentElement)
-        .getPropertyValue("--one-line")
-        .slice(0, -2),
-      10
-    );
-
-    const imageHeight = (imageWidth / 16) * 9;
-
-    const lines = Math.ceil(imageHeight / lineHeight);
-
-    return `${lines * lineHeight - imageHeight}px`;
-  };
-
   return (
-    <Img
+    <StyledImage
+      css={css`
+        width: 100%;
+      `}
       fluid={review.markdown.backdrop?.childImageSharp.fluid}
       alt={`A still from ${review.movie.title}`}
-      style={isSSR ? undefined : { marginBottom: parseMarginBottom() }}
       loading="eager"
     />
   );
@@ -238,33 +225,14 @@ function ReviewImage({ review }: Props["data"]): JSX.Element | null {
 const DirectorsWrap = styled.span`
   color: var(--color-text-secondary);
   display: block;
-  font-size: 14px;
-  letter-spacing: 0.25px;
+  font-size: 12px;
+  font-weight: 400;
   margin-top: 1em;
 `;
 
-function Directors({ review }: Props["data"]): JSX.Element {
-  return (
-    <DirectorsWrap>
-      D:{" "}
-      {review.movie.directors.map((director) => director.fullName).join(" & ")}
-    </DirectorsWrap>
-  );
-}
-
-function YearAndRuntime({ review }: Props["data"]): JSX.Element {
-  return (
-    <YearAndRuntimeWrap>
-      {review.movie.year} <YearAndRuntimeDivider>|</YearAndRuntimeDivider>{" "}
-      {review.movie.runtimeMinutes}
-      &thinsp;mins.
-    </YearAndRuntimeWrap>
-  );
-}
-
 const Review = styled.article`
-  border-top: 1px solid var(--color-border);
-  margin: 30px 0;
+  /* border-bottom: 1px solid var(--color-border);
+  margin: 0;
   padding: 20px 0 0;
 
   @media only screen and (min-width: ${breakpoints.max}) {
@@ -272,17 +240,43 @@ const Review = styled.article`
     margin-top: 16px;
     padding-top: 0;
     position: relative;
-  }
+  } */
 `;
 
 const Via = styled.span`
-  color: rgba(0, 0, 0, 0.54);
+  display: block;
+  height: 0;
+  visibility: hidden;
+  width: 0;
+
+  @media (min-width: 700px) {
+    display: inline;
+    height: auto;
+    visibility: visible;
+    width: auto;
+  }
 `;
 
 const Date = styled.span``;
 
 const Header = styled.header`
-  padding: 0;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 0;
+
+  @media (min-width: 700px) {
+    padding: 8rem 0;
+  }
+`;
+
+const Year = styled.span`
+  font-size: 3rem;
+  font-weight: 300;
+
+  @media (min-width: 700px) {
+    font-size: 5.4rem;
+  }
 `;
 
 const List = styled.ol`
@@ -291,37 +285,102 @@ const List = styled.ol`
 `;
 
 const ListItem = styled.li`
+  list-style-type: none;
   margin: 0;
   padding: 0;
-  list-style-type: none;
+`;
+
+const Categories = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  line-height: 1.25;
+  margin-bottom: 2rem;
+
+  @media (min-width: 700px) {
+    margin-bottom: 3rem;
+  }
+`;
+
+const CategoryLink = styled(Link)`
+  border-bottom: 0.15rem solid currentColor;
+  color: #e90b1d;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.036666667em;
+  margin: 0.5rem 0 0 1rem;
+  order: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.15s linear;
+
+  @media (min-width: 700px) {
+    font-size: 1.5rem;
+    margin: 1rem 0 0 2rem;
+  }
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+`;
+
+const MovieDetails = styled.div`
+  align-items: center;
+  color: #6d6d6d;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  max-width: 58rem;
+  order: 3;
+  width: 100%;
+
+  @media (min-width: 700px) {
+    font-size: 1.6rem;
+    margin-top: 3rem;
+  }
 `;
 
 export default function ReviewTemplate({ data }: Props): JSX.Element {
   return (
     <Layout>
-      <ReviewSection>
-        <ReviewImage review={data.review} />
-        <Header>
-          <Title>{data.review.movie.title}</Title>
-          <AkaTitles review={data.review} />
-          <Directors review={data.review} />
-          <YearAndRuntime review={data.review} />
-        </Header>
-        <List>
-          <ListItem>
-            <Review>
-              <Meta>
-                <ReviewGrade grade={data.review.grade} width={95} height={95} />
-                <Date>
-                  {moment.utc(data.review.date).format("ddd MMM Do, YYYY")}{" "}
-                </Date>
-                <Via>via Shudder</Via>
-              </Meta>
-              <Main>{reviewContent(data.review)}</Main>
-            </Review>
-          </ListItem>
-        </List>
-      </ReviewSection>
+      <Header>
+        <Title>
+          {data.review.movie.title} <Year>{data.review.movie.year}</Year>
+        </Title>
+        <AkaTitles review={data.review} />
+        <ReviewGrade grade={data.review.grade} />
+        <MovieDetails>
+          <div>
+            D<Director>irected by</Director>{" "}
+            {data.review.movie.directors
+              .map((director) => director.fullName)
+              .join(" & ")}{" "}
+            &middot; {data.review.movie.runtimeMinutes}&thinsp;minutes.
+          </div>
+        </MovieDetails>
+        <Categories>
+          <CategoryLink to="/reviews/">Reviews</CategoryLink>
+        </Categories>
+      </Header>
+      <ReviewImage review={data.review} />
+      <List>
+        <ListItem>
+          <Review>
+            <Meta>
+              <Calendar />
+              <Date>
+                {moment.utc(data.review.date).format("ddd MMM Do, YYYY")}{" "}
+                <Via>via</Via>
+                Blu-ray (2018 Arrow Films)<Via>.</Via>
+              </Date>
+            </Meta>
+            <Main>{reviewContent(data.review)}</Main>
+          </Review>
+        </ListItem>
+      </List>
     </Layout>
   );
 }

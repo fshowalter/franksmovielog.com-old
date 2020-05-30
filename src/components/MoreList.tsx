@@ -17,24 +17,41 @@ const List = styled.ol`
 `;
 
 const Title = styled.div`
-  color: var(--color-text-heading);
   display: block;
-  font-size: 12px;
-  font-weight: 800;
+  font-family: var(--font-family-system);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
   line-height: 1.3;
   margin-bottom: 3px;
   text-rendering: optimizeLegibility;
   width: 95%;
+
+  @media only screen and (min-width: 700px) {
+    font-size: 1.6rem;
+  }
+`;
+
+const Year = styled.span`
+  font-size: 1.1rem;
+  font-weight: 300;
+
+  @media only screen and (min-width: 700px) {
+    font-size: 1.6rem;
+  }
 `;
 
 const ImageWrap = styled(Link)`
   display: block;
   margin-bottom: 3px;
   position: relative;
+  width: 100%;
 `;
 
 const ListItemWrap = styled.div`
-  display: block;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
   padding: 0 12px 30px;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
@@ -104,13 +121,7 @@ function imageForNode(node: ReviewNode): JSX.Element | null {
 
 const StyledGrade = styled(Grade)`
   display: block;
-  margin-left: -0.5px;
-  max-width: 90px;
-  width: 50%;
-
-  @media only screen and (min-width: 48em) {
-    max-width: 75px;
-  }
+  height: 1.6rem;
 `;
 
 interface Props {
@@ -120,6 +131,7 @@ interface Props {
     slug: string;
     movie: {
       title: string;
+      year: string;
     };
     markdown: {
       backdrop?: {
@@ -140,8 +152,10 @@ export default function MoreList({ nodes }: Props): JSX.Element {
             <ImageWrap to={`/reviews/${node.slug}/`}>
               {imageForNode(node)}
             </ImageWrap>
-            <Title>{node.movie.title}</Title>
-            <StyledGrade grade={node.grade} width={90} height={18} />
+            <Title>
+              {node.movie.title} <Year>{node.movie.year}</Year>
+            </Title>
+            <StyledGrade grade={node.grade} />
           </ListItemWrap>
         </ListItem>
       ))}

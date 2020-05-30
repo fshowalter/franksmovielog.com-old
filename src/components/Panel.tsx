@@ -4,18 +4,11 @@ import styled from "@emotion/styled";
 
 import { breakpoints } from "./Layout";
 
-const Container = styled.div`
-  border: 1px solid var(--color-border);
-  border-radius: 5px;
-  margin: 0 20px;
-
-  @media only screen and (min-width: ${breakpoints.mid}) {
-    margin: 0 0 60px 0;
-  }
-`;
-
 const Heading = styled.h2`
-  border-bottom: 1px solid var(--color-border);
+  font-size: 1.8rem;
+  margin: 0 auto;
+  width: calc(100% - 4rem);
+  /* border-bottom: 1px solid var(--color-border);
   color: var(--color-text-secondary);
   display: block;
   font-size: 18px;
@@ -23,11 +16,31 @@ const Heading = styled.h2`
   margin: 0 0 20px;
   padding: 16px 24px;
   position: relative;
-  text-decoration: none;
+  text-decoration: none; */
 `;
 
 const Content = styled.div`
   /* padding: 0 24px; */
+`;
+
+const Fieldset = styled.fieldset`
+  border: 0.2rem solid #d8d8d8;
+  margin-bottom: 1.25em;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 58rem;
+  padding: 2rem;
+  width: calc(100% - 4rem);
+`;
+
+const Legend = styled.legend`
+  border: none;
+  font-size: 0.85em;
+  font-weight: 700;
+  line-height: inherit;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: inherit;
 `;
 
 interface PanelProps {
@@ -42,9 +55,9 @@ export default function Panel({
   children,
 }: PanelProps): JSX.Element {
   return (
-    <Container className={className}>
-      <Heading>{heading}</Heading>
-      <Content>{children}</Content>
-    </Container>
+    <Fieldset className={className}>
+      <Legend>{heading}</Legend>
+      {children}
+    </Fieldset>
   );
 }

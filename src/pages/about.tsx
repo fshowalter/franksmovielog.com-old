@@ -10,39 +10,30 @@ import styled from "@emotion/styled";
 import Layout from "../components/Layout";
 
 const Title = styled.h1`
-  font-size: 32px;
-  line-height: 1.1;
-  margin-bottom: 0;
-  padding: 30px 0 0;
-
-  @media only screen and (min-width: 35em) {
-    font-size: 42px;
-  }
-`;
-
-const Wrap = styled.div`
-  max-width: 900px;
-  padding: 0 20px 30px;
-
-  @media only screen and (min-width: 71.24em) {
-    padding: 0 0 30px;
-  }
+  font-family: var(--font-family-system);
+  font-size: 3.6rem;
+  font-weight: 800;
+  line-height: 1.138888889;
+  margin: 0 auto;
+  padding: 4rem 0;
+  text-align: center;
+  width: calc(100% - 4rem);
 `;
 
 const Main = styled.main`
-  color: rgba(0, 0, 0, 0.87);
-  font-size: 20px;
-  line-height: 1.5;
-  max-width: 66ch;
-  order: 3;
-  padding-top: 20px;
+  font-family: var(--font-family-serif);
+  line-height: 1.4;
+  margin: 0 auto;
+  max-width: 66rem;
+  width: calc(100% - 4rem);
 
-  @media only screen and (min-width: 71.25em) {
-    border-top: none;
-    margin-top: 0;
-    order: 2;
-    padding-left: 30px;
-    padding-top: 40px;
+  p {
+    margin-bottom: 1.25em;
+  }
+
+  @media only screen and (min-width: 700px) {
+    font-size: 2.1rem;
+    line-height: 1.476;
   }
 `;
 
@@ -64,7 +55,7 @@ const PageImage = styled(Img)`
 `;
 
 const Article = styled.article`
-  border-top: 1px solid #eee;
+  /* border-top: 1px solid #eee;
   margin-top: 30px;
   padding-top: 20px;
 
@@ -73,7 +64,7 @@ const Article = styled.article`
     margin-top: 16px;
     padding-top: 0;
     position: relative;
-  }
+  } */
 `;
 
 interface Props {
@@ -99,18 +90,15 @@ interface Props {
 export default function AboutPage({ data }: Props): JSX.Element {
   return (
     <Layout>
-      <Wrap>
+      <Article>
         <PageImage
           fluid={data.page.markdown.backdrop?.childImageSharp.fluid}
           alt="A still from Casablanca (1942)"
           loading="eager"
         />
-
         <Title>{data.page.title}</Title>
-        <Article>
-          <Main>{pageContent(data.page)}</Main>
-        </Article>
-      </Wrap>
+        <Main>{pageContent(data.page)}</Main>
+      </Article>
     </Layout>
   );
 }

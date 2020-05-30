@@ -5,7 +5,13 @@ import styled from "@emotion/styled";
 import { breakpoints } from "./Layout";
 
 const Header = styled.header`
-  padding: 30px;
+    padding: 4rem 0;
+
+    @media (min-width: 700px) {
+      padding: 8rem 0;
+    }
+
+  /* padding: 30px;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
     border-bottom: solid 1px var(--color-border);
@@ -16,22 +22,36 @@ const Header = styled.header`
 
   @media only screen and (min-width: ${breakpoints.max}) {
     padding-top: 0;
-  }
+  } */
 `;
 
 const Heading = styled.h1`
-  font-weight: 900;
-  line-height: 1;
-  margin-bottom: 0.5rem;
+  font-family: var(--font-family-system);
+  font-size: 3.6rem;
+  font-weight: 800;
+  line-height: 1.138888889;
+  margin: 0 auto;
+  padding: 4rem 0 0;
+  text-align: center;
+  width: calc(100% - 4rem);
+
+  @media (min-width: 700px) {
+    font-size: 6.4rem;
+  }
+
+  @media (min-width: 1220px) {
+    font-size: 8.4rem;
+  }
 `;
 
 const Slug = styled.div`
-  color: rgba(0, 0, 0, 0.54);
-  font-family: var(--font-family-serif);
-  font-size: 16px;
-  letter-spacing: 0.5px;
-  line-height: 20px;
-  margin: 0;
+  color: #6d6d6d;
+  font-size: 1.5rem;
+  letter-spacing: -0.016875em;
+  line-height: 1.5;
+  margin: 2rem auto;
+  text-align: center;
+  width: calc(100% - 4rem);
 `;
 
 interface PageHeaderProps {

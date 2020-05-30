@@ -9,3 +9,11 @@ export const onClientEntry = () => {
     });
   }
 };
+
+const { default: littlefoot } = require("littlefoot");
+
+export const onRouteUpdate = ({ location }) => {
+  littlefoot(); // Pass any littlefoot settings here here.
+};
+
+import "littlefoot/dist/littlefoot.css";
