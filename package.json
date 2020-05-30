@@ -23,7 +23,7 @@
     "gatsby-source-filesystem": "^2.3.6",
     "gatsby-transformer-remark": "^2.8.12",
     "gatsby-transformer-sharp": "^2.5.0",
-    "gatsby-transformer-yaml": "^2.4.1",
+    "gatsby-transformer-yaml": "^2.4.2",
     "html-react-parser": "^0.10.3",
     "identity-obj-proxy": "^3.0.0",
     "littlefoot": "^3.2.5",
