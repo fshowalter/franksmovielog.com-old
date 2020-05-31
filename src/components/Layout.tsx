@@ -41,9 +41,9 @@ const cssVars = css`
     --color-text-heading: rgba(0, 0, 0, 0.75);
     --font-family-serif: "Charter", "Iowan Old Style", Georgia, Cambria,
       "Times New Roman", Times, serif;
-    --font-family-system: "Inter var", -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
-      "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
     --font-size-heading: calc(1rem * 1.75);
     --font-size-sub-heading: calc(1rem * 1.375);
     --font-size-base: calc(1rem * 1.125);
@@ -217,9 +217,9 @@ const LogoLink = styled(Link)`
   margin-left: 14px; */
   /* font-family: var(--font-family-serif); */
 
-  @media only screen and (min-width: ${breakpoints.mid}) {
+  /* @media only screen and (min-width: ${breakpoints.mid}) {
     margin: 0;
-  }
+  } */
 `;
 
 const Hamburger = styled(nav)`
@@ -228,6 +228,9 @@ const Hamburger = styled(nav)`
   height: 25px;
   width: 25px;
 
+  @media only screen and (min-width: 700px) {
+    width: 30px;
+  }
   /* rect {
     transform: rotate(0deg);
     transform-origin: 0% 50%;
@@ -304,49 +307,25 @@ const CloseSearch = styled(close)`
 `;
 
 const SearchToggle = styled.button`
-    align-items: center;
-    background: none;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    display: flex;
-    font-size: inherit;
-    font-weight: 400;
-    letter-spacing: inherit;
-    overflow: visible;
-    padding: 0 2rem;
-    text-transform: none;
-
-
-  /* @media only screen and (min-width: ${breakpoints.mid}) {
-    align-items: center;
-    background: none;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 30px;
-    padding: 0 0 0 24px;
-    position: relative;
-
-    &:before {
-      background: var(--color-border);
-      content: "";
-      display: block;
-      height: 27px;
-      left: 0;
-      position: absolute;
-      width: 1px;
-    }
-  } */
+  align-items: center;
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  font-size: inherit;
+  font-weight: 400;
+  letter-spacing: inherit;
+  overflow: visible;
+  padding: 0 2rem;
+  text-transform: none;
 
   @media only screen and (min-width: 1000px) {
+    align-items: flex-start;
     bottom: auto;
     height: 4.4rem;
     left: auto;
-    padding: 0 3rem;
+    padding: 0 4rem;
     position: relative;
     right: auto;
     top: auto;
@@ -356,7 +335,6 @@ const SearchToggle = styled.button`
   @media only screen and (min-width: 1220px) {
     padding: 0 4rem;
   }
-
 `;
 
 const MenuToggle = styled.button`
@@ -374,9 +352,14 @@ const MenuToggle = styled.button`
   position: absolute;
   right: 0;
   top: 0;
-  width: 6.6rem;
+  width: auto;
 
-  @media only screen and (min-width: ${breakpoints.mid}) {
+  @media only screen and (min-width: 700px) {
+    padding: 0 4rem;
+    width: auto;
+  }
+
+  @media only screen and (min-width: 1000px) {
     display: none;
   }
 `;
@@ -395,7 +378,11 @@ const CloseNav = styled.button`
   padding: 3rem 2rem;
   width: 100%;
 
-  @media only screen and (min-width: ${breakpoints.mid}) {
+  @media only screen and (min-width: 700px) {
+    padding: 3rem 4rem 6.4rem 0;
+  }
+
+  @media only screen and (min-width: 1000px) {
     display: none;
   }
 `;
@@ -416,7 +403,6 @@ const CloseSearchButton = styled.button`
 
 const Nav = styled.nav`
   align-items: center;
-  background-color: #fff;
   bottom: 0;
   box-sizing: border-box;
   height: 100vh;
@@ -424,7 +410,7 @@ const Nav = styled.nav`
   opacity: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 0 0 48px;
+  padding: 0 0 4.8rem;
   position: fixed;
   right: 99999rem;
   top: 0;
@@ -438,20 +424,14 @@ const Nav = styled.nav`
     transition: opacity 0.25s ease-out;
   }
 
-  /* @media only screen and (min-width: ${breakpoints.mid}) {
-    background: none;
+  @media only screen and (min-width: 1000px) {
     display: flex;
     height: auto;
     opacity: 1;
     padding: 0;
     position: static;
-    top: auto;
-    visibility: visible;
-  } */
-
-  /* @media only screen and (min-width: ${breakpoints.max}) {
-    flex-direction: column;
-  } */
+    width: 50%;
+  }
 `;
 
 const NavList = styled.ul`
@@ -466,7 +446,7 @@ const NavList = styled.ul`
     font-weight: 500;
     justify-content: flex-end;
     letter-spacing: -0.0277em;
-    margin: -0.8rem 0 0 -1.6rem;
+    margin: 0 0 0 -1.6rem;
   }
 
   /* @media only screen and (min-width: ${breakpoints.mid}) {
@@ -530,10 +510,15 @@ const NavListItem = styled.li`
   }
 
   @media screen and (min-width: 1000px) {
+    border: none;
     display: block;
     line-height: 1.25;
-    margin: 0.8rem 0 0 1.6rem;
+    margin: 0 0 0 1.6rem;
     position: relative;
+
+    &:last-child {
+      border: none;
+    }
   }
 
   @media screen and (min-width: 1220px) {
@@ -542,22 +527,10 @@ const NavListItem = styled.li`
 `;
 
 const Header = styled.header`
-  /* background: var(--color-text-primary) url(${logo}) repeat; */
-  /* background-color: var(--color-text-primary); */
-  /* background-color: #fcfcfc; */
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
   color: var(--color-text-primary);
-  /* margin: 0 auto;
-  max-width: 1000px; */
   position: relative;
   width: 100%;
-
-  /* @media only screen and (min-width: ${breakpoints.max}) {
-    background: none;
-    box-shadow: none;
-    order: 2;
-    width: 384px;
-  } */
 `;
 
 const NavLink = styled(Link)`
@@ -570,56 +543,17 @@ const NavLink = styled(Link)`
   text-decoration: none;
   width: 100%;
 
-  /* border-bottom: 1px solid var(--color-border); */
-  /* color: var(--color-text-primary); */
-  /* font-family: var(--font-family-serif); */
+  @media screen and (min-width: 700px) {
+    padding: 2rem 4rem;
+  }
 
-  @media only screen and (min-width: 1000px) {
+  @media screen and (min-width: 1000px) {
     font-weight: 500;
     letter-spacing: -0.0277em;
-    line-height: 1.2;
+    line-height: 2.6rem;
     margin: 0;
     padding: 0;
   }
-
-  /* &.active {
-    color: var(--color-text-secondary);
-  } */
-
-  /* @media only screen and (min-width: ${breakpoints.mid}) { */
-    /* border-bottom: none; */
-    /* color: rgba(255, 255, 255, 0.87); */
-    /* color: #fff; */
-    /* color: var(--color-text-primary); */
-    /* font-size: 14px; */
-    /* font-weight: normal; */
-    /* letter-spacing: 1.3px; */
-    /* line-height: 21px; */
-    /* margin: 0; */
-
-    /* &.active {
-      color: rgba(255, 255, 255, 0.54);
-      color: var(--color-text-secondary);
-
-      &:after {
-        background: #e9e7e0;
-        bottom: 0;
-        content: "";
-        height: 1px;
-        left: 0;
-        position: absolute;
-        right: 0;
-      }
-    } */
-
-    /* :nth-of-type(1) {
-      margin-left: 2ch;
-    }
-
-    :last-of-type {
-      margin-right: 0;
-    }
-  } */
 `;
 
 const TextInputWrap = styled.div`
@@ -726,11 +660,12 @@ const FooterList = styled.ul`
   font-weight: 700;
   letter-spacing: -0.0277em;
   list-style: none;
+  margin: 1em 0;
   padding: 0;
 
   @media (min-width: 700px) {
     font-size: 2.4rem;
-    margin: -0.8rem 0 0 -1.6rem;
+    margin: -0.8rem 0 1em -1.6rem;
   }
 
   @media (min-width: 1000px) {
@@ -739,7 +674,7 @@ const FooterList = styled.ul`
     flex-wrap: wrap;
     font-size: 2.1rem;
     justify-content: flex-start;
-    margin: -1.2rem 0 0 -2.4rem;
+    margin: -1.2rem 0 1em -2.4rem;
   }
 `;
 
@@ -839,45 +774,15 @@ const FooterSlug = styled.div`
 const SearchFormWrap = styled.div`
   padding: 2rem 2.5rem;
 
-
-  /* margin: 0 auto;
-  padding: 0 24px; */
-
-  /* @media only screen and (min-width: ${breakpoints.mid})  {
-    background: #fff;
-    display: flex;
-    height: 81px;
-    justify-content: flex-end;
-    left: 0;
+  @media (min-width: 700px) {
     margin: 0 auto;
-    max-width: 1000px;
-    padding: 14px 48px;
-    position: fixed;
-    right: 0;
-    top: 0;
-    transform: translateY(-100%);
-    transition: transform 0.15s linear, opacity 0.15s linear;
-    width: 100%;
-
-    &.open {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  } */
-
-  & ${Search} {
-    fill: #000;
+    padding: 2rem 0;
+    width: calc(100% - 8rem);
   }
 
-  /* @media only screen and (min-width: ${breakpoints.max}) {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-
-    & ${Search} {
-      fill: var(--color-border);
-    }
-  } */
+  @media (min-width: 1000px) {
+    display: none;
+  }
 `;
 
 interface SearchFormProps {
@@ -912,19 +817,23 @@ const ButtonContentWrap = styled.span`
   height: auto;
   justify-content: center;
   position: relative;
+
+  @media only screen and (min-width: 700px) {
+    margin-top: -2.5rem;
+  }
 `;
 
 const ButtonLabel = styled.span`
-    color: #6d6d6d;
-    font-family: var(--font-family-system);
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: inherit;
-    position: absolute;
-    top: calc(100% + 0.8rem);
-    white-space: nowrap;
-    width: auto;
-    word-break: break-all;
+  color: #6d6d6d;
+  font-family: var(--font-family-system);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: inherit;
+  position: absolute;
+  top: calc(100% + 0.8rem);
+  white-space: nowrap;
+  width: auto;
+  word-break: break-all;
 
   @media only screen and (min-width: 700px) {
     font-size: 1.2rem;
@@ -934,25 +843,7 @@ const ButtonLabel = styled.span`
     left: 0;
     right: 0;
     text-align: center;
-    top: calc(100% - 0.3rem);
-    width: auto;
-  }
-
-  /* @media only screen and (min-width: ${breakpoints.mid}) {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1;
-  } */
-
-  @media only screen and (min-width: 700px) {
-    font-size: 1.2rem;
-  }
-
-  @media only screen and (min-width: 1000px) {
-    left: 0;
-    right: 0;
-    text-align: center;
-    top: calc(100% - 0.3rem);
+    top: calc(100% - 1.1rem);
     width: auto;
   }
 `;
@@ -983,7 +874,7 @@ const Tagline = styled.span`
   @media only screen and (min-width: 1000px) {
     font-size: 18px;
     font-weight: 500;
-    margin: 0.8rem 0 0 2.4rem;
+    margin: 0 0 0 2.4rem;
   }
 `;
 
@@ -993,15 +884,15 @@ const LogoWrap = styled.div`
 
   @media only screen and (min-width: 700px) {
     justify-content: flex-start;
+    text-align: left;
   }
 
   @media only screen and (min-width: 1000px) {
     align-items: baseline;
-    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: -1rem 0 0 -2.4rem;
+    margin: -1rem 4rem 0 -2.4rem;
+    max-width: 50%;
     text-align: center;
   }
 `;
