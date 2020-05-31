@@ -2,34 +2,30 @@
 
 import { graphql, Link } from "gatsby";
 import Img, { FluidObject } from "gatsby-image";
-import parse from "html-react-parser";
-import marked from "marked";
 import moment from "moment";
 import React from "react";
-import { renderToString } from "react-dom/server";
 
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { WindowLocation } from "@reach/router";
 
-import calendar from "../assets/calendar.inline.svg";
-import cinema from "../assets/cinema.inline.svg";
-import collection from "../assets/collection.inline.svg";
 import Grade from "../components/Grade";
-import Layout, { breakpoints } from "../components/Layout";
+import Layout from "../components/Layout";
 import MoreList from "../components/MoreList";
 
-const listBreakpoint = "650px";
+const HideSmall = styled.span`
+  display: none;
+
+  @media only screen and (min-width: 700px) {
+    display: inline;
+  }
+`;
 
 const Home = styled.section`
   letter-spacing: 0.16px;
   margin: 0;
   padding: 0;
   text-rendering: optimizelegibility;
-
-  /* @media only screen and (min-width: ${breakpoints.mid}) {
-    padding: 24px 48px;
-  } */
 `;
 
 const List = styled.ol`
@@ -117,15 +113,17 @@ const CategoryLink = styled(Link)`
 
 const MetaWrap = styled.div`
   color: #6d6d6d;
-  display: flex;
+  /* display: flex; */
   /* font-family: var(--font-family-system); */
   font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: -0.016875em;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 3rem;
   max-width: 66rem;
-  order: 7;
+  order: 6;
+  text-align: center;
   width: calc(100% - 4rem);
 
   @media (min-width: 700px) {
@@ -150,57 +148,6 @@ const MovieDetails = styled.div`
   @media (min-width: 700px) {
     font-size: 1.6rem;
     margin-top: 3rem;
-  }
-`;
-
-const Director = styled.span`
-  display: inline-block;
-  text-indent: -9999px;
-  width: 0.5ch;
-
-  &:before {
-    content: ":";
-    display: inline-block;
-    position: absolute;
-    text-indent: 9999px;
-  }
-
-  @media (min-width: 700px) {
-    text-indent: 0;
-
-    &:after {
-      content: none;
-    }
-  }
-`;
-
-const YearAndRuntime = styled.div``;
-
-const Main = styled.main`
-  font-family: var(--font-family-serif);
-  line-height: 1.4;
-  margin: 0 auto;
-  max-width: 66rem;
-  order: 6;
-  padding-top: 4rem;
-  width: calc(100% - 4rem);
-
-  /* p {
-    margin: 0;
-
-    &:nth-of-type(1) {
-      text-indent: 105px;
-    }
-  } */
-
-  p {
-    margin-bottom: 1.25em;
-  }
-
-  @media only screen and (min-width: 700px) {
-    font-size: 2.1rem;
-    line-height: 1.476;
-    padding-top: 8rem;
   }
 `;
 
@@ -299,74 +246,27 @@ const ListItem = styled.li`
       padding: 8rem 0 0;
     }
   }
-
-  /* &:not(:first-of-type) {
-    margin-left: 0;
-
-    @media only screen and (min-width: ${listBreakpoint}) {
-      ${Review} {
-        display: block;
-        position: relative;
-      }
-
-      ${ReviewImageWrap} {
-        float: left;
-        margin-right: 24px;
-        width: 33.333333%;
-      }
-
-      ${ReviewHeading} {
-        float: right;
-        width: calc(66.66666% - 24px);
-      }
-
-      ${Date} {
-      }
-
-      ${Main} {
-        float: right;
-        width: calc(66.66666% - 24px);
-
-        &:after {
-          clear: both;
-          content: "";
-          display: block;
-        }
-      }
-    }
-  } */
 `;
 
-type ReviewNode = Props["data"]["page"]["nodes"][0];
+interface ReviewImageProps {
+  review: Review;
+}
 
-const imageForNode = (node: ReviewNode, index: number): JSX.Element | null => {
-  if (!node.markdown.backdrop || !node.markdown.backdrop.childImageSharp) {
+function ReviewImage({ review }: ReviewImageProps): JSX.Element | null {
+  if (!review.markdown.backdrop || !review.markdown.backdrop.childImageSharp) {
     return null;
   }
 
   const fluid = {
-    ...node.markdown.backdrop?.childImageSharp?.fluid,
+    ...review.markdown.backdrop?.childImageSharp?.fluid,
   };
 
-  if (index === 0) {
-    fluid.sizes = `(max-width: ${breakpoints.mid}) calc(100vw - 48px), 1800px`;
-  }
-
   return (
-    <ReviewImageWrap to={`/reviews/${node.slug}/`}>
-      <Img fluid={fluid} alt={`A still from ${node.movie.title}`} />
+    <ReviewImageWrap to={`/reviews/${review.slug}/`}>
+      <Img fluid={fluid} alt={`A still from ${review.movie.title}`} />
     </ReviewImageWrap>
   );
-};
-
-const Viewed = styled.div`
-  align-items: center;
-  display: flex;
-  flex-wrap: nowrap;
-  font-size: inherit;
-  letter-spacing: -0.016875em;
-  line-height: 1.5;
-`;
+}
 
 const MoreHeading = styled.h4`
   font-family: var(--font-family-system);
@@ -384,38 +284,26 @@ const MoreHeading = styled.h4`
   }
 `;
 
-const NextPageLink = styled(Link)`
-  border: 1px solid var(--color-border);
-  border-radius: 5px;
-  color: var(--color-text-heading);
-  display: block;
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  line-height: 38px;
-  margin: 30px auto 60px;
-  padding: 0 40px 0 20px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  width: 175px;
-
-  &:after {
-    background-image: url('data:Image/svg+xml;charset=utf8,<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M6.165 3.874c-.217-.204-.22-.53-.008-.73.206-.192.56-.195.776.008l5.902 5.48c.11.102.165.236.165.37-.002.126-.055.262-.165.365l-5.902 5.478c-.217.204-.564.207-.776.007-.206-.193-.21-.525.008-.728L11.69 9 6.165 3.873z"></path></svg>');
-    background-size: contain;
-    content: "";
-    height: 20px;
-    opacity: 0.3;
-    position: absolute;
-    right: 20px;
-    top: 9px;
-    width: 20px;
-  }
-`;
+interface MoreNode {
+  grade: string;
+  sequence: number;
+  slug: string;
+  movie: {
+    title: string;
+    year: string;
+  };
+  markdown: {
+    backdrop?: {
+      childImageSharp?: {
+        fluid: FluidObject;
+      };
+    };
+  };
+}
 
 interface MoreReviewsProps {
-  moreNodes: Props["data"]["more"]["nodes"];
-  pageContext: Props["pageContext"];
+  moreNodes: MoreNode[];
+  pageContext: PageContext;
 }
 
 const MoreSection = styled.section`
@@ -437,7 +325,6 @@ function MoreReviews({
 }: MoreReviewsProps): JSX.Element | null {
   const { currentPage, numPages } = pageContext;
   const isLast = currentPage === numPages;
-  const nextPage = (currentPage + 1).toString();
 
   if (isLast) {
     return null;
@@ -459,7 +346,7 @@ const PaginationWrap = styled.nav`
   font-weight: 600;
   margin: -1.5rem 0 0 -2.5rem;
   max-width: 120rem;
-  width: calc(100% + 2.5rem);
+  width: calc(100% - 4rem);
 
   @media (min-width: 700px) {
     font-size: 2.4rem;
@@ -493,7 +380,11 @@ const Dots = styled.span`
   transform: translateY(-0.3em);
 `;
 
-function Pagination({ pageContext }: PageContext): JSX.Element {
+interface PaginationProps {
+  pageContext: PageContext;
+}
+
+function Pagination({ pageContext }: PaginationProps): JSX.Element {
   const { currentPage, numPages } = pageContext;
   const isFirst = currentPage === 1;
   const isLast = currentPage === numPages;
@@ -517,7 +408,7 @@ function Pagination({ pageContext }: PageContext): JSX.Element {
           }
         `}
       >
-        ←Newer Posts
+        ←Newer <HideSmall>Posts</HideSmall>
       </span>
     );
   } else {
@@ -531,7 +422,7 @@ function Pagination({ pageContext }: PageContext): JSX.Element {
         `}
         to={prevPageUrl}
       >
-        ←Newer Posts
+        ←Newer <HideSmall>Posts</HideSmall>
       </Link>
     );
   }
@@ -550,7 +441,9 @@ function Pagination({ pageContext }: PageContext): JSX.Element {
             margin: 0 0 0 auto !important;
           }
         `}
-      />
+      >
+        Older <HideSmall>Posts</HideSmall>→
+      </span>
     );
   } else {
     older = (
@@ -563,7 +456,7 @@ function Pagination({ pageContext }: PageContext): JSX.Element {
         `}
         to={nextPageUrl}
       >
-        Older Posts→
+        Older <HideSmall>Posts</HideSmall>→
       </Link>
     );
   }
@@ -609,32 +502,25 @@ function Pagination({ pageContext }: PageContext): JSX.Element {
   }
 
   return (
-    <PaginationWrap>
-      {newer}
-      {firstPage}
-      {newerDots}
-      {prevPage}
-      <span aria-current="page">{currentPage}</span>
-      {nextPage}
-      {olderDots}
-      {lastPage}
-      {older}
-    </PaginationWrap>
+    <PaginationSection>
+      <PaginationWrap>
+        {newer}
+        {firstPage}
+        {newerDots}
+        {prevPage}
+        <span aria-current="page">{currentPage}</span>
+        {nextPage}
+        {olderDots}
+        {lastPage}
+        {older}
+      </PaginationWrap>
+    </PaginationSection>
   );
 }
 
-const Via = styled.span`
-  display: block;
-  height: 0;
-  visibility: hidden;
-  width: 0;
-
-  @media (min-width: 700px) {
-    display: inline;
-    height: auto;
-    visibility: visible;
-    width: auto;
-  }
+const PaginationSection = styled.section`
+  margin: 0 auto;
+  width: calc(100% - 4rem);
 `;
 
 const ReviewGrade = styled(Grade)`
@@ -647,58 +533,32 @@ const ReviewGrade = styled(Grade)`
     height: 4.5rem;
     margin-top: 2rem;
   }
-  /* left: 1px; */
-  /* position: absolute; */
-  /* top: 5px; */
-  /* width: 95px; */
 `;
 
-// const reviewContent = (
-//   review: Props["data"]["page"]["nodes"][0]
-// ): JSX.Element | JSX.Element[] => {
-//   const content = `${renderToString(
-//     <InlineGrade grade={review.grade} width={95} height={95} />
-//   )} ${marked(review.markdown.firstParagraph.trim())}`;
-
-//   return parse(content.toString());
-// };
-
-const reviewContent = (
-  review: Props["data"]["page"]["nodes"][0]
-): JSX.Element | JSX.Element[] => {
-  const content = marked(review.markdown.rawMarkdownBody.trim());
-
-  return parse(content.toString());
-};
-
-const Calendar = styled(calendar)`
-  display: block;
-  fill: #6d6d6d;
-  flex-shrink: 0;
-  height: 1.8rem;
-  margin-right: 1rem;
-  max-width: 100%;
-  width: 1.7rem;
+const ReadMoreWrap = styled.div`
+  margin: 0 auto;
+  order: 7;
+  padding-top: 3rem;
 `;
 
-const Cinema = styled(cinema)`
-  display: block;
-  fill: #6d6d6d;
-  flex-shrink: 0;
-  height: 1.8rem;
-  margin-right: 1rem;
-  max-width: 100%;
-  width: 1.7rem;
-`;
-
-const Collection = styled(collection)`
-  display: block;
-  fill: #6d6d6d;
-  flex-shrink: 0;
-  height: 1.8rem;
-  margin-right: 1rem;
-  max-width: 100%;
-  width: 1.7rem;
+const ReadMoreLink = styled(Link)`
+  background: #cd2653;
+  border: none;
+  border-radius: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.0333em;
+  line-height: 1.25;
+  margin: 0;
+  opacity: 1;
+  padding: 1.1em 1.44em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.15s linear;
 `;
 
 interface PageContext {
@@ -706,32 +566,34 @@ interface PageContext {
   numPages: number;
 }
 
+interface Review {
+  sequence: number;
+  date: string;
+  grade: string;
+  slug: string;
+  movie: {
+    directors: {
+      fullName: string;
+    }[];
+    runtimeMinutes: string;
+    title: string;
+    year: number;
+  };
+  markdown: {
+    backdrop?: {
+      childImageSharp?: {
+        fluid: FluidObject;
+      };
+    };
+  };
+}
+
 interface Props {
   location: WindowLocation;
   pageContext: PageContext;
   data: {
     page: {
-      nodes: {
-        sequence: number;
-        date: string;
-        grade: string;
-        slug: string;
-        movie: {
-          directors: string[];
-          runtimeMinutes: string;
-          title: string;
-          year: number;
-        };
-        markdown: {
-          rawMarkdownBody: string;
-          backdrop?: {
-            childImageSharp?: {
-              fluid: FluidObject;
-            };
-          };
-          firstParagraph: string;
-        };
-      }[];
+      nodes: Review[];
     };
     more: {
       nodes: {
@@ -740,6 +602,7 @@ interface Props {
         slug: string;
         movie: {
           title: string;
+          year: string;
         };
         markdown: {
           backdrop?: {
@@ -761,7 +624,7 @@ export default function HomeTemplate({
     <Layout>
       <Home>
         <List start={data.page.nodes[0].sequence} reversed>
-          {data.page.nodes.map((node, index) => (
+          {data.page.nodes.map((node) => (
             <ListItem key={node.sequence}>
               <Review>
                 <ReviewHeading>
@@ -772,22 +635,22 @@ export default function HomeTemplate({
                 <ReviewGrade grade={node.grade} />
                 <MovieDetails>
                   <div>
-                    D<Director>irected by</Director>{" "}
+                    Directed by{" "}
                     {node.movie.directors.map((d) => d.fullName).join(", ")}{" "}
-                    &middot; {node.movie.runtimeMinutes} minutes
                   </div>
                 </MovieDetails>
-                {imageForNode(node, index)}
-                <Main>{reviewContent(node)}</Main>
+                <ReviewImage review={node} />
+                <ReadMoreWrap>
+                  <ReadMoreLink to={`/reviews/${node.slug}/`}>
+                    Read Review
+                  </ReadMoreLink>
+                </ReadMoreWrap>
                 <MetaWrap>
-                  <Calendar />
-                  <span>
-                    Watched{" "}
-                    <Date dateTime={node.date}>
-                      {moment.utc(node.date).format("ddd MMM Do, YYYY")}
-                    </Date>{" "}
-                    <Via>via </Via>Alamo Drafthouse - One Loudoun<Via>.</Via>
-                  </span>
+                  Rewatched{" "}
+                  <Date dateTime={node.date}>
+                    {moment.utc(node.date).format("ddd MMM Do, YYYY")}
+                  </Date>{" "}
+                  via Alamo Drafthouse - One Loudoun.
                 </MetaWrap>
                 <Categories>
                   <CategoryLink to="/reviews/">Reviews</CategoryLink>
@@ -826,8 +689,6 @@ export const pageQuery = graphql`
           }
         }
         markdown {
-          firstParagraph
-          rawMarkdownBody
           backdrop {
             childImageSharp {
               fluid(toFormat: JPG, jpegQuality: 75, maxWidth: 1800) {

@@ -11,6 +11,7 @@ import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
 import calendar from "../assets/calendar.inline.svg";
+import eye from "../assets/eye.inline.svg";
 import Grade from "../components/Grade";
 import Layout, { breakpoints } from "../components/Layout";
 
@@ -45,13 +46,24 @@ const Calendar = styled(calendar)`
   width: 1.7rem;
 `;
 
+const Eye = styled(eye)`
+  display: block;
+  fill: #6d6d6d;
+  flex-shrink: 0;
+  height: 1.5rem;
+  margin-right: 1rem;
+  max-width: 100%;
+  width: 1.5rem;
+`;
+
 const Meta = styled.aside`
   color: #6d6d6d;
-  display: flex;
+  /* display: flex; */
   font-size: 1.5rem;
+  letter-spacing: -0.016875em;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 4rem;
+  margin-top: 3rem;
   max-width: 66rem;
   order: 3;
   width: calc(100% - 4rem);
@@ -243,7 +255,7 @@ const Review = styled.article`
   } */
 `;
 
-const Via = styled.span`
+const HideSmall = styled.span`
   display: block;
   height: 0;
   visibility: hidden;
@@ -257,7 +269,11 @@ const Via = styled.span`
   }
 `;
 
-const Date = styled.span``;
+const Via = styled.span``;
+
+const Date = styled.time`
+  display: inline;
+`;
 
 const Header = styled.header`
   align-items: center;
@@ -370,12 +386,11 @@ export default function ReviewTemplate({ data }: Props): JSX.Element {
         <ListItem>
           <Review>
             <Meta>
-              <Calendar />
-              <Date>
-                {moment.utc(data.review.date).format("ddd MMM Do, YYYY")}{" "}
-                <Via>via</Via>
-                Blu-ray (2018 Arrow Films)<Via>.</Via>
-              </Date>
+              Watched{" "}
+              <Date dateTime={data.review.date}>
+                {moment.utc(data.review.date).format("ddd MMM Do, YYYY")}
+              </Date>{" "}
+              via Blu-ray (2018 Arrow Films).
             </Meta>
             <Main>{reviewContent(data.review)}</Main>
           </Review>

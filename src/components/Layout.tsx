@@ -135,6 +135,17 @@ const cssReset = css`
     }
   }
 
+  blockquote {
+    border-color: #cd2653;
+    border-style: solid;
+    border-width: 0 0 0 0.2rem;
+    color: inherit;
+    font-family: var(--font-family-system);
+    font-size: smaller;
+    margin: 4rem 0;
+    padding: 0.5rem 0 0.5rem 2rem;
+  }
+
   .js-no_outline {
     a {
       outline: none;
@@ -162,14 +173,9 @@ const LayoutWrap = styled.div`
 `;
 
 const LogoHeading = styled.h1`
-  font-size: 2.1rem;
-  font-weight: 600;
+  font-size: 2.4rem;
+  font-weight: 700;
   line-height: 1;
-
-  @media only screen and (min-width: 700px) {
-    font-size: 2.4rem;
-    font-weight: 700;
-  }
 
   @media only screen and (min-width: 1000px) {
     margin: 1rem 0 0 2.4rem;
@@ -374,6 +380,7 @@ const MenuToggle = styled.button`
 `;
 
 const CloseNav = styled.button`
+  align-items: center;
   background: none;
   border: none;
   border-radius: 0;
@@ -413,8 +420,8 @@ const Nav = styled.nav`
   height: 100vh;
   left: -99999rem;
   opacity: 0;
-  overflow-y: auto;
   overflow-x: hidden;
+  overflow-y: auto;
   padding: 0 0 48px;
   position: fixed;
   right: 99999rem;
@@ -429,7 +436,7 @@ const Nav = styled.nav`
     transition: opacity 0.25s ease-out;
   }
 
-  @media only screen and (min-width: ${breakpoints.mid}) {
+  /* @media only screen and (min-width: ${breakpoints.mid}) {
     background: none;
     display: flex;
     height: auto;
@@ -438,7 +445,7 @@ const Nav = styled.nav`
     position: static;
     top: auto;
     visibility: visible;
-  }
+  } */
 
   /* @media only screen and (min-width: ${breakpoints.max}) {
     flex-direction: column;
@@ -900,9 +907,9 @@ function SearchForm({ children }: SearchFormProps): JSX.Element {
 const ButtonContentWrap = styled.span`
   box-sizing: border-box;
   display: flex;
-  height: 1.8rem;
+  height: auto;
   justify-content: center;
-  padding-top: 0.2rem;
+  padding-top: 1.6rem;
   position: relative;
 `;
 
@@ -913,7 +920,7 @@ const ButtonLabel = styled.span`
     font-weight: 600;
     letter-spacing: inherit;
     position: absolute;
-    top: calc(100% + 0.4rem);
+    top: calc(100% + 0.8rem);
     white-space: nowrap;
     width: auto;
     word-break: break-all;
@@ -953,12 +960,13 @@ const CloseNavLabel = styled.span`
   display: block;
   font-size: 1.6rem;
   font-weight: 500;
-  line-height: 1;
+  line-height: 2.1rem;
   margin-right: 1.6rem;
 `;
 
 const Tagline = styled.span`
   color: #6d6d6d;
+  display: none;
   font-size: 1.1rem;
   font-weight: 600;
   padding-top: 0.5rem;
@@ -1042,7 +1050,7 @@ const HeaderWrap = styled.div`
   letter-spacing: -0.015em;
   margin: 0 auto;
   max-width: 168rem;
-  padding: 3.15rem 0;
+  padding: 3rem 0;
   width: calc(100% - 4rem);
 
   @media only screen and (min-width: 700px) {
@@ -1077,7 +1085,7 @@ const Copyright = styled.p`
 const ImageNotice = styled.p`
   color: #6d6d6d;
   font-size: 1.4rem;
-  margin-top: 0.8rem;
+  margin-top: 2rem;
   width: 100%;
 
   & a {
