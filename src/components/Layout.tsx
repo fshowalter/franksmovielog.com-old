@@ -12,11 +12,11 @@ import close from "../assets/close.inline.svg";
 import interItalic from "../assets/fonts/Inter-italic.var.woff2";
 import interRoman from "../assets/fonts/Inter-roman.var.woff2";
 import hamburger from "../assets/hamburger.inline.svg";
-import logoBackground from "../assets/imissnotcomingsoon.jpg";
 import letterboxd from "../assets/letterboxd.inline.svg";
 import logoFutura from "../assets/logo-futura.inline.svg";
 import logo from "../assets/logo.inline.svg";
 import menu from "../assets/menu.inline.svg";
+import nav from "../assets/nav.inline.svg";
 import search from "../assets/search.inline.svg";
 import Grade from "../components/Grade";
 
@@ -177,6 +177,10 @@ const LogoHeading = styled.h1`
   font-weight: 700;
   line-height: 1;
 
+  @media only screen and (min-width: 700px) {
+    font-size: 2.6rem;
+  }
+
   @media only screen and (min-width: 1000px) {
     margin: 1rem 0 0 2.4rem;
   }
@@ -218,14 +222,13 @@ const LogoLink = styled(Link)`
   }
 `;
 
-const Hamburger = styled(hamburger)`
+const Hamburger = styled(nav)`
   background-color: transparent;
   fill: #000;
   height: 25px;
-  margin-bottom: 5px;
   width: 25px;
 
-  rect {
+  /* rect {
     transform: rotate(0deg);
     transform-origin: 0% 50%;
     transition: all 0.2s linear;
@@ -245,7 +248,7 @@ const Hamburger = styled(hamburger)`
 
   [aria-expanded="true"] & rect:nth-of-type(4) {
     transform: rotate(-45deg);
-  }
+  } */
 `;
 
 const Search = styled(search)`
@@ -367,7 +370,6 @@ const MenuToggle = styled.button`
   flex-direction: column;
   justify-content: center;
   letter-spacing: inherit;
-  margin-top: -1.4rem;
   padding: 0 2rem;
   position: absolute;
   right: 0;
@@ -390,7 +392,7 @@ const CloseNav = styled.button`
   line-height: 1.25;
   margin: 0 auto;
   max-width: 1000px;
-  padding: 3.15rem 2rem;
+  padding: 3rem 2rem;
   width: 100%;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
@@ -909,7 +911,6 @@ const ButtonContentWrap = styled.span`
   display: flex;
   height: auto;
   justify-content: center;
-  padding-top: 1.6rem;
   position: relative;
 `;
 
@@ -977,7 +978,6 @@ const Tagline = styled.span`
     font-size: 1.8rem;
     font-weight: 500;
     letter-spacing: -0.0311em;
-    margin-top: 1rem;
   }
 
   @media only screen and (min-width: 1000px) {
@@ -992,18 +992,17 @@ const LogoWrap = styled.div`
   flex-direction: column;
 
   @media only screen and (min-width: 700px) {
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start;
   }
 
   @media only screen and (min-width: 1000px) {
     align-items: baseline;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     margin: -1rem 0 0 -2.4rem;
+    text-align: center;
   }
 `;
 
@@ -1173,8 +1172,7 @@ export default function Layout({ pageTitle, children }: Props): JSX.Element {
           </LogoWrap>
           <MenuToggle onClick={toggleNav} aria-expanded={navVisible}>
             <ButtonContentWrap>
-              <Menu />
-              <ButtonLabel>Menu</ButtonLabel>
+              <Hamburger />
             </ButtonContentWrap>
           </MenuToggle>
           <Nav role="navigation" className={navVisible ? "open" : undefined}>

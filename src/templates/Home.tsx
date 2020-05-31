@@ -380,6 +380,11 @@ const Dots = styled.span`
   transform: translateY(-0.3em);
 `;
 
+const Placeholder = styled.span`
+  display: none;
+  visibility: hidden;
+`;
+
 interface PaginationProps {
   pageContext: PageContext;
 }
@@ -397,7 +402,7 @@ function Pagination({ pageContext }: PaginationProps): JSX.Element {
 
   if (isFirst) {
     newer = (
-      <span
+      <Placeholder
         css={css`
           display: none;
           visibility: hidden;
@@ -409,7 +414,7 @@ function Pagination({ pageContext }: PaginationProps): JSX.Element {
         `}
       >
         ←Newer <HideSmall>Posts</HideSmall>
-      </span>
+      </Placeholder>
     );
   } else {
     newer = (
@@ -431,7 +436,7 @@ function Pagination({ pageContext }: PaginationProps): JSX.Element {
 
   if (isLast) {
     older = (
-      <span
+      <Placeholder
         css={css`
           display: none;
           visibility: hidden;
@@ -443,7 +448,7 @@ function Pagination({ pageContext }: PaginationProps): JSX.Element {
         `}
       >
         Older <HideSmall>Posts</HideSmall>→
-      </span>
+      </Placeholder>
     );
   } else {
     older = (
@@ -475,9 +480,7 @@ function Pagination({ pageContext }: PaginationProps): JSX.Element {
 
   let prevPage;
 
-  if (isFirst) {
-    prevPage = <span />;
-  } else {
+  if (!isFirst) {
     prevPage = <Link to={prevPageUrl}>{currentPage - 1}</Link>;
   }
 
