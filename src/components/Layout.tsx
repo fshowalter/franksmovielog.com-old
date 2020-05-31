@@ -83,6 +83,10 @@ const cssReset = css`
     color: var(--color-link);
     line-height: inherit;
     text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   body {

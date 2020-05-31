@@ -109,6 +109,11 @@ const CategoryLink = styled(Link)`
   &:first-of-type {
     margin-left: 0;
   }
+
+  &:hover {
+    border-bottom-color: transparent;
+    text-decoration: none;
+  }
 `;
 
 const MetaWrap = styled.div`
@@ -164,6 +169,7 @@ const ReviewImageWrap = styled(Link)`
 
   @media only screen and (min-width: 700px) {
     margin-top: 8rem;
+    width: calc(100% - 8rem);
   }
 `;
 
