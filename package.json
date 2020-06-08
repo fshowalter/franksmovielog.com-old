@@ -41,7 +41,7 @@
     "sqlite": "^4.0.7",
     "sqlite3": "^4.2.0",
     "svg-react-loader": "^0.4.6",
-    "ts-node": "^8.10.1",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   },
   "devDependencies": {
