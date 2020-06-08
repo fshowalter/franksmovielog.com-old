@@ -2,6 +2,8 @@
 
 import { graphql, Link } from "gatsby";
 import Img, { FluidObject } from "gatsby-image";
+import parse from "html-react-parser";
+import marked from "marked";
 import moment from "moment";
 import React from "react";
 
@@ -9,6 +11,7 @@ import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { WindowLocation } from "@reach/router";
 
+import calendar from "../assets/bootstrap-calendar.inline.svg";
 import Grade from "../components/Grade";
 import Layout from "../components/Layout";
 import MoreList from "../components/MoreList";
@@ -55,11 +58,10 @@ const Categories = styled.div`
 `;
 
 const ReviewHeading = styled.h2`
-  font-family: var(--font-family-system);
   font-feature-settings: "lnum";
   font-size: 3.6rem;
   font-variant-numeric: lining-nums;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.0415625em;
   line-height: 1.138888889;
   margin: 0 auto;
@@ -162,8 +164,8 @@ const ReviewImageWrap = styled(Link)`
   /* border: 9px solid var(--color-border); */
   display: block;
   /* margin: 0 0 10px; */
-  margin: 4rem auto 0;
-  max-width: 1000px;
+  margin: 2.5rem auto 0;
+  max-width: 700px;
   order: 5;
   width: calc(100% - 4rem);
 
@@ -217,14 +219,22 @@ const Separator = styled.hr`
 `;
 
 const Date = styled.time`
-  display: inline;
-  /* align-items: center;
+  align-items: center;
+  color: #6d6d6d;
   display: flex;
-  flex-wrap: nowrap;
-  font-size: inherit;
-  letter-spacing: -0.016875em;
-  line-height: 1.5;
-  margin-right: 2rem; */
+  font-size: 1.5rem;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.5rem;
+  max-width: 58rem;
+  order: 4;
+  width: calc(100% - 4rem);
+
+  @media (min-width: 700px) {
+    font-size: 1.6rem;
+    margin-top: 3rem;
+  }
 `;
 
 const ListItem = styled.li`
@@ -386,6 +396,11 @@ const Dots = styled.span`
   transform: translateY(-0.3em);
 `;
 
+const Calendar = styled(calendar)`
+  fill: #6d6d6d;
+  margin-right: 1rem;
+`;
+
 const Placeholder = styled.span`
   display: none;
   visibility: hidden;
@@ -534,7 +549,7 @@ const PaginationSection = styled.section`
 
 const ReviewGrade = styled(Grade)`
   display: block;
-  height: 3rem;
+  height: 2.5rem;
   margin: 1.5rem 0 0;
   order: 3;
 
@@ -548,6 +563,13 @@ const ReadMoreWrap = styled.div`
   margin: 0 auto;
   order: 7;
   padding-top: 3rem;
+`;
+
+const ReviewCapsule = styled.div`
+  color: #6d6d6d;
+  margin: 2rem auto 0;
+  order: 6;
+  width: calc(100% - 4rem);
 `;
 
 const ReadMoreLink = styled(Link)`
@@ -614,6 +636,7 @@ interface Props {
           year: string;
         };
         markdown: {
+          firstParagraph: string;
           backdrop?: {
             childImageSharp?: {
               fluid: FluidObject;
@@ -642,25 +665,32 @@ export default function HomeTemplate({
                   </ReviewHeaderLink>
                 </ReviewHeading>
                 <ReviewGrade grade={node.grade} />
-                <MovieDetails>
+                {/* <Date dateTime={node.date}>
+                  <Calendar />{" "}
+                  <span>{moment.utc(node.date).format("MMMM D")}</span>
+                </Date> */}
+                {/* <MovieDetails>
                   <div>
                     Directed by{" "}
                     {node.movie.directors.map((d) => d.fullName).join(", ")}{" "}
                   </div>
-                </MovieDetails>
+                </MovieDetails> */}
                 <ReviewImage review={node} />
+                <ReviewCapsule>
+                  {parse(marked(node.markdown.firstParagraph.trim()))}
+                </ReviewCapsule>
                 <ReadMoreWrap>
                   <ReadMoreLink to={`/reviews/${node.slug}/`}>
                     Read Review
                   </ReadMoreLink>
                 </ReadMoreWrap>
-                <MetaWrap>
+                {/* <MetaWrap>
                   Rewatched{" "}
                   <Date dateTime={node.date}>
                     {moment.utc(node.date).format("ddd MMM Do, YYYY")}
                   </Date>{" "}
                   via Alamo Drafthouse - One Loudoun.
-                </MetaWrap>
+                </MetaWrap> */}
                 <Categories>
                   <CategoryLink to="/reviews/">Reviews</CategoryLink>
                 </Categories>
@@ -698,6 +728,7 @@ export const pageQuery = graphql`
           }
         }
         markdown {
+          firstParagraph
           backdrop {
             childImageSharp {
               fluid(toFormat: JPG, jpegQuality: 75, maxWidth: 1800) {

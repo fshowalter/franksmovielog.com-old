@@ -12,6 +12,7 @@ import close from "../assets/close.inline.svg";
 import interItalic from "../assets/fonts/Inter-italic.var.woff2";
 import interRoman from "../assets/fonts/Inter-roman.var.woff2";
 import hamburger from "../assets/hamburger.inline.svg";
+import texture from "../assets/imissnotcomingsoon.jpg";
 import letterboxd from "../assets/letterboxd.inline.svg";
 import logoFutura from "../assets/logo-futura.inline.svg";
 import logo from "../assets/logo.inline.svg";
@@ -93,7 +94,7 @@ const cssReset = css`
     background: #fcfcfc;
     box-sizing: border-box;
     color: var(--color-text-primary);
-    font-family: var(--font-family-serif);
+    font-family: var(--font-family-system);
     font-size: 1.8rem;
     -webkit-font-smoothing: antialiased;
     font-style: normal;
@@ -166,9 +167,18 @@ const cssReset = css`
 const LayoutWrap = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
   min-height: 100vh;
   position: relative;
+
+  &:before {
+    background: url(${texture}) repeat;
+    content: "";
+    height: 2rem;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 
   /* @media only screen and (min-width: ${breakpoints.max}) {
     flex-direction: row;
@@ -177,8 +187,12 @@ const LayoutWrap = styled.div`
 `;
 
 const LogoHeading = styled.h1`
-  font-size: 2.4rem;
-  font-weight: 700;
+  /* font-size: 2.4rem;
+  font-weight: 700; */
+  font-size: 2.6rem;
+  /* font-weight: 500; */
+  font-weight: 900;
+  letter-spacing: normal;
   line-height: 1;
 
   @media only screen and (min-width: 700px) {
@@ -193,9 +207,13 @@ const LogoHeading = styled.h1`
 const Futura = styled(logoFutura)``;
 
 const Logo = styled(logo)`
-  background-color: transparent;
+  background: url(${texture});
+  border-radius: 50%;
   fill: transparent;
   height: 50px;
+  left: 2rem;
+  position: absolute;
+  top: 9rem;
   width: 50px;
 
   @media only screen and (min-width: ${breakpoints.mid}) {
@@ -224,13 +242,29 @@ const LogoLink = styled(Link)`
   /* @media only screen and (min-width: ${breakpoints.mid}) {
     margin: 0;
   } */
+
+  /* &:before {
+    background: url(${texture});
+    border-radius: 50%;
+    color: #fff;
+    content: 'M';
+    font-size: 2.7rem;
+    height: 4.2rem;
+    left: 2rem;
+    line-height: 4.2rem;
+    position: absolute;
+    text-align: center;
+    top: 3.5rem;
+    width: 4.2rem;
+  } */
 `;
 
 const Hamburger = styled(nav)`
   background-color: transparent;
   fill: #000;
-  height: 25px;
-  width: 25px;
+  /* fill: #fff; */
+  height: 30px;
+  width: 30px;
 
   @media only screen and (min-width: 700px) {
     width: 30px;
@@ -249,11 +283,6 @@ const Hamburger = styled(nav)`
     width: 0;
   }
   [aria-expanded="true"] & rect:nth-of-type(3) {
-    opacity: 0;
-    width: 0;
-  }
-
-  [aria-expanded="true"] & rect:nth-of-type(4) {
     transform: rotate(-45deg);
   } */
 `;
@@ -294,10 +323,11 @@ const Close = styled(close)`
   background-color: transparent;
   display: block;
   fill: var(--color-text-primary);
-  height: 16px;
+  height: 2rem;
   /* margin: 0 10px 0 15px; */
   /* stroke: #000; */
-  width: 24px;
+  margin: 0.5rem;
+  width: 2rem;
 `;
 
 const CloseSearch = styled(close)`
@@ -324,9 +354,13 @@ const SearchToggle = styled.button`
   padding: 0 2rem;
   text-transform: none;
 
+  @media only screen and (min-width: 700px) {
+  }
+
   @media only screen and (min-width: 1000px) {
     align-items: flex-start;
     bottom: auto;
+    display: none;
     height: 4.4rem;
     left: auto;
     padding: 0 4rem;
@@ -356,9 +390,11 @@ const MenuToggle = styled.button`
   position: absolute;
   right: 0;
   top: 0;
+  /* top: -14rem; */
   width: auto;
 
   @media only screen and (min-width: 700px) {
+    display: none;
     padding: 0 4rem;
     width: auto;
   }
@@ -375,14 +411,16 @@ const CloseNav = styled.button`
   border-radius: 0;
   box-shadow: none;
   display: flex;
+  height: 12.9rem;
   justify-content: flex-end;
   line-height: 1.25;
-  margin: 0 auto;
-  max-width: 1000px;
-  padding: 3rem 2rem;
-  width: 100%;
+  padding: 0 2rem;
+  position: absolute;
+  right: 0;
+  top: 0;
 
   @media only screen and (min-width: 700px) {
+    display: none;
     padding: 3rem 4rem 6.4rem 0;
   }
 
@@ -407,6 +445,7 @@ const CloseSearchButton = styled.button`
 
 const Nav = styled.nav`
   align-items: center;
+  background: #fcfcfc;
   bottom: 0;
   box-sizing: border-box;
   height: 100vh;
@@ -414,7 +453,7 @@ const Nav = styled.nav`
   opacity: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 0 0 4.8rem;
+  padding: 12.9rem 0 0;
   position: fixed;
   right: 99999rem;
   top: 0;
@@ -428,13 +467,13 @@ const Nav = styled.nav`
     transition: opacity 0.25s ease-out;
   }
 
-  @media only screen and (min-width: 1000px) {
+  @media only screen and (min-width: 700px) {
+    border-top: solid 0.1rem #d8d8d8;
     display: flex;
     height: auto;
     opacity: 1;
     padding: 0;
     position: static;
-    width: 50%;
   }
 `;
 
@@ -443,7 +482,7 @@ const NavList = styled.ul`
   margin: 0;
   padding: 0;
 
-  @media only screen and (min-width: 1000px) {
+  @media only screen and (min-width: 700px) {
     display: flex;
     flex-wrap: wrap;
     font-size: 1.8rem;
@@ -451,6 +490,7 @@ const NavList = styled.ul`
     justify-content: flex-end;
     letter-spacing: -0.0277em;
     margin: 0 0 0 -1.6rem;
+    padding-top: .5rem;
   }
 
   /* @media only screen and (min-width: ${breakpoints.mid}) {
@@ -506,14 +546,14 @@ const SubMenuIcon = styled.span`
 `;
 
 const NavListItem = styled.li`
-  border-top: solid 0.1rem #d8d8d8;
+  /* border-top: solid 0.1rem #d8d8d8; */
   line-height: 1;
 
   &:last-child {
     border-bottom: solid 0.1rem #d8d8d8;
   }
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 700px) {
     border: none;
     display: block;
     line-height: 1.25;
@@ -531,8 +571,11 @@ const NavListItem = styled.li`
 `;
 
 const Header = styled.header`
-  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05); */
   color: var(--color-text-primary);
+  margin: 0 auto;
+  max-width: 100rem;
+  padding-top: 2rem;
   position: relative;
   width: 100%;
 `;
@@ -548,15 +591,21 @@ const NavLink = styled(Link)`
   width: 100%;
 
   @media screen and (min-width: 700px) {
-    padding: 2rem 4rem;
+    /* padding: 2rem 4rem; */
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    line-height: 1.5;
+    padding: 0;
+    text-transform: uppercase;
   }
 
   @media screen and (min-width: 1000px) {
-    font-weight: 500;
+    /* font-weight: 500;
     letter-spacing: -0.0277em;
-    line-height: 2.6rem;
+    line-height: 2.5rem;
     margin: 0;
-    padding: 0;
+    padding: 0; */
   }
 `;
 
@@ -779,6 +828,7 @@ const SearchFormWrap = styled.div`
   padding: 2rem 2.5rem;
 
   @media (min-width: 700px) {
+    display: none;
     margin: 0 auto;
     padding: 2rem 0;
     width: calc(100% - 8rem);
@@ -816,25 +866,29 @@ function SearchForm({ children }: SearchFormProps): JSX.Element {
 }
 
 const ButtonContentWrap = styled.span`
+  /* background: url(${texture}); */
+  /* border-radius: 5px; */
   box-sizing: border-box;
   display: flex;
   height: auto;
   justify-content: center;
+  /* margin-top: 3rem; */
   position: relative;
 
   @media only screen and (min-width: 700px) {
-    margin-top: -2.5rem;
+    /* margin-top: -2.5rem; */
   }
 `;
 
 const ButtonLabel = styled.span`
   color: #6d6d6d;
+  /* color: #fff; */
   font-family: var(--font-family-system);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: inherit;
   position: absolute;
-  top: calc(100% + 0.8rem);
+  top: calc(100%);
   white-space: nowrap;
   width: auto;
   word-break: break-all;
@@ -862,32 +916,35 @@ const CloseNavLabel = styled.span`
 
 const Tagline = styled.span`
   color: #6d6d6d;
-  display: none;
-  font-size: 1.1rem;
-  font-weight: 600;
+  /* display: none; */
+  font-size: 1.5rem;
+  /* font-weight: 600;
+  font-weight: 500; */
+  font-weight: 400;
   padding-top: 0.5rem;
   transition: all 0.15s linear;
 
   @media only screen and (min-width: 700px) {
     display: block;
     font-size: 1.8rem;
-    font-weight: 500;
     letter-spacing: -0.0311em;
   }
 
   @media only screen and (min-width: 1000px) {
     font-size: 18px;
-    font-weight: 500;
     margin: 0 0 0 2.4rem;
+    padding-top: 0.2rem;
   }
 `;
 
 const LogoWrap = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0 5rem 0 0;
 
   @media only screen and (min-width: 700px) {
     justify-content: flex-start;
+    margin-bottom: 1rem;
     text-align: left;
   }
 
@@ -896,15 +953,13 @@ const LogoWrap = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     margin: -1rem 4rem 0 -2.4rem;
-    max-width: 50%;
-    text-align: center;
   }
 `;
 
 const SearchButtonWrap = styled.div`
   display: none;
 
-  @media only screen and (min-width: 1000px) {
+  @media only screen and (min-width: 700px) {
     align-items: center;
     bottom: auto;
     display: flex;
@@ -915,9 +970,9 @@ const SearchButtonWrap = styled.div`
     margin-right: -3rem;
     margin-top: -0.7rem;
     overflow: visible;
-    position: relative;
-    right: auto;
-    top: auto;
+    position: absolute;
+    right: 4rem;
+    top: 2rem;
     width: auto;
 
     &:before {
@@ -944,17 +999,19 @@ const HeaderWrap = styled.div`
   letter-spacing: -0.015em;
   margin: 0 auto;
   max-width: 168rem;
-  padding: 3rem 0;
+  padding: 2rem 0;
+  position: relative;
   width: calc(100% - 4rem);
 
   @media only screen and (min-width: 700px) {
+    align-items: baseline;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: calc(100% - 8rem);
   }
 
   @media only screen and (min-width: 1000px) {
-    align-items: baseline;
-    display: flex;
-    justify-content: space-between;
     padding: 2.8rem 0;
   }
 `;
@@ -1062,12 +1119,14 @@ export default function Layout({ pageTitle, children }: Props): JSX.Element {
               <LogoLink to="/">Frank&apos;s Movie Log</LogoLink>
             </LogoHeading>
             <Tagline>
-              Quality movie reviews of movies of questionable quality.
+              {/* Quality movie reviews of movies of questionable quality. */}
+              (Almost) Everything I Watch
             </Tagline>
           </LogoWrap>
           <MenuToggle onClick={toggleNav} aria-expanded={navVisible}>
             <ButtonContentWrap>
               <Hamburger />
+              <ButtonLabel>Menu</ButtonLabel>
             </ButtonContentWrap>
           </MenuToggle>
           <Nav role="navigation" className={navVisible ? "open" : undefined}>
