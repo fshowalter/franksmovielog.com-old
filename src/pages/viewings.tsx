@@ -6,7 +6,7 @@ import React from "react";
 import { css, jsx } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import Layout, { breakpoints } from "../components/Layout";
+import Layout from "../components/Layout";
 import PageHeader from "../components/PageHeader";
 import Panel from "../components/Panel";
 import RangeFilter from "../components/RangeFilter";

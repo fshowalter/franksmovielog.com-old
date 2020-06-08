@@ -1,25 +1,17 @@
 import { graphql, Link, StaticQuery } from "gatsby";
-import React, { DOMElement, ReactNode, useRef } from "react";
-import ReactDOM from "react-dom";
+import { FluidObject } from "gatsby-image";
+import React, { ReactNode } from "react";
 import { Helmet } from "react-helmet";
 
 import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import testBackground from "../assets/background.jpg";
 import background from "../assets/bkg_dark.png";
 import close from "../assets/close.inline.svg";
-import interItalic from "../assets/fonts/Inter-italic.var.woff2";
-import interRoman from "../assets/fonts/Inter-roman.var.woff2";
-import hamburger from "../assets/hamburger.inline.svg";
 import texture from "../assets/imissnotcomingsoon.jpg";
-import letterboxd from "../assets/letterboxd.inline.svg";
-import logoFutura from "../assets/logo-futura.inline.svg";
-import logo from "../assets/logo.inline.svg";
-import menu from "../assets/menu.inline.svg";
 import nav from "../assets/nav.inline.svg";
 import search from "../assets/search.inline.svg";
-import Grade from "../components/Grade";
+import Grade from "./Grade";
 
 export const breakpoints: { mid: string; max: string } = {
   mid: "840px",
@@ -62,22 +54,6 @@ const cssReset = css`
     box-sizing: inherit;
     word-break: break-word;
     word-wrap: break-word;
-  }
-
-  @font-face {
-    font-display: swap;
-    font-family: "Inter var";
-    font-style: normal;
-    font-weight: 100 900; /* stylelint-disable-line font-weight-notation */
-    src: url(${interRoman}) format("woff2");
-  }
-
-  @font-face {
-    font-display: swap;
-    font-family: "Inter var";
-    font-style: italic;
-    font-weight: 100 900; /* stylelint-disable-line font-weight-notation */
-    src: url(${interItalic}) format("woff2");
   }
 
   a {
@@ -204,30 +180,6 @@ const LogoHeading = styled.h1`
   }
 `;
 
-const Futura = styled(logoFutura)``;
-
-const Logo = styled(logo)`
-  background: url(${texture});
-  border-radius: 50%;
-  fill: transparent;
-  height: 50px;
-  left: 2rem;
-  position: absolute;
-  top: 9rem;
-  width: 50px;
-
-  @media only screen and (min-width: ${breakpoints.mid}) {
-    background: #202020 url(${testBackground}) repeat;
-    height: 70px;
-    margin-right: 1rem;
-    width: 70px;
-  }
-
-  @media only screen and (min-width: ${breakpoints.max}) {
-    margin-right: 0;
-  }
-`;
-
 const LogoLink = styled(Link)`
   /* color: #fff; */
   color: #000;
@@ -312,13 +264,6 @@ const Search = styled(search)`
   } */
 `;
 
-const Menu = styled(menu)`
-  display: block;
-  fill: #000;
-  height: 0.8rem;
-  width: 2.6rem;
-`;
-
 const Close = styled(close)`
   background-color: transparent;
   display: block;
@@ -353,9 +298,6 @@ const SearchToggle = styled.button`
   overflow: visible;
   padding: 0 2rem;
   text-transform: none;
-
-  @media only screen and (min-width: 700px) {
-  }
 
   @media only screen and (min-width: 1000px) {
     align-items: flex-start;
@@ -508,40 +450,6 @@ const NavList = styled.ul`
 
   @media only screen and (min-width: 1220px) {
     margin: -0.8rem 0 0 -2.5rem
-  }
-`;
-
-const SubMenuIcon = styled.span`
-  color: #e90b1d;
-  display: block;
-  height: 0.7rem;
-  pointer-events: none;
-  position: absolute;
-  right: -0.5rem;
-  top: calc(50% - 0.4rem);
-  transform: rotate(-45deg);
-  width: 1.3rem;
-
-  &:before {
-    content: "";
-    display: block;
-    background-color: currentColor;
-    height: 0.9rem;
-    position: absolute;
-    bottom: calc(50% - 0.1rem);
-    left: 0;
-    width: 0.2rem;
-  }
-
-  &:after {
-    content: "";
-    display: block;
-    background-color: currentColor;
-    height: 0.2rem;
-    position: absolute;
-    bottom: calc(50% - 0.1rem);
-    left: 0;
-    width: 0.9rem;
   }
 `;
 
@@ -776,26 +684,8 @@ const FooterLink = styled(Link)`
   white-space: nowrap; */
 `;
 
-const footerSubLinkMixin = css`
-  /* display: block;
-  padding: 4px 12px;
-  text-decoration: none; */
-  /* display: block;
-  line-height: 3.2rem; */
-`;
-
-const FooterSubLink = styled(Link)`
-  ${footerSubLinkMixin}
-`;
-
 const FooterSubExternalLink = styled.a`
   color: #e90b1d;
-`;
-
-const Letterboxd = styled(letterboxd)`
-  height: 3.2rem;
-  margin-right: 1rem;
-  width: 3.2rem;
 `;
 
 const FooterTextInputWrap = styled.div`
@@ -1087,6 +977,23 @@ interface Props {
   pageTitle?: string;
 }
 
+interface RecentPost {
+  grade: string;
+  sequence: number;
+  slug: string;
+  movie: {
+    title: string;
+    year: string;
+  };
+  markdown: {
+    backdrop?: {
+      childImageSharp?: {
+        fluid: FluidObject;
+      };
+    };
+  };
+}
+
 export default function Layout({ pageTitle, children }: Props): JSX.Element {
   const title = pageTitle
     ? `${pageTitle} | Frank's Movie Log`
@@ -1266,9 +1173,9 @@ export default function Layout({ pageTitle, children }: Props): JSX.Element {
                   }
                 }
               `}
-              render={(data) => (
+              render={(data): JSX.Element => (
                 <FooterAsideList>
-                  {data.allReview.nodes.map((node) => (
+                  {data.allReview.nodes.map((node: RecentPost) => (
                     <FooterListItem key={node.sequence}>
                       <FooterLink to={`/reviews/${node.slug}/`}>
                         {node.movie.title}{" "}

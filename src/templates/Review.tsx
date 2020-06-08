@@ -10,8 +10,6 @@ import React from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import calendar from "../assets/calendar.inline.svg";
-import eye from "../assets/eye.inline.svg";
 import Grade from "../components/Grade";
 import Layout, { breakpoints } from "../components/Layout";
 
@@ -34,26 +32,6 @@ const Title = styled.h1`
     font-size: 6.4rem;
     width: calc(100% - 8rem);
   }
-`;
-
-const Calendar = styled(calendar)`
-  display: block;
-  fill: #6d6d6d;
-  flex-shrink: 0;
-  height: 1.8rem;
-  margin-right: 1rem;
-  max-width: 100%;
-  width: 1.7rem;
-`;
-
-const Eye = styled(eye)`
-  display: block;
-  fill: #6d6d6d;
-  flex-shrink: 0;
-  height: 1.5rem;
-  margin-right: 1rem;
-  max-width: 100%;
-  width: 1.5rem;
 `;
 
 const Meta = styled.aside`
@@ -234,14 +212,6 @@ function ReviewImage({ review }: Props["data"]): JSX.Element | null {
   );
 }
 
-const DirectorsWrap = styled.span`
-  color: var(--color-text-secondary);
-  display: block;
-  font-size: 12px;
-  font-weight: 400;
-  margin-top: 1em;
-`;
-
 const Review = styled.article`
   /* border-bottom: 1px solid var(--color-border);
   margin: 0;
@@ -254,22 +224,6 @@ const Review = styled.article`
     position: relative;
   } */
 `;
-
-const HideSmall = styled.span`
-  display: block;
-  height: 0;
-  visibility: hidden;
-  width: 0;
-
-  @media (min-width: 700px) {
-    display: inline;
-    height: auto;
-    visibility: visible;
-    width: auto;
-  }
-`;
-
-const Via = styled.span``;
 
 const Date = styled.time`
   display: inline;

@@ -4,14 +4,12 @@ import { graphql, Link } from "gatsby";
 import Img, { FluidObject } from "gatsby-image";
 import parse from "html-react-parser";
 import marked from "marked";
-import moment from "moment";
 import React from "react";
 
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { WindowLocation } from "@reach/router";
 
-import calendar from "../assets/bootstrap-calendar.inline.svg";
 import Grade from "../components/Grade";
 import Layout from "../components/Layout";
 import MoreList from "../components/MoreList";
@@ -118,46 +116,6 @@ const CategoryLink = styled(Link)`
   }
 `;
 
-const MetaWrap = styled.div`
-  color: #6d6d6d;
-  /* display: flex; */
-  /* font-family: var(--font-family-system); */
-  font-size: 1.5rem;
-  font-weight: 500;
-  letter-spacing: -0.016875em;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 3rem;
-  max-width: 66rem;
-  order: 6;
-  text-align: center;
-  width: calc(100% - 4rem);
-
-  @media (min-width: 700px) {
-    font-size: 1.6rem;
-    margin-top: 3rem;
-  }
-`;
-
-const MovieDetails = styled.div`
-  align-items: center;
-  color: #6d6d6d;
-  display: flex;
-  flex-direction: column;
-  font-size: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2.5rem;
-  max-width: 58rem;
-  order: 4;
-  width: calc(100% - 4rem);
-
-  @media (min-width: 700px) {
-    font-size: 1.6rem;
-    margin-top: 3rem;
-  }
-`;
-
 const ReviewImageWrap = styled(Link)`
   background-repeat: no-repeat;
   background-size: cover;
@@ -215,25 +173,6 @@ const Separator = styled.hr`
   @media (min-width: 700px) {
     margin: 8rem auto;
     width: calc(100% - 8rem);
-  }
-`;
-
-const Date = styled.time`
-  align-items: center;
-  color: #6d6d6d;
-  display: flex;
-  font-size: 1.5rem;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2.5rem;
-  max-width: 58rem;
-  order: 4;
-  width: calc(100% - 4rem);
-
-  @media (min-width: 700px) {
-    font-size: 1.6rem;
-    margin-top: 3rem;
   }
 `;
 
@@ -394,11 +333,6 @@ const PaginationWrap = styled.nav`
 const Dots = styled.span`
   color: #6d6d6d;
   transform: translateY(-0.3em);
-`;
-
-const Calendar = styled(calendar)`
-  fill: #6d6d6d;
-  margin-right: 1rem;
 `;
 
 const Placeholder = styled.span`
@@ -611,6 +545,7 @@ interface Review {
     year: number;
   };
   markdown: {
+    firstParagraph: string;
     backdrop?: {
       childImageSharp?: {
         fluid: FluidObject;
@@ -636,7 +571,6 @@ interface Props {
           year: string;
         };
         markdown: {
-          firstParagraph: string;
           backdrop?: {
             childImageSharp?: {
               fluid: FluidObject;
