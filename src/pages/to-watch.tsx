@@ -3,10 +3,10 @@ import { graphql } from "gatsby";
 import pluralize from "pluralize";
 import React from "react";
 
-import { css, jsx } from "@emotion/core";
+import { jsx } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import Layout, { breakpoints } from "../components/Layout";
+import Layout from "../components/Layout";
 import PageHeader from "../components/PageHeader";
 import Panel from "../components/Panel";
 import RangeFilter from "../components/RangeFilter";
@@ -383,15 +383,7 @@ const WatchlistTitleItem = React.memo(function WatchlistTitleItem({
   );
 });
 
-const ToWatchWrap = styled.div`
-  @media only screen and (min-width: ${breakpoints.mid}) {
-    display: grid;
-    grid-template-columns: 38.2% 61.8%;
-    grid-template-rows: auto auto 1fr;
-    height: 100%;
-    padding: 0 0 0 30px;
-  }
-`;
+const Wrap = styled.div``;
 
 interface Props {
   data: {
@@ -410,14 +402,8 @@ export default function Watchlist({ data }: Props): JSX.Element {
 
   return (
     <Layout>
-      <ToWatchWrap>
+      <Wrap>
         <PageHeader
-          css={css`
-            @media only screen and (min-width: ${breakpoints.mid}) {
-              grid-column: 1 / -1;
-              grid-row: 1 / 2;
-            }
-          `}
           heading="To-Watch List"
           slug={`My movie review bucketlist. ${Number(
             data.allWatchlistTitle.nodes.length
@@ -427,31 +413,16 @@ export default function Watchlist({ data }: Props): JSX.Element {
           )}. No silents or documentaries.`}
         />
         <FilterPanel
-          css={css`
-            @media only screen and (min-width: ${breakpoints.mid}) {
-              grid-column: 1 / 2;
-              grid-row: 2 /3;
-              margin-top: 52px;
-            }
-          `}
           state={state}
           setState={setState}
           heading="Filter and Sort"
         />
-        <TitleList
-          css={css`
-            @media only screen and (min-width: ${breakpoints.mid}) {
-              grid-column: 2 / 3;
-              grid-row: 2 / 4;
-              padding-top: 9px;
-            }
-          `}
-        >
+        <TitleList>
           {state.map((title) => (
             <WatchlistTitleItem key={title.imdbId} watchlistTitle={title} />
           ))}
         </TitleList>
-      </ToWatchWrap>
+      </Wrap>
     </Layout>
   );
 }

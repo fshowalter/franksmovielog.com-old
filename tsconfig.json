@@ -16,6 +16,6 @@
     "strictNullChecks": true,
     "noImplicitAny": true
   },
-  "include": ["./src/**/*", "./*.js"],
+  "include": ["./src/**/*", "./*.js", "./stylelint/**/*"],
   "exclude": ["**/*.svg", "**/*.png", "**/*.jpg", "./static/**.*"]
 }
