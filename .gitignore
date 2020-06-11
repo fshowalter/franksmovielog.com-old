@@ -23,3 +23,5 @@
 
 .env.local
 yarn-error.log
+
+/dist
