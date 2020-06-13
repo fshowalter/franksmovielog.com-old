@@ -12,7 +12,7 @@ function round(value, precision) {
 
 function watchlistItemProgress(html, itemProgress) {
   return html`<li>
-    ${itemProgress.full_name}: ${itemProgress.reviewed}/${itemProgress.total}
+    ${itemProgress.name}: ${itemProgress.reviewed}/${itemProgress.total}
     ${Math.round((itemProgress.reviewed / itemProgress.total) * 100)}%
   </li>`;
 }
@@ -23,6 +23,7 @@ exports.render = function ({
   directorWatchlistProgress,
   performerWatchlistProgress,
   writerWatchlistProgress,
+  watchlistCollectionsProgress,
 }) {
   return this.html`
     <main>
@@ -101,6 +102,13 @@ exports.render = function ({
       </ul>
 
       <h4>Collections</h4>
+      <ul>
+      ${watchlistCollectionsProgress
+        .map((collectionProgress) => {
+          return watchlistItemProgress(this.html, collectionProgress);
+        })
+        .join("\n")}
+      </ul>
 
       <h3>Most Watched Films</h3>
 
