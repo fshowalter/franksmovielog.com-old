@@ -171,7 +171,7 @@ exports.render = function ({ watchlistTitles }) {
         </label>
         <label>Order By
           <select name="order-by">
-            <option value="release-date-asc">Release Date (Oldest First)</option>
+            <option value="release-date-asc" selected="selected">Release Date (Oldest First)</option>
             <option value="release-date-desc">Release Date (Newest First)</option>
             <option value="title-asc">Title</option>
           </select>
@@ -181,7 +181,7 @@ exports.render = function ({ watchlistTitles }) {
         ${watchlistTitles
           .map((watchlistTitle) => {
             return this.html` <li>
-              <div>${watchlistTitle.title} (${watchlistTitle.year})</div>
+              <div>${this.titleWithYear(watchlistTitle)}</div>
               ${slugForWatchlistTitle(watchlistTitle)}
             </li>`;
           })

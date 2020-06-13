@@ -98,9 +98,7 @@ exports.render = function ({ pagination }) {
         ${pagination.items
           .map((review) => {
             return this.html`<li value=${review.sequence}>
-              <h2><a href=${`/reviews/${review.slug}/`}>${review.title} (${
-              review.year
-            })</a></h2>
+              <h2>${this.titleWithYear(review)}</h2>
               <img loading="lazy" src="${`/backdrops/${review.slug}.png`}" alt="${`A still from ${review.title} (${review.year})`}" />
               ${this.markdown(review.review_content)}
             </li>`;

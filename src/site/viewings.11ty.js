@@ -74,7 +74,7 @@ exports.render = function ({ viewings }) {
         </label>
         <label>Order By
           <select name="order-by">
-            <option value="viewing-date-desc">Viewing Date (Newest First)</option>
+            <option value="viewing-date-desc" selected="selected">Viewing Date (Newest First)</option>
             <option value="viewing-date-asc">Viewing Date (Oldest First)</option>
             <option value="release-date-desc">Release Date (Newest First)</option>
             <option value="release-date-asc">Release Date (Oldest First)</option>
@@ -86,7 +86,7 @@ exports.render = function ({ viewings }) {
         ${viewings
           .map((viewing) => {
             return this.html` <li>
-              <div>${viewing.title} (${viewing.year})</div>
+              <div>${this.titleWithYear(viewing)}</div>
               ${slugForViewing(viewing)}
             </li>`;
           })

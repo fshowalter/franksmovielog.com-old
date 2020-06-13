@@ -17,9 +17,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:css": "stylelint './src/**/*.ts*'",
     "eslint-check": "eslint --print-config gatsby-node.js | eslint-config-prettier-check",
-    "sync:reviews": "cp -av ../movielog-new/export/reviews.json src/site/_data",
-    "sync:viewings": "cp -av ../movielog-new/export/viewings.json src/site/_data",
-    "sync:watchlistTitles": "cp -av ../movielog-new/export/watchlistTitles.json src/site/_data"
+    "sync": "cp -av ../movielog-new/export/*.json src/site/_data"
   },
   "dependencies": {
     "@11ty/eleventy": "^0.11.0",

@@ -19,7 +19,7 @@ exports.render = function ({ title, content }) {
           <li><a href="/">Home</a></li>
           <li><a href="/about/">About</a></li>
           <li><a href="/how-i-grade/">How I Grade</a></li>
-          <li><a href=="/reviews/">Reviews</a></li>
+          <li><a href="/reviews/">Reviews</a></li>
           <li><a href="/viewings/">Viewings</a></li>
           <li><a href="/to-watch/">To-Watch</a></li>
           <li><a href="/stats/">Stats</a></li>

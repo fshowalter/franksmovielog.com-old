@@ -1,7 +1,8 @@
 const markdownParser = require("markdown-it")().use(
   require("markdown-it-footnote")
 );
-
+const imageForGrade = require("./src/utils/image-for-grade.js");
+const titleWithYear = require("./src/utils/title-with-year.js");
 const util = require("util");
 
 module.exports = function (eleventyConfig) {
@@ -12,6 +13,8 @@ module.exports = function (eleventyConfig) {
 
   // alias
   eleventyConfig.addLayoutAlias("default", "layout.11ty.js");
+
+  eleventyConfig.setLibrary("md", markdownParser);
 
   // compress and combine js files
   eleventyConfig.addFilter("jsmin", require("./src/utils/minify-js.js"));
@@ -26,11 +29,21 @@ module.exports = function (eleventyConfig) {
     return string;
   });
 
-  eleventyConfig.setLibrary("md", markdownParser);
-
   // Add markdown shortcode for reviews
   eleventyConfig.addShortcode("markdown", function (rawMarkdown) {
     return markdownParser.render(rawMarkdown);
+  });
+
+  eleventyConfig.addShortcode("grade", function (gradeLetter) {
+    return imageForGrade(gradeLetter);
+  });
+
+  eleventyConfig.addShortcode("titleWithYear", function ({
+    imdb_id,
+    title,
+    year,
+  }) {
+    return titleWithYear(imdb_id, title, year);
   });
 
   // minify the html output when running in prod
@@ -42,7 +55,6 @@ module.exports = function (eleventyConfig) {
   }
 
   // Passthrough
-  // eleventyConfig.addPassthroughCopy("./src/site/fonts");
   eleventyConfig.addPassthroughCopy("./src/site/backdrops");
   eleventyConfig.addPassthroughCopy("./src/site/svg");
   eleventyConfig.addPassthroughCopy("./src/site/css");
