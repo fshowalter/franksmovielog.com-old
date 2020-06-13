@@ -5,7 +5,25 @@ exports.data = {
   title: "Stats",
 };
 
-exports.render = function ({ viewingsByReleaseYear }) {
+function round(value, precision) {
+  var multiplier = Math.pow(10, precision || 0);
+  return Math.round(value * multiplier) / multiplier;
+}
+
+function watchlistItemProgress(html, itemProgress) {
+  return html`<li>
+    ${itemProgress.full_name}: ${itemProgress.reviewed}/${itemProgress.total}
+    ${Math.round((itemProgress.reviewed / itemProgress.total) * 100)}%
+  </li>`;
+}
+
+exports.render = function ({
+  viewingsByReleaseYear,
+  ratingsByReleaseYear,
+  directorWatchlistProgress,
+  performerWatchlistProgress,
+  writerWatchlistProgress,
+}) {
   return this.html`
     <main>
       <h2>Stats</h2>
@@ -14,12 +32,24 @@ exports.render = function ({ viewingsByReleaseYear }) {
       <nav>
       <h3>Navigation</h3>
       <ul>
-        <li><a href="#viewings-by-release-year">Viewings by Release Year</a></li>
-        <li><a href="#ratings-by-release-year">Ratings by Release Year</a></li>
+        <li><a href="#by-release-year">By Release Year:</a>
+          <ul>
+            <li><a href="#y-release-year-viewings">Viewings</a></li>
+            <li><a href="#by-release-year-ratings">Ratings</a></li>
+          </ul>
+        </li>
+        <li><a href="#watchlist-progress">Watchlist Progress:</a>
+          <ul>
+          <li><a href="#watchlist-progress-directors">Directors</a></li>
+          <li><a href="#watchlist-progress-performers">Performers</a></li>
+          <li><a href="#watchlist-progress-writers">Writers</a></li>
+          </ul>
+        </li>
       </ul>
       </nav>
 
-      <h3 id="viewings-by-release-year">Viewings by Release Year</h3>
+      <h3 id="by-release-year">By Release Year</h3>
+      <h4 id="by-release-year-viewings">Viewings</h3>
       <ul>
       ${viewingsByReleaseYear
         .map((viewingsForYear) => {
@@ -29,15 +59,46 @@ exports.render = function ({ viewingsByReleaseYear }) {
         .join("\n")}
       </ul>
 
-      <h3 id="ratings-by-release-year">Ratings by Release Year</h4>
+      <h4 id="by-release-year-ratings">Ratings</h4>
+      <ul>
+      ${ratingsByReleaseYear
+        .map((ratingForYear) => {
+          return this.html`<li>${ratingForYear.year}: Average ${round(
+            ratingForYear.rating,
+            2
+          )} stars</li>`;
+        })
+        .join("\n")}
+      </ul>
 
-      <h3>Watchlist Progress</h3>
+      <h3 id="watchlist-progress">Watchlist Progress</h3>
 
-      <h4>Directors</h4>
+      <h4 id="watchlist-progress-directors">Directors</h4>
+      <ul>
+      ${directorWatchlistProgress
+        .map((directorProgress) => {
+          return watchlistItemProgress(this.html, directorProgress);
+        })
+        .join("\n")}
+      </ul>
 
-      <h4>Performers</h4>
+      <h4 id="watchlist-progress-performers">Performers</h4>
+      <ul>
+      ${performerWatchlistProgress
+        .map((performerProgress) => {
+          return watchlistItemProgress(this.html, performerProgress);
+        })
+        .join("\n")}
+      </ul>
 
-      <h4>Writers</h4>
+      <h4 id="watchlist-progress-writers">Writers</h4>
+      <ul>
+      ${writerWatchlistProgress
+        .map((writerProgress) => {
+          return watchlistItemProgress(this.html, writerProgress);
+        })
+        .join("\n")}
+      </ul>
 
       <h4>Collections</h4>
 
