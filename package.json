@@ -24,7 +24,7 @@
     "gatsby-transformer-remark": "^2.8.14",
     "gatsby-transformer-sharp": "^2.5.4",
     "gatsby-transformer-yaml": "^2.4.1",
-    "html-react-parser": "^0.10.3",
+    "html-react-parser": "^0.13.0",
     "identity-obj-proxy": "^3.0.0",
     "littlefoot": "^3.2.5",
     "marked": "^1.1.0",
