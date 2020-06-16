@@ -13,11 +13,13 @@
     "url": "git+https://github.com/fshowalter/franksmovielog.com.git"
   },
   "scripts": {
-    "test": "",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:css": "stylelint './src/**/*.ts*'",
-    "eslint-check": "eslint --print-config gatsby-node.js | eslint-config-prettier-check",
-    "sync": "cp -av ../movielog-new/export/*.json src/site/_data"
+    "build": "npm-run-all build:css build:html",
+    "build:css": "node-sass src/site/_includes/css/ --output src/site/css/",
+    "build:html": "eleventy",
+    "watch": "npm-run-all --parallel watch:css watch:html",
+    "watch:css": "node-sass --watch src/site/_includes/css/ --output src/site/css/",
+    "watch:html": "eleventy --serve",
+    "start": "yarn watch"
   },
   "dependencies": {
     "@11ty/eleventy": "^0.11.0",
@@ -25,7 +27,9 @@
     "js-yaml": "^3.14.0",
     "markdown-it": "^11.0.0",
     "markdown-it-footnote": "^3.0.2",
-    "moment": "^2.26.0"
+    "moment": "^2.26.0",
+    "node-sass": "^4.14.1",
+    "npm-run-all": "^4.1.5"
   },
   "devDependencies": {
     "prettier": "2.0.5"

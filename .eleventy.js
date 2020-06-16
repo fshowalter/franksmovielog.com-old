@@ -12,7 +12,7 @@ module.exports = function (eleventyConfig) {
   });
 
   // alias
-  eleventyConfig.addLayoutAlias("default", "layout.11ty.js");
+  eleventyConfig.addLayoutAlias("default", "templates/layout.11ty.js");
 
   eleventyConfig.setLibrary("md", markdownParser);
 
@@ -63,7 +63,7 @@ module.exports = function (eleventyConfig) {
     dir: {
       input: "src/site",
       data: "_data",
-      inludes: "_includes",
+      includes: "_includes",
       output: "dist",
     },
     passthroughFileCopy: true,

@@ -1,4 +1,4 @@
 {
-  "layout": "about.11ty.js",
+  "layout": "templates/about.11ty.js",
   "permalink": "/about/"
 }

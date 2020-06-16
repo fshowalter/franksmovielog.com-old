@@ -1,4 +1,4 @@
 {
-  "layout": "how-i-grade.11ty.js",
+  "layout": "templates/how-i-grade.11ty.js",
   "permalink": "/how-i-grade/"
 }
