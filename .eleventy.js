@@ -57,6 +57,7 @@ module.exports = function (eleventyConfig) {
   // Passthrough
   eleventyConfig.addPassthroughCopy("./src/site/backdrops");
   eleventyConfig.addPassthroughCopy("./src/site/svg");
+  eleventyConfig.addPassthroughCopy("./src/site/assets");
   eleventyConfig.addPassthroughCopy("./src/site/css");
 
   return {

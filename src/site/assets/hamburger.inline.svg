@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-<title>Menu</title>
-<rect width="100" height="5"/>
-<rect y="30" width="100" height="5"/>
-<rect y="60" width="100" height="5"/>
-<rect y="90" width="100" height="5"/>
-</svg>
+<svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v5H0zM0 30h100v5H0zM0 60h100v5H0zM0 90h100v5H0z"/></svg>
