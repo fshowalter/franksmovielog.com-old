@@ -14,18 +14,24 @@
 
   function getVisibleLinks() {
     return document.querySelectorAll(
-      "[data-responsive-hidden-nav] li:not(.hidden)"
+      "[data-responsive-hidden-nav] li:not(.js--hidden)"
     );
   }
 
   function getHiddenLinks() {
-    return document.querySelectorAll("[data-responsive-hidden-nav] li.hidden");
+    return document.querySelectorAll(
+      "[data-responsive-hidden-nav] li.js--hidden"
+    );
   }
 
   function updateTopBar() {
-    var availableSpace = button.classList.contains("hidden")
-      ? getWidth(topBar)
-      : getWidth(topBar) - getWidth(button) - 30; // Calculation of available space on the logic of whether button has the class `hidden` or not
+    var topBarStyles = getComputedStyle(topBar);
+
+    var availableSpace =
+      topBar.clientWidth -
+      parseFloat(topBarStyles.paddingLeft) -
+      parseFloat(topBarStyles.paddingRight) -
+      getWidth(button);
 
     if (getWidth(list) > availableSpace) {
       // Logic when visible list is overflowing the nav
@@ -34,11 +40,11 @@
 
       const visibleLinks = getVisibleLinks();
 
-      visibleLinks[visibleLinks.length - 1].classList.add("hidden");
+      visibleLinks[visibleLinks.length - 1].classList.add("js--hidden");
 
       // Show the responsive hidden button
-      if (button.classList.contains("hidden")) {
-        button.classList.remove("hidden");
+      if (button.classList.contains("js--hidden")) {
+        button.classList.remove("js--hidden");
       }
     } else {
       // Logic when visible list is not overflowing the nav
@@ -46,14 +52,14 @@
       if (availableSpace > responsiveBreaks[responsiveBreaks.length - 1]) {
         // Logic when there is space for another item in the nav
         const hiddenLinks = getHiddenLinks();
-        hiddenLinks[0].classList.remove("hidden");
+        hiddenLinks[0].classList.remove("js--hidden");
 
         responsiveBreaks.pop(); // Move the item to the visible list
       }
 
       // Hide the resonsive hidden button if list is empty
       if (responsiveBreaks.length < 1) {
-        button.classList.add("hidden");
+        button.classList.add("js--hidden");
       }
     }
 
@@ -71,7 +77,15 @@
     updateTopBar();
   });
   button.addEventListener("click", function () {
-    document.body.classList.toggle("js-nav_visible");
+    document.documentElement.classList.toggle("js-nav-visible");
   });
+  button.addEventListener("transitionend", function () {
+    if (document.documentElement.classList.contains("js-nav-visible")) {
+      return;
+    }
+
+    updateTopBar();
+  });
+
   updateTopBar();
 })();

@@ -5,7 +5,7 @@ const reviews = JSON.parse(
 );
 
 module.exports = function (imdb_id, title, year) {
-  titleWithYear = `${title} (${year})`;
+  titleWithYear = `${title} <span>(${year})</span>`;
 
   const review = reviews.find((review) => review.imdb_id === imdb_id);
 
