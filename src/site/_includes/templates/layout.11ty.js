@@ -36,65 +36,60 @@ exports.render = function ({ page, title, content, css }) {
               <h1 class="layout_mast__heading">
                 <a href="/">Frank's Movie Log</a>
               </h1>
-              <div class="layout_mast__tagline">
-                Quality reviews of movies of questionable quality.
-              </div>
             </div>
-            <div class="layout_mast__nav_wrap">
-              <nav class="layout_mast__nav" data-responsive-hidden-nav>
-                <h2 class="layout_mast__nav_heading">Navigation</h2>
-                <ul class="layout_mast__nav_list">
-                  ${navLink(page.url, "/", "Home")}
-                  ${navLink(page.url, "/about/", "About")}
-                  ${navLink(page.url, "/how-i-grade/", "How I Grade")}
-                  ${navLink(page.url, "/reviews/", "All Reviews")}
-                  ${navLink(page.url, "/viewings/", "Viewing Log")}
-                  ${navLink(page.url, "/to-watch/", "To-Watch List")}
-                  ${navLink(page.url, "/stats/", "Stats")}
-                </ul>
-                <button
-                  class="layout_mast__nav_button"
-                  aria-label="Full Navigation"
+            <nav class="layout_mast__nav">
+              <h2 class="layout_mast__nav_heading">Navigation</h2>
+              <ul class="layout_mast__nav_list">
+                ${navLink(page.url, "/", "Home")}
+                ${navLink(page.url, "/about/", "About")}
+                ${navLink(page.url, "/how-i-grade/", "How I Grade")}
+                ${navLink(page.url, "/reviews/", "All Reviews")}
+                ${navLink(page.url, "/viewings/", "Viewing Log")}
+                ${navLink(page.url, "/to-watch/", "To-Watch List")}
+                ${navLink(page.url, "/stats/", "Stats")}
+              </ul>
+              <button
+                class="layout_mast__nav_button"
+                aria-label="Full Navigation"
+              >
+                <svg
+                  class="layout_mast__menu_icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
                 >
-                  <svg
-                    class="layout_mast__menu_icon"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <rect x="0" y="0" width="100%" height="2" fill="#fff" />
-                    <rect x="0" y="9" width="100%" height="2" fill="#fff" />
-                    <rect x="0" y="18" width="100%" height="2" fill="#fff" />
-                  </svg>
-                </button>
-                <form
-                  class="layout_mast__nav_search_form"
-                  action="https://www.google.com/search"
-                  acceptCharset="UTF-8"
-                  method="get"
-                  role="search"
-                >
-                  <label
-                    ><span class="layout_mast__search_heading">Search</span>
-                    <input
-                      type="text"
-                      class="layout_mast__search_input"
-                      name="q"
-                      placeholder="What are you looking for?"
-                    />
-                    <input
-                      type="hidden"
-                      name="q"
-                      value="site:movielog.frankshowalter.com"
-                    />
-                    <input
-                      type="submit"
-                      class="layout_mast__search_submit"
-                      value="Search"
-                    />
-                  </label>
-                </form>
-              </nav>
-            </div>
+                  <rect x="0" y="0" width="100%" height="2" fill="#fff" />
+                  <rect x="0" y="9" width="100%" height="2" fill="#fff" />
+                  <rect x="0" y="18" width="100%" height="2" fill="#fff" />
+                </svg>
+              </button>
+              <form
+                class="layout_mast__nav_search_form"
+                action="https://www.google.com/search"
+                acceptCharset="UTF-8"
+                method="get"
+                role="search"
+              >
+                <label
+                  ><span class="layout_mast__search_heading">Search</span>
+                  <input
+                    type="text"
+                    class="layout_mast__search_input"
+                    name="q"
+                    placeholder="What are you looking for?"
+                  />
+                  <input
+                    type="hidden"
+                    name="q"
+                    value="site:movielog.frankshowalter.com"
+                  />
+                  <input
+                    type="submit"
+                    class="layout_mast__search_submit"
+                    value="Search"
+                  />
+                </label>
+              </form>
+            </nav>
           </header>
           ${content}
           <footer class="layout_footer">

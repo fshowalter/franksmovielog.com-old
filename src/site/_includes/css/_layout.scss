@@ -2,51 +2,24 @@
 
 .layout {
   background-color: var(--color-content-background);
+  display: grid;
+  grid-template-areas: "main sidebar" "footer footer";
+  grid-template-columns: auto 210px;
+  grid-template-rows: auto 1fr;
   margin: 0 auto;
-  max-width: 64rem;
+  max-width: 72.5rem;
 }
 
 .layout_mast {
-  border-bottom: solid 2px var(--color-background);
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  padding: var(--sz-16) 0 0 0;
+  grid-area: "sidebar";
+  margin: var(--sz-5) 0 0;
+  position: relative;
 }
 
 .layout_mast__title {
-  order: 2;
-  padding: var(--sz-8) var(--sz-5) var(--sz-6) var(--sz-19);
-  position: relative;
-
-  &:before {
-    align-items: center;
-    background: var(--color-nav);
-    border-radius: 50%;
-    color: var(--color-content-background);
-    content: "M";
-    display: flex;
-    font-size: var(--text-2xl);
-    height: var(--sz-10);
-    justify-content: center;
-    left: var(--sz-5);
-    position: absolute;
-    text-align: center;
-    top: var(--sz-9);
-    width: var(--sz-10);
-  }
-
-  @media only screen and (min-width: 48em) {
-    padding: var(--sz-7) var(--sz-27);
-
-    &:before {
-      font-size: var(--text-3xl);
-      height: var(--sz-14);
-      left: var(--sz-7);
-      top: var(--sz-8);
-      width: var(--sz-14);
-    }
-  }
+  @extend %sr-only;
 }
 
 .layout_mast__heading {
@@ -66,123 +39,54 @@
   order: 3;
 }
 
-.layout_mast__nav_wrap {
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  z-index: var(--z-10);
-
-  .js-nav-visible & {
-    background-color: var(--color-background);
-    color: var(--color-heading);
-    display: flex;
-    height: 100vh;
-    overflow-y: scroll;
-    padding: var(--sz-10) var(--sz-5);
-  }
-}
-
 .layout_mast__nav {
-  background-color: var(--color-nav);
-  color: var(--color-text-nav);
+  border-left: solid 1px var(--color-border);
   display: flex;
-  font-size: var(--text-sm);
-  height: var(--sz-16);
+  flex-direction: column;
+  font-size: var(--text-base);
   justify-content: space-between;
   letter-spacing: var(--tracking-widest);
-  margin: 0 auto;
-  max-width: 64rem;
-  order: 1;
-  padding: 0 0 0 var(--sz-5);
-  text-transform: uppercase;
+  padding: 0 var(--sz-7) 0 var(--sz-5);
   white-space: nowrap;
 
-  @media only screen and (min-width: 48em) {
-    padding: 0 0 0 var(--sz-27);
-  }
-
-  .js-nav-visible & {
-    background-color: var(--color-background);
-    color: var(--color-heading);
-    flex-direction: column;
-    height: auto;
+  &:before {
+    align-items: center;
+    background-color: var(--color-nav);
+    color: var(--color-content-background);
+    content: "M";
+    display: flex;
+    font-size: var(--text-4xl);
+    height: var(--sz-17);
     justify-content: center;
-    margin: auto;
-    padding: 0;
+    left: var(--sz-5);
+    margin-bottom: var(--sz-8);
+    text-align: center;
+    top: var(--sz-9);
+    width: var(--sz-17);
   }
 }
 
 .layout_mast__nav_list {
   display: flex;
-
-  .js-nav-visible & {
-    flex-direction: column;
-    font-size: default;
-    justify-content: center;
-    margin-top: var(--sz-5);
-  }
+  flex-direction: column;
 }
 
 .layout_mast__nav_item {
-  &:not(.js--hidden) {
-    align-self: stretch;
-    display: flex;
-    margin: 0 var(--sz-3);
-
-    a {
-      align-items: center;
-      display: flex;
-    }
-
-    @media only screen and (min-width: 48em) {
-      margin: 0 var(--sz-4);
-    }
-  }
-
-  &:first-of-type {
-    margin-left: 0;
-  }
-
-  .js-nav-visible & {
-    display: flex;
-    margin: var(--sz-3) 0;
-
-    &:first-of-type {
-      margin: var(--sz-3) 0;
-    }
-  }
 }
 
 .layout_mast__nav_link {
-  position: relative;
+  border-bottom: 1px solid var(--color-border);
+  display: block;
+  line-height: calc(var(--sz-13) - 1px);
 }
 
 .layout_mast__nav_link--active {
-  color: var(--color-content-background);
-
-  &:after {
-    background: var(--color-content-background);
-    bottom: 0;
-    content: "";
-    height: var(--sz-1);
-    left: 0;
-    position: absolute;
-    right: 0;
-  }
-
-  .js-nav-visible & {
-    color: var(--color-heading);
-
-    &:after {
-      bottom: calc(-2 * var(--sz-1));
-    }
-  }
 }
 
 .layout_mast__nav_button {
   background: inherit;
   border: none;
+  display: none;
   fill: var(--color-content-background);
   height: var(--sz-16);
   width: var(--sz-16);

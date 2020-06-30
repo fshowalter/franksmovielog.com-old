@@ -134,7 +134,7 @@ exports.render = function ({ pagination }) {
             }>
               <h2 class="home_post_heading">${this.titleWithYear(review)}</h2>
               <div class="home_post_image_wrap">
-                <img class="home_post_image" loading="lazy" src="${`/backdrops/${review.slug}.png`}" alt="${`A still from ${review.title} (${review.year})`}" />
+                <img class="home_post_image" src="${`/backdrops/${review.slug}.png`}" alt="${`A still from ${review.title} (${review.year})`}" />
               </div>
               ${imageForGrade(review.grade, "home_review_grade")}
               ${this.markdown(firstParagraph(review.review_content)).replace(
