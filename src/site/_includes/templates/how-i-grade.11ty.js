@@ -5,7 +5,7 @@ exports.data = {
 
 exports.render = ({ content }) => {
   return this.html`
-    <main>
+    <main class="grid-main">
       ${content}
     </main>
   `;

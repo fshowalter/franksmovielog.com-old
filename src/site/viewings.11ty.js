@@ -73,10 +73,12 @@ exports.render = function ({ viewings }) {
 
   return html`
     <main class="viewings">
-      <h2 class="viewings__header">Viewing Log</h2>
-      <p class="viewings__tagline">
-        I&apos;ve watched ${viewings.length} movies since 2012.
-      </p>
+      <header class="viewings_header">
+        <h2 class="viewings_heading">Viewing Log</h2>
+        <p class="viewings_tagline">
+          I&apos;ve watched ${viewings.length} movies since 2012.
+        </p>
+      </header>
 
       <fieldset class="viewings__filters">
         <legend class="viewings__filters_header">Filter &amp; Sort</legend>
@@ -109,7 +111,7 @@ exports.render = function ({ viewings }) {
           </select>
         </label>
       </fieldset>
-      <ol reversed>
+      <ol reversed class="viewings-list">
         ${viewings
           .map((viewing) => {
             return this.html` <li class="viewings_viewing">
