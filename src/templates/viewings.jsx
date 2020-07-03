@@ -502,7 +502,7 @@ export default function Viewings({ data, pageContext }) {
     title: sortTitleAsc,
   }
 
-  let parsedQueryString
+  let parsedQueryString = {}
 
   if (inBrowser) {
     parsedQueryString = document.location.search
@@ -514,8 +514,6 @@ export default function Viewings({ data, pageContext }) {
     parsedQueryString["order-by"]
   )
 
-  console.log(document.location.search)
-  console.log(sortValue)
   const [page, setPage] = React.useState([])
 
   const query = React.useRef({})
