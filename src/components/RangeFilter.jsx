@@ -1,99 +1,93 @@
-// import React from "react"
-// import ReactSlider from "react-slider"
+import React from "react"
+import ReactSlider from "react-slider"
 
-// import FilterControl from "./FilterControl/FilterControl"
-// import Label from "./Label"
+function Thumb(props) {
+  return (
+    <div {...props} /> // eslint-disable-line react/jsx-props-no-spreading
+  )
+}
 
-// function Thumb(props) {
-//   return (
-//     <StyledThumb {...props} /> // eslint-disable-line react/jsx-props-no-spreading
-//   )
-// }
+function Track(props) {
+  return (
+    <div {...props} /> // eslint-disable-line react/jsx-props-no-spreading
+  )
+}
 
-// function Track(props) {
-//   return (
-//     <StyledTrack {...props} /> // eslint-disable-line react/jsx-props-no-spreading
-//   )
-// }
+export default function RangeFilter({ label, min, max, onChange, values }) {
+  const initialState = values || [min, max]
 
-// export default function RangeFilter({ label, min, max, handleChange }) {
-//   const initialState = [min, max]
+  const [state, setState] = React.useState(initialState.slice())
 
-//   const [state, setState] = React.useState(initialState.slice())
+  const valuesAreValid = values => {
+    return values[0] < values[1] && values[0] >= min && values[1] <= max
+  }
 
-//   const valuesAreValid = values => {
-//     return (
-//       values[0] < values[1] &&
-//       values[0] >= initialState[0] &&
-//       values[1] <= initialState[1]
-//     )
-//   }
+  const handleSliderUpdate = values => {
+    if (!Array.isArray(values)) {
+      return
+    }
+    onChange(values)
+  }
 
-//   const handleSliderUpdate = values => {
-//     if (!Array.isArray(values)) {
-//       return
-//     }
-//     handleChange(values)
-//   }
+  const handleSliderChange = values => {
+    if (!Array.isArray(values)) {
+      return
+    }
+    setState([...values])
+  }
 
-//   const handleSliderChange = values => {
-//     if (!Array.isArray(values)) {
-//       return
-//     }
-//     setState([...values])
-//   }
+  const handleMinChange = value => {
+    const newState = [parseInt(value, 10), state[1]]
+    setState(newState)
 
-//   const handleMinChange = value => {
-//     const newState = [parseInt(value, 10), state[1]]
-//     setState(newState)
+    if (valuesAreValid(newState)) {
+      onChange(newState)
+    }
+  }
 
-//     if (valuesAreValid(newState)) {
-//       handleChange(newState)
-//     }
-//   }
+  const handleMaxChange = value => {
+    const newState = [state[0], parseInt(value, 10)]
+    setState(newState)
 
-//   const handleMaxChange = value => {
-//     const newState = [state[0], parseInt(value, 10)]
-//     setState(newState)
+    if (valuesAreValid(newState)) {
+      onChange(newState)
+    }
+  }
 
-//     if (valuesAreValid(newState)) {
-//       handleChange(newState)
-//     }
-//   }
-
-//   return (
-//     <FilterControl>
-//       <Label htmlFor={label}>{label}</Label>
-//       <RangeFilterWrap>
-//         <StyledSlider
-//           value={state}
-//           max={max}
-//           min={min}
-//           renderTrack={Track}
-//           renderThumb={Thumb}
-//           onChange={handleSliderChange}
-//           onAfterChange={handleSliderUpdate}
-//           thumbActiveClassName="dragging"
-//         />
-//         <RangeInputMin
-//           type="number"
-//           value={state[0]}
-//           min={min}
-//           max={max}
-//           step="1"
-//           onChange={e => handleMinChange(e.target.value)}
-//           className="filter-numeric min"
-//         />
-//         <RangeInputMax
-//           type="number"
-//           value={state[1]}
-//           min={min}
-//           max={max}
-//           onChange={e => handleMaxChange(e.target.value)}
-//           step="1"
-//           className="filter-numeric max"
-//         />
-//       </RangeFilterWrap>
-//     </FilterControl>
-//   )
-// }
+  return (
+    <label>
+      {label}
+      <div>
+        <ReactSlider
+          values={values}
+          max={max}
+          min={min}
+          renderTrack={Track}
+          renderThumb={Thumb}
+          onChange={handleSliderChange}
+          onAfterChange={handleSliderUpdate}
+          thumbActiveClassName="dragging"
+        />
+        <input
+          type="number"
+          value={values[0]}
+          min={min}
+          max={max}
+          step="1"
+          onChange={e => handleMinChange(e.target.value)}
+          className="filter-numeric min"
+        />
+        &nbsp;to&nbsp;
+        <input
+          type="number"
+          value={values[1]}
+          min={min}
+          max={max}
+          onChange={e => handleMaxChange(e.target.value)}
+          step="1"
+          className="filter-numeric max"
+        />
+      </div>
+    </label>
+  )
+}
