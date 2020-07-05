@@ -6,11 +6,11 @@
 
 // You can delete this file if you're not using it
 
-const path = require("path")
-const { createFilePath } = require("gatsby-source-filesystem")
+const path = require("path");
+const { createFilePath } = require("gatsby-source-filesystem");
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   const result = await graphql(
     `
@@ -22,19 +22,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
     `
-  )
+  );
 
   if (result.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`)
-    return
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
   }
 
   // ...
 
   // Create viewing log pages
-  const viewings = result.data.allViewingsJson.nodes
-  const viewingsPerPage = 50
-  const numPages = Math.ceil(viewings.length / viewingsPerPage)
+  const viewings = result.data.allViewingsJson.nodes;
+  const viewingsPerPage = 50;
+  const numPages = Math.ceil(viewings.length / viewingsPerPage);
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/viewings` : `/viewings/page-${i + 1}`,
@@ -45,6 +45,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         numPages,
         currentPage: i + 1,
       },
-    })
-  })
-}
+    });
+  });
+};

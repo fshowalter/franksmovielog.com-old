@@ -1,0 +1,213 @@
+@import "./src/styles/global";
+@import "./src/styles/utils";
+
+.layout {
+  background-color: var(--color-content-background);
+  display: grid;
+  grid-template-areas: "gutter-top gutter-top gutter-top gutter-top" "gutter-left main sidebar gutter-right" "footer footer footer footer";
+  grid-template-columns: 30px 1fr 180px 30px;
+  grid-template-rows: 20px 1fr auto;
+  margin: 0 auto;
+  max-width: 72.5rem;
+  min-height: 100vh;
+  position: relative;
+}
+
+.layout-mast {
+  display: flex;
+  flex-direction: column;
+  grid-area: sidebar;
+  position: relative;
+}
+
+.layout-mast_title {
+  @extend %sr-only;
+}
+
+.layout-mast_heading {
+  font-size: var(--text-2xl);
+
+  @media only screen and (min-width: 48em) {
+    font-size: var(--text-3xl);
+  }
+}
+
+.layout-mast_tagline {
+  align-self: stretch;
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  margin: 0;
+  order: 3;
+}
+
+.layout-mast_nav {
+  border-left: solid 1px var(--color-border);
+  display: flex;
+  flex-direction: column;
+  font-size: var(--text-base);
+  justify-content: space-between;
+  letter-spacing: var(--tracking-widest);
+  padding: 0 0 0 var(--sz-5);
+  white-space: nowrap;
+
+  &:before {
+    align-items: center;
+    background: #202020 url(/assets/ripnotcomingsoon.jpg) repeat;
+    color: var(--color-content-background);
+    content: "M";
+    display: flex;
+    font-size: var(--text-4xl);
+    height: var(--sz-17);
+    justify-content: center;
+    left: var(--sz-5);
+    margin-bottom: var(--sz-8);
+    text-align: center;
+    top: var(--sz-9);
+    width: var(--sz-17);
+  }
+}
+
+.layout-mast_nav_list {
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-mast_nav_link {
+  border-bottom: 1px solid var(--color-border);
+  display: block;
+  line-height: calc(var(--sz-13) - 1px);
+}
+
+.layout-mast_nav_button {
+  background: inherit;
+  border: none;
+  display: none;
+  fill: var(--color-content-background);
+  height: var(--sz-16);
+  width: var(--sz-16);
+
+  .js-nav-visible & {
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+}
+
+.layout-mast_menu_icon {
+  height: var(--sz-6);
+  width: var(--sz-6);
+
+  rect {
+    opacity: 1;
+    transform: rotate(0deg);
+    transform-origin: center center;
+    transition: all 0.15s linear;
+  }
+
+  .js-nav-visible & {
+    rect {
+      fill: var(--color-heading);
+    }
+
+    rect:nth-child(1) {
+      transform: rotate(45deg) translate(0%, 45%) scaleX(1.5);
+    }
+
+    rect:nth-child(2) {
+      opacity: 0;
+    }
+
+    rect:nth-child(3) {
+      transform: rotate(-45deg) translate(0%, -45%) scaleX(1.5);
+    }
+  }
+}
+
+.layout-mast_search_form {
+  display: none;
+
+  .js-nav-visible & {
+    display: block;
+    min-width: 300px;
+  }
+}
+
+.layout-mast_nav_heading {
+  @extend %sr-only;
+
+  .js-nav-visible & {
+    @extend %not-sr-only;
+    font-size: var(--text-2xl);
+  }
+}
+
+.layout-mast_search_heading {
+  display: block;
+  font-size: var(--text-xl);
+  margin-top: var(--sz-6);
+}
+
+.layout-mast_search_input {
+  font-family: var(--font-sans);
+  margin-top: var(--sz-5);
+  padding: var(--sz-2) var(--sz-4);
+  width: calc(100% - 100px);
+}
+
+.layout-mast_search_submit {
+  font-family: var(--font-sans);
+  margin-top: var(--sz-5);
+  padding: var(--sz-2) var(--sz-4);
+}
+
+html.js-nav-visible {
+  left: 0px;
+  overflow-y: scroll;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
+.layout-children {
+  grid-area: main;
+  padding: 0 var(--sz-5) 0 0;
+}
+
+.layout-footer {
+  background: #202020 url(/assets/bkg_dark.png) repeat;
+  border-top: solid 2px var(--color-background);
+  color: #d2d2d2;
+  font-size: var(--text-lg);
+  grid-area: footer;
+  grid-column-end: 5;
+  grid-column-start: 1;
+  margin-top: var(--sz-8);
+}
+
+.layout-footer_inner {
+  align-content: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: var(--sz-5) var(--sz-7);
+}
+
+.layout-footer_copyright {
+  margin: 0;
+  order: 1;
+}
+
+.layout-footer_notice {
+  color: #999;
+  font-size: var(--text-base);
+  margin-top: var(--sz-8);
+  order: 3;
+  text-align: center;
+  width: 100%;
+}
+
+.layout-footer_to_the_top {
+  color: var(--color-link);
+  order: 2;
+}

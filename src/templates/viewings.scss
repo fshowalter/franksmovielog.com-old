@@ -1,0 +1,108 @@
+.viewings {
+  column-gap: 40px;
+  display: grid;
+  grid-template-areas: "header header" "filters list";
+  grid-template-columns: 330px 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.viewings-header {
+  grid-area: header;
+}
+
+.viewings-heading {
+  font-size: var(--text-3xl);
+}
+
+.viewings-tagline {
+  color: var(--color-text-secondary);
+}
+
+.viewings-list {
+  grid-area: list;
+}
+
+.viewings-label {
+  color: var(--color-text-secondary);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  margin-top: var(--sz-4);
+  padding: 0;
+}
+
+.viewings-filters {
+  align-self: start;
+  border: solid 1px var(--color-background);
+  grid-area: filters;
+  margin: var(--sz-5) 0 0 0;
+  padding: 0 var(--sz-5) var(--sz-5);
+
+  input,
+  select {
+    -webkit-appearance: none;
+    backface-visibility: hidden;
+    border: solid 1px var(--color-background);
+    padding: var(--sz-2) var(--sz-3);
+  }
+
+  select {
+    background-color: var(--color-content-background);
+  }
+}
+
+.viewings-filters_header {
+  // background-color: var(--color-content-background);
+  border: 1px solid var(--color-background);
+  color: var(--color-text-secondary);
+  font-size: var(--text-lg);
+  // text-align: center;
+  margin-left: -21px;
+  padding: var(--sz-2) var(--sz-5);
+  width: calc(100% + (2.1 * var(--sz-5)));
+}
+
+.viewings-viewing {
+  display: block;
+  padding: var(--sz-5);
+  position: relative;
+
+  &:after {
+    background-color: var(--color-background);
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: var(--sz-5);
+    margin: 0;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.viewings-viewing_title {
+  font-size: var(--text-lg);
+}
+
+.viewings-viewing_title_year {
+  color: var(--color-text-secondary);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+}
+
+.viewings-viewing_link {
+  color: var(--color-link);
+
+  .viewings-viewing_title_year {
+    color: inherit;
+  }
+}
+
+.viewings-viewing_slug {
+  color: var(--color-text-secondary);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: var(--font-light);
+  margin-top: var(--sz-2);
+}
