@@ -7,39 +7,46 @@ import "./pagination.scss";
 export default function Pagination({
   currentPage,
   urlRoot,
+  onClick,
   limit,
   numberOfItems,
-  query,
 }) {
+  const useButton = !!onClick;
+
   const numPages = Math.ceil(numberOfItems / limit);
 
   const isFirst = currentPage === 1;
   const isLast = currentPage === numPages;
-  let queryString = "";
-
-  if (Object.keys(query).length) {
-    queryString = `?${Object.keys(query)
-      .map((key) => {
-        return `${key}=${query[key]}`;
-      })
-      .join("&")}`;
-  }
 
   const prevPageUrl =
-    currentPage === 2
-      ? `${urlRoot}${queryString}`
-      : `${urlRoot}page-${currentPage - 1}/${queryString}`;
+    currentPage === 2 ? `${urlRoot}` : `${urlRoot}page-${currentPage - 1}/`;
 
-  const nextPageUrl = `${urlRoot}page-${currentPage + 1}/${queryString}`;
+  const nextPageUrl = `${urlRoot}page-${currentPage + 1}/`;
 
   let prev;
 
   if (isFirst) {
-    prev = (
+    prev = useButton ? (
+      <button
+        type="button"
+        disabled
+        className="pagination-prev pagination-placeholder"
+      >
+        ←Prev
+      </button>
+    ) : (
       <span className="pagination-prev pagination-placeholder">←Prev</span>
     );
   } else {
-    prev = (
+    prev = useButton ? (
+      <button
+        type="button"
+        onClick={onClick(currentPage - 1)}
+        className="pagination-prev pagination-button"
+      >
+        ←Prev
+      </button>
+    ) : (
       <Link className="pagination-prev pagination-link" to={prevPageUrl}>
         ←Prev
       </Link>
@@ -49,11 +56,27 @@ export default function Pagination({
   let next;
 
   if (isLast) {
-    next = (
+    next = useButton ? (
+      <button
+        type="button"
+        disabled
+        className="pagination-next pagination-placeholder"
+      >
+        Next→
+      </button>
+    ) : (
       <span className="pagination-next pagination-placeholder">Next→</span>
     );
   } else {
-    next = (
+    next = useButton ? (
+      <button
+        type="button"
+        onClick={onClick(currentPage + 1)}
+        className="pagination-next pagination-button"
+      >
+        Next→
+      </button>
+    ) : (
       <Link className="pagination-next pagination-ink" to={nextPageUrl}>
         Next→
       </Link>
@@ -63,8 +86,12 @@ export default function Pagination({
   let firstPage = "";
 
   if (currentPage - 1 > 1) {
-    firstPage = (
-      <Link className="pagination-link" to={`${urlRoot}${queryString}`}>
+    firstPage = useButton ? (
+      <button type="button" onClick={onClick(1)} className="pagination-button">
+        1
+      </button>
+    ) : (
+      <Link className="pagination-link" to={`${urlRoot}`}>
         1
       </Link>
     );
@@ -79,7 +106,15 @@ export default function Pagination({
   let prevPage = "";
 
   if (!isFirst) {
-    prevPage = (
+    prevPage = useButton ? (
+      <button
+        type="button"
+        onClick={onClick(currentPage - 1)}
+        className="pagination-button"
+      >
+        {currentPage - 1}
+      </button>
+    ) : (
       <Link className="pagination-link" to={prevPageUrl}>
         {currentPage - 1}
       </Link>
@@ -91,7 +126,15 @@ export default function Pagination({
   if (isLast) {
     nextPage = <span className="pagination-placeholder" />;
   } else {
-    nextPage = (
+    nextPage = useButton ? (
+      <button
+        type="button"
+        onClick={onClick(currentPage + 1)}
+        className="pagination-button"
+      >
+        {currentPage + 1}
+      </button>
+    ) : (
       <Link class="pagination-link" to={nextPageUrl}>
         {currentPage + 1}
       </Link>
@@ -107,11 +150,16 @@ export default function Pagination({
   let lastPage = "";
 
   if (currentPage + 1 < numPages) {
-    lastPage = (
-      <Link
-        className="pagination-link"
-        to={`${urlRoot}page-${numPages}/${queryString}`}
+    lastPage = useButton ? (
+      <button
+        type="button"
+        onClick={onClick(numPages)}
+        className="pagination-button"
       >
+        {numPages}
+      </button>
+    ) : (
+      <Link className="pagination-link" to={`${urlRoot}page-${numPages}/`}>
         {numPages}
       </Link>
     );
@@ -133,10 +181,18 @@ Pagination.propTypes = {
   currentPage: PropTypes.number.isRequired,
   limit: PropTypes.number.isRequired,
   numberOfItems: PropTypes.number.isRequired,
-  query: PropTypes.objectOf(PropTypes.string),
-  urlRoot: PropTypes.string.isRequired,
+  onClick: (props, propName) => {
+    const { [propName]: onClick, urlRoot } = props;
+    if (!urlRoot && (!onClick || typeof onClick !== "function")) {
+      return new Error("Please provide a onClick function or urlRoot.");
+    }
+
+    return null;
+  },
+  urlRoot: PropTypes.string,
 };
 
 Pagination.defaultProps = {
-  query: {},
+  onClick: null,
+  urlRoot: null,
 };
