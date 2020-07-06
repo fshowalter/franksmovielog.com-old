@@ -5,11 +5,11 @@ import React, { useEffect, useReducer, useRef } from "react";
 import { format, parseISO } from "date-fns";
 import queryString from "query-string";
 
-import { collator, sortStringAsc, sortStringDesc } from "../components/Sorter";
-import DebouncedInput from "../components/DebouncedInput";
+import { collator, sortStringAsc, sortStringDesc } from "../utils/sort-utils";
+import DebouncedInput from "../components/DebouncedInput/DebouncedInput";
 import Layout from "../components/Layout";
-import RangeFilter from "../components/RangeFilter";
-import ReviewLink from "../components/ReviewLink";
+import RangeFilter from "../components/RangeFilter/RangeFilter";
+import ReviewLink from "../components/ReviewLink/ReviewLink";
 
 function ReleaseYearFilter({ label, viewings, values, onChange }) {
   const [minYear, maxYear] = minMaxReleaseYearsForViewings(viewings);
@@ -26,11 +26,6 @@ function ReleaseYearFilter({ label, viewings, values, onChange }) {
 }
 
 function venueSelect(viewings, onChange, selected) {
-  const collator = new Intl.Collator("en", {
-    numeric: true,
-    sensitivity: "base",
-  });
-
   const venues = Array.from(
     new Set(viewings.map((viewing) => viewing.venue))
   ).sort((a, b) => collator.compare(a, b));
@@ -408,6 +403,8 @@ function reducer(state, action) {
         filteredViewings,
         viewingsForPage: slicePage(filteredViewings, state.skip, state.limit),
       };
+    default:
+      throw new Error();
   }
 }
 
@@ -428,11 +425,8 @@ export default function Viewings({ data, pageContext }) {
     if (hasParsedQueryString.current) {
       return;
     }
-    console.log("querystring effect");
 
     const parsedQueryString = parseQueryString();
-
-    console.log(parsedQueryString);
 
     const venueQueryStringValue = parsedQueryString["venue"];
 
