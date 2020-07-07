@@ -20,7 +20,12 @@ export default function RangeFilter({ id, min, max, onChange }) {
   const [state, setState] = React.useState(initialState.slice());
 
   const valuesAreValid = (values) => {
-    return values[0] < values[1] && values[0] >= min && values[1] <= max;
+    return (
+      values[0] >= min &&
+      values[0] <= values[1] &&
+      values[0] >= min &&
+      values[1] <= max
+    );
   };
 
   const handleSliderUpdate = (values) => {
@@ -70,6 +75,7 @@ export default function RangeFilter({ id, min, max, onChange }) {
         type="number"
         min={min}
         max={max}
+        value={state[0]}
         step="1"
         onChange={(e) => handleMinChange(e.target.value)}
         className="filter-numeric min"
@@ -77,6 +83,7 @@ export default function RangeFilter({ id, min, max, onChange }) {
       &nbsp;to&nbsp;
       <input
         type="number"
+        value={state[1]}
         min={min}
         max={max}
         onChange={(e) => handleMaxChange(e.target.value)}

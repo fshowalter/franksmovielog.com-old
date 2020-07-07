@@ -4,7 +4,35 @@ import { Link } from "gatsby";
 
 import "./pagination.scss";
 
-export default function Pagination({
+export function PaginationHeader({
+  className,
+  currentPage,
+  perPage,
+  numberOfItems,
+}) {
+  const start = currentPage * perPage - perPage || 1;
+  const max = currentPage * perPage;
+  const end = max < numberOfItems ? max : numberOfItems;
+
+  return (
+    <p className={className}>
+      Showing {start}-{end} of {numberOfItems}.
+    </p>
+  );
+}
+
+PaginationHeader.propTypes = {
+  className: PropTypes.string,
+  currentPage: PropTypes.number.isRequired,
+  perPage: PropTypes.number.isRequired,
+  numberOfItems: PropTypes.number.isRequired,
+};
+
+PaginationHeader.defaultProps = {
+  className: null,
+};
+
+export default function Footer({
   currentPage,
   urlRoot,
   onClick,
@@ -41,7 +69,7 @@ export default function Pagination({
     prev = useButton ? (
       <button
         type="button"
-        onClick={onClick(currentPage - 1)}
+        onClick={() => onClick(currentPage - 1)}
         className="pagination-prev pagination-button"
       >
         ←Prev
@@ -71,13 +99,13 @@ export default function Pagination({
     next = useButton ? (
       <button
         type="button"
-        onClick={onClick(currentPage + 1)}
+        onClick={() => onClick(currentPage + 1)}
         className="pagination-next pagination-button"
       >
         Next→
       </button>
     ) : (
-      <Link className="pagination-next pagination-ink" to={nextPageUrl}>
+      <Link className="pagination-next pagination-link" to={nextPageUrl}>
         Next→
       </Link>
     );
@@ -87,7 +115,11 @@ export default function Pagination({
 
   if (currentPage - 1 > 1) {
     firstPage = useButton ? (
-      <button type="button" onClick={onClick(1)} className="pagination-button">
+      <button
+        type="button"
+        onClick={() => onClick(1)}
+        className="pagination-button"
+      >
         1
       </button>
     ) : (
@@ -109,7 +141,7 @@ export default function Pagination({
     prevPage = useButton ? (
       <button
         type="button"
-        onClick={onClick(currentPage - 1)}
+        onClick={() => onClick(currentPage - 1)}
         className="pagination-button"
       >
         {currentPage - 1}
@@ -129,7 +161,7 @@ export default function Pagination({
     nextPage = useButton ? (
       <button
         type="button"
-        onClick={onClick(currentPage + 1)}
+        onClick={() => onClick(currentPage + 1)}
         className="pagination-button"
       >
         {currentPage + 1}
@@ -153,7 +185,7 @@ export default function Pagination({
     lastPage = useButton ? (
       <button
         type="button"
-        onClick={onClick(numPages)}
+        onClick={() => onClick(numPages)}
         className="pagination-button"
       >
         {numPages}
@@ -177,7 +209,7 @@ export default function Pagination({
   );
 }
 
-Pagination.propTypes = {
+Footer.propTypes = {
   currentPage: PropTypes.number.isRequired,
   limit: PropTypes.number.isRequired,
   numberOfItems: PropTypes.number.isRequired,
@@ -192,7 +224,7 @@ Pagination.propTypes = {
   urlRoot: PropTypes.string,
 };
 
-Pagination.defaultProps = {
+Footer.defaultProps = {
   onClick: null,
   urlRoot: null,
 };

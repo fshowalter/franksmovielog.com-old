@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import { collator, sortStringAsc, sortStringDesc } from "../utils/sort-utils";
 import DebouncedInput from "../components/DebouncedInput/DebouncedInput";
 import Layout from "../components/Layout";
-import Pagination from "../components/Pagination";
+import Pagination, { PaginationHeader } from "../components/Pagination";
 import RangeInput from "../components/RangeInput";
 import ReviewLink from "../components/ReviewLink";
 
@@ -56,7 +56,7 @@ ViewingTitle.propTypes = {
   viewing: PropTypes.shape({
     imdb_id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
   }).isRequired,
 };
 
@@ -114,8 +114,9 @@ export const query = graphql`
   }
 `;
 
-function slicePage(viewings, skip, limit) {
-  return viewings.slice(skip, skip + limit);
+function slicePage(viewings, currentPage, perPage) {
+  const skip = perPage * (currentPage - 1);
+  return viewings.slice(skip, currentPage * perPage);
 }
 
 function filterAndSortViewings(viewings, filters, sortOrder) {
@@ -158,7 +159,7 @@ function initState({ viewings }) {
   return {
     allViewings: viewings,
     filteredViewings: viewings,
-    viewingsForPage: slicePage(viewings, currentPage - 1, perPage),
+    viewingsForPage: slicePage(viewings, currentPage, perPage),
     filters: {},
     currentPage,
     perPage,
@@ -199,7 +200,11 @@ function reducer(state, action) {
         filters,
         query,
         filteredViewings,
-        viewingsForPage: slicePage(filteredViewings, state.skip, state.limit),
+        viewingsForPage: slicePage(
+          filteredViewings,
+          state.currentPage,
+          state.perPage
+        ),
       };
     }
     case actions.FILTER_VENUE: {
@@ -224,7 +229,11 @@ function reducer(state, action) {
         filters,
         query,
         filteredViewings,
-        viewingsForPage: slicePage(filteredViewings, state.skip, state.limit),
+        viewingsForPage: slicePage(
+          filteredViewings,
+          state.currentPage,
+          state.perPage
+        ),
       };
     }
     case actions.FILTER_RELEASE_YEAR: {
@@ -252,9 +261,12 @@ function reducer(state, action) {
         ...state,
         releaseYearValues: action.values,
         filters,
-        query,
         filteredViewings,
-        viewingsForPage: slicePage(filteredViewings, state.skip, state.limit),
+        viewingsForPage: slicePage(
+          filteredViewings,
+          state.currentPage,
+          state.perPage
+        ),
       };
     }
     case actions.SORT: {
@@ -266,9 +278,23 @@ function reducer(state, action) {
       return {
         ...state,
         sortValue: action.value,
-        query,
         filteredViewings,
-        viewingsForPage: slicePage(filteredViewings, state.skip, state.limit),
+        viewingsForPage: slicePage(
+          filteredViewings,
+          state.currentPage,
+          state.perPage
+        ),
+      };
+    }
+    case actions.CHANGE_PAGE: {
+      return {
+        ...state,
+        currentPage: action.value,
+        viewingsForPage: slicePage(
+          state.filteredViewings,
+          action.value,
+          state.perPage
+        ),
       };
     }
     default:
@@ -353,6 +379,11 @@ export default function Viewings({ data }) {
           </select>
         </label>
       </fieldset>
+      <PaginationHeader
+        currentPage={state.currentPage}
+        perPage={state.perPage}
+        numberOfItems={state.filteredViewings.length}
+      />
       <ol className="viewings-list">
         {state.viewingsForPage.map((viewing) => {
           return (
@@ -366,7 +397,7 @@ export default function Viewings({ data }) {
       <Pagination
         currentPage={state.currentPage}
         limit={state.perPage}
-        length={state.filteredViewings.length}
+        numberOfItems={state.filteredViewings.length}
         onClick={(newPage) =>
           dispatch({ type: actions.CHANGE_PAGE, value: newPage })
         }
