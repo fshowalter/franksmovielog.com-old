@@ -119,7 +119,15 @@ function slicePage(viewings, currentPage, perPage) {
   return viewings.slice(skip, currentPage * perPage);
 }
 
-function filterAndSortViewings(viewings, filters, sortOrder) {
+function filterViewings(viewings, filters) {
+  return viewings.filter((viewing) => {
+    return Object.values(filters).every((filter) => {
+      return filter(viewing);
+    });
+  });
+}
+
+function sortViewings(viewings, sortOrder) {
   const sortMap = {
     "viewing-date-desc": sortViewingDateDesc,
     "viewing-date-asc": sortViewingDateAsc,
@@ -128,14 +136,8 @@ function filterAndSortViewings(viewings, filters, sortOrder) {
     title: sortTitleAsc,
   };
 
-  const filteredViewings = viewings.filter((viewing) => {
-    return Object.values(filters).every((filter) => {
-      return filter(viewing);
-    });
-  });
-
   const comparer = sortMap[sortOrder];
-  return filteredViewings.sort(comparer);
+  return viewings.sort(comparer);
 }
 
 function minMaxReleaseYearsForViewings(viewings) {
@@ -189,22 +191,16 @@ function reducer(state, action) {
           return regex.test(viewing.title);
         },
       };
-      filteredViewings = filterAndSortViewings(
-        state.allViewings,
-        filters,
+      filteredViewings = sortViewings(
+        filterViewings(state.allViewings, filters),
         state.sortValue
       );
       return {
         ...state,
-        titleValue: action.value,
         filters,
-        query,
         filteredViewings,
-        viewingsForPage: slicePage(
-          filteredViewings,
-          state.currentPage,
-          state.perPage
-        ),
+        currentPage: 1,
+        viewingsForPage: slicePage(filteredViewings, 1, state.perPage),
       };
     }
     case actions.FILTER_VENUE: {
@@ -218,22 +214,16 @@ function reducer(state, action) {
           return viewing.venue === action.value;
         },
       };
-      filteredViewings = filterAndSortViewings(
-        state.allViewings,
-        filters,
+      filteredViewings = sortViewings(
+        filterViewings(state.allViewings, filters),
         state.sortValue
       );
       return {
         ...state,
-        venueValue: action.value,
         filters,
-        query,
         filteredViewings,
-        viewingsForPage: slicePage(
-          filteredViewings,
-          state.currentPage,
-          state.perPage
-        ),
+        currentPage: 1,
+        viewingsForPage: slicePage(filteredViewings, 1, state.perPage),
       };
     }
     case actions.FILTER_RELEASE_YEAR: {
@@ -252,29 +242,20 @@ function reducer(state, action) {
           );
         },
       };
-      filteredViewings = filterAndSortViewings(
-        state.allViewings,
-        filters,
+      filteredViewings = sortViewings(
+        filterViewings(state.allViewings, filters),
         state.sortValue
       );
       return {
         ...state,
-        releaseYearValues: action.values,
         filters,
         filteredViewings,
-        viewingsForPage: slicePage(
-          filteredViewings,
-          state.currentPage,
-          state.perPage
-        ),
+        currentPage: 1,
+        viewingsForPage: slicePage(filteredViewings, 1, state.perPage),
       };
     }
     case actions.SORT: {
-      filteredViewings = filterAndSortViewings(
-        state.allViewings,
-        state.filters,
-        action.value
-      );
+      filteredViewings = sortViewings(state.filteredViewings, action.value);
       return {
         ...state,
         sortValue: action.value,
