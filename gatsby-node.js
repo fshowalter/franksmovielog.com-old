@@ -15,10 +15,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(
     `
       {
-        allReviewsJson(sort: { fields: [sequence], order: DESC }) {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___sequence], order: DESC }
+        ) {
           nodes {
-            sequence
-            slug
+            frontmatter {
+              sequence
+              imdb_id
+              slug
+            }
           }
         }
       }
@@ -31,30 +36,37 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   // Create Review pages
-  result.data.allReviewsJson.nodes.forEach((node) => {
-    createPage({
-      path: `/reviews/${node.slug}/`,
-      component: path.resolve("./src/templates/review.jsx"),
-      context: {
-        slug: node.slug,
-        backdrop: `${node.slug}.png`,
-      },
-    });
-  });
+  // result.data.allReviewsJson.nodes.forEach((node) => {
+  //   createPage({
+  //     path: `/reviews/${node.slug}/`,
+  //     component: path.resolve("./src/templates/review.jsx"),
+  //     context: {
+  //       slug: node.slug,
+  //       backdrop: `${node.slug}.png`,
+  //     },
+  //   });
+  // });
 
   // Create home pages
-  const reviews = result.data.allReviewsJson.nodes;
-  const reviewsPerPage = 20;
-  const numPages = Math.ceil(reviews.length / reviewsPerPage);
+  const updates = result.data.allMarkdownRemark.nodes;
+  const perPage = 20;
+  const numPages = Math.ceil(updates.length / perPage);
   Array.from({ length: numPages }).forEach((_, i) => {
+    const skip = i * perPage;
+    const imdbIds = updates
+      .slice(skip, skip * perPage || perPage)
+      .filter((update) => update.frontmatter.imdb_id)
+      .map((update) => update.frontmatter.imdb_id);
+
     createPage({
       path: i === 0 ? `/` : `/page-${i + 1}/`,
       component: path.resolve("./src/templates/home.jsx"),
       context: {
-        limit: reviewsPerPage,
-        skip: i * reviewsPerPage,
-        numPages,
+        limit: perPage,
+        skip,
+        numberOfItems: updates.length,
         currentPage: i + 1,
+        imdbIds,
       },
     });
   });
@@ -64,17 +76,18 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
   const typeDefs = [
     schema.buildObjectType({
-      name: "ReviewJson",
+      name: "MarkdownRemark",
+      interfaces: ["Node"],
       fields: {
         backdrop: {
           type: "File",
           resolve: (source, args, context) => {
-            if (!source || !source.slug) {
+            if (!source || !source.frontmatter || !source.frontmatter.slug) {
               return null;
             }
 
-            const backdropPath = path(
-              `./src/assets/backdrops/${source.slug}.png`
+            const backdropPath = path.resolve(
+              `./content/assets/backdrops/${source.frontmatter.slug}.png`
             );
 
             if (!backdropPath) {

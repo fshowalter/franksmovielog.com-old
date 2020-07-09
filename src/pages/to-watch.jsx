@@ -157,22 +157,6 @@ function escapeRegExp(str = "") {
   return str.replace(/[-[\]/{}()*+?.\\^$|]/g, "\\$&");
 }
 
-export const query = graphql`
-  query {
-    allWatchlistTitlesJson(sort: { fields: [year], order: ASC }) {
-      nodes {
-        directorNamesConcat
-        performerNamesConcat
-        imdb_id
-        title
-        writerNamesConcat
-        collectionNamesConcat
-        year
-      }
-    }
-  }
-`;
-
 function slicePage(viewings, currentPage, perPage) {
   const skip = perPage * (currentPage - 1);
   return viewings.slice(skip, currentPage * perPage);
@@ -590,3 +574,19 @@ ToWatch.propTypes = {
     }).isRequired,
   }).isRequired,
 };
+
+export const query = graphql`
+  query {
+    allWatchlistTitlesJson(sort: { fields: [year], order: ASC }) {
+      nodes {
+        directorNamesConcat
+        performerNamesConcat
+        imdb_id
+        title
+        writerNamesConcat
+        collectionNamesConcat
+        year
+      }
+    }
+  }
+`;

@@ -99,21 +99,6 @@ function escapeRegExp(str = "") {
   return str.replace(/[-[\]/{}()*+?.\\^$|]/g, "\\$&");
 }
 
-export const query = graphql`
-  query {
-    allViewingsJson(sort: { fields: [sequence], order: DESC }) {
-      nodes {
-        sequence
-        date(formatString: "YYYY-MM-DD")
-        imdb_id
-        title
-        venue
-        year
-      }
-    }
-  }
-`;
-
 function slicePage(viewings, currentPage, perPage) {
   const skip = perPage * (currentPage - 1);
   return viewings.slice(skip, currentPage * perPage);
@@ -394,3 +379,18 @@ Viewings.propTypes = {
     }).isRequired,
   }).isRequired,
 };
+
+export const query = graphql`
+  query {
+    allViewingsJson(sort: { fields: [sequence], order: DESC }) {
+      nodes {
+        sequence
+        date(formatString: "YYYY-MM-DD")
+        imdb_id
+        title
+        venue
+        year
+      }
+    }
+  }
+`;
