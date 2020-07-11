@@ -604,7 +604,7 @@ WatchlistPage.propTypes = {
   }).isRequired,
 };
 
-export const query = graphql`
+export const pageQuery = graphql`
   query {
     allWatchlistTitlesJson(sort: { fields: [year], order: ASC }) {
       nodes {

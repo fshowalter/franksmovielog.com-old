@@ -380,7 +380,7 @@ ViewingsPage.propTypes = {
   }).isRequired,
 };
 
-export const query = graphql`
+export const pageQuery = graphql`
   query {
     allViewingsJson(sort: { fields: [sequence], order: DESC }) {
       nodes {

@@ -1,6 +1,6 @@
 import "./viewings.scss";
 
-import { graphql } from "gatsby";
+import { Link, graphql } from "gatsby";
 import React, { useReducer } from "react";
 import { format, parseISO } from "date-fns";
 import PropTypes from "prop-types";
@@ -11,6 +11,7 @@ import Layout from "../components/Layout";
 import RangeInput from "../components/RangeInput";
 import ReviewLink from "../components/ReviewLink";
 import Pagination from "../components/Pagination";
+import Grade from "../components/Grade";
 
 function ViewingTitle({ viewing }) {
   return (
@@ -290,8 +291,11 @@ export default function ReviewsPage({ data }) {
         {state.reviewsForPage.map((review) => {
           return (
             <li value={review.sequence} className="viewings-viewing">
-              <ViewingTitle viewing={review} />
-              <ViewingSlug viewing={review} />
+              <Link to={`/reviews/${review.slug}/`}>
+                {review.title} ({review.year})
+              </Link>
+              <Grade gradeValue={review.grade_value} />
+              {review.date}
             </li>
           );
         })}

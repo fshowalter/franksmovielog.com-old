@@ -15,12 +15,37 @@ const gradeMap = {
   F: [F, "1 star (out of 5)"],
 };
 
-export default function Grade({ grade, width, height, className }) {
-  if (!grade || !(grade[0] in gradeMap)) {
+const gradeValueMap = {
+  5: [A, "5 stars (out of 5)"],
+  4: [B, "4 stars (out of 5)"],
+  3: [C, "3 stars (out of 5)"],
+  2: [D, "2 stars (out of 5)"],
+  1: [F, "1 star (out of 5)"],
+};
+
+export default function Grade({ grade, gradeValue, width, height, className }) {
+  let src;
+  let alt;
+
+  if (!grade && !gradeValue) {
     return null;
   }
 
-  const [src, alt] = gradeMap[grade[0]];
+  if (grade) {
+    if (!(grade[0] in gradeMap)) {
+      return null;
+    }
+
+    [src, alt] = gradeMap[grade[0]];
+  }
+
+  if (gradeValue) {
+    if (!(gradeValue in gradeValueMap)) {
+      return null;
+    }
+
+    [src, alt] = gradeValueMap[gradeValue];
+  }
 
   return (
     <img
@@ -48,7 +73,8 @@ Grade.propTypes = {
     "D",
     "D-",
     "F",
-  ]).isRequired,
+  ]),
+  gradeValue: PropTypes.oneOf([1, 2, 3, 4, 5]),
   width: PropTypes.number,
   height: PropTypes.number,
   className: PropTypes.string,
@@ -58,4 +84,6 @@ Grade.defaultProps = {
   width: 70,
   height: 14,
   className: null,
+  grade: null,
+  gradeValue: null,
 };
