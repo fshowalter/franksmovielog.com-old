@@ -8,36 +8,9 @@ import PropTypes from "prop-types";
 import { collator, sortStringAsc, sortStringDesc } from "../utils/sort-utils";
 import DebouncedInput from "../components/DebouncedInput/DebouncedInput";
 import Layout from "../components/Layout";
-import Pagination, { PaginationHeader } from "../components/Pagination";
 import RangeInput from "../components/RangeInput";
 import ReviewLink from "../components/ReviewLink";
-
-function VenueOptions({ viewings }) {
-  const venues = Array.from(
-    new Set(viewings.map((viewing) => viewing.venue))
-  ).sort((a, b) => collator.compare(a, b));
-
-  return (
-    <>
-      <option key="all" value="All">
-        All
-      </option>
-      {venues.map((venue) => (
-        <option key={venue} value={venue}>
-          {venue}
-        </option>
-      ))}
-    </>
-  );
-}
-
-VenueOptions.propTypes = {
-  viewings: PropTypes.arrayOf(
-    PropTypes.shape({
-      venue: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
+import Pagination from "../components/Pagination";
 
 function ViewingTitle({ viewing }) {
   return (
@@ -75,14 +48,6 @@ ViewingSlug.propTypes = {
   }).isRequired,
 };
 
-function sortViewingDateAsc(a, b) {
-  return sortStringAsc(a.date, b.date);
-}
-
-function sortViewingDateDesc(a, b) {
-  return sortStringDesc(a.date, b.date);
-}
-
 function sortReleaseDateAsc(a, b) {
   return sortStringAsc(a.year, b.year);
 }
@@ -92,7 +57,7 @@ function sortReleaseDateDesc(a, b) {
 }
 
 function sortTitleAsc(a, b) {
-  return collator.compare(a.sort_title, b.sort_title);
+  return collator.compare(a.title, b.title);
 }
 
 function escapeRegExp(str = "") {
@@ -104,7 +69,7 @@ function slicePage(viewings, currentPage, perPage) {
   return viewings.slice(skip, currentPage * perPage);
 }
 
-function filterViewings(viewings, filters) {
+function filterReviews(viewings, filters) {
   return viewings.filter((viewing) => {
     return Object.values(filters).every((filter) => {
       return filter(viewing);
@@ -112,20 +77,18 @@ function filterViewings(viewings, filters) {
   });
 }
 
-function sortViewings(viewings, sortOrder) {
+function sortReviews(viewings, sortOrder) {
   const sortMap = {
-    "viewing-date-desc": sortViewingDateDesc,
-    "viewing-date-asc": sortViewingDateAsc,
+    title: sortTitleAsc,
     "release-date-desc": sortReleaseDateDesc,
     "release-date-asc": sortReleaseDateAsc,
-    title: sortTitleAsc,
   };
 
   const comparer = sortMap[sortOrder];
   return viewings.sort(comparer);
 }
 
-function minMaxReleaseYearsForViewings(viewings) {
+function minMaxReleaseYearsForReviews(viewings) {
   const releaseYears = viewings
     .map((viewing) => {
       return viewing.year;
@@ -138,15 +101,15 @@ function minMaxReleaseYearsForViewings(viewings) {
   return [minYear, maxYear];
 }
 
-function initState({ viewings }) {
-  const [minYear, maxYear] = minMaxReleaseYearsForViewings(viewings);
+function initState({ reviews }) {
+  const [minYear, maxYear] = minMaxReleaseYearsForReviews(reviews);
   const currentPage = 1;
-  const perPage = 50;
+  const perPage = 100;
 
   return {
-    allViewings: viewings,
-    filteredViewings: viewings,
-    viewingsForPage: slicePage(viewings, currentPage, perPage),
+    allReviews: reviews,
+    filteredReviews: reviews,
+    reviewsForPage: slicePage(reviews, currentPage, perPage),
     filters: {},
     currentPage,
     perPage,
@@ -157,7 +120,7 @@ function initState({ viewings }) {
 
 const actions = {
   FILTER_TITLE: "FILTER_TITLE",
-  FILTER_VENUE: "FILTER_VENUE",
+  FILTER_GRADE: "FILTER_GRADE",
   FILTER_RELEASE_YEAR: "FILTER_RELEASE_YEAR",
   SORT: "SORT",
   CHANGE_PAGE: "CHANGE_PAGE",
@@ -165,56 +128,31 @@ const actions = {
 
 function reducer(state, action) {
   let filters;
-  let filteredViewings;
+  let filteredReviews;
 
   switch (action.type) {
     case actions.FILTER_TITLE: {
       const regex = new RegExp(escapeRegExp(action.value), "i");
       filters = {
         ...state.filters,
-        title: (viewing) => {
-          return regex.test(viewing.title);
+        title: (review) => {
+          return regex.test(review.title);
         },
       };
-      filteredViewings = sortViewings(
-        filterViewings(state.allViewings, filters),
+      filteredReviews = sortReviews(
+        filterReviews(state.allReviews, filters),
         state.sortValue
       );
       return {
         ...state,
         filters,
-        filteredViewings,
+        filteredReviews,
         currentPage: 1,
-        viewingsForPage: slicePage(filteredViewings, 1, state.perPage),
-      };
-    }
-    case actions.FILTER_VENUE: {
-      filters = {
-        ...state.filters,
-        venue: (viewing) => {
-          if (action.value === "All") {
-            return true;
-          }
-
-          return viewing.venue === action.value;
-        },
-      };
-      filteredViewings = sortViewings(
-        filterViewings(state.allViewings, filters),
-        state.sortValue
-      );
-      return {
-        ...state,
-        filters,
-        filteredViewings,
-        currentPage: 1,
-        viewingsForPage: slicePage(filteredViewings, 1, state.perPage),
+        reviewsForPage: slicePage(filteredReviews, 1, state.perPage),
       };
     }
     case actions.FILTER_RELEASE_YEAR: {
-      const [minYear, maxYear] = minMaxReleaseYearsForViewings(
-        state.allViewings
-      );
+      const [minYear, maxYear] = minMaxReleaseYearsForReviews(state.allReviews);
       filters = {
         ...state.filters,
         releaseYear: (viewing) => {
@@ -227,26 +165,26 @@ function reducer(state, action) {
           );
         },
       };
-      filteredViewings = sortViewings(
-        filterViewings(state.allViewings, filters),
+      filteredReviews = sortReviews(
+        filterReviews(state.allReviews, filters),
         state.sortValue
       );
       return {
         ...state,
         filters,
-        filteredViewings,
+        filteredReviews,
         currentPage: 1,
-        viewingsForPage: slicePage(filteredViewings, 1, state.perPage),
+        reviewsForPage: slicePage(filteredReviews, 1, state.perPage),
       };
     }
     case actions.SORT: {
-      filteredViewings = sortViewings(state.filteredViewings, action.value);
+      filteredReviews = sortReviews(state.filteredReviews, action.value);
       return {
         ...state,
         sortValue: action.value,
-        filteredViewings,
-        viewingsForPage: slicePage(
-          filteredViewings,
+        filteredReviews,
+        reviewsForPage: slicePage(
+          filteredReviews,
           state.currentPage,
           state.perPage
         ),
@@ -256,8 +194,8 @@ function reducer(state, action) {
       return {
         ...state,
         currentPage: action.value,
-        viewingsForPage: slicePage(
-          state.filteredViewings,
+        reviewsForPage: slicePage(
+          state.filteredReviews,
           action.value,
           state.perPage
         ),
@@ -268,11 +206,11 @@ function reducer(state, action) {
   }
 }
 
-export default function ViewingsPage({ data }) {
+export default function ReviewsPage({ data }) {
   const [state, dispatch] = useReducer(
     reducer,
     {
-      viewings: [...data.allViewingsJson.nodes],
+      reviews: [...data.reviews.nodes],
     },
     initState
   );
@@ -280,9 +218,9 @@ export default function ViewingsPage({ data }) {
   return (
     <Layout>
       <header className="viewings-header">
-        <h2 className="viewings-heading">Viewing Log</h2>
+        <h2 className="viewings-heading">Reviews</h2>
         <p className="viewings-tagline">
-          I&apos;ve watched {state.allViewings.length} movies since 2012.
+          I&apos;ve published {state.allReviews.length} reviews since 2020.
         </p>
       </header>
 
@@ -299,6 +237,26 @@ export default function ViewingsPage({ data }) {
           />
         </label>
         <label className="viewings-label" htmlFor="viewings-release-year-input">
+          Grade
+          <RangeInput
+            id="viewings-release-year-input"
+            min={1}
+            max={5}
+            options={
+              <>
+                <option value="1">★</option>
+                <option value="2">★★</option>
+                <option value="3">★★★</option>
+                <option value="4">★★★★</option>
+                <option value="5">★★★★★</option>
+              </>
+            }
+            onChange={(values) =>
+              dispatch({ type: actions.FILTER_GRADE, values })
+            }
+          />
+        </label>
+        <label className="viewings-label" htmlFor="viewings-release-year-input">
           Release Year
           <RangeInput
             id="viewings-release-year-input"
@@ -309,17 +267,6 @@ export default function ViewingsPage({ data }) {
             }
           />
         </label>
-        <label className="viewings-label" htmlFor="viewings-venue-input">
-          Venue
-          <select
-            id="viewings-venue-input"
-            onChange={(e) =>
-              dispatch({ type: actions.FILTER_VENUE, value: e.target.value })
-            }
-          >
-            <VenueOptions viewings={state.allViewings} />
-          </select>
-        </label>
         <label className="viewings-label" htmlFor="viewings-sort-input">
           Order By
           <select
@@ -329,33 +276,22 @@ export default function ViewingsPage({ data }) {
               dispatch({ type: actions.SORT, value: e.target.value })
             }
           >
-            <option value="viewing-date-desc">
-              Viewing Date (Newest First)
-            </option>
-            <option value="viewing-date-asc">
-              Viewing Date (Oldest First)
-            </option>
+            <option value="title">Title</option>
             <option value="release-date-desc">
               Release Date (Newest First)
             </option>
             <option value="release-date-asc">
               Release Date (Oldest First)
             </option>
-            <option value="title">Title</option>
           </select>
         </label>
       </fieldset>
-      <PaginationHeader
-        currentPage={state.currentPage}
-        perPage={state.perPage}
-        numberOfItems={state.filteredViewings.length}
-      />
       <ol className="viewings-list">
-        {state.viewingsForPage.map((viewing) => {
+        {state.reviewsForPage.map((review) => {
           return (
-            <li value={viewing.sequence} className="viewings-viewing">
-              <ViewingTitle viewing={viewing} />
-              <ViewingSlug viewing={viewing} />
+            <li value={review.sequence} className="viewings-viewing">
+              <ViewingTitle viewing={review} />
+              <ViewingSlug viewing={review} />
             </li>
           );
         })}
@@ -363,7 +299,7 @@ export default function ViewingsPage({ data }) {
       <Pagination
         currentPage={state.currentPage}
         limit={state.perPage}
-        numberOfItems={state.filteredViewings.length}
+        numberOfItems={state.filteredReviews.length}
         onClick={(newPage) =>
           dispatch({ type: actions.CHANGE_PAGE, value: newPage })
         }
@@ -372,9 +308,9 @@ export default function ViewingsPage({ data }) {
   );
 }
 
-ViewingsPage.propTypes = {
+ReviewsPage.propTypes = {
   data: PropTypes.shape({
-    allViewingsJson: PropTypes.shape({
+    reviews: PropTypes.shape({
       nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
     }).isRequired,
   }).isRequired,
@@ -382,14 +318,14 @@ ViewingsPage.propTypes = {
 
 export const query = graphql`
   query {
-    allViewingsJson(sort: { fields: [sequence], order: DESC }) {
+    reviews: allReviewsJson(sort: { fields: [sort_title], order: ASC }) {
       nodes {
         sequence
         date(formatString: "YYYY-MM-DD")
         imdb_id
         title
-        venue
         year
+        grade_value
         sort_title
       }
     }

@@ -1,10 +1,11 @@
-import "./to-watch.scss";
+import "./watchlist.scss";
 
 import { graphql } from "gatsby";
 import React, { useReducer } from "react";
 import PropTypes from "prop-types";
 
 import { collator, sortStringAsc, sortStringDesc } from "../utils/sort-utils";
+import toSentenceArray from "../utils/to-sentence-array";
 import DebouncedInput from "../components/DebouncedInput/DebouncedInput";
 import Layout from "../components/Layout";
 import Pagination, { PaginationHeader } from "../components/Pagination";
@@ -14,13 +15,9 @@ import ReviewLink from "../components/ReviewLink";
 function WatchlistOptions({ titles, keyName }) {
   const names = [
     ...new Set(
-      titles
-        .map((title) => {
-          return title[keyName] ? title[keyName].split("|") : [];
-        })
-        .reduce((prev, current) => {
-          return prev.concat(current);
-        })
+      titles.flatMap((title) => {
+        return title[keyName].map((keyValue) => keyValue.name);
+      })
     ),
   ].sort((a, b) => collator.compare(a, b));
 
@@ -40,17 +37,33 @@ function WatchlistOptions({ titles, keyName }) {
 
 WatchlistOptions.propTypes = {
   keyName: PropTypes.oneOf([
-    "directorNamesConcat",
-    "performerNamesConcat",
-    "writerNamesConcat",
-    "collectionNamesConcat",
+    "directors",
+    "performers",
+    "writers",
+    "collections",
   ]).isRequired,
   titles: PropTypes.arrayOf(
     PropTypes.shape({
-      directorNamesConcat: PropTypes.string,
-      performerNamesConcat: PropTypes.string,
-      writerNamesConcat: PropTypes.string,
-      collectionNamesConcat: PropTypes.string,
+      directors: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string,
+        })
+      ),
+      performers: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string,
+        })
+      ),
+      writers: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string,
+        })
+      ),
+      collections: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string,
+        })
+      ),
     })
   ).isRequired,
 };
@@ -76,68 +89,64 @@ WatchlistTitle.propTypes = {
   }).isRequired,
 };
 
-function joinSentence(array) {
-  const items = array.filter((item) => !!item);
-
-  let lastWord;
-
-  if (items.length > 1) {
-    lastWord = ` and ${items.pop()}`;
-    if (items.length > 1) {
-      lastWord = `,${lastWord}`;
-    }
-  } else {
-    lastWord = "";
-  }
-  return items.join(", ") + lastWord;
-}
-
 function formatPeople(people, suffix) {
-  if (!people) {
+  if (people.length === 0) {
     return "";
   }
 
-  const names = people.split("|");
+  const names = people.map((person) => person.name);
 
-  const formattedNames = joinSentence(names);
-
-  return `${formattedNames} ${suffix}`;
+  return [`${toSentenceArray(names).join("")} ${suffix}`];
 }
 
 function formatCollections(collections) {
-  if (!collections) {
+  if (collections.length === 0) {
     return "";
   }
-  const names = collections.split("|");
+  const names = collections.map((collection) => collection.name);
 
   const suffix = names.length > 1 ? "collections" : "collection";
 
-  const formattedNames = joinSentence(names);
-
-  return `it's in the "${formattedNames}" ${suffix}`;
+  return [`it's in the ${toSentenceArray(names)} ${suffix}`];
 }
 
 function WatchlistSlug({ title }) {
   const credits = [
-    formatPeople(title.directorNamesConcat, "directed"),
-    formatPeople(title.performerNamesConcat, "performed"),
-    formatPeople(title.writerNamesConcat, "has a writing credit"),
-    formatCollections(title.collectionNamesConcat),
+    ...formatPeople(title.directors, "directed"),
+    ...formatPeople(title.performers, "performed"),
+    ...formatPeople(title.writers, "has a writing credit"),
+    ...formatCollections(title.collections),
   ];
 
   return (
     <div className="viewings-viewing_slug">
-      Because {joinSentence(credits)}.
+      Because {toSentenceArray(credits)}.
     </div>
   );
 }
 
 WatchlistSlug.propTypes = {
   title: PropTypes.shape({
-    directorNamesConcat: PropTypes.string,
-    performerNamesConcat: PropTypes.string,
-    writerNamesConcat: PropTypes.string,
-    collectionNamesConcat: PropTypes.string,
+    directors: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+      })
+    ),
+    performers: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+      })
+    ),
+    writers: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+      })
+    ),
+    collections: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+      })
+    ),
   }).isRequired,
 };
 
@@ -256,11 +265,13 @@ function reducer(state, action) {
             return true;
           }
 
-          if (!title.directorNamesConcat) {
+          if (title.directors.length === 0) {
             return false;
           }
 
-          return title.directorNamesConcat.indexOf(action.value) >= 0;
+          return title.directors.some(
+            (director) => director.name === action.value
+          );
         },
       };
       filteredTitles = sortTitles(
@@ -283,11 +294,13 @@ function reducer(state, action) {
             return true;
           }
 
-          if (!title.performerNamesConcat) {
+          if (title.performers.length === 0) {
             return false;
           }
 
-          return title.performerNamesConcat.indexOf(action.value) >= 0;
+          return title.performers.some(
+            (performer) => performer.name === action.value
+          );
         },
       };
       filteredTitles = sortTitles(
@@ -310,11 +323,11 @@ function reducer(state, action) {
             return true;
           }
 
-          if (!title.writerNamesConcat) {
+          if (title.writers.length === 0) {
             return false;
           }
 
-          return title.writerNamesConcat.indexOf(action.value) >= 0;
+          return title.writers.some((writer) => writer.name === action.value);
         },
       };
       filteredTitles = sortTitles(
@@ -337,11 +350,13 @@ function reducer(state, action) {
             return true;
           }
 
-          if (!title.collectionNamesConcat) {
+          if (title.collections.length === 0) {
             return false;
           }
 
-          return title.collectionNamesConcat.indexOf(action.value) >= 0;
+          return title.collections.some(
+            (collection) => collection.name === action.value
+          );
         },
       };
       filteredTitles = sortTitles(
@@ -411,7 +426,7 @@ function reducer(state, action) {
   }
 }
 
-export default function ToWatch({ data }) {
+export default function WatchlistPage({ data }) {
   const [state, dispatch] = useReducer(
     reducer,
     {
@@ -450,10 +465,7 @@ export default function ToWatch({ data }) {
               dispatch({ type: actions.FILTER_DIRECTOR, value: e.target.value })
             }
           >
-            <WatchlistOptions
-              titles={state.allTitles}
-              keyName="directorNamesConcat"
-            />
+            <WatchlistOptions titles={state.allTitles} keyName="directors" />
           </select>
         </label>
         <label
@@ -471,10 +483,7 @@ export default function ToWatch({ data }) {
               })
             }
           >
-            <WatchlistOptions
-              titles={state.allTitles}
-              keyName="performerNamesConcat"
-            />
+            <WatchlistOptions titles={state.allTitles} keyName="performers" />
           </select>
         </label>
         <label className="to_watch-label" htmlFor="to_watch-writer-input">
@@ -488,10 +497,7 @@ export default function ToWatch({ data }) {
               })
             }
           >
-            <WatchlistOptions
-              titles={state.allTitles}
-              keyName="writerNamesConcat"
-            />
+            <WatchlistOptions titles={state.allTitles} keyName="writers" />
           </select>
         </label>
         <label className="to_watch-label" htmlFor="to_watch-collection-input">
@@ -505,10 +511,7 @@ export default function ToWatch({ data }) {
               })
             }
           >
-            <WatchlistOptions
-              titles={state.allTitles}
-              keyName="collectionNamesConcat"
-            />
+            <WatchlistOptions titles={state.allTitles} keyName="collections" />
           </select>
         </label>
         <label className="to_watch-label" htmlFor="to_watch-release-year-input">
@@ -567,10 +570,36 @@ export default function ToWatch({ data }) {
   );
 }
 
-ToWatch.propTypes = {
+WatchlistPage.propTypes = {
   data: PropTypes.shape({
     allWatchlistTitlesJson: PropTypes.shape({
-      nodes: PropTypes.arrayOf(PropTypes.object).isRequired,
+      nodes: PropTypes.arrayOf(
+        PropTypes.shape({
+          imdb_id: PropTypes.string.isRequired,
+          title: PropTypes.string.isRequired,
+          year: PropTypes.number.isRequired,
+          directors: PropTypes.arrayOf(
+            PropTypes.shape({
+              name: PropTypes.string,
+            })
+          ),
+          performers: PropTypes.arrayOf(
+            PropTypes.shape({
+              name: PropTypes.string,
+            })
+          ),
+          writers: PropTypes.arrayOf(
+            PropTypes.shape({
+              name: PropTypes.string,
+            })
+          ),
+          collections: PropTypes.arrayOf(
+            PropTypes.shape({
+              name: PropTypes.string,
+            })
+          ),
+        })
+      ).isRequired,
     }).isRequired,
   }).isRequired,
 };
@@ -579,13 +608,21 @@ export const query = graphql`
   query {
     allWatchlistTitlesJson(sort: { fields: [year], order: ASC }) {
       nodes {
-        directorNamesConcat
-        performerNamesConcat
         imdb_id
         title
-        writerNamesConcat
-        collectionNamesConcat
         year
+        directors {
+          name
+        }
+        performers {
+          name
+        }
+        writers {
+          name
+        }
+        collections {
+          name
+        }
       }
     }
   }

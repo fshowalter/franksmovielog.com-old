@@ -37,11 +37,8 @@ const Layout = ({ children }) => {
             <Link to="/viewings/" className="layout-mast_nav_link">
               Viewing Log
             </Link>
-            <Link to="/to-watch/" className="layout-mast_nav_link">
-              To-Watch List
-            </Link>
-            <Link to="/stats/" className="layout-mast_nav_link">
-              Stats
+            <Link to="/watchlist/" className="layout-mast_nav_link">
+              Watchlist
             </Link>
           </ul>
           <button
@@ -94,7 +91,7 @@ const Layout = ({ children }) => {
         <div className="layout-footer_inner">
           <p className="layout-footer_copyright">© 2020 Frank Showalter</p>
           <p className="layout-footer_notice">
-            All stills used in accordance with the
+            All stills used in accordance with the{" "}
             <a href="http://www.copyright.gov/title17/92chap1.html#107">
               Fair Use Law
             </a>
