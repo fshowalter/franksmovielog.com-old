@@ -7,6 +7,7 @@
 // You can delete this file if you're not using it
 
 const path = require("path");
+const marked = require("marked");
 
 async function createHomePages(graphql, reporter, createPage) {
   const query = await graphql(
@@ -152,6 +153,32 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       name: "MarkdownRemark",
       interfaces: ["Node"],
       fields: {
+        firstParagraphRaw: {
+          type: "String",
+          resolve: (source) => {
+            return source.rawMarkdownBody
+              ? source.rawMarkdownBody.trim().split("\n\n")[0]
+              : "";
+          },
+        },
+        firstParagraph: {
+          type: "String",
+          resolve: (source) => {
+            return marked(
+              source.rawMarkdownBody
+                ? source.rawMarkdownBody.trim().split("\n\n")[0]
+                : ""
+            );
+          },
+        },
+        numberOfParagraphs: {
+          type: "Int",
+          resolve: (source) => {
+            return source.rawMarkdownBody
+              ? source.rawMarkdownBody.trim().split("\n\n").length
+              : 0;
+          },
+        },
         postType: {
           type: "String",
           resolve: (source) => {

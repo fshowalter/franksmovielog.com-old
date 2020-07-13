@@ -98,12 +98,14 @@ function PostListItem({ post, value }) {
         className="home-post_excerpt"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
-          __html: post.html,
+          __html: post.frontmatter.excerpt || post.firstParagraph,
         }}
       />
-      <Link class="home-post_continue_reading" to={post.frontmatter.slug}>
-        Continue Reading
-      </Link>
+      {(post.frontmatter.excerpt || post.numberOfParagraphs > 1) && (
+        <Link class="home-post_continue_reading" to={post.frontmatter.slug}>
+          Continue Reading
+        </Link>
+      )}
     </li>
   );
 }
@@ -115,6 +117,7 @@ PostListItem.propTypes = {
       date: PropTypes.string.isRequired,
       slug: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
+      excerpt: PropTypes.string,
       sequence: PropTypes.number.isRequired,
     }).isRequired,
     backdrop: PropTypes.shape({
@@ -124,7 +127,8 @@ PostListItem.propTypes = {
         }),
       }),
     }).isRequired,
-    html: PropTypes.string.isRequired,
+    firstParagraph: PropTypes.string.isRequired,
+    numberOfParagraphs: PropTypes.number.isRequired,
   }).isRequired,
 };
 
@@ -160,15 +164,17 @@ function ReviewListItem({ review, movies, value, watchlistTitles }) {
         className="home-review_excerpt"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
-          __html: review.html,
+          __html: review.firstParagraph,
         }}
       />
-      <Link
-        class="home-review_continue_reading"
-        to={`/reviews/${review.frontmatter.slug}/`}
-      >
-        Continue Reading
-      </Link>
+      {review.numberOfParagraphs > 1 && (
+        <Link
+          class="home-review_continue_reading"
+          to={`/reviews/${review.frontmatter.slug}/`}
+        >
+          Continue Reading
+        </Link>
+      )}
       <WatchlistLinks watchlistTitle={watchlistTitle} />
     </li>
   );
@@ -193,7 +199,8 @@ ReviewListItem.propTypes = {
         }),
       }),
     }).isRequired,
-    html: PropTypes.string.isRequired,
+    firstParagraph: PropTypes.string.isRequired,
+    numberOfParagraphs: PropTypes.number.isRequired,
   }).isRequired,
 };
 
@@ -273,6 +280,7 @@ export const pageQuery = graphql`
           title
           sequence
           imdb_id
+          excerpt
         }
         backdrop {
           childImageSharp {
@@ -281,7 +289,8 @@ export const pageQuery = graphql`
             }
           }
         }
-        html
+        firstParagraph
+        numberOfParagraphs
       }
     }
 

@@ -32,6 +32,7 @@ module.exports = {
       options: {
         path: `${__dirname}/content/posts`,
         name: `posts`,
+        excerpt_separator: `\n\n`,
       },
     },
     `gatsby-transformer-remark`,
@@ -40,6 +41,7 @@ module.exports = {
       options: {
         path: `${__dirname}/content/reviews`,
         name: `reviews`,
+        excerpt_separator: `\n\n`,
       },
     },
     {
