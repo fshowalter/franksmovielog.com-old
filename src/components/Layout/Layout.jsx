@@ -22,24 +22,36 @@ const Layout = ({ children }) => {
         <nav className="layout-mast_nav">
           <h2 className="layout-mast_nav_heading">Navigation</h2>
           <ul className="layout-mast_nav_list">
-            <Link to="/" className="layout-mast_nav_link">
-              Home
-            </Link>
-            <Link to="/about/" className="layout-mast_nav_link">
-              About
-            </Link>
-            <Link to="/how-i-grade/" className="layout-mast_nav_link">
-              How I Grade
-            </Link>
-            <Link to="/reviews/" className="layout-mast_nav_link">
-              All Reviews
-            </Link>
-            <Link to="/viewings/" className="layout-mast_nav_link">
-              Viewing Log
-            </Link>
-            <Link to="/watchlist/" className="layout-mast_nav_link">
-              Watchlist
-            </Link>
+            <li>
+              <Link to="/" className="layout-mast_nav_link">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/about/" className="layout-mast_nav_link">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to="/how-i-grade/" className="layout-mast_nav_link">
+                How I Grade
+              </Link>
+            </li>
+            <li>
+              <Link to="/reviews/" className="layout-mast_nav_link">
+                All Reviews
+              </Link>
+            </li>
+            <li>
+              <Link to="/viewings/" className="layout-mast_nav_link">
+                Viewing Log
+              </Link>
+            </li>
+            <li>
+              <Link to="/watchlist/" className="layout-mast_nav_link">
+                Watchlist
+              </Link>
+            </li>
           </ul>
           <button
             type="button"

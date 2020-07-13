@@ -43,6 +43,10 @@ export default function Footer({
 
   const numPages = Math.ceil(numberOfItems / limit);
 
+  if (numPages === 1) {
+    return null;
+  }
+
   const isFirst = currentPage === 1;
   const isLast = currentPage === numPages;
 

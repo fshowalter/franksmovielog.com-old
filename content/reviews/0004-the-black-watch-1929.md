@@ -9,4 +9,10 @@ venue: iTunes
 venue_notes: Unknown 1080p
 ---
 
-John Ford's first talkie is a espionage adventure shackled with the worst dialog I've heard in a Ford film. Loy--carrying over her typcasting from silents as a an exotic vamp--gets the worst of it, with her lines full of inexplicable "thees' and "thous" delivered with her eyes half closed. For his part, Ford's heart seems to be in the bookend story of the titlar regiment heading to World War I France, not the Kipling-esque yarn involving crystal balls and femme fatales.
+John Ford's first talkie is a espionage adventure torpedoed by some of the worst dialog scenes I've ever seen. Myrna Loy--carrying over her (miss)casting from silents as a an exotic vamp--gets the worst of it, enduring lines full of inexplicable "thees' and "thous" delivered with her eyes half closed. I don't blame Ford, the studio insisted the dialog scenes be "staged by" Lumsden Hare, a dialog director.
+
+Said Ford:
+
+> That was another picture they changed after I'd gone. Winfield Sheehan was in charge of production then, and he said there weren't enough love scenes in it. He thought Lumsden Hare was a great British actor--he wasn't, but he impressed Sheehan--so he got Hare to direct some love scenes between McLaglen and Myrna Loy. And they were really horrible--long, talky things, had nothing to do with the story--and completely screwed it up. I wanted to vomit when I saw them. [^1]
+
+[^1]: Peter Bogdanovich. *John Ford* (United Kingdom: Studio Vista, 1967), 50.

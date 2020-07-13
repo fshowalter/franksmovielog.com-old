@@ -86,14 +86,21 @@ WatchlistLinks.defaultProps = {
   watchlistTitle: null,
 };
 
-function PostListItem({ post, value }) {
+function PostListItem({ post, index, value }) {
   return (
-    <li className="home-post_list_item" value={value}>
+    <li
+      className={`home-post_list_item ${
+        index === 0 ? "home-post_list_item--first" : ""
+      }`}
+      value={value}
+    >
       <div>{post.frontmatter.date}</div>
       <div className="home-post_image_wrap">
         <Img fluid={post.backdrop.childImageSharp.fluid} alt="" />
       </div>
-      <h2 className="home-post_heading">{post.frontmatter.title}</h2>
+      <h2 className="home-post_heading">
+        <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
+      </h2>
       <div
         className="home-post_excerpt"
         // eslint-disable-next-line react/no-danger
@@ -111,6 +118,7 @@ function PostListItem({ post, value }) {
 }
 
 PostListItem.propTypes = {
+  index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
   post: PropTypes.shape({
     frontmatter: PropTypes.shape({
@@ -132,7 +140,7 @@ PostListItem.propTypes = {
   }).isRequired,
 };
 
-function ReviewListItem({ review, movies, value, watchlistTitles }) {
+function ReviewListItem({ review, movies, index, value, watchlistTitles }) {
   const movie = movies.find(
     (item) => item.imdb_id === review.frontmatter.imdb_id
   );
@@ -142,7 +150,12 @@ function ReviewListItem({ review, movies, value, watchlistTitles }) {
   );
 
   return (
-    <li className="home-review_list_item" value={value}>
+    <li
+      className={`home-review_list_item ${
+        index === 0 ? "home-review_list_item--first" : ""
+      }`}
+      value={value}
+    >
       <div>{review.frontmatter.date}</div>
       <div className="home-review_image_wrap">
         <Img
@@ -181,6 +194,7 @@ function ReviewListItem({ review, movies, value, watchlistTitles }) {
 }
 
 ReviewListItem.propTypes = {
+  index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
   movies: PropTypes.arrayOf(Movie).isRequired,
   watchlistTitles: PropTypes.arrayOf(WatchlistTitle).isRequired,
@@ -216,6 +230,7 @@ export default function HomeTemplate({ pageContext, data }) {
             if (update.postType === "review") {
               return (
                 <ReviewListItem
+                  index={index}
                   review={update}
                   movies={data.movie.nodes}
                   value={listItemValue}
@@ -224,7 +239,13 @@ export default function HomeTemplate({ pageContext, data }) {
               );
             }
             if (update.postType === "post") {
-              return <PostListItem post={update} value={listItemValue} />;
+              return (
+                <PostListItem
+                  index={index}
+                  post={update}
+                  value={listItemValue}
+                />
+              );
             }
             return null;
           })}
