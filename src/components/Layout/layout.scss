@@ -4,29 +4,48 @@
 
 .layout {
   background-color: var(--color-content-background);
-  display: grid;
-  grid-template-areas: "gutter-top gutter-top gutter-top gutter-top" "gutter-left main sidebar gutter-right" "footer footer footer footer";
-  grid-template-columns: 30px 1fr 180px 30px;
-  grid-template-rows: 20px 1fr auto;
-  margin: 0 auto;
-  max-width: 72.5rem;
-  min-height: 100vh;
-  position: relative;
+
+  @include breakpoint(tablet) {
+    display: grid;
+    grid-template-areas: "gutter-top gutter-top gutter-top gutter-top" "gutter-left main sidebar gutter-right" "footer footer footer footer";
+    grid-template-columns: 30px 1fr 180px 30px;
+    grid-template-rows: 20px 1fr auto;
+    margin: 0 auto;
+    max-width: 72.5rem;
+    min-height: 100vh;
+    position: relative;
+  }
 }
 
 .layout-mast {
+  height: 50px;
+  background: #202020 url(/assets/ripnotcomingsoon.jpg) repeat;
   display: flex;
-  flex-direction: column;
-  grid-area: sidebar;
-  position: relative;
+  align-items: center;
+  padding: 0 var(--size-500);
+  justify-content: space-between;
+
+  @include breakpoint(tablet) {
+    display: flex;
+    flex-direction: column;
+    grid-area: sidebar;
+    position: relative;
+  }
 }
 
-.layout-mast_title {
-  @extend %sr-only;
+.layout-mast_logo {
+  fill: #fff;
 }
 
 .layout-mast_heading {
+  color: #fff;
+  transition: color 0.15s;
   font-size: var(--text-2xl);
+  z-index: 200;
+
+  .layout--nav_visible & {
+    color: var(--color-heading);
+  }
 
   @media only screen and (min-width: 48em) {
     font-size: var(--text-3xl);
@@ -43,55 +62,87 @@
 }
 
 .layout-mast_nav {
-  border-left: solid 1px var(--color-border);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  transform: scale(0);
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: -100;
+  transition: 0.15s ease-in-out;
+  background-color: var(--color-background);
+  padding: 0 var(--size-500);
   display: flex;
   flex-direction: column;
-  font-size: var(--text-base);
-  justify-content: space-between;
-  letter-spacing: var(--tracking-widest);
-  padding: 0 0 0 var(--sz-5);
-  white-space: nowrap;
+  justify-content: center;
 
-  &:before {
-    align-items: center;
-    background: #202020 url(/assets/ripnotcomingsoon.jpg) repeat;
-    color: var(--color-content-background);
-    content: "M";
+  .layout--nav_visible & {
+    transform-origin: top right;
+    transform: scale(1);
+    opacity: 1;
+    z-index: 100;
+  }
+
+  @include breakpoint(tablet) {
+    border-left: solid 1px var(--color-border);
     display: flex;
-    font-size: var(--text-4xl);
-    height: var(--sz-17);
-    justify-content: center;
-    left: var(--sz-5);
-    margin-bottom: var(--sz-8);
-    text-align: center;
-    top: var(--sz-9);
-    width: var(--sz-17);
+    flex-direction: column;
+    font-size: var(--text-base);
+    justify-content: space-between;
+    letter-spacing: var(--tracking-widest);
+    padding: 0 0 0 var(--sz-5);
+    white-space: nowrap;
+
+    &:before {
+      align-items: center;
+      background: #202020 url(/assets/ripnotcomingsoon.jpg) repeat;
+      color: var(--color-content-background);
+      content: "M";
+      display: flex;
+      font-size: var(--text-4xl);
+      height: var(--sz-17);
+      justify-content: center;
+      left: var(--sz-5);
+      margin-bottom: var(--sz-8);
+      text-align: center;
+      top: var(--sz-9);
+      width: var(--sz-17);
+    }
   }
 }
 
 .layout-mast_nav_list {
   display: flex;
   flex-direction: column;
+  margin-top: var(--size-500);
 }
 
 .layout-mast_nav_link {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   display: block;
   line-height: calc(var(--sz-13) - 1px);
 }
 
 .layout-mast_nav_button {
-  background: inherit;
+  background-color: transparent;
   border: none;
-  display: none;
-  fill: var(--color-content-background);
-  height: var(--sz-16);
-  width: var(--sz-16);
+  z-index: 200;
 
-  .js-nav-visible & {
-    position: fixed;
-    right: 0;
-    top: 0;
+  @include breakpoint(tablet) {
+    background: inherit;
+    border: none;
+    display: none;
+    fill: var(--color-content-background);
+    height: var(--sz-16);
+    width: var(--sz-16);
+
+    .js-nav-visible & {
+      position: fixed;
+      right: 0;
+      top: 0;
+    }
   }
 }
 
@@ -106,7 +157,7 @@
     transition: all 0.15s linear;
   }
 
-  .js-nav-visible & {
+  .layout--nav_visible & {
     rect {
       fill: var(--color-heading);
     }
@@ -135,7 +186,8 @@
 }
 
 .layout-mast_nav_heading {
-  @extend %sr-only;
+  font-size: var(--size-600);
+  // @extend %sr-only;
 
   .js-nav-visible & {
     @extend %not-sr-only;
@@ -171,8 +223,12 @@ html.js-nav-visible {
 }
 
 .layout-children {
-  grid-area: main;
-  padding: 0 var(--sz-5) 0 0;
+  padding: 0 var(--size-500);
+
+  @include breakpoint(tablet) {
+    grid-area: main;
+    padding: 0 var(--sz-5) 0 0;
+  }
 }
 
 .layout-footer {

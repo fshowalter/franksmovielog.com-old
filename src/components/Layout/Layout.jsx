@@ -5,20 +5,63 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react";
+import React, { useReducer } from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import "./layout.scss";
 
+function initState() {
+  return {
+    navVisible: false,
+  };
+}
+
+const actions = {
+  TOGGLE_NAV: "TOGGLE_NAV",
+};
+
+function reducer(state, action) {
+  console.log(action);
+  switch (action.type) {
+    case actions.TOGGLE_NAV: {
+      return {
+        ...state,
+        navVisible: !state.navVisible,
+      };
+    }
+    default:
+      throw new Error();
+  }
+}
+
 const Layout = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, {}, initState);
+
   return (
     <div className="layout">
-      <header id="site-header" className="layout-mast">
-        <div className="layout-mast_title">
-          <h1 className="layout-mast_heading">
-            <a href="/">Frank&apos;s Movie Log</a>
-          </h1>
-        </div>
+      <header
+        id="site-header"
+        className={`layout-mast ${state.navVisible && "layout--nav_visible"}`}
+      >
+        <h1 className="layout-mast_heading">
+          <a href="/">Frank&apos;s Movie Log</a>
+        </h1>
+        <button
+          type="button"
+          className="layout-mast_nav_button"
+          aria-label="Full Navigation"
+          onClick={() => dispatch({ type: actions.TOGGLE_NAV })}
+        >
+          <svg
+            className="layout-mast_menu_icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <rect x="0" y="0" width="100%" height="2" fill="#fff" />
+            <rect x="0" y="9" width="100%" height="2" fill="#fff" />
+            <rect x="0" y="18" width="100%" height="2" fill="#fff" />
+          </svg>
+        </button>
         <nav className="layout-mast_nav">
           <h2 className="layout-mast_nav_heading">Navigation</h2>
           <ul className="layout-mast_nav_list">
@@ -53,21 +96,6 @@ const Layout = ({ children }) => {
               </Link>
             </li>
           </ul>
-          <button
-            type="button"
-            className="layout-mast_nav_button"
-            aria-label="Full Navigation"
-          >
-            <svg
-              className="layout-mast_menu_icon"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <rect x="0" y="0" width="100%" height="2" fill="#fff" />
-              <rect x="0" y="9" width="100%" height="2" fill="#fff" />
-              <rect x="0" y="18" width="100%" height="2" fill="#fff" />
-            </svg>
-          </button>
           <form
             className="layout-mast_search_form"
             action="https://www.google.com/search"
