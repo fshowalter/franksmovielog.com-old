@@ -75,7 +75,7 @@
   font-size: var(--step--1);
   color: var(--color-text-secondary);
   margin-top: var(--step-3);
-  justify-content: center;
+  // justify-content: center;
 }
 
 .list_item_watchlist_item {
@@ -87,7 +87,13 @@
   font-size: var(--step--1);
   font-family: var(--font-sans);
   margin-top: var(--step-2);
-  padding: var(--step-1) 0;
+  padding: var(--step-1) var(--step-0);
   border-top: solid 1px var(--color-border);
-  text-align: center;
+  display: flex;
+  // justify-content: center;
+}
+
+.list_item_date_icon {
+  composes: list_item_watchlist_icon;
+  margin-right: 0.75rem;
 }
