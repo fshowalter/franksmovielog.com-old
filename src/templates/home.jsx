@@ -198,7 +198,9 @@ function ReviewListItem({ review, movies, index, value, watchlistTitles }) {
       </div>
       <div className={styles.list_item_content}>
         <h2 className={styles.list_item_heading}>
-          #{review.frontmatter.sequence}.{" "}
+          <span className={styles.list_item_heading_counter}>
+            #{review.frontmatter.sequence}.{" "}
+          </span>
           <ReviewLink imdbId={review.frontmatter.imdb_id}>
             <>
               {movie.title}{" "}

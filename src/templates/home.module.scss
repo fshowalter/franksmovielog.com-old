@@ -6,13 +6,12 @@
   background-color: var(--color-content-background);
   margin-top: var(--step-5);
   padding: var(--step-3) var(--step-1) var(--step-2);
-  border-top: solid 1px darken(#e9e7e0, 10);
-  border-bottom: solid 1px darken(#e9e7e0, 10);
+  border-top: solid 1px darken(#e9e7e0, 5);
+  border-bottom: solid 1px darken(#e9e7e0, 5);
 }
 
 .list_item_first {
   margin-top: 0;
-  border-top: none;
 }
 
 .list_item_content {
@@ -25,6 +24,13 @@
   font-size: var(--step-2);
   font-weight: 700;
   margin-top: 1rem;
+}
+
+.list_item_heading_counter {
+  color: var(--color-text-secondary);
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  font-weight: 300;
 }
 
 .list_item_heading_review_year {
@@ -49,7 +55,7 @@
 
 .list_item_continue_reading {
   align-self: center;
-  background: var(--color-link);
+  background: var(--color-action);
   color: white;
   cursor: pointer;
   display: inline-block;
@@ -78,7 +84,6 @@
   font-size: var(--step--1);
   color: var(--color-text-secondary);
   margin-top: var(--step-3);
-  // justify-content: center;
 }
 
 .list_item_watchlist_item {
@@ -93,7 +98,6 @@
   padding: var(--step-1) var(--step-1) 0;
   border-top: solid 1px var(--color-border);
   display: flex;
-  // justify-content: center;
 }
 
 .list_item_date_icon {

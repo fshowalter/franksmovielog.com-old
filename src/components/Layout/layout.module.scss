@@ -2,7 +2,7 @@
 @import "./src/styles/vars";
 
 .container {
-  background-color: var(--color-content-background);
+  background-color: var(--color-background);
 
   &.mast_nav_visible {
     left: 0px;
@@ -14,45 +14,48 @@
 }
 
 .mast {
-  background: #202020 url(/assets/ripnotcomingsoon.jpg) repeat;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 var(--step-0);
+  border-bottom: solid 1px var(--color-border);
 }
 
 .mast_logo {
-  padding: var(--step--2) 0;
+  margin-top: var(--step-5);
+  padding: var(--step--2) var(--step-1) var(--step--2)
+    calc(var(--step-1) + var(--step-5) + var(--step-1));
+  order: 2;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    align-items: center;
+    background: #202020 url(/assets/ripnotcomingsoon.jpg) repeat;
+    color: #fff;
+    content: "M";
+    display: flex;
+    font-size: var(--step-2);
+    height: var(--step-5);
+    justify-content: center;
+    left: var(--step-1);
+    margin-bottom: var(--sz-8);
+    text-align: center;
+    top: var(--step--1);
+    width: var(--step-5);
+  }
 }
 
 .mast_heading {
-  color: #fff;
   transition: color 0.15s;
   font-size: var(--step-2);
 }
 
 .mast_tagline {
   font-size: var(--step--1);
-  font-family: var(--font-sans);
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(0, 0, 0, 0.65);
 }
 
 .mast_nav {
+  min-width: 100%;
   position: absolute;
-  width: 100vw;
-  height: 100vh;
-  opacity: 0;
-  transform: scale(0);
   top: 0;
-  right: 0;
-  overflow: hidden;
-  z-index: -100;
-  transition: 0.15s ease-in-out;
-  background-color: var(--color-background);
-  padding: 0 var(--step-0);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 
   .mast_nav_visible & {
     transform-origin: top right;
@@ -65,25 +68,32 @@
 .mast_nav_heading {
   font-size: var(--step-3);
   font-weight: bold;
+  display: none;
 }
 
 .mast_nav_list {
+  background-color: #222;
   display: flex;
-  flex-direction: column;
-  margin-top: var(--step-0);
-  font-size: var(--step-1);
+  font-size: var(--step--1);
+  min-width: 100%;
+  flex-wrap: nowrap;
+  padding: 0 var(--step-1);
 }
 
 .mast_nav_link {
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   display: block;
   line-height: var(--step-5);
+  white-space: nowrap;
+  color: #fff;
+  margin-right: 1rem;
 }
 
 .mast_nav_button {
   background-color: transparent;
   border: none;
   z-index: 200;
+  margin-left: auto;
 }
 
 .mast_menu_icon {
@@ -120,6 +130,7 @@
   min-height: var(--step-5);
   display: flex;
   align-items: center;
+  display: none;
 }
 
 .mast_search_label {
