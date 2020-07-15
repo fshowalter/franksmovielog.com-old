@@ -7,6 +7,20 @@ import Grade from "../components/Grade";
 import Layout from "../components/Layout";
 import Pagination from "../components/Pagination";
 import ReviewLink from "../components/ReviewLink";
+import styles from "./home.module.scss";
+
+function WatchlistItem({ to, children }) {
+  return (
+    <li className={styles.list_item_watchlist_item}>
+      <Link to={to}>{children}</Link>
+    </li>
+  );
+}
+
+WatchlistItem.propTypes = {
+  to: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 const Movie = PropTypes.shape({
   imdb_id: PropTypes.string,
@@ -47,34 +61,54 @@ function WatchlistLinks({ watchlistTitle }) {
   }
 
   return (
-    <ul>
-      {watchlistTitle.collections.map((collection) => {
-        return (
-          <Link to={`/watchlist/collections/${collection.slug}/`}>
-            {collection.name}
-          </Link>
-        );
-      })}
-      {watchlistTitle.directors.map((director) => {
-        return (
-          <Link to={`/watchlist/directors/${director.slug}/`}>
-            {director.name}
-          </Link>
-        );
-      })}
-      {watchlistTitle.performers.map((performer) => {
-        return (
-          <Link to={`/watchlist/cast/${performer.slug}/`}>
-            {performer.name}
-          </Link>
-        );
-      })}
-      {watchlistTitle.writers.map((writer) => {
-        return (
-          <Link to={`/watchlist/writers/${writer.slug}/`}>{writer.name}</Link>
-        );
-      })}
-    </ul>
+    <div className={styles.list_item_watchlist}>
+      <svg
+        width="1em"
+        height="1em"
+        viewBox="0 0 16 16"
+        className={styles.list_item_watchlist_icon}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"
+        />
+        <path
+          fill-rule="evenodd"
+          d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
+        />
+      </svg>
+      <ul>
+        {watchlistTitle.collections.map((collection) => {
+          return (
+            <WatchlistItem to={`/watchlist/collections/${collection.slug}/`}>
+              {collection.name}
+            </WatchlistItem>
+          );
+        })}
+        {watchlistTitle.directors.map((director) => {
+          return (
+            <WatchlistItem to={`/watchlist/directors/${director.slug}/`}>
+              {director.name}
+            </WatchlistItem>
+          );
+        })}
+        {watchlistTitle.performers.map((performer) => {
+          return (
+            <WatchlistItem to={`/watchlist/cast/${performer.slug}/`}>
+              {performer.name}
+            </WatchlistItem>
+          );
+        })}
+        {watchlistTitle.writers.map((writer) => {
+          return (
+            <WatchlistItem to={`/watchlist/writers/${writer.slug}/`}>
+              {writer.name}
+            </WatchlistItem>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
 
@@ -98,7 +132,7 @@ function PostListItem({ post, index, value }) {
       <div className="home-post_image_wrap">
         <Img fluid={post.backdrop.childImageSharp.fluid} alt="" />
       </div>
-      <h2 className="home-post_heading">
+      <h2 className={styles.heading}>
         <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
       </h2>
       <div
@@ -151,44 +185,51 @@ function ReviewListItem({ review, movies, index, value, watchlistTitles }) {
 
   return (
     <li
-      className={`home-review_list_item ${
-        index === 0 ? "home-review_list_item--first" : ""
+      className={`${styles.list_item} ${
+        index === 0 ? styles.list_item_first : ""
       }`}
       value={value}
     >
-      <div>{review.frontmatter.date}</div>
       <div className="home-review_image_wrap">
         <Img
           fluid={review.backdrop.childImageSharp.fluid}
           alt={`A still from ${movie.title} (${movie.year})`}
         />
       </div>
-      <h2 className="home-review_heading">
-        #{review.frontmatter.sequence}.{" "}
-        <ReviewLink imdbId={review.frontmatter.imdb_id}>
-          <>
-            {movie.title}{" "}
-            <span className="home-review_title_year">{movie.year}</span>
-          </>
-        </ReviewLink>
-      </h2>
-      <Grade grade={review.frontmatter.grade} className="home-review_grade" />
-      <div
-        className="home-review_excerpt"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{
-          __html: review.firstParagraph,
-        }}
-      />
-      {review.numberOfParagraphs > 1 && (
-        <Link
-          class="home-review_continue_reading"
-          to={`/reviews/${review.frontmatter.slug}/`}
-        >
-          Continue Reading
-        </Link>
-      )}
-      <WatchlistLinks watchlistTitle={watchlistTitle} />
+      <div className={styles.list_item_content}>
+        <h2 className={styles.list_item_heading}>
+          #{review.frontmatter.sequence}.{" "}
+          <ReviewLink imdbId={review.frontmatter.imdb_id}>
+            <>
+              {movie.title}{" "}
+              <span className={styles.list_item_heading_review_year}>
+                {movie.year}
+              </span>
+            </>
+          </ReviewLink>
+        </h2>
+        <Grade
+          grade={review.frontmatter.grade}
+          className={styles.list_item_grade}
+        />
+        <div
+          className={styles.list_item_excerpt}
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: review.firstParagraph,
+          }}
+        />
+        {review.numberOfParagraphs > 1 && (
+          <Link
+            className={styles.list_item_continue_reading}
+            to={`/reviews/${review.frontmatter.slug}/`}
+          >
+            Continue Reading
+          </Link>
+        )}
+        <WatchlistLinks watchlistTitle={watchlistTitle} />
+      </div>
+      <div className={styles.list_item_date}>{review.frontmatter.date}</div>
     </li>
   );
 }
@@ -221,7 +262,7 @@ ReviewListItem.propTypes = {
 export default function HomeTemplate({ pageContext, data }) {
   return (
     <Layout>
-      <main className="home">
+      <main className={styles.container}>
         <ol className="home-post_list">
           {data.updates.nodes.map((update, index) => {
             const listItemValue =

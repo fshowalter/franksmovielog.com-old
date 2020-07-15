@@ -8,7 +8,7 @@
 import React, { useReducer } from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
-import "./layout.scss";
+import styles from "./layout.module.scss";
 
 function initState() {
   return {
@@ -21,7 +21,6 @@ const actions = {
 };
 
 function reducer(state, action) {
-  console.log(action);
   switch (action.type) {
     case actions.TOGGLE_NAV: {
       return {
@@ -34,26 +33,40 @@ function reducer(state, action) {
   }
 }
 
-const Layout = ({ children }) => {
+function MastNavLink({ to, children }) {
+  return (
+    <Link to={to} className={styles.mast_nav_link}>
+      {children}
+    </Link>
+  );
+}
+
+MastNavLink.propTypes = {
+  to: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
+function Layout({ children }) {
   const [state, dispatch] = useReducer(reducer, {}, initState);
 
   return (
-    <div className="layout">
-      <header
-        id="site-header"
-        className={`layout-mast ${state.navVisible && "layout--nav_visible"}`}
-      >
-        <h1 className="layout-mast_heading">
+    <div
+      className={`${styles.container} ${
+        state.navVisible ? styles.mast_nav_visible : ""
+      }`}
+    >
+      <header id="site-header" className={styles.mast}>
+        <h1 className={styles.mast_heading}>
           <a href="/">Frank&apos;s Movie Log</a>
         </h1>
         <button
           type="button"
-          className="layout-mast_nav_button"
+          className={styles.mast_nav_button}
           aria-label="Full Navigation"
           onClick={() => dispatch({ type: actions.TOGGLE_NAV })}
         >
           <svg
-            className="layout-mast_menu_icon"
+            className={styles.mast_menu_icon}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
           >
@@ -62,52 +75,39 @@ const Layout = ({ children }) => {
             <rect x="0" y="18" width="100%" height="2" fill="#fff" />
           </svg>
         </button>
-        <nav className="layout-mast_nav">
-          <h2 className="layout-mast_nav_heading">Navigation</h2>
-          <ul className="layout-mast_nav_list">
+        <nav className={styles.mast_nav}>
+          <h2 className={styles.mast_nav_heading}>Navigation</h2>
+          <ul className={styles.mast_nav_list}>
             <li>
-              <Link to="/" className="layout-mast_nav_link">
-                Home
-              </Link>
+              <MastNavLink to="/">Home</MastNavLink>
             </li>
             <li>
-              <Link to="/about/" className="layout-mast_nav_link">
-                About
-              </Link>
+              <MastNavLink to="/about/">About</MastNavLink>
             </li>
             <li>
-              <Link to="/how-i-grade/" className="layout-mast_nav_link">
-                How I Grade
-              </Link>
+              <MastNavLink to="/how-i-grade/">How I Grade</MastNavLink>
             </li>
             <li>
-              <Link to="/reviews/" className="layout-mast_nav_link">
-                All Reviews
-              </Link>
+              <MastNavLink to="/reviews/">All Reviews</MastNavLink>
             </li>
             <li>
-              <Link to="/viewings/" className="layout-mast_nav_link">
-                Viewing Log
-              </Link>
+              <MastNavLink to="/viewings/">Viewing Log</MastNavLink>
             </li>
             <li>
-              <Link to="/watchlist/" className="layout-mast_nav_link">
-                Watchlist
-              </Link>
+              <MastNavLink to="/watchlist/">Watchlist</MastNavLink>
             </li>
           </ul>
           <form
-            className="layout-mast_search_form"
             action="https://www.google.com/search"
             acceptCharset="UTF-8"
             method="get"
             role="search"
           >
-            <label htmlFor="search">
-              <span className="layout-mast_search_heading">Search</span>
+            <label htmlFor="search" className={styles.mast_search_form}>
+              <span className={styles.mast_search_label}>Search</span>
               <input
                 type="text"
-                className="layout-mast_search_input"
+                className={styles.mast_search_input}
                 name="q"
                 id="search"
                 placeholder="What are you looking for?"
@@ -119,31 +119,28 @@ const Layout = ({ children }) => {
               />
               <input
                 type="submit"
-                className="layout-mast_search_submit"
+                className={styles.mast_search_submit}
                 value="Search"
               />
             </label>
           </form>
         </nav>
       </header>
-      <main className="layout-children">{children}</main>
-      <footer className="layout-footer">
-        <div className="layout-footer_inner">
-          <p className="layout-footer_copyright">© 2020 Frank Showalter</p>
-          <p className="layout-footer_notice">
-            All stills used in accordance with the{" "}
-            <a href="http://www.copyright.gov/title17/92chap1.html#107">
-              Fair Use Law
-            </a>
-          </p>
-          <a href="#site-header" className="layout-footer_to_the_top">
-            To the top ↑
+      <main className={styles.children}>{children}</main>
+      <footer className={styles.footer}>
+        <a href="#site-header" className={styles.footer_to_the_top}>
+          To the top ↑
+        </a>
+        <p className={styles.footer_copyright}>
+          All stills used in accordance with the{" "}
+          <a href="http://www.copyright.gov/title17/92chap1.html#107">
+            Fair Use Law.
           </a>
-        </div>
+        </p>
       </footer>
     </div>
   );
-};
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

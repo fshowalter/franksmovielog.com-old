@@ -1,0 +1,153 @@
+@import "./src/styles/global";
+@import "./src/styles/vars";
+
+.container {
+  background-color: var(--color-content-background);
+
+  &.mast_nav_visible {
+    left: 0px;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+  }
+}
+
+.mast {
+  height: var(--step-5);
+  background: #202020 url(/assets/ripnotcomingsoon.jpg) repeat;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--step-0);
+  justify-content: space-between;
+}
+
+.mast_heading {
+  color: #fff;
+  transition: color 0.15s;
+  font-size: var(--step-1);
+}
+
+.mast_nav {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  transform: scale(0);
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: -100;
+  transition: 0.15s ease-in-out;
+  background-color: var(--color-background);
+  padding: 0 var(--step-0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .mast_nav_visible & {
+    transform-origin: top right;
+    transform: scale(1);
+    opacity: 1;
+    z-index: 100;
+  }
+}
+
+.mast_nav_heading {
+  font-size: var(--step-2);
+}
+
+.mast_nav_list {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--step-0);
+}
+
+.mast_nav_link {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  display: block;
+  line-height: var(--step-4);
+}
+
+.mast_nav_button {
+  background-color: transparent;
+  border: none;
+  z-index: 200;
+}
+
+.mast_menu_icon {
+  height: var(--step-0);
+  width: var(--step-0);
+
+  rect {
+    opacity: 1;
+    transform: rotate(0deg);
+    transform-origin: center center;
+    transition: all 0.15s linear;
+  }
+
+  .mast_nav_visible & {
+    rect {
+      fill: var(--color-heading);
+    }
+
+    rect:nth-child(1) {
+      transform: rotate(45deg) translate(0%, 45%) scaleX(1.5);
+    }
+
+    rect:nth-child(2) {
+      opacity: 0;
+    }
+
+    rect:nth-child(3) {
+      transform: rotate(-45deg) translate(0%, -45%) scaleX(1.5);
+    }
+  }
+}
+
+.mast_search_form {
+  min-height: var(--step-5);
+  display: flex;
+  align-items: center;
+}
+
+.mast_search_label {
+  composes: sr_only from "../../styles/utils.scss";
+}
+
+.mast_search_input {
+  font-family: var(--font-sans);
+  padding: calc(var(--step--1) / 3) var(--step--1);
+  flex-grow: 2;
+  font-size: var(--step--1);
+}
+
+.mast_search_submit {
+  font-family: var(--font-sans);
+  padding: calc(var(--step--1) / 3) var(--step--1);
+  font-size: var(--step--1);
+  margin-left: 1rem;
+}
+
+.children {
+  padding: 0 var(--step-0);
+  background-color: var(--color-background);
+}
+
+.footer {
+  background-color: #202020;
+  color: #d2d2d2;
+  font-size: var(--step-0);
+  margin-top: var(--step-5);
+  padding: var(--step-3) var(--step-1);
+  text-align: center;
+}
+
+.footer_to_the_top {
+  color: var(--color-link);
+}
+
+.footer_copyright {
+  font-size: var(--step--1);
+  margin-top: var(--step--1);
+}
