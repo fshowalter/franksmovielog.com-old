@@ -56,9 +56,12 @@ function Layout({ children }) {
       }`}
     >
       <header id="site-header" className={styles.mast}>
-        <h1 className={styles.mast_heading}>
-          <a href="/">Frank&apos;s Movie Log</a>
-        </h1>
+        <div className={styles.mast_logo}>
+          <h1 className={styles.mast_heading}>
+            <a href="/">Frank&apos;s Movie Log</a>
+          </h1>
+          <p className={styles.mast_tagline}>My life at the movies.</p>
+        </div>
         <button
           type="button"
           className={styles.mast_nav_button}

@@ -17,15 +17,24 @@
   background: #202020 url(/assets/ripnotcomingsoon.jpg) repeat;
   display: flex;
   align-items: center;
-  padding: 0 var(--step-0);
   justify-content: space-between;
+  padding: 0 var(--step-0);
+}
+
+.mast_logo {
+  padding: var(--step--2) 0;
 }
 
 .mast_heading {
   color: #fff;
   transition: color 0.15s;
   font-size: var(--step-2);
-  padding: var(--step--2) 0;
+}
+
+.mast_tagline {
+  font-size: var(--step--1);
+  font-family: var(--font-sans);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .mast_nav {
@@ -54,19 +63,21 @@
 }
 
 .mast_nav_heading {
-  font-size: var(--step-2);
+  font-size: var(--step-3);
+  font-weight: bold;
 }
 
 .mast_nav_list {
   display: flex;
   flex-direction: column;
   margin-top: var(--step-0);
+  font-size: var(--step-1);
 }
 
 .mast_nav_link {
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   display: block;
-  line-height: var(--step-4);
+  line-height: var(--step-5);
 }
 
 .mast_nav_button {
