@@ -1,3 +1,4 @@
+/* eslint-env browser, node */
 /**
  * Layout component that queries for data
  * with Gatsby's useStaticQuery component
@@ -34,20 +35,30 @@ function reducer(state, action) {
   }
 }
 
-function MastNavLink({ to, children }) {
+function MastNavItem({ to, children }) {
   return (
-    <Link to={to} className={styles.mast_nav_link}>
-      {children}
-    </Link>
+    <li className={styles.mast_nav_list_item}>
+      <Link to={to} className={styles.mast_nav_link}>
+        {children}
+      </Link>
+    </li>
   );
 }
 
-MastNavLink.propTypes = {
+function FooterNavItem({ to, children }) {
+  return (
+    <li className={styles.footer_nav_list_item}>
+      <Link to={to} className={styles.footer_nav_link}>
+        {children}
+      </Link>
+    </li>
+  );
+}
+
+MastNavItem.propTypes = {
   to: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
-
-const responsiveBreaks = []; // Empty List (Array) on initialization
 
 function getWidth(element) {
   return parseFloat(getComputedStyle(element, null).width.replace("px", ""));
@@ -61,7 +72,7 @@ function getHiddenLinks(element) {
   return element.querySelectorAll("li.js--hidden");
 }
 
-function updateNavBar({ navBarEl, navListEl, navButtonEl }) {
+function updateNavBar({ navBarEl, navListEl, navButtonEl, responsiveBreaks }) {
   const availableSpace = document.documentElement.clientWidth;
 
   if (getWidth(navListEl) > availableSpace) {
@@ -79,7 +90,6 @@ function updateNavBar({ navBarEl, navListEl, navButtonEl }) {
     }
   } else {
     // Logic when visible list is not overflowing the nav
-
     if (availableSpace > responsiveBreaks[responsiveBreaks.length - 1]) {
       // Logic when there is space for another item in the nav
       const hiddenLinks = getHiddenLinks(navListEl);
@@ -89,7 +99,7 @@ function updateNavBar({ navBarEl, navListEl, navButtonEl }) {
     }
 
     // Hide the resonsive hidden button if list is empty
-    if (responsiveBreaks.length < 1) {
+    if (responsiveBreaks.length < 1 && getHiddenLinks(navListEl).length === 0) {
       navButtonEl.classList.add("js--hidden");
     }
   }
@@ -99,17 +109,17 @@ function updateNavBar({ navBarEl, navListEl, navButtonEl }) {
     responsiveBreaks[responsiveBreaks.length - 1] < availableSpace
   ) {
     // Occur again if the visible list is still overflowing the nav
-    updateNavBar({ navBarEl, navListEl, navButtonEl });
+    updateNavBar({ navBarEl, navListEl, navButtonEl, responsiveBreaks });
   }
 }
 
-function debounce(fn, ms) {
+function debounce(fn, ms, ...args) {
   let timer;
-  return (_) => {
+  return () => {
     clearTimeout(timer);
-    timer = setTimeout((_) => {
+    timer = setTimeout(() => {
       timer = null;
-      fn.apply(this, arguments);
+      fn.apply(this, args);
     }, ms);
   };
 }
@@ -119,12 +129,14 @@ function Layout({ children }) {
   const navBarEl = useRef(null);
   const navButtonEl = useRef(null);
   const navListEl = useRef(null);
+  const responsiveBreaks = useRef([]);
 
   useLayoutEffect(() => {
     updateNavBar({
       navBarEl: navBarEl.current,
       navButtonEl: navButtonEl.current,
       navListEl: navListEl.current,
+      responsiveBreaks: responsiveBreaks.current,
     });
   });
 
@@ -134,12 +146,13 @@ function Layout({ children }) {
         navBarEl: navBarEl.current,
         navButtonEl: navButtonEl.current,
         navListEl: navListEl.current,
+        responsiveBreaks: responsiveBreaks.current,
       });
     }, 50);
 
     window.addEventListener("resize", debouncedHandleResize);
 
-    return (_) => {
+    return () => {
       window.removeEventListener("resize", debouncedHandleResize);
     };
   });
@@ -161,42 +174,30 @@ function Layout({ children }) {
         <nav ref={navBarEl} className={styles.mast_nav}>
           <h2 className={styles.mast_nav_heading}>Navigation</h2>
           <ul ref={navListEl} className={styles.mast_nav_list}>
-            <li>
-              <MastNavLink to="/">Home</MastNavLink>
-            </li>
-            <li>
-              <MastNavLink to="/about/">About</MastNavLink>
-            </li>
-            <li>
-              <MastNavLink to="/how-i-grade/">How I Grade</MastNavLink>
-            </li>
-            <li>
-              <MastNavLink to="/reviews/">All Reviews</MastNavLink>
-            </li>
-            <li>
-              <MastNavLink to="/viewings/">Viewing Log</MastNavLink>
-            </li>
-            <li>
-              <MastNavLink to="/watchlist/">Watchlist</MastNavLink>
-            </li>
-            <button
-              type="button"
-              ref={navButtonEl}
-              className={styles.mast_nav_button}
-              aria-label="Full Navigation"
-              onClick={() => dispatch({ type: actions.TOGGLE_NAV })}
-            >
-              <svg
-                className={styles.mast_menu_icon}
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <rect x="0" y="0" width="100%" height="2" fill="#fff" />
-                <rect x="0" y="9" width="100%" height="2" fill="#fff" />
-                <rect x="0" y="18" width="100%" height="2" fill="#fff" />
-              </svg>
-            </button>
+            <MastNavItem to="/">Home</MastNavItem>
+            <MastNavItem to="/about/">About</MastNavItem>
+            <MastNavItem to="/how-i-grade/">How I Grade</MastNavItem>
+            <MastNavItem to="/reviews/">All Reviews</MastNavItem>
+            <MastNavItem to="/viewings/">Viewing Log</MastNavItem>
+            <MastNavItem to="/watchlist/">Watchlist</MastNavItem>
           </ul>
+          <button
+            type="button"
+            ref={navButtonEl}
+            className={styles.mast_nav_button}
+            aria-label="Full Navigation"
+            onClick={() => dispatch({ type: actions.TOGGLE_NAV })}
+          >
+            <svg
+              className={styles.mast_menu_icon}
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <rect x="0" y="0" width="100%" height="2" fill="#fff" />
+              <rect x="0" y="9" width="100%" height="2" fill="#fff" />
+              <rect x="0" y="18" width="100%" height="2" fill="#fff" />
+            </svg>
+          </button>
           <form
             action="https://www.google.com/search"
             acceptCharset="UTF-8"
@@ -228,15 +229,23 @@ function Layout({ children }) {
       </header>
       <main className={styles.children}>{children}</main>
       <footer className={styles.footer}>
-        <a href="#site-header" className={styles.footer_to_the_top}>
-          To the top ↑
-        </a>
-        <p className={styles.footer_copyright}>
+        <ul className={styles.footer_nav_list}>
+          <FooterNavItem to="/">Home</FooterNavItem>
+          <FooterNavItem to="/about/">About</FooterNavItem>
+          <FooterNavItem to="/how-i-grade/">How I Grade</FooterNavItem>
+          <FooterNavItem to="/reviews/">All Reviews</FooterNavItem>
+          <FooterNavItem to="/viewings/">Viewing Log</FooterNavItem>
+          <FooterNavItem to="/watchlist/">Watchlist</FooterNavItem>
+        </ul>
+        <p className={styles.footer_fair_use}>
           All stills used in accordance with the{" "}
           <a href="http://www.copyright.gov/title17/92chap1.html#107">
             Fair Use Law.
           </a>
         </p>
+        <a href="#site-header" className={styles.footer_to_the_top}>
+          To the top ↑
+        </a>
       </footer>
     </div>
   );

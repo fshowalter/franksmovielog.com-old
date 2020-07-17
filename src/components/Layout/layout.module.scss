@@ -19,7 +19,7 @@
 
 .mast_logo {
   margin-top: var(--step-5);
-  padding: var(--step--2) var(--step-1) var(--step--2)
+  padding: var(--step-3) var(--step-1) var(--step-3)
     calc(var(--step-1) + var(--step-5) + var(--step-1));
   order: 2;
   position: relative;
@@ -37,7 +37,7 @@
     left: var(--step-1);
     margin-bottom: var(--sz-8);
     text-align: center;
-    top: var(--step--1);
+    top: var(--step--3);
     width: var(--step-5);
   }
 }
@@ -56,12 +56,17 @@
   min-width: 100%;
   position: absolute;
   top: 0;
+  left: 0;
 
   .mast_nav_visible & {
-    transform-origin: top right;
-    transform: scale(1);
-    opacity: 1;
+    height: 100vh;
+    width: 100%;
     z-index: 100;
+    background-color: var(--color-background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
   }
 }
 
@@ -69,15 +74,32 @@
   font-size: var(--step-3);
   font-weight: bold;
   display: none;
+  padding: var(--step-1) var(--step-0);
+
+  .mast_nav_visible & {
+    display: block;
+  }
 }
 
 .mast_nav_list {
   background-color: #222;
   display: flex;
   font-size: var(--step--1);
-  min-width: 100%;
   flex-wrap: nowrap;
   padding: 0 var(--step-1);
+  white-space: nowrap;
+
+  .mast_nav_visible & {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+  }
+}
+
+.mast_nav_list_item:global.js--hidden {
+  .mast_nav_visible & {
+    display: block !important;
+  }
 }
 
 .mast_nav_link {
@@ -87,6 +109,13 @@
   white-space: nowrap;
   color: #fff;
   margin-right: 1rem;
+
+  .mast_nav_visible & {
+    flex-direction: column;
+    background: transparent;
+    color: inherit;
+    font-size: var(--step-1);
+  }
 }
 
 .mast_nav_button {
@@ -94,6 +123,9 @@
   border: none;
   z-index: 200;
   margin-left: auto;
+  position: absolute;
+  right: var(--step-1);
+  top: var(--step--2);
 }
 
 .mast_menu_icon {
@@ -131,6 +163,11 @@
   display: flex;
   align-items: center;
   display: none;
+  margin: var(--step-1) var(--step-0);
+
+  .mast_nav_visible & {
+    display: block;
+  }
 }
 
 .mast_search_label {
@@ -151,24 +188,28 @@
   margin-left: 1rem;
 }
 
-.children {
-  // padding: 0 var(--step-0);
-}
-
 .footer {
   background-color: #202020;
   color: #d2d2d2;
   font-size: var(--step-0);
-  margin-top: var(--step-5);
   padding: var(--step-3) var(--step-1);
   text-align: center;
 }
 
-.footer_to_the_top {
-  color: var(--color-link);
+.footer_nav_list {
+  text-align: center;
 }
 
-.footer_copyright {
+.footer_nav_list_item {
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+.footer_to_the_top {
+  composes: sr_only from "../../styles/utils.scss";
+}
+
+.footer_fair_use {
   font-size: var(--step--1);
-  margin-top: var(--step--1);
+  margin-top: var(--step-5);
 }

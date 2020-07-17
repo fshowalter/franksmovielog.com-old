@@ -1,7 +1,5 @@
-import "./watchlist.scss";
-
 import { graphql } from "gatsby";
-import React, { useReducer } from "react";
+import React, { useReducer, useRef } from "react";
 import PropTypes from "prop-types";
 
 import { collator, sortStringAsc, sortStringDesc } from "../utils/sort-utils";
@@ -11,6 +9,7 @@ import Layout from "../components/Layout";
 import Pagination, { PaginationHeader } from "../components/Pagination";
 import RangeInput from "../components/RangeInput";
 import ReviewLink from "../components/ReviewLink";
+import styles from "./watchlist.module.scss";
 
 function WatchlistOptions({ titles, keyName }) {
   const names = [
@@ -70,11 +69,14 @@ WatchlistOptions.propTypes = {
 
 function WatchlistTitle({ title }) {
   return (
-    <div className="to_watch-title">
-      <ReviewLink imdbId={title.imdb_id} className="to_watch-title_link">
+    <div className={styles.list_item_title}>
+      <ReviewLink
+        imdbId={title.imdb_id}
+        className={styles.list_item_title_link}
+      >
         <>
           {title.title}{" "}
-          <span className="to_watch-title_year">{title.year}</span>
+          <span className={styles.list_item_title_year}>{title.year}</span>
         </>
       </ReviewLink>
     </div>
@@ -119,7 +121,7 @@ function WatchlistSlug({ title }) {
   ];
 
   return (
-    <div className="viewings-viewing_slug">
+    <div className={styles.list_item_slug}>
       Because {toSentenceArray(credits)}.
     </div>
   );
@@ -203,17 +205,19 @@ function minMaxReleaseYearsForTitles(titles) {
   return [minYear, maxYear];
 }
 
-function initState({ titles }) {
+function initState({ titles, reviews }) {
   const [minYear, maxYear] = minMaxReleaseYearsForTitles(titles);
   const currentPage = 1;
   const perPage = 50;
 
   return {
+    allReviews: reviews,
     allTitles: titles,
     filteredTitles: titles,
     titlesForPage: slicePage(titles, currentPage, perPage),
     filters: {},
     sortValue: "release-date-asc",
+    hideReviewed: false,
     currentPage,
     perPage,
     minYear,
@@ -230,6 +234,7 @@ const actions = {
   FILTER_RELEASE_YEAR: "FILTER_RELEASE_YEAR",
   SORT: "SORT",
   CHANGE_PAGE: "CHANGE_PAGE",
+  TOGGLE_REVIEWED: "TOGGLE_REVIEWED",
 };
 
 function reducer(state, action) {
@@ -421,6 +426,35 @@ function reducer(state, action) {
         ),
       };
     }
+    case actions.TOGGLE_REVIEWED: {
+      if (state.hideReviewed) {
+        filters = {
+          ...state.filters,
+        };
+        delete filters.reviewed;
+      } else {
+        filters = {
+          ...state.filters,
+          reviewed: (title) => {
+            return !state.allReviews.some(
+              (review) => review.frontmatter.imdb_id === title.imdb_id
+            );
+          },
+        };
+      }
+      filteredTitles = sortTitles(
+        filterTitles(state.allTitles, filters),
+        state.sortValue
+      );
+      return {
+        ...state,
+        filters,
+        filteredTitles,
+        hideReviewed: !state.hideReviewed,
+        currentPage: 1,
+        titlesForPage: slicePage(filteredTitles, 1, state.perPage),
+      };
+    }
     default:
       throw new Error();
   }
@@ -430,149 +464,199 @@ export default function WatchlistPage({ data }) {
   const [state, dispatch] = useReducer(
     reducer,
     {
-      titles: [...data.allWatchlistTitlesJson.nodes],
+      reviews: [...data.review.nodes],
+      titles: [...data.watchlist.nodes],
     },
     initState
   );
 
+  const listHeader = useRef(null);
+
   return (
     <Layout>
-      <header className="to_watch-header">
-        <h2 className="to_watch-heading">To-Watch</h2>
-        <p className="to_watch-tagline">
-          My movie review bucketlist. {state.allTitles.length.toLocaleString()}{" "}
-          titles. No silents or documentaries.
-        </p>
-      </header>
-
-      <fieldset className="to_watch-filters">
-        <legend className="to_watch-filters_header">Filter &amp; Sort</legend>
-        <label className="to_watch-label" htmlFor="to_watch-title-input">
-          Title
-          <DebouncedInput
-            id="to_watch-title-input"
-            placeholder="Enter all or part of a title"
-            onChange={(value) =>
-              dispatch({ type: actions.FILTER_TITLE, value })
-            }
-          />
-        </label>
-        <label className="to_watch-label" htmlFor="to_watch-director-input">
-          Director
-          <select
-            id="to_watch-director-input"
-            onChange={(e) =>
-              dispatch({ type: actions.FILTER_DIRECTOR, value: e.target.value })
-            }
-          >
-            <WatchlistOptions titles={state.allTitles} keyName="directors" />
-          </select>
-        </label>
-        <label
-          className="to_watch-label"
-          htmlFor="to_watch-performer-input"
-          bel
-        >
-          Performer
-          <select
-            id="to_watch-performer-input"
-            onChange={(e) =>
-              dispatch({
-                type: actions.FILTER_PERFORMER,
-                value: e.target.value,
-              })
-            }
-          >
-            <WatchlistOptions titles={state.allTitles} keyName="performers" />
-          </select>
-        </label>
-        <label className="to_watch-label" htmlFor="to_watch-writer-input">
-          Writer
-          <select
-            id="to_watch-writer-input"
-            onChange={(e) =>
-              dispatch({
-                type: actions.FILTER_WRITER,
-                value: e.target.value,
-              })
-            }
-          >
-            <WatchlistOptions titles={state.allTitles} keyName="writers" />
-          </select>
-        </label>
-        <label className="to_watch-label" htmlFor="to_watch-collection-input">
-          Collection
-          <select
-            id="to_watch-collection-input"
-            onChange={(e) =>
-              dispatch({
-                type: actions.FILTER_COLLECTION,
-                value: e.target.value,
-              })
-            }
-          >
-            <WatchlistOptions titles={state.allTitles} keyName="collections" />
-          </select>
-        </label>
-        <label className="to_watch-label" htmlFor="to_watch-release-year-input">
-          Release Year
-          <RangeInput
-            id="to_watch-release-year-input"
-            min={state.minYear}
-            max={state.maxYear}
-            onChange={(values) =>
-              dispatch({ type: actions.FILTER_RELEASE_YEAR, values })
-            }
-          />
-        </label>
-        <label className="to_watch-label" htmlFor="to_watch-sort-input">
-          Order By
-          <select
-            id="to_watch-sort-input"
-            onChange={(e) =>
-              dispatch({ type: actions.SORT, value: e.target.value })
-            }
-          >
-            <option value="release-date-asc">
-              Release Date (Oldest First)
-            </option>
-            <option value="release-date-desc">
-              Release Date (Newest First)
-            </option>
-            <option value="title">Title</option>
-          </select>
-        </label>
-      </fieldset>
-      <PaginationHeader
-        currentPage={state.currentPage}
-        perPage={state.perPage}
-        numberOfItems={state.filteredTitles.length}
-      />
-      <ol className="to_watch-list">
-        {state.titlesForPage.map((title) => {
-          return (
-            <li className="to_watch-watchlist_title">
-              <WatchlistTitle title={title} />
-              <WatchlistSlug title={title} />
-            </li>
-          );
-        })}
-      </ol>
-      <Pagination
-        currentPage={state.currentPage}
-        limit={state.perPage}
-        numberOfItems={state.filteredTitles.length}
-        onClick={(newPage) =>
-          dispatch({ type: actions.CHANGE_PAGE, value: newPage })
-        }
-      />
+      <main className={styles.container}>
+        <header className={styles.page_header}>
+          <h2 className={styles.page_heading}>Watchlist</h2>
+          <p className={styles.page_tagline}>
+            My movie review bucketlist.{" "}
+            {state.allTitles.length.toLocaleString()} titles. No silents or
+            documentaries.
+          </p>
+        </header>
+        <div className={styles.filters}>
+          <fieldset className={styles.filters_fieldset}>
+            <legend className="to_watch-filters_header">
+              Filter &amp; Sort
+            </legend>
+            <label className={styles.label} htmlFor="to_watch-title-input">
+              Title
+              <DebouncedInput
+                id="to_watch-title-input"
+                className={styles.filter_text_input}
+                placeholder="Enter all or part of a title"
+                onChange={(value) =>
+                  dispatch({ type: actions.FILTER_TITLE, value })
+                }
+              />
+            </label>
+            <label className={styles.label} htmlFor="to_watch-director-input">
+              Director
+              <select
+                id="to_watch-director-input"
+                className={styles.filter_select_input}
+                onChange={(e) =>
+                  dispatch({
+                    type: actions.FILTER_DIRECTOR,
+                    value: e.target.value,
+                  })
+                }
+              >
+                <WatchlistOptions
+                  titles={state.allTitles}
+                  keyName="directors"
+                />
+              </select>
+            </label>
+            <label
+              className={styles.label}
+              htmlFor="to_watch-performer-input"
+              bel
+            >
+              Performer
+              <select
+                id="to_watch-performer-input"
+                className={styles.filter_select_input}
+                onChange={(e) =>
+                  dispatch({
+                    type: actions.FILTER_PERFORMER,
+                    value: e.target.value,
+                  })
+                }
+              >
+                <WatchlistOptions
+                  titles={state.allTitles}
+                  keyName="performers"
+                />
+              </select>
+            </label>
+            <label className={styles.label} htmlFor="to_watch-writer-input">
+              Writer
+              <select
+                id="to_watch-writer-input"
+                className={styles.filter_select_input}
+                onChange={(e) =>
+                  dispatch({
+                    type: actions.FILTER_WRITER,
+                    value: e.target.value,
+                  })
+                }
+              >
+                <WatchlistOptions titles={state.allTitles} keyName="writers" />
+              </select>
+            </label>
+            <label className={styles.label} htmlFor="to_watch-collection-input">
+              Collection
+              <select
+                id="to_watch-collection-input"
+                className={styles.filter_select_input}
+                onChange={(e) =>
+                  dispatch({
+                    type: actions.FILTER_COLLECTION,
+                    value: e.target.value,
+                  })
+                }
+              >
+                <WatchlistOptions
+                  titles={state.allTitles}
+                  keyName="collections"
+                />
+              </select>
+            </label>
+            <label
+              className={styles.label}
+              htmlFor="to_watch-release-year-input"
+            >
+              Release Year
+              <RangeInput
+                id="to_watch-release-year-input"
+                min={state.minYear}
+                max={state.maxYear}
+                onChange={(values) =>
+                  dispatch({ type: actions.FILTER_RELEASE_YEAR, values })
+                }
+              />
+            </label>
+            <label className={styles.label} htmlFor="to_watch-sort-input">
+              Order By
+              <select
+                id="to_watch-sort-input"
+                className={styles.filter_select_input}
+                onChange={(e) =>
+                  dispatch({ type: actions.SORT, value: e.target.value })
+                }
+              >
+                <option value="release-date-asc">
+                  Release Date (Oldest First)
+                </option>
+                <option value="release-date-desc">
+                  Release Date (Newest First)
+                </option>
+                <option value="title">Title</option>
+              </select>
+            </label>
+            <button
+              id="to_watch-toggle_reviewed"
+              type="button"
+              className={styles.toggle_review_button}
+              onClick={() => dispatch({ type: actions.TOGGLE_REVIEWED })}
+            >
+              {state.hideReviewed ? "Show Reviewed" : "Hide Reviewed"}
+            </button>
+          </fieldset>
+        </div>
+        <PaginationHeader
+          currentPage={state.currentPage}
+          perPage={state.perPage}
+          numberOfItems={state.filteredTitles.length}
+          ref={listHeader}
+        />
+        <ol className={styles.list}>
+          {state.titlesForPage.map((title) => {
+            return (
+              <li className={styles.list_item}>
+                <WatchlistTitle title={title} />
+                <WatchlistSlug title={title} />
+              </li>
+            );
+          })}
+        </ol>
+        <Pagination
+          currentPage={state.currentPage}
+          limit={state.perPage}
+          numberOfItems={state.filteredTitles.length}
+          onClick={(newPage) => {
+            dispatch({ type: actions.CHANGE_PAGE, value: newPage });
+            listHeader.current.scrollIntoView();
+          }}
+        />
+      </main>
     </Layout>
   );
 }
 
 WatchlistPage.propTypes = {
   data: PropTypes.shape({
-    allWatchlistTitlesJson: PropTypes.shape({
+    review: PropTypes.shape({
+      nodes: PropTypes.arrayOf(
+        PropTypes.shape({
+          frontmatter: PropTypes.shape({
+            imdb_id: PropTypes.string.isRequired,
+            slug: PropTypes.string.isRequired,
+          }).isRequired,
+        }).isRequired
+      ),
+    }).isRequired,
+    watchlist: PropTypes.shape({
       nodes: PropTypes.arrayOf(
         PropTypes.shape({
           imdb_id: PropTypes.string.isRequired,
@@ -606,7 +690,15 @@ WatchlistPage.propTypes = {
 
 export const pageQuery = graphql`
   query {
-    allWatchlistTitlesJson(sort: { fields: [year], order: ASC }) {
+    review: allMarkdownRemark(filter: { postType: { eq: "review" } }) {
+      nodes {
+        frontmatter {
+          imdb_id
+          slug
+        }
+      }
+    }
+    watchlist: allWatchlistTitlesJson(sort: { fields: [year], order: ASC }) {
       nodes {
         imdb_id
         title

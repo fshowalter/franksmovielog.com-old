@@ -28,11 +28,17 @@ function underscoreDebounce(func, wait) {
   };
 }
 
-export default function DebouncedInput({ id, placeholder, onChange }) {
+export default function DebouncedInput({
+  className,
+  id,
+  placeholder,
+  onChange,
+}) {
   const debouncedHandleChange = underscoreDebounce(onChange, 150);
 
   return (
     <input
+      className={className}
       type="text"
       id={id}
       placeholder={placeholder}
@@ -43,10 +49,12 @@ export default function DebouncedInput({ id, placeholder, onChange }) {
 
 DebouncedInput.defaultProps = {
   placeholder: "",
+  className: null,
 };
 
 DebouncedInput.propTypes = {
   id: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
+  className: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };

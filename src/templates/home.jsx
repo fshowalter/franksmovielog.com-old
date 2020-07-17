@@ -8,6 +8,25 @@ import Layout from "../components/Layout";
 import Pagination from "../components/Pagination";
 import ReviewLink from "../components/ReviewLink";
 import styles from "./home.module.scss";
+import toSentenceArray from "../utils/to-sentence-array";
+
+function CastList({ principalCastIds, allCast }) {
+  const castIds = new Set(principalCastIds.split(","));
+
+  const cast = allCast.filter((person) => castIds.has(person.person_imdb_id));
+
+  return toSentenceArray(cast.map((person) => person.name));
+}
+
+CastList.propTypes = {
+  principalCastIds: PropTypes.string.isRequired,
+  allCast: PropTypes.arrayOf(
+    PropTypes.shape({
+      person_imdb_id: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ).isRequired,
+};
 
 function WatchlistItem({ to, children }) {
   return (
@@ -70,11 +89,11 @@ function WatchlistLinks({ watchlistTitle }) {
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          fill-rule="evenodd"
+          fillRule="evenodd"
           d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"
         />
         <path
-          fill-rule="evenodd"
+          fillRule="evenodd"
           d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
         />
       </svg>
@@ -123,30 +142,36 @@ WatchlistLinks.defaultProps = {
 function PostListItem({ post, index, value }) {
   return (
     <li
-      className={`home-post_list_item ${
-        index === 0 ? "home-post_list_item--first" : ""
+      className={`${styles.list_item} ${
+        index === 0 ? styles.list_item_first : ""
       }`}
       value={value}
     >
-      <div>{post.frontmatter.date}</div>
-      <div className="home-post_image_wrap">
+      <div>
         <Img fluid={post.backdrop.childImageSharp.fluid} alt="" />
       </div>
-      <h2 className={styles.heading}>
-        <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
-      </h2>
-      <div
-        className="home-post_excerpt"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{
-          __html: post.frontmatter.excerpt || post.firstParagraph,
-        }}
-      />
-      {(post.frontmatter.excerpt || post.numberOfParagraphs > 1) && (
-        <Link class="home-post_continue_reading" to={post.frontmatter.slug}>
-          Continue Reading
-        </Link>
-      )}
+      <div className={styles.list_item_content}>
+        <h2 className={styles.list_item_heading}>
+          <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
+        </h2>
+
+        <div
+          className={styles.list_item_excerpt}
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: post.frontmatter.excerpt || post.firstParagraph,
+          }}
+        />
+        {(post.frontmatter.excerpt || post.numberOfParagraphs > 1) && (
+          <Link
+            className={styles.list_item_continue_reading}
+            to={post.frontmatter.slug}
+          >
+            Continue Reading
+          </Link>
+        )}
+      </div>
+      <UpdateDate date={post.frontmatter.date} />
     </li>
   );
 }
@@ -174,7 +199,48 @@ PostListItem.propTypes = {
   }).isRequired,
 };
 
-function ReviewListItem({ review, movies, index, value, watchlistTitles }) {
+function UpdateDate({ date }) {
+  return (
+    <div className={styles.list_item_date}>
+      <svg
+        width="1em"
+        height="1em"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+        className={styles.list_item_date_icon}
+      >
+        <path
+          fillRule="evenodd"
+          d="M14 2H2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM2 1a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z"
+        />
+        <path
+          fillRule="evenodd"
+          d="M14 2H2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zM2 1a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2H2z"
+        />
+        <path
+          fillRule="evenodd"
+          d="M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z"
+        />
+      </svg>
+      {date}
+    </div>
+  );
+}
+
+UpdateDate.propTypes = {
+  date: PropTypes.string.isRequired,
+};
+
+function ReviewListItem({
+  review,
+  movies,
+  index,
+  value,
+  allCast,
+  watchlistTitles,
+  directors,
+}) {
   const movie = movies.find(
     (item) => item.imdb_id === review.frontmatter.imdb_id
   );
@@ -190,7 +256,7 @@ function ReviewListItem({ review, movies, index, value, watchlistTitles }) {
       }`}
       value={value}
     >
-      <div className="home-review_image_wrap">
+      <div>
         <Img
           fluid={review.backdrop.childImageSharp.fluid}
           alt={`A still from ${movie.title} (${movie.year})`}
@@ -198,22 +264,25 @@ function ReviewListItem({ review, movies, index, value, watchlistTitles }) {
       </div>
       <div className={styles.list_item_content}>
         <h2 className={styles.list_item_heading}>
-          <span className={styles.list_item_heading_counter}>
-            #{review.frontmatter.sequence}.{" "}
-          </span>
           <ReviewLink imdbId={review.frontmatter.imdb_id}>
-            <>
-              {movie.title}{" "}
-              <span className={styles.list_item_heading_review_year}>
-                {movie.year}
-              </span>
-            </>
+            {movie.title}{" "}
+            <span className={styles.list_item_heading_review_year}>
+              {movie.year}
+            </span>
           </ReviewLink>
         </h2>
         <Grade
           grade={review.frontmatter.grade}
           className={styles.list_item_grade}
         />
+        <p className={styles.list_item_review_meta}>
+          Directed by {toSentenceArray(directors)}. Starring{" "}
+          <CastList
+            principalCastIds={movie.principal_cast_ids}
+            allCast={allCast}
+          />
+          .
+        </p>
         <div
           className={styles.list_item_excerpt}
           // eslint-disable-next-line react/no-danger
@@ -231,30 +300,7 @@ function ReviewListItem({ review, movies, index, value, watchlistTitles }) {
         )}
         <WatchlistLinks watchlistTitle={watchlistTitle} />
       </div>
-      <div className={styles.list_item_date}>
-        <svg
-          width="1em"
-          height="1em"
-          viewBox="0 0 16 16"
-          fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg"
-          className={styles.list_item_date_icon}
-        >
-          <path
-            fill-rule="evenodd"
-            d="M14 2H2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM2 1a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z"
-          />
-          <path
-            fill-rule="evenodd"
-            d="M14 2H2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zM2 1a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2H2z"
-          />
-          <path
-            fill-rule="evenodd"
-            d="M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z"
-          />
-        </svg>
-        {review.frontmatter.date}
-      </div>
+      <UpdateDate date={review.frontmatter.date} />
     </li>
   );
 }
@@ -264,6 +310,13 @@ ReviewListItem.propTypes = {
   value: PropTypes.number.isRequired,
   movies: PropTypes.arrayOf(Movie).isRequired,
   watchlistTitles: PropTypes.arrayOf(WatchlistTitle).isRequired,
+  allCast: PropTypes.arrayOf(
+    PropTypes.shape({
+      person_imdb_id: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ).isRequired,
+  directors: PropTypes.arrayOf(PropTypes.string).isRequired,
   review: PropTypes.shape({
     frontmatter: PropTypes.shape({
       imdb_id: PropTypes.string.isRequired,
@@ -294,12 +347,20 @@ export default function HomeTemplate({ pageContext, data }) {
               data.updates.nodes.length - pageContext.skip - index;
 
             if (update.postType === "review") {
+              const directors = data.director.nodes
+                .filter((director) => {
+                  return director.movie_imdb_id === update.frontmatter.imdb_id;
+                })
+                .map((director) => director.name);
+
               return (
                 <ReviewListItem
                   index={index}
                   review={update}
+                  directors={directors}
                   movies={data.movie.nodes}
                   value={listItemValue}
+                  allCast={data.cast.nodes}
                   watchlistTitles={data.watchlistTitle.nodes}
                 />
               );
@@ -348,6 +409,26 @@ HomeTemplate.propTypes = {
     movie: PropTypes.shape({
       nodes: PropTypes.arrayOf(Movie),
     }),
+    director: PropTypes.shape({
+      nodes: PropTypes.arrayOf(
+        PropTypes.shape({
+          movie_imdb_id: PropTypes.string.isRequired,
+          name: PropTypes.string.isRequired,
+          sequence: PropTypes.number.isRequired,
+          person_imdb_id: PropTypes.string.isRequired,
+        })
+      ),
+    }),
+    cast: PropTypes.shape({
+      nodes: PropTypes.arrayOf(
+        PropTypes.shape({
+          movie_imdb_id: PropTypes.string.isRequired,
+          name: PropTypes.string.isRequired,
+          sequence: PropTypes.number.isRequired,
+          person_imdb_id: PropTypes.string.isRequired,
+        })
+      ),
+    }),
   }).isRequired,
 };
 
@@ -386,6 +467,31 @@ export const pageQuery = graphql`
         imdb_id
         title
         year
+        principal_cast_ids
+      }
+    }
+
+    director: allDirectingCreditsJson(
+      sort: { fields: [sequence], order: ASC }
+      filter: { movie_imdb_id: { in: $imdbIds } }
+    ) {
+      nodes {
+        movie_imdb_id
+        name
+        sequence
+        person_imdb_id
+      }
+    }
+
+    cast: allPerformingCreditsJson(
+      sort: { fields: [sequence], order: ASC }
+      filter: { movie_imdb_id: { in: $imdbIds } }
+    ) {
+      nodes {
+        movie_imdb_id
+        name
+        sequence
+        person_imdb_id
       }
     }
 

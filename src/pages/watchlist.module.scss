@@ -1,0 +1,95 @@
+.container {
+  // padding: var(--step-5) var(--step-1);
+  // border-top: solid 1px darken(#e9e7e0, 5);
+  // border-bottom: solid 1px darken(#e9e7e0, 5);
+}
+
+.page_header {
+  padding: var(--step-5) var(--step-1);
+  background-color: var(--color-content-background);
+  border-top: solid 1px darken(#e9e7e0, 5);
+}
+
+.page_heading {
+  font-size: var(--step-3);
+  text-align: center;
+}
+
+.page_tagline {
+  font-size: var(--step--1);
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-top: var(--step-1);
+}
+
+.filters {
+  margin: 0;
+  font-size: var(--step-1);
+  border-top: solid 1px var(--color-background);
+  border-bottom: solid 1px darken(#e9e7e0, 5);
+  background-color: var(--color-content-background);
+  padding: var(--step-5) var(--step-1);
+}
+
+.filters_fieldset {
+  border: solid 1px var(--color-background);
+}
+
+.filter_text_input {
+  composes: input from "../styles/utils.scss";
+  border-bottom: solid 1px var(--color-background);
+}
+
+.filter_select_input {
+  composes: input from "../styles/utils.scss";
+  color: var(--color-link);
+}
+
+.label {
+  composes: label from "../styles/utils.scss";
+}
+
+.toggle_review_button {
+  margin-top: var(--step-0);
+  font-size: var(--step--1);
+  border: solid 1px var(--color-background);
+  padding: calc(var(--step--2) / 2) var(--step--2);
+}
+
+.list {
+  composes: card from "../styles/utils.scss";
+  padding: var(--step-1) 0 var(--step-1) var(--step-1);
+}
+
+.list_item {
+  display: block;
+  border-bottom: solid 1px var(--color-background);
+}
+
+.list_item_title {
+  font-size: var(--step-0);
+  padding: var(--step-1) var(--step-1) 0 0;
+}
+
+.list_item_title_link {
+  color: var(--color-link);
+
+  .list_item_title_year {
+    color: inherit;
+  }
+}
+
+.list_item_title_year {
+  color: var(--color-text-secondary);
+  font-size: var(--step--2);
+  font-family: var(--font-sans);
+  font-weight: 300;
+}
+
+.list_item_slug {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  font-weight: 300;
+  color: var(--color-text-secondary);
+  padding: calc(0.5 * var(--step--2)) var(--step-1) var(--step-1) 0;
+}
