@@ -1,18 +1,7 @@
 import React from "react";
 import ReactSlider from "react-slider";
 import PropTypes from "prop-types";
-
-function Thumb(props) {
-  return (
-    <div {...props} /> // eslint-disable-line react/jsx-props-no-spreading
-  );
-}
-
-function Track(props) {
-  return (
-    <div {...props} /> // eslint-disable-line react/jsx-props-no-spreading
-  );
-}
+import styles from "./rangeInput.module.scss";
 
 export default function RangeFilter({ id, min, max, onChange }) {
   const initialState = [min, max];
@@ -61,15 +50,17 @@ export default function RangeFilter({ id, min, max, onChange }) {
   };
 
   return (
-    <div id={id}>
+    <div id={id} className={styles.container}>
       <ReactSlider
+        value={state}
         max={max}
         min={min}
-        renderTrack={Track}
-        renderThumb={Thumb}
         onChange={handleSliderChange}
         onAfterChange={handleSliderUpdate}
-        thumbActiveClassName="dragging"
+        thumbClassName={styles.thumb}
+        trackClassName={styles.track}
+        thumbActiveClassName={styles.dragging}
+        className={styles.slider}
       />
       <input
         type="number"
@@ -78,7 +69,7 @@ export default function RangeFilter({ id, min, max, onChange }) {
         value={state[0]}
         step="1"
         onChange={(e) => handleMinChange(e.target.value)}
-        className="filter-numeric min"
+        className={styles.year_input}
       />
       &nbsp;to&nbsp;
       <input
@@ -88,7 +79,7 @@ export default function RangeFilter({ id, min, max, onChange }) {
         max={max}
         onChange={(e) => handleMaxChange(e.target.value)}
         step="1"
-        className="filter-numeric max"
+        className={styles.year_input}
       />
     </div>
   );

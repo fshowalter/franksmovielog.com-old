@@ -45,6 +45,11 @@ function MastNavItem({ to, children }) {
   );
 }
 
+MastNavItem.propTypes = {
+  to: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
 function FooterNavItem({ to, children }) {
   return (
     <li className={styles.footer_nav_list_item}>
@@ -55,7 +60,7 @@ function FooterNavItem({ to, children }) {
   );
 }
 
-MastNavItem.propTypes = {
+FooterNavItem.propTypes = {
   to: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
