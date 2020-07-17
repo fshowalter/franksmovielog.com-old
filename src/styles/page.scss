@@ -1,0 +1,17 @@
+.header {
+  padding: var(--step-5) var(--step-1);
+  background-color: var(--color-content-background);
+  border-top: solid 1px darken(#e9e7e0, 5);
+}
+
+.heading {
+  font-size: var(--step-3);
+  text-align: center;
+}
+
+.tagline {
+  font-size: var(--step--1);
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-top: var(--step-1);
+}

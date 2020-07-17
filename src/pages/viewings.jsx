@@ -1,5 +1,3 @@
-import "./viewings.scss";
-
 import { graphql } from "gatsby";
 import React, { useReducer } from "react";
 import { format, parseISO } from "date-fns";
@@ -11,6 +9,7 @@ import Layout from "../components/Layout";
 import Pagination, { PaginationHeader } from "../components/Pagination";
 import RangeInput from "../components/RangeInput";
 import ReviewLink from "../components/ReviewLink";
+import styles from "./viewings.module.scss";
 
 function VenueOptions({ viewings }) {
   const venues = Array.from(
@@ -41,11 +40,14 @@ VenueOptions.propTypes = {
 
 function ViewingTitle({ viewing }) {
   return (
-    <div className="viewings-viewing_title">
-      <ReviewLink imdbId={viewing.imdb_id} className="viewings-viewing_link">
+    <div className={styles.list_item_title}>
+      <ReviewLink
+        imdbId={viewing.imdb_id}
+        className={styles.list_item_title_link}
+      >
         <>
           {viewing.title}{" "}
-          <span className="viewings-viewing_title_year">{viewing.year}</span>
+          <span className={styles.list_item_title_year}>{viewing.year}</span>
         </>
       </ReviewLink>
     </div>
@@ -62,7 +64,7 @@ ViewingTitle.propTypes = {
 
 function ViewingSlug({ viewing }) {
   return (
-    <div className="viewings-viewing_slug">
+    <div className={styles.list_item_slug}>
       {format(parseISO(viewing.date), "EEEE LLL d, yyyy")} via {viewing.venue}.
     </div>
   );
@@ -279,95 +281,108 @@ export default function ViewingsPage({ data }) {
 
   return (
     <Layout>
-      <header className="viewings-header">
-        <h2 className="viewings-heading">Viewing Log</h2>
-        <p className="viewings-tagline">
-          I&apos;ve watched {state.allViewings.length} movies since 2012.
-        </p>
-      </header>
+      <main>
+        <header className={styles.page_header}>
+          <h2 className={styles.page_heading}>Viewing Log</h2>
+          <p className={styles.page_tagline}>
+            I&apos;ve watched {state.allViewings.length} movies since 2012.
+          </p>
+        </header>
 
-      <fieldset className="viewings-filters">
-        <legend className="viewings-filters_header">Filter &amp; Sort</legend>
-        <label className="viewings-label" htmlFor="viewings-title-input">
-          Title
-          <DebouncedInput
-            id="viewings-title-input"
-            placeholder="Enter all or part of a title"
-            onChange={(value) =>
-              dispatch({ type: actions.FILTER_TITLE, value })
-            }
-          />
-        </label>
-        <label className="viewings-label" htmlFor="viewings-release-year-input">
-          Release Year
-          <RangeInput
-            id="viewings-release-year-input"
-            min={state.minYear}
-            max={state.maxYear}
-            onChange={(values) =>
-              dispatch({ type: actions.FILTER_RELEASE_YEAR, values })
-            }
-          />
-        </label>
-        <label className="viewings-label" htmlFor="viewings-venue-input">
-          Venue
-          <select
-            id="viewings-venue-input"
-            onChange={(e) =>
-              dispatch({ type: actions.FILTER_VENUE, value: e.target.value })
-            }
-          >
-            <VenueOptions viewings={state.allViewings} />
-          </select>
-        </label>
-        <label className="viewings-label" htmlFor="viewings-sort-input">
-          Order By
-          <select
-            value={state.sortValue}
-            id="viewings-sort-input"
-            onChange={(e) =>
-              dispatch({ type: actions.SORT, value: e.target.value })
-            }
-          >
-            <option value="viewing-date-desc">
-              Viewing Date (Newest First)
-            </option>
-            <option value="viewing-date-asc">
-              Viewing Date (Oldest First)
-            </option>
-            <option value="release-date-desc">
-              Release Date (Newest First)
-            </option>
-            <option value="release-date-asc">
-              Release Date (Oldest First)
-            </option>
-            <option value="title">Title</option>
-          </select>
-        </label>
-      </fieldset>
-      <PaginationHeader
-        currentPage={state.currentPage}
-        perPage={state.perPage}
-        numberOfItems={state.filteredViewings.length}
-      />
-      <ol className="viewings-list">
-        {state.viewingsForPage.map((viewing) => {
-          return (
-            <li value={viewing.sequence} className="viewings-viewing">
-              <ViewingTitle viewing={viewing} />
-              <ViewingSlug viewing={viewing} />
-            </li>
-          );
-        })}
-      </ol>
-      <Pagination
-        currentPage={state.currentPage}
-        limit={state.perPage}
-        numberOfItems={state.filteredViewings.length}
-        onClick={(newPage) =>
-          dispatch({ type: actions.CHANGE_PAGE, value: newPage })
-        }
-      />
+        <div className={styles.filters}>
+          <fieldset className={styles.filters_fieldset}>
+            <legend>Filter &amp; Sort</legend>
+            <label className={styles.label} htmlFor="viewings-title-input">
+              Title
+              <DebouncedInput
+                id="viewings-title-input"
+                className={styles.filter_text_input}
+                placeholder="Enter all or part of a title"
+                onChange={(value) =>
+                  dispatch({ type: actions.FILTER_TITLE, value })
+                }
+              />
+            </label>
+            <label
+              className={styles.label}
+              htmlFor="viewings-release-year-input"
+            >
+              Release Year
+              <RangeInput
+                id="viewings-release-year-input"
+                min={state.minYear}
+                max={state.maxYear}
+                onChange={(values) =>
+                  dispatch({ type: actions.FILTER_RELEASE_YEAR, values })
+                }
+              />
+            </label>
+            <label className={styles.label} htmlFor="viewings-venue-input">
+              Venue
+              <select
+                id="viewings-venue-input"
+                className={styles.filter_select_input}
+                onChange={(e) =>
+                  dispatch({
+                    type: actions.FILTER_VENUE,
+                    value: e.target.value,
+                  })
+                }
+              >
+                <VenueOptions viewings={state.allViewings} />
+              </select>
+            </label>
+            <label className={styles.label} htmlFor="viewings-sort-input">
+              Order By
+              <select
+                value={state.sortValue}
+                className={styles.filter_select_input}
+                id="viewings-sort-input"
+                onChange={(e) =>
+                  dispatch({ type: actions.SORT, value: e.target.value })
+                }
+              >
+                <option value="viewing-date-desc">
+                  Viewing Date (Newest First)
+                </option>
+                <option value="viewing-date-asc">
+                  Viewing Date (Oldest First)
+                </option>
+                <option value="release-date-desc">
+                  Release Date (Newest First)
+                </option>
+                <option value="release-date-asc">
+                  Release Date (Oldest First)
+                </option>
+                <option value="title">Title</option>
+              </select>
+            </label>
+          </fieldset>
+        </div>
+        <PaginationHeader
+          currentPage={state.currentPage}
+          perPage={state.perPage}
+          numberOfItems={state.filteredViewings.length}
+        />
+        <ol className={styles.list}>
+          {state.viewingsForPage.map((viewing) => {
+            return (
+              <li value={viewing.sequence} className={styles.list_item}>
+                <ViewingTitle viewing={viewing} />
+                <ViewingSlug viewing={viewing} />
+              </li>
+            );
+          })}
+        </ol>
+        <Pagination
+          currentPage={state.currentPage}
+          limit={state.perPage}
+          numberOfItems={state.filteredViewings.length}
+          onClick={(newPage) =>
+            dispatch({ type: actions.CHANGE_PAGE, value: newPage })
+          }
+        />
+      </main>
     </Layout>
   );
 }

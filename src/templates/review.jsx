@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import Grade from "../components/Grade";
 import Layout from "../components/Layout";
 import toSentenceArray from "../utils/to-sentence-array";
+import styles from "./review.module.scss";
 
 function CastList({ principalCastIds, allCast, watchlistTitle }) {
   const castIds = new Set(principalCastIds.split(","));
@@ -63,43 +64,42 @@ export default function Review({ data }) {
 
   return (
     <Layout>
-      <main className="review">
+      <article>
         <Img
           fluid={review.backdrop.childImageSharp.fluid}
           alt={`A still from ${movie.title} (${movie.year})`}
         />
-        <h1>{movie.title}</h1>
-        <div className="review-title_meta">
-          <ul>
-            <li>
-              Directed by{" "}
-              {toSentenceArray(
-                data.director.nodes.map((director) => director.name)
-              )}
-            </li>
-            <li>{movie.year}</li>
-            <li>{movie.runtime_minutes} minutes</li>
-            <li>
-              <CastList
-                principalCastIds={movie.principal_cast_ids}
-                allCast={data.cast.nodes}
-                watchlistTitle={watchlistTitle}
-              />
-            </li>
-          </ul>
+        <div className={styles.content}>
+          <h1 className={styles.title}>{movie.title}</h1>
+          <Grade grade={review.frontmatter.grade} className={styles.grade} />
+          <div className="review-title_meta">
+            <ul>
+              <li>
+                Directed by{" "}
+                {toSentenceArray(
+                  data.director.nodes.map((director) => director.name)
+                )}
+              </li>
+              <li>{movie.year}</li>
+              <li>{movie.runtime_minutes} minutes</li>
+              <li>
+                <CastList
+                  principalCastIds={movie.principal_cast_ids}
+                  allCast={data.cast.nodes}
+                  watchlistTitle={watchlistTitle}
+                />
+              </li>
+            </ul>
+          </div>
+          <div
+            className="reviews-review_content"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: review.html,
+            }}
+          />
         </div>
-        <Grade
-          grade={review.frontmatter.grade}
-          className="review-review_grade"
-        />
-        <article
-          className="reviews-review_content"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: review.html,
-          }}
-        />
-      </main>
+      </article>
     </Layout>
   );
 }

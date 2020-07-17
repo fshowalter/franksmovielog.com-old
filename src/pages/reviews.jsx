@@ -1,5 +1,3 @@
-import "./viewings.scss";
-
 import { Link, graphql } from "gatsby";
 import React, { useReducer } from "react";
 import { format, parseISO } from "date-fns";

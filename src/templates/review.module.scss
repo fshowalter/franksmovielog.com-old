@@ -1,0 +1,20 @@
+.content {
+  background-color: var(--color-content-background);
+  padding: 0 var(--step-1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  padding: var(--step-1) 0;
+  font-size: var(--step-3);
+}
+
+.grade {
+  height: var(--step-3);
+  width: auto;
+}
+
+.meta {
+}

@@ -232,7 +232,7 @@ function Layout({ children }) {
           </form>
         </nav>
       </header>
-      <main className={styles.children}>{children}</main>
+      {children}
       <footer className={styles.footer}>
         <ul className={styles.footer_nav_list}>
           <FooterNavItem to="/">Home</FooterNavItem>

@@ -474,7 +474,7 @@ export default function WatchlistPage({ data }) {
 
   return (
     <Layout>
-      <main className={styles.container}>
+      <main>
         <header className={styles.page_header}>
           <h2 className={styles.page_heading}>Watchlist</h2>
           <p className={styles.page_tagline}>
@@ -485,9 +485,7 @@ export default function WatchlistPage({ data }) {
         </header>
         <div className={styles.filters}>
           <fieldset className={styles.filters_fieldset}>
-            <legend className="to_watch-filters_header">
-              Filter &amp; Sort
-            </legend>
+            <legend>Filter &amp; Sort</legend>
             <label className={styles.label} htmlFor="to_watch-title-input">
               Title
               <DebouncedInput
