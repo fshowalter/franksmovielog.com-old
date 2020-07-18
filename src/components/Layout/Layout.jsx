@@ -8,6 +8,7 @@
 
 import React, { useReducer, useLayoutEffect, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
 import { Link } from "gatsby";
 import "../../styles/js.scss";
 import styles from "./layout.module.scss";
@@ -38,7 +39,11 @@ function reducer(state, action) {
 function MastNavItem({ to, children }) {
   return (
     <li className={styles.mast_nav_list_item}>
-      <Link to={to} className={styles.mast_nav_link}>
+      <Link
+        to={to}
+        className={styles.mast_nav_link}
+        activeClassName={styles.mast_nav_link_active}
+      >
         {children}
       </Link>
     </li>
@@ -168,6 +173,13 @@ function Layout({ children }) {
         state.navVisible ? styles.mast_nav_visible : ""
       }`}
     >
+      <Helmet>
+        <html lang="en-us" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1"
+        />
+      </Helmet>
       <header id="site-header" className={styles.mast}>
         <div className={styles.mast_logo}>
           <h1 className={styles.mast_heading}>

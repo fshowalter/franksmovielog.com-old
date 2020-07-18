@@ -5,7 +5,7 @@
 .list_item {
   background-color: var(--color-content-background);
   margin-top: var(--step-5);
-  padding: var(--step-3) var(--step-1) var(--step-2);
+  padding: var(--step-3) 0 0;
   border-top: solid 1px darken(#e9e7e0, 5);
   border-bottom: solid 1px darken(#e9e7e0, 5);
 }
@@ -18,6 +18,7 @@
   display: flex;
   flex-direction: column;
   align-content: center;
+  padding: 0 var(--step-1);
 }
 
 .list_item_heading {
@@ -77,38 +78,4 @@
   text-decoration: none;
   text-transform: uppercase;
   margin: var(--step-2) auto 0;
-}
-
-.list_item_watchlist_icon {
-  fill: var(--color-text-secondary);
-  width: var(--step-0);
-  height: auto;
-}
-
-.list_item_watchlist {
-  display: flex;
-  flex-wrap: wrap;
-  font-family: var(--font-sans);
-  font-size: var(--step--1);
-  color: var(--color-text-secondary);
-  margin-top: var(--step-3);
-}
-
-.list_item_watchlist_item {
-  margin-left: 0.75rem;
-}
-
-.list_item_date {
-  color: var(--color-text-secondary);
-  font-size: var(--step--1);
-  font-family: var(--font-sans);
-  margin: var(--step-2) calc(-1 * var(--step-1)) 0;
-  padding: var(--step-1) var(--step-1) 0;
-  border-top: solid 1px var(--color-border);
-  display: flex;
-}
-
-.list_item_date_icon {
-  composes: list_item_watchlist_icon;
-  margin-right: 0.75rem;
 }

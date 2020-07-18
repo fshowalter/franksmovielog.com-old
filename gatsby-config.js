@@ -26,6 +26,19 @@ module.exports = {
         path: `${__dirname}/content/data/`,
       },
     },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `remark-footnotes`,
+            options: {
+              inlineNotes: true,
+            },
+          },
+        ],
+      },
+    },
     `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,

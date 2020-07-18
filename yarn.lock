@@ -1656,6 +1656,23 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
+"@pacote/get-style@^1.0.0", "@pacote/get-style@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@pacote/get-style/-/get-style-1.1.2.tgz#d41d25332d787a4e41307d332ff593e1a4108a31"
+  integrity sha512-gmQ6x6FcSUltWFrT2x/iqkNEuwSn6J98Ykt2i8gSxx1c7/RplQgnoDaASTD0DOwDm+E7h1LN44HelQCEj93yLg==
+
+"@pacote/pixels@^1.0.0":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@pacote/pixels/-/pixels-1.1.2.tgz#a10bcf91ff1db69a31173cb08a203a96467becda"
+  integrity sha512-Iq1gcNofoZUBS3lpQDvV48/aAkh6Rz+xRBq7xVDACxjvznR97YaQ2dcoMvXFpX4sN+T65tVuYpHQVzxw6pcwnw==
+  dependencies:
+    "@pacote/get-style" "^1.1.2"
+
+"@pacote/throttle@^1.0.0":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@pacote/throttle/-/throttle-1.0.3.tgz#69811c49a8fc2f8d0cd4609cc48283a529b0ac01"
+  integrity sha512-jK2mgFPO/lD2vcvuZpH32BFZGp5MRBtW0TIflTuqENJBsshBLbfsFAH5IQOIqvHRhYtNjj/tDOLJ79e6N0wAZg==
+
 "@pieh/friendly-errors-webpack-plugin@1.7.0-chalk-2":
   version "1.7.0-chalk-2"
   resolved "https://registry.yarnpkg.com/@pieh/friendly-errors-webpack-plugin/-/friendly-errors-webpack-plugin-1.7.0-chalk-2.tgz#2e9da9d3ade9d18d013333eb408c457d04eabac0"
@@ -4812,6 +4829,13 @@ delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha1-3zrhmayt+31ECqrgsp4icrJOxhk=
+
+delegated-events@^1.0.10:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/delegated-events/-/delegated-events-1.1.2.tgz#741a4ba320718096fb8f7db4ddfaadcb0daa5986"
+  integrity sha512-PjEw4Z5mrvXimyf60HGqMJ3BMcqqWZpBqSDGnEMBdkAtF4P7ltoa6N+UJXhbMMUxPLYFtykCmRs6Ra8I8pwzPQ==
+  dependencies:
+    selector-set "^1.1.5"
 
 delegates@^1.0.0:
   version "1.0.0"
@@ -9499,6 +9523,16 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
+littlefoot@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/littlefoot/-/littlefoot-3.3.1.tgz#a4b7b86cfc885b63a6587edca67430fa3ad6a9f5"
+  integrity sha512-orKvTLXk5nfcddPq1OTMJ6RLydiUXbu7Fa3UmPTnnUfRCMChnChn/HYpVqgJ7c9O4gl8JtMtd6LKOsd5kOCLUQ==
+  dependencies:
+    "@pacote/get-style" "^1.0.0"
+    "@pacote/pixels" "^1.0.0"
+    "@pacote/throttle" "^1.0.0"
+    delegated-events "^1.0.10"
+
 load-bmfont@^1.3.1, load-bmfont@^1.4.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/load-bmfont/-/load-bmfont-1.4.1.tgz#c0f5f4711a1e2ccff725a7b6078087ccfcddd3e9"
@@ -12606,7 +12640,7 @@ regjsparser@^0.6.4:
   dependencies:
     jsesc "~0.5.0"
 
-remark-footnotes@1.0.0:
+remark-footnotes@1.0.0, remark-footnotes@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/remark-footnotes/-/remark-footnotes-1.0.0.tgz#9c7a97f9a89397858a50033373020b1ea2aad011"
   integrity sha512-X9Ncj4cj3/CIvLI2Z9IobHtVi8FVdUrdJkCNaL9kdX8ohfsi18DXHsCVd/A7ssARBdccdDb5ODnt62WuEWaM/g==
@@ -13157,6 +13191,11 @@ select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
   integrity sha1-Yl2GWPhlr0Psliv8N2o3NZpJlMo=
+
+selector-set@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/selector-set/-/selector-set-1.1.5.tgz#60c135aea482b6f46a2d95ad72058927690a8634"
+  integrity sha512-6SQw6yMew5iOZ8/cDHDEnJWRM4ot2mxP6szZyF5ptrBogw4AcS4EXRj/8BUfgAMwVfdL84qpModlBMOl2NVrsQ==
 
 selfsigned@^1.10.7:
   version "1.10.7"

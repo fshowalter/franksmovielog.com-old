@@ -1,7 +1,7 @@
 import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 import React from "react";
-import PropTypes, { arrayOf } from "prop-types";
+import PropTypes from "prop-types";
 
 import Grade from "../components/Grade";
 import Layout from "../components/Layout";
@@ -9,6 +9,13 @@ import Pagination from "../components/Pagination";
 import ReviewLink from "../components/ReviewLink";
 import styles from "./home.module.scss";
 import toSentenceArray from "../utils/to-sentence-array";
+import WatchlistTitle from "../types/watchlistTitle";
+import WatchlistLinks from "../components/WatchlistLinks";
+import PostDate from "../components/PostDate";
+
+function stripFootnotes(html) {
+  return html.replace(/\[\^.*\]/, "");
+}
 
 function CastList({ principalCastIds, allCast }) {
   const castIds = new Set(principalCastIds.split(","));
@@ -28,116 +35,11 @@ CastList.propTypes = {
   ).isRequired,
 };
 
-function WatchlistItem({ to, children }) {
-  return (
-    <li className={styles.list_item_watchlist_item}>
-      <Link to={to}>{children}</Link>
-    </li>
-  );
-}
-
-WatchlistItem.propTypes = {
-  to: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-};
-
 const Movie = PropTypes.shape({
   imdb_id: PropTypes.string,
   title: PropTypes.string,
   year: PropTypes.number,
 });
-
-const WatchlistTitle = PropTypes.shape({
-  directors: arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  performers: arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  writers: arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  collections: arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      slug: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-});
-
-function WatchlistLinks({ watchlistTitle }) {
-  if (!watchlistTitle) {
-    return null;
-  }
-
-  return (
-    <div className={styles.list_item_watchlist}>
-      <svg
-        width="1em"
-        height="1em"
-        viewBox="0 0 16 16"
-        className={styles.list_item_watchlist_icon}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fillRule="evenodd"
-          d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"
-        />
-        <path
-          fillRule="evenodd"
-          d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
-        />
-      </svg>
-      <ul>
-        {watchlistTitle.collections.map((collection) => {
-          return (
-            <WatchlistItem to={`/watchlist/collections/${collection.slug}/`}>
-              {collection.name}
-            </WatchlistItem>
-          );
-        })}
-        {watchlistTitle.directors.map((director) => {
-          return (
-            <WatchlistItem to={`/watchlist/directors/${director.slug}/`}>
-              {director.name}
-            </WatchlistItem>
-          );
-        })}
-        {watchlistTitle.performers.map((performer) => {
-          return (
-            <WatchlistItem to={`/watchlist/cast/${performer.slug}/`}>
-              {performer.name}
-            </WatchlistItem>
-          );
-        })}
-        {watchlistTitle.writers.map((writer) => {
-          return (
-            <WatchlistItem to={`/watchlist/writers/${writer.slug}/`}>
-              {writer.name}
-            </WatchlistItem>
-          );
-        })}
-      </ul>
-    </div>
-  );
-}
-
-WatchlistLinks.propTypes = {
-  watchlistTitle: WatchlistTitle,
-};
-
-WatchlistLinks.defaultProps = {
-  watchlistTitle: null,
-};
 
 function PostListItem({ post, index, value }) {
   return (
@@ -159,7 +61,8 @@ function PostListItem({ post, index, value }) {
           className={styles.list_item_excerpt}
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
-            __html: post.frontmatter.excerpt || post.firstParagraph,
+            __html:
+              post.frontmatter.excerpt || stripFootnotes(post.firstParagraph),
           }}
         />
         {(post.frontmatter.excerpt || post.numberOfParagraphs > 1) && (
@@ -171,7 +74,7 @@ function PostListItem({ post, index, value }) {
           </Link>
         )}
       </div>
-      <UpdateDate date={post.frontmatter.date} />
+      <PostDate date={post.frontmatter.date} />
     </li>
   );
 }
@@ -199,39 +102,6 @@ PostListItem.propTypes = {
   }).isRequired,
 };
 
-function UpdateDate({ date }) {
-  return (
-    <div className={styles.list_item_date}>
-      <svg
-        width="1em"
-        height="1em"
-        viewBox="0 0 16 16"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-        className={styles.list_item_date_icon}
-      >
-        <path
-          fillRule="evenodd"
-          d="M14 2H2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM2 1a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z"
-        />
-        <path
-          fillRule="evenodd"
-          d="M14 2H2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zM2 1a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2H2z"
-        />
-        <path
-          fillRule="evenodd"
-          d="M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z"
-        />
-      </svg>
-      {date}
-    </div>
-  );
-}
-
-UpdateDate.propTypes = {
-  date: PropTypes.string.isRequired,
-};
-
 function ReviewListItem({
   review,
   movies,
@@ -256,13 +126,11 @@ function ReviewListItem({
       }`}
       value={value}
     >
-      <div>
+      <div className={styles.list_item_content}>
         <Img
           fluid={review.backdrop.childImageSharp.fluid}
           alt={`A still from ${movie.title} (${movie.year})`}
         />
-      </div>
-      <div className={styles.list_item_content}>
         <h2 className={styles.list_item_heading}>
           <ReviewLink imdbId={review.frontmatter.imdb_id}>
             {movie.title}{" "}
@@ -287,7 +155,7 @@ function ReviewListItem({
           className={styles.list_item_excerpt}
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
-            __html: review.firstParagraph,
+            __html: stripFootnotes(review.firstParagraph),
           }}
         />
         {review.numberOfParagraphs > 1 && (
@@ -300,7 +168,7 @@ function ReviewListItem({
         )}
         <WatchlistLinks watchlistTitle={watchlistTitle} />
       </div>
-      <UpdateDate date={review.frontmatter.date} />
+      <PostDate date={review.frontmatter.date} />
     </li>
   );
 }
@@ -347,6 +215,7 @@ export default function HomeTemplate({ pageContext, data }) {
               data.updates.nodes.length - pageContext.skip - index;
 
             if (update.postType === "review") {
+              console.log(update);
               const directors = data.director.nodes
                 .filter((director) => {
                   return director.movie_imdb_id === update.frontmatter.imdb_id;

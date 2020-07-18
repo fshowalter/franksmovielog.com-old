@@ -10,13 +10,19 @@
   width: 1px;
 }
 
+.icon {
+  fill: var(--color-text-secondary);
+  width: var(--step-0);
+  height: auto;
+}
+
 .card {
   background-color: var(--color-content-background);
   border-top: solid 1px darken(#e9e7e0, 5);
   border-bottom: solid 1px darken(#e9e7e0, 5);
 }
 
-%not-sr-only {
+.not-sr-only {
   clip: auto;
   height: auto;
   margin: 0;
@@ -25,20 +31,4 @@
   position: static;
   white-space: normal;
   width: auto;
-}
-
-.grid-main {
-  grid-area: main;
-}
-
-@mixin breakpoint($point) {
-  @if $point == tablet {
-    @media (min-width: 768px) {
-      @content;
-    }
-  } @else if $point == desktop {
-    @media (min-width: 1024px) {
-      @content;
-    }
-  }
 }
