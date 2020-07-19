@@ -43,6 +43,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `${__dirname}/content/pages`,
+        name: `posts`,
+        excerpt_separator: `\n\n`,
+      },
+    },
+    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         path: `${__dirname}/content/posts`,
         name: `posts`,
         excerpt_separator: `\n\n`,

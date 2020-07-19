@@ -21,6 +21,7 @@
 .select_input {
   composes: input;
   color: var(--color-link);
+  background-color: transparent;
 }
 
 .fieldset {

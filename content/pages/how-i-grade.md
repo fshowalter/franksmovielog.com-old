@@ -2,7 +2,7 @@
 sequence: 0.002
 date: 2020-07-07
 title: How I Grade
-slug: /how-i-grade/
+slug: how-i-grade
 excerpt: Grade scales are harder than you'd think.
 ---
 

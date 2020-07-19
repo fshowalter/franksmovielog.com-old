@@ -1,6 +1,5 @@
 import { graphql } from "gatsby";
 import React, { useReducer } from "react";
-import { format, parseISO } from "date-fns";
 import PropTypes from "prop-types";
 
 import { collator, sortStringAsc, sortStringDesc } from "../utils/sort-utils";
@@ -65,7 +64,7 @@ ViewingTitle.propTypes = {
 function ViewingSlug({ viewing }) {
   return (
     <div className={styles.list_item_slug}>
-      {format(parseISO(viewing.date), "EEEE LLL d, yyyy")} via {viewing.venue}.
+      {viewing.date} via {viewing.venue}.
     </div>
   );
 }
@@ -78,11 +77,11 @@ ViewingSlug.propTypes = {
 };
 
 function sortViewingDateAsc(a, b) {
-  return sortStringAsc(a.date, b.date);
+  return sortStringAsc(a.sortDate, b.sortDate);
 }
 
 function sortViewingDateDesc(a, b) {
-  return sortStringDesc(a.date, b.date);
+  return sortStringDesc(a.sortDate, b.sortDate);
 }
 
 function sortReleaseDateAsc(a, b) {
@@ -400,7 +399,8 @@ export const pageQuery = graphql`
     allViewingsJson(sort: { fields: [sequence], order: DESC }) {
       nodes {
         sequence
-        date(formatString: "YYYY-MM-DD")
+        sortDate: date(formatString: "YYYY-MM-DD")
+        date(formatString: "dddd MMM D, YYYY")
         imdb_id
         title
         venue

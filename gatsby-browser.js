@@ -8,6 +8,7 @@
 import littlefoot from "littlefoot";
 import "littlefoot/dist/littlefoot.css";
 
+// eslint-disable-next-line import/prefer-default-export
 export function onRouteUpdate() {
   littlefoot(); // Pass any littlefoot settings here.
 }

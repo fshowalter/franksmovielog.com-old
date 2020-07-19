@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 import Layout from "../components/Layout";
 
-export default function HowIGradePage({ data }) {
+export default function AboutPage({ data }) {
   const page = data.page.nodes[0];
 
   return (
@@ -28,7 +28,7 @@ export default function HowIGradePage({ data }) {
   );
 }
 
-HowIGradePage.propTypes = {
+AboutPage.propTypes = {
   data: PropTypes.shape({
     page: PropTypes.shape({
       nodes: PropTypes.arrayOf(
@@ -54,7 +54,7 @@ HowIGradePage.propTypes = {
 export const pageQuery = graphql`
   query {
     page: allMarkdownRemark(
-      filter: { frontmatter: { slug: { eq: "how-i-grade" } } }
+      filter: { frontmatter: { slug: { eq: "about" } } }
     ) {
       nodes {
         frontmatter {

@@ -11,7 +11,7 @@ import styles from "./home.module.scss";
 import toSentenceArray from "../utils/to-sentence-array";
 import WatchlistTitle from "../types/watchlistTitle";
 import WatchlistLinks from "../components/WatchlistLinks";
-import PostDate from "../components/PostDate";
+import DateIcon from "../components/DateIcon";
 
 function stripFootnotes(html) {
   return html.replace(/\[\^.*\]/, "");
@@ -20,7 +20,9 @@ function stripFootnotes(html) {
 function CastList({ principalCastIds, allCast }) {
   const castIds = new Set(principalCastIds.split(","));
 
-  const cast = allCast.filter((person) => castIds.has(person.person_imdb_id));
+  const cast = allCast.filter(
+    (person) => person.person_imdb_id && castIds.has(person.person_imdb_id)
+  );
 
   return toSentenceArray(cast.map((person) => person.name));
 }
@@ -49,32 +51,35 @@ function PostListItem({ post, index, value }) {
       }`}
       value={value}
     >
-      <div>
-        <Img fluid={post.backdrop.childImageSharp.fluid} alt="" />
+      <div className={styles.list_item_date}>
+        <DateIcon />
+        {post.frontmatter.date}
       </div>
       <div className={styles.list_item_content}>
-        <h2 className={styles.list_item_heading}>
-          <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
-        </h2>
+        <Img fluid={post.backdrop.childImageSharp.fluid} alt="" />
+        <div className={styles.list_item_content}>
+          <h2 className={styles.list_item_heading}>
+            <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
+          </h2>
 
-        <div
-          className={styles.list_item_excerpt}
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html:
-              post.frontmatter.excerpt || stripFootnotes(post.firstParagraph),
-          }}
-        />
-        {(post.frontmatter.excerpt || post.numberOfParagraphs > 1) && (
-          <Link
-            className={styles.list_item_continue_reading}
-            to={post.frontmatter.slug}
-          >
-            Continue Reading
-          </Link>
-        )}
+          <div
+            className={styles.list_item_excerpt}
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html:
+                post.frontmatter.excerpt || stripFootnotes(post.firstParagraph),
+            }}
+          />
+          {(post.frontmatter.excerpt || post.numberOfParagraphs > 1) && (
+            <Link
+              className={styles.list_item_continue_reading}
+              to={post.frontmatter.slug}
+            >
+              Continue Reading
+            </Link>
+          )}
+        </div>
       </div>
-      <PostDate date={post.frontmatter.date} />
     </li>
   );
 }
@@ -126,6 +131,10 @@ function ReviewListItem({
       }`}
       value={value}
     >
+      <div className={styles.list_item_date}>
+        <DateIcon />
+        {review.frontmatter.date}
+      </div>
       <div className={styles.list_item_content}>
         <Img
           fluid={review.backdrop.childImageSharp.fluid}
@@ -168,7 +177,6 @@ function ReviewListItem({
         )}
         <WatchlistLinks watchlistTitle={watchlistTitle} />
       </div>
-      <PostDate date={review.frontmatter.date} />
     </li>
   );
 }
@@ -215,7 +223,6 @@ export default function HomeTemplate({ pageContext, data }) {
               data.updates.nodes.length - pageContext.skip - index;
 
             if (update.postType === "review") {
-              console.log(update);
               const directors = data.director.nodes
                 .filter((director) => {
                   return director.movie_imdb_id === update.frontmatter.imdb_id;
