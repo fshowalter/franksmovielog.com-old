@@ -55,30 +55,33 @@ function PostListItem({ post, index, value }) {
         <DateIcon />
         {post.frontmatter.date}
       </div>
-      <div className={styles.list_item_content}>
+      <Link
+        className={styles.list_item_continue_reading}
+        to={post.frontmatter.slug}
+      >
         <Img fluid={post.backdrop.childImageSharp.fluid} alt="" />
-        <div className={styles.list_item_content}>
-          <h2 className={styles.list_item_heading}>
-            <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
-          </h2>
+      </Link>
+      <div className={styles.list_item_content}>
+        <h2 className={styles.list_item_heading}>
+          <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
+        </h2>
 
-          <div
-            className={styles.list_item_excerpt}
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html:
-                post.frontmatter.excerpt || stripFootnotes(post.firstParagraph),
-            }}
-          />
-          {(post.frontmatter.excerpt || post.numberOfParagraphs > 1) && (
-            <Link
-              className={styles.list_item_continue_reading}
-              to={post.frontmatter.slug}
-            >
-              Continue Reading
-            </Link>
-          )}
-        </div>
+        <div
+          className={styles.list_item_excerpt}
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html:
+              post.frontmatter.excerpt || stripFootnotes(post.firstParagraph),
+          }}
+        />
+        {(post.frontmatter.excerpt || post.numberOfParagraphs > 1) && (
+          <Link
+            className={styles.list_item_continue_reading}
+            to={post.frontmatter.slug}
+          >
+            Continue Reading
+          </Link>
+        )}
       </div>
     </li>
   );
@@ -108,6 +111,7 @@ PostListItem.propTypes = {
 };
 
 function ReviewListItem({
+  isLast,
   review,
   movies,
   index,
@@ -128,53 +132,59 @@ function ReviewListItem({
     <li
       className={`${styles.list_item} ${
         index === 0 ? styles.list_item_first : ""
-      }`}
+      } ${isLast ? styles.list_item_last : ""}`}
       value={value}
     >
-      <div className={styles.list_item_date}>
-        <DateIcon />
-        {review.frontmatter.date}
-      </div>
-      <div className={styles.list_item_content}>
+      <Link
+        className={styles.list_item_image_link}
+        to={`/reviews/${review.frontmatter.slug}/`}
+      >
         <Img
+          className={styles.list_item_image}
           fluid={review.backdrop.childImageSharp.fluid}
           alt={`A still from ${movie.title} (${movie.year})`}
         />
-        <h2 className={styles.list_item_heading}>
-          <ReviewLink imdbId={review.frontmatter.imdb_id}>
-            {movie.title}{" "}
-            <span className={styles.list_item_heading_review_year}>
-              {movie.year}
-            </span>
-          </ReviewLink>
-        </h2>
-        <Grade
-          grade={review.frontmatter.grade}
-          className={styles.list_item_grade}
+      </Link>
+      <h2 className={styles.list_item_heading}>
+        <ReviewLink imdbId={review.frontmatter.imdb_id}>
+          {movie.title}{" "}
+          <span className={styles.list_item_heading_review_year}>
+            {movie.year}
+          </span>
+        </ReviewLink>
+      </h2>
+      <Grade
+        grade={review.frontmatter.grade}
+        className={styles.list_item_grade}
+      />
+      <p className={styles.list_item_review_meta}>
+        Directed by {toSentenceArray(directors)}. Starring{" "}
+        <CastList
+          principalCastIds={movie.principal_cast_ids}
+          allCast={allCast}
         />
-        <p className={styles.list_item_review_meta}>
-          Directed by {toSentenceArray(directors)}. Starring{" "}
-          <CastList
-            principalCastIds={movie.principal_cast_ids}
-            allCast={allCast}
-          />
-          .
-        </p>
-        <div
-          className={styles.list_item_excerpt}
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: stripFootnotes(review.firstParagraph),
-          }}
-        />
-        {review.numberOfParagraphs > 1 && (
-          <Link
-            className={styles.list_item_continue_reading}
-            to={`/reviews/${review.frontmatter.slug}/`}
-          >
-            Continue Reading
-          </Link>
-        )}
+        .
+      </p>
+      <div
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: stripFootnotes(review.firstParagraph),
+        }}
+        className={styles.list_item_excerpt}
+      />
+      {review.numberOfParagraphs > 1 && (
+        <Link
+          className={styles.list_item_continue_reading}
+          to={`/reviews/${review.frontmatter.slug}/`}
+        >
+          Continue Reading
+        </Link>
+      )}
+      <div className={styles.list_item_post_meta}>
+        <div className={styles.list_item_date}>
+          <DateIcon />
+          {review.frontmatter.date}
+        </div>
         <WatchlistLinks watchlistTitle={watchlistTitle} />
       </div>
     </li>
@@ -182,6 +192,7 @@ function ReviewListItem({
 }
 
 ReviewListItem.propTypes = {
+  isLast: PropTypes.bool,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
   movies: PropTypes.arrayOf(Movie).isRequired,
@@ -213,14 +224,26 @@ ReviewListItem.propTypes = {
   }).isRequired,
 };
 
+ReviewListItem.defaultProps = {
+  isLast: false,
+};
+
 export default function HomeTemplate({ pageContext, data }) {
   return (
     <Layout>
       <main className={styles.container}>
-        <ol className="home-post_list">
+        <ol className={styles.list}>
           {data.updates.nodes.map((update, index) => {
             const listItemValue =
               data.updates.nodes.length - pageContext.skip - index;
+
+            let isLast;
+
+            if (Math.abs(data.updates.nodes.length % 2) === 1) {
+              isLast = false;
+            } else {
+              isLast = index + 1 === data.updates.nodes.length;
+            }
 
             if (update.postType === "review") {
               const directors = data.director.nodes
@@ -231,6 +254,7 @@ export default function HomeTemplate({ pageContext, data }) {
 
               return (
                 <ReviewListItem
+                  isLast={isLast}
                   index={index}
                   review={update}
                   directors={directors}
@@ -314,6 +338,7 @@ export const pageQuery = graphql`
       sort: { fields: [frontmatter___sequence], order: DESC }
       limit: $limit
       skip: $skip
+      filter: {fileAbsolutePath: {regex: "content/(reviews)|(posts)/.*\\.md$/"}}
     ) {
       nodes {
         postType

@@ -1,3 +1,25 @@
+.container {
+  @media (min-width: 1000px) {
+    background-color: var(--color-content-background);
+    display: grid;
+    grid-template-columns: 1fr var(--step-1) 1.25fr;
+    grid-template-rows: auto;
+    grid-template-areas: "left . right";
+  }
+}
+
+.left {
+  @media (min-width: 1000px) {
+    grid-area: left;
+  }
+}
+
+.right {
+  @media (min-width: 1000px) {
+    grid-area: right;
+  }
+}
+
 .page_header {
   composes: header from "../styles/page.scss";
 }

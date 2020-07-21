@@ -89,11 +89,14 @@ export default function Review({ data }) {
             Directed by{" "}
             {toSentenceArray(
               data.director.nodes.map((director) => director.name)
-            )}{" "}
+            )}
+            {". "}
+            Starring{" "}
             <CastList
               principalCastIds={movie.principal_cast_ids}
               allCast={data.cast.nodes}
             />
+            .
           </p>
           <div
             className={styles.body}

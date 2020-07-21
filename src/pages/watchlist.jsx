@@ -474,169 +474,179 @@ export default function WatchlistPage({ data }) {
 
   return (
     <Layout>
-      <main>
-        <header className={styles.page_header}>
-          <h2 className={styles.page_heading}>Watchlist</h2>
-          <p className={styles.page_tagline}>
-            My movie review bucketlist.{" "}
-            {state.allTitles.length.toLocaleString()} titles. No silents or
-            documentaries.
-          </p>
-        </header>
-        <div className={styles.filters}>
-          <fieldset className={styles.filters_fieldset}>
-            <legend>Filter &amp; Sort</legend>
-            <label className={styles.label} htmlFor="to_watch-title-input">
-              Title
-              <DebouncedInput
-                id="to_watch-title-input"
-                className={styles.filter_text_input}
-                placeholder="Enter all or part of a title"
-                onChange={(value) =>
-                  dispatch({ type: actions.FILTER_TITLE, value })
-                }
-              />
-            </label>
-            <label className={styles.label} htmlFor="to_watch-director-input">
-              Director
-              <select
-                id="to_watch-director-input"
-                className={styles.filter_select_input}
-                onChange={(e) =>
-                  dispatch({
-                    type: actions.FILTER_DIRECTOR,
-                    value: e.target.value,
-                  })
-                }
-              >
-                <WatchlistOptions
-                  titles={state.allTitles}
-                  keyName="directors"
+      <main className={styles.container}>
+        <div className={styles.left}>
+          <header className={styles.page_header}>
+            <h2 className={styles.page_heading}>Watchlist</h2>
+            <p className={styles.page_tagline}>
+              My movie review bucketlist.{" "}
+              {state.allTitles.length.toLocaleString()} titles. No silents or
+              documentaries.
+            </p>
+          </header>
+          <div className={styles.filters}>
+            <fieldset className={styles.filters_fieldset}>
+              <legend>Filter &amp; Sort</legend>
+              <label className={styles.label} htmlFor="to_watch-title-input">
+                Title
+                <DebouncedInput
+                  id="to_watch-title-input"
+                  className={styles.filter_text_input}
+                  placeholder="Enter all or part of a title"
+                  onChange={(value) =>
+                    dispatch({ type: actions.FILTER_TITLE, value })
+                  }
                 />
-              </select>
-            </label>
-            <label
-              className={styles.label}
-              htmlFor="to_watch-performer-input"
-              bel
-            >
-              Performer
-              <select
-                id="to_watch-performer-input"
-                className={styles.filter_select_input}
-                onChange={(e) =>
-                  dispatch({
-                    type: actions.FILTER_PERFORMER,
-                    value: e.target.value,
-                  })
-                }
+              </label>
+              <label className={styles.label} htmlFor="to_watch-director-input">
+                Director
+                <select
+                  id="to_watch-director-input"
+                  className={styles.filter_select_input}
+                  onChange={(e) =>
+                    dispatch({
+                      type: actions.FILTER_DIRECTOR,
+                      value: e.target.value,
+                    })
+                  }
+                >
+                  <WatchlistOptions
+                    titles={state.allTitles}
+                    keyName="directors"
+                  />
+                </select>
+              </label>
+              <label
+                className={styles.label}
+                htmlFor="to_watch-performer-input"
+                bel
               >
-                <WatchlistOptions
-                  titles={state.allTitles}
-                  keyName="performers"
+                Performer
+                <select
+                  id="to_watch-performer-input"
+                  className={styles.filter_select_input}
+                  onChange={(e) =>
+                    dispatch({
+                      type: actions.FILTER_PERFORMER,
+                      value: e.target.value,
+                    })
+                  }
+                >
+                  <WatchlistOptions
+                    titles={state.allTitles}
+                    keyName="performers"
+                  />
+                </select>
+              </label>
+              <label className={styles.label} htmlFor="to_watch-writer-input">
+                Writer
+                <select
+                  id="to_watch-writer-input"
+                  className={styles.filter_select_input}
+                  onChange={(e) =>
+                    dispatch({
+                      type: actions.FILTER_WRITER,
+                      value: e.target.value,
+                    })
+                  }
+                >
+                  <WatchlistOptions
+                    titles={state.allTitles}
+                    keyName="writers"
+                  />
+                </select>
+              </label>
+              <label
+                className={styles.label}
+                htmlFor="to_watch-collection-input"
+              >
+                Collection
+                <select
+                  id="to_watch-collection-input"
+                  className={styles.filter_select_input}
+                  onChange={(e) =>
+                    dispatch({
+                      type: actions.FILTER_COLLECTION,
+                      value: e.target.value,
+                    })
+                  }
+                >
+                  <WatchlistOptions
+                    titles={state.allTitles}
+                    keyName="collections"
+                  />
+                </select>
+              </label>
+              <label
+                className={styles.label}
+                htmlFor="to_watch-release-year-input"
+              >
+                Release Year
+                <RangeInput
+                  id="to_watch-release-year-input"
+                  min={state.minYear}
+                  max={state.maxYear}
+                  onChange={(values) =>
+                    dispatch({ type: actions.FILTER_RELEASE_YEAR, values })
+                  }
                 />
-              </select>
-            </label>
-            <label className={styles.label} htmlFor="to_watch-writer-input">
-              Writer
-              <select
-                id="to_watch-writer-input"
-                className={styles.filter_select_input}
-                onChange={(e) =>
-                  dispatch({
-                    type: actions.FILTER_WRITER,
-                    value: e.target.value,
-                  })
-                }
+              </label>
+              <label className={styles.label} htmlFor="to_watch-sort-input">
+                Order By
+                <select
+                  id="to_watch-sort-input"
+                  className={styles.filter_select_input}
+                  onChange={(e) =>
+                    dispatch({ type: actions.SORT, value: e.target.value })
+                  }
+                >
+                  <option value="release-date-asc">
+                    Release Date (Oldest First)
+                  </option>
+                  <option value="release-date-desc">
+                    Release Date (Newest First)
+                  </option>
+                  <option value="title">Title</option>
+                </select>
+              </label>
+              <button
+                id="to_watch-toggle_reviewed"
+                type="button"
+                className={styles.toggle_review_button}
+                onClick={() => dispatch({ type: actions.TOGGLE_REVIEWED })}
               >
-                <WatchlistOptions titles={state.allTitles} keyName="writers" />
-              </select>
-            </label>
-            <label className={styles.label} htmlFor="to_watch-collection-input">
-              Collection
-              <select
-                id="to_watch-collection-input"
-                className={styles.filter_select_input}
-                onChange={(e) =>
-                  dispatch({
-                    type: actions.FILTER_COLLECTION,
-                    value: e.target.value,
-                  })
-                }
-              >
-                <WatchlistOptions
-                  titles={state.allTitles}
-                  keyName="collections"
-                />
-              </select>
-            </label>
-            <label
-              className={styles.label}
-              htmlFor="to_watch-release-year-input"
-            >
-              Release Year
-              <RangeInput
-                id="to_watch-release-year-input"
-                min={state.minYear}
-                max={state.maxYear}
-                onChange={(values) =>
-                  dispatch({ type: actions.FILTER_RELEASE_YEAR, values })
-                }
-              />
-            </label>
-            <label className={styles.label} htmlFor="to_watch-sort-input">
-              Order By
-              <select
-                id="to_watch-sort-input"
-                className={styles.filter_select_input}
-                onChange={(e) =>
-                  dispatch({ type: actions.SORT, value: e.target.value })
-                }
-              >
-                <option value="release-date-asc">
-                  Release Date (Oldest First)
-                </option>
-                <option value="release-date-desc">
-                  Release Date (Newest First)
-                </option>
-                <option value="title">Title</option>
-              </select>
-            </label>
-            <button
-              id="to_watch-toggle_reviewed"
-              type="button"
-              className={styles.toggle_review_button}
-              onClick={() => dispatch({ type: actions.TOGGLE_REVIEWED })}
-            >
-              {state.hideReviewed ? "Show Reviewed" : "Hide Reviewed"}
-            </button>
-          </fieldset>
+                {state.hideReviewed ? "Show Reviewed" : "Hide Reviewed"}
+              </button>
+            </fieldset>
+          </div>
         </div>
-        <PaginationHeader
-          currentPage={state.currentPage}
-          perPage={state.perPage}
-          numberOfItems={state.filteredTitles.length}
-          ref={listHeader}
-        />
-        <ol className={styles.list}>
-          {state.titlesForPage.map((title) => {
-            return (
-              <li className={styles.list_item}>
-                <WatchlistTitle title={title} />
-                <WatchlistSlug title={title} />
-              </li>
-            );
-          })}
-        </ol>
-        <Pagination
-          currentPage={state.currentPage}
-          limit={state.perPage}
-          numberOfItems={state.filteredTitles.length}
-          onClick={(newPage) => {
-            dispatch({ type: actions.CHANGE_PAGE, value: newPage });
-            listHeader.current.scrollIntoView();
-          }}
-        />
+        <div className={styles.right}>
+          <PaginationHeader
+            currentPage={state.currentPage}
+            perPage={state.perPage}
+            numberOfItems={state.filteredTitles.length}
+            ref={listHeader}
+          />
+          <ol className={styles.list}>
+            {state.titlesForPage.map((title) => {
+              return (
+                <li className={styles.list_item}>
+                  <WatchlistTitle title={title} />
+                  <WatchlistSlug title={title} />
+                </li>
+              );
+            })}
+          </ol>
+          <Pagination
+            currentPage={state.currentPage}
+            limit={state.perPage}
+            numberOfItems={state.filteredTitles.length}
+            onClick={(newPage) => {
+              dispatch({ type: actions.CHANGE_PAGE, value: newPage });
+              listHeader.current.scrollIntoView();
+            }}
+          />
+        </div>
       </main>
     </Layout>
   );

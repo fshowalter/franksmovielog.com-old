@@ -220,8 +220,9 @@ function Layout({ children }) {
             acceptCharset="UTF-8"
             method="get"
             role="search"
+            className={styles.mast_search_form}
           >
-            <label htmlFor="search" className={styles.mast_search_form}>
+            <label htmlFor="search" className={styles.mast_search_wrap}>
               <span className={styles.mast_search_label}>Search</span>
               <input
                 type="text"
@@ -244,7 +245,7 @@ function Layout({ children }) {
           </form>
         </nav>
       </header>
-      {children}
+      <div className={styles.children}>{children}</div>
       <footer className={styles.footer}>
         <ul className={styles.footer_nav_list}>
           <FooterNavItem to="/">Home</FooterNavItem>
