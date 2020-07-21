@@ -628,9 +628,13 @@ export default function WatchlistPage({ data }) {
             ref={listHeader}
           />
           <ol className={styles.list}>
-            {state.titlesForPage.map((title) => {
+            {state.titlesForPage.map((title, index) => {
               return (
-                <li className={styles.list_item}>
+                <li
+                  className={`${styles.list_item} ${
+                    index === 0 ? styles.list_item_first : ""
+                  }`}
+                >
                   <WatchlistTitle title={title} />
                   <WatchlistSlug title={title} />
                 </li>

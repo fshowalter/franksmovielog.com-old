@@ -189,102 +189,110 @@ export default function ReviewsPage({ data }) {
 
   return (
     <Layout>
-      <main>
-        <header className={styles.page_header}>
-          <h2 className={styles.page_heading}>Reviews</h2>
-          <p className={styles.page_tagline}>
-            I&apos;ve published {state.allReviews.length} reviews since 2020.
-          </p>
-        </header>
+      <main className={styles.container}>
+        <div className={styles.left}>
+          <header className={styles.page_header}>
+            <h2 className={styles.page_heading}>Reviews</h2>
+            <p className={styles.page_tagline}>
+              I&apos;ve published {state.allReviews.length} reviews since 2020.
+            </p>
+          </header>
 
-        <div className={styles.filters}>
-          <fieldset className={styles.filters_fieldset}>
-            <legend>Filter &amp; Sort</legend>
-            <label className={styles.label} htmlFor="viewings-title-input">
-              Title
-              <DebouncedInput
-                id={styles.filter_text_input}
-                placeholder="Enter all or part of a title"
-                className={styles.filter_text_input}
-                onChange={(value) =>
-                  dispatch({ type: actions.FILTER_TITLE, value })
-                }
-              />
-            </label>
-            <label
-              className={styles.label}
-              htmlFor="viewings-release-year-input"
-            >
-              Release Year
-              <RangeInput
-                id="viewings-release-year-input"
-                min={state.minYear}
-                max={state.maxYear}
-                onChange={(values) =>
-                  dispatch({ type: actions.FILTER_RELEASE_YEAR, values })
-                }
-              />
-            </label>
-            <label className={styles.label} htmlFor="viewings-sort-input">
-              Order By
-              <select
-                value={state.sortValue}
-                id="viewings-sort-input"
-                className={styles.filter_select_input}
-                onChange={(e) =>
-                  dispatch({ type: actions.SORT, value: e.target.value })
-                }
+          <div className={styles.filters}>
+            <fieldset className={styles.filters_fieldset}>
+              <legend>Filter &amp; Sort</legend>
+              <label className={styles.label} htmlFor="viewings-title-input">
+                Title
+                <DebouncedInput
+                  id={styles.filter_text_input}
+                  placeholder="Enter all or part of a title"
+                  className={styles.filter_text_input}
+                  onChange={(value) =>
+                    dispatch({ type: actions.FILTER_TITLE, value })
+                  }
+                />
+              </label>
+              <label
+                className={styles.label}
+                htmlFor="viewings-release-year-input"
               >
-                <option value="title">Title</option>
-                <option value="grade-desc">Grade (Best First)</option>
-                <option value="grade-asc">Grade (Worst First)</option>
-                <option value="release-date-desc">
-                  Release Date (Newest First)
-                </option>
-                <option value="release-date-asc">
-                  Release Date (Oldest First)
-                </option>
-              </select>
-            </label>
-          </fieldset>
-        </div>
-        <PaginationHeader
-          currentPage={state.currentPage}
-          perPage={state.perPage}
-          numberOfItems={state.filteredReviews.length}
-        />
-        <ol className={styles.list}>
-          {state.reviewsForPage.map((review) => {
-            return (
-              <li value={review.sequence} className={styles.list_item}>
-                <Link
-                  to={`/reviews/${review.slug}/`}
-                  className={styles.list_item_title}
+                Release Year
+                <RangeInput
+                  id="viewings-release-year-input"
+                  min={state.minYear}
+                  max={state.maxYear}
+                  onChange={(values) =>
+                    dispatch({ type: actions.FILTER_RELEASE_YEAR, values })
+                  }
+                />
+              </label>
+              <label className={styles.label} htmlFor="viewings-sort-input">
+                Order By
+                <select
+                  value={state.sortValue}
+                  id="viewings-sort-input"
+                  className={styles.filter_select_input}
+                  onChange={(e) =>
+                    dispatch({ type: actions.SORT, value: e.target.value })
+                  }
                 >
-                  {review.title}{" "}
-                  <span className={styles.list_item_title_year}>
-                    {review.year}
-                  </span>
-                </Link>
-                <div className={styles.list_item_slug}>
-                  <Grade
-                    gradeValue={review.grade_value}
-                    className={styles.list_item_grade}
-                  />
-                  {review.date}
-                </div>
-              </li>
-            );
-          })}
-        </ol>
-        <Pagination
-          currentPage={state.currentPage}
-          limit={state.perPage}
-          numberOfItems={state.filteredReviews.length}
-          onClick={(newPage) =>
-            dispatch({ type: actions.CHANGE_PAGE, value: newPage })
-          }
-        />
+                  <option value="title">Title</option>
+                  <option value="grade-desc">Grade (Best First)</option>
+                  <option value="grade-asc">Grade (Worst First)</option>
+                  <option value="release-date-desc">
+                    Release Date (Newest First)
+                  </option>
+                  <option value="release-date-asc">
+                    Release Date (Oldest First)
+                  </option>
+                </select>
+              </label>
+            </fieldset>
+          </div>
+        </div>
+        <div className={styles.right}>
+          <PaginationHeader
+            currentPage={state.currentPage}
+            perPage={state.perPage}
+            numberOfItems={state.filteredReviews.length}
+          />
+          <ol className={styles.list}>
+            {state.reviewsForPage.map((review, index) => {
+              return (
+                <li
+                  className={`${styles.list_item} ${
+                    index === 0 ? styles.list_item_first : ""
+                  }`}
+                >
+                  <Link
+                    to={`/reviews/${review.slug}/`}
+                    className={styles.list_item_title}
+                  >
+                    {review.title}{" "}
+                    <span className={styles.list_item_title_year}>
+                      {review.year}
+                    </span>
+                  </Link>
+                  <div className={styles.list_item_slug}>
+                    <Grade
+                      gradeValue={review.grade_value}
+                      className={styles.list_item_grade}
+                    />
+                    {review.date}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+          <Pagination
+            currentPage={state.currentPage}
+            limit={state.perPage}
+            numberOfItems={state.filteredReviews.length}
+            onClick={(newPage) =>
+              dispatch({ type: actions.CHANGE_PAGE, value: newPage })
+            }
+          />
+        </div>
       </main>
     </Layout>
   );

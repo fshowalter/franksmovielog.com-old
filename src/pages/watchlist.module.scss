@@ -64,6 +64,10 @@
   composes: list_item from "../styles/list.scss";
 }
 
+.list_item_first {
+  composes: list_item_first from "../styles/list.scss";
+}
+
 .list_item_title {
   composes: list_item_title from "../styles/list.scss";
 }

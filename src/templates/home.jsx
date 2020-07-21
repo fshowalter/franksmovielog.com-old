@@ -132,7 +132,7 @@ function ReviewListItem({
     <li
       className={`${styles.list_item} ${
         index === 0 ? styles.list_item_first : ""
-      } ${isLast ? styles.list_item_last : ""}`}
+      }  ${isLast ? styles.list_item_last : ""}`}
       value={value}
     >
       <Link
@@ -180,7 +180,7 @@ function ReviewListItem({
           Continue Reading
         </Link>
       )}
-      <div className={styles.list_item_post_meta}>
+      <div className={styles.list_item_footer}>
         <div className={styles.list_item_date}>
           <DateIcon />
           {review.frontmatter.date}

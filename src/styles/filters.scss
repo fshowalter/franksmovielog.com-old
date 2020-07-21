@@ -1,5 +1,5 @@
 .label {
-  font-size: var(--step--1);
+  font-size: clamp(14px, 5vw, 15px);
   color: var(--color-text-secondary);
   display: flex;
   flex-direction: column;
@@ -11,6 +11,7 @@
   border: 0;
   border-radius: 0;
   appearance: none;
+  font-size: 14px;
 }
 
 .text_input {
@@ -26,19 +27,25 @@
 
 .fieldset {
   border: solid 1px var(--color-background);
+  font-size: var(--step-1);
 }
 
 .card {
-  font-size: var(--step-1);
   border-top: solid 1px var(--color-background);
   border-bottom: solid 1px darken(#e9e7e0, 5);
   background-color: var(--color-content-background);
   padding: var(--step-5) var(--step-1);
+
+  @media (min-width: 1000px) {
+    border: 0;
+    padding-top: 0;
+  }
 }
 
 .toggle_button {
   margin-top: var(--step-0);
-  font-size: var(--step--1);
+  font-size: clamp(14px, 5vw, 15px);
   border: solid 1px var(--color-background);
   padding: calc(var(--step--2) / 2) var(--step--2);
+  color: var(--color-link);
 }

@@ -17,11 +17,27 @@
     top: 0px;
     width: 100%;
   }
+
+  @media (min-width: 1300px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 1300px;
+    background-color: var(--color-content-background);
+    padding: var(--step-1) var(--step-1) 0;
+  }
 }
 
 .mast {
   padding-top: var(--step-4);
   border-bottom: solid 1px var(--color-border);
+
+  @media (min-width: 1300px) {
+    order: 2;
+    width: calc(300px - 2 * var(--step-1));
+    padding: 0;
+    margin-top: var(--step-5);
+    border-bottom: 0;
+  }
 }
 
 .mast_logo {
@@ -50,11 +66,24 @@
   @media (min-width: 1000px) {
     background-color: var(--color-content-background);
   }
+
+  @media (min-width: 1300px) {
+    padding: 0 0 0 var(--step-1);
+
+    &:before {
+      position: static;
+    }
+  }
 }
 
 .mast_heading {
   transition: color 0.15s;
   font-size: var(--step-2);
+
+  @media (min-width: 1300px) {
+    font-size: var(--step-1);
+    margin-top: 1.5rem;
+  }
 }
 
 .mast_tagline {
@@ -77,6 +106,10 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
+  }
+
+  @media (min-width: 1300px) {
+    position: static;
   }
 }
 
@@ -104,6 +137,12 @@
     flex-direction: column;
     background: transparent;
   }
+
+  @media (min-width: 1300px) {
+    flex-direction: column;
+    background: transparent;
+    padding-top: var(--step-5);
+  }
 }
 
 .mast_nav_list_item:global.js--hidden {
@@ -127,6 +166,12 @@
     color: inherit;
     font-size: var(--step-1);
   }
+
+  @media (min-width: 1300px) {
+    color: var(--color-link);
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
 }
 
 .mast_nav_link_active {
@@ -138,6 +183,13 @@
     left: 0;
     position: absolute;
     right: 0;
+  }
+
+  @media (min-width: 1300px) {
+    color: var(--color-text-secondary);
+    &:after {
+      display: none;
+    }
   }
 }
 
@@ -246,16 +298,26 @@
   color: #d2d2d2;
   font-size: 16px;
   padding: var(--step-3) var(--step-1);
-  flex-grow: 2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  @media (min-width: 1300px) {
+    order: 3;
+    width: calc(100% + 2 * var(--step-1));
+    margin: 0 calc(-1 * var(--step-1));
+    max-height: 200px;
+    align-self: flex-end;
+  }
 }
 
 .children {
-  @media (min-width: 1200px) {
-    grid-area: main;
+  flex-grow: 1;
+
+  @media (min-width: 1300px) {
+    order: 1;
+    width: 1000px;
   }
 }
 

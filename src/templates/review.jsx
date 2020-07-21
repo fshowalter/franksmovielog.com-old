@@ -27,9 +27,9 @@ CastList.propTypes = {
   ).isRequired,
 };
 
-function ReviewMeta({ review }) {
+function ReviewDate({ review }) {
   return (
-    <div className={styles.review_meta}>
+    <div className={styles.date}>
       <svg
         width="1em"
         height="1em"
@@ -57,7 +57,7 @@ function ReviewMeta({ review }) {
   );
 }
 
-ReviewMeta.propTypes = {
+ReviewDate.propTypes = {
   review: PropTypes.shape({
     frontmatter: PropTypes.shape({
       date: PropTypes.string.isRequired,
@@ -84,20 +84,25 @@ export default function Review({ data }) {
             {movie.title}{" "}
             <span className={styles.title_year}>{movie.year}</span>
           </h1>
-          <Grade grade={review.frontmatter.grade} className={styles.grade} />
           <p className={styles.meta}>
-            Directed by{" "}
+            <span className={styles.cast_label}>Directed by </span>
             {toSentenceArray(
               data.director.nodes.map((director) => director.name)
             )}
             {". "}
-            Starring{" "}
+            <span className={styles.cast_label}>Starring </span>
             <CastList
               principalCastIds={movie.principal_cast_ids}
               allCast={data.cast.nodes}
             />
             .
+            {watchlistTitle && (
+              <div className={styles.watchlist}>
+                <WatchlistLinks watchlistTitle={watchlistTitle} />
+              </div>
+            )}
           </p>
+          <Grade grade={review.frontmatter.grade} className={styles.grade} />
           <div
             className={styles.body}
             // eslint-disable-next-line react/no-danger
@@ -105,9 +110,8 @@ export default function Review({ data }) {
               __html: review.html,
             }}
           />
-          <WatchlistLinks watchlistTitle={watchlistTitle} />
+          <ReviewDate review={review} />
         </div>
-        <ReviewMeta review={review} />
       </article>
     </Layout>
   );
