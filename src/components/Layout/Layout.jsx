@@ -83,7 +83,13 @@ function getHiddenLinks(element) {
   return element.querySelectorAll("li.js--hidden");
 }
 
-function updateNavBar({ navBarEl, navListEl, navButtonEl, responsiveBreaks }) {
+function updateNavBar({
+  navBarEl,
+  navListEl,
+  navButtonEl,
+  searchButtonEl,
+  responsiveBreaks,
+}) {
   const availableSpace = document.documentElement.clientWidth;
 
   if (getWidth(navListEl) > availableSpace) {
@@ -98,6 +104,7 @@ function updateNavBar({ navBarEl, navListEl, navButtonEl, responsiveBreaks }) {
     // Show the responsive hidden button
     if (navButtonEl.classList.contains("js--hidden")) {
       navButtonEl.classList.remove("js--hidden");
+      searchButtonEl.classList.add("js--hidden");
     }
   } else {
     // Logic when visible list is not overflowing the nav
@@ -112,6 +119,7 @@ function updateNavBar({ navBarEl, navListEl, navButtonEl, responsiveBreaks }) {
     // Hide the resonsive hidden button if list is empty
     if (responsiveBreaks.length < 1 && getHiddenLinks(navListEl).length === 0) {
       navButtonEl.classList.add("js--hidden");
+      searchButtonEl.classList.remove("js--hidden");
     }
   }
 
@@ -120,7 +128,13 @@ function updateNavBar({ navBarEl, navListEl, navButtonEl, responsiveBreaks }) {
     responsiveBreaks[responsiveBreaks.length - 1] < availableSpace
   ) {
     // Occur again if the visible list is still overflowing the nav
-    updateNavBar({ navBarEl, navListEl, navButtonEl, responsiveBreaks });
+    updateNavBar({
+      navBarEl,
+      navListEl,
+      navButtonEl,
+      searchButtonEl,
+      responsiveBreaks,
+    });
   }
 }
 
@@ -140,6 +154,7 @@ function Layout({ children }) {
   const navBarEl = useRef(null);
   const navButtonEl = useRef(null);
   const navListEl = useRef(null);
+  const searchButtonEl = useRef(null);
   const responsiveBreaks = useRef([]);
 
   useLayoutEffect(() => {
@@ -148,6 +163,7 @@ function Layout({ children }) {
       navButtonEl: navButtonEl.current,
       navListEl: navListEl.current,
       responsiveBreaks: responsiveBreaks.current,
+      searchButtonEl: searchButtonEl.current,
     });
   });
 
@@ -158,6 +174,7 @@ function Layout({ children }) {
         navButtonEl: navButtonEl.current,
         navListEl: navListEl.current,
         responsiveBreaks: responsiveBreaks.current,
+        searchButtonEl: searchButtonEl.current,
       });
     }, 50);
 
@@ -215,6 +232,15 @@ function Layout({ children }) {
               <rect x="0" y="9" width="100%" height="2" fill="#fff" />
               <rect x="0" y="18" width="100%" height="2" fill="#fff" />
             </svg>
+          </button>
+          <button
+            type="button"
+            ref={searchButtonEl}
+            className={`js--hidden ${styles.mast_search_button}`}
+            aria-label="Search"
+            onClick={() => dispatch({ type: actions.TOGGLE_SEARCH })}
+          >
+            <SearchIcon className={styles.mast_search_icon} />
           </button>
           <form
             action="https://www.google.com/search"

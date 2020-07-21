@@ -193,7 +193,8 @@
   }
 }
 
-.mast_nav_button {
+.mast_nav_button,
+.mast_search_button {
   background-color: transparent;
   border: none;
   z-index: 200;
@@ -233,6 +234,12 @@
       transform: rotate(-45deg) translate(0%, -45%) scaleX(1.5);
     }
   }
+}
+
+.mast_search_icon {
+  fill: #fff;
+  height: var(--step-0);
+  width: var(--step-0);
 }
 
 .mast_search_form {
