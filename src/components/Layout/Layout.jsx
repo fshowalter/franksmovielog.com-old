@@ -12,6 +12,7 @@ import { Helmet } from "react-helmet";
 import { Link } from "gatsby";
 import "../../styles/js.scss";
 import styles from "./layout.module.scss";
+import SearchIcon from "../SearchIcon";
 
 function initState() {
   return {
@@ -229,18 +230,20 @@ function Layout({ children }) {
                 className={styles.mast_search_input}
                 name="q"
                 id="search"
-                placeholder="What are you looking for?"
+                placeholder="Search"
               />
               <input
                 type="hidden"
                 name="q"
                 value="site:movielog.frankshowalter.com"
               />
-              <input
+              <button
                 type="submit"
                 className={styles.mast_search_submit}
                 value="Search"
-              />
+              >
+                <SearchIcon />
+              </button>
             </label>
           </form>
         </nav>
@@ -255,6 +258,36 @@ function Layout({ children }) {
           <FooterNavItem to="/viewings/">Viewing Log</FooterNavItem>
           <FooterNavItem to="/watchlist/">Watchlist</FooterNavItem>
         </ul>
+        <form
+          action="https://www.google.com/search"
+          acceptCharset="UTF-8"
+          method="get"
+          role="search"
+          className={styles.footer_search_form}
+        >
+          <label htmlFor="search" className={styles.footer_search_wrap}>
+            <span className={styles.footer_search_label}>Search</span>
+            <input
+              type="text"
+              className={styles.footer_search_input}
+              name="q"
+              id="search"
+              placeholder="Search"
+            />
+            <input
+              type="hidden"
+              name="q"
+              value="site:movielog.frankshowalter.com"
+            />
+            <button
+              type="submit"
+              className={styles.footer_search_submit}
+              value="Search"
+            >
+              <SearchIcon />
+            </button>
+          </label>
+        </form>
         <p className={styles.footer_fair_use}>
           All stills used in accordance with the{" "}
           <a href="http://www.copyright.gov/title17/92chap1.html#107">
