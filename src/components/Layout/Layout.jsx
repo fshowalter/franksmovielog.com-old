@@ -17,11 +17,13 @@ import SearchIcon from "../SearchIcon";
 function initState() {
   return {
     navVisible: false,
+    searchVisible: false,
   };
 }
 
 const actions = {
   TOGGLE_NAV: "TOGGLE_NAV",
+  TOGGLE_SEARCH: "TOGGLE_SEARCH",
 };
 
 function reducer(state, action) {
@@ -30,6 +32,12 @@ function reducer(state, action) {
       return {
         ...state,
         navVisible: !state.navVisible,
+      };
+    }
+    case actions.TOGGLE_SEARCH: {
+      return {
+        ...state,
+        searchVisible: !state.searchVisible,
       };
     }
     default:
@@ -90,7 +98,13 @@ function updateNavBar({
   searchButtonEl,
   responsiveBreaks,
 }) {
-  const availableSpace = document.documentElement.clientWidth;
+  const spacerWidth = getComputedStyle(navListEl)
+    .getPropertyValue("margin-right")
+    .replace("px", "");
+
+  const availableSpace = Math.ceil(
+    document.documentElement.clientWidth - spacerWidth
+  );
 
   if (getWidth(navListEl) > availableSpace) {
     // Logic when visible list is overflowing the nav
@@ -122,6 +136,9 @@ function updateNavBar({
       searchButtonEl.classList.remove("js--hidden");
     }
   }
+
+  console.log(availableSpace);
+  console.log(getWidth(navListEl));
 
   if (
     getWidth(navListEl) > availableSpace ||
@@ -189,7 +206,7 @@ function Layout({ children }) {
     <div
       className={`${styles.container} ${
         state.navVisible ? styles.mast_nav_visible : ""
-      }`}
+      } ${state.searchVisible ? styles.search_visible : ""}`}
     >
       <Helmet>
         <html lang="en-us" />
@@ -256,7 +273,7 @@ function Layout({ children }) {
                 className={styles.mast_search_input}
                 name="q"
                 id="search"
-                placeholder="Search"
+                placeholder="Search..."
               />
               <input
                 type="hidden"
@@ -269,6 +286,30 @@ function Layout({ children }) {
                 value="Search"
               >
                 <SearchIcon />
+              </button>
+              <button
+                type="button"
+                className={styles.search_close}
+                value="Close Search"
+                onClick={() => dispatch({ type: actions.TOGGLE_SEARCH })}
+              >
+                <svg
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 16 16"
+                  className={styles.search_close_icon}
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z"
+                  />
+                  <path
+                    fillRule="evenodd"
+                    d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z"
+                  />
+                </svg>
               </button>
             </label>
           </form>
@@ -298,7 +339,7 @@ function Layout({ children }) {
               className={styles.footer_search_input}
               name="q"
               id="search"
-              placeholder="Search"
+              placeholder="Search..."
             />
             <input
               type="hidden"
